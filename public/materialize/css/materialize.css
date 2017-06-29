@@ -5407,7 +5407,7 @@ button.btn-floating {
   min-height: 50px;
   line-height: 1.5rem;
   width: 100%;
-  text-align: left;
+  text-align: right;
   text-transform: none;
 }
 
@@ -5441,7 +5441,7 @@ button.btn-floating {
 .dropdown-content li > a > i {
   height: inherit;
   line-height: inherit;
-  float: left;
+  float: right;
   margin: 0 24px 0 0;
   width: 24px;
 }
@@ -8978,7 +8978,7 @@ cursor: pointer;
 min-height: 100px;
 line-height: 1.5rem;
 width: 100%;
-text-align: left;
+text-align: right;
 text-transform: none;
 }
 

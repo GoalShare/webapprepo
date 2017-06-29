@@ -96,10 +96,10 @@
   <div class="row">
         <div class="col s12 m12">
           <div class="card ">
-            <div class="card-content blue darken-4 white-text" style="min-height:280px;">
+            <div class="card-content white-text" style="min-height:300px;background-image:url({{asset('uploads/goals/'.$goals->goalpictureone)}});" >
               <span class="card-title">{{$goals->goalname}}
                   <div class="c100 p50 big">
-                      <span>{{$goals->goalcompletedpercentage}}%</span>
+                      <span id="goalpercentage">{{$goals->goalcompletedpercentage}}%</span>
                       <div class="slice">
                           <div class="bar"></div>
                           <div class="fill"></div>
@@ -124,12 +124,47 @@
                 </div>
                 <div class="col l6 center-align">
                   <!-- Thumbs Up icon by Icons8 -->
-                <img class="icon icons8-Thumbs-Up" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB8klEQVRIS+2WTU7bQBTH/29aJCQcNZwAOEHTG7gLEnaFCzD2CaAnINwgPYE9vUDbXewscG8AJwBuALIjBSHmoZHiKPFHHEPcbDpbv5nf+79PEzZ0aENcvAu8feTtTyZ4QOQ+1BXwZvDOodcRRFcgajM4Sp74pI4DbwLPQ8H8CKJPzLhMQtlfVXlt8CIUioX2icUVM/4mobQbAWehcSidncOfjhDsMfAjCeT52sHF0Lk8k/6aDN1oreAiqAG0usoHQWrQ93FwOlgVauxyOTYt8lELOf8Igc9N9YKhTHjTb62eugOwx8wDgHItxcDdOJSqyKEc2DrybFMsOeMM1Di4xeK2WiX7ceC4WbtyME8rVgvHhJOzObS9trWNzjIwsfBNRLTWX8Yj93oxipmbqeK0L62u6hPhIgeuljqrgaK7pYrXAba66poIn+MnvZudao2CWz3FAO7jQO6vnOP3Kp6lDPiTBPL434GntVHW442F2uqp3wR8KyvKxsDpcIkDWbiIGgGnw4UZN0koC3u9EXCr6x2DxK9lG6sRsNVTAwLOtCZ3PDo10yt3ysHgCEwRiG0C2QD7zGSWQsXhNgGOWSrPpA8mQ7fwzupLooqX+b5M7bK1OFt9NXkwUXn58BKVKU3fq/3PVdeRMvv/4HVFsvKdjYX6FauZgi58jZneAAAAAElFTkSuQmCC">
-                    <!-- Merge Git Filled icon by Icons8 -->
-                    <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB0klEQVRIS+2XT07CUBDGv3mJkQRI6gmQE4gnsC4Ed3ACW04gnEA9gfUEtV5A3dm6EG8AJ9AbSEJJMCZvzDPR9C8+tdiFdt/5zXyd+WZKKOmhZdzKvru5WGCKUX9adH6Z4Oqe2xKCLgHaVEBmdsLAHhYJzwTXO94jgEYUJEHDuX/gFAVPgZW8aywekgBm3IeBZa4MDNM16uviKQUGrkPf6q0ODKDW8RwCDqMQJrkb3vRHKwWr4NXOxUCwPGbQI7O057f9cVFQFWfpONXanqpwFAbWcZHQf3BKzT8qNWEc+tbg15uLiBsz326WAMZO0T6tO04GEbaklNs6JqI2GxEdgWAw6GruW2dZamkZCBNNBfhUAoO8QCp4bd81icVdzGqBs6we0QIr56q33R5IOGo7KzdjJrU6P54wsE5qHe+KgG6ywtmz3EgeE9rg92DVvQubBLfAaCXAppp7IuwkwS8km4ubfizRL4OXdffbYgGfxqRmTMLAiiX5aXN9Z4SiK5UZk7zNlluxyp4gu2BMmflEp6M/EjVdo1KBkZQ3WkgmOOsQ0B0nXZXS4LJOn/KOPWUEbW+s3CoqW9G2mXvQE4nzdzjnuI/u9/yyZf76L8xPKtF99xVcbfQfFIlphQAAAABJRU5ErkJggg==">
-                    <!-- Share icon by Icons8 -->
-                    <img class="icon icons8-Share" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACLElEQVRIS8VW21HbUBDdc/OYzOBMTAWhg5AKUD5I+As0YEsVYFeAqAC5AuE0gD9B/ohcQZwKQjqwR/JM8Di7zJVlImskhIUc6Vdz79lz7tmzC6rpQ024tBXgxpFrEKsDEvjhsDXKIlcp8Jsjd+8l4wrA/gpMRMYLJSd/rq3bZAGVAjc+932ADtIMhcQPb8xPWwHWbF+J+pXnmeCOd8m3Jqv/lTHW7wpR3/OAmfnjbGiNKwVegsIlwl4msMg08MxmZVLHZroAcPxYWzKhO7tpOc8HNtxm47U6Bch+uExkylA2MU0A6QD0QYRGIHYCzxqkC9v4jXcOv5lK8dmarEL9YM6dpHmKgikTeCmhahPEICHdh70Xf6kJhQsQjH89SiMR7iRNUwSYa67IKIwrAtbMkLrwNzPs2bB1+VSgQqnffunrhHmfd6EInYdzdjaRtTAydw7dfaXUj1wWwidZRinDeu2NawPWlT9Bajucc69SqTVwbK4BAe/yJZRbFtgzr90vI7M+81g7mURkEGi8ADtRO0E5yemjp46wdCtppyIGywARnVgJ58tlcCfdTeTfOLmiwpaRqWPxLBGZEwZsYkwBPtXLgFYEIr1KIjOpSJRwohwQff0/QyKFEs9inWLZwSMyCTxz9/nTKYNeLYuArqO21SfKgLxlT2gUeu2HqZbbx0Utlfc/HqcDvQQkRufPheLjra63K7B4oTdIsR9eW37hdCrLtMy5cgFSBil15h5m8AMuCihNVgAAAABJRU5ErkJggg==">
+                <a class='dropdown-button ' href='#' data-activates='dropdownLikes'>
+                  <img class="icon icons8-Thumbs-Up" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB8klEQVRIS+2WTU7bQBTH/29aJCQcNZwAOEHTG7gLEnaFCzD2CaAnINwgPYE9vUDbXewscG8AJwBuALIjBSHmoZHiKPFHHEPcbDpbv5nf+79PEzZ0aENcvAu8feTtTyZ4QOQ+1BXwZvDOodcRRFcgajM4Sp74pI4DbwLPQ8H8CKJPzLhMQtlfVXlt8CIUioX2icUVM/4mobQbAWehcSidncOfjhDsMfAjCeT52sHF0Lk8k/6aDN1oreAiqAG0usoHQWrQ93FwOlgVauxyOTYt8lELOf8Igc9N9YKhTHjTb62eugOwx8wDgHItxcDdOJSqyKEc2DrybFMsOeMM1Di4xeK2WiX7ceC4WbtyME8rVgvHhJOzObS9trWNzjIwsfBNRLTWX8Yj93oxipmbqeK0L62u6hPhIgeuljqrgaK7pYrXAba66poIn+MnvZudao2CWz3FAO7jQO6vnOP3Kp6lDPiTBPL434GntVHW442F2uqp3wR8KyvKxsDpcIkDWbiIGgGnw4UZN0koC3u9EXCr6x2DxK9lG6sRsNVTAwLOtCZ3PDo10yt3ysHgCEwRiG0C2QD7zGSWQsXhNgGOWSrPpA8mQ7fwzupLooqX+b5M7bK1OFt9NXkwUXn58BKVKU3fq/3PVdeRMvv/4HVFsvKdjYX6FauZgi58jZneAAAAAElFTkSuQmCC">
+                </a>
+                {{-- dropdown for likes --}}
+                <div class="right">
+                  <ul id='dropdownLikes' class='dropdown-content'>
+                    <li class="rigth"><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                  </ul>
+                </div>
 
+
+                {{-- ///////////////////////////// --}}
+                    <!-- Merge Git Filled icon by Icons8 -->
+                <a class='dropdown-button ' href='#' data-activates='dropdownAlign'>
+                    <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB0klEQVRIS+2XT07CUBDGv3mJkQRI6gmQE4gnsC4Ed3ACW04gnEA9gfUEtV5A3dm6EG8AJ9AbSEJJMCZvzDPR9C8+tdiFdt/5zXyd+WZKKOmhZdzKvru5WGCKUX9adH6Z4Oqe2xKCLgHaVEBmdsLAHhYJzwTXO94jgEYUJEHDuX/gFAVPgZW8aywekgBm3IeBZa4MDNM16uviKQUGrkPf6q0ODKDW8RwCDqMQJrkb3vRHKwWr4NXOxUCwPGbQI7O057f9cVFQFWfpONXanqpwFAbWcZHQf3BKzT8qNWEc+tbg15uLiBsz326WAMZO0T6tO04GEbaklNs6JqI2GxEdgWAw6GruW2dZamkZCBNNBfhUAoO8QCp4bd81icVdzGqBs6we0QIr56q33R5IOGo7KzdjJrU6P54wsE5qHe+KgG6ywtmz3EgeE9rg92DVvQubBLfAaCXAppp7IuwkwS8km4ubfizRL4OXdffbYgGfxqRmTMLAiiX5aXN9Z4SiK5UZk7zNlluxyp4gu2BMmflEp6M/EjVdo1KBkZQ3WkgmOOsQ0B0nXZXS4LJOn/KOPWUEbW+s3CoqW9G2mXvQE4nzdzjnuI/u9/yyZf76L8xPKtF99xVcbfQfFIlphQAAAABJRU5ErkJggg==">
+                </a>
+                {{-- dropdown for likes --}}
+                <div class="right">
+                <ul id='dropdownAlign' class='dropdown-content right'>
+                  <li class="rigth"><a href="#!">one</a></li>
+                  <li class="rigth"><a href="#!">two</a></li>
+                </ul>
+              </div>
+
+                {{-- ///////////////////////////// --}}
+                    <!-- Share icon by Icons8 -->
+                  <a class='dropdown-button ' href='#' data-activates='dropdownShares'>
+                    <img class="icon icons8-Share" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACLElEQVRIS8VW21HbUBDdc/OYzOBMTAWhg5AKUD5I+As0YEsVYFeAqAC5AuE0gD9B/ohcQZwKQjqwR/JM8Di7zJVlImskhIUc6Vdz79lz7tmzC6rpQ024tBXgxpFrEKsDEvjhsDXKIlcp8Jsjd+8l4wrA/gpMRMYLJSd/rq3bZAGVAjc+932ADtIMhcQPb8xPWwHWbF+J+pXnmeCOd8m3Jqv/lTHW7wpR3/OAmfnjbGiNKwVegsIlwl4msMg08MxmZVLHZroAcPxYWzKhO7tpOc8HNtxm47U6Bch+uExkylA2MU0A6QD0QYRGIHYCzxqkC9v4jXcOv5lK8dmarEL9YM6dpHmKgikTeCmhahPEICHdh70Xf6kJhQsQjH89SiMR7iRNUwSYa67IKIwrAtbMkLrwNzPs2bB1+VSgQqnffunrhHmfd6EInYdzdjaRtTAydw7dfaXUj1wWwidZRinDeu2NawPWlT9Bajucc69SqTVwbK4BAe/yJZRbFtgzr90vI7M+81g7mURkEGi8ADtRO0E5yemjp46wdCtppyIGywARnVgJ58tlcCfdTeTfOLmiwpaRqWPxLBGZEwZsYkwBPtXLgFYEIr1KIjOpSJRwohwQff0/QyKFEs9inWLZwSMyCTxz9/nTKYNeLYuArqO21SfKgLxlT2gUeu2HqZbbx0Utlfc/HqcDvQQkRufPheLjra63K7B4oTdIsR9eW37hdCrLtMy5cgFSBil15h5m8AMuCihNVgAAAABJRU5ErkJggg==">
+                  </a>
+                  {{-- dropdown for likes --}}
+                  <div class="right">
+
+                  <ul id='dropdownShares' class='dropdown-content right'>
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                  </ul>
+
+                </div>
+
+                  {{-- ///////////////////////////// --}}
                   </div>
                 </div>
                 <div class="row">
@@ -194,7 +229,8 @@
                           </div>
                             <div class="col s2">
                               @if ($goals->goalauthorization!='share')
-                                <button  class="btn-floating"style="display:none;" type="submit" id="editintent"><i class="material-icons">done</i></button><button  class="btn-floating"id="intentbtn" ><i class="material-icons ">mode_edit</i></button>
+                                  <button  class="btn-floating "style="display:none;" type="submit" id="editintent"><i class="material-icons">done</i></button>
+                                  <button  class="btn-floating"id="intentbtn" ><i class="material-icons ">mode_edit</i></button>
                               @endif
                             </div>
                           </div>
@@ -499,7 +535,9 @@
                               </div>
                                 <div class="col s2">
                                   @if ($goals->goalauthorization!='share')
+
                                     <button  class="btn-floating"style="display:none;" type="submit" id="editstartdate"><i class="material-icons">done</i></button><button  class="btn-floating"id="startdatebtn" ><i class="material-icons ">mode_edit</i></button>
+
                                   @endif
                                 </div>
                               </div>
@@ -748,22 +786,56 @@
                           </div>
                         <div class="divider"></div>
                         <div class=" section row">
-                          <form action="#">
+                          <form action="{{route('goal')}}" method="post" name="{{$taskcount.'form'}}" id="{{$taskcount.'form'}}">
+                           {{csrf_field()}}
+                           <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                           <input type="hidden" name="taskid" value="{{$tasks->id}}">
+                           <input type="hidden" name="action" value="updatecp">
                             <div class="col s10">
                               <b>Completed Percetage</b>
                                   <p class="range-field">
-                                    <input type="range" value="{{$tasks->taskcompletedpercentage}}"id="cpinput" min="0" max="100" />
+                                    <input type="range" name="" value="{{$tasks->taskcompletedpercentage}}" id="cpinput" min="0" max="100" />
                                   </p>
                             </div>
                             <div class="col s2"><br>
-                              <button type="submit" class="waves-effect waves-light btn-floating"><i class="material-icons">done</i></button>
+                              <button type="submit" id="{{$taskcount}}" class="waves-effect waves-light btn-floating"><i class="material-icons">done</i></button>
                             </div>
                           </form>
                         </div>
                       <div class="divider"></div>
                         </div>
                       </li>
+                      <script type="text/javascript">
+                      // for (var i = 1; i <={{$taskcount}}; i++) {
+                        var cpbtn=document.getElementById("{{$taskcount}}");
+                        cpbtn.addEventListener("click",function(event){
+                          event.preventDefault();
+                          setpercentage();
+                        });
+                        function setpercentage(){
+                         var form = document.getElementById("{{$taskcount.'form'}}");
+                         var action = form.getAttribute("action");
+                         var form_data = new FormData(form);
+
+
+                         var xhr = new XMLHttpRequest();
+                         xhr.open('POST', action, true);
+                         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                         xhr.send(form_data);
+                         xhr.onreadystatechange = function () {
+                           if(xhr.readyState == 4 && xhr.status == 200) {
+                              var result = xhr.responseText;
+                              console.log('Result: ' + result);
+                              document.getElementById("goalpercentage").innerHTML=result;
+                           }
+                         };
+                       }
+
+                      // }
+
+                      </script>
                     @endforeach
+
                     <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
                   </ul>
                 @endif

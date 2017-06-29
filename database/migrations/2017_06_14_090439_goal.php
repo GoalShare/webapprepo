@@ -24,7 +24,7 @@ class Goal extends Migration
           $table->date('goalenddate');
           $table->string('goalauthorization',30)->nullable();
           $table->string('goalpermission',30)->nullable();
-          $table->smallinteger('goalcompletedpercentage')->default(0);
+          $table->float('goalcompletedpercentage')->default(0);
           $table->smallinteger('pinned')->default(0);
           $table->smallinteger('gottasks')->default(0);
           $table->string('goalpictureone',255);

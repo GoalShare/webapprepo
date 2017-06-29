@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Goal;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -123,6 +124,7 @@ public function post(request $request){
               // echo "done";
               $goal=Goal::find($request->goalid);
               $goal->gottasks=1;
+              $goal->save();
               return redirect('/goal/'.$request->goalid);
 
 
@@ -143,6 +145,7 @@ public function post(request $request){
             );
             $goal=App\Goal::find($request->goalid);
             $goal->gottasks=1;
+            $goal->save();
         echo "done";
       }
       else {
@@ -247,6 +250,28 @@ public function post(request $request){
             break;
         }
         break;
+        case 'updatecp':
+          $task = DB::table('tasks')->where([['goalid',$request->goalid],['email',$email]])->get();
+          $goal = DB::table('goals')->where([['goalid',$request->goalid],['email',$email]])->get();
+          $tcpt=0;
+          foreach ($task as $tasks) {
+            if ($tasks->id!=$request->taskid) {
+              $tcpt=$tcpt+$tasks->taskcompletedpercentage;
+            }
+          }
+          echo "$request->cpinput...";
+          echo "$request->taskid...";
+          $gcp=(($tcpt+$request->cpinput)/(count($task)*100))*100;
+
+          $tsk=Task::find($request->taskid);
+          $tsk->taskcompletedpercentage=$request->cpinput;
+          $tsk->save();
+
+          DB::table('goals')
+                    ->where([['goalid', $request->goalid],['email',$email]])
+                    ->update(['goalcompletedpercentage' => round($gcp,2)]);
+          echo round($gcp,2);
+          break;
     default:
       # code...
       break;

@@ -24,7 +24,7 @@ class Task extends Migration
           $table->date('taskenddate');
           $table->string('taskauthorization',30)->nullable();
           $table->string('taskpermission',30)->nullable();
-          $table->smallinteger('taskcompletedpercentage')->default(0);
+          $table->float('taskcompletedpercentage')->default(0);
           $table->smallinteger('taskweight')->default(0);
           $table->smallinteger('pinned')->default(0);
           $table->timestamps();
