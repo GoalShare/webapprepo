@@ -794,7 +794,7 @@
                             <div class="col s10">
                               <b>Completed Percetage</b>
                                   <p class="range-field">
-                                    <input type="range" name="" value="{{$tasks->taskcompletedpercentage}}" id="cpinput" min="0" max="100" />
+                                    <input type="range" name="cpinput" value="{{$tasks->taskcompletedpercentage}}" id="cpinput" min="0" max="100" />
                                   </p>
                             </div>
                             <div class="col s2"><br>
@@ -805,7 +805,7 @@
                       <div class="divider"></div>
                         </div>
                       </li>
-                      <script type="text/javascript">
+                      {{-- <script type="text/javascript">
                       // for (var i = 1; i <={{$taskcount}}; i++) {
                         var cpbtn=document.getElementById("{{$taskcount}}");
                         cpbtn.addEventListener("click",function(event){
@@ -833,7 +833,7 @@
 
                       // }
 
-                      </script>
+                      </script> --}}
                     @endforeach
 
                     <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse" href="#addtaskmodal"><i class="material-icons">add</i></a></li>

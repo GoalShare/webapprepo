@@ -16,11 +16,13 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('profile','ProfileController@post')->name('profile');
 Route::post('goal','GoalController@post')->name('goal');
 Route::post('task','TaskController@post')->name('task');
 Route::post('dashboard','HomeController@post');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/goal/{goalname}','GoalController@view');
+Route::get('/profile/{userid}','ProfileController@view');
 
 
 Route::get('/prof', function () {

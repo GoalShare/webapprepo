@@ -13,7 +13,13 @@ class Userskills extends Migration
      */
     public function up()
     {
-        //
+      Schema::create('userskills', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('email',175);
+          $table->string('skill');
+          $table->string('type');
+          $table->timestamps();
+      });
     }
 
     /**
@@ -23,6 +29,6 @@ class Userskills extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('userskills');
     }
 }

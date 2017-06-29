@@ -113,7 +113,7 @@
         </br>
         </br>
         <div class="mdl-grid portfolio-max-width" id="goaldisplay">
-      
+
              <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
               <tbody>
                 <tr>

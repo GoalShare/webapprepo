@@ -259,8 +259,6 @@ public function post(request $request){
               $tcpt=$tcpt+$tasks->taskcompletedpercentage;
             }
           }
-          echo "$request->cpinput...";
-          echo "$request->taskid...";
           $gcp=(($tcpt+$request->cpinput)/(count($task)*100))*100;
 
           $tsk=Task::find($request->taskid);
@@ -270,7 +268,8 @@ public function post(request $request){
           DB::table('goals')
                     ->where([['goalid', $request->goalid],['email',$email]])
                     ->update(['goalcompletedpercentage' => round($gcp,2)]);
-          echo round($gcp,2);
+          // echo round($gcp,2);
+          return redirect('/goal/'.$request->goalid);
           break;
     default:
       # code...

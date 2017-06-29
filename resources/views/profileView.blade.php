@@ -7,13 +7,38 @@
       <!-- user prof -->
 
           <br>
-          <div class="col s12 m6 l6">
+          <div class="col s12 m6 l6 center-align" id="profilepic">
+            <form style="display:none;"enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
+            {{ csrf_field() }}
+            <div class="file-field input-field">
+              <div class="btn btn-floating">
+                <span><i class="material-icons">add</i></span>
+                <input type="file" name="profilepic">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate col s10" type="text" name="profilepicpath">
+                <button type="submit" class="col s2" style="border:none;background-color:inherit;" name="button"><i class="material-icons">send</i></button>
+              </div>
+            </div>
+            </form>
             <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
           </div>
+          <script type="text/javascript">
+            var profilepic=document.getElementById("profilepic");
+            profilepic.addEventListener("mouseover",mouseOver);
+            profilepic.addEventListener("mouseout",mouseOut);
+
+            function mouseOver(){
+              document.getElementById("addprofilepicfrm").style.display='inline';
+            }
+            function mouseOut(){
+              document.getElementById("addprofilepicfrm").style.display='none';
+            }
+          </script>
           <div class="col s12 m6 l6">
             <br>
               <blockquote>
-            <h4 class="flow-text"> <b>{{Auth::User()->fname}}  {{Auth::User()->lname}} PreferedName</b><h4>
+            <h4 class="flow-text"> <b>&nbsp;&nbsp;&nbsp;&nbsp;{{Auth::User()->fname}}  {{Auth::User()->lname}}</b></h4>
 
 
 
@@ -87,7 +112,6 @@
 
    <!-- //////////////// -->
    <!-- third part -->
-
      <div class="col s12 m12 l12">
        <div class="card">
          <div class="card-action">
@@ -95,48 +119,33 @@
          </div>
          <ul class="collapsible popout" data-collapsible="accordion">
            <li>
-             <div class="collapsible-header"><b>Aligned Goals</b></div>
-             <div class="collapsible-body">
-              Goal Name
-               <div class="progress">
-                   <div class="determinate" style="width: 70%"> </div>
-               </div>
-               70%
-             </div>
-             <div class="collapsible-body">
-              Goal Name
-               <div class="progress">
-                   <div class="determinate" style="width: 70%"> </div>
-               </div>
-               70%
-             </div>
-           </li>
-
-           <li>
-             <div class="collapsible-header"><b>Aligned Goals</b></div>
-             <div class="collapsible-body">
-              Goal Name
-               <div class="progress">
-                   <div class="determinate" style="width: 50%"> </div>
-               </div>
-               50%
-             </div>
-           </li>
-
-           <li>
              <div class="collapsible-header"><b>Accomplished Goals</b></div>
-             <div class="collapsible-body">
-               Goal Name
-                <div class="progress">
-                    <div class="determinate" style="width: 20%"> </div>
-                </div>
-                20%
-             </div>
+             @foreach ($goal as $goals)
+               @if ($goals->goalcompletedpercentage==100)
+                 <div class="collapsible-body">
+                   {{$goals->goalname}}
+                   <div class="progress">
+                       <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                   </div>
+                   {{$goals->goalcompletedpercentage}}%
+                 </div>
+               @endif
+             @endforeach
            </li>
-           <li>
-             <div class="collapsible-header"><b>
-             </div>
 
+           <li>
+             <div class="collapsible-header"><b>Goals in progress</b></div>
+             @foreach ($goal as $goals)
+               @if ($goals->goalcompletedpercentage<100)
+                 <div class="collapsible-body">
+                   {{$goals->goalname}}
+                   <div class="progress">
+                       <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                   </div>
+                   {{$goals->goalcompletedpercentage}}%
+                 </div>
+               @endif
+             @endforeach
            </li>
 
          </ul>
@@ -155,18 +164,9 @@
             <div class="card-action">
                <h5><b>Friends</b></h5>
             </div>
-            <li class="divider"></li>
-            <div class="card-content">
-              Aligned Friends</br>
-          </a>
-          <div class="chip">
-            <img src="1.png" alt="Contact Person">
-            Jane Doe
-          </div>
-          </a>
+
 
           <div class="card-action">
-            Friends</br>
 
             <div class="chip">
               <img src="1.png" alt="Contact Person">
@@ -191,6 +191,6 @@
 </div>
 
 </div>
-  
- 
+
+
 @endsection

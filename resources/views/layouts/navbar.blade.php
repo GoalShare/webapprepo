@@ -177,7 +177,7 @@
       <li><a href="#!">Commented</a></li>
     </ul>
     <ul id="dropdown2" class="dropdown-content center">
-      <li><a href="#!">Profile</a></li>
+      <li><a href="{{url('profile/'.Auth::id())}}">Profile</a></li>
       <li class="divider"></li>
       <li><a href="{{ route('logout') }}"
           onclick="event.preventDefault();
@@ -256,7 +256,7 @@
 
 
        <li><div class="divider"></div></li>
-       <li><a href="#!" class="waves-effect">Profile</a></li>
+       <li><a href="{{url('profile/'.Auth::id())}}" class="waves-effect">Profile</a></li>
        <li><a class="waves-effect" href="#!">Account Setting</a></li>
        <li><a class="waves-effect" href="#!">Friend Request</a></li>
        <li><a class="waves-effect" href="#!">Home</a></li>
@@ -330,7 +330,7 @@
           stopPropagation: false // Stops event propagation
         }
       );
-         
+
 
   $(document).ready(function(){
   $('.collapsible').collapsible();
