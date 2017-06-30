@@ -186,7 +186,7 @@
           {{csrf_field()}}
           {{$friendrequests->fname}}&nbsp;{{$friendrequests->lname}}
           <input type="hidden" name="userid" value="{{$friendrequests->id}}">
-          <button type="submit">confirm</button>
+          <button type="submit" class="btn ">confirm</button>
         </form>
       </div><br>
       @endforeach

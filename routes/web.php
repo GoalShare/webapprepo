@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,7 +73,11 @@ Route::get('/prof', function () {
     return view('catogorizedView');
 });
 
-Route::post('confirmfriend',function()
+Route::post('confirmfriend',function(request $request)
 {
+  $id=Auth::id();
+  DB::table('friendships')
+            ->where([['friend', $id],['user',$request->userid]])
+            ->update(['status' => 'friends']);
   return back();
 })->name('confirmfriend');
