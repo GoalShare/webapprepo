@@ -205,8 +205,9 @@
 
         <ul class="right">
           <li>
-            <form>
-              <input type="search" placeholder="Search" class="searchbar">
+            <form action="{{route('search')}}" method="post">
+              {{ csrf_field()}}
+              <input type="search" name="searchkey" placeholder="Search" class="searchbar blue-text text-darken-4">
             </form>
           </li>
 
@@ -257,8 +258,8 @@
 
        <li><div class="divider"></div></li>
        <li><a href="{{url('profile/'.Auth::id())}}" class="waves-effect">Profile</a></li>
-       <li><a class="waves-effect" href="#!">Account Setting</a></li>
-       <li><a class="waves-effect" href="#!">Friend Request</a></li>
+       {{-- <li><a class="waves-effect" href="#!">Account Setting</a></li> --}}
+       {{-- <li><a class="waves-effect" href="">Friend Request</a></li> --}}
        <li><a class="waves-effect" href="#!">Home</a></li>
        <li><a class="waves-effect" href="#!">Sign out</a></li>
        <li><a class="waves-effect" href="#!">About us</a></li>
@@ -287,10 +288,10 @@
 
                <div class="divider"></div>
                <p class="white-text">
-                 <a href="#" class="white-text footerCont">About us</a>
-                 <a href="" class="white-text footerCont">  Support</a>
-                 <a href="#" class="white-text footerCont"> Press</a>
-                 <a href="" class="white-text footerCont"> Work with us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont">About us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont">  Support</a>
+                 {{-- <a href="{!! url('/aboutus'); !!}" class="white-text footerCont"> Press</a> --}}
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont"> Work with us</a>
                </p>
 
              </div>

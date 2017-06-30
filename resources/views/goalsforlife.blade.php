@@ -174,10 +174,19 @@
                         <input id="icon_telephone" name="password" type="password" class="validate" required>
                         <label for="icon_telephone"><h4>Password</h4></label>
                       </div>
-                      <p class="center"><a href="#" >Forgot Password</a></p>
+                      <p class="center">
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            Forgot Your Password  ?
+                        </a>
+                      </p>
                       <p class="center">
                         <input type="checkbox" id="remeber" />
                         <label for="remeber">Remember me</label>
+                          <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                            </label>
+                          </div>
                       </p>
                     </div>
 
@@ -249,7 +258,7 @@
       <div class="row center">
         <div class="input-field col s12">
           <input type="checkbox" id="test1" checked="checked" >
-          <label for="test1"><h4>  By signing up, you agree to our <br><a href="#">Terms</a> & <a href="#">Privacy Policy.</a></h4></label>
+          <label for="test1"><h4>  By signing up, you agree to our <br><a href="{!! url('/policies'); !!}">Terms</a> & <a href="{!! url('/policies'); !!}">Privacy Policy.</a></h4></label>
       </div>
       </div>
       <div class="row right">

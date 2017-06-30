@@ -29,7 +29,6 @@ class ProfileController extends Controller
          $user->avatar=$filename;
          $user->save();
          return redirect('profile/'.Auth::id());
-
        }
        else {
          echo "errorss";

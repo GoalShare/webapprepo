@@ -1,6 +1,9 @@
 @extends('layouts.navbar')
 
 @section('content')
+  @foreach ($user as $users)
+
+  @endforeach
 <div class="row">
 
     <div class="container">
@@ -8,20 +11,20 @@
 
           <br>
           <div class="col s12 m6 l6">
-            <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
+            <img src="{{asset('uploads/avatars/'.$users->avatar)}}" alt="" width="200px" height="200px" class="circle">
           </div>
           <div class="col s12 m6 l6">
             <br>
-              <blockquote>
-            <h4 class="flow-text"> <b>{{Auth::User()->fname}}  {{Auth::User()->lname}} PreferedName</b><h4>
+
+            <h4 class="flow-text"> <b>{{$users->fname}}  {{$users->lname}} </b><h4>
 
 
 
-                <p class="flow-text">{{Auth::User()->email}} <br>
-                    {{Auth::User()->phone}}  <br>{{Auth::User()->dob}} </p>
-             </blockquote>
-                
-                 <button class="btn waves-effect waves-light blue darken-4" type="submit" name="action">Follow
+                <p class="flow-text">{{$users->email}} <br>
+                    {{$users->phone}}  <br>{{$users->dob}} </p>
+
+
+                 <button class="btn waves-effect waves-light blue darken-4" type="submit" name="action">{{($friendship!='')?$friendship:'send request'}}
               <i class="material-icons right">person_pin</i>
             </button>
 
@@ -92,99 +95,48 @@
    <!-- //////////////// -->
    <!-- third part -->
 
-     <div class="col s12 m12 l12">
-       <div class="card">
-         <div class="card-action">
-            <h5><b>Goals</b></h5>
-         </div>
-         <ul class="collapsible popout" data-collapsible="accordion">
-           <li>
-             <div class="collapsible-header"><b>Aligned Goals</b></div>
-             <div class="collapsible-body">
-              Goal Name
-               <div class="progress">
-                   <div class="determinate" style="width: 70%"> </div>
+   <div class="col s12 m12 l12">
+     <div class="card">
+       <div class="card-action">
+          <h5><b>Goals</b></h5>
+       </div>
+       <ul class="collapsible popout" data-collapsible="accordion">
+         <li>
+           <div class="collapsible-header"><b>Accomplished Goals</b></div>
+           @foreach ($goal as $goals)
+             @if ($goals->goalcompletedpercentage==100)
+               <div class="collapsible-body">
+                 {{$goals->goalname}}
+                 <div class="progress">
+                     <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                 </div>
+                 {{$goals->goalcompletedpercentage}}%
                </div>
-               70%
-             </div>
-             <div class="collapsible-body">
-              Goal Name
-               <div class="progress">
-                   <div class="determinate" style="width: 70%"> </div>
+             @endif
+           @endforeach
+         </li>
+
+         <li>
+           <div class="collapsible-header"><b>Goals in progress</b></div>
+           @foreach ($goal as $goals)
+             @if ($goals->goalcompletedpercentage<100)
+               <div class="collapsible-body">
+                 {{$goals->goalname}}
+                 <div class="progress">
+                     <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                 </div>
+                 {{$goals->goalcompletedpercentage}}%
                </div>
-               70%
-             </div>
-           </li>
+             @endif
+           @endforeach
+         </li>
 
-           <li>
-             <div class="collapsible-header"><b>Aligned Goals</b></div>
-             <div class="collapsible-body">
-              Goal Name
-               <div class="progress">
-                   <div class="determinate" style="width: 50%"> </div>
-               </div>
-               50%
-             </div>
-           </li>
+       </ul>
+       <br>
+       <br><br>
 
-           <li>
-             <div class="collapsible-header"><b>Accomplished Goals</b></div>
-             <div class="collapsible-body">
-               Goal Name
-                <div class="progress">
-                    <div class="determinate" style="width: 20%"> </div>
-                </div>
-                20%
-             </div>
-           </li>
-           <li>
-             <div class="collapsible-header"><b>
-             </div>
-
-           </li>
-
-         </ul>
-         <br>
-         <br><br>
-
-     </div>
    </div>
-<!-- ///////////////// -->
-
-
-<!-- forthpart -->
-     <div class="col s12 m12 l12 center-align">
-       <div class="card ">
-
-            <div class="card-action">
-               <h5><b>Friends</b></h5>
-            </div>
-            <li class="divider"></li>
-            <div class="card-content">
-              Aligned Friends</br>
-          </a>
-          <div class="chip">
-            <img src="1.png" alt="Contact Person">
-            Jane Doe
-          </div>
-          </a>
-
-          <div class="card-action">
-            Friends</br>
-
-            <div class="chip">
-              <img src="1.png" alt="Contact Person">
-              Jane Doe
-            </div>
-         </div>
-
-            </div>
-
-            <a href="#">View all friends</a>
-
-
-          </div>
-     </div>
+ </div>
      <!-- ///////////// -->
 
 
@@ -195,6 +147,6 @@
 </div>
 
 </div>
-  
- 
+
+
 @endsection

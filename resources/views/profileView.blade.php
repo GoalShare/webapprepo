@@ -35,16 +35,18 @@
               document.getElementById("addprofilepicfrm").style.display='none';
             }
           </script>
+          <style media="screen">
+
+          </style>
           <div class="col s12 m6 l6">
             <br>
-              <blockquote>
-            <h4 class="flow-text"> <b>&nbsp;&nbsp;&nbsp;&nbsp;{{Auth::User()->fname}}  {{Auth::User()->lname}}</b></h4>
 
+            <h4 class="flow-text"> <b>&nbsp;&nbsp;&nbsp;&nbsp;{{Auth::User()->fname}}  {{Auth::User()->lname}}</b></h4>
 
 
                 <p class="flow-text">{{Auth::User()->email}} <br>
                     {{Auth::User()->phone}}  <br>{{Auth::User()->dob}} </p>
-             </blockquote>
+
 
           </div>
 
