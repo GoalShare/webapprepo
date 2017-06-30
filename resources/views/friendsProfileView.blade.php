@@ -23,8 +23,13 @@
                 <p class="flow-text">{{$users->email}} <br>
                     {{$users->phone}}  <br>{{$users->dob}} </p>
 
+                 <form class="" action="{{route('addfriend')}}" method="post">
+                   {{csrf_field()}}
+                   <input type="hidden" name="friend" value="requested">
+                   <input type="hidden" name="friendid" value="{{$users->id}}">
+                   <button class="btn waves-effect waves-light blue darken-4" type="submit" name="action"{{($friendship!='')?'disabled':''}}>{{($friendship!='')?$friendship:'send request'}}
+                 </form>
 
-                 <button class="btn waves-effect waves-light blue darken-4" type="submit" name="action">{{($friendship!='')?$friendship:'send request'}}
               <i class="material-icons right">person_pin</i>
             </button>
 

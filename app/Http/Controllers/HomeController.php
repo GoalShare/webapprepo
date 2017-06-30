@@ -38,7 +38,12 @@ class HomeController extends Controller
       ->where('email', $email)
       ->groupBy('goalcategory')
       ->get();
-      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist]);}
+      $friendrequest=DB::table('friendships')
+              ->join('users', 'users.id', '=', 'friendships.user')
+              ->select('users.*', 'friendships.*')
+              ->where([['friendships.status','requested'],['friendships.friend',$id]])
+              ->get();
+      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);}
       else {
         return view('login');
       }

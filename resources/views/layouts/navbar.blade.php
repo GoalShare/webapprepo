@@ -9,6 +9,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>GFL</title>
+{{-- favicon --}}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
+<link rel="manifest" href="{{asset('favicon/manifest.json')}}">
+{{-- <link rel="mask-icon" href="{{assest('favicon/safari-pinned-tab.svg" color="#5bbad5')}}"> --}}
+<meta name="theme-color" content="#ffffff">
+{{-- // --}}
+
+
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" sizes="192x192" href="images/android-desktop.png">
@@ -166,12 +176,21 @@
   </style>
 </head>
 <body>
-       <!--start of navbar-->
-            <!-- head -->
+    <ul id="dropdown1" class="dropdown-content row">
 
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Request</a></li>
+      <li>
+        @foreach ($friendrequest as $friendrequests)
+        <div class="chip col s12">
+        <img src="{{asset('uploads/avatars/'.$friendrequests->avatar)}}" alt="Contact Person">
+        <form class="inline" action="{{route('confirmfriend')}}" method="post">
+          {{csrf_field()}}
+          {{$friendrequests->fname}}&nbsp;{{$friendrequests->lname}}
+          <input type="hidden" name="userid" value="{{$friendrequests->id}}">
+          <button type="submit">confirm</button>
+        </form>
+      </div><br>
+      @endforeach
+      </li>
       <li><a href="#!">Liked</a></li>
       <li class="divider"></li>
       <li><a href="#!">Commented</a></li>

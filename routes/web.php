@@ -26,6 +26,7 @@ Route::get('/goal/{goalname}','GoalController@view');
 Route::get('/profile/{userid}','ProfileController@view');
 Route::get('/search',function(){
   if(Auth::check()){
+    $id=Auth::id();
       $email=Auth::User()->email;
   $categorylist = DB::table('goals')
   ->select('goalcategory')
@@ -52,6 +53,7 @@ Route::get('/search/{userid}',function($userid){
 });
 Route::post('/search','SearchController@post')->name('search');
 
+Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 
 Route::get('/aboutus', function () {
   $email=Auth::User()->email;
@@ -69,3 +71,8 @@ Route::get('/policies', function () {
 Route::get('/prof', function () {
     return view('catogorizedView');
 });
+
+Route::post('confirmfriend',function()
+{
+  return back();
+})->name('confirmfriend');
