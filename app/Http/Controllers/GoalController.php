@@ -23,10 +23,15 @@ public function view($goalid){
     ->where('email', $email)
     ->groupBy('goalcategory')
     ->get();
+    $friendrequest=DB::table('friendships')
+            ->join('users', 'users.id', '=', 'friendships.user')
+            ->select('users.*', 'friendships.*')
+            ->where([['friendships.status','requested'],['friendships.friend',$id]])
+            ->get();
     $privacy=DB::table('privacys')->where([['goalid',$goalid],['email',$email]])->get();
     $goal = DB::table('goals')->where([['goalid',$goalid],['email',$email]])->get();
     $task = DB::table('tasks')->where([['goalid',$goalid],['email',$email]])->get();
-    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist]);
+    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);
 }
   else {
     return view('auth.login');

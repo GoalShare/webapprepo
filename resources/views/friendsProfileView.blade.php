@@ -144,7 +144,29 @@
  </div>
      <!-- ///////////// -->
 
+     <div class="col s12 m12 l12 center-align">
+       <div class="card ">
 
+            <div class="card-action">
+               <h5><b>Friends</b></h5>
+            </div>
+
+
+          <div class="card-action">
+            @foreach ($friends as $friend)
+              <a href="{{url('/search/'.$friend->id)}}"><div class="chip">
+                <img src="{{asset('uploads/avatars/'.$friend->avatar)}}" alt="Contact Person">
+                {{$friend->fname}}&nbsp;{{$friend->lname}}
+              </div></a>
+            @endforeach
+
+         </div>
+
+            </div>
+
+
+
+          </div>
 
 
 

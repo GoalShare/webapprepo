@@ -13,11 +13,25 @@ class ProfileController extends Controller
 
 {
  public function view($userid){
+   $id=Auth::id();
    $email=Auth::User()->email;
    $goal = DB::table('goals')->where('email',$email)->get();
    $userskill=DB::table('userskills')->where('email',$email)->get();
    $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
-   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist]);
+   $friendrequest=DB::table('friendships')
+           ->join('users', 'users.id', '=', 'friendships.user')
+           ->select('users.*', 'friendships.*')
+           ->where([['friendships.status','requested'],['friendships.friend',$id]])
+           ->get();
+           $id=Auth::id();
+    $friends=DB::table('friendships')
+                   ->join('users', 'users.id', '=', 'friendships.user')
+                   ->select('users.*', 'friendships.*')
+                   ->where([['friendships.status','friends'],['friendships.friend',$id]])
+                   ->orwhere([['friendships.status','friends'],['friendships.user',$id]])
+                   ->get();
+                   $id=Auth::id();
+   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends]);
  }
  public function post(request $request){
    if($request->hasfile('profilepic')){

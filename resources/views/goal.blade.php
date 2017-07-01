@@ -124,16 +124,16 @@
                 </div>
                 <div class="col l6 center-align">
                   <!-- Thumbs Up icon by Icons8 -->
-                <a class='dropdown-button ' href='#' data-activates='dropdownLikes'>
+                {{-- <a class='dropdown-button ' href='#' data-activates='dropdownLikes'>
                   <img class="icon icons8-Thumbs-Up" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB8klEQVRIS+2WTU7bQBTH/29aJCQcNZwAOEHTG7gLEnaFCzD2CaAnINwgPYE9vUDbXewscG8AJwBuALIjBSHmoZHiKPFHHEPcbDpbv5nf+79PEzZ0aENcvAu8feTtTyZ4QOQ+1BXwZvDOodcRRFcgajM4Sp74pI4DbwLPQ8H8CKJPzLhMQtlfVXlt8CIUioX2icUVM/4mobQbAWehcSidncOfjhDsMfAjCeT52sHF0Lk8k/6aDN1oreAiqAG0usoHQWrQ93FwOlgVauxyOTYt8lELOf8Igc9N9YKhTHjTb62eugOwx8wDgHItxcDdOJSqyKEc2DrybFMsOeMM1Di4xeK2WiX7ceC4WbtyME8rVgvHhJOzObS9trWNzjIwsfBNRLTWX8Yj93oxipmbqeK0L62u6hPhIgeuljqrgaK7pYrXAba66poIn+MnvZudao2CWz3FAO7jQO6vnOP3Kp6lDPiTBPL434GntVHW442F2uqp3wR8KyvKxsDpcIkDWbiIGgGnw4UZN0koC3u9EXCr6x2DxK9lG6sRsNVTAwLOtCZ3PDo10yt3ysHgCEwRiG0C2QD7zGSWQsXhNgGOWSrPpA8mQ7fwzupLooqX+b5M7bK1OFt9NXkwUXn58BKVKU3fq/3PVdeRMvv/4HVFsvKdjYX6FauZgi58jZneAAAAAElFTkSuQmCC">
-                </a>
+                </a> --}}
                 {{-- dropdown for likes --}}
-                <div class="right">
+                {{-- <div class="right">
                   <ul id='dropdownLikes' class='dropdown-content'>
                     <li class="rigth"><a href="#!">one</a></li>
                     <li><a href="#!">two</a></li>
                   </ul>
-                </div>
+                </div> --}}
 
 
                 {{-- ///////////////////////////// --}}

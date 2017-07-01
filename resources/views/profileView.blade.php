@@ -169,21 +169,25 @@
 
 
           <div class="card-action">
+            @foreach ($friends as $friend)
+              <a href="{{url('/search/'.$friend->id)}}"><div class="chip">
+                <img src="{{asset('uploads/avatars/'.$friend->avatar)}}" alt="Contact Person">
+                {{$friend->fname}}&nbsp;{{$friend->lname}}
+              </div></a>
+            @endforeach
 
-            <div class="chip">
-              <img src="1.png" alt="Contact Person">
-              Jane Doe
-            </div>
          </div>
 
             </div>
 
-            <a href="#">View all friends</a>
 
 
           </div>
      </div>
      <!-- ///////////// -->
+     <!-- forthpart -->
+
+          </div>
 
 
 

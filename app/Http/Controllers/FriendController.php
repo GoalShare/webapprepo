@@ -21,16 +21,4 @@ class FriendController extends Controller{
      return redirect('/search/'.$request->friendid);
 
   }
-  public function confirmfriend(request $request){
-    DB::table('friendships')->insert(
-            [
-              'user'=> Auth::id(),
-              'friend'=>$request->friendid,
-              'status'=>$request->friend,
-              'created_at'=> Carbon::now(),
-            ]
-        );
-     return redirect('/search/'.$request->friendid);
-
-  }
 }

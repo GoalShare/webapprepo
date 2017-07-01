@@ -18,7 +18,13 @@ class SearchController extends Controller{
     ->where('email', $email)
     ->groupBy('goalcategory')
     ->get();
+    $id=Auth::id();
+    $friendrequest=DB::table('friendships')
+            ->join('users', 'users.id', '=', 'friendships.user')
+            ->select('users.*', 'friendships.*')
+            ->where([['friendships.status','requested'],['friendships.friend',$id]])
+            ->get();
     $user= DB::table('users')->where('email','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
-    return view('friendsView',['user'=>$user,'categorylist'=>$categorylist,'searchkey'=>$searchkey]);
+    return view('friendsView',['user'=>$user,'categorylist'=>$categorylist,'searchkey'=>$searchkey,'friendrequest'=>$friendrequest]);
   }
 }

@@ -34,7 +34,12 @@ Route::get('/search',function(){
   ->where('email', $email)
   ->groupBy('goalcategory')
   ->get();
-  return view('friendsView',['categorylist'=>$categorylist]);}
+  $friendrequest=DB::table('friendships')
+          ->join('users', 'users.id', '=', 'friendships.user')
+          ->select('users.*', 'friendships.*')
+          ->where([['friendships.status','requested'],['friendships.friend',$id]])
+          ->get();
+  return view('friendsView',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);}
   else {
     return view('welcome');
   }
@@ -49,8 +54,20 @@ Route::get('/search/{userid}',function($userid){
   $goal = DB::table('goals')->where('email',$useremail)->get();
   $userskill=DB::table('userskills')->where('email',$useremail)->get();
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
-  $friendship=DB::table('friendships')->where([['user',$id],['friend',$userid]])->value('status');
-  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship]);
+  $friendship=DB::table('friendships')->where([['user',$id],['friend',$userid]])->orWhere([['user',$userid],['friend',$id]])->value('status');
+  $friendrequest=DB::table('friendships')
+          ->join('users', 'users.id', '=', 'friendships.user')
+          ->select('users.*', 'friendships.*')
+          ->where([['friendships.status','requested'],['friendships.friend',$id]])
+          ->get();
+  $friends=DB::table('friendships')
+                         ->join('users', 'users.id', '=', 'friendships.user')
+                         ->select('users.*', 'friendships.*')
+                         ->where([['friendships.status','friends'],['friendships.friend',$userid]])
+                         ->orwhere([['friendships.status','friends'],['friendships.user',$userid]])
+                         ->get();
+                         $id=Auth::id();
+  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends]);
 });
 Route::post('/search','SearchController@post')->name('search');
 
@@ -59,13 +76,17 @@ Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 Route::get('/aboutus', function () {
   $email=Auth::User()->email;
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
-
-
-    return view('aboutus',['categorylist'=>$categorylist]);
+  $friendrequest=DB::table('friendships')
+          ->join('users', 'users.id', '=', 'friendships.user')
+          ->select('users.*', 'friendships.*')
+          ->where([['friendships.status','requested'],['friendships.friend',$id]])
+          ->get();
+    return view('aboutus',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);
 });
 
 
 Route::get('/policies', function () {
+
     return view('policies');
 });
 

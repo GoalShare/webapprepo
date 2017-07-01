@@ -179,21 +179,23 @@
     <ul id="dropdown1" class="dropdown-content row">
 
       <li>
+        @if ($friendrequest->isEmpty())
+          <a href="#" class="col s12 center-align">You dont have any requests</a>
+        @else
         @foreach ($friendrequest as $friendrequests)
         <div class="chip col s12">
         <img src="{{asset('uploads/avatars/'.$friendrequests->avatar)}}" alt="Contact Person">
         <form class="inline" action="{{route('confirmfriend')}}" method="post">
           {{csrf_field()}}
-          {{$friendrequests->fname}}&nbsp;{{$friendrequests->lname}}
+          <a href="{{url('/search/'.$friendrequests->id)}}">{{$friendrequests->fname}}&nbsp;{{$friendrequests->lname}}</a>
           <input type="hidden" name="userid" value="{{$friendrequests->id}}">
           <button type="submit" class="btn ">confirm</button>
         </form>
       </div><br>
       @endforeach
+      @endif
       </li>
-      <li><a href="#!">Liked</a></li>
       <li class="divider"></li>
-      <li><a href="#!">Commented</a></li>
     </ul>
     <ul id="dropdown2" class="dropdown-content center">
       <li><a href="{{url('profile/'.Auth::id())}}">Profile</a></li>
@@ -252,15 +254,17 @@
          <a href="#!name" ><span class="black-text name">Name : {{Auth::User()->fname." ".Auth::User()->lname}}</span></a>
         </li>
         <li>
-         <a href="#!email"><span class="black-text email">Email : {{Auth::User()->email}}</span></a>
+         <a href="#!email"><span class="black-text email truncate">Email : {{Auth::User()->email}}</span></a>
         </li>
        </div>
+<br>
+ <div class="divider">
 
-
+ </div>
        <li><a href="#!">Goal</a></li>
        <!-- subheaders -->
-       <li><a class="subheader"><span class="new badge">4</span>&nbsp Pinned Goals</a></li>
-       <li><a class="subheader"><span class="new badge">10</span>&nbsp  Goals</a></li>
+       <li><a class="subheader">&nbsp Pinned Goals</a></li>
+       <li><a class="subheader">&nbsp  Goals</a></li>
        <!-- // -->
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="#!">categories</a></li>
