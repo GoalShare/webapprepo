@@ -40,8 +40,8 @@
       <div id="cookie">
   <blockquote>
         <p class="   ">We do use cookies. A cookie is a small file placed in your device to which enables
-  goalsforlife.com work smoothly and invoke services seamlessly.
-  Your device will receive cookies the moment you browse goalsforlife.com via any
+  Lifewithgoals.com work smoothly and invoke services seamlessly.
+  Your device will receive cookies the moment you browse Lifewithgoals.com via any
   browser.We will be using persistent and session cookies.</p>
 
   </blockquote>
@@ -55,7 +55,7 @@
         <p>When you use our services you agree to all of these terms. Your use of our Services is also subject to our Cookie Policy and our Privacy Policy, which covers how we collect, use, share, and store your personal information. All your personal information will be managed by Eurisko Pvt Ltd.</p><br>
   </blockquote>
   <blockquote>
-        <p>You agree that by clicking “Join Now”, “Join Goals for Life”, “Sign Up” or similar, registering, accessing or using our services (described below), <b>you are agreeing to enter
+        <p>You agree that by clicking “Join Now”, “Join Life With Goals”, “Sign Up” or similar, registering, accessing or using our services (described below), <b>you are agreeing to enter
           into a legally binding contract </b>with Eurisko (even if you are using our Services on behalf of a company). If you do not agree to this contract
           (“Contract” or “User Agreement”), do <b>not</b> click “Join Now” (or similar) and do not access or otherwise use any of our Services. </p> <br>
   </blockquote>
@@ -87,7 +87,7 @@
   Information and content that you share or post may be seen by other Members or
   Visitors. Where you have made settings available, we will honor the choices you
   make about who can see content or information (e.g., message content to your
-  addressees, sharing content only to goals for life connections, restricting your
+  addressees, sharing content only to Life With Goals connections, restricting your
   profile visibility from search engines, or opting not to notify others of your goals for
   life profile update).</p>
 

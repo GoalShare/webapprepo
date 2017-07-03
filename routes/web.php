@@ -76,6 +76,7 @@ Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 Route::post('share','ShareController@share')->name('share');
 
 Route::get('/aboutus', function () {
+  $id=Auth::id();
   $email=Auth::User()->email;
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
   $friendrequest=DB::table('friendships')
@@ -104,3 +105,11 @@ Route::post('confirmfriend',function(request $request)
             ->update(['status' => 'friends']);
   return back();
 })->name('confirmfriend');
+
+
+Route::get('/nonLoginAboutus', function () {
+    return view('nonLoginAboutus');
+});
+Route::get('/nonLoginPolicies', function () {
+    return view('nonLoginPolicies');
+});

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>GFL</title>
+    <title>Life With Goals</title>
 {{-- favicon --}}
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
@@ -302,7 +302,7 @@
          <div class="container">
            <div class="row">
              <div class="col l6 s12">
-               <h5 class="white-text">Goals For Life</h5><br>
+               <h5 class="white-text">Life With Goals</h5><br>
 
                <p class="white-text">
                  <a href="#" class="white-text footerCont">English(UK)</a>

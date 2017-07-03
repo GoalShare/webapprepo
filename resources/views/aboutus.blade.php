@@ -47,7 +47,7 @@
               </div>
               <div class="card-content">
                   <span class="card-title center">CEO, Chief Solution Architect and Founder</span>
-                <p class=" center">Ramil De Silva has been in the IT industry for almost 14 years and the founder of Goalsforlife.com idea.
+                <p class=" center">Ramil De Silva has been in the IT industry for almost 14 years and the founder of Lifewithgoals.com idea.
                   He looks after the operations overall Ramil is a specialist in the HCM/IDAM aspect of ERP implementations</p>
               </div>
             </div>
@@ -59,8 +59,8 @@
               </div>
               <div class="card-content">
                   <span class="card-title center"> CTO </span>
-                <p class="center"> Darshana Samanpura is a seasoned technical expert in the web technologies. Darshana joined to form Goalsforlife.com with Ramil
-                  and is an integral part of the team. Darshana leads all technical solutions related to goalsforlife.com  </p>
+                <p class="center"> Darshana Samanpura is a seasoned technical expert in the web technologies. Darshana joined to form Lifewithgoals.com with Ramil
+                  and is an integral part of the team. Darshana leads all technical solutions related to Lifewithgoals.com  </p>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@
               </div>
               <div class="card-content">
                   <span class="card-title center">Webmaster</span>
-                <p class=" center">Sagi Lorenzo Amarasiri  speaks 3 languages fluently (Sinhalese, Italian and English) and is one of the main brains developing the server side scripts for goalsforlife.com. He also follows his digree in Software
+                <p class=" center">Sagi Lorenzo Amarasiri  speaks 3 languages fluently (Sinhalese, Italian and English) and is one of the main brains developing the server side scripts for Lifewithgoals.com. He also follows his digree in Software
                    Engineering at NSBM. He always thinks there is a functionality missing to make a this a fun full site for a user.</p>
               </div>
             </div>
@@ -83,7 +83,7 @@
               </div>
               <div class="card-content">
                   <span class="card-title center">User Interaction Expert</span>
-                <p class=" center">Peshala Dayanatha is an undergraduate in Computer Security at NSBM. He joined goalsforlife.com upon conviced by Sagi and is the main brain designing the user interface for the website.
+                <p class=" center">Peshala Dayanatha is an undergraduate in Computer Security at NSBM. He joined Lifewithgoals.com upon conviced by Sagi and is the main brain designing the user interface for the website.
                   Peshala is not happy with the UI and continuously strives to improve optics of this site. </p>
               </div>
             </div>
@@ -95,7 +95,7 @@
 
       </div>
       <div id="support"><p class="flow-text center">If you want to send us notices or service of process, please contact us via <br>
- <a href="mailto:contactus@goalsforlife.com">contactus@goalsforlife.com</a></p></div>
+ <a href="mailto:contactus@Lifewithgoals.com">contactus@Lifewithgoals.com</a></p></div>
       {{-- <div id="press">Test 3</div> --}}
       <div id="workWithUs">  <div class="col s12 m12">
           <div class="card blue lighten-1 center">

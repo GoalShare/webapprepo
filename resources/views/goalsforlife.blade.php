@@ -209,29 +209,39 @@
       <div class="row">
         <div class="input-field col s6">
           <input id="first_name" name="fname" type="text" class="validate" required>
-          <label for="last_name">First Name</label>
+          <label for="last_name"><div class="flow-text">
+            First Name
+          </div></label>
         </div>
         <div class="input-field col s6">
           <input id="last_name" type="text" name="lname" class="validate" required>
-          <label for="last_name">Last Name</label>
+          <label for="last_name"><div class="flow-text">
+            Last Name
+          </div></label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <input id="email"  name="email" type="email" class="validate" required>
-          <label for="email">Email</label>
+          <label for="email"><div class="flow-text">
+            Email
+          </div></label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <input id="password" name="password" type="password" class="validate" required>
-          <label for="password">Password</label>
+          <label for="password"><div class="flow-text">
+            Password
+          </div></label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <input id="confermPassword" type="password" name="password_confirmation" class="validate" required>
-          <label for="confermPassword">Confirm Password</label>
+          <label for="confermPassword"><div class="flow-text">
+            Confirm Password
+          </div></label>
         </div>
       </div>
       <div class="row">
@@ -240,7 +250,9 @@
             <option  value="M">Male</option>
             <option value="F">Female</option>
           </select>
-          <label>Gender</label>
+          <label><div class="flow-text">
+            Gender
+          </div></label>
         </div>
       </div>
       <div class="row">
@@ -252,13 +264,15 @@
       <div class="row">
         <div class="input-field col s12">
           <input id="phonrNumber" name="phone" type="tel" class="validate">
-          <label for="phonrNumber ">Phone number</label>
+          <label for="phonrNumber "><div class="flow-text">
+            Phone number
+          </div></label>
         </div>
       </div>
       <div class="row center">
         <div class="input-field col s12">
           <input type="checkbox" id="test1" checked="checked" >
-          <label for="test1"><h4>  By signing up, you agree to our <br><a href="{!! url('/policies'); !!}">Terms</a> & <a href="{!! url('/policies'); !!}">Privacy Policy.</a></h4></label>
+          <label for="test1"><h4>  By signing up, you agree to our <br><a href="{!! url('/nonLoginPolicies'); !!}">Terms</a> & <a href="{!! url('/nonLoginPolicies'); !!}">Privacy Policy.</a></h4></label>
       </div>
       </div>
       <div class="row right">
