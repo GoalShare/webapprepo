@@ -142,4 +142,32 @@ class HomeController extends Controller
 
     }
 
+    public function category($category)
+    {
+      if(Auth::check()){
+      $id = Auth::id();
+      $email=DB::table('users')->where('id',$id)->value('email');
+      $goal = DB::table('goals')->where([['email',$email],['goalcategory',$category]])->get();
+      $task = DB::table('tasks')->where('email', $email)->get();
+      $categorylist = DB::table('goals')
+      ->select('goalcategory')
+      ->where('email', $email)
+      ->groupBy('goalcategory')
+      ->get();
+      $friendrequest=DB::table('friendships')
+              ->join('users', 'users.id', '=', 'friendships.user')
+              ->select('users.*', 'friendships.*')
+              ->where([['friendships.status','requested'],['friendships.friend',$id]])
+              ->get();
+      return view('catogorizedView',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'category'=>$category]);}
+      else {
+        return view('login');
+      }
+    }
+
+
+
+
+
+
 }

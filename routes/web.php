@@ -25,6 +25,7 @@ Route::post('dashboard','HomeController@post');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/goal/{goalname}','GoalController@view');
 Route::get('/profile/{userid}','ProfileController@view');
+Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/search',function(){
   if(Auth::check()){
     $id=Auth::id();
@@ -71,9 +72,12 @@ Route::get('/search/{userid}',function($userid){
 });
 Route::post('/search','SearchController@post')->name('search');
 
+Route::post('deletetask','GoalController@deletetask')->name('deletetask');
+
 Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 
 Route::post('share','ShareController@share')->name('share');
+
 Route::post('align','AlignController@align')->name('align');
 
 Route::get('/aboutus', function () {

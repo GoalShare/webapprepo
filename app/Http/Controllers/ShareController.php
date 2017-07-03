@@ -12,6 +12,7 @@ class ShareController extends Controller
 {
     public function share(request $request){
       $email=Auth::User()->email;
+      if($request->email!=$email){
       $user=DB::table('users')->where('email',$request->email)->get();
       $goal=DB::table('goals')->where([['goalid',$request->goalid],['email',$email]])->get();
       $task=DB::table('tasks')->where([['goalid',$request->goalid],['email',$email]])->get();
@@ -65,6 +66,9 @@ class ShareController extends Controller
 
 
 
-
+          }
+          else {
+            return redirect('/goal/'.$request->goalid);
+          }
           }
 }

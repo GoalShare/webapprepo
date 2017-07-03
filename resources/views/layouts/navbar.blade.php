@@ -269,7 +269,7 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="#!">categories</a></li>
        @foreach ($categorylist as $categorylists)
-         <li><a><i class="material-icons">label_outline</i>&nbsp {{$categorylists->goalcategory}}</a></li>
+         <li><a href="{{ url('/dashboard/'.$categorylists->goalcategory) }}"><i class="material-icons">label_outline</i>&nbsp {{$categorylists->goalcategory}}</a></li>
        @endforeach
 
 

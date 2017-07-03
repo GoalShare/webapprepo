@@ -809,8 +809,9 @@
                           <b>{{$taskcount}}.&nbsp;&nbsp;{{$tasks->taskname}}</b>
                         </div>
                         <div class="col s2">
-                          <form class="" action="#" method="post">
-                            <button type="submit" style="border:none;background-color:inherit;"><i class="material-icons">delete</i></button>
+                          <form class="" action="{{route('deletetask')}}" method="post">
+                            {{csrf_field()}}
+                            <button type="submit" style="border:none;background-color:inherit;"><input type="hidden" name="goalid" value="{{$tasks->goalid}}"><i class="material-icons">delete</i></button>
                           </form>
                         </div>
                       </div>

@@ -114,7 +114,7 @@
         </br>
         <div class="mdl-grid portfolio-max-width" id="goaldisplay">
           <div class="row center">
-               <p class="flow-text"><b>Category</b></p>
+               <p class="flow-text"><b>{{$category}}</b></p>
           </div>
              <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
               <tbody>
