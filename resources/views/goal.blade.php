@@ -110,19 +110,66 @@
             <div class="card-action ">
               <div class="row">
                 <div class="col l6 center-align">
-                  <div class="chip">
-                    <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="Contact Person">
-                    {{$users->fname}}&nbsp;{{$users->lname}}&nbsp;({{$goals->goalauthorization}})
-                  </div>
-                  {{-- To display orginal creator --}}
-                  @if ($goals->goalauthorization!="creator")
+                  @if ($goals->goalauthorization!='creator')
                     <div class="chip">
                       <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="Contact Person">
                       {{$users->fname}}&nbsp;{{$users->lname}}&nbsp;({{$goals->goalauthorization}})
                     </div>
                   @endif
+
+                  {{-- To display orginal creator --}}
+                  {{-- @if (($goals->goalauthorization="creator")&&($goals->email!=Auth::User()->email)) --}}
+                  @foreach ($creator as $creators)
+                    <div class="chip">
+                      <img src="{{asset('uploads/avatars/'.$creators->avatar)}}" alt="Contact Person">
+                      {{$creators->fname}}&nbsp;{{$creators->lname}}&nbsp;({{$creators->goalauthorization}})
+                    </div>
+                  @endforeach
+
+
+
                 </div>
-                <div class="col l6 center-align">
+              </div>
+                <div class="row center-align">
+                  <div class="col l6">
+                    <ul class="collapsible popout" data-collapsible="expandable">
+                      <li>
+                      <div class="collapsible-header">
+                        <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB0klEQVRIS+2XT07CUBDGv3mJkQRI6gmQE4gnsC4Ed3ACW04gnEA9gfUEtV5A3dm6EG8AJ9AbSEJJMCZvzDPR9C8+tdiFdt/5zXyd+WZKKOmhZdzKvru5WGCKUX9adH6Z4Oqe2xKCLgHaVEBmdsLAHhYJzwTXO94jgEYUJEHDuX/gFAVPgZW8aywekgBm3IeBZa4MDNM16uviKQUGrkPf6q0ODKDW8RwCDqMQJrkb3vRHKwWr4NXOxUCwPGbQI7O057f9cVFQFWfpONXanqpwFAbWcZHQf3BKzT8qNWEc+tbg15uLiBsz326WAMZO0T6tO04GEbaklNs6JqI2GxEdgWAw6GruW2dZamkZCBNNBfhUAoO8QCp4bd81icVdzGqBs6we0QIr56q33R5IOGo7KzdjJrU6P54wsE5qHe+KgG6ywtmz3EgeE9rg92DVvQubBLfAaCXAppp7IuwkwS8km4ubfizRL4OXdffbYgGfxqRmTMLAiiX5aXN9Z4SiK5UZk7zNlluxyp4gu2BMmflEp6M/EjVdo1KBkZQ3WkgmOOsQ0B0nXZXS4LJOn/KOPWUEbW+s3CoqW9G2mXvQE4nzdzjnuI/u9/yyZf76L8xPKtF99xVcbfQfFIlphQAAAABJRU5ErkJggg==">
+                      </div>
+                      <div class="collapsible-body">
+                        <div>
+                        @foreach ($aligned as $alignes)
+                          <a href="{{url('/search/'.$alignes->id)}}"><div class=" col s12 chip">
+                            <img src="{{asset('uploads/avatars/'.$alignes->avatar)}}" alt="Contact Person"/>
+                            {{$alignes->fname}}&nbsp;{{$alignes->lname}}
+                          </div></a>
+                        @endforeach
+                      </div>
+                        <div id="lis1"class="col s11">
+                          <form class="inline" action="{{route('align')}}" method="post">
+                            {{ csrf_field()}}
+                            <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                            <div class="input-field ">
+                                      <input id="email" name="email" type="text" class="validate">
+                                      <label for="email">email</label>
+                                      <button type="submit"  class="btn btn-floating" name="button">
+                                        <!-- Merge Git Filled icon by Icons8 -->
+<img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAADDUlEQVRIS8VXMUxTYRD+7iXgwCsUFyZAhUUTtA4OBhJxoBhYILogasukwgBGJYQFcJGYGHERtrYJBBcjiWjoI1FIRBMdKDC4gAGcWLTYsmjSM/fKq215bR+Pin/Spe+/7/vvv//uviNYXEUNPhcReUBwgeEkIpeYMnMIhDAYIWYO7Mx2hKxAUtZN9T6nWqh0E7gHRE4rgGAOM2gkqnmGsu3PSOxw+1pA9ASgY5YI92zidTDfiWgdU2b2psRqY2CEgG57hKlWzBg0834PscMd8IPgMcw7W06iuKgQrz9uYuXrD5tnYX8k6O1INk4hTvd0cuAims+XJ/bXdr6yTc6MoajmGTTAEsTxmCovjQ8lRQX49qItxcNnU1/QN/bZpteSArFWI+Zx4nqf03GEFtMf0s+ZGykkQirk9hevR4Le42KvE6vuwCARBtIB2xuqMHq3Vv9b4tt0fwbbO7/t8+p5H79yndjh9odBVGKGKDHuv+6CxDcvizkc0bylpF7y1RMr7zKB1p0uQ/81F5p6g3nhFZBYLHaWcuXsvyBm4Cmp7sAcES4cpsfMmBfiEBHOZCMevnkOdV3TebtqaSzkaAxwNkS56jePGlF+efLALzqlclklnv6wiasP5vLmtaWrllddohZiXFvFaJYCIjkvub+xFcXtxwt4v7xlelBmLFl+XG1DbzF2rw7FRQWY0NZ08IWVv8DSTIZvnUsQhaO/UHHleSbi+X2nk8S8vaEalWVqAnRidhU1VUch5Mkr07vQ00kkjaIoi5mCV3OiFO3u6pzNQSqcdDNjSYnNVO30ApKrZEqXqihTLbVDIe9qPaWHoW/sk3kWMG9HNK/TcpNYXvuO5t7ggVMqpUnE26Ii6rAy+crT2+LD8SXI7wBrIxL06BruPwuBXRfS+/KhSB/j+szEnhQPqVy2xR4jENE83pSSaRavTIrETmzTRZ6BkUPQKyPpD24f5BvgWM++BH0yuO59fIQxlUZ7DsK8vTvCJKSs2WGzz05JFvrQpiheMGRYcxo9XAo+gDAIIY7F/FaHtj9Q9mlGLYa+lgAAAABJRU5ErkJggg==">
+                                      </button><br>
+                            </div>
+
+                          </form>
+                          <br>
+                        </div>
+                      </div>
+                      <br>
+                    </li>
+                    </ul>
+                  </div>
+                  <div class="col l6">
+
+
                   <!-- Thumbs Up icon by Icons8 -->
                 {{-- <a class='dropdown-button ' href='#' data-activates='dropdownLikes'>
                   <img class="icon icons8-Thumbs-Up" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB8klEQVRIS+2WTU7bQBTH/29aJCQcNZwAOEHTG7gLEnaFCzD2CaAnINwgPYE9vUDbXewscG8AJwBuALIjBSHmoZHiKPFHHEPcbDpbv5nf+79PEzZ0aENcvAu8feTtTyZ4QOQ+1BXwZvDOodcRRFcgajM4Sp74pI4DbwLPQ8H8CKJPzLhMQtlfVXlt8CIUioX2icUVM/4mobQbAWehcSidncOfjhDsMfAjCeT52sHF0Lk8k/6aDN1oreAiqAG0usoHQWrQ93FwOlgVauxyOTYt8lELOf8Igc9N9YKhTHjTb62eugOwx8wDgHItxcDdOJSqyKEc2DrybFMsOeMM1Di4xeK2WiX7ceC4WbtyME8rVgvHhJOzObS9trWNzjIwsfBNRLTWX8Yj93oxipmbqeK0L62u6hPhIgeuljqrgaK7pYrXAba66poIn+MnvZudao2CWz3FAO7jQO6vnOP3Kp6lDPiTBPL434GntVHW442F2uqp3wR8KyvKxsDpcIkDWbiIGgGnw4UZN0koC3u9EXCr6x2DxK9lG6sRsNVTAwLOtCZ3PDo10yt3ysHgCEwRiG0C2QD7zGSWQsXhNgGOWSrPpA8mQ7fwzupLooqX+b5M7bK1OFt9NXkwUXn58BKVKU3fq/3PVdeRMvv/4HVFsvKdjYX6FauZgi58jZneAAAAAElFTkSuQmCC">
@@ -138,15 +185,7 @@
 
                 {{-- ///////////////////////////// --}}
                     <!-- Merge Git Filled icon by Icons8 -->
-                <a class='dropdown-button ' href='#' data-activates='dropdownAlign'>
-                    <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB0klEQVRIS+2XT07CUBDGv3mJkQRI6gmQE4gnsC4Ed3ACW04gnEA9gfUEtV5A3dm6EG8AJ9AbSEJJMCZvzDPR9C8+tdiFdt/5zXyd+WZKKOmhZdzKvru5WGCKUX9adH6Z4Oqe2xKCLgHaVEBmdsLAHhYJzwTXO94jgEYUJEHDuX/gFAVPgZW8aywekgBm3IeBZa4MDNM16uviKQUGrkPf6q0ODKDW8RwCDqMQJrkb3vRHKwWr4NXOxUCwPGbQI7O057f9cVFQFWfpONXanqpwFAbWcZHQf3BKzT8qNWEc+tbg15uLiBsz326WAMZO0T6tO04GEbaklNs6JqI2GxEdgWAw6GruW2dZamkZCBNNBfhUAoO8QCp4bd81icVdzGqBs6we0QIr56q33R5IOGo7KzdjJrU6P54wsE5qHe+KgG6ywtmz3EgeE9rg92DVvQubBLfAaCXAppp7IuwkwS8km4ubfizRL4OXdffbYgGfxqRmTMLAiiX5aXN9Z4SiK5UZk7zNlluxyp4gu2BMmflEp6M/EjVdo1KBkZQ3WkgmOOsQ0B0nXZXS4LJOn/KOPWUEbW+s3CoqW9G2mXvQE4nzdzjnuI/u9/yyZf76L8xPKtF99xVcbfQfFIlphQAAAABJRU5ErkJggg==">
-                </a>
-                {{-- dropdown for likes --}}
-                <div class="right">
-                <ul id='dropdownAlign' class='dropdown-content right'>
 
-                </ul>
-              </div>
 
                 {{-- ///////////////////////////// --}}
                     <!-- Share icon by Icons8 -->
@@ -175,8 +214,10 @@
                       </div>
                         <div id="lis1"class="col s11">
                           <form class="inline" action="{{route('share')}}" method="post">
+                            {{ csrf_field()}}
+                            <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                             <div class="input-field ">
-                                      <input id="email" type="text" class="validate">
+                                      <input id="email" name="email" type="text" class="validate">
                                       <label for="email">email</label>
                                       <button type="submit"  class="btn btn-floating" name="button"><i class="material-icons">share</i></button>
                             </div>
@@ -185,9 +226,10 @@
                           <br>
                         </div>
                       </div>
+                      <br>
                     </li>
                     </ul>
-
+                  </div>
                   <script type="text/javascript">
 
                   </script>
@@ -195,7 +237,6 @@
 
                   {{-- ///////////////////////////// --}}
                   </div>
-                </div>
                 <div class="row">
                   <div class="col l6 center-align">
                     <div class="chip">

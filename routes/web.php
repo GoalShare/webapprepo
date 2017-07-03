@@ -74,6 +74,7 @@ Route::post('/search','SearchController@post')->name('search');
 Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 
 Route::post('share','ShareController@share')->name('share');
+Route::post('align','AlignController@align')->name('align');
 
 Route::get('/aboutus', function () {
   $id=Auth::id();
