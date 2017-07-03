@@ -144,22 +144,37 @@
                 {{-- dropdown for likes --}}
                 <div class="right">
                 <ul id='dropdownAlign' class='dropdown-content right'>
-                  <li class="rigth"><a href="#!">one</a></li>
-                  <li class="rigth"><a href="#!">two</a></li>
+
                 </ul>
               </div>
 
                 {{-- ///////////////////////////// --}}
                     <!-- Share icon by Icons8 -->
-                  <a class='dropdown-button ' href='#' data-activates='dropdownShares'>
+                  <a class='dropdown-button' data-hover="false" href='#' data-activates='sharedrop'>
                     <img class="icon icons8-Share" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACLElEQVRIS8VW21HbUBDdc/OYzOBMTAWhg5AKUD5I+As0YEsVYFeAqAC5AuE0gD9B/ohcQZwKQjqwR/JM8Di7zJVlImskhIUc6Vdz79lz7tmzC6rpQ024tBXgxpFrEKsDEvjhsDXKIlcp8Jsjd+8l4wrA/gpMRMYLJSd/rq3bZAGVAjc+932ADtIMhcQPb8xPWwHWbF+J+pXnmeCOd8m3Jqv/lTHW7wpR3/OAmfnjbGiNKwVegsIlwl4msMg08MxmZVLHZroAcPxYWzKhO7tpOc8HNtxm47U6Bch+uExkylA2MU0A6QD0QYRGIHYCzxqkC9v4jXcOv5lK8dmarEL9YM6dpHmKgikTeCmhahPEICHdh70Xf6kJhQsQjH89SiMR7iRNUwSYa67IKIwrAtbMkLrwNzPs2bB1+VSgQqnffunrhHmfd6EInYdzdjaRtTAydw7dfaXUj1wWwidZRinDeu2NawPWlT9Bajucc69SqTVwbK4BAe/yJZRbFtgzr90vI7M+81g7mURkEGi8ADtRO0E5yemjp46wdCtppyIGywARnVgJ58tlcCfdTeTfOLmiwpaRqWPxLBGZEwZsYkwBPtXLgFYEIr1KIjOpSJRwohwQff0/QyKFEs9inWLZwSMyCTxz9/nTKYNeLYuArqO21SfKgLxlT2gUeu2HqZbbx0Utlfc/HqcDvQQkRufPheLjra63K7B4oTdIsR9eW37hdCrLtMy5cgFSBil15h5m8AMuCihNVgAAAABJRU5ErkJggg==">
                   </a>
                   {{-- dropdown for likes --}}
                   <div class="right">
 
-                  <ul id='dropdownShares' class='dropdown-content right'>
-                    <li><a href="#!">one</a></li>
-                    <li><a href="#!">two</a></li>
+                  <ul id='sharedrop' class='dropdown-content right row'>
+                    <li>
+                    @foreach ($shared as $shares)
+                      <a href="{{url('/search/'.$shares->id)}}"><div class=" col s12 chip">
+                        <img src="{{asset('uploads/avatars'.$shares->avatar)}}" alt="Contact Person">
+                        {{$shares->fname}}&nbsp;{{$shares->lname}}
+                      </div></a>
+                    @endforeach
+                  </li>
+                    <li>
+                      <form class="inline" action="{{route('share')}}" method="post">
+                        <div class="input-field col s10">
+                                  <input id="last_name" type="text" class="validate">
+                                  <label for="last_name">email</label>
+                                  <button type="submit"  class="btn btn-floating" name="button"><i class="material-icons">share</i></button>
+                        </div>
+
+                      </form>
+                    </li>
                   </ul>
 
                 </div>

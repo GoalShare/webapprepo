@@ -31,7 +31,8 @@ public function view($goalid){
     $privacy=DB::table('privacys')->where([['goalid',$goalid],['email',$email]])->get();
     $goal = DB::table('goals')->where([['goalid',$goalid],['email',$email]])->get();
     $task = DB::table('tasks')->where([['goalid',$goalid],['email',$email]])->get();
-    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);
+    $shared=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','gift']])->get();
+    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared]);
 }
   else {
     return view('auth.login');

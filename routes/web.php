@@ -73,6 +73,8 @@ Route::post('/search','SearchController@post')->name('search');
 
 Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 
+Route::post('share','ShareController@share')->name('share');
+
 Route::get('/aboutus', function () {
   $email=Auth::User()->email;
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
