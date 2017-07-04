@@ -140,15 +140,30 @@
                       <div class="collapsible-body">
                         <div>
                         @foreach ($aligned as $alignes)
-                          <a href="{{url('/search/'.$alignes->id)}}"><div class=" col s12 chip">
+
+                          <div class=" col s12 chip">
                             <img src="{{asset('uploads/avatars/'.$alignes->avatar)}}" alt="Contact Person"/>
-                            {{$alignes->fname}}&nbsp;{{$alignes->lname}}
-                          </div></a>
+                            <a id="test"href="{{url('/search/'.$alignes->id)}}">{{$alignes->fname}}&nbsp;{{$alignes->lname}}</a>
+                            <i id="{{$alignes->email}}"class="close material-icons">close</i>
+                          </div>
+                          <form id="{{$alignes->id}}" action="{{route('deletealigned')}}" method="post">
+                           {{ csrf_field() }}
+                           <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                           <input type="hidden" name="email" value="{{$alignes->email}}">
+                          </form>
+                          <script type="text/javascript">
+                            var deletealignedbtn=document.getElementById('{{$alignes->email}}');
+                            deletealignedbtn.addEventListener("click",deletealignedfunction)
+                            function deletealignedfunction() {
+                            console.log("wela");
+                            document.getElementById('{{$alignes->id}}').submit();
+                          }
+                          </script>
                         @endforeach
                       </div>
                         <div id="lis1"class="col s11">
                           <form class="inline" action="{{route('align')}}" method="post">
-                            {{ csrf_field()}}
+                            {{ csrf_field() }}
                             <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                             <div class="input-field ">
                                       <input id="email" name="email" type="text" class="validate">

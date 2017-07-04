@@ -29,6 +29,7 @@ class AlignController extends Controller
                   'goalcategory' => $goals->goalcategory,
                   'goalstartdate' => $goals->goalstartdate,
                   'goalenddate' => $goals->goalenddate,
+                  'goalcompletedpercentage'=>$goals->goalcompletedpercentage,
                   'goalauthorization' => 'aligned',
                   'goalpictureone'=>$goals->goalpictureone,
                   'goalpicturetwo'=>$goals->goalpicturetwo,
@@ -54,6 +55,7 @@ class AlignController extends Controller
                   'taskpriority' => $tasks->taskpriority,
                   'taskstartdate' => $tasks->taskstartdate,
                   'taskenddate' => $tasks->taskenddate,
+                  'taskcompletedpercentage'=> $tasks->taskcompletedpercentage,
                   'taskauthorization' => 'aligned',
                   'created_at'=> Carbon::now(),
                 ]
@@ -73,5 +75,15 @@ class AlignController extends Controller
             return redirect('/goal/'.$request->goalid);
           }
           }
+
+          public function deletealigned(request $request)
+          {
+            $useremail=$request->email;
+            $goalid=$request->goalid;
+            DB::table('goals')->where([['goalid',$goalid],['email',$useremail],['goalauthorization','aligned']])->delete();
+            DB::table('tasks')->where([['goalid',$request->goalid],['email',$useremail],['taskauthorization','aligned']])->delete();
+            DB::table('privacys')->where([['goalid',$request->goalid],['email',$useremail]])->delete();
+          }
+
+
     }
-}

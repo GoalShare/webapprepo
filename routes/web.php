@@ -14,10 +14,17 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('goalsforlife');
+    if (Auth::check()) {
+      return redirect('/dashboard');
+    }
+    else {
+      return view('goalsforlife');
+    }
+
 });
 
 Auth::routes();
+Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
 Route::post('goal','GoalController@post')->name('goal');
 Route::post('task','TaskController@post')->name('task');
