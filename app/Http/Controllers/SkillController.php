@@ -12,10 +12,18 @@ class SkillController extends Controller
   public function deleteskill(request $request)
   {
     $email=Auth::User()->email;
-    $skill=$request->skill;
-    DB::table('userskills')->where([['email',$email],['skill',$skill]])->Delete();
+    $skill=$request->id;
+    DB::table('userskills')->where('id',$skill)->Delete();
+    echo $skill;
   }
 
+  public function deletegoalskill(request $request)
+  {
+    $email=Auth::User()->email;
+    $skill=$request->id;
+    DB::table('goalskills')->where('id',$skill)->Delete();
+    echo $skill;
+  }
     public function skill(request $request)
     {
           $email=Auth::User()->email;

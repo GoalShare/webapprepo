@@ -74,8 +74,30 @@
 
                                 {{$userskills->skill}}
 
-                              <y class="close material-icons">close</y>
+                              <i id="{{$userskills->skill}}"class="close material-icons">close</i>
                             </div>
+                            <form id="{{$userskills->id}}" action="{{route('deleteskill')}}" method="post">
+                             {{ csrf_field() }}
+                             <input type="hidden" name="id" value="{{$userskills->id}}">
+                            </form>
+                            <script type="text/javascript">
+                              var deletealignedbtn=document.getElementById('{{$userskills->skill}}');
+                              deletealignedbtn.addEventListener("click",deletealignedfunction)
+                              function deletealignedfunction() {
+                              var form=document.getElementById('{{$userskills->id}}');
+                              var action = form.getAttribute("action");
+                              var form_data = new FormData(form);
+                              var xhr = new XMLHttpRequest();
+                              xhr.open('POST', action, true);
+                              xhr.send(form_data);
+                              xhr.onreadystatechange = function () {
+                                if(xhr.readyState == 4 && xhr.status == 200) {
+                                   var result = xhr.responseText;
+                                   console.log('Result: ' + result);
+                                }
+                              };
+                            }
+                            </script>
                           @endif
                             @endforeach
 
@@ -135,8 +157,30 @@
 
                                   {{$userskills->skill}}
 
-                                <i class="close material-icons">close</i>
+                                <i id="{{$userskills->skill}}"class="close material-icons">close</i>
                               </div>
+                              <form id="{{$userskills->id}}" action="{{route('deleteskill')}}" method="post">
+                               {{ csrf_field() }}
+                               <input type="hidden" name="id" value="{{$userskills->id}}">
+                              </form>
+                              <script type="text/javascript">
+                                var deletealignedbtn=document.getElementById('{{$userskills->skill}}');
+                                deletealignedbtn.addEventListener("click",deletealignedfunction)
+                                function deletealignedfunction() {
+                                var form=document.getElementById('{{$userskills->id}}');
+                                var action = form.getAttribute("action");
+                                var form_data = new FormData(form);
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('POST', action, true);
+                                xhr.send(form_data);
+                                xhr.onreadystatechange = function () {
+                                  if(xhr.readyState == 4 && xhr.status == 200) {
+                                     var result = xhr.responseText;
+                                     console.log('Result: ' + result);
+                                  }
+                                };
+                              }
+                              </script>
                             @endif
                               @endforeach
                               <form id="strengthform"action="{{route('strength')}}" method="post">

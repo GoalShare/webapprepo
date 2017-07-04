@@ -37,7 +37,7 @@ public function view($goalid){
             ->get();
     $privacy=DB::table('privacys')->where([['goalid',$goalid],['email',$email]])->get();
     $goal = DB::table('goals')->where([['goalid',$goalid],['email',$email]])->get();
-    $task = DB::table('tasks')->where([['goalid',$goalid],['email',$email]])->get();
+    $task = DB::table('tasks')->where([['goalid',$goalid],['taskauthorization','<>','gift']])->get();
     $aligned=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','aligned']])->get();
     $shared=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','gift']])->get();
     return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill]);
@@ -296,7 +296,7 @@ public function post(request $request){
 
 public function deletetask(request $request)
 {
-  DB::table('tasks')->where([['goalid',$request->goalid],['email',$email]])->delete();
+  DB::table('tasks')->where([['goalid',$request->goalid],['taskauthorization','<>','gift']])->delete();
   return redirect('/goal/'.$request->goalid);
 
 }

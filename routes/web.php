@@ -85,6 +85,7 @@ Route::post('goalskill','SkillController@goalskill')->name('goalskill');
 Route::post('strength','SkillController@strength')->name('strength');
 
 Route::post('deleteskill','SkillController@deleteskill')->name('deleteskill');
+Route::post('deletegoalskill','SkillController@deletegoalskill')->name('deletegoalskill');
 
 Route::post('/search','SearchController@post')->name('search');
 

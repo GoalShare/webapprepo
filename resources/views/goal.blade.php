@@ -172,7 +172,6 @@
                               if(xhr.readyState == 4 && xhr.status == 200) {
                                  var result = xhr.responseText;
                                  console.log('Result: ' + result);
-                                 document.getElementById("intentrow").style.display='block';
                               }
                             };
                           }
@@ -993,10 +992,31 @@
                           <div class="chip">
                             {{$goalskills->skill}}
                             @if ($goals->goalauthorization!='aligned')
-                              <i class="close material-icons">close</i>
+                              <i id="{{$goalskills->skill}}"class="close material-icons">close</i>
                             @endif
-
                            </div>
+                           <form id="{{$goalskills->id}}" action="{{route('deletegoalskill')}}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{$goalskills->id}}">
+                           </form>
+                           <script type="text/javascript">
+                             var deletealignedbtn=document.getElementById('{{$goalskills->skill}}');
+                             deletealignedbtn.addEventListener("click",deletealignedfunction)
+                             function deletealignedfunction() {
+                             var form=document.getElementById('{{$goalskills->id}}');
+                             var action = form.getAttribute("action");
+                             var form_data = new FormData(form);
+                             var xhr = new XMLHttpRequest();
+                             xhr.open('POST', action, true);
+                             xhr.send(form_data);
+                             xhr.onreadystatechange = function () {
+                               if(xhr.readyState == 4 && xhr.status == 200) {
+                                  var result = xhr.responseText;
+                                  console.log('Result: ' + result);
+                               }
+                             };
+                           }
+                           </script>
                         @endforeach
 <br>
 @if ($goals->goalauthorization!='aligned')

@@ -271,13 +271,26 @@
       </div>
       <div class="row center">
         <div class="input-field col s12">
-          <input type="checkbox" id="test1" checked="checked" >
+          <input type="checkbox" id="useragreement" checked>
           <label for="test1"><h4>  By signing up, you agree to our <br><a href="{!! url('/nonLoginPolicies'); !!}">Terms</a> & <a href="{!! url('/nonLoginPolicies'); !!}">Privacy Policy.</a></h4></label>
       </div>
+      {{-- <script type="text/javascript">
+        var useragreement=document.getElementById("useragreement");
+        useragreement.addEventListener("change",accept);
+        function accept() {
+
+          if (useragreement.checked) {
+            document.getElementById("register").disabled=false;
+          }
+          else {
+            document.getElementById("register").disabled=true;
+          }
+        }
+      </script> --}}
       </div>
       <div class="row right">
           <div class="input-field col s12">
-          <button class="waves-effect waves-light btn  blue darken-4">Register</button>
+          <button id="register" class="waves-effect waves-light btn  blue darken-4">Register</button>
         </div>
       </div>
 
