@@ -113,7 +113,30 @@
         </br>
         </br>
         <div class="mdl-grid portfolio-max-width" id="goaldisplay">
+          @if($goal->isEmpty())
+            <div class="container center" style="padding-top:20px">
+         <div class="col s12 m12">
+           <div class="card blue-grey darken-1">
+             <div class="card-content white-text">
+               <!-- <span class="card-title">Card Title</span> -->
+               <div class="hide-on-small-only">
+                 <img src="welcome.png" alt="">
+               </div>
+               <div class="hide-on-med-and-up">
+                 <img src="{{asset('/img/welcome.png')}}" alt="" width="293px" height="98px">
+               </div>
+             </div>
+             <div class="card-action">
+                <a href="#">Click to create a goal</a>
 
+              </div>
+
+           </div>
+         </div>
+</div>
+
+          @else
+          {{-- starrrrrrrrrrrrrrrrrrrtttttttttttttttttt --}}
              <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
               <tbody>
                 <tr>
@@ -319,7 +342,8 @@
           </div>
         @endif
         @endforeach
-
+      @endif
+       {{-- eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndddddddddddddddddddddd --}}
             <div id="overlay2"></div>
 
 

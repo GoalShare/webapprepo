@@ -47,18 +47,16 @@
                 <p class="flow-text">{{Auth::User()->email}} <br>
                     {{Auth::User()->phone}}  <br>{{Auth::User()->dob}} </p>
 
-
           </div>
-
-
-
           <div class="col s12 m12 l12">
           <div class="card">
             <div class="card-action">
-                <h5><b>Skills and Streangths</b></h5>
+                <h5><b>Skills and Strengths</b></h5>
+
                    <li class="divider"></li>
             </div>
             <div class="card-content">
+
 
                   <div class="row">
                       <div class="col s12 m6 l6">
@@ -68,44 +66,122 @@
                             <li class="divider"></li>
                           </div>
                           <div class="card-content">
+
                             <!-- chips -->
+                            @foreach ($userskill as $userskills)
+                              @if($userskills->type=="skill")
                             <div class="chip">
-                              Laravel
-                              <i class="close material-icons">close</i>
+
+                                {{$userskills->skill}}
+
+                              <y class="close material-icons">close</y>
                             </div>
+                          @endif
+                            @endforeach
+
+                            <form id="skillform" action="{{ route('skill')}}" method="post">
+                          {{ csrf_field() }}
+                          <input type="hidden" id="skillinput" name="skill" value="">
+
+
+                           <div id="skillchip"class="chips chips-initial"></div>
+
+                            </form>
+
+                            <script type="text/javascript">
+                            var y=0;
+                            $('#skillchip').on('chip.add', function(e, chip){
+
+
+                              var z=$('#skillchip').material_chip('data');
+
+                              var form = document.getElementById("skillform");
+                              var action = form.getAttribute("action");
+                              var skillinput=document.getElementById("skillinput");
+                              skillinput.value=z[y].tag;
+                              var form_data = new FormData(form);
+                              var xhr = new XMLHttpRequest();
+                              xhr.open('POST', action, true);
+                              xhr.send(form_data);
+                              console.log(form_data);
+                              xhr.onreadystatechange = function () {
+                                if(xhr.readyState == 4 && xhr.status == 200) {
+                                   var result = xhr.responseText;
+                                   console.log('Result: ' + result);
+                                }
+                              };
+
+                              console.log(z[y].tag);
+                              y++;
+                            });
+                            </script>
 
                           </div>
-
                         </div>
                       </div>
-
 
 
                         <div class="col s12 m6 l6">
                           <div class="card">
                             <div class="card-action">
-                              Streangths
+                              Strengths
                               <li class="divider"></li>
                             </div>
                             <div class="card-content">
                               <!-- chips -->
+                              @foreach ($userskill as $userskills)
+                                @if($userskills->type=="strength")
                               <div class="chip">
-                                Laravel
+
+                                  {{$userskills->skill}}
+
                                 <i class="close material-icons">close</i>
                               </div>
+                            @endif
+                              @endforeach
+                              <form id="strengthform"action="{{route('strength')}}" method="post">
+                              {{ csrf_field() }}
+                                <input type="hidden" id="strengthinput" name="strength" value="">
+                              <div id="strengthchip"class="chips chips-initial">
 
-
+                              </div>
+                              </form>
+                              <script type="text/javascript">
+                              var i=0;
+                              $('#strengthchip').on('chip.add', function(e, chip){
+                                //agdyabadadadad
+                                var x=$('#strengthchip').material_chip('data');
+                                var form = document.getElementById("strengthform");
+                                var action = form.getAttribute("action");
+                                var strengthinput=document.getElementById("strengthinput");
+                                strengthinput.value=x[i].tag;
+                                var form_data = new FormData(form);
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('POST', action, true);
+                                xhr.send(form_data);
+                                console.log(form_data);
+                                xhr.onreadystatechange = function () {
+                                  if(xhr.readyState == 4 && xhr.status == 200) {
+                                     var result = xhr.responseText;
+                                     console.log('Result: ' + result);
+                                  }
+                                };
+                                console.log(x[i].tag);
+                                i++;
+                              });
+                              </script>
                             </div>
 
                           </div>
                         </div>
                       </div>
 
+
+
             </div>
 
           </div>
         </div>
-
 
 
 
@@ -180,7 +256,9 @@
 
             </div>
 
-
+                <script type="text/javascript">
+                $('.chips').material_chip();
+                </script>
 
           </div>
      </div>

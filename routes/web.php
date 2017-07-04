@@ -77,6 +77,15 @@ Route::get('/search/{userid}',function($userid){
                          $id=Auth::id();
   return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends]);
 });
+
+Route::post('skill','SkillController@skill')->name('skill');
+
+Route::post('goalskill','SkillController@goalskill')->name('goalskill');
+
+Route::post('strength','SkillController@strength')->name('strength');
+
+Route::post('deleteskill','SkillController@deleteskill')->name('deleteskill');
+
 Route::post('/search','SearchController@post')->name('search');
 
 Route::post('deletetask','GoalController@deletetask')->name('deletetask');

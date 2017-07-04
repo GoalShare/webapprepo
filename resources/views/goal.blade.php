@@ -957,14 +957,6 @@
                  {Skill 3}
                  <i class="close material-icons">close</i>
                </div>
-
-
-                  <form action="#">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-                      <input class="mdl-textfield__input" type="text" id="skillsIHave">
-                      <label class="mdl-textfield__label" for="skillsIHave">Add more...</label>
-                    </div>
-                  </form>
                   <div class="section-spacer"></div>
 
                   <p class="flow-text"><h5>Skills to acquire:</h5></p>
@@ -972,18 +964,46 @@
                           <div class="chip">
                             {Skill 1}
                               <i class="close material-icons">close</i>
-                           </div>
-                           <div class="chip">
-                              {Skill 2}
-                            <i class="close material-icons">close</i>
-                          </div>
+                           </div><br>
+                      <form id="goalskillform"action="{{ route('goalskill')}}" method="post">
+                         {{ csrf_field() }}
+                         <input type="hidden" id="skillinput" name="goalskill" value="">
+                         <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
+                        <div id="goalskill" class="chips chips-initial col s12"></div>
+                    </form>
 
-                  <form action="#">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
-                      <input class="mdl-textfield__input" type="text" id="skillsToAcquire">
-                      <label class="mdl-textfield__label" for="skillsToAcquire">Add more...</label>
-                    </div>
-                  </form>
+
+
+                  <script type="text/javascript">
+                  $('.chips-initial').material_chip();
+                  var y=0;
+                  $('#goalskill').on('chip.add', function(e, chip){
+
+
+                    var z=$('#goalskill').material_chip('data');
+
+                    var form = document.getElementById("goalskillform");
+                    var action = form.getAttribute("action");
+                    var skillinput=document.getElementById("skillinput");
+                    skillinput.value=z[y].tag;
+                    var form_data = new FormData(form);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', action, true);
+                    xhr.send(form_data);
+                    console.log(form_data);
+                    xhr.onreadystatechange = function () {
+                      if(xhr.readyState == 4 && xhr.status == 200) {
+                         var result = xhr.responseText;
+                         console.log('Result: ' + result);
+                      }
+                    };
+
+                    console.log(z[y].tag);
+                    y++;
+                  });
+
+                  </script>
+
 
 
 
