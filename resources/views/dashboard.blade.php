@@ -149,7 +149,7 @@
                   </li>
                   @endif
                 </ul>
-                                <i class="material-icons">comment</i> &nbsp   &nbsp 22
+
               </div>
 
               </div>
@@ -162,7 +162,9 @@
                 </div>
                 <div class="mdl-card__supporting-text">
                   Priority:{{$goals->goalpriority}}<br>
-                  End date:{{$goals->goalenddate}}
+                  End date:{{$goals->goalenddate}}<br>
+                  Start date:{{$goals->goalstartdate}}<br>
+                  Authorization:{{$goals->goalauthorization}}<br>
                 </div>
 
 
@@ -192,6 +194,10 @@
                <input type="text" class="hidden" name="email" value="{{$email}}">
                <input type="text" class="hidden" name="action" value="1">
                <button type="submit"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="unpinbtn"><i class="material-icons">pin_drop</i></button>
+             </form>
+             <form class="" action="{{route('deletegoal')}}" method="post">
+               {{csrf_field()}}
+               <button type="submit" style="border:none;background-color:inherit;"><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons">delete</i></button>
              </form>
              <script>
              //ajax unpin

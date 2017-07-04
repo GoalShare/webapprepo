@@ -155,8 +155,20 @@
                             var deletealignedbtn=document.getElementById('{{$alignes->email}}');
                             deletealignedbtn.addEventListener("click",deletealignedfunction)
                             function deletealignedfunction() {
-                            console.log("wela");
-                            document.getElementById('{{$alignes->id}}').submit();
+                            var form=document.getElementById('{{$alignes->id}}');
+                            var action = form.getAttribute("action");
+                            var form_data = new FormData(form);
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', action, true);
+                            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                            xhr.send(form_data);
+                            xhr.onreadystatechange = function () {
+                              if(xhr.readyState == 4 && xhr.status == 200) {
+                                 var result = xhr.responseText;
+                                 console.log('Result: ' + result);
+                                 document.getElementById("intentrow").style.display='block';
+                              }
+                            };
                           }
                           </script>
                         @endforeach

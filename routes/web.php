@@ -81,6 +81,8 @@ Route::post('/search','SearchController@post')->name('search');
 
 Route::post('deletetask','GoalController@deletetask')->name('deletetask');
 
+Route::post('deletegoal','HomeController@deletegoal')->name('deletegoal');
+
 Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 
 Route::post('share','ShareController@share')->name('share');

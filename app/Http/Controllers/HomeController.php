@@ -166,8 +166,13 @@ class HomeController extends Controller
     }
 
 
+      public function deletegoal(request $request)
+      {
+        $email=Auth::User()->email;
+        DB::table('goals')->where([['goalid',$request->goalid],['email',$email]])->delete();
+        DB::table('tasks')->where([['goalid',$request->goalid],['email',$email]])->delete();
+        return redirect('/dashboard');
 
+      }
 
-
-
-}
+    }

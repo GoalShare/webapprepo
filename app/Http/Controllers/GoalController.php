@@ -294,7 +294,7 @@ public function post(request $request){
 
 public function deletetask(request $request)
 {
-  DB::table('tasks')->where([['goalid',$request->goalid],['taskauthorization','<>','gift']])->delete();
+  DB::table('tasks')->where([['goalid',$request->goalid],['email',$email]])->delete();
   return redirect('/goal/'.$request->goalid);
 
 }

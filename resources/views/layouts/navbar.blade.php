@@ -261,10 +261,10 @@
  <div class="divider">
 
  </div>
-       <li><a href="#!">Goal</a></li>
+       <li><a href="url('/dashboard')">dashboard</a></li>
        <!-- subheaders -->
-       <li><a class="subheader">&nbsp Pinned Goals</a></li>
-       <li><a class="subheader">&nbsp  Goals</a></li>
+       {{-- <li><a class="subheader">&nbsp Pinned Goals</a></li>
+       <li><a class="subheader">&nbsp  Goals</a></li> --}}
        <!-- // -->
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="#!">categories</a></li>
