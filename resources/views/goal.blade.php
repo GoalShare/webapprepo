@@ -9,6 +9,7 @@
   <div id="addtaskmodal" class="modal modal-fixed-footer">
     <div class="modal-content" style="text-align:center;">
       <h4>Add a Task</h4>
+
       <form action="{{route('goal')}}" method="post" id="addtaskform">
 {{ csrf_field() }}
         <input type="text" style="display:none;"class="hidden" value="{{$goals->goalid}}" name="goalid">
@@ -113,7 +114,7 @@
                   @if ($goals->goalauthorization!='creator')
                     <div class="chip">
                       <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="Contact Person">
-                      {{$users->fname}}&nbsp;{{$users->lname}}&nbsp;({{$goals->goalauthorization}})
+                      {{$users->fname}}&nbsp;{{$users->lname}}&nbsp;({{($goals->goalauthorization=='gift')?'shared':$goals->goalauthorization}})
                     </div>
                   @endif
 
@@ -139,12 +140,17 @@
                       </div>
                       <div class="collapsible-body">
                         <div>
+                          @if ($aligned->isEmpty())
+                            <span class="blue-text darken-4">There are no alignes yet</span>
+                          @endif
                         @foreach ($aligned as $alignes)
 
                           <div class=" col s12 chip">
                             <img src="{{asset('uploads/avatars/'.$alignes->avatar)}}" alt="Contact Person"/>
                             <a id="test"href="{{url('/search/'.$alignes->id)}}">{{$alignes->fname}}&nbsp;{{$alignes->lname}}</a>
-                            <i id="{{$alignes->email}}"class="close material-icons">close</i>
+                            @if ($goals->goalauthorization!='aligned')
+                                <i id="{{$alignes->email}}"class="close material-icons">close</i>
+                            @endif
                           </div>
                           <form id="{{$alignes->id}}" action="{{route('deletealigned')}}" method="post">
                            {{ csrf_field() }}
@@ -178,12 +184,15 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                             <div class="input-field ">
+                              @if ($goals->goalauthorization!='aligned')
                                       <input id="email" name="email" type="text" class="validate">
                                       <label for="email">email</label>
+                              @endif
+                                      @if ($goals->goalauthorization!='aligned')
                                       <button type="submit"  class="btn btn-floating" name="button">
                                         <!-- Merge Git Filled icon by Icons8 -->
 <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAADDUlEQVRIS8VXMUxTYRD+7iXgwCsUFyZAhUUTtA4OBhJxoBhYILogasukwgBGJYQFcJGYGHERtrYJBBcjiWjoI1FIRBMdKDC4gAGcWLTYsmjSM/fKq215bR+Pin/Spe+/7/vvv//uviNYXEUNPhcReUBwgeEkIpeYMnMIhDAYIWYO7Mx2hKxAUtZN9T6nWqh0E7gHRE4rgGAOM2gkqnmGsu3PSOxw+1pA9ASgY5YI92zidTDfiWgdU2b2psRqY2CEgG57hKlWzBg0834PscMd8IPgMcw7W06iuKgQrz9uYuXrD5tnYX8k6O1INk4hTvd0cuAims+XJ/bXdr6yTc6MoajmGTTAEsTxmCovjQ8lRQX49qItxcNnU1/QN/bZpteSArFWI+Zx4nqf03GEFtMf0s+ZGykkQirk9hevR4Le42KvE6vuwCARBtIB2xuqMHq3Vv9b4tt0fwbbO7/t8+p5H79yndjh9odBVGKGKDHuv+6CxDcvizkc0bylpF7y1RMr7zKB1p0uQ/81F5p6g3nhFZBYLHaWcuXsvyBm4Cmp7sAcES4cpsfMmBfiEBHOZCMevnkOdV3TebtqaSzkaAxwNkS56jePGlF+efLALzqlclklnv6wiasP5vLmtaWrllddohZiXFvFaJYCIjkvub+xFcXtxwt4v7xlelBmLFl+XG1DbzF2rw7FRQWY0NZ08IWVv8DSTIZvnUsQhaO/UHHleSbi+X2nk8S8vaEalWVqAnRidhU1VUch5Mkr07vQ00kkjaIoi5mCV3OiFO3u6pzNQSqcdDNjSYnNVO30ApKrZEqXqihTLbVDIe9qPaWHoW/sk3kWMG9HNK/TcpNYXvuO5t7ggVMqpUnE26Ii6rAy+crT2+LD8SXI7wBrIxL06BruPwuBXRfS+/KhSB/j+szEnhQPqVy2xR4jENE83pSSaRavTIrETmzTRZ6BkUPQKyPpD24f5BvgWM++BH0yuO59fIQxlUZ7DsK8vTvCJKSs2WGzz05JFvrQpiheMGRYcxo9XAo+gDAIIY7F/FaHtj9Q9mlGLYa+lgAAAABJRU5ErkJggg==">
-                                      </button><br>
+                                      </button><br>@endif
                             </div>
 
                           </form>
@@ -232,6 +241,9 @@
                       </div>
                       <div class="collapsible-body">
                         <div>
+                        @if ($shared->isEmpty())
+                          <span class="blue-text darken-4">There are no shares yet</span>
+                        @endif
                         @foreach ($shared as $shares)
                           <a href="{{url('/search/'.$shares->id)}}"><div class=" col s12 chip">
                             <img src="{{asset('uploads/avatars/'.$shares->avatar)}}" alt="Contact Person"/>
@@ -244,9 +256,12 @@
                             {{ csrf_field()}}
                             <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                             <div class="input-field ">
+                              @if ($goals->goalauthorization!='aligned')
                                       <input id="email" name="email" type="text" class="validate">
                                       <label for="email">email</label>
+
                                       <button type="submit"  class="btn btn-floating" name="button"><i class="material-icons">share</i></button>
+                                    @endif
                             </div>
 
                           </form>
@@ -325,7 +340,7 @@
                             </div>
                           </div>
                             <div class="col s2">
-                              @if ($goals->goalauthorization!='share')
+                              @if ($goals->goalauthorization!='aligned')
                                   <button  class="btn-floating "style="display:none;" type="submit" id="editintent"><i class="material-icons">done</i></button>
                                   <button  class="btn-floating"id="intentbtn" ><i class="material-icons ">mode_edit</i></button>
                               @endif
@@ -420,9 +435,20 @@
                                   </div>
                                 <div class="input-field col s12" id="category" style="display:none;">
                                       <select name="goalcategory" id="goalcategory">
-                                        <option value="business"  selected>business</option>
-                                        <option value="education">education</option>
-                                        <option value="art">art</option>
+                                        <option value="non specified" disabled selected>select goal category</option>
+                                                                               <option value="business">business</option>
+                                                                               <option value="education">education</option>
+                                                                               <option value="fitness">fitness</option>
+                                                                               <option value="Health and fitness">Health and fitnessitness</option>
+                                                                               <option value="Get Educated and professional memberships">Get Educated and professional memberships</option>
+                                                                               <option value=" Financial stability and Gains"> Financial stability and Gains</option>
+                                                                               <option value="Construct my first house">Construct my first house</option>
+                                                                               <option value="Buy a car">Buy a car</option>
+                                                                               <option value=" Find a partner"> Find a partner</option>
+                                                                               <option value="Travel around and see the world">Travel around and see the world</option>
+                                                                               <option value="Skill up as a professional">Skill up as a professional</option>
+                                                                               <option value="Sports and Aquatics">Sports and Aquatics</option>
+                                                                               <option value="Ignite a concept">Ignite a concept</option>
                                       </select>
                                       <label id="categoryfield" for="goalcategory"></label>
                                   <input type="text" style="display:none;" value="{{$goals->goalid}}" name="goalid">
@@ -431,7 +457,7 @@
                                 </div>
                               </div>
                                 <div class="col s2">
-                                  @if ($goals->goalauthorization!='share')
+                                  @if ($goals->goalauthorization!='aligned')
                                     <button  class="btn-floating"style="display:none;" type="submit" id="editcategory"><i class="material-icons">done</i></button><button  class="btn-floating"id="categorybtn" ><i class="material-icons ">mode_edit</i></button>
                                   @endif
                                 </div>
@@ -533,7 +559,7 @@
                                 </div>
                               </div>
                                 <div class="col s2">
-                                  @if ($goals->goalauthorization!='share')
+                                @if ($goals->goalauthorization!='aligned')
                                     <button  class="btn-floating"style="display:none;" type="submit" id="editpriority"><i class="material-icons">done</i></button><button  class="btn-floating"id="prioritybtn" ><i class="material-icons ">mode_edit</i></button>
                                   @endif
                                 </div>
@@ -631,7 +657,7 @@
                                 </div>
                               </div>
                                 <div class="col s2">
-                                  @if ($goals->goalauthorization!='share')
+                                  @if ($goals->goalauthorization!='aligned')
 
                                     <button  class="btn-floating"style="display:none;" type="submit" id="editstartdate"><i class="material-icons">done</i></button><button  class="btn-floating"id="startdatebtn" ><i class="material-icons ">mode_edit</i></button>
 
@@ -731,7 +757,7 @@
                                 </div>
                               </div>
                                 <div class="col s2">
-                                  @if ($goals->goalauthorization!='share')
+                                  @if ($goals->goalauthorization!='aligned')
                                     <button  class="btn-floating"style="display:none;" type="submit" id="editenddate"><i class="material-icons">done</i></button><button  class="btn-floating"id="enddatebtn" ><i class="material-icons ">mode_edit</i></button>
                                   @endif
                                 </div>
@@ -811,7 +837,12 @@
                             <p>start working on your goal by adding tasks click the button below to add a new task</p>
                           </div>
                           <div class="card-action">
-                            <a  class="waves-effect waves-light btn-large " href="#addtaskmodal">Add a Task</a>
+                            @if ($goals->goalauthorization!='aligned')
+                              <a  class="waves-effect waves-light btn-large " href="#addtaskmodal">Add a Task</a>
+                            @else
+                              <a class="waves-effect waves-light btn-large disabled" href="#">Ask creator to add tasks</a>
+                            @endif
+
                           </div>
                         </div>
                       </div>
@@ -836,10 +867,12 @@
                           <b>{{$taskcount}}.&nbsp;&nbsp;{{$tasks->taskname}}</b>
                         </div>
                         <div class="col s2">
+                          @if ($goals->goalauthorization!='aligned')
                           <form class="" action="{{route('deletetask')}}" method="post">
                             {{csrf_field()}}
                             <button type="submit" style="border:none;background-color:inherit;"><input type="hidden" name="goalid" value="{{$tasks->goalid}}"><i class="material-icons">delete</i></button>
                           </form>
+                        @endif
                         </div>
                       </div>
                       </div>
@@ -933,8 +966,9 @@
 
                       </script> --}}
                     @endforeach
-
-                    <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
+                    @if ($goals->goalauthorization!='aligned')
+                      <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
+                    @endif
                   </ul>
                 @endif
 
@@ -944,34 +978,35 @@
                 {{-- skillllllllllllllllllllllllllllsssssssssssssssss --}}
                 <div id="test3" class="col s12">
                   <p class="flow-text"><h5>Skills I have</h5></p>
+                  @foreach ($userskill as $userskills)
+                    <div class="chip">
+                     {{$userskills->skill}}
+                     {{-- <i class="close material-icons">close</i> --}}
+                   </div>
+                  @endforeach
 
-                  <div class="chip">
-                   {Skill 1}
-                   <i class="close material-icons">close</i>
-                 </div>
-                 <div class="chip">
-                  {Skill 2}
-                  <i class="close material-icons">close</i>
-                </div>
-                <div class="chip">
-                 {Skill 3}
-                 <i class="close material-icons">close</i>
-               </div>
+
                   <div class="section-spacer"></div>
 
                   <p class="flow-text"><h5>Skills to acquire:</h5></p>
-
+                        @foreach ($goalskill as $goalskills)
                           <div class="chip">
-                            {Skill 1}
+                            {{$goalskills->skill}}
+                            @if ($goals->goalauthorization!='aligned')
                               <i class="close material-icons">close</i>
-                           </div><br>
+                            @endif
+
+                           </div>
+                        @endforeach
+<br>
+@if ($goals->goalauthorization!='aligned')
                       <form id="goalskillform"action="{{ route('goalskill')}}" method="post">
                          {{ csrf_field() }}
                          <input type="hidden" id="skillinput" name="goalskill" value="">
                          <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
                         <div id="goalskill" class="chips chips-initial col s12"></div>
                     </form>
-
+@endif
 
 
                   <script type="text/javascript">
@@ -1019,7 +1054,7 @@
                        {{ csrf_field() }}
                      <div class="switch">
                       <label>
-                          <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy">
+                          <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1060,7 +1095,7 @@
                        {{ csrf_field() }}
                      <div class="switch">
                       <label>
-                          <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy">
+                          <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1101,7 +1136,7 @@
                        {{ csrf_field() }}
                      <div class="switch">
                       <label>
-                          <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy">
+                          <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1142,7 +1177,7 @@
                        {{ csrf_field() }}
                      <div class="switch">
                       <label>
-                          <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy">
+                          <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1183,7 +1218,7 @@
                        {{ csrf_field() }}
                      <div class="switch">
                       <label>
-                          <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy">
+                          <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1224,7 +1259,7 @@
                        {{ csrf_field() }}
                      <div class="switch">
                       <label>
-                          <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy">
+                          <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
                         <span class="lever"></span>
                       </label>
                     </div>

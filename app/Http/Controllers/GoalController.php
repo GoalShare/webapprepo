@@ -28,6 +28,8 @@ public function view($goalid){
             ->select('users.*', 'friendships.*')
             ->where([['friendships.status','requested'],['friendships.friend',$id]])
             ->get();
+    $userskill=DB::table('userskills')->where('email',$email)->get();
+    $goalskill=DB::table('goalskills')->where('goalid',$goalid)->get();
     $creator=DB::table('goals')
             ->join('users', 'users.email', '=', 'goals.email')
             ->select('users.*', 'goals.goalauthorization')
@@ -38,7 +40,7 @@ public function view($goalid){
     $task = DB::table('tasks')->where([['goalid',$goalid],['email',$email]])->get();
     $aligned=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','aligned']])->get();
     $shared=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','gift']])->get();
-    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,'aligned'=>$aligned]);
+    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill]);
 }
   else {
     return view('auth.login');
@@ -170,13 +172,13 @@ public function post(request $request){
           case 'goalintentprivacy':
           if ($request->goalintentprivacy=='') {
             DB::table('privacys')
-                      ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                      ->where([['goalid', $request->goalid],['email',$email]])
                       ->update(['goalintentprivacy' => 'public']);
                       echo "$request->goalintentprivacy";
           }
           if ($request->goalintentprivacy=='private'){
             DB::table('privacys')
-                      ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                      ->where([['goalid', $request->goalid],['email',$email]])
                       ->update(['goalintentprivacy' => 'private']);
                       echo "$request->goalintentprivacy";
           }
@@ -185,13 +187,13 @@ public function post(request $request){
             case 'goalpriorityprivacy':
             if ($request->goalpriorityprivacy=='') {
               DB::table('privacys')
-                        ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                        ->where([['goalid', $request->goalid],['email',$email]])
                         ->update(['goalpriorityprivacy' => 'public']);
                         echo "$request->goalpriorityprivacy";
             }
             if ($request->goalpriorityprivacy=='private'){
               DB::table('privacys')
-                        ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                        ->where([['goalid', $request->goalid],['email',$email]])
                         ->update(['goalpriorityprivacy' => 'private']);
                         echo "$request->goalpriorityprivacy";
             }
@@ -200,13 +202,13 @@ public function post(request $request){
               case 'goalcategoryprivacy':
               if ($request->goalcategoryprivacy=='') {
                 DB::table('privacys')
-                          ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                          ->where([['goalid', $request->goalid],['email',$email]])
                           ->update(['goalcategoryprivacy' => 'public']);
                           echo "$request->goalcategoryprivacy";
               }
               if ($request->goalcategoryprivacy=='private'){
                 DB::table('privacys')
-                          ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                          ->where([['goalid', $request->goalid],['email',$email]])
                           ->update(['goalcategoryprivacy' => 'private']);
                           echo "$request->goalcategoryprivacy";
               }
@@ -215,13 +217,13 @@ public function post(request $request){
                 case 'goalstartdateprivacy':
                 if ($request->goalstartdateprivacy=='') {
                   DB::table('privacys')
-                            ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                            ->where([['goalid', $request->goalid],['email',$email]])
                             ->update(['goalstartdateprivacy' => 'public']);
                             echo "$request->goalstartdateprivacy";
                 }
                 if ($request->goalstartdateprivacy=='private'){
                   DB::table('privacys')
-                            ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                            ->where([['goalid', $request->goalid],['email',$email]])
                             ->update(['goalstartdateprivacy' => 'private']);
                             echo "$request->goalstartdateprivacy";
                 }
@@ -230,13 +232,13 @@ public function post(request $request){
                   case 'goalenddateprivacy':
                   if ($request->goalenddateprivacy=='') {
                     DB::table('privacys')
-                              ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                              ->where([['goalid', $request->goalid],['email',$email]])
                               ->update(['goalenddateprivacy' => 'public']);
                               echo "$request->goalenddateprivacy";
                   }
                   if ($request->goalenddateprivacy=='private'){
                     DB::table('privacys')
-                              ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                              ->where([['goalid', $request->goalid],['email',$email]])
                               ->update(['goalenddateprivacy' => 'private']);
                               echo "$request->goalenddateprivacy";
                   }
@@ -245,13 +247,13 @@ public function post(request $request){
                     case 'goalcompletedpercentageprivacy':
                     if ($request->goalcompletedpercentageprivacy=='') {
                       DB::table('privacys')
-                                ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                                ->where([['goalid', $request->goalid],['email',$email]])
                                 ->update(['goalcompletedpercentageprivacy' => 'public']);
                                 echo "$request->goalcompletedpercentageprivacy";
                     }
                     if ($request->goalcompletedpercentageprivacy=='private'){
                       DB::table('privacys')
-                                ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+                                ->where([['goalid', $request->goalid],['email',$email]])
                                 ->update(['goalcompletedpercentageprivacy' => 'private']);
                                 echo "$request->goalcompletedpercentageprivacy";
                     }
@@ -278,7 +280,7 @@ public function post(request $request){
           $tsk->save();
 
           DB::table('goals')
-                    ->where([['goalid', $request->goalid],['email',$email]])
+                    ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
                     ->update(['goalcompletedpercentage' => round($gcp,2)]);
           // echo round($gcp,2);
           return redirect('/goal/'.$request->goalid);

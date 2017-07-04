@@ -39,9 +39,19 @@
             <div class="input-field col s12">
                 <select name="goalcategory">
                   <option value="non specified" disabled selected>select goal category</option>
-                  <option value="business">business</option>
-                  <option value="education">education</option>
-                  <option value="fitness">fitness</option>
+                                                         <option value="business">business</option>
+                                                         <option value="education">education</option>
+                                                         <option value="fitness">fitness</option>
+                                                         <option value="Health and fitness">Health and fitnessitness</option>
+                                                         <option value="Get Educated and professional memberships">Get Educated and professional memberships</option>
+                                                         <option value=" Financial stability and Gains"> Financial stability and Gains</option>
+                                                         <option value="Construct my first house">Construct my first house</option>
+                                                         <option value="Buy a car">Buy a car</option>
+                                                         <option value=" Find a partner"> Find a partner</option>
+                                                         <option value="Travel around and see the world">Travel around and see the world</option>
+                                                         <option value="Skill up as a professional">Skill up as a professional</option>
+                                                         <option value="Sports and Aquatics">Sports and Aquatics</option>
+                                                         <option value="Ignite a concept">Ignite a concept</option>
                 </select>
                 <label>Goal Category</label>
               </div>
