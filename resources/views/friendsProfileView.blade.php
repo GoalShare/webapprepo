@@ -55,13 +55,12 @@
                           <div class="card-content">
                             <!-- chips -->
                             @foreach ($userskill as $userskills)
-
                               <div class="chip">
                                 @if ($userskills->type=='skill')
                                   {{$userskills->skill}}
                                 @endif
+
                               </div>
-                              
                             @endforeach
 
 
@@ -122,11 +121,40 @@
            @foreach ($goal as $goals)
              @if ($goals->goalcompletedpercentage==100)
                <div class="collapsible-body">
-                 {{$goals->goalname}}
-                 <div class="progress">
-                     <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
-                 </div>
-                 {{$goals->goalcompletedpercentage}}%
+                 Name: {{$goals->goalname}}<br>
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalintentprivacy=='public'))
+                     Intent:{{$goals->goalintent}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalcategoryprivacy=='public'))
+                     Category:{{$goals->goalcategory}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalstartdateprivacy=='public'))
+                     Startdate:{{$goals->goalstartdate}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalenddateprivacy=='public'))
+                     Enddate:{{$goals->goalenddate}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalpriorityprivacy=='public'))
+                     Priority:{{$goals->goalpriority}}
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalcompletedpercentageprivacy=='public'))
+                     <div class="progress">
+                         <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                     </div>
+                     {{$goals->goalcompletedpercentage}}%
+                   @endif
+                 @endforeach
                </div>
              @endif
            @endforeach
@@ -137,11 +165,41 @@
            @foreach ($goal as $goals)
              @if ($goals->goalcompletedpercentage<100)
                <div class="collapsible-body">
-                 {{$goals->goalname}}
-                 <div class="progress">
-                     <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
-                 </div>
-                 {{$goals->goalcompletedpercentage}}%
+                 Name: {{$goals->goalname}}<br>
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalintentprivacy=='public'))
+                     Intent:{{$goals->goalintent}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalcategoryprivacy=='public'))
+                     Category:{{$goals->goalcategory}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalstartdateprivacy=='public'))
+                     Startdate:{{$goals->goalstartdate}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalenddateprivacy=='public'))
+                     Enddate:{{$goals->goalenddate}}<br>
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalpriorityprivacy=='public'))
+                     Priority:{{$goals->goalpriority}}
+                   @endif
+                 @endforeach
+                 @foreach ($privacys as $privacy)
+                   @if (($privacy->goalid==$goals->goalid)&&($privacy->goalcompletedpercentageprivacy=='public'))
+                     <div class="progress">
+                         <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                     </div>
+                     {{$goals->goalcompletedpercentage}}%
+                   @endif
+                 @endforeach
+
                </div>
              @endif
            @endforeach
