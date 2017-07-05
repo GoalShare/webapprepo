@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => '127.0.0.1',
-            'port' => '3308',
-            'database' => 'goalsforlife',
-            'username' => 'root',
-            'password' => '',
+            'host' => 'lifewithgoals.cvcu0pnrxk10.ap-southeast-1.rds.amazonaws.com',
+            'port' => '3306',
+            'database' => 'lifewithgoals',
+            'username' => 'lifewithgoal',
+            'password' => 'edc#cde-Z',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',

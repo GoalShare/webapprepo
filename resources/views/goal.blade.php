@@ -97,8 +97,9 @@
   <div class="row">
         <div class="col s12 m12">
           <div class="card ">
-            <div class="card-content white-text" style="min-height:300px;background-image:url({{asset('uploads/goals/'.$goals->goalpictureone)}});" >
-              <span class="card-title">{{$goals->goalname}}
+            <div class="card-content white-text" style="min-height:300px;background-image:url({{asset('uploads/goals/'.$goals->goalpictureone)}});  " >
+                <div class="row">
+                  <span class="card-title"><h3>{{$goals->goalname}}</h3>
                   <div class="c100 p50 big">
                       <span id="goalpercentage">{{$goals->goalcompletedpercentage}}%</span>
                       <div class="slice">
@@ -106,6 +107,8 @@
                           <div class="fill"></div>
                       </div>
                  </div></span>
+                </div>
+            
 
             </div>
             <div class="card-action ">
@@ -130,9 +133,9 @@
 
 
                 </div>
-              </div>
+              
                 <div class="row center-align">
-                  <div class="col l6">
+                  <div class="col l3 s6">
                     <ul class="collapsible popout" data-collapsible="expandable">
                       <li>
                       <div class="collapsible-header">
@@ -202,7 +205,7 @@
                     </li>
                     </ul>
                   </div>
-                  <div class="col l6">
+                  <div class="col l3 s6">
 
 
                   <!-- Thumbs Up icon by Icons8 -->
@@ -278,6 +281,7 @@
 
                   {{-- ///////////////////////////// --}}
                   </div>
+              </div>
                 <div class="row">
                   <div class="col l6 center-align">
                     <div class="chip">

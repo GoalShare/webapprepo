@@ -164,14 +164,14 @@
                     <div class="row">
                       <div >
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" type="email" name="email" class="validate" required autofocus>
+                        <input id="icon_prefix" style="font-size:large;" type="email" name="email" class="validate" required autofocus>
                         <label for="icon_prefix"><h4>Email address</h4></label>
                       </div>
                     </div>
                     <div class="row">
                       <div>
                         <i class="material-icons prefix">lock</i>
-                        <input id="icon_telephone" name="password" type="password" class="validate" required>
+                        <input id="icon_telephone" style="font-size:large;" name="password" type="password" class="validate" required>
                         <label for="icon_telephone"><h4>Password</h4></label>
                       </div>
                       <p class="center">
@@ -208,13 +208,13 @@
         {{ csrf_field() }}
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" name="fname" type="text" class="validate" required>
+          <input id="first_name" name="fname" type="text" style="font-size:large;" class="validate"  required>
           <label for="last_name"><div class="flow-text">
             First Name
           </div></label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" name="lname" class="validate" required>
+          <input id="last_name" type="text" name="lname" style="font-size:large;" class="validate" required>
           <label for="last_name"><div class="flow-text">
             Last Name
           </div></label>
@@ -222,7 +222,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email"  name="email" type="email" class="validate" required>
+          <input id="email"  name="email" type="email" style="font-size:large;" class="validate" required>
           <label for="email"><div class="flow-text">
             Email
           </div></label>
@@ -230,7 +230,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" name="password" type="password" class="validate" required>
+          <input id="password" name="password" type="password" style="font-size:large;" class="validate" required>
           <label for="password"><div class="flow-text">
             Password
           </div></label>
@@ -238,7 +238,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="confermPassword" type="password" name="password_confirmation" class="validate" required>
+          <input id="confermPassword" type="password" style="font-size:large;" name="password_confirmation" class="validate" required>
           <label for="confermPassword"><div class="flow-text">
             Confirm Password
           </div></label>
@@ -247,8 +247,8 @@
       <div class="row">
         <div class="input-field col s12">
           <select name="gender">
-            <option  value="M">Male</option>
-            <option value="F">Female</option>
+            <option style="font-size:large;" value="M">Male</option>
+            <option style="font-size:large;" value="F">Female</option>
           </select>
           <label><div class="flow-text">
             Gender
@@ -257,13 +257,13 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-        <input id="birthDate" type="date" name="dob">
+        <input id="birthDate" style="font-size:large;" type="date" name="dob">
 
       </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="phonrNumber" name="phone" type="tel" class="validate">
+          <input id="phonrNumber" style="font-size:large;" name="phone" type="tel" class="validate">
           <label for="phonrNumber "><div class="flow-text">
             Phone number
           </div></label>

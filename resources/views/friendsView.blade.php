@@ -42,6 +42,47 @@
                </div></a>
              @endif
              @endforeach
+             <li class="divider"></li>
+             @foreach ($userfname as $userfnames)
+               @if ($userfnames->id!=Auth::id())
+                 <a href="{{url('/search/'.$userfnames->id)}}" class="blue-text darken-4">
+             <div class="card-content">
+               <ul class="collection">
+                 <li class="collection-item avatar ">
+                   <img src="{{asset('uploads/avatars/'.$userfnames->avatar)}}" alt="" class="circle">
+                   <span class="title"><strong>{{$userfnames->fname.' '.$userfnames->lname}}</strong></span>
+                  <p>{{$userfnames->email}}<br>
+                     DOB:{{$userfnames->dob}}<br>
+                     No:{{$userfnames->phone}}
+                   </p>
+                   <div class="right-align">
+                   </div>
+                 </li>
+               </ul>
+             </div></a>
+           @endif
+           @endforeach
+            <li class="divider"></li>
+                          @foreach ($userlname as $userlnames)
+                            @if ($userlnames->id!=Auth::id())
+                              <a href="{{url('/search/'.$userlnames->id)}}" class="blue-text darken-4">
+                          <div class="card-content">
+                            <ul class="collection">
+                              <li class="collection-item avatar ">
+                                <img src="{{asset('uploads/avatars/'.$userlnames->avatar)}}" alt="" class="circle">
+                                <span class="title"><strong>{{$userlnames->fname.' '.$userlnames->lname}}</strong></span>
+                               <p>{{$userlnames->email}}<br>
+                                  DOB:{{$userlnames->dob}}<br>
+                                  No:{{$userlnames->phone}}
+                                </p>
+                                <div class="right-align">
+                                </div>
+                              </li>
+                            </ul>
+                          </div></a>
+                        @endif
+                        @endforeach
+
 
 
 

@@ -305,16 +305,16 @@
                <h5 class="white-text">Life With Goals</h5><br>
 
                <p class="white-text">
-                 <a href="#" class="white-text footerCont">English(UK)</a>
-                 <a href="" class="white-text footerCont">Sinhalese</a>
+                 <a href="#" class="white-text footerCont" style=" font-size:x-small;">English(UK)</a>
+                 <a href="" class="white-text footerCont" style=" font-size:x-small;">Sinhalese</a>
                </p>
 
                <div class="divider"></div>
                <p class="white-text">
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont">About us</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont">  Support</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">About us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">  Support</a>
                  {{-- <a href="{!! url('/aboutus'); !!}" class="white-text footerCont"> Press</a> --}}
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont"> Work with us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;"> Work with us</a>
                </p>
 
              </div>
@@ -330,8 +330,8 @@
            </div>
          </div>
          <div class="footer-copyright">
-           <div class="container">
-           © 2014 Copyright Text
+           <div class="container" style=" font-size:x-small;">
+           © 2017 Copyright Text
            <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
            </div>
          </div>

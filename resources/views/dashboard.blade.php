@@ -137,7 +137,7 @@
                </div>
              </div>
              <div class="card-action">
-                <a href="#addgoal">Click to create a goal</a>
+                <a href="#addgoal" class="white-text">Click to create a goal</a>
 
               </div>
 
@@ -219,18 +219,19 @@
                  });
 
              </script>
-               <form method="post" action="{{ route('dashboard') }}" id="unpin">
+               <form method="post" action="{{ route('dashboard') }}" id="unpin" class="right">
                  {{ csrf_field() }}
                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="{{ url('/goal/'.$goals->goalid) }}">Go to Goal</a>&nbsp   &nbsp &nbsp   &nbsp &nbsp   &nbsp
                <input type="text" class="hidden" name="pinned" value="0">
                <input type="text" class="hidden" name="goalid" value="{{$goals->goalid}}">
                <input type="text" class="hidden" name="email" value="{{$email}}">
                <input type="text" class="hidden" name="action" value="1">
-               <button type="submit"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="unpinbtn"><i class="material-icons">pin_drop</i></button>
+               <button type="submit"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="unpinbtn"><a style="color:blue" class="material-icons">pin_drop</a></button>
              </form>
-             <form class="" action="{{route('deletegoal')}}" method="post">
+        
+             <form class="right" action="{{route('deletegoal')}}" method="post">
                {{csrf_field()}}
-               <button type="submit" style="border:none;background-color:inherit;"><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons">delete</i></button>
+               <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" ><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
              </form>
              <script>
              //ajax unpin
@@ -320,7 +321,9 @@
                 </div>
                 <div class="mdl-card__supporting-text">
                   Priority:{{$goals->goalpriority}}<br>
-                  End date:{{$goals->goalenddate}}
+                  End date:{{$goals->goalenddate}}<br>
+                  Start date:{{$goals->goalstartdate}}<br>
+                  Authorization:{{$goals->goalauthorization}}<br>
                 </div>
 
              <!-- <span id="some-element">
@@ -339,7 +342,7 @@
                    this.MaterialProgress.setProgress({{$goals->goalcompletedpercentage}});
                  });
              </script>
-             <form method="post" action="{{ route('dashboard') }}" id="pin">
+             <form method="post" action="{{ route('dashboard') }}" id="pin" class="right">
                {{ csrf_field() }}
              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="{{ url('/goal/'.$goals->goalid) }}">Go to Goal</a>&nbsp   &nbsp &nbsp   &nbsp &nbsp   &nbsp
              <input type="text" class="hidden" name="pinned" value="1">
@@ -348,6 +351,10 @@
              <input type="text" class="hidden" name="action" value="1">
              <button type="submit"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">pin_drop</i></button>
            </form>
+            <form class="right" action="{{route('deletegoal')}}" method="post">
+               {{csrf_field()}}
+               <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" ><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
+             </form>
            </div>
           </div>
         @endif

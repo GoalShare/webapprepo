@@ -25,6 +25,9 @@ class SearchController extends Controller{
             ->where([['friendships.status','requested'],['friendships.friend',$id]])
             ->get();
     $user= DB::table('users')->where('email','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
-    return view('friendsView',['user'=>$user,'categorylist'=>$categorylist,'searchkey'=>$searchkey,'friendrequest'=>$friendrequest]);
+    $userfname= DB::table('users')->where('fname','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
+  //  $userphone= DB::table('users')->where('phone','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
+    $userlname= DB::table('users')->where('lname','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
+    return view('friendsView',['user'=>$user,'categorylist'=>$categorylist,'searchkey'=>$searchkey,'friendrequest'=>$friendrequest,'userlname'=>$userlname,'userfname'=>$userfname]);
   }
 }
