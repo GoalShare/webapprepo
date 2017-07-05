@@ -11,7 +11,7 @@
           <div class="card ">
 
                <div class="card-action">
-                  <h5><b>Friends</b></h5>
+                  <h5><b>People</b></h5>
                </div>
                <form action="{{route('search')}}" method="post">
                    {{ csrf_field()}}

@@ -228,7 +228,7 @@
           <li>
             <form action="{{route('search')}}" method="post">
               {{ csrf_field()}}
-              <input type="search" name="searchkey" placeholder="Search" class="searchbar blue-text text-darken-4">
+              <input type="search" name="searchkey" placeholder="Search people" class="searchbar blue-text text-darken-4">
             </form>
           </li>
 

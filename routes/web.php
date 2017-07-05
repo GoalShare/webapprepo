@@ -22,7 +22,6 @@ Route::get('/', function () {
     }
 
 });
-
 Auth::routes();
 Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
@@ -59,7 +58,9 @@ Route::get('/search/{userid}',function($userid){
   foreach ($user as $users) {
   }
   $useremail=$users->email;
+  $userskill=DB::table('userskills')->where('email',$useremail)->get();
   $goal = DB::table('goals')->where('email',$useremail)->get();
+  $privacys=DB::table('privacys')->where('email',$useremail)->get();
   $userskill=DB::table('userskills')->where('email',$useremail)->get();
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
   $friendship=DB::table('friendships')->where([['user',$id],['friend',$userid]])->orWhere([['user',$userid],['friend',$id]])->value('status');
@@ -75,30 +76,19 @@ Route::get('/search/{userid}',function($userid){
                          ->orwhere([['friendships.status','friends'],['friendships.user',$userid]])
                          ->get();
                          $id=Auth::id();
-  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends]);
+  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill]);
 });
-
 Route::post('skill','SkillController@skill')->name('skill');
-
 Route::post('goalskill','SkillController@goalskill')->name('goalskill');
-
 Route::post('strength','SkillController@strength')->name('strength');
-
 Route::post('deleteskill','SkillController@deleteskill')->name('deleteskill');
 Route::post('deletegoalskill','SkillController@deletegoalskill')->name('deletegoalskill');
-
 Route::post('/search','SearchController@post')->name('search');
-
 Route::post('deletetask','GoalController@deletetask')->name('deletetask');
-
 Route::post('deletegoal','HomeController@deletegoal')->name('deletegoal');
-
 Route::post('addfriend','FriendController@addfriend')->name('addfriend');
-
 Route::post('share','ShareController@share')->name('share');
-
 Route::post('align','AlignController@align')->name('align');
-
 Route::get('/aboutus', function () {
   $id=Auth::id();
   $email=Auth::User()->email;
@@ -110,17 +100,13 @@ Route::get('/aboutus', function () {
           ->get();
     return view('aboutus',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);
 });
-
-
 Route::get('/policies', function () {
 
     return view('policies');
 });
-
 Route::get('/prof', function () {
     return view('catogorizedView');
 });
-
 Route::post('confirmfriend',function(request $request)
 {
   $id=Auth::id();
@@ -129,8 +115,6 @@ Route::post('confirmfriend',function(request $request)
             ->update(['status' => 'friends']);
   return back();
 })->name('confirmfriend');
-
-
 Route::get('/nonLoginAboutus', function () {
     return view('nonLoginAboutus');
 });

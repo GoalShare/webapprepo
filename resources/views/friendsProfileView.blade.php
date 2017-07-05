@@ -40,7 +40,7 @@
           <div class="col s12 m12 l12">
           <div class="card">
             <div class="card-action">
-                <h5><b>Skills and Streangths</b></h5>
+                <h5><b>Skills and Strengths</b></h5>
                    <li class="divider"></li>
             </div>
             <div class="card-content">
@@ -54,10 +54,16 @@
                           </div>
                           <div class="card-content">
                             <!-- chips -->
-                            <div class="chip">
-                              Laravel
-                              <i class="close material-icons">close</i>
-                            </div>
+                            @foreach ($userskill as $userskills)
+
+                              <div class="chip">
+                                @if ($userskills->type=='skill')
+                                  {{$userskills->skill}}
+                                @endif
+                              </div>
+                              
+                            @endforeach
+
 
                           </div>
 
@@ -69,15 +75,20 @@
                         <div class="col s12 m6 l6">
                           <div class="card">
                             <div class="card-action">
-                              Streangths
+                              Strengths
                               <li class="divider"></li>
                             </div>
                             <div class="card-content">
                               <!-- chips -->
-                              <div class="chip">
-                                Laravel
-                                <i class="close material-icons">close</i>
-                              </div>
+                              @foreach ($userskill as $userskills)
+
+                                <div class="chip">
+                                  @if ($userskills->type=='strength')
+                                    {{$userskills->skill}}
+                                  @endif
+                                </div>
+
+                              @endforeach
 
 
                             </div>

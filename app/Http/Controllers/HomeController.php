@@ -60,7 +60,7 @@ class HomeController extends Controller
        $email=DB::table('users')->where('id',$id)->value('email');
        $goal = DB::table('goals')->where('email',$email)->get();
        $task = DB::table('tasks')->where('email', $email)->get();
-       return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email]);
+       return redirect('dashboard');
         break;
         case 2:
           $email=Auth::user()->email;

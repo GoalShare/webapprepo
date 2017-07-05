@@ -133,11 +133,11 @@
                  <img src="welcome.png" alt="">
                </div>
                <div class="hide-on-med-and-up">
-                 <img src="{{asset('/img/welcome.png')}}" alt="" width="293px" height="98px">
+                 <img src="{{asset('welcome.png')}}" alt="" width="293px" height="98px">
                </div>
              </div>
              <div class="card-action">
-                <a href="#">Click to create a goal</a>
+                <a href="#addgoal">Click to create a goal</a>
 
               </div>
 
