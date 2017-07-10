@@ -72,7 +72,7 @@ class HomeController extends Controller
                 $filename=time().'1.'.$file->getClientOriginalExtension();
                 $filenamethumb=time().'2.'.$file->getClientOriginalExtension();
                 Image::make($file)->resize(300,300)->opacity(50)->save(public_path('uploads/goals/'. $filenamethumb ));
-                Image::make($file)->resize(1000,300)->opacity(50)->save(public_path('uploads/goals/'. $filename ));
+                Image::make($file)->resize(1142,400)->opacity(50)->save(public_path('uploads/goals/'. $filename ));
                 DB::table('goals')->insert(
                         [
                           'goalid'=> $goalid,

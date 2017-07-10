@@ -441,8 +441,7 @@
                                         <option value="non specified" disabled selected>select goal category</option>
                                                                                <option value="business">business</option>
                                                                                <option value="education">education</option>
-                                                                               <option value="fitness">fitness</option>
-                                                                               <option value="Health and fitness">Health and fitnessitness</option>
+                                                                               <option value="Health and fitness">Health and fitness</option>
                                                                                <option value="Get Educated and professional memberships">Get Educated and professional memberships</option>
                                                                                <option value=" Financial stability and Gains"> Financial stability and Gains</option>
                                                                                <option value="Construct my first house">Construct my first house</option>

@@ -22,15 +22,15 @@
             </div>
           </a>
           <a href="#!" class="collection-item">
-                <p class="center-align">
+                <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="high" id="HighPriority" checked="checked" />
                   <label for="HighPriority">High Priority</label>
                 </p>
-                <p class="center-align">
+                <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="medium" id="MediumPriority" />
                   <label for="MediumPriority">Medium Priority</label>
                 </p>
-                <p class="center-align">
+                <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="low" id="LowPriority"  />
                   <label for="LowPriority">Low Priority</label>
                 </p>
@@ -41,8 +41,7 @@
                   <option value="non specified" disabled selected>select goal category</option>
                                                          <option value="business">business</option>
                                                          <option value="education">education</option>
-                                                         <option value="fitness">fitness</option>
-                                                         <option value="Health and fitness">Health and fitnessitness</option>
+                                                         <option value="Health and fitness">Health and fitness</option>
                                                          <option value="Get Educated and professional memberships">Get Educated and professional memberships</option>
                                                          <option value=" Financial stability and Gains"> Financial stability and Gains</option>
                                                          <option value="Construct my first house">Construct my first house</option>
@@ -124,7 +123,7 @@
         </br>
         <div class="mdl-grid portfolio-max-width" id="goaldisplay">
           @if($goal->isEmpty())
-            <div class="container center" style="padding-top:20px">
+            {{-- <div class="container center" style="padding-top:20px">
          <div class="col s12 m12">
            <div class="card blue-grey darken-1">
              <div class="card-content white-text">
@@ -143,7 +142,52 @@
 
            </div>
          </div>
-</div>
+</div> --}}
+
+{{-- <div class="container row">
+<div class="col s1"></div>
+        <div class="col s10">
+          <div class="card">
+              <div class="col s1"></div>
+            <div class="card blue darken-2">
+            <div class="card-content white-text">
+              <div class="col s1"></div>
+                      <div class="col s10">
+
+            <span class="card-title" style="color: white;"</span>
+            <div class="col s1"></div>
+             <h1><b>WELCOME</b></h1>
+           </div>
+
+              <span class="card-title align-center" style="color:black;"><h2>
+               {{ Auth::User()->fname}}&nbsp;{{ Auth::User()->lname}}</h2></span>
+
+            </div> --}}
+            {{-- </div>
+            <div class="card-content">
+            </div>
+            <div class="card-action">
+              <a href="#">{{ Auth::User()->fname}}&nbsp;{{ Auth::User()->lname}}</a>
+            </div> --}}
+
+          {{-- </div>
+        </div>
+      </div>
+      </div> --}}
+
+  <div class="row" style="min-width:100%;">
+    <div class="col l12 s12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title " style="text-align:center"><h1><b>WELCOME</b></h1> <a href="#"><h1 class="white-text"><b>{{ Auth::User()->fname}}</b></h1></br></a></span>
+        </div>
+        {{-- <div class="card-action" style="text-align:center">
+          <a href="#"><h1><b>{{ Auth::User()->fname}}</b></h1></br></a>
+<br></br>
+        </div> --}}
+      </div>
+    </div>
+  </div>
 
           @else
           {{-- starrrrrrrrrrrrrrrrrrrtttttttttttttttttt --}}
@@ -228,7 +272,7 @@
                <input type="text" class="hidden" name="action" value="1">
                <button type="submit"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="unpinbtn"><a style="color:blue" class="material-icons">pin_drop</a></button>
              </form>
-        
+
              <form class="right" action="{{route('deletegoal')}}" method="post">
                {{csrf_field()}}
                <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" ><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
@@ -372,6 +416,30 @@
           <button id="view-source" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></button>
         </div>
 
+        {{-- <a id="menu" class="waves-effect waves-light btn btn-floating red" ><i class="material-icons">add</i></a> --}}
+
+        <!-- Tap Target Structure -->
+        @php
+         $carbon = new Carbon(Auth::User()->created_at);
+         $compare =Carbon::now();
+        @endphp
+
+        <div class="tap-target" data-activates="view-source">
+          <div class="tap-target-content white-text">
+            <h5>Start Building Your Life Goals</h5>{{$compare}}{{$carbon}}
+            <p>
+              Click on "+" and define your Goal{{$compare->diffInHours($carbon)}}
+
+
+            </p>
+          </div>
+        </div>
+
+        @if (($compare->diffInHours($carbon))<1)
+          <script>
+          $('.tap-target').tapTarget('open');
+          </script>
+        @endif
 
 
 

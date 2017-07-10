@@ -8958,7 +8958,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 /*drop down nav bar */
 
 
-.dropdown-content {
+/*.dropdown-content {
 background-color: #fff;
 margin: 0;
 display: none;
@@ -8980,7 +8980,7 @@ line-height: 1.5rem;
 width: 100%;
 text-align: right;
 text-transform: none;
-}
+}*/
 
 /*//////*/
 
