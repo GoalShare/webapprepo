@@ -194,17 +194,18 @@
       </div><br>
       @endforeach
       @endif
+
       </li>
       <li class="divider"></li>
     </ul>
     <ul id="dropdown2" class="dropdown-content center">
-      <li><a href="{{url('profile/'.Auth::id())}}">Profile</a></li>
+      <li href="{{url('profile/'.Auth::id())}}">Profile</li>
       <li class="divider"></li>
-      <li><a href="{{ route('logout') }}"
+      <li href="{{ route('logout') }}"
           onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
           Logout
-      </a></li>
+      </li>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           {{ csrf_field() }}
       </form>
@@ -216,7 +217,7 @@
 
         <ul class="left">
               <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-             <img onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/mainIcon.png')}}" alt="" height="50px" width="50px">
+             <img src="{{asset('favicon/mainIcon.png')}}" alt="" height="50px" width="50px">
         </ul>
 
         <ul class="right hide-on-small-only">
@@ -246,9 +247,12 @@
     <ul id="slide-out" class="side-nav ">
        <li>
          <div class="container">
-           <img class="circle front " src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" width="150px" height="150px">
+           {{-- <img class="circle front " src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" width="150px" height="150px" > --}}
+           <a href="{{url('profile/'.Auth::id())}}" class="waves-effect"><img class="circle front " src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" width="150px" height="150px" ></a>
+
          </div>
         </li>
+
          <div class="user-view">
         <li>
          <a href="#!name" ><span class="black-text name">Name : {{Auth::User()->fname." ".Auth::User()->lname}}</span></a>
@@ -261,15 +265,17 @@
  <div class="divider">
 
  </div>
-       <li><a href="{{url('/dashboard')}}">dashboard</a></li>
+       <li><a href="{{url('/dashboard')}}">Dashboard<i class="material-icons">dashboard</i></a></li>
        <!-- subheaders -->
        {{-- <li><a class="subheader">&nbsp Pinned Goals</a></li>
        <li><a class="subheader">&nbsp  Goals</a></li> --}}
        <!-- // -->
        <li><div class="divider"></div></li>
-       <li><a class="waves-effect" href="#!">categories</a></li>
+       <li><a class="waves-effect" href="#!">Categories<i class="material-icons">toc</i></a></li>
        @foreach ($categorylist as $categorylists)
-         <li><a href="{{ url('/dashboard/'.$categorylists->goalcategory) }}"><i class="material-icons">label_outline</i>&nbsp {{$categorylists->goalcategory}}</a></li>
+         <li class="row"><div class="col s3">
+
+         </div><a class="col s9" href="{{ url('/dashboard/'.$categorylists->goalcategory) }}">&nbsp;&nbsp;&nbsp {{$categorylists->goalcategory}}</a></li>
        @endforeach
 
 
@@ -280,12 +286,16 @@
 
 
        <li><div class="divider"></div></li>
-       <li><a href="{{url('profile/'.Auth::id())}}" class="waves-effect">Profile</a></li>
+       <li><a href="{{url('profile/'.Auth::id())}}" class="waves-effect">Profile<i class="material-icons"><i class="material-icons">perm_identity</i></i></a></li>
        {{-- <li><a class="waves-effect" href="#!">Account Setting</a></li> --}}
        {{-- <li><a class="waves-effect" href="">Friend Request</a></li> --}}
-       <li><a class="waves-effect" href="#!">Home</a></li>
-       <li><a class="waves-effect" href="#!">Sign out</a></li>
-       <li><a class="waves-effect" href="#!">About us</a></li>
+       {{-- <li><a class="waves-effect" href="#!">Home</a></li> --}}
+       <li><a class="waves-effect" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('signout-form').submit();">Sign out<i class="material-icons">settings_power</i></a></li>
+                <form id="signout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+       <li><a class="waves-effect" href="{!! url('/aboutus'); !!}">About us<i class="material-icons">people_outline</i></a></li>
 
      </ul>
 

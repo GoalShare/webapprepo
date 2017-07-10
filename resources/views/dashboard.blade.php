@@ -426,16 +426,16 @@
 
         <div class="tap-target" data-activates="view-source">
           <div class="tap-target-content white-text">
-            <h5>Start Building Your Life Goals</h5>{{$compare}}{{$carbon}}
+            <h5>Start Building Your Life Goals</h5>
             <p>
-              Click on "+" and define your Goal{{$compare->diffInHours($carbon)}}
+              Click on "+" and define your Goal
 
 
             </p>
           </div>
         </div>
 
-        @if (($compare->diffInHours($carbon))<1)
+        @if ($goal->isEmpty())
           <script>
           $('.tap-target').tapTarget('open');
           </script>
