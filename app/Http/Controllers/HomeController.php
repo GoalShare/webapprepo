@@ -94,6 +94,7 @@ class HomeController extends Controller
                             [
                               'goalid'=> $goalid,
                               'email'=> $email,
+                              'goalauthorization'=>'creator',
                               'created_at'=>Carbon::now(),
                             ]
                         );

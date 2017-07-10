@@ -257,8 +257,35 @@ public function post(request $request){
                                 ->update(['goalcompletedpercentageprivacy' => 'private']);
                                 echo "$request->goalcompletedpercentageprivacy";
                     }
-
                       break;
+                      case 'addtaskprivacy':
+                      if ($request->addtaskprivacy=='') {
+                        DB::table('privacys')
+                                  ->where([['goalid', $request->goalid],['email',$email]])
+                                  ->update(['addtaskprivacy' => 'public']);
+                                  echo "$request->addtaskprivacy";
+                      }
+                      if ($request->addtaskprivacy=='private'){
+                        DB::table('privacys')
+                                  ->where([['goalid', $request->goalid],['email',$email]])
+                                  ->update(['addtaskprivacy' => 'private']);
+                                  echo "$request->addtaskprivacy";
+                      }
+                        break;
+                        case 'canshareprivacy':
+                        if ($request->canshareprivacy=='') {
+                          DB::table('privacys')
+                                    ->where([['goalid', $request->goalid],['email',$email]])
+                                    ->update(['canshareprivacy' => 'public']);
+                                    echo "$request->canshareprivacy";
+                        }
+                        if ($request->canshareprivacy=='private'){
+                          DB::table('privacys')
+                                    ->where([['goalid', $request->goalid],['email',$email]])
+                                    ->update(['canshareprivacy' => 'private']);
+                                    echo "$request->canshareprivacy";
+                        }
+                          break;
           default:
             # code...
             break;

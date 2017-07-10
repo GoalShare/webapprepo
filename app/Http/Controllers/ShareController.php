@@ -38,6 +38,7 @@ class ShareController extends Controller
                         [
                           'goalid'=> $request->goalid,
                           'email'=> $request->email,
+                          'goalauthorization'=>'gift',
                           'created_at'=>Carbon::now(),
                         ]
                     );

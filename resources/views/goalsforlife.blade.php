@@ -138,6 +138,7 @@
       </div>
     </nav>
 
+
       <main class="mdl-layout__content main">
         <br>
         <br>
@@ -148,7 +149,7 @@
           <div class="col s12 l6 m6 right">
           <div class="card blue darken-4 ">
             <div class="card-content center">
-              <p class="flow-text white-text">Login or Register</p>
+
             </div>
             <div class="card-tabs">
               <ul class="tabs tabs-fixed-width">
@@ -175,11 +176,6 @@
                         <label for="icon_telephone"><h4>Password</h4></label>
                       </div>
                       <p class="center">
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            Forgot Your Password  ?
-                        </a>
-                      </p>
-                      <p class="center">
                         <input type="checkbox" id="remeber" />
                         <label for="remeber">Remember me</label>
                           <div class="checkbox">
@@ -188,6 +184,12 @@
                             </label>
                           </div>
                       </p>
+                      <p class="center">
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            Forgot Your Password  ?
+                        </a>
+                      </p>
+
                     </div>
 
 
@@ -304,6 +306,7 @@
               </div>
 
             </div>
+
           </div>
           </div>
           </div>
@@ -311,7 +314,48 @@
 
 
       </main>
+
+      <footer class="page-footer blue darken-4">
+               <div class="container">
+                 <div class="row">
+                   <div class="col l6 s12">
+                     <h5 class="white-text ">Life With Goals</h5><br>
+
+                     <p class="white-text">
+                       <a href="#" class="white-text footerCont">English(UK)</a>
+                       <a href="" class="white-text footerCont">Sinhalese</a>
+                     </p>
+
+                     <div class="divider"></div>
+                     <p class="white-text">
+                       <a href="{!! url('/nonLoginAboutus'); !!}" class="white-text footerCont">About us</a>
+                       <a href="{!! url('/nonLoginAboutus'); !!}" class="white-text footerCont">  Support</a>
+                       {{-- <a href="{!! url('/aboutus'); !!}" class="white-text footerCont"> Press</a> --}}
+                       <a href="{!! url('/nonLoginAboutus'); !!}" class="white-text footerCont"> Work with us</a>
+                     </p>
+
+                   </div>
+                   <!-- <div class="col l4 offset-l2 s12">
+
+                     <ul>
+                       <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+
+                       <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                       <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                     </ul>
+                   </div> -->
+                 </div>
+               </div>
+               <div class="footer-copyright">
+                 <div class="container">
+                 © 2014 Copyright Text
+                 <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+                 </div>
+               </div>
+             </footer>
+
     </div>
+
 
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -319,6 +363,7 @@
     <script src="js/init.js"></script>
 
   </body>
+
   <script>
   $('.datepicker').pickadate({
    selectMonths: true, // Creates a dropdown to control month
@@ -343,4 +388,6 @@
       });
     });
   </script>
+
+
 </html>

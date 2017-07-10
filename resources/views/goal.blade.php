@@ -108,7 +108,7 @@
                       </div>
                  </div></span>
                 </div>
-            
+
 
             </div>
             <div class="card-action ">
@@ -133,7 +133,7 @@
 
 
                 </div>
-              
+
                 <div class="row center-align">
                   <div class="col l3 s6">
                     <ul class="collapsible popout" data-collapsible="expandable">
@@ -969,9 +969,9 @@
 
                       </script> --}}
                     @endforeach
-                    @if ($goals->goalauthorization!='aligned')
+                    @foreach ($privacys as $privacy)
                       <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
-                    @endif
+                    @endforeach
                   </ul>
                 @endif
 
@@ -1073,12 +1073,16 @@
                 @endforeach
                 <div id="test4" class="col s12">
                   <ul class="collection">
-                   <li class="collection-item dismissable"><div>make intent private<a href="#!" class="secondary-content">
+                   <li class="collection-item">
+                     <div class="row"><div class="col s9">
+                       make intent private
+                     </div>
+                       <a href="#!" class="secondary-content">
                      <form id="goalintentprivacyfrm" action="{{route('goal')}}" method="post">
                        {{ csrf_field() }}
-                     <div class="switch">
+                     <div class="switch col s3">
                       <label>
-                          <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
+                          <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy">
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1113,13 +1117,19 @@
                    }
 
                     </script>
-                   </a></div></li>
-                   <li class="collection-item dismissable"><div>make category private<a href="#!" class="secondary-content">
+                   </a></div>
+                   </li>
+                   <li class="collection-item">
+                     <div class="row">
+                       <div class="col s9">
+                        make category private
+                     </div>
+                       <a href="#!" class="secondary-content">
                      <form id="goalcategoryprivacyfrm" action="{{route('goal')}}" method="post">
                        {{ csrf_field() }}
-                     <div class="switch">
+                     <div class="switch col s3">
                       <label>
-                          <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
+                          <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy">
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1154,13 +1164,20 @@
                    }
 
                     </script>
-                   </a></div></li>
-                   <li class="collection-item dismissable"><div>make priority private<a href="#!" class="secondary-content">
+                   </a>
+                 </div>
+               </li>
+                   <li class="collection-item">
+                     <div class="row">
+                       <div class="col s9">
+                       make priority private
+                       </div>
+                       <a href="#!" class="secondary-content">
                      <form id="goalpriorityprivacyfrm" action="{{route('goal')}}" method="post">
                        {{ csrf_field() }}
-                     <div class="switch">
+                     <div class="switch col s3">
                       <label>
-                          <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
+                          <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy" >
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1195,13 +1212,20 @@
                    }
 
                     </script>
-                   </a></div></li>
-                   <li class="collection-item dismissable"><div>make start date private<a href="#!" class="secondary-content">
+                   </a>
+                 </div>
+               </li>
+                   <li class="collection-item">
+                     <div class="row">
+                       <div class="col s9">
+                       make start date private
+                       </div>
+                       <a href="#!" class="secondary-content">
                      <form id="goalstartdateprivacyfrm" action="{{route('goal')}}" method="post">
                        {{ csrf_field() }}
-                     <div class="switch">
+                     <div class="switch col s3">
                       <label>
-                          <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
+                          <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy">
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1236,13 +1260,20 @@
                    }
 
                     </script>
-                   </a></div></li>
-                   <li class="collection-item dismissable"><div>make end date private<a href="#!" class="secondary-content">
+                   </a>
+                 </div>
+               </li>
+                   <li class="collection-item">
+                     <div class="row">
+                       <div class="col s9">
+                       make end date private
+                       </div>
+                       <a href="#!" class="secondary-content">
                      <form id="goalenddateprivacyfrm" action="{{route('goal')}}" method="post">
                        {{ csrf_field() }}
-                     <div class="switch">
+                     <div class="switch col s3">
                       <label>
-                          <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
+                          <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy" >
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1277,13 +1308,20 @@
                    }
 
                     </script>
-                   </a></div></li>
-                   <li class="collection-item dismissable"><div>make completed percentage private<a href="#!" class="secondary-content">
+                   </a>
+                 </div>
+               </li>
+                   <li class="collection-item">
+                     <div class="row">
+                       <div class="col s9">
+                       make completed percentage private
+                       </div>
+                       <a href="#!" class="secondary-content">
                      <form id="goalcompletedpercentageprivacyfrm" action="{{route('goal')}}" method="post">
                        {{ csrf_field() }}
-                     <div class="switch">
+                     <div class="switch col s3">
                       <label>
-                          <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy" {{($goals->goalauthorization=='aligned')?'disabled':''}}>
+                          <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy" >
                         <span class="lever"></span>
                       </label>
                     </div>
@@ -1318,7 +1356,108 @@
                    }
 
                     </script>
-                   </a></div></li>
+                   </a>
+                 </div>
+               </li>
+               @if ($goals->goalauthorization!='aligned')
+                 <li class="collection-item">
+                   <div class="row">
+                     <div class="col s9">
+                        Permit share goal
+                     </div>
+                     <a href="#!" class="secondary-content">
+                   <form id="canshareprivacyfrm" action="{{route('goal')}}" method="post">
+                     {{ csrf_field() }}
+                   <div class="switch col s3">
+                    <label>
+                        <input id="canshareprivacy" {{($privacys->canshareprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="canshareprivacy" >
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                  <input type="text" style="display:none;" value="{{$goals->goalid}}" name="goalid">
+                  <input type="text" style="display:none;" value="updateprivacy" name="action">
+                  <input type="text" style="display:none;" value="canshareprivacy" name="attribute">
+                  </form>
+                  <script type="text/javascript">
+
+                  var canshareprivacy=document.getElementById("canshareprivacy");
+                  canshareprivacy.addEventListener("change",function(event){
+                    event.preventDefault();
+                    setcanshareprivacy();
+                  });
+                  function setcanshareprivacy(){
+                   var form = document.getElementById("canshareprivacyfrm");
+                   var action = form.getAttribute("action");
+                   var form_data = new FormData(form);
+
+
+                   var xhr = new XMLHttpRequest();
+                   xhr.open('POST', action, true);
+                   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                   xhr.send(form_data);
+                   console.log('string');
+                   xhr.onreadystatechange = function () {
+                     if(xhr.readyState == 4 && xhr.status == 200) {
+                        var result = xhr.responseText;
+                        console.log('Result: ' + result);
+                     }
+                   };
+                 }
+
+                  </script>
+                 </a>
+               </div>
+                 </li>
+                 <li class="collection-item">
+                   <div class="row">
+                     <div class="col s9">
+                    Permit adding tasks
+                     </div>
+                     <a href="#!" class="secondary-content">
+                   <form id="addtaskprivacyfrm" action="{{route('goal')}}" method="post">
+                     {{ csrf_field() }}
+                   <div class="switch col s3">
+                    <label>
+                        <input id="addtaskprivacy" {{($privacys->addtaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="addtaskprivacy" >
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                  <input type="text" style="display:none;" value="{{$goals->goalid}}" name="goalid">
+                  <input type="text" style="display:none;" value="updateprivacy" name="action">
+                  <input type="text" style="display:none;" value="addtaskprivacy" name="attribute">
+                  </form>
+                  <script type="text/javascript">
+
+                  var addtaskprivacy=document.getElementById("addtaskprivacy");
+                  addtaskprivacy.addEventListener("change",function(event){
+                    event.preventDefault();
+                    setaddtaskprivacy();
+                  });
+                  function setaddtaskprivacy(){
+                   var form = document.getElementById("addtaskprivacyfrm");
+                   var action = form.getAttribute("action");
+                   var form_data = new FormData(form);
+
+
+                   var xhr = new XMLHttpRequest();
+                   xhr.open('POST', action, true);
+                   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                   xhr.send(form_data);
+                   console.log('string');
+                   xhr.onreadystatechange = function () {
+                     if(xhr.readyState == 4 && xhr.status == 200) {
+                        var result = xhr.responseText;
+                        console.log('Result: ' + result);
+                     }
+                   };
+                 }
+
+                  </script>
+                 </a>
+               </div>
+                 </li>
+               @endif
+
                  </ul>
 
                 </div>

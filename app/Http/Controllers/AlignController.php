@@ -41,6 +41,7 @@ class AlignController extends Controller
                         [
                           'goalid'=> $request->goalid,
                           'email'=> $request->email,
+                          'goalauthorization'=> 'aligned',
                           'created_at'=>Carbon::now(),
                         ]
                     );
