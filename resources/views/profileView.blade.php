@@ -1,10 +1,20 @@
 @extends('layouts.navbar')
 
 @section('content')
+
 <div class="row">
 
     <div class="container">
       <!-- user prof -->
+<style media="screen">
+  .imgoverlay{
+    width:200px;
+    height:200px;
+    background:rgba(0,0,0,0.6);
+    position:absolute;
+    margin-left:115px;
+  }
+</style>
 
           <br>
           <div class="col s12 m6 l6 center-align" id="profilepic">
@@ -21,19 +31,82 @@
               </div>
             </div>
             </form>
-            <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
-          </div>
+
+
+                 <div class="wrapper" >
+
+                      <div class="circle  imgoverlay" id="imgoverlayfade">
+                      <p class="white-text">
+                        <div class="file-field input-field">
+                          <div class="btn btn-floating">
+                        <i class="material-icons">camera</i>
+                        <input type="file" name="profilepic">
+                      </div>
+                        </div
+                      </p>
+                    </form>
+                    </div>
+                    </div>
+
+                      <div class="btn btn-floating hide-on-med-and-up">
+                        <i class="material-icons">camera</i>
+                        <input type="file" name="profilepic">
+                      </div>
+
+
+
+
+                      <div id="imageWrapper">
+                         <img  id="imageprof" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
+                      </div>
+                  </div>
+
+
+
+
           <script type="text/javascript">
+
+
+            var imageWrapper = document.getElementById('imageWrapper');
+            var imageprof = document.getElementById('imageprof');
             var profilepic=document.getElementById("profilepic");
             profilepic.addEventListener("mouseover",mouseOver);
             profilepic.addEventListener("mouseout",mouseOut);
+            imageWrapper.addEventListener("mouseover",wrapperShow);
+            imageWrapper.addEventListener("mouseout",WrapperDis);
+            imageprof.addEventListener("mouseover",WrapperDis1);
+            imageprof.addEventListener("mouseout",WrapperDis1);
+
+            document.getElementById("imgoverlayfade").style.display='none';
+
+
+            function WrapperDis1(){
+                $("#imgoverlayfade").fadeIn();
+            }
+
+            function WrapperDis1(){
+                $("#imgoverlayfade").fadeOut();
+            }
+
+            function wrapperShow(){
+                $("#imgoverlayfade").fadeIn();
+            }
+
+            function WrapperDis(){
+                $("#imgoverlayfade").fadeOut();
+            }
 
             function mouseOver(){
               document.getElementById("addprofilepicfrm").style.display='inline';
+
+
             }
             function mouseOut(){
               document.getElementById("addprofilepicfrm").style.display='none';
+
+
             }
+
           </script>
           <style media="screen">
 

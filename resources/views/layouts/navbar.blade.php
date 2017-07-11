@@ -217,7 +217,7 @@
 
         <ul class="left">
               <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-             <img src="{{asset('favicon/mainIcon.png')}}" alt="" height="50px" width="50px">
+             <img onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px">
         </ul>
 
         <ul class="right hide-on-small-only">

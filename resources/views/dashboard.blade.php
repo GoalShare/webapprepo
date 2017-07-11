@@ -8,49 +8,49 @@
       <h4>Add a Goal</h4>
       <form enctype="multipart/form-data" action="{{route('dashboard')}}" method="post" id="addgoalform">
 {{ csrf_field() }}
-        <div class="collection">
-          <a href="#!" class="collection-item">
+        <ul class="collection">
+          <li class="collection-item">
             <div class="input-field col s6">
               <input id="goalname" name="goalname" type="text" class="validate" required>
               <label for="goalname">Goal Name</label>
             </div>
-          </a>
-          <a href="#!" class="collection-item">
+          </li>
+          <li class="collection-item">
             <div class="input-field col s6">
               <input id="goalintent" name="goalintent" type="text" class="validate" required>
               <label for="goalintent">Goal Intent</label>
             </div>
-          </a>
-          <a href="#!" class="collection-item">
+          </li>
+          <li class="collection-item">
                 <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="high" id="HighPriority" checked="checked" />
                   <label for="HighPriority">High Priority</label>
                 </p>
                 <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="medium" id="MediumPriority" />
-                  <label for="MediumPriority">Medium Priority</label>
+                  <label for="MediumPriority">Medium Priorityli</label>
                 </p>
                 <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="low" id="LowPriority"  />
                   <label for="LowPriority">Low Priority</label>
                 </p>
-          </a>
-          <a href="#!" class="collection-item">
+          </li>
+          <li class="collection-item">
             <div class="input-field col s12">
                 <select name="goalcategory">
-                  <option value="non specified" disabled selected>select goal category</option>
-                                                         <option value="business">business</option>
-                                                         <option value="education">education</option>
-                                                         <option value="Health and fitness">Health and fitness</option>
-                                                         <option value="Get Educated and professional memberships">Get Educated and professional memberships</option>
-                                                         <option value=" Financial stability and Gains"> Financial stability and Gains</option>
-                                                         <option value="Construct my first house">Construct my first house</option>
-                                                         <option value="Buy a car">Buy a car</option>
-                                                         <option value=" Find a partner"> Find a partner</option>
-                                                         <option value="Travel around and see the world">Travel around and see the world</option>
-                                                         <option value="Skill up as a professional">Skill up as a professional</option>
-                                                         <option value="Sports and Aquatics">Sports and Aquatics</option>
-                                                         <option value="Ignite a concept">Ignite a concept</option>
+                   <option  value="non specified" disabled selected>select goal category</option>
+                   <option  value="business">business</option>
+                   <option  value="education">education</option>
+                   <option  value="Health and fitness">Health and fitness</option>
+                   <option  value="Get Educated and professional memberships">Get Educated and professional memberships</option>
+                   <option  value=" Financial stability and Gains"> Financial stability and Gains</option>
+                   <option  value="Construct my first house">Construct my first house</option>
+                   <option  value="Buy a car">Buy a car</option>
+                   <option  value=" Find a partner"> Find a partner</option>
+                   <option  value="Travel around and see the world">Travel around and see the world</option>
+                   <option  value="Skill up as a professional">Skill up as a professional</option>
+                   <option  value="Sports and Aquatics">Sports and Aquatics</option>
+                   <option  value="Ignite a concept">Ignite a concept</option>
                 </select>
                 <label>Goal Category</label>
               </div>
@@ -59,20 +59,20 @@
                   $('select').material_select();
                 });
               </script>
-          </a>
-          <a href="#!" class="collection-item">
+          </li>
+          <li class="collection-item">
             <div class="mdl-textfield mdl-js-textfield">
               <label  style="color:#565656;font-size:12pt;"for="goalstartdate">Goal Start-Date</label>
               <input class="mdl-textfield__input" style="color:#565656;" type="date" id="goalstartdate" name="goalstartdate" required>
             </div>
-          </a>
-          <a href="#!" class="collection-item">
+          </li>
+          <li class="collection-item">
             <div class="mdl-textfield mdl-js-textfield">
               <label  style="color:#565656;font-size:12pt;"for="goalenddate">Goal End-Date</label>
               <input class="mdl-textfield__input" style="color:#565656;" type="date" id="goalenddate" name="goalenddate" required>
             </div>
-          </a>
-          <a href="#!" class="collection-item">
+          </li>
+          <li class="collection-item">
             <div class="file-field input-field">
               <div class="btn">
                 <span>Upload a Goal Picture</span>
@@ -82,12 +82,12 @@
                 <input class="file-path validate" type="text" name="goalpicturepath">
               </div>
             </div>
-          </a>
-        </div>
+          </li>
+        </ul>
 <input type="text" class="hidden" name="action" value="2">
     </div>
     <div class="modal-footer">
-      <a href="#!" id="cancelmodalbtn" style="margin-right:10px;margin-left:10px;"class="model-close waves-effectwaves-effect waves-light btn">Not Now</a>
+      <a href="#" id="cancelmodalbtn" style="margin-right:10px;margin-left:10px;"class="model-close waves-effectwaves-effect waves-light btn">Not Now</a>
       <button type="submit" id="addgoalbtn" style="margin-right:10px;margin-left:10px;"class="modal-action waves-effectwaves-effect waves-light btn">Add Goal</button>
     </form>
     </div>
@@ -435,7 +435,7 @@
           </div>
         </div>
 
-        @if ($goal->isEmpty())
+        @if ($goal->isEmpty()||($compare->diffInHours($carbon))<1)
           <script>
           $('.tap-target').tapTarget('open');
           </script>
