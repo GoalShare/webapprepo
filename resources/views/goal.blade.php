@@ -289,12 +289,12 @@
                         $edt= Carbon\Carbon::createFromFormat('Y-m-d', $goals->goalenddate)->toFormattedDateString();
                         $std= Carbon\Carbon::createFromFormat('Y-m-d', $goals->goalstartdate)->toFormattedDateString();
                       @endphp
-                      Ending On:{{$edt}}
+                      Started On:{{$std}}
                     </div>
                   </div>
                   <div class="col l6 center-align">
                     <div class="chip">
-                      Started On:{{$std}}
+                      Ending On:{{$etd}}
                     </div>
                   </div>
 

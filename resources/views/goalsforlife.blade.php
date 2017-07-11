@@ -31,28 +31,17 @@
 
     <link href="{{asset('materialize/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_blue-blue.min.css" />
     <link rel="stylesheet" href="styles_goalcards">
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/style3.css" />
     <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
-
-
-
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
+    html {
+    font-family: 'Roboto', sans-serif;
+  }
         #view-source {
           position: fixed;
           display: block;
@@ -105,13 +94,6 @@
         .remember{
           width: 20px
         }
-
-
-        /*.demo-layout-transparent {
-          background: url('images/skills.jpeg') center / cover;
-        }*/
-
-
     </style>
 
   </head>
@@ -139,23 +121,14 @@
     </nav>
 
 
-      <main class="mdl-layout__content main">
-        <br>
-        <br>
-
-
-        <div class="row ">
-
-          <div class="col s12 l6 m6 right">
+      <main  class="mdl-layout__content main" style="font-family: 'Roboto', sans-serif;">
+        <div class="row">
+          <div class="col s12 l6 m6 right" >
           <div class="card blue darken-4 ">
-            <div class="card-content center">
-
-            </div>
-            <div class="card-tabs">
+            <div class="card-tabs" >
               <ul class="tabs tabs-fixed-width">
                 <li class="tab "><a class="active blue-text" href="#test4">Login</a></li>
                 <li class="tab"><a  class="blue-text" href="#test5">Register</a></li>
-
               </ul>
             </div>
             <div class="card-content grey lighten-4">
@@ -163,33 +136,27 @@
                 <form role="form" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
                     <div class="row">
-                      <div >
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" style="font-size:large;" type="email" name="email" class="validate" required autofocus>
-                        <label for="icon_prefix"><h4>Email address</h4></label>
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix" style="color:grey;">email</i>
+                        <input id="icon_prefix"  name="email" type="email" class="validate" required autofocus>
+                        <label for="icon_prefix">Email Address</label>
                       </div>
                     </div>
                     <div class="row">
-                      <div>
-                        <i class="material-icons prefix">lock</i>
-                        <input id="icon_telephone" style="font-size:large;" name="password" type="password" class="validate" required>
-                        <label for="icon_telephone"><h4>Password</h4></label>
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix" style="color:grey;">lock</i>
+                        <input id="icon_prefix"  name="password" type="password" class="validate" required autofocus>
+                        <label for="icon_prefix">Password</label>
                       </div>
-                      <p class="center">
-                        <input type="checkbox" id="remeber" />
-                        <label for="remeber">Remember me</label>
-                          <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                            </label>
-                          </div>
-                      </p>
-                      <p class="center">
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            Forgot Your Password  ?
-                        </a>
-                      </p>
+                      <div class="row">
+                        <div class="col s6">
+                          <input type="checkbox" id="remeber" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                          <label for="remeber">Remember me</label>
+                        </div>
+                        <div class="col s6">
 
+                        </div>
+                      </div>
                     </div>
 
 
@@ -249,12 +216,11 @@
       <div class="row">
         <div class="input-field col s12">
           <select name="gender">
-            <option style="font-size:large;" value="M">Male</option>
-            <option style="font-size:large;" value="F">Female</option>
+            <option value="" disabled selected>choose gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
           </select>
-          <label><div class="flow-text">
-            Gender
-          </div></label>
+          <label><div class="flow-text">Gender</div></label>
         </div>
       </div>
       <div class="row">

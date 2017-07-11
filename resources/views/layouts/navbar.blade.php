@@ -248,20 +248,19 @@
        <li>
          <div class="container">
            {{-- <img class="circle front " src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" width="150px" height="150px" > --}}
-           <a href="{{url('profile/'.Auth::id())}}" class="waves-effect"><img class="circle front " src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" width="150px" height="150px" ></a>
-
+           <a href="{{url('profile/'.Auth::id())}}" class="waves-effect"><img class="circle front z-depth-1" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" width="160px" height="160px" ></a>
+          <br>
          </div>
+         <div class="divider"></div>
         </li>
-
          <div class="user-view">
         <li>
-         <a href="#!name" ><span class="black-text name">Name : {{Auth::User()->fname." ".Auth::User()->lname}}</span></a>
+         <a href="{{url('profile/'.Auth::id())}}" ><i class="material-icons">person_pin</i><span class="black-text name"> {{Auth::User()->fname." ".Auth::User()->lname}}</span></a>
         </li>
         <li>
-         <a href="#!email"><span class="black-text email truncate">Email : {{Auth::User()->email}}</span></a>
+         <a href="{{url('profile/'.Auth::id())}}"><i class="material-icons">email</i><span class="black-text email truncate"> {{Auth::User()->email}}</span></a>
         </li>
        </div>
-<br>
  <div class="divider">
 
  </div>
@@ -273,29 +272,17 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="#!">Categories<i class="material-icons">toc</i></a></li>
        @foreach ($categorylist as $categorylists)
-         <li class="row"><div class="col s3">
-
-         </div><a class="col s9" href="{{ url('/dashboard/'.$categorylists->goalcategory) }}">&nbsp;&nbsp;&nbsp {{$categorylists->goalcategory}}</a></li>
+         <li><a class="col s9" href="{{ url('/dashboard/'.$categorylists->goalcategory) }}">&nbsp;&nbsp;&nbsp {{$categorylists->goalcategory}}</a></li>
        @endforeach
-
-
-
-
-
-
-
-
+       <br>
        <li><div class="divider"></div></li>
-       <li><a href="{{url('profile/'.Auth::id())}}" class="waves-effect">Profile<i class="material-icons"><i class="material-icons">perm_identity</i></i></a></li>
-       {{-- <li><a class="waves-effect" href="#!">Account Setting</a></li> --}}
-       {{-- <li><a class="waves-effect" href="">Friend Request</a></li> --}}
-       {{-- <li><a class="waves-effect" href="#!">Home</a></li> --}}
        <li><a class="waves-effect" href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('signout-form').submit();">Sign out<i class="material-icons">settings_power</i></a></li>
                 <form id="signout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-       <li><a class="waves-effect" href="{!! url('/aboutus'); !!}">About us<i class="material-icons">people_outline</i></a></li>
+       <div class="divider"></div>
+       <li><a class="waves-effect" href="{!! url('/aboutus'); !!}">About us<i class="material-icons">people</i></a></li>
 
      </ul>
 
