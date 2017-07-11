@@ -199,12 +199,12 @@
       <li class="divider"></li>
     </ul>
     <ul id="dropdown2" class="dropdown-content center">
-      <li href="{{url('profile/'.Auth::id())}}">Profile</li>
+      <li><a href="{{url('profile/'.Auth::id())}}">Profile</a></li>
       <li class="divider"></li>
-      <li href="{{ route('logout') }}"
+      <li><a href="{{ route('logout') }}"
           onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
-          Logout
+          Logout</a>
       </li>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           {{ csrf_field() }}

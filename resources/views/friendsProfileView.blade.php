@@ -55,12 +55,14 @@
                           <div class="card-content">
                             <!-- chips -->
                             @foreach ($userskill as $userskills)
+                              @if ($userskills->type=='skill')
                               <div class="chip">
-                                @if ($userskills->type=='skill')
+
                                   {{$userskills->skill}}
-                                @endif
+
 
                               </div>
+                              @endif
                             @endforeach
 
 
@@ -80,13 +82,13 @@
                             <div class="card-content">
                               <!-- chips -->
                               @foreach ($userskill as $userskills)
-
+                                @if ($userskills->type=='strength')
                                 <div class="chip">
-                                  @if ($userskills->type=='strength')
-                                    {{$userskills->skill}}
-                                  @endif
-                                </div>
 
+                                    {{$userskills->skill}}
+
+                                </div>
+                                  @endif
                               @endforeach
 
 
