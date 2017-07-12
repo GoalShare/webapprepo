@@ -113,7 +113,7 @@
           <nav>
       <div class="nav-wrapper blue darken-4">
 
-          <a href="#!" class="brand-logo  "><img src="{{asset('favicon/LOGO.png')}}" alt="" height= "35px" width = "184px">
+          <a href="{{url('/')}}" class="brand-logo  "><img src="{{asset('favicon/LOGO.png')}}" alt="" height= "35px" width = "184px">
           </a>
 
 
@@ -135,18 +135,27 @@
               <div id="test4" >
                 <form role="form" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
+                    @if($errors->has('email')||$errors->has('password'))
+                        <div class="row">
+                            <div class="red-text chip col s6 push-s3"><i class="close material-icons">not_interested</i>{{$errors->first('email')}}</div><br>
+                        </div>
+                    @endif
                     <div class="row">
                       <div class="input-field col s12">
                         <i class="material-icons prefix" style="color:grey;">email</i>
-                        <input id="icon_prefix"  name="email" type="email" placeholder="email"class="validate" required autofocus>
-                        <label for="icon_prefix">Email Address</label>
+                        <input id="icon_prefix"  name="email" type="email" placeholder="email" class="validate" required autofocus>
+                        <label for="icon_prefix" data-error="you are missing required characters" id="a">
+                          Email Address
+                        </label>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-field col s12">
                         <i class="material-icons prefix" style="color:grey;">lock</i>
-                        <input id="icon_prefix"  name="password" type="password" placeholder="password"class="validate" required autofocus>
-                        <label for="icon_prefix">Password</label>
+                        <input id="password"   name="password" type="password" placeholder="password" class="validate" required>
+                        <label for="password" data-error="you cannot leave the password empty" id="b">
+                          Password
+                        </label>
                         <small class="right">
                           <a href="{{ route('password.request') }}" class="blue-text">
                               Forgot Your Password  ?
@@ -217,18 +226,19 @@
                       </div>
                       <div class="row">
                         <div class="input-field col s12 m6 l6">
-                          <select name="gender">
+                          <br><select name="gender">
+                            <option value="" disabled selected>Gender</option>
                             <option value="M">Male</option>
                             <option value="F">Female</option>
                           </select>
-                          <label>Gender</label>
                         </div>
-                        <div class="input-field col s12 m6 l6">
+                      <div class="input-field col s12 m6 l6">
+                        <label>Date of Birth</label><br>
                         <input id="birthDate"  type="date" name="dob">
                       </div>
                       </div>
                       <div class="row">
-                        <div class="input-field col s4 l4 m4">
+                        <div class="input-field col l4 m4">
                           <select name="countryCode" id="countryCode">
                           		<option data-countryCode="DZ" value="213">Algeria (+213)</option>
                           		<option data-countryCode="AD" value="376">Andorra (+376)</option>
@@ -449,7 +459,7 @@
                             country code
                           </label>
                         </div>
-                        <div class="input-field col s8 l8 m8">
+                        <div class="input-field col  l8 m8">
                           <input id="phonrNumber" name="phone" type="tel" class="validate">
                           <label for="phonrNumber ">
                             Phone number
@@ -497,10 +507,10 @@
 
       </main>
 
-      <footer class="page-footer blue darken-4">
+      <footer class="page-footer blue darken-4" style="font-family: 'Roboto', sans-serif;">
                <div class="container">
                  <div class="row">
-                   <div class="col l6 s12">
+                   <div class="col l6 pull-l3 s12">
                      <h5 class="white-text ">Life With Goals</h5><br>
 
                      <p class="white-text">
