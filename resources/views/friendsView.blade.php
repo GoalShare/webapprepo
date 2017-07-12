@@ -1,95 +1,157 @@
-@extends('layouts.navbar')
-
-@section('content')
-
-
-    <div class="container">
+<style media="screen">
+.bar{
 
 
+}
 
-        <div class="col s12 m12 l12">
-          <div class="card ">
+/* Box styles */
+.myBox {
+  position: absolute;
+  width: 300px;
+  margin-top: 100px;
+   right:0;
+border: none;
+padding: 5px;
 
-               <div class="card-action">
-                  <h5><b>People</b></h5>
-               </div>
-               <form action="{{route('search')}}" method="post">
-                   {{ csrf_field()}}
+height: 100%;
+overflow-y: scroll;
+}
 
-               <div class="input-field">
-                  <input type="search" name="searchkey" placeholder="{{$searchkey}}" >
-                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                 <i class="material-icons">close</i>
-               </div>
-             </form>
-               <li class="divider"></li>
-               @foreach ($user as $users)
-                 @if ($users->id!=Auth::id())
-                   <a href="{{url('/search/'.$users->id)}}" class="blue-text darken-4">
-               <div class="card-content">
-                 <ul class="collection">
-                   <li class="collection-item avatar ">
-                     <img src="{{asset('uploads/avatars/'.$users->avatar)}}" alt="" class="circle">
-                     <span class="title"><strong>{{$users->fname.' '.$users->lname}}</strong></span>
-                    <p>{{$users->email}}<br>
-                       DOB:{{$users->dob}}<br>
-                       No:{{$users->phone}}
-                     </p>
-                     <div class="right-align">
-                     </div>
-                   </li>
-                 </ul>
-               </div></a>
-             @endif
-             @endforeach
-             <li class="divider"></li>
-             @foreach ($userfname as $userfnames)
-               @if ($userfnames->id!=Auth::id())
-                 <a href="{{url('/search/'.$userfnames->id)}}" class="blue-text darken-4">
-             <div class="card-content">
-               <ul class="collection">
-                 <li class="collection-item avatar ">
-                   <img src="{{asset('uploads/avatars/'.$userfnames->avatar)}}" alt="" class="circle">
-                   <span class="title"><strong>{{$userfnames->fname.' '.$userfnames->lname}}</strong></span>
-                  <p>{{$userfnames->email}}<br>
-                     DOB:{{$userfnames->dob}}<br>
-                     No:{{$userfnames->phone}}
-                   </p>
-                   <div class="right-align">
-                   </div>
-                 </li>
-               </ul>
-             </div></a>
-           @endif
-           @endforeach
-            <li class="divider"></li>
-                          @foreach ($userlname as $userlnames)
-                            @if ($userlnames->id!=Auth::id())
-                              <a href="{{url('/search/'.$userlnames->id)}}" class="blue-text darken-4">
-                          <div class="card-content">
-                            <ul class="collection">
-                              <li class="collection-item avatar ">
-                                <img src="{{asset('uploads/avatars/'.$userlnames->avatar)}}" alt="" class="circle">
-                                <span class="title"><strong>{{$userlnames->fname.' '.$userlnames->lname}}</strong></span>
-                               <p>{{$userlnames->email}}<br>
-                                  DOB:{{$userlnames->dob}}<br>
-                                  No:{{$userlnames->phone}}
-                                </p>
-                                <div class="right-align">
-                                </div>
-                              </li>
-                            </ul>
-                          </div></a>
-                        @endif
-                        @endforeach
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid  #0047b3;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background:  #0047b3;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+}
+</style>
+<div class="myBox center">
+
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+    <div class="chip">
+      Tag
+      <i class="close material-icons">close</i>
+    </div><br>
+
+</div>
+     <!-- <div class="row bar right center">
+            <div class="col m12 l12">
+              <div class="card large">
+                <div class="card-title"><br>
+                  <h3>Friends</h3>
+                </div>
+
+                <div class="card-content">
 
 
+                </div>
+                <div class="card-action">
+                  <a href="#">See more</a>
+                </div>
 
-
-
-             </div>
-        </div>
-    </div>
-
-
-  @endsection
+              </div>
+            </div>
+          </div> -->

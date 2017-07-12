@@ -2,6 +2,7 @@
 
 @section('content')
 
+@include('layouts.friendsView')
     <!--add goal form -->
       <div id="addgoal" class="modal modal-fixed-footer">
     <div class="modal-content" style="text-align:center;">

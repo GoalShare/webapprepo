@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/C133C2CF-E0EB-3E49-B84F-D4514D6D7273/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/3727D6D4154D-F48B-94E3-BE0E-FC2C331C/abn/main.css"/><script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('materialize/css/materialize.css')}}">
     <script src="{{asset('materialize/js/materialize.js')}}"></script>
     <meta charset="utf-8">
@@ -130,7 +130,8 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: #008CBA;
+      background-color: #999999;
+      opacity: 0.7;
       overflow: hidden;
       width: 100%;
       height: 0;
@@ -142,6 +143,8 @@
     }
 
     .text {
+
+      opacity: 1;
       white-space: nowrap;
       color: white;
       font-size: 20px;
@@ -167,6 +170,22 @@
         position: relative;
 
       }
+
+      .logoImg{
+        margin-top: 15px;
+      }
+
+      .bar{
+        position: absolute;
+        width: 300px;
+        height: 700px;
+        margin-top: 100px;
+
+         z-index: -1;
+         right:0;
+        /*overflow-y: scroll;*/
+      }
+
 
 
 
@@ -217,7 +236,7 @@
 
         <ul class="left">
               <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-             <img onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px">
+             <img class="logoImg" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px">
         </ul>
 
         <ul class="right hide-on-small-only">
@@ -282,10 +301,8 @@
                     {{ csrf_field() }}
                 </form>
        <div class="divider"></div>
-       <li><a class="waves-effect" href="{!! url('/aboutus'); !!}">About us<i class="material-icons">people</i></a></li>
 
      </ul>
-
 
     <!-- /head -->
     <!-- end of navbar -->

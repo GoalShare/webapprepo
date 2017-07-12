@@ -141,13 +141,17 @@
                       <div class="collapsible-header">
                         <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB0klEQVRIS+2XT07CUBDGv3mJkQRI6gmQE4gnsC4Ed3ACW04gnEA9gfUEtV5A3dm6EG8AJ9AbSEJJMCZvzDPR9C8+tdiFdt/5zXyd+WZKKOmhZdzKvru5WGCKUX9adH6Z4Oqe2xKCLgHaVEBmdsLAHhYJzwTXO94jgEYUJEHDuX/gFAVPgZW8aywekgBm3IeBZa4MDNM16uviKQUGrkPf6q0ODKDW8RwCDqMQJrkb3vRHKwWr4NXOxUCwPGbQI7O057f9cVFQFWfpONXanqpwFAbWcZHQf3BKzT8qNWEc+tbg15uLiBsz326WAMZO0T6tO04GEbaklNs6JqI2GxEdgWAw6GruW2dZamkZCBNNBfhUAoO8QCp4bd81icVdzGqBs6we0QIr56q33R5IOGo7KzdjJrU6P54wsE5qHe+KgG6ywtmz3EgeE9rg92DVvQubBLfAaCXAppp7IuwkwS8km4ubfizRL4OXdffbYgGfxqRmTMLAiiX5aXN9Z4SiK5UZk7zNlluxyp4gu2BMmflEp6M/EjVdo1KBkZQ3WkgmOOsQ0B0nXZXS4LJOn/KOPWUEbW+s3CoqW9G2mXvQE4nzdzjnuI/u9/yyZf76L8xPKtF99xVcbfQfFIlphQAAAABJRU5ErkJggg==">
                       </div>
+
                       <div class="collapsible-body">
-                        <div>
+                        <div class="row ">
+                        <div class="col s12 l6 m6">
+                        <div class="card blue-grey darken-1" >
+                          <div class="card-content white-text"  >
+                            <span class="card-title">People you aligned</span>
                           @if ($aligned->isEmpty())
-                            <span class="blue-text darken-4">There are no alignes yet</span>
+                            <span class="white-text darken-4">There are no alignes yet</span>
                           @endif
                         @foreach ($aligned as $alignes)
-
                           <div class=" col s12 chip">
                             <img src="{{asset('uploads/avatars/'.$alignes->avatar)}}" alt="Contact Person"/>
                             <a id="test"href="{{url('/search/'.$alignes->id)}}">{{$alignes->fname}}&nbsp;{{$alignes->lname}}</a>
@@ -179,32 +183,47 @@
                             };
                           }
                           </script>
-                        @endforeach
-                      </div>
-                        <div id="lis1"class="col s11">
-                          <form class="inline" action="{{route('align')}}" method="post">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="goalid" value="{{$goals->goalid}}">
-                            <div class="input-field ">
-                              @if ($goals->goalauthorization!='aligned')
-                                      <input id="email" name="email" type="text" class="validate">
-                                      <label for="email">email</label>
-                              @endif
-                                      @if ($goals->goalauthorization!='aligned')
-                                      <button type="submit"  class="btn btn-floating" name="button">
-                                        <!-- Merge Git Filled icon by Icons8 -->
-<img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAADDUlEQVRIS8VXMUxTYRD+7iXgwCsUFyZAhUUTtA4OBhJxoBhYILogasukwgBGJYQFcJGYGHERtrYJBBcjiWjoI1FIRBMdKDC4gAGcWLTYsmjSM/fKq215bR+Pin/Spe+/7/vvv//uviNYXEUNPhcReUBwgeEkIpeYMnMIhDAYIWYO7Mx2hKxAUtZN9T6nWqh0E7gHRE4rgGAOM2gkqnmGsu3PSOxw+1pA9ASgY5YI92zidTDfiWgdU2b2psRqY2CEgG57hKlWzBg0834PscMd8IPgMcw7W06iuKgQrz9uYuXrD5tnYX8k6O1INk4hTvd0cuAims+XJ/bXdr6yTc6MoajmGTTAEsTxmCovjQ8lRQX49qItxcNnU1/QN/bZpteSArFWI+Zx4nqf03GEFtMf0s+ZGykkQirk9hevR4Le42KvE6vuwCARBtIB2xuqMHq3Vv9b4tt0fwbbO7/t8+p5H79yndjh9odBVGKGKDHuv+6CxDcvizkc0bylpF7y1RMr7zKB1p0uQ/81F5p6g3nhFZBYLHaWcuXsvyBm4Cmp7sAcES4cpsfMmBfiEBHOZCMevnkOdV3TebtqaSzkaAxwNkS56jePGlF+efLALzqlclklnv6wiasP5vLmtaWrllddohZiXFvFaJYCIjkvub+xFcXtxwt4v7xlelBmLFl+XG1DbzF2rw7FRQWY0NZ08IWVv8DSTIZvnUsQhaO/UHHleSbi+X2nk8S8vaEalWVqAnRidhU1VUch5Mkr07vQ00kkjaIoi5mCV3OiFO3u6pzNQSqcdDNjSYnNVO30ApKrZEqXqihTLbVDIe9qPaWHoW/sk3kWMG9HNK/TcpNYXvuO5t7ggVMqpUnE26Ii6rAy+crT2+LD8SXI7wBrIxL06BruPwuBXRfS+/KhSB/j+szEnhQPqVy2xR4jENE83pSSaRavTIrETmzTRZ6BkUPQKyPpD24f5BvgWM++BH0yuO59fIQxlUZ7DsK8vTvCJKSs2WGzz05JFvrQpiheMGRYcxo9XAo+gDAIIY7F/FaHtj9Q9mlGLYa+lgAAAABJRU5ErkJggg==">
-                                      </button><br>@endif
-                            </div>
-
-                          </form>
                           <br>
+                        @endforeach
+                          </div>
+                          <br>
+                          <div class="card-action"></div>
+                          </div>
+                          </div>
+                          <!-- collapsible-body end -->
+                          <div class="col s12 m6 l6">
+                            <div class="card blue-grey darken-1">
+                              <div class="card-content white-text">
+              <div>
+                <form class="inline" action="{{route('align')}}" method="post">
+                  {{ csrf_field() }}
+                  <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                  <div class="input-field ">
+                    @if ($goals->goalauthorization!='aligned')
+                            <input id="email" name="email" type="text" class="validate">
+                            <label class="white-text"for="email">email</label>
+                    @endif
+                    @if ($goals->goalauthorization!='aligned')
+                    <button type="submit"  class="btn btn-floating" name="button">
+                      <!-- Merge Git Filled icon by Icons8 -->
+<img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAADDUlEQVRIS8VXMUxTYRD+7iXgwCsUFyZAhUUTtA4OBhJxoBhYILogasukwgBGJYQFcJGYGHERtrYJBBcjiWjoI1FIRBMdKDC4gAGcWLTYsmjSM/fKq215bR+Pin/Spe+/7/vvv//uviNYXEUNPhcReUBwgeEkIpeYMnMIhDAYIWYO7Mx2hKxAUtZN9T6nWqh0E7gHRE4rgGAOM2gkqnmGsu3PSOxw+1pA9ASgY5YI92zidTDfiWgdU2b2psRqY2CEgG57hKlWzBg0834PscMd8IPgMcw7W06iuKgQrz9uYuXrD5tnYX8k6O1INk4hTvd0cuAims+XJ/bXdr6yTc6MoajmGTTAEsTxmCovjQ8lRQX49qItxcNnU1/QN/bZpteSArFWI+Zx4nqf03GEFtMf0s+ZGykkQirk9hevR4Le42KvE6vuwCARBtIB2xuqMHq3Vv9b4tt0fwbbO7/t8+p5H79yndjh9odBVGKGKDHuv+6CxDcvizkc0bylpF7y1RMr7zKB1p0uQ/81F5p6g3nhFZBYLHaWcuXsvyBm4Cmp7sAcES4cpsfMmBfiEBHOZCMevnkOdV3TebtqaSzkaAxwNkS56jePGlF+efLALzqlclklnv6wiasP5vLmtaWrllddohZiXFvFaJYCIjkvub+xFcXtxwt4v7xlelBmLFl+XG1DbzF2rw7FRQWY0NZ08IWVv8DSTIZvnUsQhaO/UHHleSbi+X2nk8S8vaEalWVqAnRidhU1VUch5Mkr07vQ00kkjaIoi5mCV3OiFO3u6pzNQSqcdDNjSYnNVO30ApKrZEqXqihTLbVDIe9qPaWHoW/sk3kWMG9HNK/TcpNYXvuO5t7ggVMqpUnE26Ii6rAy+crT2+LD8SXI7wBrIxL06BruPwuBXRfS+/KhSB/j+szEnhQPqVy2xR4jENE83pSSaRavTIrETmzTRZ6BkUPQKyPpD24f5BvgWM++BH0yuO59fIQxlUZ7DsK8vTvCJKSs2WGzz05JFvrQpiheMGRYcxo9XAo+gDAIIY7F/FaHtj9Q9mlGLYa+lgAAAABJRU5ErkJggg==">
+                    </button><br>@endif
+              </div>
+
+                                        </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+                            </div>
                         </div>
-                      </div>
-                      <br>
                     </li>
                     </ul>
                   </div>
+
+
+
                   <div class="col l12 s12">
 
 
@@ -219,7 +238,7 @@
                     <li><a href="#!">two</a></li>
                   </ul>
                 </div> --}}
-
+</div>
 
                 {{-- ///////////////////////////// --}}
                     <!-- Merge Git Filled icon by Icons8 -->
@@ -236,31 +255,50 @@
                       padding: 2rem;
                     }
                     </style>
+                    <div class="row center-align">
+                      <div class="col l12 s12">
                     <ul class="collapsible popout" data-collapsible="accordion">
                       <li>
                       <div class="collapsible-header">
                         <img class="icon icons8-Share" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACLElEQVRIS8VW21HbUBDdc/OYzOBMTAWhg5AKUD5I+As0YEsVYFeAqAC5AuE0gD9B/ohcQZwKQjqwR/JM8Di7zJVlImskhIUc6Vdz79lz7tmzC6rpQ024tBXgxpFrEKsDEvjhsDXKIlcp8Jsjd+8l4wrA/gpMRMYLJSd/rq3bZAGVAjc+932ADtIMhcQPb8xPWwHWbF+J+pXnmeCOd8m3Jqv/lTHW7wpR3/OAmfnjbGiNKwVegsIlwl4msMg08MxmZVLHZroAcPxYWzKhO7tpOc8HNtxm47U6Bch+uExkylA2MU0A6QD0QYRGIHYCzxqkC9v4jXcOv5lK8dmarEL9YM6dpHmKgikTeCmhahPEICHdh70Xf6kJhQsQjH89SiMR7iRNUwSYa67IKIwrAtbMkLrwNzPs2bB1+VSgQqnffunrhHmfd6EInYdzdjaRtTAydw7dfaXUj1wWwidZRinDeu2NawPWlT9Bajucc69SqTVwbK4BAe/yJZRbFtgzr90vI7M+81g7mURkEGi8ADtRO0E5yemjp46wdCtppyIGywARnVgJ58tlcCfdTeTfOLmiwpaRqWPxLBGZEwZsYkwBPtXLgFYEIr1KIjOpSJRwohwQff0/QyKFEs9inWLZwSMyCTxz9/nTKYNeLYuArqO21SfKgLxlT2gUeu2HqZbbx0Utlfc/HqcDvQQkRufPheLjra63K7B4oTdIsR9eW37hdCrLtMy5cgFSBil15h5m8AMuCihNVgAAAABJRU5ErkJggg==">
                       </div>
-                      <div class="collapsible-body">
-                        <div>
+                      <div class="collapsible-body" >
+                        <div class="row">
+                        <div class="col s12 l6 m6">
+                        <div class="card blue-grey darken-1" >
+                          <div class="card-content white-text">
+                              <span class="card-title">People you shared</span>
                         @if ($shared->isEmpty())
-                          <span class="blue-text darken-4">There are no shares yet</span>
+                          <span class="witch-text darken-4">There are no shares yet</span>
                         @endif
                         @foreach ($shared as $shares)
-                          <a href="{{url('/search/'.$shares->id)}}"><div class=" col s12 chip">
+                            <div class=" col s12 chip">
                             <img src="{{asset('uploads/avatars/'.$shares->avatar)}}" alt="Contact Person"/>
+                            <a href="{{url('/search/'.$shares->id)}}">
                             {{$shares->fname}}&nbsp;{{$shares->lname}}
-                          </div></a>
+                            </a>
+                          </div>
+                          <br>
                         @endforeach
-                      </div>
-                        <div id="lis1"class="col s11">
+                        </div>
+                        <br><br>
+                          <div class="card-action"></div>
+                </div>
+              </div>
+                          <div class="col s12 m6 l6">
+                            <div class="card blue-grey darken-1">
+                              <div class="card-content white-text">
+
+
+                                <div>
                           <form class="inline" action="{{route('share')}}" method="post">
                             {{ csrf_field()}}
                             <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                             <div class="input-field ">
+
                               @if ($goals->goalauthorization!='aligned')
                                       <input id="email" name="email" type="text" class="validate">
-                                      <label for="email">email</label>
+                                      <label  class="white-text" for="email">email</label>
 
                                       <button type="submit"  class="btn btn-floating" name="button"><i class="material-icons">share</i></button>
                                     @endif
@@ -270,10 +308,16 @@
                           <br>
                         </div>
                       </div>
-                      <br>
-                    </li>
-                    </ul>
+                    </div>
+                        </div>
+                      </div>
+
                   </div>
+                </li>
+                </ul>
+                  </div>
+                  </div>
+
                   <script type="text/javascript">
 
                   </script>
