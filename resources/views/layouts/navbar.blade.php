@@ -176,7 +176,7 @@
         margin-top: 15px;
       }
 
-  
+
 
       ::-webkit-scrollbar-track
       {
@@ -245,8 +245,10 @@
 
         <ul class="left">
               <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-             <img class="logoImg" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px">
+             <img class="logoImg hide-on-small-only" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px">
+              <img class="logoImg hide-on-med-and-up" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/favicon.ico')}}" >
         </ul>
+
 
         <ul class="right hide-on-small-only">
           <!-- Dropdown Trigger -->

@@ -27,7 +27,7 @@
                    {{csrf_field()}}
                    <input type="hidden" name="friend" value="requested">
                    <input type="hidden" name="friendid" value="{{$users->id}}">
-                   <button class="btn waves-effect waves-light blue darken-4" type="submit" name="action"{{($friendship!='')?'disabled':''}}>{{($friendship!='')?$friendship:'send request'}}
+                   <button class="btn waves-effect waves-light blue darken-4 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add Friend" type="submit" name="action"{{($friendship!='')?'disabled':''}}>{{($friendship!='')?$friendship:'send request'}}
                  </form>
 
               <i class="material-icons right">person_pin</i>

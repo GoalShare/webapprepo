@@ -12,13 +12,13 @@
         <ul class="collection">
           <li class="collection-item">
             <div class="input-field col s6">
-              <input id="goalname" name="goalname" type="text" class="validate" required>
+              <input id="goalname" name="goalname" type="text" class="validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal Name " required>
               <label for="goalname">Goal Name</label>
             </div>
           </li>
           <li class="collection-item">
             <div class="input-field col s6">
-              <input id="goalintent" name="goalintent" type="text" class="validate" required>
+              <input id="goalintent" name="goalintent" type="text" class="validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal intent " required>
               <label for="goalintent">Goal Intent</label>
             </div>
           </li>
@@ -37,7 +37,7 @@
                 </p>
           </li>
           <li class="collection-item">
-            <div class="input-field col s12">
+            <div class="input-field col s12 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Select Goal category">
                 <select name="goalcategory">
                    <option  value="non specified" disabled selected>select goal category</option>
                    <option  value="business">business</option>
@@ -64,13 +64,13 @@
           <li class="collection-item">
             <div class="mdl-textfield mdl-js-textfield">
               <label  style="color:#565656;font-size:12pt;"for="goalstartdate">Goal Start-Date</label>
-              <input class="mdl-textfield__input" style="color:#565656;" type="date" id="goalstartdate" name="goalstartdate" required>
+              <input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal start date" style="color:#565656;" type="date" id="goalstartdate" name="goalstartdate" required>
             </div>
           </li>
           <li class="collection-item">
             <div class="mdl-textfield mdl-js-textfield">
               <label  style="color:#565656;font-size:12pt;"for="goalenddate">Goal End-Date</label>
-              <input class="mdl-textfield__input" style="color:#565656;" type="date" id="goalenddate" name="goalenddate" required>
+              <input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal end date" style="color:#565656;" type="date" id="goalenddate" name="goalenddate" required>
             </div>
           </li>
           <li class="collection-item">
@@ -80,7 +80,7 @@
                 <input type="file" name="goalpicture">
               </div>
               <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" name="goalpicturepath">
+                <input class="file-path validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Your Goal Picture" type="text" name="goalpicturepath">
               </div>
             </div>
           </li>
@@ -413,7 +413,7 @@
 
 
         <div class="fab">
-          <button id="view-source" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></button>
+          <button id="view-source" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
         </div>
 
         {{-- <a id="menu" class="waves-effect waves-light btn btn-floating red" ><i class="material-icons">add</i></a> --}}

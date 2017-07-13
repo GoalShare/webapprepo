@@ -1,63 +1,77 @@
 @extends('layouts.navbar')
 
 @section('content')
+
 @include('layouts.friendsView')
 <div class="row">
 
     <div class="container">
       <!-- user prof -->
 <style media="screen">
-  .imgoverlay{
-    width:200px;
-    height:200px;
-    background:rgba(0,0,0,0.6);
+  .cambtn{
+
     position:absolute;
-    margin-left:115px;
+    z-index: 4;
+    margin-left: -100px;
+
+
+  }
+
+  .hidden{
+    visibility: hidden;
   }
 </style>
 
           <br>
           <div class="col s12 m6 l6 center-align" id="profilepic">
-            <form style="display:none;"enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
-            {{ csrf_field() }}
-            <div class="file-field input-field">
-              <div class="btn btn-floating">
-                <span><i class="material-icons">add</i></span>
-                <input type="file" name="profilepic">
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate col s10" type="text" name="profilepicpath">
-                <button type="submit" class="col s2" style="border:none;background-color:inherit;" name="button"><i class="material-icons">send</i></button>
-              </div>
-            </div>
-            </form>
 
 
-                 <div class="wrapper" >
 
-                      <div class="circle  imgoverlay" id="imgoverlayfade">
-                      <p class="white-text">
-                        <div class="file-field input-field">
-                          <div class="btn btn-floating">
-                        <i class="material-icons">camera</i>
-                        <input type="file" name="profilepic">
-                      </div>
-                        </div
-                      </p>
-                    </form>
-                    </div>
+                      <div class="cambtn hide-on-med-and-down" id="imgoverlayfade">
+                      <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
+                        {{ csrf_field() }}
+                          <p class="white-text">
+                            <div class="file-field input-field"  >
+                              <div class="btn btn-floating">
+                            <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >camera</i>
+
+                            <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
+                          </div>
+                        </div>
+
+
+                          </p>
+
+                        </form>
+
+
+
+
                     </div>
 
-                      <div class="btn btn-floating hide-on-med-and-up">
-                        <i class="material-icons">camera</i>
-                        <input type="file" name="profilepic">
-                      </div>
+                    <div class="btn btn-floating hide-on-med-and-up">
+                      <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
+                        {{ csrf_field() }}
+                          <p class="white-text">
+                            <div class="file-field input-field"  >
+                              <div class="btn btn-floating">
+                            <i class="material-icons" >camera</i>
+
+                            <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
+                          </div>
+                        </div>
+
+
+                          </p>
+
+                        </form>
+                    </div>
 
 
 
 
-                      <div id="imageWrapper">
-                         <img  id="imageprof" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
+                      <div id="imageWrapper" style="z-index:1;">
+                         <img   src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
                       </div>
                   </div>
 
@@ -66,7 +80,7 @@
 
           <script type="text/javascript">
 
-
+            document.getElementById("imgoverlayfade").style.display='none';
             var imageWrapper = document.getElementById('imageWrapper');
             var imageprof = document.getElementById('imageprof');
             var profilepic=document.getElementById("profilepic");
@@ -77,32 +91,38 @@
             imageprof.addEventListener("mouseover",WrapperDis1);
             imageprof.addEventListener("mouseout",WrapperDis1);
 
-            document.getElementById("imgoverlayfade").style.display='none';
 
+            //
+            // $("#imageWrapper").hover(function() {
+            //   $("#imgoverlayfade").removeClass('hidden');
+            // }, function() {
+            //   $("#imgoverlayfade").addClass('hidden');
+            // });
 
-            function WrapperDis1(){
-                $("#imgoverlayfade").fadeIn();
-            }
-
-            function WrapperDis1(){
-                $("#imgoverlayfade").fadeOut();
-            }
-
-            function wrapperShow(){
-                $("#imgoverlayfade").fadeIn();
-            }
-
-            function WrapperDis(){
-                $("#imgoverlayfade").fadeOut();
-            }
-
+            //
+            // function WrapperDis1(){
+            //     $("#imgoverlayfade").removeClass('hidden');
+            // }
+            //
+            // function WrapperDis1(){
+            //     $("#imgoverlayfade").addClass('hidden');
+            // }
+            //
+            // function wrapperShow(){
+            //     $("#imgoverlayfade").removeClass('hidden');
+            // }
+            //
+            // function WrapperDis(){
+            //     $("#imgoverlayfade").addClass('hidden');
+            // }
+            //
             function mouseOver(){
-              document.getElementById("addprofilepicfrm").style.display='inline';
+              document.getElementById("imgoverlayfade").style.display='inline';
 
 
             }
             function mouseOut(){
-              document.getElementById("addprofilepicfrm").style.display='none';
+              document.getElementById("imgoverlayfade").style.display='none';
 
 
             }
@@ -363,10 +383,12 @@
 
           <div class="card-action">
             @foreach ($friends as $friend)
+              @if ($friend->id!=Auth::id())
               <a href="{{url('/search/'.$friend->id)}}"><div class="chip">
                 <img src="{{asset('uploads/avatars/'.$friend->avatar)}}" alt="Contact Person">
                 {{$friend->fname}}&nbsp;{{$friend->lname}}
               </div></a>
+              @endif
             @endforeach
 
          </div>

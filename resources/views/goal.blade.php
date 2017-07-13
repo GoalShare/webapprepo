@@ -17,13 +17,13 @@
         <ul class="collection">
           <li class="collection-item">
             <div class="input-field col s6">
-              <input class="validate" style="color:#565656;" type="text" id="taskname" name="taskname" required>
+              <input class="validate  tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter Task Name " style="color:#565656;" type="text" id="taskname" name="taskname" required>
               <label style="color:#565656;"for="taskname">Task Name</label>
             </div>
           </li>
           <li class="collection-item">
             <div class="input-field col s6">
-              <input  style="color:#565656;" type="text" id="taskintent" name="taskintent" required>
+              <input  style="color:#565656;"  class="validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter task Intent " type="text" id="taskintent" name="taskintent" required>
               <label style="color:#565656;"for="taskintent">Task Intent</label>
             </div>
           </li>
@@ -44,13 +44,13 @@
           <li class="collection-item">
             <div class="input-field col s6">
               <span  style="color:#565656;font-size:12pt;">Task Start-Date</span>
-              <input  style="color:#565656;" type="date" id="taskstartdate" name="taskstartdate" required>
+              <input  style="color:#565656;" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Task start date" type="date" id="taskstartdate" name="taskstartdate" required>
             </div>
           </li>
           <li class="collection-item">
             <div class="input-field col s6">
               <span style="color:#565656;font-size:12pt;">Task End-Date</span>
-              <input  style="color:#565656;" type="date" id="taskenddate" name="taskenddate" required>
+              <input  style="color:#565656;" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Task end date" type="date" id="taskenddate" name="taskenddate" required>
             </div>
           </li>
         </ul>
@@ -138,7 +138,7 @@
                     <ul class="collapsible popout" data-collapsible="accordion">
                       <li>
                       <div class="collapsible-header">
-                        <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB0klEQVRIS+2XT07CUBDGv3mJkQRI6gmQE4gnsC4Ed3ACW04gnEA9gfUEtV5A3dm6EG8AJ9AbSEJJMCZvzDPR9C8+tdiFdt/5zXyd+WZKKOmhZdzKvru5WGCKUX9adH6Z4Oqe2xKCLgHaVEBmdsLAHhYJzwTXO94jgEYUJEHDuX/gFAVPgZW8aywekgBm3IeBZa4MDNM16uviKQUGrkPf6q0ODKDW8RwCDqMQJrkb3vRHKwWr4NXOxUCwPGbQI7O057f9cVFQFWfpONXanqpwFAbWcZHQf3BKzT8qNWEc+tbg15uLiBsz326WAMZO0T6tO04GEbaklNs6JqI2GxEdgWAw6GruW2dZamkZCBNNBfhUAoO8QCp4bd81icVdzGqBs6we0QIr56q33R5IOGo7KzdjJrU6P54wsE5qHe+KgG6ywtmz3EgeE9rg92DVvQubBLfAaCXAppp7IuwkwS8km4ubfizRL4OXdffbYgGfxqRmTMLAiiX5aXN9Z4SiK5UZk7zNlluxyp4gu2BMmflEp6M/EjVdo1KBkZQ3WkgmOOsQ0B0nXZXS4LJOn/KOPWUEbW+s3CoqW9G2mXvQE4nzdzjnuI/u9/yyZf76L8xPKtF99xVcbfQfFIlphQAAAABJRU5ErkJggg==">
+                        <img class="icon icons8-Merge-Git-Filled tooltipped" data-position="bottom" data-delay="50" data-tooltip="Work on same goal " width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAB0klEQVRIS+2XT07CUBDGv3mJkQRI6gmQE4gnsC4Ed3ACW04gnEA9gfUEtV5A3dm6EG8AJ9AbSEJJMCZvzDPR9C8+tdiFdt/5zXyd+WZKKOmhZdzKvru5WGCKUX9adH6Z4Oqe2xKCLgHaVEBmdsLAHhYJzwTXO94jgEYUJEHDuX/gFAVPgZW8aywekgBm3IeBZa4MDNM16uviKQUGrkPf6q0ODKDW8RwCDqMQJrkb3vRHKwWr4NXOxUCwPGbQI7O057f9cVFQFWfpONXanqpwFAbWcZHQf3BKzT8qNWEc+tbg15uLiBsz326WAMZO0T6tO04GEbaklNs6JqI2GxEdgWAw6GruW2dZamkZCBNNBfhUAoO8QCp4bd81icVdzGqBs6we0QIr56q33R5IOGo7KzdjJrU6P54wsE5qHe+KgG6ywtmz3EgeE9rg92DVvQubBLfAaCXAppp7IuwkwS8km4ubfizRL4OXdffbYgGfxqRmTMLAiiX5aXN9Z4SiK5UZk7zNlluxyp4gu2BMmflEp6M/EjVdo1KBkZQ3WkgmOOsQ0B0nXZXS4LJOn/KOPWUEbW+s3CoqW9G2mXvQE4nzdzjnuI/u9/yyZf76L8xPKtF99xVcbfQfFIlphQAAAABJRU5ErkJggg==">
                       </div>
 
                       <div class="collapsible-body">
@@ -203,7 +203,7 @@
                             <label class="white-text"for="email">email</label>
                     @endif
                     @if ($goals->goalauthorization!='aligned')
-                    <button type="submit"  class="btn btn-floating" name="button">
+                    <button type="submit"  class="btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Work on same goal " name="button">
                       <!-- Merge Git Filled icon by Icons8 -->
 <img class="icon icons8-Merge-Git-Filled" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAADDUlEQVRIS8VXMUxTYRD+7iXgwCsUFyZAhUUTtA4OBhJxoBhYILogasukwgBGJYQFcJGYGHERtrYJBBcjiWjoI1FIRBMdKDC4gAGcWLTYsmjSM/fKq215bR+Pin/Spe+/7/vvv//uviNYXEUNPhcReUBwgeEkIpeYMnMIhDAYIWYO7Mx2hKxAUtZN9T6nWqh0E7gHRE4rgGAOM2gkqnmGsu3PSOxw+1pA9ASgY5YI92zidTDfiWgdU2b2psRqY2CEgG57hKlWzBg0834PscMd8IPgMcw7W06iuKgQrz9uYuXrD5tnYX8k6O1INk4hTvd0cuAims+XJ/bXdr6yTc6MoajmGTTAEsTxmCovjQ8lRQX49qItxcNnU1/QN/bZpteSArFWI+Zx4nqf03GEFtMf0s+ZGykkQirk9hevR4Le42KvE6vuwCARBtIB2xuqMHq3Vv9b4tt0fwbbO7/t8+p5H79yndjh9odBVGKGKDHuv+6CxDcvizkc0bylpF7y1RMr7zKB1p0uQ/81F5p6g3nhFZBYLHaWcuXsvyBm4Cmp7sAcES4cpsfMmBfiEBHOZCMevnkOdV3TebtqaSzkaAxwNkS56jePGlF+efLALzqlclklnv6wiasP5vLmtaWrllddohZiXFvFaJYCIjkvub+xFcXtxwt4v7xlelBmLFl+XG1DbzF2rw7FRQWY0NZ08IWVv8DSTIZvnUsQhaO/UHHleSbi+X2nk8S8vaEalWVqAnRidhU1VUch5Mkr07vQ00kkjaIoi5mCV3OiFO3u6pzNQSqcdDNjSYnNVO30ApKrZEqXqihTLbVDIe9qPaWHoW/sk3kWMG9HNK/TcpNYXvuO5t7ggVMqpUnE26Ii6rAy+crT2+LD8SXI7wBrIxL06BruPwuBXRfS+/KhSB/j+szEnhQPqVy2xR4jENE83pSSaRavTIrETmzTRZ6BkUPQKyPpD24f5BvgWM++BH0yuO59fIQxlUZ7DsK8vTvCJKSs2WGzz05JFvrQpiheMGRYcxo9XAo+gDAIIY7F/FaHtj9Q9mlGLYa+lgAAAABJRU5ErkJggg==">
                     </button><br>@endif
@@ -259,7 +259,7 @@
                     <ul class="collapsible popout" data-collapsible="accordion">
                       <li>
                       <div class="collapsible-header">
-                        <img class="icon icons8-Share" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACLElEQVRIS8VW21HbUBDdc/OYzOBMTAWhg5AKUD5I+As0YEsVYFeAqAC5AuE0gD9B/ohcQZwKQjqwR/JM8Di7zJVlImskhIUc6Vdz79lz7tmzC6rpQ024tBXgxpFrEKsDEvjhsDXKIlcp8Jsjd+8l4wrA/gpMRMYLJSd/rq3bZAGVAjc+932ADtIMhcQPb8xPWwHWbF+J+pXnmeCOd8m3Jqv/lTHW7wpR3/OAmfnjbGiNKwVegsIlwl4msMg08MxmZVLHZroAcPxYWzKhO7tpOc8HNtxm47U6Bch+uExkylA2MU0A6QD0QYRGIHYCzxqkC9v4jXcOv5lK8dmarEL9YM6dpHmKgikTeCmhahPEICHdh70Xf6kJhQsQjH89SiMR7iRNUwSYa67IKIwrAtbMkLrwNzPs2bB1+VSgQqnffunrhHmfd6EInYdzdjaRtTAydw7dfaXUj1wWwidZRinDeu2NawPWlT9Bajucc69SqTVwbK4BAe/yJZRbFtgzr90vI7M+81g7mURkEGi8ADtRO0E5yemjp46wdCtppyIGywARnVgJ58tlcCfdTeTfOLmiwpaRqWPxLBGZEwZsYkwBPtXLgFYEIr1KIjOpSJRwohwQff0/QyKFEs9inWLZwSMyCTxz9/nTKYNeLYuArqO21SfKgLxlT2gUeu2HqZbbx0Utlfc/HqcDvQQkRufPheLjra63K7B4oTdIsR9eW37hdCrLtMy5cgFSBil15h5m8AMuCihNVgAAAABJRU5ErkJggg==">
+                        <img class="icon icons8-Share tooltipped" data-position="bottom" data-delay="50" data-tooltip="Share your Goal" width="30" height="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACLElEQVRIS8VW21HbUBDdc/OYzOBMTAWhg5AKUD5I+As0YEsVYFeAqAC5AuE0gD9B/ohcQZwKQjqwR/JM8Di7zJVlImskhIUc6Vdz79lz7tmzC6rpQ024tBXgxpFrEKsDEvjhsDXKIlcp8Jsjd+8l4wrA/gpMRMYLJSd/rq3bZAGVAjc+932ADtIMhcQPb8xPWwHWbF+J+pXnmeCOd8m3Jqv/lTHW7wpR3/OAmfnjbGiNKwVegsIlwl4msMg08MxmZVLHZroAcPxYWzKhO7tpOc8HNtxm47U6Bch+uExkylA2MU0A6QD0QYRGIHYCzxqkC9v4jXcOv5lK8dmarEL9YM6dpHmKgikTeCmhahPEICHdh70Xf6kJhQsQjH89SiMR7iRNUwSYa67IKIwrAtbMkLrwNzPs2bB1+VSgQqnffunrhHmfd6EInYdzdjaRtTAydw7dfaXUj1wWwidZRinDeu2NawPWlT9Bajucc69SqTVwbK4BAe/yJZRbFtgzr90vI7M+81g7mURkEGi8ADtRO0E5yemjp46wdCtppyIGywARnVgJ58tlcCfdTeTfOLmiwpaRqWPxLBGZEwZsYkwBPtXLgFYEIr1KIjOpSJRwohwQff0/QyKFEs9inWLZwSMyCTxz9/nTKYNeLYuArqO21SfKgLxlT2gUeu2HqZbbx0Utlfc/HqcDvQQkRufPheLjra63K7B4oTdIsR9eW37hdCrLtMy5cgFSBil15h5m8AMuCihNVgAAAABJRU5ErkJggg==">
                       </div>
                       <div class="collapsible-body" >
                         <div class="row">
@@ -299,7 +299,7 @@
                                       <input id="email" name="email" type="text" class="validate">
                                       <label  class="white-text" for="email">email</label>
 
-                                      <button type="submit"  class="btn btn-floating" name="button"><i class="material-icons">share</i></button>
+                                      <button type="submit"  class="btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Share your Goal" name="button"><i class="material-icons">share</i></button>
                                     @endif
                             </div>
 
@@ -387,8 +387,8 @@
                           </div>
                             <div class="col s2">
                               @if ($goals->goalauthorization!='aligned')
-                                  <button  class="btn-floating "style="display:none;" type="submit" id="editintent"><i class="material-icons">done</i></button>
-                                  <button  class="btn-floating"id="intentbtn" ><i class="material-icons ">mode_edit</i></button>
+                                  <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Done "style="display:none;" type="submit" id="editintent"><i class="material-icons">done</i></button>
+                                  <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"id="intentbtn" ><i class="material-icons ">mode_edit</i></button>
                               @endif
                             </div>
                           </div>
@@ -503,7 +503,8 @@
                               </div>
                                 <div class="col s2">
                                   @if ($goals->goalauthorization!='aligned')
-                                    <button  class="btn-floating"style="display:none;" type="submit" id="editcategory"><i class="material-icons">done</i></button><button  class="btn-floating"id="categorybtn" ><i class="material-icons ">mode_edit</i></button>
+                                    <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done"style="display:none;" type="submit" id="editcategory"><i class="material-icons">done</i></button>
+                                    <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" id="categorybtn" ><i class="material-icons ">mode_edit</i></button>
                                   @endif
                                 </div>
                               </div>
@@ -605,7 +606,8 @@
                               </div>
                                 <div class="col s2">
                                 @if ($goals->goalauthorization!='aligned')
-                                    <button  class="btn-floating"style="display:none;" type="submit" id="editpriority"><i class="material-icons">done</i></button><button  class="btn-floating"id="prioritybtn" ><i class="material-icons ">mode_edit</i></button>
+                                    <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done" style="display:none;" type="submit" id="editpriority"><i class="material-icons">done</i></button>
+                                    <button  class="btn-floating  tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" id="prioritybtn" ><i class="material-icons ">mode_edit</i></button>
                                   @endif
                                 </div>
                               </div>
@@ -704,7 +706,8 @@
                                 <div class="col s2">
                                   @if ($goals->goalauthorization!='aligned')
 
-                                    <button  class="btn-floating"style="display:none;" type="submit" id="editstartdate"><i class="material-icons">done</i></button><button  class="btn-floating"id="startdatebtn" ><i class="material-icons ">mode_edit</i></button>
+                                    <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done" style="display:none;" type="submit" id="editstartdate"><i class="material-icons">done</i></button>
+                                    <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" id="startdatebtn" ><i class="material-icons ">mode_edit</i></button>
 
                                   @endif
                                 </div>
@@ -803,7 +806,8 @@
                               </div>
                                 <div class="col s2">
                                   @if ($goals->goalauthorization!='aligned')
-                                    <button  class="btn-floating"style="display:none;" type="submit" id="editenddate"><i class="material-icons">done</i></button><button  class="btn-floating"id="enddatebtn" ><i class="material-icons ">mode_edit</i></button>
+                                    <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done" style="display:none;" type="submit" id="editenddate"><i class="material-icons">done</i></button>
+                                    <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" id="enddatebtn" ><i class="material-icons ">mode_edit</i></button>
                                   @endif
                                 </div>
                               </div>
@@ -915,7 +919,7 @@
                           @if ($goals->goalauthorization!='aligned')
                           <form class="" action="{{route('deletetask')}}" method="post">
                             {{csrf_field()}}
-                            <button type="submit" style="border:none;background-color:inherit;"><input type="hidden" name="goalid" value="{{$tasks->goalid}}"><i class="material-icons">delete</i></button>
+                            <button type="submit" style="border:none;background-color:inherit;"><input type="hidden" name="goalid" value="{{$tasks->goalid}}"><i class="material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="delete task">delete</i></button>
                           </form>
                         @endif
                         </div>
@@ -974,7 +978,7 @@
                                   </p>
                             </div>
                             <div class="col s2"><br>
-                              <button type="submit" id="{{$taskcount}}" class="waves-effect waves-light btn-floating"><i class="material-icons">done</i></button>
+                              <button type="submit" id="{{$taskcount}}" class="waves-effect waves-light btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Done "><i class="material-icons">done</i></button>
                             </div>
                           </form>
                         </div>
@@ -1012,7 +1016,7 @@
                       </script> --}}
                     @endforeach
                     @foreach ($privacy as $privacys)
-                      <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
+                      <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse  tooltipped" data-position="bottom" data-delay="50" data-tooltip="Divide your goal to Tasks" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
                     @endforeach
                   </ul>
                 @endif
