@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->date('dob');
-            $table->string('phone',20);
+            $table->string('countrycode',5)
+            $table->string('phone',10);
             $table->string('gender',6);
             $table->string('password');
             $table->rememberToken();

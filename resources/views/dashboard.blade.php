@@ -353,7 +353,6 @@
                   </li>
                   @endif
                 </ul>
-                                <i class="material-icons">comment</i> &nbsp   &nbsp 22
               </div>
 
               </div>

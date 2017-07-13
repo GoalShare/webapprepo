@@ -1,7 +1,7 @@
 @extends('layouts.navbar')
 
 @section('content')
-
+@include('layouts.friendsView')
 <div class="row">
 
     <div class="container">

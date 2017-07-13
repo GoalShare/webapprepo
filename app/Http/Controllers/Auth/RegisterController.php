@@ -51,11 +51,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'fname' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
+            'phone' => 'required|numeric|min:9',
             'dob' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|min:8|confirmed',
+            'countrycode' => 'required|max:10',
         ]);
     }
 
@@ -74,6 +75,7 @@ class RegisterController extends Controller
             'lname'=>$data['lname'],
             'dob'=>$data['dob'],
             'phone'=>$data['phone'],
+            'countrycode'=>$data['countrycode'],
             'gender'=>$data['gender'],
             'password' => bcrypt($data['password']),
             'created_at'=> Carbon::now(),

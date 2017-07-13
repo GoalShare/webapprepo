@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/C133C2CF-E0EB-3E49-B84F-D4514D6D7273/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/3727D6D4154D-F48B-94E3-BE0E-FC2C331C/abn/main.css"/><script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('materialize/css/materialize.css')}}">
     <script src="{{asset('materialize/js/materialize.js')}}"></script>
     <meta charset="utf-8">
@@ -130,8 +130,9 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: #999999;
-      opacity: 0.7;
+    background:rgba(0, 0, 0, 0.6);
+      z-index: 2;
+
       overflow: hidden;
       width: 100%;
       height: 0;
@@ -144,7 +145,7 @@
 
     .text {
 
-      opacity: 1;
+
       white-space: nowrap;
       color: white;
       font-size: 20px;
@@ -175,18 +176,24 @@
         margin-top: 15px;
       }
 
-      .bar{
-        position: absolute;
-        width: 300px;
-        height: 700px;
-        margin-top: 100px;
+  
 
-         z-index: -1;
-         right:0;
-        /*overflow-y: scroll;*/
+      ::-webkit-scrollbar-track
+      {
+      	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      	background-color: #F5F5F5;
       }
 
+    ::-webkit-scrollbar
+      {
+      	width: 6px;
+      	background-color:  #999999;
+      }
 
+    ::-webkit-scrollbar-thumb
+      {
+      	background-color:  #999999;
+      }
 
 
 
@@ -229,6 +236,8 @@
           {{ csrf_field() }}
       </form>
     </ul>
+    <div class="navbar-fixed">
+
 
     <nav>
       <div class="nav-wrapper blue darken-4 ">
@@ -261,6 +270,7 @@
 
       </div>
     </nav>
+    </div>
 
     <!-- Dropdown Structure -->
     <ul id="slide-out" class="side-nav ">
@@ -301,6 +311,7 @@
                     {{ csrf_field() }}
                 </form>
        <div class="divider"></div>
+       <li><a class="waves-effect" href="{!! url('/aboutus'); !!}">About us<i class="material-icons">people</i></a></li>
 
      </ul>
 
@@ -312,7 +323,7 @@
         @yield('content')
 
    <!-- footer -->
-<footer class="page-footer blue darken-4">
+<footer class="page-footer blue darken-4"  >
          <div class="container">
            <div class="row">
              <div class="col l6 s12">

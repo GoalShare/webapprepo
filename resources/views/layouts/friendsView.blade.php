@@ -1,157 +1,74 @@
 <style media="screen">
-.bar{
+@media only screen and (max-width : 540px)
+{
+    .chat-sidebar
+    {
+        display: none !important;
+    }
 
-
+    .chat-popup
+    {
+        display: none !important;
+    }
 }
 
-/* Box styles */
-.myBox {
-  position: absolute;
-  width: 300px;
-  margin-top: 100px;
-   right:0;
-border: none;
-padding: 5px;
 
-height: 100%;
-overflow-y: scroll;
+
+.chatsidebar
+{
+    background-color: #dbdbdb;
+    width: 200px;
+    position: fixed;
+    height: 70%;
+    right: 0px;
+    margin-top: 100px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    border: 1px solid rgba(29, 49, 91, .3);
+      overflow-y: scroll;
+      z-index: 2;
+      border-radius: 10px;
+
 }
 
 /* Scrollbar styles */
-::-webkit-scrollbar {
-width: 12px;
+div::-webkit-scrollbar {
+width: 6px;
 height: 12px;
 }
 
-::-webkit-scrollbar-track {
-border: 1px solid  #0047b3;
+div::-webkit-scrollbar-track {
+border: 1px   #0047b3;
 border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+div::-webkit-scrollbar-thumb {
 background:  #0047b3;
 border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
 
-}
+
+
 </style>
-<div class="myBox center">
 
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
-    <div class="chip">
-      Tag
-      <i class="close material-icons">close</i>
-    </div><br>
+<div class="chatsidebar center hide-on-med-and-down">
+@foreach ($friends as $friend)
+  @if ($friend->id!=Auth::id())
+  <a href="{{url('/search/'.$friend->id)}}"><div class="chip">
+    <img src="{{asset('uploads/avatars/'.$friend->avatar)}}" alt="Contact Person">
+    {{$friend->fname}} {{$friend->lname}}
+  </div></a><br>
+@endif
+@endforeach
+
+
+
 
 </div>
-     <!-- <div class="row bar right center">
-            <div class="col m12 l12">
-              <div class="card large">
-                <div class="card-title"><br>
-                  <h3>Friends</h3>
-                </div>
-
-                <div class="card-content">
-
-
-                </div>
-                <div class="card-action">
-                  <a href="#">See more</a>
-                </div>
-
-              </div>
-            </div>
-          </div> -->
+<script type="text/javascript">
+.chatsidebar {overflow:auto;}
+.chatsidebar {overflow-y:auto;}
+.chatsidebar {overflow-x:auto;}
+</script>

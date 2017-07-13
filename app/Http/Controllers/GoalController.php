@@ -23,6 +23,12 @@ public function view($goalid){
     ->where('email', $email)
     ->groupBy('goalcategory')
     ->get();
+    $friends=DB::table('friendships')
+                   ->join('users', 'users.id', '=', 'friendships.user')
+                   ->select('users.*', 'friendships.*')
+                   ->where([['friendships.status','friends'],['friendships.friend',$id]])
+                   ->orwhere([['friendships.status','friends'],['friendships.user',$id]])
+                   ->get();
     $friendrequest=DB::table('friendships')
             ->join('users', 'users.id', '=', 'friendships.user')
             ->select('users.*', 'friendships.*')
@@ -40,7 +46,7 @@ public function view($goalid){
     $task = DB::table('tasks')->where([['goalid',$goalid],['taskauthorization','<>','gift']])->get();
     $aligned=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','aligned']])->get();
     $shared=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','gift']])->get();
-    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill]);
+    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends]);
 }
   else {
     return view('auth.login');

@@ -1,7 +1,6 @@
 @extends('layouts.navbar')
-
 @section('content')
-
+@include('layouts.friendsView')
       @foreach ($goal as $goals)
       @endforeach
       @foreach ($user as $users)
@@ -1012,7 +1011,7 @@
 
                       </script> --}}
                     @endforeach
-                    @foreach ($privacys as $privacy)
+                    @foreach ($privacy as $privacys)
                       <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
                     @endforeach
                   </ul>

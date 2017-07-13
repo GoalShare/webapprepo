@@ -38,14 +38,20 @@ class HomeController extends Controller
       ->where('email', $email)
       ->groupBy('goalcategory')
       ->get();
+      $friends=DB::table('friendships')
+                     ->join('users', 'users.id', '=', 'friendships.user')
+                     ->select('users.*', 'friendships.*')
+                     ->where([['friendships.status','friends'],['friendships.friend',$id]])
+                     ->orwhere([['friendships.status','friends'],['friendships.user',$id]])
+                     ->get();
       $friendrequest=DB::table('friendships')
               ->join('users', 'users.id', '=', 'friendships.user')
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);}
+      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends]);}
       else {
-        return view('login');
+        return view('/');
       }
     }
 
@@ -163,7 +169,7 @@ class HomeController extends Controller
               ->get();
       return view('catogorizedView',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'category'=>$category]);}
       else {
-        return view('login');
+        return view('/');
       }
     }
 
