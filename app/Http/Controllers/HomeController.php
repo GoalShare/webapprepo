@@ -42,14 +42,18 @@ class HomeController extends Controller
                      ->join('users', 'users.id', '=', 'friendships.user')
                      ->select('users.*', 'friendships.*')
                      ->where([['friendships.status','friends'],['friendships.friend',$id]])
-                     ->orwhere([['friendships.status','friends'],['friendships.user',$id]])
                      ->get();
+     $friendstwos=DB::table('friendships')
+                    ->join('users', 'users.id', '=', 'friendships.friend')
+                    ->select('users.*', 'friendships.*')
+                    ->where([['friendships.status','friends'],['friendships.user',$id]])
+                    ->get();
       $friendrequest=DB::table('friendships')
               ->join('users', 'users.id', '=', 'friendships.user')
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends]);}
+      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
       else {
         return view('/');
       }

@@ -1,8 +1,18 @@
 @extends('layouts.navbar')
 
 @section('content')
+  @php
+   $carbon = new Carbon(Auth::User()->created_at);
+   $compare =Carbon::now();
+  @endphp
 
+
+  @if (($goal->isEmpty())==false)
+    @if ($compare->diffInHours($carbon)>1)
 @include('layouts.friendsView')
+    @endif
+  @endif
+
     <!--add goal form -->
       <div id="addgoal" class="modal modal-fixed-footer">
     <div class="modal-content" style="text-align:center;">
@@ -38,7 +48,7 @@
           </li>
           <li class="collection-item">
             <div class="input-field col s12 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Select Goal category">
-                <select name="goalcategory">
+                <select name="goalcategory" required>
                    <option  value="non specified" disabled selected>select goal category</option>
                    <option  value="business">business</option>
                    <option  value="education">education</option>
@@ -419,10 +429,6 @@
         {{-- <a id="menu" class="waves-effect waves-light btn btn-floating red" ><i class="material-icons">add</i></a> --}}
 
         <!-- Tap Target Structure -->
-        @php
-         $carbon = new Carbon(Auth::User()->created_at);
-         $compare =Carbon::now();
-        @endphp
 
         <div class="tap-target" data-activates="view-source">
           <div class="tap-target-content white-text">

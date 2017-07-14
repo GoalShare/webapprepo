@@ -390,6 +390,14 @@
               </div></a>
               @endif
             @endforeach
+            @foreach ($friendstwos as $friendtwo)
+              @if ($friendtwo->id!=Auth::id())
+              <a href="{{url('/search/'.$friendtwo->id)}}"><div class="chip">
+                <img src="{{asset('uploads/avatars/'.$friendtwo->avatar)}}" alt="Contact Person">
+                {{$friendtwo->fname}}&nbsp;{{$friendtwo->lname}}
+              </div></a>
+              @endif
+            @endforeach
 
          </div>
 

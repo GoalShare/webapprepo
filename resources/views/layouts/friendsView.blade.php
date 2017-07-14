@@ -19,7 +19,7 @@
     background-color: #dbdbdb;
     width: 200px;
     position: fixed;
-    height: 70%;
+    height: 60%;
     right: 0px;
     margin-top: 100px;
     margin-right: 10px;
@@ -56,16 +56,22 @@ border-radius: 10px;
 <div class="chatsidebar center hide-on-med-and-down">
 @foreach ($friends as $friend)
   @if ($friend->id!=Auth::id())
-  <a href="{{url('/search/'.$friend->id)}}"><div class="chip">
+  <a href="{{url('/search/'.$friend->id)}}" class="row"><div class="chip col s11 push-s1">
     <img src="{{asset('uploads/avatars/'.$friend->avatar)}}" alt="Contact Person">
-    {{$friend->fname}} {{$friend->lname}}
-  </div></a><br>
+    <div class="truncate">{{$friend->fname}} {{$friend->lname}}</div>
+  </div></a>
+  <br>
 @endif
 @endforeach
-
-
-
-
+@foreach ($friendstwos as $friendtwo)
+  @if ($friendtwo->id!=Auth::id())
+  <a href="{{url('/search/'.$friendtwo->id)}}" class="row"><div class="chip col s11 push-s1">
+    <img src="{{asset('uploads/avatars/'.$friendtwo->avatar)}}" alt="Contact Person">
+    <div class="truncate">{{$friendtwo->fname}} {{$friendtwo->lname}}</div>
+  </div></a>
+  <br>
+@endif
+@endforeach
 </div>
 <script type="text/javascript">
 .chatsidebar {overflow:auto;}

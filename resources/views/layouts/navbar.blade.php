@@ -259,8 +259,11 @@
           <li>
             <form action="{{route('search')}}" method="post">
               {{ csrf_field()}}
-              <input type="search" name="searchkey" placeholder="Search people" class="searchbar blue-text text-darken-4">
+              <input type="search" name="searchkey" placeholder="Search people" class="searchbar blue-text text-darken-4 dropdown-button" data-hover="false" data-activates="suggestions">
             </form>
+            <ul class="dropdown-content" id="suggestions" style="margin-top:4%;")>
+              <li><a href="#">Alpha</a></li>
+            </ul>
           </li>
 
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class=" material-icons">textsms</i></a></li>
@@ -313,7 +316,6 @@
                     {{ csrf_field() }}
                 </form>
        <div class="divider"></div>
-       <li><a class="waves-effect" href="{!! url('/aboutus'); !!}">About us<i class="material-icons">people</i></a></li>
 
      </ul>
 

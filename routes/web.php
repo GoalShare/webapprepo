@@ -69,14 +69,18 @@ Route::get('/search/{userid}',function($userid){
           ->select('users.*', 'friendships.*')
           ->where([['friendships.status','requested'],['friendships.friend',$id]])
           ->get();
-  $friends=DB::table('friendships')
+          $friends=DB::table('friendships')
                          ->join('users', 'users.id', '=', 'friendships.user')
                          ->select('users.*', 'friendships.*')
-                         ->where([['friendships.status','friends'],['friendships.friend',$userid]])
-                         ->orwhere([['friendships.status','friends'],['friendships.user',$userid]])
+                         ->where([['friendships.status','friends'],['friendships.friend',$id]])
                          ->get();
+         $friendstwos=DB::table('friendships')
+                        ->join('users', 'users.id', '=', 'friendships.friend')
+                        ->select('users.*', 'friendships.*')
+                        ->where([['friendships.status','friends'],['friendships.user',$id]])
+                        ->get();
                          $id=Auth::id();
-  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill]);
+  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos]);
 });
 Route::post('skill','SkillController@skill')->name('skill');
 Route::post('goalskill','SkillController@goalskill')->name('goalskill');

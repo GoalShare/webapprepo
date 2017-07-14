@@ -28,10 +28,13 @@ class ProfileController extends Controller
                    ->join('users', 'users.id', '=', 'friendships.user')
                    ->select('users.*', 'friendships.*')
                    ->where([['friendships.status','friends'],['friendships.friend',$id]])
-                   ->orwhere([['friendships.status','friends'],['friendships.user',$id]])
                    ->get();
-                   $id=Auth::id();
-   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends]);
+   $friendstwos=DB::table('friendships')
+                  ->join('users', 'users.id', '=', 'friendships.friend')
+                  ->select('users.*', 'friendships.*')
+                  ->where([['friendships.status','friends'],['friendships.user',$id]])
+                  ->get();
+   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);
  }
  public function post(request $request){
    if($request->hasfile('profilepic')){

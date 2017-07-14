@@ -201,6 +201,8 @@
                     @if ($goals->goalauthorization!='aligned')
                             <input id="email" name="email" type="text" class="validate">
                             <label class="white-text"for="email">email</label>
+                    @else
+                      Sorry, You are not authorized to align this task
                     @endif
                     @if ($goals->goalauthorization!='aligned')
                     <button type="submit"  class="btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Work on same goal " name="button">
