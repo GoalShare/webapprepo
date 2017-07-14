@@ -259,9 +259,36 @@
           <li>
             <form action="{{route('search')}}" method="post" id="search-form">
               {{ csrf_field()}}
-              <input type="search" name="searchkey" placeholder="Search people" id="search" class="searchbar blue-text text-darken-4 dropdown-button" data-hover="false" data-activates="suggestions">
+              <input type="search" autocomplete="off" name="searchkey" placeholder="Search people" id="search" class="searchbar blue-text text-darken-4 dropdown-button" data-hover="false" data-activates="suggestions">
             </form>
-            <ul class="dropdown-content" id="suggestions" style="margin-top:4%;")>
+            <style media="screen">
+            /*ul#suggestions {
+              margin-top: -20px;
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              width: 208px;
+              display: none;
+              z-index: 5;
+            }
+
+            ul#suggestions li {
+            }
+
+            ul#suggestions li a {
+              display: block;
+              min-height: 1em;
+              padding: 0.5em 10px;
+              background: #CCC;
+              color: #000;
+              text-decoration: none;
+            }
+
+            ul#suggestions li a:hover {
+              background: #AAA;
+            }*/
+            </style>
+            <ul class=" dropdown-content " style="margin-top:45px;min-width:200px;" id="suggestions">
             </ul>
             <script type="text/javascript">
             // note: IE8 doesn't support DOMContentLoaded
@@ -271,15 +298,39 @@
               var action = form.getAttribute("action");
               var search = document.getElementById("search");
 
+              function showSuggestions(json) {
+                  var li_list = suggestionsToList(json);
+                  suggestions.innerHTML = li_list;
+                  suggestions.style.display = 'block';
+                }
+
+
+                function suggestionsToList(items) {
+                  // <li><a href="search.php?q=alpha">Alpha</a></li>
+                  var output = '';
+
+                  for(i=0; i < items.length; i++) {
+                    if((items[i].id)!={{Auth::id()}}){
+                    output += '<li>';
+                    output += '<a href="';
+                    output += "/search/"+ items[i].id + "\">";
+                    output += items[i].fname +' '+items[i].lname;
+                    output += '</a>';
+                    output += '</li><br>';
+                  }
+                  }
+
+                  return output;
+                }
+
+
               function getSuggestions() {
                 var q = search.value;
                 var form_data=new FormData(form);
-
-                if(q.length < 3) {
+                if(q.length < 2) {
                   suggestions.style.display = 'none';
                   return;
                 }
-
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST',action, true);
                 xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
@@ -288,7 +339,8 @@
                   if(xhr.readyState == 4 && xhr.status == 200) {
                     var result = xhr.responseText;
                     console.log('Result: ' + result);
-
+                    var json = JSON.parse(result);
+                    showSuggestions(json);
                     // var json = JSON.parse(result);
                     // showSuggestions(json);
                   }

@@ -36,7 +36,7 @@ class SearchController extends Controller{
       }
 
       if(!is_ajax_request()) {
-        return view('friendsView',['user'=>$user,'categorylist'=>$categorylist,'searchkey'=>$searchkey,'friendrequest'=>$friendrequest,'userlname'=>$userlname,'userfname'=>$userfname]);
+        return view('friendsView',['user'=>$userkey,'categorylist'=>$categorylist,'searchkey'=>$searchkey,'friendrequest'=>$friendrequest,'userlname'=>$userlname,'userfname'=>$userfname]);
       }
 
 
