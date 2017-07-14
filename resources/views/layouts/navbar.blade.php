@@ -257,13 +257,51 @@
 
         <ul class="right">
           <li>
-            <form action="{{route('search')}}" method="post">
+            <form action="{{route('search')}}" method="post" id="search-form">
               {{ csrf_field()}}
-              <input type="search" name="searchkey" placeholder="Search people" class="searchbar blue-text text-darken-4 dropdown-button" data-hover="false" data-activates="suggestions">
+              <input type="search" name="searchkey" placeholder="Search people" id="search" class="searchbar blue-text text-darken-4 dropdown-button" data-hover="false" data-activates="suggestions">
             </form>
             <ul class="dropdown-content" id="suggestions" style="margin-top:4%;")>
-              <li><a href="#">Alpha</a></li>
             </ul>
+            <script type="text/javascript">
+            // note: IE8 doesn't support DOMContentLoaded
+            document.addEventListener('DOMContentLoaded', function() {
+              var suggestions = document.getElementById("suggestions");
+              var form = document.getElementById("search-form");
+              var action = form.getAttribute("action");
+              var search = document.getElementById("search");
+
+              function getSuggestions() {
+                var q = search.value;
+                var form_data=new FormData(form);
+
+                if(q.length < 3) {
+                  suggestions.style.display = 'none';
+                  return;
+                }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST',action, true);
+                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                xhr.send(form_data);
+                xhr.onreadystatechange = function () {
+                  if(xhr.readyState == 4 && xhr.status == 200) {
+                    var result = xhr.responseText;
+                    console.log('Result: ' + result);
+
+                    // var json = JSON.parse(result);
+                    // showSuggestions(json);
+                  }
+                };
+
+              }
+
+              // use "input" (every key), not "change" (must lose focus)
+              search.addEventListener("input", getSuggestions);
+
+            });
+
+            </script>
           </li>
 
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class=" material-icons">textsms</i></a></li>

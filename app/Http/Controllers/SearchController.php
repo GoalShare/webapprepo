@@ -24,10 +24,27 @@ class SearchController extends Controller{
             ->select('users.*', 'friendships.*')
             ->where([['friendships.status','requested'],['friendships.friend',$id]])
             ->get();
-    $user= DB::table('users')->where('email','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
+    $userkey= DB::table('users')->where('email','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
     $userfname= DB::table('users')->where('fname','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
   //  $userphone= DB::table('users')->where('phone','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
     $userlname= DB::table('users')->where('lname','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
-    return view('friendsView',['user'=>$user,'categorylist'=>$categorylist,'searchkey'=>$searchkey,'friendrequest'=>$friendrequest,'userlname'=>$userlname,'userfname'=>$userfname]);
+
+
+    function is_ajax_request() {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+          $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+      }
+
+      if(!is_ajax_request()) {
+        return view('friendsView',['user'=>$user,'categorylist'=>$categorylist,'searchkey'=>$searchkey,'friendrequest'=>$friendrequest,'userlname'=>$userlname,'userfname'=>$userfname]);
+      }
+
+
+      echo json_encode($userkey);
+
+
+
+
+
   }
 }
