@@ -68,6 +68,10 @@
 
     }
 
+    .alignedCard{
+      overflow-y: scroll;
+      height: 200px;
+    }
 
 
 .footerCont{
@@ -288,7 +292,7 @@
               background: #AAA;
             }*/
             </style>
-            <ul class=" dropdown-content " style="margin-top:45px;min-width:200px;" id="suggestions">
+            <ul class=" dropdown-content searchdrop center" style="margin-top:45px;min-width:300px;" id="suggestions">
             </ul>
             <script type="text/javascript">
             // note: IE8 doesn't support DOMContentLoaded

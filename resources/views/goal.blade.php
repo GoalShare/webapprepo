@@ -144,7 +144,7 @@
                       <div class="collapsible-body">
                         <div class="row ">
                         <div class="col s12 l6 m6">
-                        <div class="card blue-grey darken-1" >
+                        <div class="card blue-grey darken-1 alignedCard" >
                           <div class="card-content white-text"  >
                             <span class="card-title">People you aligned</span>
                           @if ($aligned->isEmpty())
@@ -186,7 +186,7 @@
                         @endforeach
                           </div>
                           <br>
-                          <div class="card-action"></div>
+
                           </div>
                           </div>
                           <!-- collapsible-body end -->
@@ -247,15 +247,7 @@
 
                 {{-- ///////////////////////////// --}}
                     <!-- Share icon by Icons8 -->
-                    <style media="screen">
 
-                    .collapsible-body {
-                      display: none;
-                      border-bottom: 200px solid #ffffff;
-                      box-sizing: border-box;
-                      padding: 2rem;
-                    }
-                    </style>
                     <div class="row center-align">
                       <div class="col l12 s12">
                     <ul class="collapsible popout" data-collapsible="accordion">
@@ -266,7 +258,7 @@
                       <div class="collapsible-body" >
                         <div class="row">
                         <div class="col s12 l6 m6">
-                        <div class="card blue-grey darken-1" >
+                        <div class="card blue-grey darken-1 alignedCard" >
                           <div class="card-content white-text">
                               <span class="card-title">People you shared</span>
                         @if ($shared->isEmpty())
@@ -283,7 +275,7 @@
                         @endforeach
                         </div>
                         <br><br>
-                          <div class="card-action"></div>
+
                 </div>
               </div>
                           <div class="col s12 m6 l6">

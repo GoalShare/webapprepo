@@ -185,20 +185,31 @@
         </div>
       </div>
       </div> --}}
+      <style media="screen">
+        .colorOfCard{
+          background-color: #08e7d6;
+        }
+        .imageGif{
+          border: none;
+        }
+      </style>
 
-  <div class="row" style="min-width:100%;">
-    <div class="col l12 s12">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title " style="text-align:center"><h1><b>WELCOME</b></h1> <a href="#"><h1 class="white-text"><b>{{ Auth::User()->fname}}</b></h1></br></a></span>
+      <div class="container">
+        <div class="col s12 m6">
+          <div class="card colorOfCard z-depth-5 m6">
+            <div class="card-image">
+
+              <span class="card-title ">Card Title</span>
+            </div>
+            <div class="card-content center">
+                <img src="https://media.giphy.com/media/26tP80DaorPjmqlC8/giphy.gif" height="200px" width="200px" class="imageGif">
+              <!-- <p class="flow-text "><h2 class="white-text">WELCOME</h2> -->
+                 <span class="card-title " style="text-align:center"><p class="grey-text flow-text z-depth-2"><h1>WELCOME</h1></p><p class="flow-text"><h1>{{ Auth::User()->fname}}</h1></p></br></span>
+            </div>
+          </div>
         </div>
-        {{-- <div class="card-action" style="text-align:center">
-          <a href="#"><h1><b>{{ Auth::User()->fname}}</b></h1></br></a>
-<br></br>
-        </div> --}}
-      </div>
-    </div>
-  </div>
+
+        </div>
 
           @else
           {{-- starrrrrrrrrrrrrrrrrrrtttttttttttttttttt --}}
