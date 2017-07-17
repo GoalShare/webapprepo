@@ -6,6 +6,7 @@
     <meta name="description" content="Welcome to lifewithgoals.com. Set your life goals and track your achievements">
     <script src="{{asset('materialize/js/materialize.js')}}"></script>
     <meta charset="utf-8">
+    <meta name="keywords" content="www.lifewithgoals.com, life, goals, lifewithgoals, goal management, goal management system, goals for life, set goals, add goals, search goals, make goals, create goals, aim, life aims, improve my life, my goals, my life goals, achive, manage life, etc.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -45,7 +46,16 @@
   <link rel="stylesheet" href="{{ asset('css/styles_goalcards.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <script src="{{asset('js/init.js')}}"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+    ga('create', 'UA-102672548-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
 <!-- goal page css-->
       <link href="{{asset('css/goal.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{{asset('css/circle.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>

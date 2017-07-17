@@ -72,12 +72,12 @@ Route::get('/search/{userid}',function($userid){
           $friends=DB::table('friendships')
                          ->join('users', 'users.id', '=', 'friendships.user')
                          ->select('users.*', 'friendships.*')
-                         ->where([['friendships.status','friends'],['friendships.friend',$id]])
+                         ->where([['friendships.status','friends'],['friendships.friend',$userid]])
                          ->get();
          $friendstwos=DB::table('friendships')
                         ->join('users', 'users.id', '=', 'friendships.friend')
                         ->select('users.*', 'friendships.*')
-                        ->where([['friendships.status','friends'],['friendships.user',$id]])
+                        ->where([['friendships.status','friends'],['friendships.user',$userid]])
                         ->get();
                          $id=Auth::id();
   return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos]);

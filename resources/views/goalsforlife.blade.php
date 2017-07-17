@@ -4,10 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Welcome to lifewithgoals.com. Set your life goals and track your achievements">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Life With Goals</title>
-
+        <meta name="description" content="Welcome to lifewithgoals.com. Set your life goals and track your achievements">
+<meta name="keywords" content="www.lifewithgoals.com, life, goals, lifewithgoals, goal management, goal management system, goals for life, set goals, add goals, search goals, make goals, create goals, aim, life aims, improve my life, my goals, my life goals, achive, manage life, etc.">
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="images/android-desktop.png">
@@ -37,6 +38,16 @@
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/style3.css" />
     <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-102672548-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
     html {
@@ -120,7 +131,12 @@
       </div>
     </nav>
 
+<script type="text/javascript">
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 
+Vue.use(VeeValidate);
+</script>
       <main  class="mdl-layout__content main" style="font-family: 'Roboto', sans-serif;">
         <div class="row">
           <div class="col s12 l6 m6 right" >
@@ -556,6 +572,11 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{{asset('materialize/js/materialize.js')}}"></script>
     <script src="js/init.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="{{asset('js/vue.js')}}"></script>
+    <script src="https://unpkg.com/vee-validate@2.0.0-rc.7">
+
+    </script>
 
   </body>
 

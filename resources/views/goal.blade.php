@@ -352,7 +352,7 @@
                         <div class="col l6">
                           <b>Intent</b>
                         </div>
-                        <div class="col l6">
+                        <div class="col l6 s12">
                           <form name="intentfrm" action="{{route('goal')}}" method="post" id="intentfrm" style="display:inline;">
                             {{ csrf_field() }}
                             <div class="preloader-wrapper small active" id="intentpreloader" style="display:none;">
@@ -379,7 +379,7 @@
                               <label id="intentfield" for="goalintent" ></label>
                             </div>
                           </div>
-                            <div class="col s2">
+                            <div class="col s2 right">
                               @if ($goals->goalauthorization!='aligned')
                                   <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Done "style="display:none;" type="submit" id="editintent"><i class="material-icons">done</i></button>
                                   <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"id="intentbtn" ><i class="material-icons ">mode_edit</i></button>
@@ -454,7 +454,7 @@
                         <div class="col l6">
                           <b>Category</b>
                         </div>
-                        <div class="col l6">
+                        <div class="col l6 s12">
                              <form  name="categoryfrm" action="{{route('goal')}}" method="post" id="categoryfrm" style="display:inline;">
                                 {{ csrf_field() }}
                                 <div class="preloader-wrapper small active" id="categorypreloader" style="display:none;">
@@ -495,7 +495,7 @@
                                   <input type="text" style="display:none;" value="goalcategory" name="attribute">
                                 </div>
                               </div>
-                                <div class="col s2">
+                                <div class="col s2 right">
                                   @if ($goals->goalauthorization!='aligned')
                                     <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done"style="display:none;" type="submit" id="editcategory"><i class="material-icons">done</i></button>
                                     <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" id="categorybtn" ><i class="material-icons ">mode_edit</i></button>
@@ -567,7 +567,7 @@
                         <div class="col l6">
                           <b>Priority</b>
                         </div>
-                        <div class="col l6">
+                        <div class="col l6 s12">
                              <form name="priorityfrm" action="{{route('goal')}}" method="post" id="priorityfrm" style="display:inline;">
                                 {{ csrf_field() }}
                                 <div class="preloader-wrapper small active" id="prioritypreloader" style="display:none;">
@@ -598,7 +598,7 @@
                                   <input type="text" style="display:none;" value="goalpriority" name="attribute">
                                 </div>
                               </div>
-                                <div class="col s2">
+                                <div class="col s2 right">
                                 @if ($goals->goalauthorization!='aligned')
                                     <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done" style="display:none;" type="submit" id="editpriority"><i class="material-icons">done</i></button>
                                     <button  class="btn-floating  tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" id="prioritybtn" ><i class="material-icons ">mode_edit</i></button>
@@ -670,7 +670,7 @@
                         <div class="col l6">
                           <b>Start Date</b>
                         </div>
-                        <div class="col l6">
+                        <div class="col l6 s12">
                              <form  name="startdatefrm" action="{{route('goal')}}" method="post" id="startdatefrm" style="display:inline;">
                                 {{ csrf_field() }}
                                 <div class="preloader-wrapper small active" id="startdatepreloader" style="display:none;">
@@ -697,7 +697,7 @@
                                   <input type="text" style="display:none;" value="goalstartdate" name="attribute">
                                 </div>
                               </div>
-                                <div class="col s2">
+                                <div class="col s2 right">
                                   @if ($goals->goalauthorization!='aligned')
 
                                     <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done" style="display:none;" type="submit" id="editstartdate"><i class="material-icons">done</i></button>
@@ -771,7 +771,7 @@
                         <div class="col l6">
                           <b>End Date</b>
                         </div>
-                        <div class="col l6">
+                        <div class="col l6 s12">
                              <form  name="enddatefrm" action="{{route('goal')}}" method="post" id="enddatefrm" style="display:inline;">
                                 {{ csrf_field() }}
                                 <div class="preloader-wrapper small active" id="enddatepreloader" style="display:none;">
@@ -798,7 +798,7 @@
                                   <input type="text" style="display:none;" value="goalenddate" name="attribute">
                                 </div>
                               </div>
-                                <div class="col s2">
+                                <div class="col s2 right">
                                   @if ($goals->goalauthorization!='aligned')
                                     <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="done" style="display:none;" type="submit" id="editenddate"><i class="material-icons">done</i></button>
                                     <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" id="enddatebtn" ><i class="material-icons ">mode_edit</i></button>
