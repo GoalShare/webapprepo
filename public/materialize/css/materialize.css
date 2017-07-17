@@ -9023,7 +9023,7 @@ transition: all .5s;
 }
 .searchbar[type=search]:focus {
 
-width: 130px;
+width: 50px;
 background-color: #fff;
 border-color: #66CC75;
 

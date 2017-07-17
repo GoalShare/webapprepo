@@ -3,6 +3,7 @@
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{asset('materialize/css/materialize.css')}}">
+    <meta name="description" content="Welcome to lifewithgoals.com. Set your life goals and track your achievements">
     <script src="{{asset('materialize/js/materialize.js')}}"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -180,6 +181,10 @@
         margin-top: 15px;
       }
 
+      .logoImg2{
+        margin-top: 7px;
+      }
+
 
 
       ::-webkit-scrollbar-track
@@ -250,7 +255,7 @@
         <ul class="left">
               <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
              <img class="logoImg hide-on-small-only" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px">
-              <img class="logoImg hide-on-med-and-up" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/favicon.ico')}}" >
+              <img class="logoImg2 hide-on-med-and-up" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/favicon.ico')}}" >
         </ul>
 
 
@@ -263,7 +268,7 @@
           <li>
             <form action="{{route('search')}}" method="post" id="search-form">
               {{ csrf_field()}}
-              <input type="search" autocomplete="off" name="searchkey" placeholder="Search people" id="search" class="searchbar blue-text text-darken-4 dropdown-button" data-hover="false" data-activates="suggestions">
+              <input type="search" autocomplete="off" name="searchkey" placeholder="Search " id="search" class="searchbar blue-text text-darken-4 dropdown-button" data-hover="false" data-activates="suggestions">
             </form>
             <style media="screen">
             /*ul#suggestions {
