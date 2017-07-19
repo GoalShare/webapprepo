@@ -4,11 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Life With Goals</title>
-        <meta name="description" content="Welcome to lifewithgoals.com. Set your life goals and track your achievements">
-<meta name="keywords" content="www.lifewithgoals.com, life, goals, lifewithgoals, goal management, goal management system, goals for life, set goals, add goals, search goals, make goals, create goals, aim, life aims, improve my life, my goals, my life goals, achive, manage life, etc.">
+
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="images/android-desktop.png">
@@ -38,16 +37,6 @@
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/style3.css" />
     <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-102672548-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
     html {
@@ -105,6 +94,10 @@
         .remember{
           width: 20px
         }
+
+        .foot{
+          margin-top:150px;
+        }
     </style>
 
   </head>
@@ -131,12 +124,7 @@
       </div>
     </nav>
 
-<script type="text/javascript">
-import Vue from 'vue';
-import VeeValidate from 'vee-validate';
 
-Vue.use(VeeValidate);
-</script>
       <main  class="mdl-layout__content main" style="font-family: 'Roboto', sans-serif;">
         <div class="row">
           <div class="col s12 l6 m6 right" >
@@ -200,8 +188,13 @@ Vue.use(VeeValidate);
 
                   </form>
               </div>
-
-
+<script type="text/javascript">
+  var dob=0;
+  var num=0;
+  var pass=0;
+  var conpass=0;
+  var em = 0;
+</script>
 
               <div id="test5">
                     <form  role="form" method="POST" action="{{ route('register') }}">
@@ -222,39 +215,159 @@ Vue.use(VeeValidate);
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <input id="email"  name="email" type="email" class="validate" required>
-                          <label for="email">
+                          <input id="regemail" oninput="regemailerrorFunc()" name="email" type="email" class="validate" required>
+                          <label for="regemail">
                             Email
                           </label>
-                          <small class="red-text">{{ $errors->first('email') }}</small>
+                          <small class="red-text" id="regemailerror">{{ $errors->first('email') }}</small>
+                          <script type="text/javascript">
+                            var regemail=document.getElementById("regemail");
+                            var regemailerror=document.getElementById("regemailerror");
+
+                            function regemailerrorFunc() {
+                              var email=regemail.value;
+                              var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                              if(email.match(mailformat))
+                              {
+                                regemailerror.classList.remove('red-text');
+                                regemailerror.classList.add('green-text');
+                                regemailerror.innerHTML='your email is valid';
+                                regemail.style.borderColor = "green";
+                                em=1;
+                                if(num==1 && pass==1 && conpass==1 && dob==1 && em==1){
+                                  document.getElementById("register").disabled=false;
+                                }
+                              }
+                              else {
+                                regemailerror.classList.remove('green-text');
+                                regemail.style.borderColor = "red";
+                                regemailerror.classList.add('red-text');
+                                regemailerror.innerHTML='your email is not valid';
+                                em=0;
+                                if(num!=1 || pass!=1 || conpass!=1 || dob!=1 || em!=1){
+                                  document.getElementById("register").disabled=true;
+                                }
+                              }
+                            }
+
+                          </script>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12 m6 l6">
-                          <input id="password" name="password" type="password" class="validate" required>
-                          <label for="password">
+                          <input id="regpassword" oninput="regpassworderrorFunc()" name="password" type="password" class="validate" autocomplete="off" >
+                          <label for="regpassword">
                             Password
                           </label>
-                          <small class="red-text">{{ $errors->first('password') }}</small>
+                          <small id="regpassworderror"></small>
+                          <script type="text/javascript">
+                            var password=document.getElementById("regpassword");
+                            var passworderror=document.getElementById("regpassworderror");
+                            function regpassworderrorFunc() {
+                              var value=password.value;
+                              if(value.length<8) {
+                                passworderror.classList.remove('green-text');
+                                password.style.borderColor = "red";
+                                passworderror.classList.add('red-text');
+                                passworderror.innerHTML='your password is too short';
+                                pass=0;
+                                if(num!=1 || pass!=1 || conpass!=1 || dob!=1 || em!=1){
+                                  document.getElementById("register").disabled=true;
+                                }
+                              }
+                              else {
+                                passworderror.classList.remove('red-text');
+                                passworderror.classList.add('green-text');
+                                passworderror.innerHTML='strong';
+                                password.style.borderColor = "green";
+                                pass=1;
+                                console.log(pass);
+                                if(num==1 && pass==1 && conpass==1 && dob==1 && em==1){
+                                  document.getElementById("register").disabled=false;
+                                }
+                              }
+                            }
+
+                          </script>
                         </div>
                         <div class="input-field col s12 m6 l6">
-                          <input id="confermPassword" type="password" name="password_confirmation" class="validate" required>
-                          <label for="confermPassword">
+                          <input id="regconfirmPassword"  oninput="regconfirmPassworderrorFunc()" type="password" name="password_confirmation" class="validate" >
+                          <label for="regconfirmPassword">
                             Confirm Password
                           </label>
+                          <small id="regconfirmPassworderror"></small>
+                          <script type="text/javascript">
+                          var regconfirmPassword=document.getElementById("regconfirmPassword");
+                          var regconfirmPassworderror=document.getElementById("regconfirmPassworderror");
+                          function regconfirmPassworderrorFunc() {
+                            var n = password.value.localeCompare(regconfirmPassword.value)
+                            if(n!=0) {
+                              regconfirmPassword.style.borderColor = "red";
+                              regconfirmPassworderror.classList.remove('green-text');
+                              regconfirmPassworderror.classList.add('red-text');
+                              regconfirmPassworderror.innerHTML='passwords does not match';
+                              conpass=0;
+                              if(num!=1 || pass!=1 || conpass!=1 || dob!=1 || em!=1){
+                                document.getElementById("register").disabled=true;
+                              }
+                            }
+                            else {
+                              regconfirmPassworderror.classList.remove('red-text');
+                              regconfirmPassworderror.classList.add('green-text');
+                              regconfirmPassworderror.innerHTML='passwords are matching';
+                              regconfirmPassword.style.borderColor = "green";
+                              conpass=1;
+                              console.log(conpass);
+                              if(num==1 && pass==1 && conpass==1 && dob==1 && em==1){
+                                document.getElementById("register").disabled=false;
+                              }
+                            }
+                          }
+
+                          </script>
                         </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12 m6 l6">
-                          <br><select name="gender">
-                            <option value="" disabled selected>Gender</option>
+                          <label for="gender">Gender</label><br>
+                          <select name="gender" id="gender" >
+                            {{-- <option value="" disabled selected id="genderselect" onclick="genderselectFunc()">Gender</option> --}}
                             <option value="M">Male</option>
                             <option value="F">Female</option>
                           </select>
                         </div>
                       <div class="input-field col s12 m6 l6">
                         <label>Date of Birth</label><br>
-                        <input id="birthDate"  type="date" name="dob">
+                        <input id="birthDate" oninput="dateValid()" type="date" name="dob">
+                        <small id="doberror"></small>
+                        <script type="text/javascript">
+                        var birthDate=document.getElementById("birthDate");
+                        var doberror=document.getElementById("doberror");
+                        function dateValid() {
+                          var d=new Date(birthDate.value);
+                          var e=new Date();
+                          if (d.getFullYear()>(e.getFullYear()-6)||d.getFullYear()<(e.getFullYear()-95)) {
+                            doberror.innerHTML='your birthdate is invalid';
+                            doberror.classList.remove('green-text');
+                            doberror.classList.add('red-text');
+                            dob=0;
+                            if(num!=1 || pass!=1 || conpass!=1 || dob!=1 || em!=1){
+                              document.getElementById("register").disabled=true;
+                            }
+                          }
+                          else {
+                            doberror.innerHTML='valid';
+                            doberror.classList.remove('red-text');
+                            doberror.classList.add('green-text');
+                            dob=1;
+                            console.log(dob);
+                            if(num==1 && pass==1 && conpass==1 && dob==1 && em==1){
+                              document.getElementById("register").disabled=false;
+                            }
+                          }
+                          console.log(e.getFullYear());
+                        }
+                        </script>
                       </div>
                       </div>
                       <div class="row">
@@ -480,11 +593,38 @@ Vue.use(VeeValidate);
                           </label>
                         </div>
                         <div class="input-field col  l8 m8">
-                          <input id="phonrNumber" name="phone" type="tel" class="validate">
-                          <label for="phonrNumber ">
+                          <input id="phoneNumber" name="phone"oninput="validphone()" type="tel" class="validate">
+                          <label for="phoneNumber">
                             Phone number
                           </label>
-                          <small class="red-text">{{ $errors->first('phone') }}</small>
+                          <small class="red-text" id="phoneNumbererror"></small>
+                          <script type="text/javascript">
+                          var phoneNumber=document.getElementById("phoneNumber");
+                          var phoneNumbererror=document.getElementById("phoneNumbererror");
+                          function validphone() {
+                            var z=phoneNumber.value;
+                            if(z.length<9) {
+                              phoneNumbererror.classList.remove('green-text');
+                              phoneNumber.style.borderColor = "red";
+                              phoneNumbererror.classList.add('red-text');
+                              phoneNumbererror.innerHTML='phone no. must contain more than 9 digits ';
+                              num=0;
+                              if(num!=1 || pass!=1 || conpass!=1 || dob!=1 || em!=1){
+                                document.getElementById("register").disabled=true;
+                              }
+                            }
+                            else {
+                              phoneNumbererror.classList.remove('red-text');
+                              phoneNumbererror.classList.add('green-text');
+                              phoneNumbererror.innerHTML='valid';
+                              phoneNumber.style.borderColor = "green";
+                              num=1;
+                              if(num==1 && pass==1 && conpass==1 && dob==1 && em==1){
+                                document.getElementById("register").disabled=false;
+                              }
+                            }
+                          }
+                          </script>
                         </div>
 
 
@@ -509,8 +649,22 @@ Vue.use(VeeValidate);
                           <label for="test1"><h4>  By signing up, you agree to our <a href="{!! url('/nonLoginPolicies'); !!}">Terms</a> & <a href="{!! url('/nonLoginPolicies'); !!}">Privacy Policy.</a></h4></label>
                       </div>
                           <div class="input-field col s12 l6 m6 left">
-                          <br><button id="register" class="waves-effect waves-light btn  btn-large blue darken-4">Register</button>
+
+                          <br><button id="register" class="waves-effect waves-light btn  btn-large blue darken-4" disabled>Register</button>
                         </div>
+                        <script type="text/javascript">
+                        window.onload = function(){console.log(pass);console.log(pass);console.log(pass);console.log(pass);};
+
+                        // var register=document.getElementById("register");
+                        // function regvalid(){
+                        //   if (pass==1&&conpass=1&&num=1&&dob=1) {
+                        //     register.disabled = false;
+                        //   }
+                        //   else {
+                        //     register.disabled = true;
+                        //   }
+                        // }
+                        </script>
                       </div>
 
 
@@ -528,7 +682,7 @@ Vue.use(VeeValidate);
 
       </main>
       <br><br><br>
-      <footer class="page-footer blue darken-4" style="font-family: 'Roboto', sans-serif;">
+      <footer class="page-footer blue darken-4 foot" style="font-family: 'Roboto', sans-serif;">
                <div class="container">
                  <div class="row">
                    <div class="col l6 s12">
@@ -558,8 +712,8 @@ Vue.use(VeeValidate);
                    </div> -->
                  </div>
                </div>
-               <div class="footer-copyright left">
-                 © 2017 Copyright
+               <div class="white-text small  left">
+                 <small>© 2017 Copyright</small>
                  <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
 
                </div>
@@ -572,11 +726,6 @@ Vue.use(VeeValidate);
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{{asset('materialize/js/materialize.js')}}"></script>
     <script src="js/init.js"></script>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="{{asset('js/vue.js')}}"></script>
-    <script src="https://unpkg.com/vee-validate@2.0.0-rc.7">
-
-    </script>
 
   </body>
 
