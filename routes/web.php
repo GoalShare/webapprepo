@@ -25,11 +25,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
+Route::post('checkemail','CoreController@checkmails')->name('checkemail');
 Route::post('goal','GoalController@post')->name('goal');
 Route::post('task','TaskController@post')->name('task');
 Route::post('/dashboard','HomeController@post');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/goal/{goalname}','GoalController@view');
+Route::post('comment','commentController@post')->name('comment');
 Route::get('/profile/{userid}','ProfileController@view');
 Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/search',function(){

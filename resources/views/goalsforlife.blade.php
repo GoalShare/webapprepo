@@ -137,6 +137,9 @@
             </div>
             <div class="card-content grey lighten-4">
               <div id="test4" >
+                <form action="{{route('checkemail')}}" method="post" id="mailform">
+                  <input type="text" class="hide" name="checkemail" id="checkmail">
+                </form>
                 <form role="form" method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
                     @if($errors->has('email')||$errors->has('password'))
@@ -220,24 +223,53 @@
                             Email
                           </label>
                           <small class="red-text" id="regemailerror">{{ $errors->first('email') }}</small>
+
                           <script type="text/javascript">
                             var regemail=document.getElementById("regemail");
                             var regemailerror=document.getElementById("regemailerror");
-
+                            var checkmail=document.getElementById("checkmail");
+                            var form=document.getElementById("mailform");
+                            var action = form.getAttribute("action");
                             function regemailerrorFunc() {
                               var email=regemail.value;
                               var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                               if(email.match(mailformat))
                               {
-                                regemailerror.classList.remove('red-text');
-                                regemailerror.classList.add('green-text');
-                                regemailerror.innerHTML='your email is valid';
-                                regemail.style.borderColor = "green";
-                                em=1;
-                                if(num==1 && pass==1 && conpass==1 && dob==1 && em==1){
-                                  document.getElementById("register").disabled=false;
-                                }
-                              }
+                                // checkmail.value=email;
+                                // var form_data = new FormData(form);
+                                // var xhr = new XMLHttpRequest();
+                                // xhr.open('POST', action, true);
+                                // console.log('sd');
+                                // console.log('sds');
+                                // xhr.send(form_data);
+                                // xhr.onreadystatechange = function () {
+                                //   if(xhr.readyState == 4 && xhr.status == 200) {
+                                //      var result = xhr.responseText;
+                                //      console.log(result);
+                                //      if (result=='true') {
+                                       regemailerror.classList.remove('red-text');
+                                       regemailerror.classList.add('green-text');
+                                       regemailerror.innerHTML='your email is valid';
+                                       regemail.style.borderColor = "green";
+                                       em=1;
+                                       if(num==1 && pass==1 && conpass==1 && dob==1 && em==1){
+                                         document.getElementById("register").disabled=false;
+                                       }
+                                    //  }
+                                    //  else {
+                                    //    regemailerror.classList.remove('green-text');
+                                    //    regemail.style.borderColor = "red";
+                                    //    regemailerror.classList.add('red-text');
+                                    //    regemailerror.innerHTML='your email is already registered';
+                                    //    em=0;
+                                    //    if(num!=1 || pass!=1 || conpass!=1 || dob!=1 || em!=1){
+                                    //      document.getElementById("register").disabled=true;
+                                    //    }
+                                    //  }
+
+                                  }
+
+                              
                               else {
                                 regemailerror.classList.remove('green-text');
                                 regemail.style.borderColor = "red";

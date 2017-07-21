@@ -140,7 +140,106 @@
                 <p class="flow-text">{{Auth::User()->email}} <br>
                     {{Auth::User()->phone}}  <br>{{Auth::User()->dob}} </p>
 
+
+
+
           </div>
+
+          <!-- Modal Trigger -->
+
+
+          <!-- Modal Structure -->
+          <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+              <h4>Edit Portfolio</h4>
+
+
+              <form  action="" method="post" id="addgoalform">
+
+
+                    <div class="input-field col s12">
+                     <textarea id="userbio" class="materialize-textarea"></textarea>
+                     <label for="userbio">User Bio</label>
+                   </div>
+                      <li class="divider"></li>
+                      <div class="input-field col s12">
+                       <textarea id="work" class="materialize-textarea"></textarea>
+                       <label for="work">Work Experiance</label>
+                     </div>
+                        <li class="divider"></li>
+                        <div class="input-field col s12">
+                         <textarea id="education" class="materialize-textarea"></textarea>
+                         <label for="education">Education</label>
+                       </div>
+                          <li class="divider"></li>
+
+
+          <input type="text" class="hidden" name="action" value="2">
+            </div>
+            <div class="modal-footer">
+
+              <button type="submit" id="addgoalbtn" style="margin-right:10px;margin-left:10px;"class="modal-action waves-effectwaves-effect waves-light btn">Confirm</button>
+            </form>
+
+            </div>
+
+          </div>
+
+
+
+                              <div class="col s12 m12 l12">
+                                <div class="card">
+                                  <div class="card-action">
+                                     <h5><b>Portfolio</b></h5>
+                                  </div>
+
+                                  <div class="card-content">
+                                    <div class="card-action">
+                                     <h6>  <i class="material-icons">assignment_ind</i><b>Bio</b></h6>
+                                    </div>
+                                    <div class="card-content">
+                                      saddada
+                                    </div>
+
+                                  </div>
+                                  <div class="card-content">
+                                    <div class="card-action">
+                                       <h6><b>Work Experiance</b></h6>
+                                    </div>
+                                    <div class="card-content">
+                                      <b>Current:</b>
+                                      <p class="flow-text">ambakisse wada</p>
+                                     <li class="divider"></li>
+                                    </div>
+
+
+                                  </div>
+                                  <div class="card-content">
+                                    <div class="card-action">
+                                       <h6><b>Education</b></h6>
+                                    </div>
+                                    <div >
+                                      <div class="container">
+                                        <div class="row">
+                                              <p class="flow-text"><i class="material-icons medium"> account_balance
+                                              &nbsp;&nbsp;</i>Ananda college</p>
+                                               <li class="divider"></li>
+                                        </div>
+                                      </div>
+
+
+
+                                    </div>
+
+                                  </div>
+
+                                        <a class="btn-floating btn-large waves-effect waves-light modal-trigger right" href="#modal1">  <i class="large material-icons">border_color</i></a>
+
+                              </div>
+
+                            </div>
+
+
           <div class="col s12 m12 l12">
           <div class="card">
             <div class="card-action">

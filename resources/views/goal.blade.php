@@ -8,6 +8,21 @@
   <div id="addtaskmodal" class="modal modal-fixed-footer">
     <div class="modal-content" style="text-align:center;">
       <h4>Add a Task</h4>
+      <style type="text/css">
+
+
+                .dark-area {
+                    background-color: #666;
+                    padding: 40px;
+                    margin: 0 -40px 20px -40px;
+                    clear: both;
+                }
+
+                .clearfix:before,.clearfix:after {content: " "; display: table;}
+                .clearfix:after {clear: both;}
+                .clearfix {*zoom: 1;}
+
+            </style>
 
       <form action="{{route('goal')}}" method="post" id="addtaskform">
 {{ csrf_field() }}
@@ -98,14 +113,19 @@
           <div class="card ">
             <div class="card-content white-text" style="min-height:300px;background-image:url({{asset('uploads/goals/'.$goals->goalpictureone)}});  " >
                 <div class="row">
-                  <span class="card-title"><h3>{{$goals->goalname}}</h3>
-                  <div class="c100 p50 big">
-                      <span id="goalpercentage">{{$goals->goalcompletedpercentage}}%</span>
-                      <div class="slice">
-                          <div class="bar"></div>
-                          <div class="fill"></div>
-                      </div>
-                 </div></span>
+                  <span class="card-title"><h3>{{$goals->goalname}}</h3></span>
+                  <div class="clearfix">
+
+                           <div class="c100 p{{$goals->goalcompletedpercentage}} big">
+                               <span class="blue-text">{{$goals->goalcompletedpercentage}}%</span>
+                               <div class="slice">
+                                   <div class="bar"></div>
+                                   <div class="fill"></div>
+                               </div>
+                           </div>
+
+
+                    </div>
                 </div>
 
 
@@ -1491,7 +1511,6 @@
                      }
                    };
                  }
-
                   </script>
                  </a>
                </div>
@@ -1501,6 +1520,116 @@
                  </ul>
 
                 </div>
+                </div>
+              </div>
+            </div>
+                <div class="container">
+
+
+<div class="row">
+
+  <form class="" action="{{ route('comment') }}" method="post" id="comment-form">
+      {{ csrf_field() }}
+    <div class="input-field col m6 s12 l6">
+      <input id="comment" type="text" name="comment" class="validate" >
+      <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
+      <label for="comment">
+        Comment
+      </label>
+     <button type="submit" class="waves-effect waves-light btn btn-floating  blue darken-4" id="cmtbtn"><i class="material-icons">send</i></button>
+    </div>
+
+ </form>
+ <script type="text/javascript">
+ // note: IE8 doesn't support DOMContentLoaded
+ document.addEventListener('DOMContentLoaded', function() {
+   var cmtform = document.getElementById("comment-form");
+   var action = cmtform.getAttribute("action");
+   var cmtbtn = document.getElementById("cmtbtn");
+   var cmtcard=document.getElementById("cmtcard");
+
+   function showComment(json) {
+       var cmt = commentToCard(json);
+       cmtcard.innerHTML = cmt+cmtcard.innerHTML;
+          }
+
+
+     function commentToCard(items) {
+       var output = '';
+         output += '<div class="row col s12 blue-text" style="padding-left:50px">';
+         output += '<img src="';
+         output += "/uploads/avatars/"+items.avatar+'"'+'class="circle " height="50px" width="50px">';
+         output += '<strong style="font-size:20pt;">'+items.name+'</strong><br>';
+         output += '<span>'+items.datetime+'</span><br>'+items.comment+'<li class="divider"></li>';
+         output += '</div>';
+       return output;
+     }
+
+
+   function getComments() {
+     var form_data=new FormData(cmtform);
+     var xhr = new XMLHttpRequest();
+     xhr.open('POST',action, true);
+     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+     xhr.send(form_data);
+     xhr.onreadystatechange = function () {
+      //  while (xhr.readyState < 4) {
+      //    cmtbtn.disabled=true;
+      //  }
+       if(xhr.readyState == 4 && xhr.status == 200) {
+         var result = xhr.responseText;
+         cmtbtn.disabled=false;
+         console.log('Result: ' + result);
+         var json = JSON.parse(result);
+         showComment(json);
+         // var json = JSON.parse(result);
+         // showSuggestions(json);
+       }
+       else {
+         cmtbtn.disabled=true;
+       }
+     };
+
+   }
+   cmtbtn.addEventListener("click",function(event){
+     event.preventDefault();
+     getComments();
+   });
+ });
+
+ </script>
+
+ <br>
+</div>
+
+<div class="col s12 ">
+  <div class="row">
+  <div class="card" id="cmtcard">
+
+  </div>
+
+  <div class="card ">
+    @foreach ($comment as $comments)
+    <div class="row col s12 blue-text" style="padding-left:50px">
+        <img src="{{asset('uploads/avatars/'.$comments->avatar)}}" class="circle " height="50px" width="50px">
+        <strong style="font-size:20pt;">{{$comments ->fname}}</strong><br>
+        @php
+          $carb=new Carbon($comments ->Commenteddate);
+        @endphp
+        <span>{{$carb->toDayDateTimeString()}}</span>
+        <br>
+            {{$comments ->commenttext}}
+          <li class="divider"></li>
+    </div>
+
+  @endforeach
+  </div>
+  </div>
+</div>
+
+
+
+        </div>
                 <!-- comments start -->
                 {{-- <div class="row">
                   <div class="input-field col s6">
