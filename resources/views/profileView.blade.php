@@ -192,49 +192,152 @@
                                   <div class="card-action">
                                      <h5><b>Portfolio</b></h5>
                                   </div>
+                                  <div class="row"style="margin:10px;">
+                                      <div class="col s12 m6 l6">
+                                          <div class="card ">
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">account_box</i>&nbsp;Bio
+                                                 <button type="button" onclick="addbiodata()" id="addbiobtn" class="btn btn-floating right"><i class="material-icons">border_color</i></button>
+                                                 <i style="display:none;cursor:pointer;" id="closebiobtn"onclick="closeaddbio()" class="material-icons right">close</i>
+                                               </span>
+                                               <li class="divider"></li><br>
+                                               @if (Auth::User()->bio=="")
+                                                 <p id="inibio"class="blue-text">Please Enter your bio</p>
+                                               @else
+                                                 <p id="setbio">{{Auth::User()->bio}}</p>
+                                               @endif
+                                               <form action="{{route('addbio')}}" method="post" id="addbio-form" style="display:none;">
+                                                 <div class="row">
+                                                   <form class="col s12">
+                                                      {{csrf_field()}}
+                                                     <div class="row">
+                                                       <div class="input-field col s12">
+                                                         <textarea id="biocontent" name="bio" class="materialize-textarea"></textarea>
+                                                         <label for="biocontent">Type you bio</label>
+                                                         <button type="button" id="biosubmit" class="btn btn-floating" type="submit"><i class="material-icons">send</i></button>
+                                                       </div>
+                                                     </div>
+                                                   </form>
+                                                 </div>
+                                               </form>
+                                               <script type="text/javascript">
+                                                //  var addbiobtn=document.getElementById("addbiobtn");
+                                                //  var closebio document.getElementById("closebiobtn");
+                                                 var inibio =document.getElementById("inibio");
+                                                 var setbio =document.getElementById("setbio");
+                                                 var addbioform=document.getElementById("addbio-form");
+                                                 var biosubmit=document.getElementById("biosubmit");
+                                                 function addbiodata() {
+                                                   console.log('sds');
+                                                   document.getElementById("addbiobtn").style.display="none";
+                                                   document.getElementById("closebiobtn").style.display="inline";
+                                                   @if (Auth::User()->bio=="")
+                                                   inibio.style.display="none";
+                                                   @endif
+                                                   @if (Auth::User()->bio!="")
+                                                   setbio.style.display="none";
+                                                   @endif
+                                                   console.log('sdsdsds');
+                                                   addbioform.style.display="block";
+                                                 }
+                                                 function closeaddbio() {
+                                                   document.getElementById("addbiobtn").style.display="inline";
+                                                   document.getElementById("closebiobtn").style.display="none";
+                                                   @if (Auth::User()->bio=="")
+                                                   inibio.style.display="block";
+                                                   @endif
+                                                   @if (Auth::User()->bio!="")
+                                                   setbio.style.display="block";
+                                                   @endif
+                                                   addbioform.style.display="none";
 
-                                  <div class="card-content">
-                                    <div class="card-action">
-                                     <h6>  <i class="material-icons">assignment_ind</i><b>Bio</b></h6>
-                                    </div>
-                                    <div class="card-content">
-                                      saddada
-                                    </div>
+                                                 }
 
-                                  </div>
-                                  <div class="card-content">
-                                    <div class="card-action">
-                                       <h6><b>Work Experiance</b></h6>
-                                    </div>
-                                    <div class="card-content">
-                                      <b>Current:</b>
-                                      <p class="flow-text">ambakisse wada</p>
-                                     <li class="divider"></li>
-                                    </div>
+                                                    function postbio() {
+                                                      var action = addbioform.getAttribute("action");
+                                                      var form_data=new FormData(addbioform);
+                                                      var xhr = new XMLHttpRequest();
+                                                      xhr.open('POST',action, true);
+                                                      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                                                      xhr.send(form_data);
+                                                      xhr.onreadystatechange = function () {
+                                                        if(xhr.readyState == 4 && xhr.status == 200) {
+                                                          var result = xhr.responseText;
+                                                          biosubmit.disabled=false;
+                                                          console.log('Result: ' + result);
+                                                          var json = JSON.parse(result);
+                                                          addbioform.style.display="none";
+                                                          setbio.innerHTML=json;
+                                                          setbio.style.display="block";
+                                                          document.getElementById("addbiobtn").style.display="inline";
+                                                          document.getElementById("closebiobtn").style.display="none";
 
 
-                                  </div>
-                                  <div class="card-content">
-                                    <div class="card-action">
-                                       <h6><b>Education</b></h6>
+                                                        }
+                                                        else {
+                                                          biosubmit.disabled=true;
+                                                        }
+                                                      };
+
+                                                    }
+                                                    biosubmit.addEventListener("click",function(event){
+                                                      event.preventDefault();
+                                                      postbio();
+                                                    });
+                                               </script>
+                                             </div>
+                                          </div>
+                                      </div>
+                                      <div class="col s12 m6 l6">
+                                          <div class="card ">
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">work</i>&nbsp;Work Experience</span>
+                                               <li class="divider"></li><br>
+                                               <b>previous :</b><br>
+                                               <p id="nopreviouswork" class="blue-text">Add your previous employments</p><br>
+                                               @foreach ($portfolio as $work)
+                                               @if ($work->category=='work' && $work->nature=='previous')
+                                                 <p>{{$work->data}}</p><br>
+                                                 <script type="text/javascript">
+                                                   document.getElementById("nopreviouswork").style.display="none";
+                                                 </script>
+                                               @endif
+                                               @endforeach
+                                               <b>current :</b><br>
+                                               <p id="nocurrentwork" class="blue-text">Add your current employment</p><br>
+                                               @foreach ($portfolio as $work)
+                                               @if ($work->category=='work' && $work->nature=='current')
+                                                 <p>{{$work->data}}</p><br>
+                                                 <script type="text/javascript">
+                                                   document.getElementById("nocurrentwork").style.display="none";
+                                                 </script>
+                                               @endif
+                                               @endforeach
+                                             </div>
+                                          </div>
+                                      </div>
                                     </div>
-                                    <div >
-                                      <div class="container">
-                                        <div class="row">
-                                              <p class="flow-text"><i class="material-icons medium"> account_balance
-                                              &nbsp;&nbsp;</i>Ananda college</p>
-                                               <li class="divider"></li>
+                                    <div class="divider"></div><br>
+                                    <div class="row" style="margin:10px;">
+                                        <div class="col s12 m6 l6">
+                                            <div class="card ">
+                                               <div class="card-content ">
+                                                 <span class="card-title"><i class="material-icons">school</i>&nbsp;Education</span>
+                                                 <li class="divider"></li><br>
+                                                 <p>By school</p>
+                                               </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m6 l6">
+                                            <div class="card ">
+                                               <div class="card-content ">
+                                                 <span class="card-title"><i class="material-icons">grade</i>&nbsp;achievements</span>
+                                                 <li class="divider"></li><br>
+                                                 <p>my current work</p>
+                                               </div>
+                                            </div>
                                         </div>
                                       </div>
-
-
-
-                                    </div>
-
-                                  </div>
-
-                                        <a class="btn-floating btn-large waves-effect waves-light modal-trigger right" href="#modal1">  <i class="large material-icons">border_color</i></a>
-
                               </div>
 
                             </div>

@@ -34,8 +34,10 @@ class ProfileController extends Controller
                   ->select('users.*', 'friendships.*')
                   ->where([['friendships.status','friends'],['friendships.user',$id]])
                   ->get();
-   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);
+   $portfolio=DB::table('portfolio')->where('id',$id)->get();
+   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
  }
+
  public function post(request $request){
    if($request->hasfile('profilepic')){
        $file = $request->file('profilepic');
@@ -57,4 +59,14 @@ class ProfileController extends Controller
    }
    echo "yoiuuu";
  }
+
+public function addbio(request $request)
+{
+  $id=Auth::id();
+  $user=User::find($id);
+  $user->bio=$request->bio;
+  $user->save();
+  echo json_encode($request->bio);
+}
+
 }
