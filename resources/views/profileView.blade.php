@@ -20,6 +20,10 @@
   .hidden{
     visibility: hidden;
   }
+
+    .cammob{
+        margin-bottom: 200px;
+    }
 </style>
 
           <br>
@@ -33,7 +37,7 @@
                           <p class="white-text">
                             <div class="file-field input-field"  >
                               <div class="btn btn-floating">
-                            <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >camera</i>
+                            <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >camera_alt</i>
 
                             <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
                           </div>
@@ -49,20 +53,19 @@
 
                     </div>
 
-                    <div class="btn btn-floating hide-on-med-and-up">
+                    <div class=" btn btn-floating hide-on-med-and-up">
                       <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
                         {{ csrf_field() }}
-                          <p class="white-text">
-                            <div class="file-field input-field"  >
-                              <div class="btn btn-floating">
-                            <i class="material-icons" >camera</i>
 
+                            <div class="file-field"  >
+
+                          <i class="material-icons">camera_alt</i>
                             <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
-                          </div>
+
                         </div>
 
 
-                          </p>
+
 
                         </form>
                     </div>
@@ -196,13 +199,13 @@
                                       <div class="col s12 m6 l6">
                                           <div class="card ">
                                              <div class="card-content ">
-                                               <span class="card-title"><i class="material-icons">account_box</i>&nbsp;Bio
-                                                 <button type="button" onclick="addbiodata()" id="addbiobtn" class="btn btn-floating right"><i class="material-icons">border_color</i></button>
+                                               <span class="card-title"><i class="material-icons">account_box</i>&nbsp;Aspiration
+                                                 <button type="button" onclick="addbiodata()" id="addbiobtn" class="btn btn-floating right pulse"><i class="material-icons">border_color</i></button>
                                                  <i style="display:none;cursor:pointer;" id="closebiobtn"onclick="closeaddbio()" class="material-icons right">close</i>
                                                </span>
                                                <li class="divider"></li><br>
                                                @if (Auth::User()->bio=="")
-                                                 <p id="inibio"class="blue-text">Please Enter your bio</p>
+                                                 <p id="inibio"class="blue-text">Please Enter your aspiration</p>
                                                @else
                                                  <p id="setbio">{{Auth::User()->bio}}</p>
                                                @endif
@@ -213,7 +216,7 @@
                                                      <div class="row">
                                                        <div class="input-field col s12">
                                                          <textarea id="biocontent" name="bio" class="materialize-textarea"></textarea>
-                                                         <label for="biocontent">Type you bio</label>
+                                                         <label for="biocontent">Type you aspiration</label>
                                                          <button type="button" id="biosubmit" class="btn btn-floating" type="submit"><i class="material-icons">send</i></button>
                                                        </div>
                                                      </div>
@@ -290,29 +293,33 @@
                                       </div>
                                       <div class="col s12 m6 l6">
                                           <div class="card ">
-                                             <div class="card-content ">
+                                             <div class="card-content">
                                                <span class="card-title"><i class="material-icons">work</i>&nbsp;Work Experience</span>
                                                <li class="divider"></li><br>
                                                <b>previous :</b><br>
-                                               <p id="nopreviouswork" class="blue-text">Add your previous employments</p><br>
-                                               @foreach ($portfolio as $work)
-                                               @if ($work->category=='work' && $work->nature=='previous')
-                                                 <p>{{$work->data}}</p><br>
-                                                 <script type="text/javascript">
-                                                   document.getElementById("nopreviouswork").style.display="none";
-                                                 </script>
-                                               @endif
-                                               @endforeach
+                                                 <span id="nopreviouswork" class="blue-text ">Add your previous employments</span>
+                                                 @foreach ($portfolio as $work)
+                                                 @if ($work->category=='work' && $work->nature=='previous')
+                                                   <span class="chip col s12">{{$work->data}} <i id=""class="close material-icons">close</i></span>
+                                                   <script type="text/javascript">
+                                                     document.getElementById("nopreviouswork").style.display="none";
+                                                   </script>
+                                                 @endif
+                                                 @endforeach
+                                                 <br><span class="blue-text">Enter your previous employments below</span>
+                                                <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
                                                <b>current :</b><br>
-                                               <p id="nocurrentwork" class="blue-text">Add your current employment</p><br>
-                                               @foreach ($portfolio as $work)
-                                               @if ($work->category=='work' && $work->nature=='current')
-                                                 <p>{{$work->data}}</p><br>
-                                                 <script type="text/javascript">
-                                                   document.getElementById("nocurrentwork").style.display="none";
-                                                 </script>
-                                               @endif
-                                               @endforeach
+                                                 <span id="nocurrentwork" class="blue-text ">Add your current employment</span>
+                                                 @foreach ($portfolio as $work)
+                                                 @if ($work->category=='work' && $work->nature=='current')
+                                                   <span class="chip col s12">{{$work->data}}<i id=""class="close material-icons">close</i></span>
+                                                   <script type="text/javascript">
+                                                     document.getElementById("nocurrentwork").style.display="none";
+                                                   </script>
+                                                 @endif
+                                                 @endforeach
+                                                 <br><span class="blue-text">Enter your current employment below</span>
+                                                 <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
                                              </div>
                                           </div>
                                       </div>
@@ -324,20 +331,60 @@
                                                <div class="card-content ">
                                                  <span class="card-title"><i class="material-icons">school</i>&nbsp;Education</span>
                                                  <li class="divider"></li><br>
-                                                 <p>By school</p>
+                                                 <b>primary school :</b><br>
+                                                 <span class="chip col s12">sgfgg<i id=""class="close material-icons">close</i></span>
+                                                 <br><span class="blue-text">Enter your primary school below</span>
+                                                 <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
+                                                 <b>secondary school :</b><br>
+                                                 <span class="chip col s12">sgfgg<i id=""class="close material-icons">close</i></span>
+                                                 <br><span class="blue-text">Enter your secondary school below</span>
+                                                 <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
+                                                 <b>college :</b><br>
+                                                 <span class="chip col s12">sgfgg<i id=""class="close material-icons">close</i></span>
+                                                 <br><span class="blue-text">Enter your college below</span>
+                                                 <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
+                                                 <b>universities :</b><br>
+                                                 <span class="chip col s12">sgfgg<i id=""class="close material-icons">close</i></span>
+                                                 <br><span class="blue-text">Enter your university below</span>
+                                                 <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
                                                </div>
                                             </div>
                                         </div>
                                         <div class="col s12 m6 l6">
-                                            <div class="card ">
+                                            <div class="card">
                                                <div class="card-content ">
-                                                 <span class="card-title"><i class="material-icons">grade</i>&nbsp;achievements</span>
+                                                 <span class="card-title"><i class="material-icons">subject</i>&nbsp;Patents</span>
                                                  <li class="divider"></li><br>
-                                                 <p>my current work</p>
+                                                 <span class="chip col s12"> dfdf<i id=""class="close material-icons">close</i></span>
+                                                 <br><span class="blue-text">Enter your achievements below</span>
+                                                 <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
                                                </div>
                                             </div>
                                         </div>
                                       </div>
+                                      <div class="divider"></div><br>
+                                      <div class="row" style="margin:10px;">
+                                          <div class="col s12 m6 l6">
+                                              <div class="card ">
+                                                 <div class="card-content ">
+                                                   <span class="card-title"><i class="material-icons">portrait</i>&nbsp;Professional Qualifications</span>
+                                                   <li class="divider"></li><br>
+                                                   <span class="chip col s12"> dfdf<i id=""class="close material-icons">close</i></span>
+                                                   <br><span class="blue-text">Enter your qualifications below</span>
+                                                   <div style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
+                                                 </div>
+                                              </div>
+                                          </div>
+                                          <div class="col s12 m6 l6">
+                                              <div class="card ">
+                                                 <div class="card-content ">
+                                                   <span class="card-title"><i class="material-icons">grade</i>&nbsp;achievements</span>
+                                                   <li class="divider"></li><br>
+                                                   <p>my current work</p>
+                                                 </div>
+                                              </div>
+                                          </div>
+                                        </div>
                               </div>
 
                             </div>
@@ -400,8 +447,8 @@
                           {{ csrf_field() }}
                           <input type="hidden" id="skillinput" name="skill" value="">
 
-
-                           <div id="skillchip"class="chips chips-initial"></div>
+                            <br><span class="blue-text">Enter your skills below</span>
+                           <div id="skillchip" style="border-bottom:2px solid #0d47a1;"class="chips chips-initial"></div>
 
                             </form>
 
@@ -481,7 +528,8 @@
                               <form id="strengthform"action="{{route('strength')}}" method="post">
                               {{ csrf_field() }}
                                 <input type="hidden" id="strengthinput" name="strength" value="">
-                              <div id="strengthchip"class="chips chips-initial">
+                                <br><span class="blue-text">Enter your strengths below</span>
+                              <div style="border-bottom:2px solid #0d47a1;" id="strengthchip"class="chips chips-initial">
 
                               </div>
                               </form>

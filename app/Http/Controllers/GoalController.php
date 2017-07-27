@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Image;
 
 class GoalController extends Controller{
 
@@ -341,6 +342,35 @@ public function deletetask(request $request)
   return redirect('/goal/'.$request->goalid);
 
 }
+
+public function upateGoalPic(request $request){
+   if($request->hasfile('goalpicture')){
+       $file = $request->file('goalpicture');
+       if($file->getClientOriginalExtension()=='jpg' ||$file->getClientOriginalExtension()=='jpeg' ){
+               $filename=time().'1.'.$file->getClientOriginalExtension();
+                $filenamethumb=time().'2.'.$file->getClientOriginalExtension();
+                Image::make($file)->resize(300,300)->opacity(50)->save(public_path('uploads/goals/'. $filenamethumb ));
+                Image::make($file)->resize(1142,400)->opacity(50)->save(public_path('uploads/goals/'. $filename ));
+
+
+                    DB::table('goals')
+            ->where('goalid',  $request->goalid)
+            ->whereIn('goalauthorization', ['creator', 'aligned'])
+            ->update([ 'goalpictureone'=>$filename, 'goalpicturetwo'=>$filenamethumb]);
+
+
+                    return redirect('/goal/'.$request->goalid);
+              }
+
+
+
+          }
+          else {
+            return redirect('/goal/'.$request->goalid);
+          }
+       }
+
+
 
 
 

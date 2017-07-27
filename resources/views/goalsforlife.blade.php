@@ -165,11 +165,11 @@
                         <label for="password" data-error="you cannot leave the password empty" id="b">
                           Password
                         </label>
-                        <small class="right">
+                        <span class="right">
                           <a href="{{ route('password.request') }}" class="blue-text">
                               Forgot Your Password  ?
                           </a>
-                        </small>
+                        </span>
                       </div>
                     </div>
                       <div class="row">
@@ -222,7 +222,7 @@
                           <label for="regemail">
                             Email
                           </label>
-                          <small class="red-text" id="regemailerror">{{ $errors->first('email') }}</small>
+                          <span class="red-text" id="regemailerror">{{ $errors->first('email') }}</span>
 
                           <script type="text/javascript">
                             var regemail=document.getElementById("regemail");
@@ -269,7 +269,7 @@
 
                                   }
 
-                              
+
                               else {
                                 regemailerror.classList.remove('green-text');
                                 regemail.style.borderColor = "red";
@@ -291,7 +291,7 @@
                           <label for="regpassword">
                             Password
                           </label>
-                          <small id="regpassworderror"></small>
+                          <span id="regpassworderror"></span>
                           <script type="text/javascript">
                             var password=document.getElementById("regpassword");
                             var passworderror=document.getElementById("regpassworderror");
@@ -327,7 +327,7 @@
                           <label for="regconfirmPassword">
                             Confirm Password
                           </label>
-                          <small id="regconfirmPassworderror"></small>
+                          <span id="regconfirmPassworderror"></span>
                           <script type="text/javascript">
                           var regconfirmPassword=document.getElementById("regconfirmPassword");
                           var regconfirmPassworderror=document.getElementById("regconfirmPassworderror");
@@ -371,7 +371,7 @@
                       <div class="input-field col s12 m6 l6">
                         <label>Date of Birth</label><br>
                         <input id="birthDate" oninput="dateValid()" type="date" name="dob">
-                        <small id="doberror"></small>
+                        <span id="doberror"></span>
                         <script type="text/javascript">
                         var birthDate=document.getElementById("birthDate");
                         var doberror=document.getElementById("doberror");
@@ -629,7 +629,7 @@
                           <label for="phoneNumber">
                             Phone number
                           </label>
-                          <small class="red-text" id="phoneNumbererror"></small>
+                          <span class="red-text" id="phoneNumbererror"></span>
                           <script type="text/javascript">
                           var phoneNumber=document.getElementById("phoneNumber");
                           var phoneNumbererror=document.getElementById("phoneNumbererror");

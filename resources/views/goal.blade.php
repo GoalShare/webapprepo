@@ -111,6 +111,8 @@
   <div class="row">
         <div class="col s12 m12">
           <div class="card ">
+
+
             <div class="card-content white-text" style="min-height:300px;background-image:url({{asset('uploads/goals/'.$goals->goalpictureone)}});  " >
                 <div class="row">
                   <span class="card-title"><h3>{{$goals->goalname}}</h3></span>
@@ -128,6 +130,27 @@
                     </div>
                 </div>
 
+                 <div class="cambtn" id="imgoverlayfade">
+                      <form style=""enctype="multipart/form-data" action="{{route('goalPicUpload')}}" method="post" id="goalPicUpload">
+                        {{ csrf_field() }}
+                          <p class="white-text">
+                            <div class="file-field input-field"  >
+                              <div class="btn btn-floating">
+                            <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >camera_alt</i>
+                            <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
+                            <input type="file" name="goalpicture"  onchange="javascript:this.form.submit();">
+                          </div>
+                        </div>
+
+
+                          </p>
+
+                        </form>
+
+
+
+
+                    </div>
 
             </div>
             <div class="card-action ">

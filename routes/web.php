@@ -25,6 +25,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
+Route::post('goalPicUpload','GoalController@upateGoalPic')->name('goalPicUpload');
 Route::post('checkemail','CoreController@checkmails')->name('checkemail');
 Route::post('goal','GoalController@post')->name('goal');
 Route::post('addbio','ProfileController@addbio')->name('addbio');
@@ -86,6 +87,7 @@ Route::get('/search/{userid}',function($userid){
   return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos]);
 });
 Route::post('skill','SkillController@skill')->name('skill');
+Route::post('deletework','ProfileController@deletework')->name('deletework');
 Route::post('goalskill','SkillController@goalskill')->name('goalskill');
 Route::post('strength','SkillController@strength')->name('strength');
 Route::post('deleteskill','SkillController@deleteskill')->name('deleteskill');

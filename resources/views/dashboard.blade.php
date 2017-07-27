@@ -39,7 +39,7 @@
                 </p>
                 <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="medium" id="MediumPriority" />
-                  <label for="MediumPriority">Medium Priorityli</label>
+                  <label for="MediumPriority">Medium Priority</label>
                 </p>
                 <p class="left-align">
                   <input class="with-gap" name="goalpriority" type="radio" value="low" id="LowPriority"  />
@@ -433,15 +433,12 @@
         </div>
 
 
-        <div class="fab">
-          <button id="view-source" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
-        </div>
 
-        {{-- <a id="menu" class="waves-effect waves-light btn btn-floating red" ><i class="material-icons">add</i></a> --}}
+
 
         <!-- Tap Target Structure -->
-
-        <div class="tap-target" data-activates="view-source">
+  <div class="fab" id="view-source" >
+        <div  class="tap-target" data-activates="view-source">
           <div class="tap-target-content white-text">
             <h5>Start Building Your Life Goals</h5>
             <p>
@@ -449,15 +446,21 @@
 
 
             </p>
+
+
           </div>
         </div>
+
+          <button  class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
+                  </div>
+
+
 
         @if ($goal->isEmpty()||($compare->diffInHours($carbon))<1)
           <script>
           $('.tap-target').tapTarget('open');
           </script>
         @endif
-
 
 
 

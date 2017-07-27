@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Goal;
+use App\Portfolio;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,7 @@ class ProfileController extends Controller
                   ->select('users.*', 'friendships.*')
                   ->where([['friendships.status','friends'],['friendships.user',$id]])
                   ->get();
-   $portfolio=DB::table('portfolio')->where('id',$id)->get();
+   $portfolio=DB::table('portfolio')->where('userid',$id)->get();
    return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
  }
 
@@ -68,5 +69,8 @@ public function addbio(request $request)
   $user->save();
   echo json_encode($request->bio);
 }
-
+public function FunctionName(request $request)
+{
+  # code...
+}
 }
