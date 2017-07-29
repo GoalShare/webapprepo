@@ -69,8 +69,243 @@ public function addbio(request $request)
   $user->save();
   echo json_encode($request->bio);
 }
-public function FunctionName(request $request)
+public function deleteportfolio(request $request)
 {
-  # code...
+  $id=$request->id;
+  DB::table('portfolio')->where('id',$id)->delete();
+  echo "string";
+}
+public function addpreviouswork(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'work',
+            'userid'=>Auth::id(),
+            'nature'=>'previous',
+            'data' => $request->previous,
+          ]
+    );
+    echo json_encode($request->previous);
+
+}
+
+public function addcurrentwork(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'work',
+            'userid'=>Auth::id(),
+            'nature'=>'current',
+            'data' => $request->current,
+          ]
+    );
+    echo json_encode($request->current);
+
+}
+
+public function addprimary(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'education',
+            'userid'=>Auth::id(),
+            'nature'=>'primarysch',
+            'data' => $request->primary,
+          ]
+    );
+    echo json_encode($request->primary);
+
+}
+
+public function addsecondary(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'education',
+            'userid'=>Auth::id(),
+            'nature'=>'secondarysch',
+            'data' => $request->secondary,
+          ]
+    );
+    echo json_encode($request->secondary);
+
+}
+
+public function addcollege(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'education',
+            'userid'=>Auth::id(),
+            'nature'=>'college',
+            'data' => $request->college,
+          ]
+    );
+    echo json_encode($request->college);
+
+}
+
+public function adduniversity(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'education',
+            'userid'=>Auth::id(),
+            'nature'=>'university',
+            'data' => $request->university,
+          ]
+    );
+    echo json_encode($request->university);
+
+}
+
+public function addachievements(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'achievements',
+            'userid'=>Auth::id(),
+            'nature'=>'achievements',
+            'data' => $request->achievements,
+          ]
+    );
+    echo json_encode($request->achievements);
+
+}
+
+public function addprofqual(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'profqual',
+            'userid'=>Auth::id(),
+            'nature'=>'profqual',
+            'data' => $request->profqual,
+          ]
+    );
+    echo json_encode($request->profqual);
+
+}
+public function addpatents(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'patents',
+            'userid'=>Auth::id(),
+            'nature'=>'patents',
+            'data' => $request->patents,
+          ]
+    );
+    echo json_encode($request->patents);
+
+}
+public function addresearchpapers(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'researchpapers',
+            'userid'=>Auth::id(),
+            'nature'=>'researchpapers',
+            'data' => $request->researchpapers,
+          ]
+    );
+    echo json_encode($request->researchpapers);
+
+}
+public function addfrom(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'location',
+            'userid'=>Auth::id(),
+            'nature'=>'from',
+            'data' => $request->from,
+          ]
+    );
+    echo json_encode($request->from);
+
+}
+
+public function addliving(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'location',
+            'userid'=>Auth::id(),
+            'nature'=>'living',
+            'data' => $request->living,
+          ]
+    );
+    echo json_encode($request->living);
+
+}
+
+public function addinterests(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'interests',
+            'userid'=>Auth::id(),
+            'nature'=>'interests',
+            'data' => $request->interests,
+          ]
+    );
+    echo json_encode($request->interests);
+
+}
+public function addfacebook(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'social',
+            'userid'=>Auth::id(),
+            'nature'=>'facebook',
+            'data' => $request->facebook,
+          ]
+    );
+    echo json_encode($request->facebook);
+
+}
+
+public function addlinkedin(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'social',
+            'userid'=>Auth::id(),
+            'nature'=>'linkedin',
+            'data' => $request->linkedin,
+          ]
+    );
+    echo json_encode($request->linkedin);
+
+}
+
+public function addtwitter(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'social',
+            'userid'=>Auth::id(),
+            'nature'=>'twitter',
+            'data' => $request->twitter,
+          ]
+    );
+    echo json_encode($request->twitter);
+
+}
+
+public function addinstagram(request $request)
+{
+  DB::table('portfolio')->insert(
+          [
+            'category'=> 'social',
+            'userid'=>Auth::id(),
+            'nature'=>'instagram',
+            'data' => $request->instagram,
+          ]
+    );
+    echo json_encode($request->instagram);
+
 }
 }
