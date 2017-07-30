@@ -56,6 +56,7 @@ Route::get('/search',function(){
   }
 });
 Route::get('/search/{userid}',function($userid){
+  $portfolio=DB::table('portfolio')->where('userid',$userid)->get();
   $email=Auth::User()->email;
   $id=Auth::id();
   $user= DB::table('users')->where('id',$userid)->get();
@@ -84,7 +85,7 @@ Route::get('/search/{userid}',function($userid){
                         ->where([['friendships.status','friends'],['friendships.user',$userid]])
                         ->get();
                          $id=Auth::id();
-  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos]);
+  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
 });
 Route::post('skill','SkillController@skill')->name('skill');
 Route::post('deleteportfolio','ProfileController@deleteportfolio')->name('deleteportfolio');
