@@ -15,11 +15,7 @@
           </div>
           <div class="col s12 m6 l6">
             <br>
-
             <h4 class="flow-text"> <b>{{$users->fname}}  {{$users->lname}} </b><h4>
-
-
-
                 <p class="flow-text">{{$users->email}} <br>
                     {{$users->phone}}  <br>{{$users->dob}} </p>
 

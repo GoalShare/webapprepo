@@ -29,6 +29,7 @@ Route::post('goalPicUpload','GoalController@upateGoalPic')->name('goalPicUpload'
 Route::post('checkemail','CoreController@checkmails')->name('checkemail');
 Route::post('goal','GoalController@post')->name('goal');
 Route::post('addbio','ProfileController@addbio')->name('addbio');
+Route::post('modifyprofile','ProfileController@modifyprofile')->name('modifyprofile');
 Route::post('task','TaskController@post')->name('task');
 Route::post('/dashboard','HomeController@post');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');

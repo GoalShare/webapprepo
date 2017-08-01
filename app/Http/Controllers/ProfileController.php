@@ -308,4 +308,18 @@ public function addinstagram(request $request)
     echo json_encode($request->instagram);
 
 }
+public function modifyprofile(request $request)
+{
+  $id=Auth::id();
+  $user=User::find($id);
+  $user->fname=$request->fname;
+  $user->lname=$request->lname;
+  $user->dob=$request->dob;
+  $user->countrycode=$request->countrycode;
+  $user->phone=$request->phone;
+  $user->save();
+
+  echo json_encode($user);
+}
+
 }
