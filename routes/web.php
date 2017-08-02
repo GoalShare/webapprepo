@@ -23,6 +23,9 @@ Route::get('/', function () {
 
 });
 Auth::routes();
+Route::get('/calendar',function(){
+  return view('calender');
+});
 Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
 Route::post('goalPicUpload','GoalController@upateGoalPic')->name('goalPicUpload');
@@ -32,6 +35,7 @@ Route::post('addbio','ProfileController@addbio')->name('addbio');
 Route::post('modifyprofile','ProfileController@modifyprofile')->name('modifyprofile');
 Route::post('task','TaskController@post')->name('task');
 Route::post('/dashboard','HomeController@post');
+Route::get('/calendar','calendarController@view');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/goal/{goalname}','GoalController@view');
 Route::post('comment','commentController@post')->name('comment');

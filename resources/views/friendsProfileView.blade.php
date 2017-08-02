@@ -279,7 +279,7 @@
                                  </div>
                               </div>
                           </div>
-                          <div class="col s12 m6 l6">
+                          {{-- <div class="col s12 m6 l6">
                               <div class="card ">
                                  <div class="card-content ">
                                    <span class="card-title"><i class="material-icons">group</i>&nbsp;Social Links</span>
@@ -333,7 +333,7 @@
                                    </div>
                                  </div>
                               </div>
-                          </div>
+                          </div> --}}
                         </div>
           </div>
 

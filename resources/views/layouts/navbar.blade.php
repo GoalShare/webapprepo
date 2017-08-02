@@ -51,10 +51,8 @@
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
     ga('create', 'UA-102672548-1', 'auto');
     ga('send', 'pageview');
-
   </script>
 <!-- goal page css-->
       <link href="{{asset('css/goal.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -68,27 +66,20 @@
     min-height: 100vh;
     flex-direction: column;
     }
-
   main {
     flex: 1 0 auto;
     }
-
     .front{
       position: absolute;
       margin-top: 20px;
-
     }
-
     .alignedCard{
       overflow-y: scroll;
       height: 200px;
     }
-
-
 .footerCont{
   padding-left: 20px;
 }
-
           #view-source {
             position: fixed;
             display: block;
@@ -98,8 +89,6 @@
             margin-bottom: 40px;
             z-index: 900;
           }
-
-
       .mdl-layout__content {
         padding: 24px;
         flex: none;
@@ -108,32 +97,26 @@
         max-width: 900px;
         margin: auto;
       }
-
       .team_hr {
           border: 1px solid #fff;
           width: 39.5%;
           float: left;
       }
-
       .team_hr_left {
           margin-right: 30px;
           margin-left: 15px;
       }
-
       .team_hr_right {
           margin-left: 30px;
       }
-
       .hr_gray {
           border: 1px solid #cccccc;
       }
-
       .drawer-separator {
         height: 1px;
         background-color: #dcdcdc;
         margin: 8px 0;
       }
-
       .img-size{
         align-items: center;
       }
@@ -147,20 +130,15 @@
       right: 0;
     background:rgba(0, 0, 0, 0.6);
       z-index: 2;
-
       overflow: hidden;
       width: 100%;
       height: 0;
       transition: .5s ease;
     }
-
     .containerholder:hover .overlay {
       height: 100%;
     }
-
     .text {
-
-
       white-space: nowrap;
       color: white;
       font-size: 20px;
@@ -171,52 +149,34 @@
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
     }
-
     .btn2{
       padding-top: 20px;
     }
-
-
-
-
     /*copy this class to everywhere*/
     .front{
-
         margin-top: 20px;
         position: relative;
-
       }
-
       .logoImg{
         margin-top: 15px;
       }
-
       .logoImg2{
         margin-top: 7px;
       }
-
-
-
       ::-webkit-scrollbar-track
       {
       	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
       	background-color: #F5F5F5;
       }
-
     ::-webkit-scrollbar
       {
       	width: 6px;
       	background-color:  #999999;
       }
-
     ::-webkit-scrollbar-thumb
       {
       	background-color:  #999999;
       }
-
-
-
-
     /*///*/
   </style>
 </head>
@@ -290,10 +250,8 @@
               display: none;
               z-index: 5;
             }
-
             ul#suggestions li {
             }
-
             ul#suggestions li a {
               display: block;
               min-height: 1em;
@@ -302,7 +260,6 @@
               color: #000;
               text-decoration: none;
             }
-
             ul#suggestions li a:hover {
               background: #AAA;
             }*/
@@ -316,18 +273,14 @@
               var form = document.getElementById("search-form");
               var action = form.getAttribute("action");
               var search = document.getElementById("search");
-
               function showSuggestions(json) {
                   var li_list = suggestionsToList(json);
                   suggestions.innerHTML = li_list;
                   suggestions.style.display = 'block';
                 }
-
-
                 function suggestionsToList(items) {
                   // <li><a href="search.php?q=alpha">Alpha</a></li>
                   var output = '';
-
                   for(i=0; i < items.length; i++) {
                     if((items[i].id)!={{Auth::id()}}){
                     output += '<li>';
@@ -338,11 +291,8 @@
                     output += '</li><br>';
                   }
                   }
-
                   return output;
                 }
-
-
               function getSuggestions() {
                 var q = search.value;
                 var form_data=new FormData(form);
@@ -364,14 +314,10 @@
                     // showSuggestions(json);
                   }
                 };
-
               }
-
               // use "input" (every key), not "change" (must lose focus)
               search.addEventListener("input", getSuggestions);
-
             });
-
             </script>
           </li>
 
@@ -457,10 +403,8 @@
 
              </div>
              <!-- <div class="col l4 offset-l2 s12">
-
                <ul>
                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-
                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
                </ul>
@@ -480,7 +424,6 @@
 </body>
         <!-- Scripts -->
       <script>
-
       $('.dropdown-button').dropdown({
           inDuration: 300,
           outDuration: 225,
@@ -492,25 +435,17 @@
           stopPropagation: false // Stops event propagation
         }
       );
-
-
   $(document).ready(function(){
   $('.collapsible').collapsible();
 });
-
   $(function(){
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
     });
   });
-
-
   </script>
       <script>
-
-
-
     Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
       var link = el.querySelector('a');
       if(!link) {

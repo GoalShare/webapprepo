@@ -1,6 +1,7 @@
 @extends('layouts.navbar')
 
 @section('content')
+
   @php
    $carbon = new Carbon(Auth::User()->created_at);
    $compare =Carbon::now();
@@ -116,75 +117,37 @@
      $('.modal').modal();
      $('#addgoal').modal('close');
    });
-
-   addgoalbtn
-
  });
   </script>
       <!--end of add goal -->
-
-
     <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
 
         </br>
         </br>
         </br>
-        </br>
-        </br>
+				<div class="row mdl-grid portfolio-max-width">
+					<div class="col s12 ">
+						<span class="right blue-text text-darken-4"><b>calendar</b></span><br>
+						<a href="{{url('/calendar')}}" class="btn btn-floating btn-large right" ><i class="material-icons">date_range</i></a>
+					</div>
+				</div>
+				<script type="text/javascript">
+				// var goaldisplay=document.getElementById('goaldisplay');
+				// var calendardisplay=document.getElementById('calendardisplay');
+				// function displaycalendar() {
+				// 	calendardisplay.style.display="block";
+				// 	goaldisplay.addClass="hide";
+				// }
+				//
+				// function displaydashboard() {
+				// 	calendardisplay.style.display="none";
+				// 	goaldisplay.style.display="block";
+				// }
+				</script>
         <div class="mdl-grid portfolio-max-width" id="goaldisplay">
           @if($goal->isEmpty())
-            {{-- <div class="container center" style="padding-top:20px">
-         <div class="col s12 m12">
-           <div class="card blue-grey darken-1">
-             <div class="card-content white-text">
-               <!-- <span class="card-title">Card Title</span> -->
-               <div class="hide-on-small-only">
-                 <img src="welcome.png" alt="">
-               </div>
-               <div class="hide-on-med-and-up">
-                 <img src="{{asset('welcome.png')}}" alt="" width="293px" height="98px">
-               </div>
-             </div>
-             <div class="card-action">
-                <a href="#addgoal" class="white-text">Click to create a goal</a>
 
-              </div>
-
-           </div>
-         </div>
-</div> --}}
-
-{{-- <div class="container row">
-<div class="col s1"></div>
-        <div class="col s10">
-          <div class="card">
-              <div class="col s1"></div>
-            <div class="card blue darken-2">
-            <div class="card-content white-text">
-              <div class="col s1"></div>
-                      <div class="col s10">
-
-            <span class="card-title" style="color: white;"</span>
-            <div class="col s1"></div>
-             <h1><b>WELCOME</b></h1>
-           </div>
-
-              <span class="card-title align-center" style="color:black;"><h2>
-               {{ Auth::User()->fname}}&nbsp;{{ Auth::User()->lname}}</h2></span>
-
-            </div> --}}
-            {{-- </div>
-            <div class="card-content">
-            </div>
-            <div class="card-action">
-              <a href="#">{{ Auth::User()->fname}}&nbsp;{{ Auth::User()->lname}}</a>
-            </div> --}}
-
-          {{-- </div>
-        </div>
-      </div>
-      </div> --}}
       <style media="screen">
         .colorOfCard{
           background-color: #08e7d6;
@@ -278,12 +241,10 @@
              <div id="{{$goals->goalid}}" class="mdl-progress mdl-js-progress"></div><br>
 
              <script>
-
              // javascript for the progressbar needs to repeat for all goals
                  document.querySelector('#{{$goals->goalid}}').addEventListener('mdl-componentupgraded', function() {
                    this.MaterialProgress.setProgress({{$goals->goalcompletedpercentage}});
                  });
-
              </script>
                <form method="post" action="{{ route('dashboard') }}" id="unpin" class="right">
                  {{ csrf_field() }}
@@ -300,40 +261,7 @@
                <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" ><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
              </form>
              <script>
-             //ajax unpin
-            //  window.onload=function(){
-            //      document.getElementById("unpinbtn").addEventListener("click", function(event) {
-            //         event.preventDefault();
-            //         unpin();
-            //       });
-            //  }
-             //
-            //  function disableSubmitButton() {
-            //    document.getElementById("unpinbtn").disabled = true;
-            //  }
-             //
-            //  function enableSubmitButton() {
-            //    document.getElementById("unpinbtn").disabled = false;
-            //  }
-             //
-            //  function unpin(){
-            //  var form = document.getElementById("unpin");
-            //  var action = form.getAttribute("action");
-             //
-            //  var form_data = new FormData(form);
-             //
-            //  var xhr = new XMLHttpRequest();
-            //  xhr.open('POST', action, true);
-            //  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            //  xhr.send(form_data);
-            //  xhr.onreadystatechange = function () {
-            //    if(xhr.readyState == 4 && xhr.status == 200) {
-            //      enableSubmitButton();
-            //      $( "#goaldisplay" ).load(window.location.href + " #goaldisplay" );
-            //    }
-            //  };
-             //
-            //  }
+
              </script>
            </div>
           </div>

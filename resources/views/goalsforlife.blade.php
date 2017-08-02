@@ -108,7 +108,7 @@
         <li><span>Image 02</span><div><h3>Innovation</h3></div></li>
         <li><span>Image 03</span><div><h3>Balance</h3></div></li>
         <li><span>Image 04</span><div><h3>Equality</h3></div></li>
-        <li><span>Image 05</span><div><h3>Enginering</h3></div></li>
+        <li><span>Image 05</span><div><h3>Engineering</h3></div></li>
         <li><span>Image 06</span><div><h3>Leading</h3></div></li>
     </ul>
 
