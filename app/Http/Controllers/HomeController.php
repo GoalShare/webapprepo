@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Image;
+use Mail;
+use App\Mail\newuserwelcomeMain;
+
 
 class HomeController extends Controller
 
@@ -186,5 +189,21 @@ class HomeController extends Controller
         return redirect('/dashboard');
 
       }
+
+      public function emailmain()
+    {
+
+    Mail::to(Auth::User()->email)->send(new newuserwelcomeMain());
+    return redirect('/dashboard');
+
+    }
+
+public function confirmuser()
+  {
+
+
+  return redirect('/dashboard');
+
+  }
 
     }

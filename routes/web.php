@@ -154,3 +154,10 @@ Route::get('/nonLoginAboutus', function () {
 Route::get('/nonLoginPolicies', function () {
     return view('nonLoginPolicies');
 });
+
+
+Route::get('/email','HomeController@emailmain')->name('sendEmail');
+
+
+Route::get('/dashboard/{email}','HomeController@confirmuser');
+Route::post('checkemail','CoreController@checkmails')->name('checkemail');
