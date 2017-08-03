@@ -122,7 +122,6 @@
       <!--end of add goal -->
     <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
-
         </br>
         </br>
         </br>

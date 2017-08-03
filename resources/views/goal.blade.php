@@ -44,15 +44,15 @@
           </li>
           <li class="collection-item">
             <p>
-                 <input name="taskpriority" type="radio" id="priority1" />
+                 <input name="taskpriority" value="high" type="radio" id="priority1" />
                  <label for="priority1">high</label>
                </p>
                <p>
-                 <input name="taskpriority" type="radio" id="priority2" />
+                 <input name="taskpriority" value="medium" type="radio" id="priority2" />
                  <label for="priority2">medium</label>
                </p>
                <p>
-                 <input  name="taskpriority" type="radio" id="priority3"  />
+                 <input  name="taskpriority" value="low" type="radio" id="priority3"  />
                  <label for="priority3">low</label>
                </p>
           </li>
@@ -946,112 +946,297 @@
                       $taskcount=1;
                     @endphp
                     @foreach ($task as $tasks)
-                      <li>
-                        <div class="collapsible-header">
-                          <div class="row">
-                          <div class="col s10">
-                          <b>{{$taskcount}}.&nbsp;&nbsp;{{$tasks->taskname}}</b>
-                        </div>
-                        <div class="col s2">
-                          @if ($goals->goalauthorization!='aligned')
-                          <form class="" action="{{route('deletetask')}}" method="post">
-                            {{csrf_field()}}
-                            <button type="submit" style="border:none;background-color:inherit;"><input type="hidden" name="goalid" value="{{$tasks->goalid}}"><i class="material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="delete task">delete</i></button>
-                          </form>
-                        @endif
-                        </div>
-                      </div>
-                      </div>
-                        @php
-                          $taskcount=$taskcount+1;
-                        @endphp
-                        <div class="collapsible-body blue-text text-darken-4">
-                          <div class="row">
-                              <div class="col s6 center-align">
-                                <b>Intent :</b>
-                              </div>
-                              <div class="col s6 center-align">
-                                {{$tasks->taskintent}}
-                              </div>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="row">
-                                <div class="col s6 center-align">
-                                  <b>Priority :</b>
-                                </div>
-                                <div class="col s6 center-align">
-                                  {{$tasks->taskpriority}}
-                                </div>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="row">
-                                <div class="col s6 center-align">
-                                  <b>Start Date :</b>
-                                </div>
-                                <div class="col s6 center-align">
-                                  {{Carbon\Carbon::createFromFormat('Y-m-d', $tasks->taskstartdate)->toFormattedDateString()}}
-                                </div>
-                            </div>
-                          <div class="divider"></div>
-                          <div class="row">
-                              <div class="col s6 center-align">
-                                <b>End Date :</b>
-                              </div>
-                              <div class="col s6 center-align">
-                                {{Carbon\Carbon::createFromFormat('Y-m-d', $tasks->taskenddate)->toFormattedDateString()}}
-                              </div>
-                          </div>
-                        <div class="divider"></div>
-                        <div class=" section row">
-                          <form action="{{route('goal')}}" method="post" name="{{$taskcount.'form'}}" id="{{$taskcount.'form'}}">
-                           {{csrf_field()}}
-                           <input type="hidden" name="goalid" value="{{$goals->goalid}}">
-                           <input type="hidden" name="taskid" value="{{$tasks->id}}">
-                           <input type="hidden" name="action" value="updatecp">
-                            <div class="col s10">
-                              <b>Completed Percetage</b>
-                                  <p class="range-field">
-                                    <input type="range" name="cpinput" value="{{$tasks->taskcompletedpercentage}}" id="cpinput" min="0" max="100" />
-                                  </p>
-                            </div>
-                            <div class="col s2"><br>
-                              <button type="submit" id="{{$taskcount}}" class="waves-effect waves-light btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Done "><i class="material-icons">done</i></button>
-                            </div>
-                          </form>
-                        </div>
-                      <div class="divider"></div>
-                        </div>
-                      </li>
-                      {{-- <script type="text/javascript">
-                      // for (var i = 1; i <={{$taskcount}}; i++) {
-                        var cpbtn=document.getElementById("{{$taskcount}}");
-                        cpbtn.addEventListener("click",function(event){
-                          event.preventDefault();
-                          setpercentage();
-                        });
-                        function setpercentage(){
-                         var form = document.getElementById("{{$taskcount.'form'}}");
-                         var action = form.getAttribute("action");
-                         var form_data = new FormData(form);
+                                          <li>
+                                            <div class="collapsible-header">
+                                              <div class="row">
+                                              <div class="col s10">
+                                              <b>{{$taskcount}}.&nbsp;&nbsp;{{$tasks->taskname}}</b>
+                                            </div>
+                                            <div class="col s2">
+                                              @if ($goals->goalauthorization!='aligned')
+                                              <form class="" action="{{route('deletetask')}}" method="post">
+                                                {{csrf_field()}}
+                                                <button type="submit" style="border:none;background-color:inherit;">
+                                                  <input type="hidden" name="taskid" value="{{$tasks->id}}">
+                                                  <input type="hidden" name="goalid" value="{{$tasks->goalid}}">
+                                                  <i class="material-icons tooltipped" data-position="right" data-delay="50" data-tooltip="delete task">delete</i></button>
+                                              </form>
+                                            @endif
+                                            </div>
+                                          </div>
+                                          </div>
+                                            @php
+                                              $taskcount=$taskcount+1;
+                                            @endphp
+
+                                            <div class="collapsible-body blue-text text-darken-4">
+
+                                              <div>
+                                                <form name="task{{$tasks->id}}frm" id="task{{$tasks->id}}frm" action="{{route('updatetask')}}" method="post">
+                                                   <!-- id="taskintentfrm","taskpriorityfrm" style="display:inline;" -->
+                                              <div class="row">
+                                                  <div class="col s6 center-align">
+                                                    <b>Intent :</b>
+                                                  </div>
+                                                  <div class="col s6 center-align">
+
+                                                      <li id="taskintentfrm" style="display:inline;">
+                                                      {{ csrf_field() }}
+                                                      <div class="preloader-wrapper small active" id="taskintentpreloader" style="display:none;">
+                                                      <div class="spinner-layer spinner-blue-only">
+                                                            <div class="circle-clipper left">
+                                                              <div class="circle"></div>
+                                                            </div><div class="gap-patch">
+                                                              <div class="circle"></div>
+                                                            </div><div class="circle-clipper right">
+                                                              <div class="circle"></div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      <div class="row" id="taskintentrow">
+                                                      <div class="col s10">
+                                                        <div class="col s12" id="resulttaskintent">
+                                                          <span id="result">{{$tasks->taskintent}}</span>
+                                                        </div>
+                                                      <div class="input-field col s12" id="tskintent" style="display:none;">
+                                                        <input name="taskintent" value="{{$tasks->taskintent}}" type="text" required>
+                                                        <input name="id" type="hidden" value="{{$tasks->id}}">
+                                                        <input type="text" style="display:none;" value="{{$tasks->id}}" name="id">
+                                                        <input type="text" style="display:none;" value="updatetask" name="action">
+                                                        <input type="text" style="display:none;" value="tskintent" name="attribute">
+                                                        <label id="taskintentfield" for="tskintent" ></label>
+                                                      </div>
+                                                    </div>
+
+                                                    </div>
 
 
-                         var xhr = new XMLHttpRequest();
-                         xhr.open('POST', action, true);
-                         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                         xhr.send(form_data);
-                         xhr.onreadystatechange = function () {
-                           if(xhr.readyState == 4 && xhr.status == 200) {
-                              var result = xhr.responseText;
-                              console.log('Result: ' + result);
-                              document.getElementById("goalpercentage").innerHTML=result;
-                           }
-                         };
-                       }
+                                                  </li>
+                                                  </div>
+                                                </div>
+                                                <div class="divider"></div>
+                                                <div class="row">
+                                                    <div class="col s6 center-align">
+                                                      <b>Priority :</b>
+                                                    </div>
+                                                    <div class="col s6 center-align">
 
-                      // }
+                                                      <li id="taskpriorityfrm" style="display:inline;">
+                                                         {{ csrf_field() }}
+                                                         <div class="preloader-wrapper small active" id="taskprioritypreloader" style="display:none;">
+                                                         <div class="spinner-layer spinner-blue-only">
+                                                               <div class="circle-clipper left">
+                                                                 <div class="circle"></div>
+                                                               </div><div class="gap-patch">
+                                                                 <div class="circle"></div>
+                                                               </div><div class="circle-clipper right">
+                                                                 <div class="circle"></div>
+                                                               </div>
+                                                             </div>
+                                                           </div>
+                                                         <div class="row" id="taskpriorityrow">
+                                                         <div class="col s10">
+                                                           <div class="col s12" id="resulttaskpriority">
+                                                             <span id="taskpriorityresult">{{$tasks->taskpriority}}</span>
+                                                           </div>
+                                                         <div class="input-field col s12" id="tskpriority" style="display:none;">
+                                                               <select name="taskpriority" id="taskpriority">
+                                                                 <option value="{{$tasks->taskpriority}}" selected>{{$tasks->taskpriority}}</option>
+                                                                 <option value="high">high</option>
+                                                                 <option value="medium">medium</option>
+                                                                 <option value="low">low</option>
+                                                               </select>
+                                                               <label id="taskpriorityfield" for="taskpriority"></label>
+                                                          <input type="hidden" style="display:none;" value="{{$goals->goalid}}" name="goalid">
+                                                           <input type="text" style="display:none;" value="{{$tasks->id}}" name="id">
+                                                           <input type="text" style="display:none;" value="updatetask" name="action">
+                                                           <input type="text" style="display:none;" value="taskpriority" name="attribute">
+                                                         </div>
+                                                       </div>
 
-                      </script> --}}
-                    @endforeach
+                                                       </div>
+                                                     </li>
+                                                     </div>
+                                                   </div>
+                                                   <div class="divider"></div>
+                                                   <div class="row">
+                                                       <div class="col s6 center-align">
+                                                         <b>Start Date :</b>
+                                                       </div>
+                                                       <div class="col s6 center-align">
+
+                                                         <li id="taskstartdatefrm" style="display:inline;">
+                                                            {{ csrf_field() }}
+                                                            <div class="preloader-wrapper small active" id="taskstartdatepreloader" style="display:none;">
+                                                            <div class="spinner-layer spinner-blue-only">
+                                                                  <div class="circle-clipper left">
+                                                                    <div class="circle"></div>
+                                                                  </div><div class="gap-patch">
+                                                                    <div class="circle"></div>
+                                                                  </div><div class="circle-clipper right">
+                                                                    <div class="circle"></div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            <div class="row" id="taskstartdaterow">
+                                                            <div class="col s10">
+                                                              <div class="col s12" id="resulttaskstartdate">
+                                                                <span id="taskstartdateresult">{{Carbon\Carbon::createFromFormat('Y-m-d', $tasks->taskstartdate)->toFormattedDateString()}}</span>
+                                                              </div>
+                                                            <div class="input-field col s12" id="tskstartdate" style="display:none;">
+                                                                  <input type="date" name="taskstartdate" id="taskstartdate"  value="{{$tasks->taskstartdate}}"required>
+                                                                  <label id="taskstartdatefield" for="taskstartdate"></label>
+                                                              <input type="text" style="display:none;" value="{{$tasks->id}}" name="id">
+                                                              <input type="text" style="display:none;" value="updatetask" name="action">
+                                                              <input type="text" style="display:none;" value="taskstartdate" name="attribute">
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                          </div>
+                                                        </div>
+                                                        <div class="divider"></div>
+                                                        <div class="row">
+                                                          <div class="col s6 center-align">
+                                                            <b>End Date :</b>
+                                                          </div>
+                                                          <div class="col s6 center-align">
+
+                                                            <li id="taskenddatefrm" style="display:inline;">
+                                                               {{ csrf_field() }}
+                                                               <div class="preloader-wrapper small active" id="taskenddatepreloader" style="display:none;">
+                                                               <div class="spinner-layer spinner-blue-only">
+                                                                     <div class="circle-clipper left">
+                                                                       <div class="circle"></div>
+                                                                     </div><div class="gap-patch">
+                                                                       <div class="circle"></div>
+                                                                     </div><div class="circle-clipper right">
+                                                                       <div class="circle"></div>
+                                                                     </div>
+                                                                   </div>
+                                                                 </div>
+                                                               <div class="row" id="taskenddaterow">
+                                                               <div class="col s10">
+                                                                 <div class="col s12" id="resulttaskenddate">
+                                                                   <span id="taskenddateresult">{{Carbon\Carbon::createFromFormat('Y-m-d', $tasks->taskenddate)->toFormattedDateString()}}</span>
+                                                                 </div>
+                                                               <div class="input-field col s12" id="tskenddate" style="display:none;">
+                                                                     <input type="date"name="taskenddate" id="taskenddate" value="{{$tasks->taskenddate}}"required>
+                                                                     <label id="taskenddatefield" for="taskenddate"></label>
+                                                                 <input type="text" style="display:none;" value="{{$tasks->id}}" name="id">
+                                                                 <input type="text" style="display:none;" value="updatetask" name="action">
+                                                                 <input type="text" style="display:none;" value="taskenddate" name="attribute">
+                                                               </div>
+                                                             </div>
+
+                                                             </div>
+                                                           </li>
+                                                           </div>
+                                                         </div>
+
+                                                <div class="col s2 right">
+                                                  @if ($goals->goalauthorization!='aligned')
+                                                      {{-- <button  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Done "style="display:none;" type="submit" id="edittask{{$tasks->id}}"><i class="material-icons">done</i></button>
+                                                      <button type="submit"  class="btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"id="task{{$tasks->id}}" ><i class="material-icons ">mode_edit</i></button> --}}
+                                                  @endif
+                                                </div>
+                                              </form>
+                                              <script type="text/javascript">
+                                              //
+                                              //     var taskintentbtn=document.getElementById('task{{$tasks->id}}');
+                                              //     var edittaskintent=document.getElementById('edittask{{$tasks->id}}');
+                                              //     var taskupdateform=document.getElementById('task{{$tasks->id}}frm')
+                                              //     var tskintent=document.getElementById('tskintent');
+                                              //     var tskpriority=document.getElementById('tskpriority');
+                                              //     var tskstartdate=document.getElementById('tskstartdate');
+                                              //     var tskenddate=document.getElementById('tskenddate');
+                                              //     var taskintentfield=document.getElementById('taskintentfield');
+                                              //     var taskpriorityfield=document.getElementById('taskpriorityfield');
+                                              //     var taskstartdatefield=document.getElementById('taskstartdatefield');
+                                              //     var taskenddatefield=document.getElementById('taskenddatefield');
+                                              //
+                                              //
+                                              //     taskintentbtn.addEventListener("click", function(event) {
+                                              //     event.preventDefault();
+                                              //     taskintentbtn.style.display='none';
+                                              //     document.getElementById('resulttaskintent').style.display='none';
+                                              //     document.getElementById('resulttaskpriority').style.display='none';
+                                              //     document.getElementById('resulttaskstartdate').style.display='none';
+                                              //     document.getElementById('resulttaskenddate').style.display='none';
+                                              //     document.getElementById('taskpriority').style.display='inline';
+                                              //     document.getElementById('taskstartdate').style.display='inline';
+                                              //     document.getElementById('taskenddate').style.display='inline';
+                                              //     tskintent.style.display='inline';
+                                              //     tskenddate.style.display='inline';
+                                              //     tskstartdate.style.display='inline';
+                                              //     tskpriority.style.display='inline';
+                                              //     edittaskintent.style.display='inline';
+                                              //
+                                              //   });
+                                              //
+                                              //   edittaskintent.addEventListener("click", function(event) {
+                                              //   event.preventDefault();
+                                              //   taskupdateform.submit();
+                                              //
+                                              //
+                                              // });
+                                              //
+                                              //
+
+                                              </script>
+                                              </div>
+
+                                            <div class="divider"></div>
+                                            <div class=" section row">
+                                              <form action="{{route('goal')}}" method="post" name="{{$taskcount.'form'}}" id="{{$taskcount.'form'}}">
+                                               {{csrf_field()}}
+                                               <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                                               <input type="hidden" name="taskid" value="{{$tasks->id}}">
+                                               <input type="hidden" name="action" value="updatecp">
+                                                <div class="col s10">
+                                                  <b>Completed Percetage</b>
+                                                      <p class="range-field">
+                                                        <input type="range" name="cpinput" value="{{$tasks->taskcompletedpercentage}}" id="cpinput" min="0" max="100" />
+                                                      </p>
+                                                </div>
+                                                <div class="col s2"><br>
+                                                  <button type="submit" id="{{$taskcount}}" class="waves-effect waves-light btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Done "><i class="material-icons">done</i></button>
+                                                </div>
+                                              </form>
+                                            </div>
+                                          <div class="divider"></div>
+                                            </div>
+                                          </li>
+                                          {{-- <script type="text/javascript">
+                                          // for (var i = 1; i <={{$taskcount}}; i++) {
+                                            var cpbtn=document.getElementById("{{$taskcount}}");
+                                            cpbtn.addEventListener("click",function(event){
+                                              event.preventDefault();
+                                              setpercentage();
+                                            });
+                                            function setpercentage(){
+                                             var form = document.getElementById("{{$taskcount.'form'}}");
+                                             var action = form.getAttribute("action");
+                                             var form_data = new FormData(form);
+
+
+                                             var xhr = new XMLHttpRequest();
+                                             xhr.open('POST', action, true);
+                                             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                                             xhr.send(form_data);
+                                             xhr.onreadystatechange = function () {
+                                               if(xhr.readyState == 4 && xhr.status == 200) {
+                                                  var result = xhr.responseText;
+                                                  console.log('Result: ' + result);
+                                                  document.getElementById("goalpercentage").innerHTML=result;
+                                               }
+                                             };
+                                           }
+
+                                          // }
+
+                                          </script> --}}
+                                        @endforeach
                     @foreach ($privacy as $privacys)
                       <li class="right-align"><a style="margin:5px;" class="waves-effect waves-light btn-floating pulse  tooltipped" data-position="bottom" data-delay="50" data-tooltip="Divide your goal to Tasks" href="#addtaskmodal"><i class="material-icons">add</i></a></li>
                     @endforeach
