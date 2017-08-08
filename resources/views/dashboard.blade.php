@@ -84,6 +84,141 @@
               <input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal end date" style="color:#565656;" type="date" id="goalenddate" name="goalenddate" required>
             </div>
           </li>
+          <script type="text/javascript">
+
+
+
+
+          function dateValid() {
+            var taskstartdate=document.getElementById("goalstartdate");
+
+            var goalstartdateerror=document.getElementById("goalstartdateerror");
+            var goalenddate=document.getElementById("goalenddate");
+
+            var goalenddateerror=document.getElementById("goalenddateerror");
+          //  var d=new Date(goalstartdate.value
+                var d = new Date(document.getElementById("goalstartdate").value);
+                          //  var startDate = "";
+            var convertedStartDate = new Date(d);
+            var month = convertedStartDate.getMonth() + 1
+            var day = convertedStartDate.getDay();
+            var year = convertedStartDate.getFullYear();
+            if(day<10) {
+                day = '0'+day
+            }
+
+            if(month<10) {
+                month = '0'+month
+            }
+            var shortStartDate = month + "/" + day + "/" + year;
+
+
+
+          var today = new Date();
+                                                var dd = today.getDate();
+                                                var mm = today.getMonth()+1;
+                                                var yyyy = today.getFullYear();
+
+                                                if(dd<10) {
+                                                    dd = '0'+dd
+                                                }
+
+                                                if(mm<10) {
+                                                    mm = '0'+mm
+                                                }
+
+                                              today = mm + '/' + dd + '/' + yyyy;
+
+
+
+
+
+
+
+                  var date1 = new Date(shortStartDate);
+                    var date2 = new Date(today);
+
+
+              if (date1 > date2) {
+                //  console.log('valid date');
+              //  console.log('valid date');
+               goalstartdateerror.innerHTML='valid date';
+               goalstartdateerror.classList.remove('red-text');
+               goalstartdateerror.classList.add('green-text');
+               goalstartdate=1;
+               if(goalstartdate==1 && goalenddate==1){
+                 document.getElementById("addgoalbtn").disabled=false;
+               }
+
+
+            }
+            else {
+
+                goalstartdateerror.innerHTML='goal start date is invalid';
+                goalstartdateerror.classList.remove('green-text');
+                goalstartdateerror.classList.add('red-text');
+                goalstartdate=0;
+                if(goalstartdate==1 || goalenddate==1){
+                  document.getElementById("addgoalbtn").disabled=true;
+                }
+
+            }
+
+
+
+
+
+          // -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        //  function endateValid() {
+
+                var end = new Date(document.getElementById("goalenddate").value);
+
+            var convertedEndDate = new Date(end);
+            var enmonth = convertedEndDate.getMonth() + 1
+            var enday = convertedEndDate.getDay();
+            var enyear = convertedEndDate.getFullYear();
+            if(enday<10) {
+                enday = '0'+enday
+            }
+
+            if(enmonth<10) {
+                enmonth = '0'+enmonth
+            }
+            var shortEndDate = enmonth + "/" + enday + "/" + enyear;
+
+                  var endate1 = new Date(shortEndDate);
+
+
+
+              if (endate1 > date1) {
+                //  console.log('valid date');
+              //  console.log('valid date');
+               goalenddateerror.innerHTML='valid date';
+               goalenddateerror.classList.remove('red-text');
+               goalenddateerror.classList.add('green-text');
+               goalenddate=1;
+               if(goalstartdate==1 && goalenddate==1){
+                 document.getElementById("addgoalbtn").disabled=false;
+               }
+
+
+            }
+            else {
+
+                goalenddateerror.innerHTML='goal end date is invalid';
+                goalenddateerror.classList.remove('green-text');
+                goalenddateerror.classList.add('red-text');
+                goalenddate=0;
+                if(goalstartdate!==1 || goalenddate!==1){
+                  document.getElementById("addgoalbtn").disabled=true;
+                 }
+
+            }
+
+          }
+        </script>
           <li class="collection-item">
             <div class="file-field input-field">
               <div class="btn">

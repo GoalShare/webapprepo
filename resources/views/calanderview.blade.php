@@ -20,9 +20,11 @@
       nowIndicator:true,
 			defaultDate: Date(),
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
+			editable: false,
+			disableDragging:true,
 			eventLimit: true, // allow "more" link when too many events
 			events: [
+
         @foreach ($goal as $goals)
         {
 					title: '{{$goals->goalname}}',
@@ -31,9 +33,7 @@
           end:'{{$goals->goalenddate}}',
           color:'#0{{rand(0,99)}}'
 				},
-        @endforeach
-
-
+				@endforeach
 			]
 		});
 
