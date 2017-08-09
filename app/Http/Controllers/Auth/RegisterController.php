@@ -80,5 +80,15 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'created_at'=> Carbon::now(),
         ]);
+
+        DB::table('notifications')->insert(
+                [
+                  'to'=> $data['email'],
+                  'subject' => 'Welcome',
+                  'message'=> 'We warmly welcome you to lifewithgoals family',
+                  'template_name'=>'register',
+                  'message_type'=>1,
+                ]
+            );
     }
 }

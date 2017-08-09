@@ -56,13 +56,178 @@
                  <label for="priority3">low</label>
                </p>
           </li>
-          <li class="collection-item">
+          {{-- <li class="collection-item">
             <div class="input-field col s6">
               <span  style="color:#565656;font-size:12pt;">Task Start-Date</span>
               <input  style="color:#565656;" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Task start date" type="date" id="taskstartdate" name="taskstartdate" required>
             </div>
+          </li> --}}
+          <form>
+            <script type="text/javascript">
+            var taskenddate=0;
+            var taskstartdate=0;
+
+            </script>
+          <li class="collection-item">
+            <div class="input-field col s6">
+              <span  style="color:#565656;font-size:12pt;">Task Start-Date</span>
+              <input  style="color:#565656;" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Task start date" type="date" id="taskstartdate"  oninput="dateValid()"name="taskstartdate" required>
+                  <span id="taskstartdateerror"></span>
+              <!-- <script type="text/javascript">
+
+            </script> -->
+            </div>
           </li>
           <li class="collection-item">
+            <div class="input-field col s6">
+              <span style="color:#565656;font-size:12pt;">Task End-Date</span>
+              <input  style="color:#565656;" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Task end date" type="date"  id="taskenddate" oninput="dateValid()" name="taskenddate" required>
+              <span id="taskenddateerror"></span>
+            </div>
+          </li>
+
+                    <script type="text/javascript">
+
+
+
+
+                    function dateValid() {
+                      var taskstartdate=document.getElementById("taskstartdate");
+
+                      var taskstartdateerror=document.getElementById("taskstartdateerror");
+                      var taskenddate=document.getElementById("taskenddate");
+
+                      var taskenddateerror=document.getElementById("taskenddateerror");
+                    //  var d=new Date(taskstartdate.value
+                          var d = new Date(document.getElementById("taskstartdate").value);
+                                    //  var startDate = "";
+                      var convertedStartDate = new Date(d);
+                      var month = convertedStartDate.getMonth() + 1
+                      var day = convertedStartDate.getDay();
+                      var year = convertedStartDate.getFullYear();
+                      if(day<10) {
+                          day = '0'+day
+                      }
+
+                      if(month<10) {
+                          month = '0'+month
+                      }
+                      var shortStartDate = month + "/" + day + "/" + year;
+
+
+
+                    // // var today = new Date();
+                    // //                                       var dd = today.getDate();
+                    // //                                       var mm = today.getMonth()+1;
+                    // //                                       var yyyy = today.getFullYear();
+                    // //
+                    // //                                       if(dd<10) {
+                    // //                                           dd = '0'+dd
+                    // //                                       }
+                    // //
+                    // //                                       if(mm<10) {
+                    // //                                           mm = '0'+mm
+                    // //                                       }
+                    //
+                    //                                     today = mm + '/' + dd + '/' + yyyy;
+
+
+
+
+
+
+
+                            var date1 = new Date(shortStartDate);
+                            //  var date2 = new Date(today);
+                        //    var date2={{$goals->goalstartdate}};
+                           var date2 = new Date("{{$goals->goalstartdate}}");
+                      //      var date3={{$goals->goalenddate}};
+                            var date3 = new Date("{{$goals->goalenddate}}");
+                            console.log(date1);
+                            console.log(date2);
+                            console.log(date3);
+
+                        if (date1 > date2 && date1 < date3) {
+                          //  console.log('valid date');
+                        //  console.log('valid date');
+                         taskstartdateerror.innerHTML='valid date';
+                         taskstartdateerror.classList.remove('red-text');
+                         taskstartdateerror.classList.add('green-text');
+                         taskstartdate=1;
+                         if(taskstartdate==1 && taskenddate==1){
+                           document.getElementById("addtaskbtn").disabled=false;
+                         }
+
+
+                      }
+                      else {
+
+                          taskstartdateerror.innerHTML='Task start date is invalid';
+                          taskstartdateerror.classList.remove('green-text');
+                          taskstartdateerror.classList.add('red-text');
+                          taskstartdate=0;
+                          if(taskstartdate==1 || taskenddate==1){
+                            document.getElementById("addtaskbtn").disabled=true;
+                          }
+
+                      }
+
+
+
+
+
+                    // -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+                  //  function endateValid() {
+
+                          var end = new Date(document.getElementById("taskenddate").value);
+
+                      var convertedEndDate = new Date(end);
+                      var enmonth = convertedEndDate.getMonth() + 1
+                      var enday = convertedEndDate.getDay();
+                      var enyear = convertedEndDate.getFullYear();
+                      if(enday<10) {
+                          enday = '0'+enday
+                      }
+
+                      if(enmonth<10) {
+                          enmonth = '0'+enmonth
+                      }
+                      var shortEndDate = enmonth + "/" + enday + "/" + enyear;
+
+                            var endate1 = new Date(shortEndDate);
+
+
+
+                        if (endate1 > date1 && endate1 < date3) {
+                          //  console.log('valid date');
+                        //  console.log('valid date');
+                         taskenddateerror.innerHTML='valid date';
+                         taskenddateerror.classList.remove('red-text');
+                         taskenddateerror.classList.add('green-text');
+                         taskenddate=1;
+                         if(taskstartdate==1 && taskenddate==1){
+                           document.getElementById("addtaskbtn").disabled=false;
+                         }
+
+
+                      }
+                      else {
+
+                          taskenddateerror.innerHTML='Task end date is invalid';
+                          taskenddateerror.classList.remove('green-text');
+                          taskenddateerror.classList.add('red-text');
+                          taskenddate=0;
+                          if(taskstartdate!==1 || taskenddate!==1){
+                            document.getElementById("addtaskbtn").disabled=true;
+                           }
+
+                      }
+
+                    }
+                  </script>
+          {{-- <li class="collection-item">
             <div class="input-field col s6">
               <span style="color:#565656;font-size:12pt;">Task End-Date</span>
               <input  style="color:#565656;" class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Task end date" type="date" id="taskenddate" name="taskenddate" required>
@@ -204,7 +369,7 @@
                       }
 
                     }
-                  </script>
+                  </script> --}}
         </ul>
 
     </div>

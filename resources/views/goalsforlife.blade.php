@@ -123,8 +123,6 @@
 
       </div>
     </nav>
-
-
       <main  class="mdl-layout__content main" style="font-family: 'Roboto', sans-serif;">
         <div class="row">
           <div class="col s12 l6 m6 right" >
