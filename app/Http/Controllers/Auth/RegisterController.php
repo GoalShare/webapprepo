@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -68,6 +69,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      DB::table('notifications')->insert(
+              [
+                'to'=> $data['email'],
+                'subject' => 'Welcome',
+                'message'=> 'We warmly welcome you to lifewithgoals family',
+                'template_name'=>'register',
+                'message_type'=>1,
+              ]
+          );
         return User::create([
             'email' => $data['email'],
             'avatar'=> 'avatar.jpg',
@@ -81,14 +91,5 @@ class RegisterController extends Controller
             'created_at'=> Carbon::now(),
         ]);
 
-        DB::table('notifications')->insert(
-                [
-                  'to'=> $data['email'],
-                  'subject' => 'Welcome',
-                  'message'=> 'We warmly welcome you to lifewithgoals family',
-                  'template_name'=>'register',
-                  'message_type'=>1,
-                ]
-            );
     }
 }
