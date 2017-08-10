@@ -32,6 +32,7 @@ class ShareController extends Controller
                   'goalpicturetwo'=>$goals->goalpicturetwo,
                   'pinned'=>1,
                   'created_at'=>Carbon::now(),
+                  'color'=> '0'.rand(0,99),
                 ]
             );
                 DB::table('privacys')->insert(

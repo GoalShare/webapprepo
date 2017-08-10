@@ -2,11 +2,14 @@
 
 @section('content')
 <br><br>
-<link href="{{asset('css/fullcalendar.min.css')}}" rel='stylesheet' />
-<link href="{{asset('css/fullcalendar.print.min.css')}}" rel='stylesheet' media='print' />
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel='stylesheet' />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel='stylesheet' media='print' />
 <script src="{{asset('js/lib/moment.min.js')}}"></script>
 <script src="{{asset('js/lib/jquery.min.js')}}"></script>
-<script src="{{asset('js/fullcalendar.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 <script>
 
 	$(document).ready(function() {
@@ -25,13 +28,25 @@
 			eventLimit: true, // allow "more" link when too many events
 			events: [
 
-        @foreach ($goal as $goals)
+        @foreach ($task as $tasks)
         {
-					title: '{{$goals->goalname}}',
-					start: '{{$goals->goalstartdate}}',
-          url: '{{url('/goal/'.$goals->goalid)}}',
-          end:'{{$goals->goalenddate}}',
-          color:'#0{{rand(0,99)}}'
+					title: @foreach ($goal as $goals)
+						@if ($tasks->goalid==$goals->goalid)
+						'Goal : | {{$goals->goalname}} |\n'
+						@endif
+					@endforeach+'Task : {{$tasks->taskname}}',
+					start: '{{$tasks->taskstartdate}}',
+          url: @foreach ($goal as $goals)
+						@if ($tasks->goalid==$goals->goalid)
+						'{{url('/goal/'.$goals->goalid)}}'
+						@endif
+					@endforeach,
+          end:'{{$tasks->taskenddate}}',
+          color:@foreach ($goal as $goals)
+						@if ($tasks->goalid==$goals->goalid)
+						'#{{$goals->color}}'
+						@endif
+					@endforeach
 				},
 				@endforeach
 			]
@@ -49,7 +64,7 @@
 	}
 
 </style>
-    <div class="left">
+    <div class="right">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <span class=" blue-text text-darken-4"><b>dashboard</b></span><br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url('/dashboard')}}" class="btn btn-floating btn-large" ><i class="material-icons">dashboard</i></a>

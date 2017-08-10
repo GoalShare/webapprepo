@@ -33,6 +33,7 @@ class AlignController extends Controller
                   'goalauthorization' => 'aligned',
                   'goalpictureone'=>$goals->goalpictureone,
                   'goalpicturetwo'=>$goals->goalpicturetwo,
+                  'color'=> '0'.rand(0,99),
                   'pinned'=>1,
                   'created_at'=>Carbon::now(),
                 ]

@@ -101,6 +101,7 @@ class HomeController extends Controller
                           'goalpicturetwo'=>$filenamethumb,
                           'pinned'=>1,
                           'created_at'=>Carbon::now(),
+                          'color'=> '0'.rand(0,99),
                         ]
                     );
                     DB::table('privacys')->insert(
@@ -135,6 +136,7 @@ class HomeController extends Controller
                       'goalpicturetwo'=>'default.jpg',
                       'pinned'=>1,
                       'created_at'=>Carbon::now(),
+                      'color'=> '0'.rand(0,99),
                     ]
                 );
                 DB::table('privacys')->insert(
