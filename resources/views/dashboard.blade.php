@@ -416,26 +416,26 @@
         </br>
         </br>
         </br>
-				<div class="row mdl-grid portfolio-max-width">
-          <div class="col s2">
+				<div class="row mdl-grid portfolio-max-width hide-on-small-only">
+          <div class="col l2 hide-on-med-only">
           </div>
-          <div class="col s2 center-align">
-            <span class=" blue-text text-lighten-1"><b>invite</b></span><br>
+          <div class="col l2 m3  center-align">
+            <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
 						<a href="#" class="btn btn-floating blue lighten-1 btn-large "><i class="material-icons">people</i></a>
 					</div>
-          <div class="col s2 center-align">
-            <span class=" red-text "><b>add goal</b></span><br>
+          <div class="col l2 m3  center-align">
+            <span class=" red-text "><b>New Goal</b></span><br>
 						<a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
 					</div>
-					<div class="col s2 center-align">
-            <span class=" blue-text text-darken-4"><b>your files</b></span><br>
+					<div class="col l2 m3 center-align">
+            <span class=" blue-text text-darken-4"><b>My Documents</b></span><br>
 						<a href="{{url('/files')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
 					</div>
-          <div class="col s2 center-align">
-            <span class=" green-text text-darken-3"><b>calendar</b></span><br>
-						<a href="{{url('/calendar')}}" class="btn btn-floating green darken-3 btn-large "><i class="material-icons">date_range</i></a>
+          <div class="col l2 m3 center-align">
+            <span class=" purple-text text-darken-3"><b>My Schedule</b></span><br>
+						<a href="{{url('/calendar')}}" class="btn btn-floating purple darken-3 btn-large "><i class="material-icons">date_range</i></a>
           </div>
-          <div class="col s2">
+          <div class="col l2 hide-on-med-only">
           </div>
 				</div>
 				<script type="text/javascript">

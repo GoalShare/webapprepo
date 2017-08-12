@@ -43,63 +43,32 @@
 
 
     <div class="right menu">
-      <div class="ui grid computer only">
-
-        <div class="three column row">
-          <form class="ui form" role="form" method="POST" action="{{ route('login') }}">
-          <div class="ui input focus column">
-           <input type="email" placeholder="Email"><br>
-           <input type="checkbox" name="example">
-           <a style="color:white;">Remember me</a>
-         </div>
-
-         <div class="ui input focus column">
-           <input type="password" placeholder="Password">
-             <a href="#" style="color:white"> Forgot Password</a>
-        </div>
-
-        <div class="column">
-          <div class="ui animated button" tabindex="0">
-            <div class="visible content">Login</div>
-            <div class="hidden content">
-              <i class="right arrow icon"></i>
+      <div class="ui">
+       <form class="ui form" role="form" method="POST" action="{{ route('login') }}">
+         {{ csrf_field() }}
+        <div class="three fields">
+            <div class="field">
+              <input type="email" name="email" placeholder="Email">
+              <div class="ui checkbox">
+               <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+               <label style="color:white;">Remember me</label>
+              </div>
+            </div>
+           <div class="field">
+             <input type="password" name="password" placeholder="Password">
+             <a style="color:white;" href="{{ route('password.request') }}">Forgot your Password ?</a>
+           </div>
+          <div class="field">
+            <div class="ui animated primary submit button" tabindex="0">
+              <div class="visible content">Login</div>
+              <div class="hidden content">
+                <i class="right arrow icon"></i>
+              </div>
             </div>
           </div>
         </div>
-
       </form>
-        </div>
-
-
-
-
-
-  </div>
-  <div class="ui grid tablet only">
-
-    <div class="three column row">
-
-      <div class="ui input focus column">
-       <input type="email" placeholder="Email"><br>
-       <input type="checkbox" name="example">
-       <a style="color:white;">Remember me</a>
-     </div>
-
-     <div class="ui input focus column">
-       <input type="password" placeholder="Password">
-         <a href="#" style="color:white"> Forgot Password</a>
-    </div>
-
-    <div class="column">
-      <div class="ui animated button" tabindex="0">
-        <div class="visible content">Login</div>
-        <div class="hidden content">
-          <i class="right arrow icon"></i>
-        </div>
       </div>
-    </div>
-    </div>
-</div>
 </div>
 </div>
 </div>
