@@ -417,10 +417,26 @@
         </br>
         </br>
 				<div class="row mdl-grid portfolio-max-width">
-					<div class="col s12 ">
-						<span class="right blue-text text-darken-4"><b>calendar</b></span><br>
-						<a href="{{url('/calendar')}}" class="btn btn-floating btn-large right" ><i class="material-icons">date_range</i></a>
+          <div class="col s2">
+          </div>
+          <div class="col s2 center-align">
+            <span class=" blue-text text-lighten-1"><b>invite</b></span><br>
+						<a href="#" class="btn btn-floating blue lighten-1 btn-large "><i class="material-icons">people</i></a>
 					</div>
+          <div class="col s2 center-align">
+            <span class=" red-text "><b>add goal</b></span><br>
+						<a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
+					</div>
+					<div class="col s2 center-align">
+            <span class=" blue-text text-darken-4"><b>your files</b></span><br>
+						<a href="{{url('/files')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
+					</div>
+          <div class="col s2 center-align">
+            <span class=" green-text text-darken-3"><b>calendar</b></span><br>
+						<a href="{{url('/calendar')}}" class="btn btn-floating green darken-3 btn-large "><i class="material-icons">date_range</i></a>
+          </div>
+          <div class="col s2">
+          </div>
 				</div>
 				<script type="text/javascript">
 				// var goaldisplay=document.getElementById('goaldisplay');

@@ -32,6 +32,7 @@ Route::post('uploadfile','filesController@uploadfile')->name('uploadfile');
 Route::post('deletefile','filesController@deletefile')->name('deletefile');
 Route::post('goalPicUpload','GoalController@upateGoalPic')->name('goalPicUpload');
 Route::post('checkemail','CoreController@checkmails')->name('checkemail');
+Route::post('test','CoreController@test')->name('test');
 Route::post('goal','GoalController@post')->name('goal');
 Route::post('updatetask','GoalController@updatetask')->name('updatetask');
 Route::post('addbio','ProfileController@addbio')->name('addbio');

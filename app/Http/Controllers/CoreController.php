@@ -20,4 +20,8 @@ class CoreController extends Controller
       // }
       echo "string";
     }
+    public function test(request $request)
+    {
+      echo $request->fname.$request->lname.$request->email.$request->password.$request->gender.$request->dob.$request->countrycode.$request->phone;
+    }
 }
