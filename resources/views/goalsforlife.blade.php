@@ -12,20 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/grid.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js">
-
-
     </script>
     <style media="screen">
     .bluemain{
-
       color: white
     }
     .foot{
       width: 100%;
     bottom: 0;
-
     }
-
     .foot2{
       position: relative;
       width: 100%;
