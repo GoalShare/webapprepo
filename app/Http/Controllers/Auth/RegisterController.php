@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'dob' => 'required',
             'gender' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|min:8|confirmed',
+            'regpassword' => 'required|min:8|confirmed',
         ]);
     }
 
@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'phone'=>$data['phone'],
             'countrycode'=>$data['countrycode'],
             'gender'=>$data['gender'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt($data['regpassword']),
             'created_at'=> Carbon::now(),
         ]);
 

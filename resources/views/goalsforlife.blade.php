@@ -118,11 +118,24 @@
                 }
               ]
             },
+            regpassword: {
+              identifier: 'regpassword',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter a password'
+                },
+                {
+                  type   : 'minLength[8]',
+                  prompt : 'Your password must be at least {ruleValue} characters'
+                }
+              ]
+            },
             password_confirmation: {
               identifier: 'password_confirmation',
               rules: [
                 {
-                  type   : 'match[password]',
+                  type   : 'match[regpassword]',
                   prompt : 'Passwords you entered do not match'
                 },
                 {
@@ -212,7 +225,7 @@
     <label>Password</label>
     <div class="two fields">
       <div class="field">
-        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="regpassword" placeholder="Password">
       </div>
       <div class="field">
         <input type="password" name="password_confirmation" placeholder="Confirm Password">
