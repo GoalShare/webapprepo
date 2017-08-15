@@ -355,6 +355,10 @@
 
  </div>
        <li><a href="{{url('/dashboard')}}">Dashboard<i class="material-icons">dashboard</i></a></li>
+       <li><div class="divider"></div></li>
+       <li><a class="waves-effect" href="{{url('/calendar')}}">My Schedule<i class="material-icons">date_range</i></a></li>
+       <li><div class="divider"></div></li>
+       <li><a class="waves-effect" href="{{url('/files')}}">My Documents<i class="material-icons">attach_file</i></a></li>
        <!-- subheaders -->
        {{-- <li><a class="subheader">&nbsp Pinned Goals</a></li>
        <li><a class="subheader">&nbsp  Goals</a></li> --}}
@@ -362,7 +366,7 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="#!">Categories<i class="material-icons">toc</i></a></li>
        @foreach ($categorylist as $categorylists)
-         <li><a class="col s9" href="{{ url('/dashboard/'.$categorylists->goalcategory) }}">&nbsp;&nbsp;&nbsp {{$categorylists->goalcategory}}</a></li>
+         <li><a class="col s9 truncate" href="{{ url('/dashboard/'.$categorylists->goalcategory) }}">&nbsp;&nbsp;&nbsp {{$categorylists->goalcategory}}</a></li>
        @endforeach
        <br>
        <li><div class="divider"></div></li>

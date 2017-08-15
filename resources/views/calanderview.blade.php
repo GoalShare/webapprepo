@@ -13,7 +13,6 @@
 <script>
 
 	$(document).ready(function() {
-
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
@@ -51,7 +50,7 @@
 				@endforeach
 			]
 		});
-
+		$('#addgoal').modal();
 	});
 
 </script>
@@ -162,7 +161,12 @@
 	<div class="row hide-on-small-only">
 		<div class="col l2 m2  center-align">
 			<span class=" red-text "><b>New Goal</b></span><br>
-			<a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
+			<a  onclick="openmodal()" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
+			<script type="text/javascript">
+				function openmodal() {
+					$('#addgoal').modal('open');
+				}
+			</script>
 		</div>
 		<div class="col l2 m2  center-align">
 			<span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>

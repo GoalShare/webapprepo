@@ -73,7 +73,13 @@
     <script type="text/javascript">
     $( document ).ready(function() {
       $('.menu .item').tab();
-      $('#regisitericon').transition('jiggle');
+      $('.shape').shape();
+      setInterval(flip,2000);
+      function flip() {
+        $('.motto1').transition('tada');
+        $('#regisitericon').transition('jiggle');
+      };
+
       $('.ui.form')
         .form({
           fields: {
@@ -194,7 +200,26 @@
     </div>
 <div class="ui bottom attached tab segment {{($errors->has('email')||$errors->has('password'))?'':'active'}}" data-tab="register">
 <div class="ui right aligned grid">
-
+<div class="eight wide computer only column">
+  <h1 class="ui blue center aligned block header">
+    <br>
+  </h1>
+  <h1 style="font-size:4rem;"class="ui blue left aligned header motto1">
+    <b>Some see what can be changed,</b>
+  </h1>
+  <h1 style="font-size:4rem;" class="ui blue left aligned header motto1">
+    <b>Others change what's possible</b>
+  </h1>
+  <h3 class="ui center blue aligned block header">
+  </h3>
+  <h3 class="ui grey center aligned header">
+    lifewithgoals is a social platform to connect people  with goals and help them achieve their aspirations
+  </h3>
+  <div class="ui divider"></div>
+  <h4 class="ui grey center aligned block header">
+    It's free and forever will be
+  </h4>
+</div>
 <div class="right floated left aligned eight wide computer eight wide tablet sixteen wide mobile column ">
   <div class="ui segment">
 
