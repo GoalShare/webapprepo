@@ -6,20 +6,17 @@
    $carbon = new Carbon(Auth::User()->created_at);
    $compare =Carbon::now();
   @endphp
-
-
   @if (($goal->isEmpty())==false)
     @if ($compare->diffInHours($carbon)>1)
 @include('layouts.friendsView')
     @endif
   @endif
-
     <!--add goal form -->
       <div id="addgoal" class="modal modal-fixed-footer">
     <div class="modal-content" style="text-align:center;">
       <h4>Add a Goal</h4>
       <form enctype="multipart/form-data" action="{{route('dashboard')}}" method="post" id="addgoalform">
-{{ csrf_field() }}
+        {{ csrf_field() }}
         <ul class="collection">
           <li class="collection-item">
             <div class="input-field col s6">
@@ -417,26 +414,30 @@
         </br>
         </br>
 				<div class="row mdl-grid portfolio-max-width hide-on-small-only">
-          <div class="col l2 hide-on-med-only">
-          </div>
-          <div class="col l2 m3  center-align">
-            <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-						<a href="#" class="btn btn-floating blue lighten-1 btn-large "><i class="material-icons">people</i></a>
-					</div>
-          <div class="col l2 m3  center-align">
+          <div class="col l2 m2  center-align">
             <span class=" red-text "><b>New Goal</b></span><br>
 						<a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
 					</div>
-					<div class="col l2 m3 center-align">
+          <div class="col l2 m2  center-align">
+            <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
+						<a href="#" class="btn btn-floating blue lighten-1 btn-large "><i class="material-icons">people</i></a>
+					</div>
+          <div class="col l2 m2  center-align">
+            <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
+						<a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
+					</div>
+					<div class="col l2 m2 center-align">
             <span class=" blue-text text-darken-4"><b>My Documents</b></span><br>
 						<a href="{{url('/files')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
 					</div>
-          <div class="col l2 m3 center-align">
+          <div class="col l2 m2 center-align">
             <span class=" purple-text text-darken-3"><b>My Schedule</b></span><br>
 						<a href="{{url('/calendar')}}" class="btn btn-floating purple darken-3 btn-large "><i class="material-icons">date_range</i></a>
           </div>
-          <div class="col l2 hide-on-med-only">
-          </div>
+          <div class="col l2 m2  center-align">
+            <span class=" green-text text-darken-4"><b>My Profile</b></span><br>
+						<a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i class="material-icons">people</i></a>
+					</div>
 				</div>
 				<script type="text/javascript">
 				// var goaldisplay=document.getElementById('goaldisplay');
@@ -685,13 +686,15 @@
           </div>
         </div>
 
-          <button  class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
+          <button id="addgoalbtntwo" style="display:none;" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
                   </div>
 
 
 
         @if ($goal->isEmpty()||($compare->diffInHours($carbon))<1)
           <script>
+          var addgoalbtntwo=document.getElementById("addgoalbtntwo");
+          addgoalbtntwo.style.display="block";
           $('.tap-target').tapTarget('open');
           </script>
         @endif
