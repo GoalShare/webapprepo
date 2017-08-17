@@ -1,46 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.navbarWithoutMain')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<br><br><br>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="ui vertical stripe segment">
+<div class="ui text container">
+  <h1 class="ui header">Password Reset</h1>
+  <p>Please enter your Email in order to for us to help you reset your email</p>
+        <form class="ui form" action="{{route('reset')}}" method = "POST">
+        {{ csrf_field() }}
+        <div class="field">
+            <label>email</label>
+            <input type="email" name="email" placeholder="Password">
         </div>
-    </div>
+       
+        <button class="ui button" type="submit">Submit</button>
+        </form>
+  <h4 class="ui horizontal header divider">
+    <a href="/">Return to Home page</a>
+  </h4>
+
+</div>
 </div>
 @endsection

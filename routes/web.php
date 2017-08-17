@@ -126,6 +126,11 @@ Route::post('deletegoal','HomeController@deletegoal')->name('deletegoal');
 Route::post('addfriend','FriendController@addfriend')->name('addfriend');
 Route::post('share','ShareController@share')->name('share');
 Route::post('align','AlignController@align')->name('align');
+
+Route::post('reset','passwordReset@reset')->name('reset');
+Route::get('/resetPass/{userid}','passwordReset@confirmResetGET');
+Route::post('resetPass','passwordReset@confirmResetPOST')->name('resetPass');
+
 Route::get('/aboutus', function () {
   $id=Auth::id();
   $email=Auth::User()->email;
@@ -160,8 +165,16 @@ Route::get('/nonLoginPolicies', function () {
 });
 
 
+Route::get('/passReset', function () {
+  return view('auth/passwords/reset');
+});
+
+
 Route::get('/email','HomeController@emailmain')->name('sendEmail');
 
 
 Route::get('/dashboard/{email}','HomeController@confirmuser');
 Route::post('checkemail','CoreController@checkmails')->name('checkemail');
+
+
+Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactController@importGoogleContact']);
