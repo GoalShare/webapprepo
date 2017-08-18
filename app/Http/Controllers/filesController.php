@@ -15,7 +15,7 @@ class filesController extends Controller
       if(Auth::check()){
       $id = Auth::id();
       $email=Auth::User()->email;
-      $files=DB::table('files')->where([['userid',$id],['delete_status',0]])->orderBy('created_date', 'asc')->get();
+      $files=DB::table('files')->where([['userid',$id],['delete_status',0]])->orderBy('created_date', 'desc')->get();
       $categorylist = DB::table('goals')
       ->select('goalcategory')
       ->where('email', $email)
@@ -36,9 +36,12 @@ class filesController extends Controller
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
+
+
       return view('files',['files'=>$files,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
       else {
         return view('/');
+
       }
     }
 
@@ -46,10 +49,12 @@ class filesController extends Controller
     {
      if(isset($request->filename)){
            $filename=$request->filename;
+           $filesize=$request->filesize;
            DB::table('files')->insert(
                    [
                      'userid'=> Auth::id(),
                      'filename' => $filename,
+                     'size' => $filesize,
                      'created_date'=> Carbon::now(),
                    ]
                );
@@ -64,8 +69,20 @@ class filesController extends Controller
         $id=$request->id;
         DB::table('files')
                   ->where([['userid', Auth::id()],['id',$id]])
-                  ->update(['delete_status' => 0]);
+                  ->update(['delete_status' => 1]);
       }
       return redirect('/files');
+
+
     }
+
+    public function updatefilename(request $request){
+        $newfilename=$request->newfilename;
+        $id=$request->newfileid;
+        DB::table('files')
+               ->where(['id'=>$id])
+               ->update(['fakename'=>$newfilename]);
+               return redirect('/files');
+    }
+
 }
