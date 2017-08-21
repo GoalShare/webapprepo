@@ -415,7 +415,7 @@
    var clientId = '470865305079-hn08kdr4harhu7buga04d6cuv8abnqj7.apps.googleusercontent.com';
    var apiKey = 'AIzaSyC2F0F_mV7QnGMii66F98Rayp5Bk7kW6Ss';
    var scopes = 'httpswww.googleapis.comauthcontacts.readonly';
-   $(document).on("click",'.googleContactsButton', function(){
+   $(document).on("click",".googleContactsButton", function(){
      console.log('test');
      gapi.client.setApiKey(apiKey);
      window.setTimeout(authorize);
