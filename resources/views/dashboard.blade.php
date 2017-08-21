@@ -416,9 +416,10 @@
    var apiKey = 'AIzaSyC2F0F_mV7QnGMii66F98Rayp5Bk7kW6Ss';
    var scopes = 'httpswww.googleapis.comauthcontacts.readonly';
    $(document).on(click,.googleContactsButton, function(){
+     console.log('test');
      gapi.client.setApiKey(apiKey);
      window.setTimeout(authorize);
-     console.log('test');
+
    });
    function authorize() {
      gapi.auth.authorize({client_id clientId, scope scopes, immediate false}, handleAuthorization);
