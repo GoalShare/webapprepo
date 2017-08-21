@@ -75,6 +75,7 @@
   <body>
     <script type="text/javascript">
     $( document ).ready(function() {
+
       $('.menu .item').tab();
       $('.shape').shape();
       setInterval(flip,2000);
@@ -159,15 +160,6 @@
                 {
                   type   : 'integer[9999999..99999999999]',
                   prompt : 'Please enter a valid phone number'
-                }
-              ]
-            },
-            dob: {
-              identifier: 'dob',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your date of birth'
                 }
               ]
             },
@@ -276,60 +268,39 @@
             </select>
           </div>
       <br><br>
-   
-          <div class="two wide field">
-          <label>Date</label>
-    
-          <input type="number" id="date"
-          name="date" placeholder="  ">
-      
+          <input type="hidden" name="dob" value="">
+          <div class="eight wide field">
+            <label>Date of Birth</label>
+          <div class="three fields">
+          <div class="four wide field">
+              <select id="datedropdown" class="ui fluid dropdown" name="">
+
+              </select>
           </div>
-          <div class="two wide field">
-          <label>Month</label>
-           
-          <select name="countrycode" id ="month" class="ui fluid dropdown">
-              <option data-month="JAN" value="JAN">January</option>
-              <option data-month="FEB" value="FEB">February </option>
-              <option data-month="MAR" value="MAR">March </option>
-              <option data-month="APR" value="APR">April</option>
-              <option data-month="MAY" value="MAY">May</option>
-              <option data-month="JUN" value="JUN">June </option>
-              <option data-month="JUL" value="JUL">Jul</option>
-              <option data-month="AUG" value="AUG">August</option>
-              <option data-month="SEP" value="SEP">September</option>
-              <option data-month="OCT" value="OCT">October</option>
-              <option data-month="NOV" value="NOV">November </option>
-              <option data-month="DEC" value="DEC">December </option>
-             
-         
-            </select>
-        
+          <div class="six wide field">
+              <select name="countrycode" id="monthdropdown" class="ui fluid dropdown">
+                  <option data-month="JAN" value="01" selected>January</option>
+                  <option data-month="FEB" value="02">February </option>
+                  <option data-month="MAR" value="03">March </option>
+                  <option data-month="APR" value="04">April</option>
+                  <option data-month="MAY" value="05">May</option>
+                  <option data-month="JUN" value="06">June </option>
+                  <option data-month="JUL" value="07">Jul</option>
+                  <option data-month="AUG" value="08">August</option>
+                  <option data-month="SEP" value="09">September</option>
+                  <option data-month="OCT" value="10">October</option>
+                  <option data-month="NOV" value="11">November </option>
+                  <option data-month="DEC" value="12">December </option>
+                </select>
           </div>
-          <div class="two wide field">
-          <label>Year</label>
-           
-          <input type="text" id="year" name="year" placeholder="  "  onchange="dateFunction()">
-          <input type="dob" id="dob" name="dob" placeholder="  " value =" ">
+          <div class="six wide field">
+              <select id="yeardropdown" class="ui fluid dropdown" name="">
 
-          <script>
-
-            function dateFunction() {
-              
-            var date = document.getElementById("date");
-            var month = document.getElementById("month");
-            var year = document.getElementById("year");
-          
-
-            document.getElementById('dob').value =date+mont+year ;
-            }
-
-
-          
-          </script>
-        
+              </select>
+          </div>
           </div>
         </div>
-        
+      </div>
       </div>
       <div class="field">
         <div class="two fields">

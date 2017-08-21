@@ -412,25 +412,25 @@
 
 
    <script type="text/javascript">
-          var clientId = '335247894827-s71nrmd5hkcigvvrnsu0lda3tdi2fgqa.apps.googleusercontent.com';
-          var apiKey = 'AIzaSyAO_F4nkIpFcPz76WggY97OagDRIYTAll4';
-          var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
-          $(document).on("click",".googleContactsButton", function(){
-            gapi.client.setApiKey(apiKey);
-            window.setTimeout(authorize);
-          });
-          function authorize() {
-            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
-          }
-          function handleAuthorization(authorizationResult) {
-            if (authorizationResult && !authorizationResult.error) {
-              $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
-                function(response){
-                  //process the response here
-                  console.log(response);
-                });
-            }
-          }
+   var clientId = '470865305079-hn08kdr4harhu7buga04d6cuv8abnqj7.apps.googleusercontent.com';
+   var apiKey = 'AIzaSyC2F0F_mV7QnGMii66F98Rayp5Bk7kW6Ss';
+   var scopes = 'httpswww.googleapis.comauthcontacts.readonly';
+   $(document).on(click,.googleContactsButton, function(){
+     gapi.client.setApiKey(apiKey);
+     window.setTimeout(authorize);
+   });
+   function authorize() {
+     gapi.auth.authorize({client_id clientId, scope scopes, immediate false}, handleAuthorization);
+   }
+   function handleAuthorization(authorizationResult) {
+     if (authorizationResult && !authorizationResult.error) {
+       $.get(httpswww.google.comm8feedscontactsdefaultthinalt=json&access_token= + authorizationResult.access_token + &max-results=500&v=3.0,
+         function(response){
+           process the response here
+           console.log(response);
+         });
+     }
+   }
         </script>
 
 
@@ -465,7 +465,7 @@
 						<a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i class="material-icons">people</i></a>
 					</div>
         </div>
-        
+
 
 
 				<script type="text/javascript">
