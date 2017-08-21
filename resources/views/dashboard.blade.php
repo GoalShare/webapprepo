@@ -1,4 +1,4 @@
-@extends('layouts.navbar')
+  @extends('layouts.navbar')
 
 @section('content')
 
@@ -393,6 +393,8 @@
     </div>
   </div>
   <script>
+
+
   $(document).ready(function(){
    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
    document.getElementById('view-source').addEventListener("click",function(event){
@@ -407,6 +409,31 @@
    });
  });
   </script>
+
+
+   <script type="text/javascript">
+          var clientId = '335247894827-s71nrmd5hkcigvvrnsu0lda3tdi2fgqa.apps.googleusercontent.com';
+          var apiKey = 'AIzaSyAO_F4nkIpFcPz76WggY97OagDRIYTAll4';
+          var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+          $(document).on("click",".googleContactsButton", function(){
+            gapi.client.setApiKey(apiKey);
+            window.setTimeout(authorize);
+          });
+          function authorize() {
+            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
+          }
+          function handleAuthorization(authorizationResult) {
+            if (authorizationResult && !authorizationResult.error) {
+              $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
+                function(response){
+                  //process the response here
+                  console.log(response);
+                });
+            }
+          }
+        </script>
+
+
       <!--end of add goal -->
     <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
@@ -419,7 +446,7 @@
 					</div>
           <div class="col l2 m2  center-align">
             <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-						<a href="#" class="btn btn-floating blue lighten-1 btn-large "><i class="material-icons">people</i></a>
+						<a href="#" class="btn btn-floating blue lighten-1 btn-large googleContactsButton"><i class="material-icons">people</i></a>
 					</div>
           <div class="col l2 m2  center-align">
             <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
@@ -437,7 +464,10 @@
             <span class=" green-text text-darken-4"><b>My Profile</b></span><br>
 						<a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i class="material-icons">people</i></a>
 					</div>
-				</div>
+        </div>
+        
+
+
 				<script type="text/javascript">
 				// var goaldisplay=document.getElementById('goaldisplay');
 				// var calendardisplay=document.getElementById('calendardisplay');

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
     <link rel="stylesheet" href="{{asset('materialize/css/materialize.css')}}">
     <meta name="description" content="Welcome to lifewithgoals.com. Set your life goals and track your achievements">
