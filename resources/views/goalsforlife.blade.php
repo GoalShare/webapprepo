@@ -75,7 +75,6 @@
   <body>
     <script type="text/javascript">
     $( document ).ready(function() {
-
       $('.menu .item').tab();
       $('.shape').shape();
       setInterval(flip,2000);
@@ -285,7 +284,7 @@
                   <option data-month="APR" value="04">April</option>
                   <option data-month="MAY" value="05">May</option>
                   <option data-month="JUN" value="06">June </option>
-                  <option data-month="JUL" value="07">Jul</option>
+                  <option data-month="JUL" value="07">July</option>
                   <option data-month="AUG" value="08">August</option>
                   <option data-month="SEP" value="09">September</option>
                   <option data-month="OCT" value="10">October</option>
@@ -298,6 +297,14 @@
 
               </select>
           </div>
+          <script type="text/javascript">
+          var yearsdropdown=document.getElementById('yearsdropdown');
+          // for(i=2001;i>=1920;i--){
+          var i=10;
+            yearsdropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+          //   console.log(i);
+          // }
+          </script>
           </div>
         </div>
       </div>

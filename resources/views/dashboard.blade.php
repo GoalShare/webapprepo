@@ -413,26 +413,24 @@
 
    <script type="text/javascript">
    var clientId = '470865305079-hn08kdr4harhu7buga04d6cuv8abnqj7.apps.googleusercontent.com';
-   var apiKey = 'AIzaSyC2F0F_mV7QnGMii66F98Rayp5Bk7kW6Ss';
-   var scopes = 'httpswww.googleapis.comauthcontacts.readonly';
-   $(document).on("click",".googleContactsButton", function(){
-     console.log('test');
-     gapi.client.setApiKey(apiKey);
-     window.setTimeout(authorize);
-
-   });
-   function authorize() {
-     gapi.auth.authorize({client_id clientId, scope scopes, immediate false}, handleAuthorization);
-   }
-   function handleAuthorization(authorizationResult) {
-     if (authorizationResult && !authorizationResult.error) {
-       $.get(httpswww.google.comm8feedscontactsdefaultthinalt=json&access_token= + authorizationResult.access_token + &max-results=500&v=3.0,
-         function(response){
-           process the response here
-           console.log(response);
-         });
-     }
-   }
+          var apiKey = 'AIzaSyC2F0F_mV7QnGMii66F98Rayp5Bk7kW6Ss';
+          var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+          $(document).on("click",".googleContactsButton", function(){
+            gapi.client.setApiKey(apiKey);
+            window.setTimeout(authorize);
+          });
+          function authorize() {
+            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
+          }
+          function handleAuthorization(authorizationResult) {
+            if (authorizationResult && !authorizationResult.error) {
+              $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
+                function(response){
+                  //process the response here
+                  console.log(response);
+                });
+            }
+          }
         </script>
 
 
