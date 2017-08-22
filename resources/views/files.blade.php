@@ -1,4 +1,6 @@
-@extends('layouts.navbar')
+
+
+ @extends('layouts.navbar')
 
 @section('content')
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
@@ -9,120 +11,123 @@
      height:70px;
   }
 </style>-->
+
 <div class="container">
-<div class="row">
-  <div class="card" style="height:600px; overflow-y:scroll;">
+  <div class="row">
+    <div class="card" style="height:600px; overflow-y:scroll;">
 
-    <div class="card-content">
-      <div class="btn-floating right" style="display:none;" id="gridviewbtn">
-        <i class="material-icons">view_module</i>
-      </div>
+      <div class="card-content">
+        <div class="btn-floating right" style="display:none;" id="gridviewbtn">
+          <i class="material-icons">view_module</i>
+        </div>
 
-      <div class="btn-floating right" id="listviewbtn">
-        <i class="material-icons">list</i>
-      </div>
+        <div class="btn-floating right" id="listviewbtn">
+          <i class="material-icons">list</i>
+        </div>
 
-      <script type="text/javascript">
+        <script type="text/javascript">
 
-    $(document).ready(function(){
-        $("#listviewbtn").click(function() {
-            $("#listviewbtn").hide();
-            $("#listviewrow").show();
-            $("#gridviewrow").hide();
-            $("#gridviewbtn").show();
-        });
-        $("#gridviewbtn").click(function() {
-            $("#gridviewrow").show();
-            $("#listviewbtn").show();
-            $("#gridviewbtn").hide();
-            $("#listviewrow").hide();
-        });
-    });
+        $(document).ready(function(){
+            $("#listviewbtn").click(function() {
+              $("#listviewbtn").hide();
+              $("#listviewrow").show();
+              $("#gridviewrow").hide();
+              $("#gridviewbtn").show();
+            });
+            $("#gridviewbtn").click(function() {
+              $("#gridviewrow").show();
+              $("#listviewbtn").show();
+              $("#gridviewbtn").hide();
+              $("#listviewrow").hide();
+            });
+          });
 
-      </script>
+        </script>
+
       <div class="row">
         <div class="col s12 m12 l4">
           <p class="card-title activator grey-text text-darken-4">Upload Your Files</p>
         </div>
       </div>
-        <div class="row">
-          <div class="col s12 m12 l8">
-            <div class="blue-text text-darken-4" id="filesizebar" style="font-weight:bold;" disabled></div>
+
+      <div class="row">
+        <div class="col s12 m12 l8">
+          <div class="blue-text text-darken-4" id="filesizebar" style="font-weight:bold;" disabled></div>
         </div>
       </div>
 
       <div class="row">
         <div id="progressdiv" style="display:none;">
-        <div class="col s11 m11 l11">
-          <div class="progress">
-            <div class="determinate" id="percentage"></div>
+          <div class="col s11 m11 l11">
+            <div class="progress">
+              <div class="determinate" id="percentage"></div>
+            </div>
+          </div>
+
+
+          <div class="col s1 m1 l1">
+            <b><span class="right" id="percentagedis"></span></b>
           </div>
         </div>
-
-
-        <div class="col s1 m1 l1">
-            <b><span class="right" id="percentagedis"></span></b>
-        </div>
-      </div>
       </div>
     </div>
- {{-- <!-- Modal Trigger -->
- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-
-  </div> --}}
-
-
-   <script>var totafilelsize=0;</script>
-   <div class="row" id="gridviewrow">
-  @foreach ($files as $file)
-
-   <div class="col s12 m6 l2">
 
 
 
+    <script>var totafilelsize=0;</script>
 
-    <div class="card" id="{{$file->id}}cardgrid" style="height:220px;">
+    <div class="row" id="gridviewrow">
+     @foreach ($files as $file)
 
-<!-- Modal Trigger -->
-      <div data-target="{{$file->id}}" class="modal-trigger">
+        <div class="col s12 m6 l2">
+
+          <div class="card" id="{{$file->id}}cardgrid" style="height:220px;">
+
+             <!--Modal Trigger -->
+            <div data-target="{{$file->id}}gridpopup" class="modal-trigger">
+            <div class="card-image waves-effect waves-block waves-light" style="height:100px;">
+
+                 <script>
+                     totafilelsize=totafilelsize+({{$file->size}});
+                     var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}';
 
 
+                     var extension = fileName.split('.').pop();
+                       if(extension=="pdf"){
+                         document.write('<iframe src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" style="width:600px; height:100px;" frameborder="0"></iframe>');
+                         }
 
-    <div class="card-image waves-effect waves-block waves-light" style="height:100px;">
+                       else if(extension=="jpg" || extension=="png" || extension=="jpeg"){
+                         document.write('<img src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" />');
+                         }
 
+                       else if(extension=="doc" || extension=="docx" || extension=="txt"){
+                        document.write('<img src="img/icons8-DOC-50.png" height="200px" >');
+                        }
 
+                       else if(extension=="rar" || extension=="zip"){
+                        document.write('<img src="img/icons8-RAR-50.png">');
+                        }
 
-    <script>
-      totafilelsize=totafilelsize+({{$file->size}});
-    var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}';
+                       else if(extension=="zip"){
+                        document.write('<img src="img/icons8-ZIP-50.png">');
+                       }
+                </script>
+             </div>
+           </div>
 
+       <div id="{{$file->id}}gridpopup" class="modal">
+         <div class="modal-content">
+             <h5><b>File Name:</b> {{$file->filename}}</h5>
+             <script>
+               var rd = {{$file->size}}.toFixed(4);
+               document.write('<h5><b>File Size:</b>'+rd+'GB</h5>');
+              </script>
 
-    var extension = fileName.split('.').pop();
-    if(extension=="pdf"){
-      document.write('<iframe src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" style="width:600px; height:100px;" frameborder="0"></iframe>');
-    }
-   else if(extension=="jpg" || extension=="png" || extension=="jpeg"){
-      document.write('<img src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" />');
-    }
-else if(extension=="doc" || extension=="docx" || extension=="txt"){
-      document.write('<img src="img/icons8-DOC-50.png" height="200px" >');
-    }
-else if(extension=="rar" || extension=="zip"){
-      document.write('<img src="img/icons8-RAR-50.png">');
-    }
-    else if(extension=="zip"){
-          document.write('<img src="img/icons8-ZIP-50.png">');
-        }
-  </script>
- </div>
+             <h5><b>Uploaded Date:</b> {{$file->created_date}}</h5>
+           </div>
+       </div>
 
-</div>
     <div class="card-content" style="height:120px;">
       <div class="row">
         <a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">
@@ -131,135 +136,65 @@ else if(extension=="rar" || extension=="zip"){
       </div>
 
       <div class="row">
-        <div class="right">
-          <a class="modal-trigger" href="#{{$file->id}}modgrid"><i class="material-icons" style="cursor:pointer;color:#0AFE33;">mode_edit</i></a>
-            <!-- Modal Structure -->
-            <div id="{{$file->id}}modgrid" class="modal">
-              <div class="modal-content">
-                <h5>File Name Already Exist: {{$file->filename}}</h5>
-                <form method="POST" id="{{$file->id}}frmgrid" action="{{route('updatefilename')}}">
-                  {{csrf_field()}}
-                  <input type="text" name="newfilename" id="name{{$file->id}}grid" placeholder="Change Your File Name"  required>
+          <div class="col l4">
+          <a class="modal-trigger" href="#{{$file->id}}modgrid"><i class="material-icons" style="cursor:pointer;color:#0d47a1;">mode_edit</i></a>
+        </div>
 
-                  <input type="hidden" name="newfileid" value="{{$file->id}}" id="id{{$file->id}}grid">
+        <div class="col l4">
+          <a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" download>
+          <i class="material-icons" style="color:#0d47a1;">file_download</i></a>
+        </div>
+        <div class="col l4">
+            <form id="{{$file->id}}deleteformgrid" action="{{route('deletefile')}}" method="POST">
+            {{ csrf_field() }}
+            <input type="hidden" name="id" value="{{$file->id}}">
+            <button type="submit" style="background-color:Transparent;border:none;"><i class="material-icons" style="color:black;">delete</i></button>
+          </form>
 
-                  <button class="btn" id="btnbtn{{$file->id}}grid" name="newnamesubmit">Rename</button>
-
-                </form>
-
-              </div>
-            </div>
-              <a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" download>
-              <i class="material-icons" style="color:blue;">file_download</i></a>
-
-              <a style="cursor:pointer;" id="{{$file->id}}deletebtngrid"><i class="material-icons" style="color:black;">delete</i></a>
-
+        </div>
       </div>
+
+          <!-- Modal Structure -->
+          <div id="{{$file->id}}modgrid" class="modal">
+            <div class="modal-content">
+              <h5>File Name Already Exist: {{$file->filename}}</h5>
+              <form method="POST" id="{{$file->id}}frmgrid" action="{{route('updatefilename')}}">
+                {{csrf_field()}}
+                <input type="text" name="newfilename" id="name{{$file->id}}grid" placeholder="Change Your File Name"  required>
+
+                <input type="hidden" name="newfileid" value="{{$file->id}}" id="id{{$file->id}}grid">
+
+                <button type="submit" class="btn">Send</button>
+
+              </form>
+
+            </div>
+          </div>
+       </div>
     </div>
-    </div>
-
 </div>
-<div id="{{$file->id}}" class="modal">
-<div class="modal-content">
-      <h5><b>File Name:</b> {{$file->filename}}</h5>
-      <script>
-        var rd = {{$file->size}}.toFixed(4);
-        document.write('<h5><b>File Size:</b>'+rd+'GB</h5>');
-       </script>
-
-      <h5><b>Uploaded Date:</b> {{$file->created_date}}</h5>
-    </div>
-</div>
-</div>
-<form id="{{$file->id}}deleteformgrid" action="{{route('deletefile')}}" method="POST">
-  {{ csrf_field() }}
-  <input type="hidden" name="id" value="{{$file->id}}">
-</form>
-
-<script type="text/javascript">
-
-var deletefilebtngrid=document.getElementById('{{$file->id}}deletebtngrid');
-deletefilebtngrid.addEventListener("click",deletefilegridfunction)
-function deletefilegridfunction() {
-
-  var deleteformgrid=document.getElementById('{{$file->id}}deleteformgrid');
-
-  var actiongrid =deleteformgrid.getAttribute("action");
- //console.log(action);
-  var form_datagrid = new FormData(deleteformgrid);
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', actiongrid, true);
-
-  xhr.send(form_datagrid);
- document.getElementById("{{$file->id}}cardgrid").style.display="none";
-
-  xhr.onreadystatechange = function () {
-    if(xhr.readyState == 4 && xhr.status == 200) {
-      var result = xhr.responseText;
-        console.log('Result: ' + result);
-
-  }
-};
-window.location.reload();
-}
-
-</script>
-
-   @endforeach
+ @endforeach
+ </div>
 
 
-
-     </div>
-
-     <script type="text/javascript">
-     var newnamebtngrid=document.getElementById("btnbtn{{$file->id}}grid");
-     newnamebtngrid.addEventListener("click", function(event) {
-     updatefilenamegridfunc();
-     event.preventDefault();
-     });
-
-        function updatefilenamegridfunc(){
-
-          var updatefileformgrid=document.getElementById('{{$file->id}}frmgrid');
-
-          var actiongrid = updatefileformgrid.getAttribute("action");
-
-          var form_datagrid = new FormData(updatefileformgrid);
-
-          var xhr = new XMLHttpRequest();
-          xhr.open('POST', actiongrid, true);
-          xhr.send(form_datagrid);
-
-          xhr.onreadystatechange = function () {
-            if(xhr.readyState == 4 && xhr.status == 200) {
-              var result=xhr.responseText;
-              console.log(result);
-            }
-          };
-
-
-        }
-        </script>
 
 
 
      <div class="row" id="listviewrow" style="display:none;">
 
-       @foreach ($files as $file)
+        @foreach ($files as $file)
 
-        <div class="col s12 m6 l12">
+         <div class="col s12 m12 l12">
 
-         <div class="card" id="{{$file->id}}listcard" style="height:75px;">
+         <div class="card" id="{{$file->id}}listcard" style="height:80px;">
 
-       <!-- Modal Trigger -->
+        <!--Modal Trigger -->
 
 <div class="row" style="height:50px;">
 
-  <div class="col s1 m1 l1">
+  <div class="col s3 m1 l1">
+  <div data-target="{{$file->id}}listpopup" class="modal-trigger">
          <div class="card-image waves-effect waves-block waves-light" width="75%">
-
-
 
          <script>
            totafilelsize=totafilelsize+({{$file->size}});
@@ -283,10 +218,24 @@ window.location.reload();
            document.write('<img src="img/icons8-RAR-50.png" height="50px">');
          }
        </script>
-       </div>
      </div>
-     <div class="col s8 m8 l8">
+   </div>
+     <div id="{{$file->id}}listpopup" class="modal">
+       <div class="modal-content">
+             <h5><b>File Name:</b> {{$file->filename}}</h5>
+             <script>
+               var rd = {{$file->size}}.toFixed(4);
+               document.write('<h5><b>File Size:</b>'+rd+'GB</h5>');
+              </script>
 
+             <h5><b>Uploaded Date:</b> {{$file->created_date}}</h5>
+           </div>
+     </div>
+       </div>
+
+
+
+     <div class="col s7 m8 l8">
         <div>
             <a  style="font-size:12px;color:black;" href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">
                 Original File Name: {{$file->filename}}</a>
@@ -309,70 +258,45 @@ window.location.reload();
 
 
 <div class="col s2 m2 l2">
-         <div class="right">
-              <a class="modal-trigger" href="#{{$file->id}}mod"><i class="material-icons" style="cursor:pointer;color:#0AFE33;">mode_edit</i></a>
-                <!-- Modal Structure -->
-                <div id="{{$file->id}}mod" class="modal">
-                  <div class="modal-content">
-                    <h5>File Name Already Exist: {{$file->fakename}}</h5>
-                    <form method="POST" id="{{$file->id}}frm" action="{{route('updatefilename')}}">
-                      {{csrf_field()}}
-                      <input type="text" name="newfilename" id="name{{$file->id}}" placeholder="Change Your File Name"  required>
+  <div class="row"></div>
+         <div class="row">
+           <div class="col s12 m4 l4">
+              <a class="modal-trigger" href="#{{$file->id}}mod">
+                <i class="material-icons" style="cursor:pointer;color:#0d47a1;">mode_edit</i></a>
+           </div>
 
-                      <input type="hidden" name="newfileid" value="{{$file->id}}" id="id{{$file->id}}">
-
-                      <button class="btn" id="btnbtn{{$file->id}}" name="newnamesubmit">Rename</button>
-
-                    </form>
-
-                  </div>
-                </div>
+           <div class="col s12 m4 l4">
                <a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" download>
-               <i class="material-icons" style="color:blue;">file_download</i></a>
-               <a style="cursor:pointer;" id="{{$file->id}}deletebtnlist"><i class="material-icons" style="color:black;">delete</i></a>
+               <i class="material-icons" style="color:#0d47a1;">file_download</i></a>
+            </div>
+
+            <div class="col s12 m4 l4">
                <form id="{{$file->id}}deleteformlist" action="{{route('deletefile')}}" method="POST">
                  {{ csrf_field() }}
                  <input type="hidden" name="id" value="{{$file->id}}">
-               </form>
+                 <button type="submit" style="background-color:Transparent;border:none;"><i class="material-icons" style="color:black;">delete</i></button>
+                 </form>
+          </div>
+        </div>
+          <!-- Modal Structure -->
+         <div id="{{$file->id}}mod" class="modal">
+            <div class="modal-content">
+              <h5>File Name Already Exist: {{$file->fakename}}</h5>
+              <form method="POST" id="{{$file->id}}frmgrid" action="{{route('updatefilename')}}">
+                {{csrf_field()}}
+                <input type="text" name="newfilename" id="name{{$file->id}}grid" placeholder="Change Your File Name"  required>
 
-               <script type="text/javascript">
+                <input type="hidden" name="newfileid" value="{{$file->id}}" id="id{{$file->id}}grid">
 
-               var deletefilebtnlist=document.getElementById('{{$file->id}}deletebtnlist');
-               deletefilebtnlist.addEventListener("click",deletefilelistfunction)
-               function deletefilelistfunction() {
+                <button type="submit" class="btn">Send</button>
 
-                 var deleteformlist=document.getElementById('{{$file->id}}deleteformlist');
-
-                 var action =deleteformlist.getAttribute("action");
-                //console.log(action);
-                 var form_data = new FormData(deleteformlist);
-
-                 var xhr = new XMLHttpRequest();
-                 xhr.open('POST', action, true);
-
-                 xhr.send(form_data);
-                document.getElementById("{{$file->id}}listcard").style.display="none";
-
-                 xhr.onreadystatechange = function () {
-                   if(xhr.readyState == 4 && xhr.status == 200) {
-                     var result = xhr.responseText;
-                       console.log('Result: ' + result);
-
-                 }
-               };
-               window.location.reload();
-               }
-
-               </script>
-       </div>
-
-
-
-     </div>
-
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
        <div id="{{$file->id}}" class="modal">
          <div class="modal-content">
@@ -385,39 +309,13 @@ window.location.reload();
            <h5><b>Uploaded Date:</b> {{$file->created_date}}</h5>
          </div>
        </div>
-        @endforeach
+
+
+   @endforeach
 
        </div>
 
-       <script type="text/javascript">
-       var newnamebtn=document.getElementById("btnbtn{{$file->id}}");
-       newnamebtn.addEventListener("click", function(event) {
-       updatefilenamefunc();
-       event.preventDefault();
-       });
 
-          function updatefilenamefunc(){
-
-            var updatefileform=document.getElementById('{{$file->id}}frm');
-
-            var action = updatefileform.getAttribute("action");
-
-            var form_data = new FormData(updatefileform);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', action, true);
-            xhr.send(form_data);
-
-            xhr.onreadystatechange = function () {
-              if(xhr.readyState == 4 && xhr.status == 200) {
-                var result=xhr.responseText;
-                console.log(result);
-              }
-            };
-
-
-          }
-          </script>
 
 
 <script>
@@ -436,8 +334,7 @@ document.getElementById("filesizebar").innerHTML="Your Total file size:"+" "+rou
 </div>
 
 </div>
-
-<form id="fileUploadForm" method="post" enctype="multipart/form-data" action="{{route('uploadfile')}}">
+ <form id="fileUploadForm" method="post" enctype="multipart/form-data" action="{{route('uploadfile')}}">
      {{csrf_field()}}
      <div class="file-field input-field">
      <div class="fixed-action-btn" style="margin-bottom:10%;">
@@ -447,22 +344,16 @@ document.getElementById("filesizebar").innerHTML="Your Total file size:"+" "+rou
 
       </button>
       </div>
-
-      <!--btn waves-effect waves-light btn-large-->
-      </div>
-      <!--<i class="material-icons">file_upload</i>-->
-       <!--<input type="button" onclick="uploadFile();" class="btn waves-effect waves-light btn-large" value="Upload" id="buttonupload"/>-->
-       <!--<a class="waves-effect waves-dark btn-large" onclick="uploadFile();"  id="buttonupload">
-       <i class="material-icons left">cloud</i>Upload</a>-->
+       </div>
 
      </form>
 
-<form class="" id="filenameform" action="{{route('uploadfile')}}" method="post">
+ <form class="" id="filenameform" action="{{route('uploadfile')}}" method="post">
   {{csrf_field()}}
   <input type="hidden" name="filename" value="" id="filenameinput">
   <input type="hidden" name="filesize" value="" id="filesizeinput">
 </form>
-<script type="text/javascript">
+ <script type="text/javascript">
     AWS.config.update({
             accessKeyId : 'AKIAIZ53HQQ6SFH3XHDQ',
             secretAccessKey : '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'
@@ -505,12 +396,11 @@ newfilenameform.submit();
 
 
 });
-//formup.submit();
+<!-- //formup.submit();
 
   }
    }
 </script>
-
 
 
 @endsection

@@ -114,21 +114,8 @@
                 }
               ]
             },
-            password: {
-              identifier: 'password',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter a password'
-                },
-                {
-                  type   : 'minLength[8]',
-                  prompt : 'Your password must be at least {ruleValue} characters'
-                }
-              ]
-            },
             regpassword: {
-              identifier: 'regpassword',
+              identifier: 'password',
               rules: [
                 {
                   type   : 'empty',
@@ -143,10 +130,6 @@
             password_confirmation: {
               identifier: 'password_confirmation',
               rules: [
-                {
-                  type   : 'match[regpassword]',
-                  prompt : 'Passwords you entered do not match'
-                },
                 {
                   type   : 'empty',
                   prompt : 'Please confirm your password'
@@ -248,13 +231,35 @@
           <label>Password</label>
           <div class="two fields">
             <div class="field">
-              <input type="password" name="regpassword" placeholder="Password">
+              <input type="password" id="computerpassword" name="regpassword" placeholder="Password">
             </div>
             <div class="field">
-              <input type="password" name="password_confirmation" placeholder="Confirm Password">
+              <input type="password" id="computerconfirmpassword" oninput="confirmpassfunc()" name="password_confirmation" placeholder="Confirm Password">
             </div>
           </div>
+          <div  id="computererror" style="display:none;" class="field">
 
+          </div>
+<script type="text/javascript">
+window.onload = function what(){
+  var computererror=document.getElementById('computererror');
+  var computerpassword=document.getElementById('computerpassword');
+  var computerconfirmpassword=document.getElementById('computerconfirmpassword');
+  };
+  function confirmpassfunc() {
+    // var n = computerpassword.value.localeCompare(computerconfirmpassword.value);
+    if(computerpassword.value!=computerconfirmpassword.value){
+      computererror.style.display="inline";
+      computererror.innerHTML='<div class="ui negative message">Passwords do not match</div>';
+      console.log('dfdsfds');
+    }
+    else {
+      computererror.style.display="none";
+      console.log('sdsdsds');
+    }
+
+  }
+</script>
       </div>
       <div class="field">
         <div class="two fields">
@@ -263,21 +268,22 @@
             <select name="gender"class="ui fluid dropdown">
           <option value="M">Male</option>
           <option value="F">Female</option>
-
             </select>
           </div>
       <br><br>
-          <input type="hidden" name="dob" value="">
+          <input type="hidden" id="dob" name="dob" value="">
           <div class="eight wide field">
             <label>Date of Birth</label>
           <div class="three fields">
           <div class="four wide field">
-              <select id="datedropdown" class="ui fluid dropdown" name="">
-
+              <select id="datedropdown" oninput="setdob()" class="ui fluid dropdown" name="">
+                @for ($i=1; $i <=31 ; $i++)
+                  <option data-date="{{$i}}" value="{{$i}}">{{$i}}</option>
+                @endfor
               </select>
           </div>
           <div class="six wide field">
-              <select name="countrycode" id="monthdropdown" class="ui fluid dropdown">
+              <select name="month" id="monthdropdown" oninput="setdatefunc()" class="ui fluid dropdown">
                   <option data-month="JAN" value="01" selected>January</option>
                   <option data-month="FEB" value="02">February </option>
                   <option data-month="MAR" value="03">March </option>
@@ -293,17 +299,111 @@
                 </select>
           </div>
           <div class="six wide field">
-              <select id="yeardropdown" class="ui fluid dropdown" name="">
-
+              <select id="yeardropdown" oninput="febdates()" class="ui fluid dropdown" name="">
+                @for ($i=2001; $i >=1920 ; $i--)
+                  <option data-year="{{$i}}" value="{{$i}}">{{$i}}</option>
+                @endfor
               </select>
           </div>
           <script type="text/javascript">
-          var yearsdropdown=document.getElementById('yearsdropdown');
-          // for(i=2001;i>=1920;i--){
-          var i=10;
-            yearsdropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-          //   console.log(i);
-          // }
+          var datedropdown=document.getElementById('datedropdown');
+          var monthdropdown=document.getElementById('monthdropdown');
+          var yeardropdown=document.getElementById('yeardropdown');
+          var dob=document.getElementById('dob');
+
+          function setdob() {
+            dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+            console.log(dob.value);
+          }
+
+          function febdates() {
+            if (monthdropdown.value==02) {
+
+            if(yeardropdown.value%4 == 0)
+            {
+                if( yeardropdown.value%100 == 0)
+                {
+                    // year is divisible by 400, hence the year is a leap year
+                    if ( yeardropdown.value%400 == 0){
+                        datedropdown.innerHTML='';
+                        for (var i = 1; i <= 29; i++) {
+                          datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                        }
+                    }
+                    else{
+                        datedropdown.innerHTML='';
+                        for (var i = 1; i <= 28; i++) {
+                          datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                        }
+                    }
+                }
+                else{
+                  datedropdown.innerHTML='';
+                  for (var i = 1; i <= 29; i++) {
+                    datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                  }
+                }
+
+          }
+
+        }
+          dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+          console.log(dob.value);
+        }
+            function setdatefunc() {
+              // console.log(monthdropdown.value);
+              // console.log(yeardropdown.value);
+              if (monthdropdown.value==02) {
+                  if(yeardropdown.value%4 == 0)
+                  {
+                      if( yeardropdown.value%100 == 0)
+                      {
+                          // year is divisible by 400, hence the year is a leap year
+                          if ( yeardropdown.value%400 == 0){
+                              datedropdown.innerHTML='';
+                              for (var i = 1; i <= 29; i++) {
+                                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                              }
+                          }
+                          else{
+                              datedropdown.innerHTML='';
+                              for (var i = 1; i <= 28; i++) {
+                                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                              }
+                          }
+                      }
+                      else{
+                        datedropdown.innerHTML='';
+                        for (var i = 1; i <= 29; i++) {
+                          datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                        }
+                      }
+
+                  }
+                  else{
+                    datedropdown.innerHTML='';
+                    for (var i = 1; i <= 28; i++) {
+                      datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                    }
+                  }
+
+              }
+              else {
+                if (monthdropdown.value==01||monthdropdown.value==03||monthdropdown.value==05||monthdropdown.value==07||monthdropdown.value==08||monthdropdown.value==010||monthdropdown.value==12) {
+                  datedropdown.innerHTML='';
+                  for (var i = 1; i <= 31; i++) {
+                    datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                  }
+                } else {
+                  datedropdown.innerHTML='';
+                  for (var i = 1; i <= 30; i++) {
+                    datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                  }
+                }
+              }
+              dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+              console.log(dob.value);
+            }
           </script>
           </div>
         </div>
@@ -544,7 +644,7 @@
         </div>
         </div>
       </div>
-      <div class="ui error message"></div>
+      <div class="ui error message" ></div>
       @if($errors->has('email')||$errors->has('password'))
         @if ($errors->first('email')=="The email has already been taken.")
               <div class="ui negative message">Sorry,The email has already been taken.</div>
@@ -602,9 +702,32 @@
         <input type="password" id="mobilepassword" name="regpassword" placeholder="Password">
       </div>
       <div class="field">
-        <input type="password" id="confirmpassword"name="password_confirmation" placeholder="Confirm Password">
+        <input type="password" id="mobileconfirmpassword" oninput="confirmpassfunc()" name="password_confirmation" placeholder="Confirm Password">
       </div>
     </div>
+    <div  id="mobileerror" style="display:none;" class="field">
+
+    </div>
+<script type="text/javascript">
+window.onload = function what(){
+var mobileerror=document.getElementById('mobileerror');
+var mobilepassword=document.getElementById('mobilepassword');
+var mobileconfirmpassword=document.getElementById('mobileconfirmpassword');
+};
+function confirmpassfunc() {
+// var n = mobilepassword.value.localeCompare(mobileconfirmpassword.value);
+if(mobilepassword.value!=mobileconfirmpassword.value){
+mobileerror.style.display="inline";
+mobileerror.innerHTML='<div class="ui negative message">Passwords do not match</div>';
+console.log('dfdsfds');
+}
+else {
+mobileerror.style.display="none";
+console.log('sdsdsds');
+}
+
+}
+</script>
 
 </div>
 <div class="field">

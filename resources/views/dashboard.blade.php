@@ -412,9 +412,9 @@
 
 
    <script type="text/javascript">
-   var clientId = '470865305079-hn08kdr4harhu7buga04d6cuv8abnqj7.apps.googleusercontent.com';
-          var apiKey = 'AIzaSyC2F0F_mV7QnGMii66F98Rayp5Bk7kW6Ss';
-          var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+        var clientId = '470865305079-hn08kdr4harhu7buga04d6cuv8abnqj7.apps.googleusercontent.com';
+        var apiKey = 'AIzaSyC2F0F_mV7QnGMii66F98Rayp5Bk7kW6Ss';
+        var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
           $(document).on("click",".googleContactsButton", function(){
             gapi.client.setApiKey(apiKey);
             window.setTimeout(authorize);
@@ -715,7 +715,7 @@
           </div>
         </div>
 
-          <button id="addgoalbtntwo" style="display:none;" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
+          <button id="addgoalbtntwo" style="display:none;" class="btn-floating btn-large waves-effect waves-light red tooltipped hide-on-small-only" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
           <button  class="btn-floating btn-large waves-effect waves-light red tooltipped hide-on-med-and-up " data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
                   </div>
 
