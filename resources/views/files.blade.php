@@ -72,11 +72,341 @@
       </div>
     </div>
 
+<div class="row">
+<h5>&nbsp My Folders</h5>
+<div class="col s4 m6 l2">
+  <a class="right btn btn-floating" id="countfilesdisplay"></a>
+  <div class="card" id="allfilesfolder" style="height:20%;">
+    <div class="card-image waves-effect waves-block waves-light" style="height:150px;">
+      <img src="img/icons8-Extensions Folder-100.png">
+      <center><span class="blue-text text-darken-4" id="filesizeallfilesdisplay"></span></center>
+    </div>
+    <center><div class="card-content" style="height:50px;"><b>All Files</b></div></center>
+  </div>
+  <script>
+  allfilesfolder.addEventListener("click",function(event){
+    event.preventDefault();
+    document.getElementById("documents").style.display="none";
+    document.getElementById("pictures").style.display="none";
+    document.getElementById("videos").style.display="none";
+    document.getElementById("rars&zips").style.display="none";
+    document.getElementById("pictures").style.display="none";
+    document.getElementById("gridviewrow").style.display="inline";
+    document.getElementById("listviewrow").style.display="none";
+  });
+  </script>
+</div>
+
+<div class="col s4 m6 l2">
+  <a class="right btn btn-floating" id="countmicdisplay"></a>
+  <div class="card" id="musicfolder" style="height:200px;">
+    <div class="card-image waves-effect waves-block waves-light" style="height:150px;">
+      <img src="img/icons8-Music Folder-100 (1).png">
+      <center><span class="blue-text text-darken-4" id="filesizemicdisplay"></span></center>
+    </div>
+    <center><div class="card-content" style="height:50px;"><b>Music</b></div></center>
+  </div>
+  <script>
+  musicfolder.addEventListener("click",function(event){
+    event.preventDefault();
+    document.getElementById("documents").style.display="none";
+    document.getElementById("pictures").style.display="none";
+    document.getElementById("videos").style.display="none";
+    document.getElementById("rars&zips").style.display="none";
+    document.getElementById("musics").style.display="inline";
+    document.getElementById("gridviewrow").style.display="none";
+    document.getElementById("listviewrow").style.display="none";
+
+    Materialize.showStaggeredList('#musics');
+  });
+  </script>
+</div>
+
+<div class="col s4 m6 l2">
+<a class="right btn btn-floating" id="countpicdisplay"></a>
+  <div class="card" id="picturesfolder" style="height:200px;">
+
+    <div class="card-image waves-effect waves-block waves-light" style="height:150px;">
+      <img src="img/icons8-Pictures Folder-100 (2).png">
+      <center><span class="blue-text text-darken-4" id="filesizepicdisplay"></span></center>
+    </div>
+    <center><div class="card-content" style="height:50px;"><b>Pictures</b></div></center>
+  </div>
+  <script>
+  picturesfolder.addEventListener("click",function(event){
+    event.preventDefault();
+    document.getElementById("musics").style.display="none";
+    document.getElementById("documents").style.display="none";
+    document.getElementById("videos").style.display="none";
+    document.getElementById("rars&zips").style.display="none";
+    document.getElementById("pictures").style.display="inline";
+    document.getElementById("gridviewrow").style.display="none";
+    document.getElementById("listviewrow").style.display="none";
+
+    Materialize.showStaggeredList('#pictures');
+  });
+  </script>
+</div>
+<div class="col s4 m6 l2">
+  <a class="right btn btn-floating" id="countviddisplay"></a>
+  <div class="card" id="videosfolder" style="height:200px;;">
+    <div class="card-image waves-effect waves-block waves-light" style="height:150px;">
+      <img src="img/icons8-Movies Folder-100.png">
+      <center><span class="blue-text text-darken-4" id="filesizeviddisplay"></span></center>
+    </div>
+    <center><div class="card-content" style="height:50px;"><b>Videos</b></div></center>
+  </div>
+  <script>
+  videosfolder.addEventListener("click",function(event){
+    event.preventDefault();
+    document.getElementById("musics").style.display="none";
+    document.getElementById("pictures").style.display="none";
+    document.getElementById("documents").style.display="none";
+    document.getElementById("rars&zips").style.display="none";
+    document.getElementById("videos").style.display="inline";
+    document.getElementById("gridviewrow").style.display="none";
+    document.getElementById("listviewrow").style.display="none";
+
+    Materialize.showStaggeredList('#videos');
+  });
+  </script>
+</div>
+<div class="col s4 m6 l2">
+  <a class="right btn btn-floating" id="countdocdisplay"></a>
+  <div class="card" id="documentsfolder" style="height:200px;;">
+    <div class="card-image waves-effect waves-block waves-light" style="height:150px;">
+      <img src="img/icons8-Documents Folder-100.png">
+      <center><span class="blue-text text-darken-4" id="filesizedocdisplay"></span></center>
+    </div>
+    <center><div class="card-content" style="height:50px;"><b>Documents</b></div></center>
+  </div>
+  <script>
+  documentsfolder.addEventListener("click",function(event){
+    event.preventDefault();
+    document.getElementById("musics").style.display="none";
+    document.getElementById("pictures").style.display="none";
+    document.getElementById("videos").style.display="none";
+    document.getElementById("rars&zips").style.display="none";
+    document.getElementById("documents").style.display="inline";
+    document.getElementById("gridviewrow").style.display="none";
+    document.getElementById("listviewrow").style.display="none";
+
+    Materialize.showStaggeredList('#documents');
+  });
+  </script>
+</div>
+<div class="col s4 m6 l2">
+  <a class="right btn btn-floating" id="countzipdisplay"></a>
+  <div class="card" id="zipfolder" style="height:200px;;">
+    <div class="card-image waves-effect waves-block waves-light" style="height:150px;">
+      <img src="img/icons8-Archive Folder-100.png">
+      <center><span class="blue-text text-darken-4" id="filesizezipdisplay"></span></center>
+    </div>
+    <center><div class="card-content" style="height:50px;"><b>Zip & Rar</b></div></center>
+  </div>
+  <script>
+  zipfolder.addEventListener("click",function(event){
+    event.preventDefault();
+    document.getElementById("musics").style.display="none";
+    document.getElementById("pictures").style.display="none";
+    document.getElementById("videos").style.display="none";
+    document.getElementById("documents").style.display="none";
+    document.getElementById("rars&zips").style.display="inline";
+    document.getElementById("gridviewrow").style.display="none";
+    document.getElementById("listviewrow").style.display="none";
+
+    Materialize.showStaggeredList('#rars&zips');
+
+  });
+  </script>
+</div>
+
+</div>
 
 
-    <script>var totafilelsize=0;</script>
+
+
+
+
+
+
+    <div id="musics" style="display:none;">
+      <div class="row">
+        <h5>&nbsp Uploaded Musics</h5>
+    @foreach ($files as $file)
+     <script>
+     var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}';
+     var extension = fileName.split('.').pop();
+     if(extension=="mp3" || extension=="wmv" || extension=="amw"){
+
+       document.write('<div class="col s12 m6 l2">');
+       document.write('<div class="card" style="height:180px;">');
+       document.write('<div class="card-image waves-effect waves-block waves-light" style="height:100px;">');
+       document.write('<img src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" />');
+       document.write('</div>');
+       document.write('<a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">');
+       document.write('<p style="font-size=5px;color:black;" class="truncate">Doc Name: {{$file->filename}}</p></a>');
+       document.write('<p class="truncate">New Name: {{$file->fakename}}</p>');
+       document.write('</div>');
+       document.write('</div>');
+
+       }
+     </script>
+     @endforeach
+
+      </div>
+    </div>
+
+
+    <div id="pictures" style="display:none;">
+      <div class="row">
+        <h5>&nbsp Uploaded Pictures</h5>
+    @foreach ($files as $file)
+     <script>
+     var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}';
+     var extension = fileName.split('.').pop();
+     if(extension=="jpg" || extension=="png" || extension=="jpeg"){
+
+       document.write('<div class="col s12 m6 l2">');
+       document.write('<div class="card" style="height:180px;">');
+       document.write('<div class="card-image waves-effect waves-block waves-light" style="height:100px;">');
+       document.write('<img src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" />');
+       document.write('</div>');
+       document.write('<a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">');
+       document.write('<p style="font-size=5px;color:black;" class="truncate">Doc Name: {{$file->filename}}</p></a>');
+       document.write('<p class="truncate">New Name: {{$file->fakename}}</p>');
+       document.write('</div>');
+       document.write('</div>');
+
+       }
+     </script>
+     @endforeach
+
+      </div>
+    </div>
+
+    <div id="videos" style="display:none;">
+      <div class="row">
+        <h5>&nbsp Uploaded Videos</h5>
+    @foreach ($files as $file)
+    <script>
+    var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}';
+    var extension = fileName.split('.').pop();
+    if(extension=="mp4" || extension=="kmv"){
+
+      document.write('<div class="col s12 m6 l2">');
+      document.write('<div class="card" style="height:180px;">');
+      document.write('<div class="card-image waves-effect waves-block waves-light" style="height:100px;">');
+      document.write('<img src="img/icons8-YouTube-50.png" />');
+      document.write('</div>');
+      document.write('<a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">');
+      document.write('<p style="font-size=5px;color:black;" class="truncate">Doc Name: {{$file->filename}}</p></a>');
+      document.write('<p class="truncate">New Name: {{$file->fakename}}</p>');
+      document.write('</div>');
+      document.write('</div>');
+
+      }
+    </script>
+     @endforeach
+
+      </div>
+    </div>
+
+
+    <div id="documents" style="display:none;">
+      <div class="row">
+        <h5>&nbsp Uploaded Documents</h5>
+    @foreach ($files as $file)
+     <script>
+
+
+     var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}';
+     var extension = fileName.split('.').pop();
+     if(extension=="pdf"){
+
+       document.write('<div class="col s12 m6 l2">');
+       document.write('<div class="card" style="height:180px;">');
+       document.write('<div class="card-image waves-effect waves-block waves-light" style="height:100px;">');
+       document.write('<iframe src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" style="width:600px; height:100px;" frameborder="0"></iframe>');
+       document.write('</div>');
+       document.write('<a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">');
+       document.write('<p style="font-size=5px;color:black;" class="truncate">Doc Name: {{$file->filename}}</p></a>');
+       document.write('<p class="truncate">New Name: {{$file->fakename}}</p>');
+       document.write('</div>');
+       document.write('</div>');
+
+       }
+
+       else if(extension=="txt" || extension=="docx"){
+         document.write('<div class="col s12 m6 l2">');
+         document.write('<div class="card" style="height:180px;">');
+         document.write('<div class="card-image waves-effect waves-block waves-light" style="height:100px;">');
+         document.write('<img src="img/icons8-DOC-50.png" height="100px">');
+         document.write('</div>');
+         document.write('<a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">');
+         document.write('<p style="font-size=5px;color:black;" class="truncate">Doc Name: {{$file->filename}}</p></a>');
+         document.write('<p class="truncate">New Name: {{$file->fakename}}</p>');
+         document.write('</div>');
+         document.write('</div>');
+       }
+     </script>
+     @endforeach
+
+      </div>
+    </div>
+
+
+    <div id="rars&zips" style="display:none;">
+      <div class="row">
+        <h5>&nbsp Uploaded Rar & Zips</h5>
+    @foreach ($files as $file)
+    <script>
+    var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}';
+    var extension = fileName.split('.').pop();
+    if(extension=="rar"){
+
+      document.write('<div class="col s12 m6 l2">');
+      document.write('<div class="card" style="height:180px;">');
+      document.write('<div class="card-image waves-effect waves-block waves-light" style="height:100px;">');
+      document.write('<img src="img/icons8-RAR-50.png" />');
+      document.write('</div>');
+      document.write('<a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">');
+      document.write('<p style="font-size=5px;color:black;" class="truncate">Doc Name: {{$file->filename}}</p></a>');
+      document.write('<p class="truncate">New Name: {{$file->fakename}}</p>');
+      document.write('</div>');
+      document.write('</div>');
+
+      }
+
+      else if(extension=="zip"){
+        document.write('<div class="col s12 m6 l2">');
+        document.write('<div class="card" style="height:180px;">');
+        document.write('<div class="card-image waves-effect waves-block waves-light" style="height:100px;">');
+        document.write('<img src="img/icons8-ZIP-50.png" />');
+        document.write('</div>');
+        document.write('<a href="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}">');
+        document.write('<p style="font-size=5px;color:black;" class="truncate">Doc Name: {{$file->filename}}</p></a>');
+        document.write('<p class="truncate">New Name: {{$file->fakename}}</p>');
+        document.write('</div>');
+        document.write('</div>');
+      }
+    </script>
+     @endforeach
+
+      </div>
+    </div>
+
+
+
+  <script>
+  var totafilelsize=0;var countpic=0;var countmic=0;var countvid=0;var countdoc=0;var countzip=0;countpdf=0;
+  var filesizepic=0;var filesizeallfiles=0; var filesizemic=0; var filesizevid=0; var filesizedoc=0; var filesizezip=0; var filesizepdf=0;
+  </script>
+
 
     <div class="row" id="gridviewrow">
+    <h5>&nbsp Uploaded Files</h5>
+
      @foreach ($files as $file)
 
         <div class="col s12 m6 l2">
@@ -94,24 +424,42 @@
 
                      var extension = fileName.split('.').pop();
                        if(extension=="pdf"){
+                         countpdf=countpdf+1;
+                         filesizepdf=filesizepdf+({{$file->size}});
                          document.write('<iframe src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" style="width:600px; height:100px;" frameborder="0"></iframe>');
+
                          }
 
                        else if(extension=="jpg" || extension=="png" || extension=="jpeg"){
-                         document.write('<img src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}" />');
+                         countpic=countpic+1;
+                         filesizepic=filesizepic+({{$file->size}});
+                         document.write('<img src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}"/>');
                          }
 
+                         else if(extension=="mp3" || extension=="amw" || extension=="wmv"){
+                           countmic=countmic+1;
+                           filesizemic=filesizemic+({{$file->size}});
+                           document.write('<img src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$file->filename}}"/>');
+                           }
+
                        else if(extension=="doc" || extension=="docx" || extension=="txt"){
-                        document.write('<img src="img/icons8-DOC-50.png" height="200px" >');
+                         countdoc=countdoc+1;
+                         filesizedoc=filesizedoc+({{$file->size}});
+                        document.write('<img src="img/icons8-DOC-50.png" height="100px">');
                         }
 
                        else if(extension=="rar" || extension=="zip"){
+                         countzip=countzip+1;
+                         filesizezip=filesizezip+({{$file->size}});
                         document.write('<img src="img/icons8-RAR-50.png">');
                         }
 
-                       else if(extension=="zip"){
-                        document.write('<img src="img/icons8-ZIP-50.png">');
-                       }
+                       else if(extension=="mp4" || extension=="mkv"){
+                         countvid=countvid+1;
+                         filesizevid=filesizevid+({{$file->size}});
+                         document.write('<img src="img/icons8-YouTube-50.png"/>');
+                         }
+
                 </script>
              </div>
            </div>
@@ -174,6 +522,39 @@
     </div>
 </div>
  @endforeach
+ <script>
+
+ document.getElementById("countmicdisplay").innerHTML=countmic;
+document.getElementById("countpicdisplay").innerHTML=countpic;
+document.getElementById("countviddisplay").innerHTML=countvid;
+document.getElementById("countdocdisplay").innerHTML=countdoc+countpdf;
+document.getElementById("countzipdisplay").innerHTML=countzip;
+document.getElementById("countfilesdisplay").innerHTML=countmic+countpic+countvid+countdoc+countpdf+countzip;
+
+var docpdf=filesizedoc+filesizepdf;
+var all=filesizepic+filesizemic+filesizevid+filesizezip+filesizedoc+filesizepdf;
+var filesizepicrd = filesizepic.toFixed(4);
+var filesizemicrd = filesizemic.toFixed(4);
+var filesizevidrd = filesizevid.toFixed(4);
+var filesizeziprd = filesizezip.toFixed(4);
+var docpdfrd=docpdf.toFixed(4);
+var allrd=all.toFixed(4);
+document.getElementById("filesizepicdisplay").innerHTML=filesizepicrd+'GB';
+document.getElementById("filesizemicdisplay").innerHTML=filesizemicrd+'GB';
+document.getElementById("filesizeviddisplay").innerHTML=filesizevidrd+'GB';
+document.getElementById("filesizedocdisplay").innerHTML=docpdfrd+'GB';
+document.getElementById("filesizezipdisplay").innerHTML=filesizeziprd+'GB';
+document.getElementById("filesizeallfilesdisplay").innerHTML=allrd+'GB';
+
+
+var remainsize=5-allrd;
+
+document.getElementById("filesizebar").innerHTML="Your Total file size:"+" "+allrd+" "+"GB and Your remaining file size: "+remainsize+"GB";
+
+if(allrd==5){
+  document.getElementById("buttonupload").style.display="none";
+}
+ </script>
  </div>
 
 
@@ -314,20 +695,6 @@
    @endforeach
 
        </div>
-
-
-
-
-<script>
- var round = totafilelsize.toFixed(4);
- var remainsize=5-round;
-
-document.getElementById("filesizebar").innerHTML="Your Total file size:"+" "+round+" "+"GB and Your remaining file size: "+remainsize+"GB";
-
- if(totalfilesize==5){
-   document.getElementById("buttonupload").style.display="none";
- }
- </script>
 
 
 </div>

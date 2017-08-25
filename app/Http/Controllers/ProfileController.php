@@ -85,7 +85,9 @@ public function addpreviouswork(request $request)
             'data' => $request->previous,
           ]
     );
-    echo json_encode($request->previous);
+    // echo json_encode($request->previous);
+    return redirect()->back();
+
 
 }
 
@@ -99,7 +101,8 @@ public function addcurrentwork(request $request)
             'data' => $request->current,
           ]
     );
-    echo json_encode($request->current);
+    // echo json_encode($request->current);
+    return redirect()->back();
 
 }
 
@@ -113,7 +116,9 @@ public function addprimary(request $request)
             'data' => $request->primary,
           ]
     );
-    echo json_encode($request->primary);
+    // echo json_encode($request->primary);
+    return redirect()->back();
+
 
 }
 
@@ -127,7 +132,9 @@ public function addsecondary(request $request)
             'data' => $request->secondary,
           ]
     );
-    echo json_encode($request->secondary);
+    // echo json_encode($request->secondary);
+    return redirect()->back();
+
 
 }
 
@@ -141,7 +148,9 @@ public function addcollege(request $request)
             'data' => $request->college,
           ]
     );
-    echo json_encode($request->college);
+    // echo json_encode($request->college);
+    return redirect()->back();
+
 
 }
 
@@ -155,7 +164,9 @@ public function adduniversity(request $request)
             'data' => $request->university,
           ]
     );
-    echo json_encode($request->university);
+    // echo json_encode($request->university);
+    return redirect()->back();
+
 
 }
 
@@ -169,7 +180,9 @@ public function addachievements(request $request)
             'data' => $request->achievements,
           ]
     );
-    echo json_encode($request->achievements);
+    // echo json_encode($request->achievements);
+    return redirect()->back();
+
 
 }
 
@@ -183,7 +196,9 @@ public function addprofqual(request $request)
             'data' => $request->profqual,
           ]
     );
-    echo json_encode($request->profqual);
+    // echo json_encode($request->profqual);
+    return redirect()->back();
+
 
 }
 public function addpatents(request $request)
@@ -196,7 +211,9 @@ public function addpatents(request $request)
             'data' => $request->patents,
           ]
     );
-    echo json_encode($request->patents);
+    // echo json_encode($request->patents);
+    return redirect()->back();
+
 
 }
 public function addresearchpapers(request $request)
@@ -209,7 +226,9 @@ public function addresearchpapers(request $request)
             'data' => $request->researchpapers,
           ]
     );
-    echo json_encode($request->researchpapers);
+    // echo json_encode($request->researchpapers);
+    return redirect()->back();
+
 
 }
 public function addfrom(request $request)
@@ -222,7 +241,9 @@ public function addfrom(request $request)
             'data' => $request->from,
           ]
     );
-    echo json_encode($request->from);
+    // echo json_encode($request->from);
+    return redirect()->back();
+
 
 }
 
@@ -236,7 +257,9 @@ public function addliving(request $request)
             'data' => $request->living,
           ]
     );
-    echo json_encode($request->living);
+    // echo json_encode($request->living);
+    return redirect()->back();
+
 
 }
 
@@ -250,7 +273,9 @@ public function addinterests(request $request)
             'data' => $request->interests,
           ]
     );
-    echo json_encode($request->interests);
+    // echo json_encode($request->interests);
+    return redirect()->back();
+    
 
 }
 public function addfacebook(request $request)

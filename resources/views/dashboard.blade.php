@@ -424,7 +424,7 @@
           }
           function handleAuthorization(authorizationResult) {
             if (authorizationResult && !authorizationResult.error) {
-              $.get("https://www.google.com/m8/feeds/contacts/{{Auth::User()->email}}/full",
+              $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                 function(response){
                   //process the response here
                   console.log(response);

@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.friendsView')
+{{-- @include('layouts.friendsView') --}}
 <div id="addgoal" class="modal modal-fixed-footer">
 <div class="modal-content" style="text-align:center;">
 <h4>Add a Goal</h4>
@@ -515,44 +515,146 @@
                       }
                     </script> --}}
                     </div>
-                    <span class="flow-text"><span id="userdob">{{Auth::User()->dob}}</span></span>
-
+                    <span class="flow-text" id="userdob" onclick="displaydobedit()">{{Auth::User()->dob}}</span>
                       {{csrf_field()}}
-                     <div class="row" style="display:none;">
-                     <div class="input-field col s12 m12 l12" >
-                       <label>Date of Birth</label><br>
-                       <input id="birthDate" oninput="dateValid()" type="date" name="dob" value="{{Auth::User()->dob}}">
-                       <span id="doberror"></span>
+                      <input type="hidden" id="dob" name="dob" value="{{Auth::User()->dob}}">
+                     <div class="row" id="dobrow"style="display:none;">
+                     <div class="input-field col s3" >
+                           <select id="datedropdown" oninput="setdob()"  name="">
+                             @for ($i=1; $i <=31 ; $i++)
+                               <option data-date="{{$i}}" value="{{$i}}">{{$i}}</option>
+                             @endfor
+                           </select>
+                     </div>
+                     <div class="input-field col s4">
+                           <select name="month" id="monthdropdown" oninput="setdatefunc()">
+                               <option data-month="JAN" value="01" selected>January</option>
+                               <option data-month="FEB" value="02">February </option>
+                               <option data-month="MAR" value="03">March </option>
+                               <option data-month="APR" value="04">April</option>
+                               <option data-month="MAY" value="05">May</option>
+                               <option data-month="JUN" value="06">June </option>
+                               <option data-month="JUL" value="07">July</option>
+                               <option data-month="AUG" value="08">August</option>
+                               <option data-month="SEP" value="09">September</option>
+                               <option data-month="OCT" value="10">October</option>
+                               <option data-month="NOV" value="11">November </option>
+                               <option data-month="DEC" value="12">December </option>
+                             </select>
+                     </div>
+                     <div class="input-field col s3">
+                           <select id="yeardropdown" oninput="febdates()" name="">
+                             @for ($i=2001; $i >=1920 ; $i--)
+                               <option data-year="{{$i}}" value="{{$i}}">{{$i}}</option>
+                             @endfor
+                           </select>
+                      </div>
+                      <div class="input-field col s2 l2 m2" style="padding-top:3px;">
+                           <a type="submit" style="cursor:pointer;" class="blue-text text-darken-4"  id="modifydob"><i class="material-icons">done</i></a>
+                      </div>
                        <script type="text/javascript">
-                       var birthDate=document.getElementById("birthDate");
-                       var doberror=document.getElementById("doberror");
-                       function dateValid() {
-                         var d=new Date(birthDate.value);
-                         var e=new Date();
-                         if (d.getFullYear()>(e.getFullYear()-6)||d.getFullYear()<(e.getFullYear()-95)) {
-                           doberror.innerHTML='your birthdate is invalid';
-                           doberror.classList.remove('green-text');
-                           doberror.classList.add('red-text');
-                           dob=0;
-                           if(dob!=1 || phone!=1){
-                             document.getElementById("modifyprofile").disabled=true;
-                           }
-                         }
-                         else {
-                           doberror.innerHTML='valid';
-                           doberror.classList.remove('red-text');
-                           doberror.classList.add('green-text');
-                           dob=1;
-                           console.log(dob);
-                           if(dob==1 && phone==1){
-                             document.getElementById("modifyprofile").disabled=false;
-                           }
-                         }
-                         console.log(e.getFullYear());
+                       var datedropdown=document.getElementById('datedropdown');
+                       var monthdropdown=document.getElementById('monthdropdown');
+                       var yeardropdown=document.getElementById('yeardropdown');
+                       var dob=document.getElementById('dob');
+
+                       function setdob() {
+                         dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+                         console.log(dob.value);
                        }
+
+                       function febdates() {
+                         if (monthdropdown.value==02) {
+
+                         if(yeardropdown.value%4 == 0)
+                         {
+                             if( yeardropdown.value%100 == 0)
+                             {
+                                 // year is divisible by 400, hence the year is a leap year
+                                 if ( yeardropdown.value%400 == 0){
+                                     datedropdown.innerHTML='';
+                                     for (var i = 1; i <= 29; i++) {
+                                       datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                                     }
+                                 }
+                                 else{
+                                     datedropdown.innerHTML='';
+                                     for (var i = 1; i <= 28; i++) {
+                                       datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                                     }
+                                 }
+                             }
+                             else{
+                               datedropdown.innerHTML='';
+                               for (var i = 1; i <= 29; i++) {
+                                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                               }
+                             }
+
+                       }
+
+                     }
+                       dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+                       console.log(dob.value);
+                     }
+                         function setdatefunc() {
+                           // console.log(monthdropdown.value);
+                           // console.log(yeardropdown.value);
+                           if (monthdropdown.value==02) {
+                               if(yeardropdown.value%4 == 0)
+                               {
+                                   if( yeardropdown.value%100 == 0)
+                                   {
+                                       // year is divisible by 400, hence the year is a leap year
+                                       if ( yeardropdown.value%400 == 0){
+                                           datedropdown.innerHTML='';
+                                           for (var i = 1; i <= 29; i++) {
+                                             datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                                           }
+                                       }
+                                       else{
+                                           datedropdown.innerHTML='';
+                                           for (var i = 1; i <= 28; i++) {
+                                             datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                                           }
+                                       }
+                                   }
+                                   else{
+                                     datedropdown.innerHTML='';
+                                     for (var i = 1; i <= 29; i++) {
+                                       datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                                     }
+                                   }
+
+                               }
+                               else{
+                                 datedropdown.innerHTML='';
+                                 for (var i = 1; i <= 28; i++) {
+                                   datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                                 }
+                               }
+
+                           }
+                           else {
+                             if (monthdropdown.value==01||monthdropdown.value==03||monthdropdown.value==05||monthdropdown.value==07||monthdropdown.value==08||monthdropdown.value==010||monthdropdown.value==12) {
+                               datedropdown.innerHTML='';
+                               for (var i = 1; i <= 31; i++) {
+                                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                               }
+                             } else {
+                               datedropdown.innerHTML='';
+                               for (var i = 1; i <= 30; i++) {
+                                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                               }
+                             }
+                           }
+                           dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+                           console.log(dob.value);
+                         }
+
                        </script>
                      </div>
-                   </div>
+                    </div>
                      {{-- <div class="row">
                        <div class="col s12">
                          <div class="right">
@@ -570,6 +672,8 @@
           var modifyname=document.getElementById('modifyname');
           var existdetails=document.getElementById('existdetails');
           var userphone=document.getElementById('userphone');
+          var userdob=document.getElementById('userdob');
+          var dobrow=document.getElementById('dobrow');
           var names=document.getElementById('names');
           var phonerow=document.getElementById('phonerow');
           var fname=document.getElementById('fname');
@@ -578,6 +682,12 @@
           var editprofileinfobtn=document.getElementById('editprofileinfobtn');
           var modifyprofile=document.getElementById('modifyprofile');
           var modifyphone=document.getElementById('modifyphone');
+          var modifydob=document.getElementById('modifydob');
+
+          function displaydobedit() {
+            userdob.style.display='none';
+            dobrow.style.display='block';
+          }
 
           function displayphoneedit() {
             userphone.style.display='none';
@@ -623,6 +733,29 @@
                };
 
              });
+             modifydob.addEventListener("click",function(event){
+               event.preventDefault();
+                dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value
+               var action= infoform.getAttribute("action");
+               var form_data=new FormData(infoform);
+               var xhr = new XMLHttpRequest();
+               xhr.open('POST',action, true);
+               xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+               xhr.send(form_data);
+               xhr.onreadystatechange = function () {
+                 if(xhr.readyState == 4 && xhr.status == 200) {
+                   var result = xhr.responseText;
+                   biosubmit.disabled=false;
+                   console.log('Result: ' + result);
+                   var json = JSON.parse(result);
+                   dobrow.style.display='none';
+                   userdob.style.display='block';
+                   userdob.innerHTML=json.dob;
+                   console.log('ds');
+                 }
+               };
+
+             });
              modifyphone.addEventListener("click",function(event){
                event.preventDefault();
                var action= infoform.getAttribute("action");
@@ -647,6 +780,7 @@
              });
           </script>
         </div>
+        <div class="container">
                               <div class="col s12 m12 l12">
                                 <div class="card">
                                   <div class="card-action">
@@ -657,14 +791,13 @@
                                           <div class="card ">
                                              <div class="card-content ">
                                                <span class="card-title"><i class="material-icons">account_box</i>&nbsp;Aspiration
-                                                 <button type="button" onclick="addbiodata()" id="addbiobtn" class="btn btn-floating right pulse"><i class="material-icons">border_color</i></button>
                                                  <i style="display:none;cursor:pointer;" id="closebiobtn"onclick="closeaddbio()" class="material-icons right">close</i>
                                                </span>
                                                <li class="divider"></li><br>
                                                @if (Auth::User()->bio=="")
-                                                 <p id="inibio"class="blue-text">Please Enter your aspiration</p>
+                                                 <p id="inibio" onclick="addbiodata()" class="blue-text">Please Enter your aspiration</p>
                                                @else
-                                                 <p id="setbio">{{Auth::User()->bio}}</p>
+                                                 <u><p id="setbio" onclick="addbiodata()">{{Auth::User()->bio}}</p></u>
                                                @endif
                                                <form action="{{route('addbio')}}" method="post" id="addbio-form" style="display:none;">
                                                  <div class="row">
@@ -689,7 +822,6 @@
                                                  var biosubmit=document.getElementById("biosubmit");
                                                  function addbiodata() {
                                                    console.log('sds');
-                                                   document.getElementById("addbiobtn").style.display="none";
                                                    document.getElementById("closebiobtn").style.display="inline";
                                                    @if (Auth::User()->bio=="")
                                                    inibio.style.display="none";
@@ -701,7 +833,6 @@
                                                    addbioform.style.display="block";
                                                  }
                                                  function closeaddbio() {
-                                                   document.getElementById("addbiobtn").style.display="inline";
                                                    document.getElementById("closebiobtn").style.display="none";
                                                    @if (Auth::User()->bio=="")
                                                    inibio.style.display="block";
@@ -729,7 +860,6 @@
                                                           addbioform.style.display="none";
                                                           setbio.innerHTML=json;
                                                           setbio.style.display="block";
-                                                          document.getElementById("addbiobtn").style.display="inline";
                                                           document.getElementById("closebiobtn").style.display="none";
 
 
@@ -751,154 +881,133 @@
                                       <div class="col s12 m6 l6">
                                           <div class="card ">
                                              <div class="card-content">
-                                               <span class="card-title"><i class="material-icons">work</i>&nbsp;Work Experience</span>
+                                               <span class="card-title "><i class="material-icons">work</i>&nbsp;Work Experience</span>
                                                <li class="divider"></li><br>
-                                               <b>previous :</b><br>
-                                                 <span id="nopreviouswork" class="blue-text ">Add your previous employments</span>
-                                                 @foreach ($portfolio as $work)
-                                                 @if ($work->category=='work' && $work->nature=='previous')
-                                                   <span class="chip col s12">{{$work->data}} <i id="{{$work->data}}"class="close material-icons">close</i></span>
-                                                   <form id="{{$work->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" name="id" value="{{$work->id}}">
-                                                   </form>
-                                                   <script type="text/javascript">
-                                                     document.getElementById("nopreviouswork").style.display="none";
-                                                     var deletepreviouswork=document.getElementById('{{$work->data}}');
-                                                     deletepreviouswork.addEventListener("click",deletepreviousworkfunction)
-                                                     function deletepreviousworkfunction() {
-                                                     var form=document.getElementById('{{$work->id}}');
-                                                     var action = form.getAttribute("action");
-                                                     var form_data = new FormData(form);
-                                                     var xhr = new XMLHttpRequest();
-                                                     xhr.open('POST', action, true);
-                                                     xhr.send(form_data);
-                                                     xhr.onreadystatechange = function () {
-                                                       if(xhr.readyState == 4 && xhr.status == 200) {
-                                                          var result = xhr.responseText;
-                                                          console.log('Result: ' + result);
+                                               <b>current employment:</b><br>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='work' && $data->nature=='current')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var item=document.getElementById('{{$data->id}}item');
+                                                       var deletecurrent=document.getElementById('{{$data->id}}');
+                                                       deletecurrent.addEventListener("click",deletecurrentfunction);
+                                                       function deletecurrentfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            item.style.display='none';
+                                                            console.log('Result: ' + result);
 
-
-                                                       }
-                                                     };
-                                                   }
-                                                   </script>
-                                                 @endif
-                                                 @endforeach
-                                                 <div id="addnewprevious">
-                                                 </div>
-                                                 <br>
-                                                 <form id="addpreviouswork-form" action="{{route('addpreviouswork')}}" method="post">
-                                                   {{csrf_field()}}
-                                                   <div class="input-field col s12">
-                                                     <input id="previouswork" type="text" name="previous">
-                                                     <label for="previouswork">
-                                                       Enter your previous Employments
-                                                     </label>
-                                                     <button type="submit" class="btn btn-floating right"id="addpreviousworkbtn" name="button"><i type="submit"class="material-icons">send</i></button>
-                                                   </div>
-                                                 </form>
-                                                 <script type="text/javascript">
-                                                   var addpreviousworkbtn=document.getElementById('addpreviousworkbtn');
-                                                   addpreviousworkbtn.addEventListener("click", function(event) {
-                                                   addpreviousworkfunction();
-                                                   event.preventDefault();
-                                                   });
-
-                                                   function addpreviousworkfunction() {
-                                                   var form=document.getElementById('addpreviouswork-form');
-                                                   var action = form.getAttribute("action");
-                                                   var form_data = new FormData(form);
-                                                   var xhr = new XMLHttpRequest();
-                                                   xhr.open('POST', action, true);
-                                                   xhr.send(form_data);
-                                                   xhr.onreadystatechange = function () {
-                                                     if(xhr.readyState == 4 && xhr.status == 200) {
-                                                        var result = xhr.responseText;
-                                                        console.log('Result: ' + result);
-                                                        var json = JSON.parse(result);
-                                                        document.getElementById("nopreviouswork").style.display="none";
-                                                        document.getElementById("addnewprevious").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                        form.reset();
+                                                         }
+                                                       };
                                                      }
-                                                   };
-                                                 }
-                                                 </script>
-                                                 <br><br>
-                                               <b>current :</b><br>
-                                                 <span id="nocurrentwork" class="blue-text ">Add your current employment</span>
-                                                 @foreach ($portfolio as $work)
-                                                 @if ($work->category=='work' && $work->nature=='current')
-                                                   <span class="chip col s12">{{$work->data}}<i id="{{$work->data}}"class="close material-icons">close</i></span>
-                                                   <form  id="{{$work->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden"name="id" value="{{$work->id}}">
-                                                   </form>
-                                                   <script type="text/javascript">
-                                                     document.getElementById("nocurrentwork").style.display="none";
-                                                     var deletecurrentwork=document.getElementById('{{$work->data}}');
-                                                     deletecurrentwork.addEventListener("click",deletecurrentworkfunction)
-                                                     function deletecurrentworkfunction() {
-                                                     var form=document.getElementById('{{$work->id}}');
-                                                     var action = form.getAttribute("action");
-                                                     var form_data = new FormData(form);
-                                                     var xhr = new XMLHttpRequest();
-                                                     xhr.open('POST', action, true);
-                                                     xhr.send(form_data);
-                                                     xhr.onreadystatechange = function () {
-                                                       if(xhr.readyState == 4 && xhr.status == 200) {
-                                                          var result = xhr.responseText;
-                                                          console.log('Result: ' + result);
-
-
-                                                       }
-                                                     };
-                                                   }
-                                                   </script>
-                                                 @endif
+                                                     </script>
+                                                   @endif
                                                  @endforeach
-                                                 <div id="addnewcurrent">
+                                               </ul>
+                                               <form id="addcurrentform" action="{{route('addcurrentwork')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="current">
                                                  </div>
-                                                 <br>
-                                                 <form id="addcurrentwork-form" action="{{route('addcurrentwork')}}" method="post">
-                                                   {{csrf_field()}}
-                                                   <div class="input-field col s12">
-                                                     <input id="currentwork" type="text" name="current">
-                                                     <label for="currentwork">
-                                                       Enter your current Employment
-                                                     </label>
-                                                     <button type="submit" class="btn btn-floating right"id="addcurrentworkbtn" name="button"><i type="submit"class="material-icons">send</i></button>
-                                                   </div>
-                                                 </form>
-                                                 <script type="text/javascript">
-                                                   var addcurrentworkbtn=document.getElementById('addcurrentworkbtn');
-                                                   addcurrentworkbtn.addEventListener("click", function(event) {
-                                                   addcurrentworkfunction();
-                                                   event.preventDefault();
-                                                   });
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="addcurrentbtn" onclick="addcurrentform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closecurrentinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="addcurrent" style="cursor:pointer;" onclick="showcurrentinput()">Add current employment</a>
+                                              <script type="text/javascript">
+                                              var addcurrent=document.getElementById('addcurrent');
+                                              var addcurrentform=document.getElementById('addcurrentform');
+                                                function showcurrentinput() {
+                                                  addcurrentform.style.display='block';
+                                                  addcurrent.style.display='none';
+                                                }
+                                                function closecurrentinput() {
+                                                  addcurrentform.style.display='none';
+                                                  addcurrent.style.display='block';
+                                                }
+                                              </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                              <b>previous employment:</b><br>
+                                              <ul class="collection">
+                                                @foreach ($portfolio as $data)
+                                                  @if ($data->category=='work' && $data->nature=='previous')
+                                                    <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                    <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                     {{ csrf_field() }}
+                                                     <input type="hidden" name="id" value="{{$data->id}}">
+                                                    </form>
+                                                    <script type="text/javascript">
+                                                    console.log('sdsdssdsdfrfrgfrg');
+                                                      var previousitem=document.getElementById('{{$data->id}}item');
+                                                      var deleteprevious=document.getElementById('{{$data->id}}');
+                                                      deleteprevious.addEventListener("click",deletepreviousfunction);
+                                                      function deletepreviousfunction() {
+                                                        console.log('sdsds');
+                                                      var form=document.getElementById('{{$data->id}}frm');
+                                                      var action = form.getAttribute("action");
+                                                      var form_data = new FormData(form);
+                                                      var xhr = new XMLHttpRequest();
+                                                      xhr.open('POST', action, true);
+                                                      xhr.send(form_data);
+                                                      xhr.onreadystatechange = function () {
+                                                        if(xhr.readyState == 4 && xhr.status == 200) {
+                                                          console.log('fsdf');
+                                                           var result = xhr.responseText;
+                                                           previousitem.style.display='none';
+                                                           console.log('Result: ' + result);
 
-                                                   function addcurrentworkfunction() {
-                                                   var form=document.getElementById('addcurrentwork-form');
-                                                   var action = form.getAttribute("action");
-                                                   var form_data = new FormData(form);
-                                                   var xhr = new XMLHttpRequest();
-                                                   xhr.open('POST', action, true);
-                                                   xhr.send(form_data);
-                                                   xhr.onreadystatechange = function () {
-                                                     if(xhr.readyState == 4 && xhr.status == 200) {
-                                                        var result = xhr.responseText;
-                                                        console.log('Result: ' + result);
-                                                        var json = JSON.parse(result);
-                                                        document.getElementById("nocurrentwork").style.display="none";
-                                                        document.getElementById("addnewcurrent").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                        form.reset();
-                                                     }
-                                                   };
-                                                 }
-                                                 </script>
-                                                 <div class="card-content">
-                                                   &nbsp;
-                                                 </div>
+                                                        }
+                                                      };
+                                                    }
+                                                    </script>
+                                                  @endif
+                                                @endforeach
+                                              </ul>
+                                              <form id="addpreviousform" action="{{route('addpreviouswork')}}" method="post" style="display:none;">
+                                                {{csrf_field()}}
+                                                <div class="row">
+                                                <div class="input-field col s9">
+                                                  <input id="from" type="text" name="previous">
+                                                </div>
+                                                <div class=" input-field col s3">
+                                                  <span class="blue-text" style="cursor:pointer;" id="addpreviousbtn" onclick="addpreviousform.submit();"><i class="material-icons">done</i></span>
+                                                  <span class="blue-text" style="cursor:pointer;" onclick="closepreviousinput()"><i class="material-icons">close</i></span>
+                                                </div>
+                                              </div>
+                                              </form>
+                                             <a class="blue-text" id="addprevious" style="cursor:pointer;" onclick="showpreviousinput()">Add previous employment</a>
+                                             <script type="text/javascript">
+                                             var addprevious=document.getElementById('addprevious');
+                                             var addpreviousform=document.getElementById('addpreviousform');
+                                               function showpreviousinput() {
+                                                 addpreviousform.style.display='block';
+                                                 addprevious.style.display='none';
+                                               }
+                                               function closepreviousinput() {
+                                                 addpreviousform.style.display='none';
+                                                 addprevious.style.display='block';
+                                               }
+                                             </script>
                                              </div>
                                           </div>
                                       </div>
@@ -907,380 +1016,334 @@
                                     <div class="row" style="margin:10px;">
                                         <div class="col s12 m6 l6">
                                             <div class="card ">
+                                              {{-- contentstart --}}
                                                <div class="card-content ">
                                                  <span class="card-title"><i class="material-icons">school</i>&nbsp;Education</span>
-                                                 <li class="divider"></li><br>
-                                                 <b>primary school :</b><br>
-                                                 <span id="noprimarysch" class="blue-text">Add your primary school</span>
-                                                 @foreach ($portfolio as $edu)
-                                                 @if ($edu->category=='education' && $edu->nature=='primarysch')
-                                                  <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                  <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                   {{ csrf_field() }}
-                                                   <input type="hidden" name="id" value="{{$edu->id}}">
-                                                  </form>
-                                                  <script type="text/javascript">
-                                                    document.getElementById("noprimarysch").style.display="none";
-                                                    var deleteprimarysch=document.getElementById('{{$edu->data}}');
-                                                    deleteprimarysch.addEventListener("click",deleteprimaryschfunction)
-                                                    function deleteprimaryschfunction() {
-                                                    var form=document.getElementById('{{$edu->id}}');
-                                                    var action = form.getAttribute("action");
-                                                    var form_data = new FormData(form);
-                                                    var xhr = new XMLHttpRequest();
-                                                    xhr.open('POST', action, true);
-                                                    xhr.send(form_data);
-                                                    xhr.onreadystatechange = function () {
-                                                      if(xhr.readyState == 4 && xhr.status == 200) {
-                                                         var result = xhr.responseText;
-                                                         console.log('Result: ' + result);
+                                                 <div class="divider"></div><br>
+                                                 <b>University:</b><br>
+                                                 <ul class="collection">
+                                                   @foreach ($portfolio as $data)
+                                                     @if ($data->category=='education' && $data->nature=='university')
+                                                       <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                       <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="id" value="{{$data->id}}">
+                                                       </form>
+                                                       <script type="text/javascript">
+                                                       console.log('sdsdssdsdfrfrgfrg');
+                                                         var universityitem=document.getElementById('{{$data->id}}item');
+                                                         var deleteuniversity=document.getElementById('{{$data->id}}');
+                                                         deleteuniversity.addEventListener("click",deleteuniversityfunction);
+                                                         function deleteuniversityfunction() {
+                                                           console.log('sdsds');
+                                                         var form=document.getElementById('{{$data->id}}frm');
+                                                         var action = form.getAttribute("action");
+                                                         var form_data = new FormData(form);
+                                                         var xhr = new XMLHttpRequest();
+                                                         xhr.open('POST', action, true);
+                                                         xhr.send(form_data);
+                                                         xhr.onreadystatechange = function () {
+                                                           if(xhr.readyState == 4 && xhr.status == 200) {
+                                                             console.log('fsdf');
+                                                              var result = xhr.responseText;
+                                                              universityitem.style.display='none';
+                                                              console.log('Result: ' + result);
 
-
-                                                      }
-                                                    };
-                                                  }
-                                                  </script>
-                                                 @endif
-                                                 @endforeach
-                                                 <div id="addnewprimary">
-                                                 </div>
-                                                 <br>
-                                                 <form id="addprimary-form" action="{{route('addprimary')}}" method="post">
+                                                           }
+                                                         };
+                                                       }
+                                                       </script>
+                                                     @endif
+                                                   @endforeach
+                                                 </ul>
+                                                 <form id="adduniversityform" action="{{route('adduniversity')}}" method="post" style="display:none;">
                                                    {{csrf_field()}}
-                                                   <div class="input-field col s12">
-                                                     <input id="primary" type="text" name="primary">
-                                                     <label for="primary">
-                                                       Enter your primary school
-                                                     </label>
-                                                     <button type="submit" class="btn btn-floating right"id="addprimarybtn" name="button"><i type="submit"class="material-icons">send</i></button>
+                                                   <div class="row">
+                                                   <div class="input-field col s9">
+                                                     <input id="from" type="text" name="university">
                                                    </div>
+                                                   <div class=" input-field col s3">
+                                                     <span class="blue-text" style="cursor:pointer;" id="adduniversitybtn" onclick="adduniversityform.submit();"><i class="material-icons">done</i></span>
+                                                     <span class="blue-text" style="cursor:pointer;" onclick="closeuniversityinput()"><i class="material-icons">close</i></span>
+                                                   </div>
+                                                 </div>
                                                  </form>
-                                                 <script type="text/javascript">
-                                                   var addprimarybtn=document.getElementById('addprimarybtn');
-                                                   addprimarybtn.addEventListener("click", function(event) {
-                                                   addprimaryfunction();
-                                                   event.preventDefault();
-                                                   });
-
-                                                   function addprimaryfunction() {
-                                                   var form=document.getElementById('addprimary-form');
-                                                   var action = form.getAttribute("action");
-                                                   var form_data = new FormData(form);
-                                                   var xhr = new XMLHttpRequest();
-                                                   xhr.open('POST', action, true);
-                                                   xhr.send(form_data);
-                                                   xhr.onreadystatechange = function () {
-                                                     if(xhr.readyState == 4 && xhr.status == 200) {
-                                                        var result = xhr.responseText;
-                                                        console.log('Result: ' + result);
-                                                        var json = JSON.parse(result);
-                                                        document.getElementById("noprimarysch").style.display="none";
-                                                        document.getElementById("addnewprimary").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                        form.reset();
-                                                     }
-                                                   };
-                                                 }
-                                                 </script>
-                                                 <br><br>
-                                                 <b>secondary school :</b><br>
-                                                 <span id="nosecondarysch" class="blue-text">Add your secondary school</span>
-                                                 @foreach ($portfolio as $edu)
-                                                 @if ($edu->category=='education' && $edu->nature=='secondarysch')
-                                                  <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                  <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                   {{ csrf_field() }}
-                                                   <input type="hidden" name="id" value="{{$edu->id}}">
-                                                  </form>
-                                                  <script type="text/javascript">
-                                                    document.getElementById("nosecondarysch").style.display="none";
-                                                    var deletesecondarysch=document.getElementById('{{$edu->data}}');
-                                                    deletesecondarysch.addEventListener("click",deletesecondaryschfunction)
-                                                    function deletesecondaryschfunction() {
-                                                    var form=document.getElementById('{{$edu->id}}');
-                                                    var action = form.getAttribute("action");
-                                                    var form_data = new FormData(form);
-                                                    var xhr = new XMLHttpRequest();
-                                                    xhr.open('POST', action, true);
-                                                    xhr.send(form_data);
-                                                    xhr.onreadystatechange = function () {
-                                                      if(xhr.readyState == 4 && xhr.status == 200) {
-                                                         var result = xhr.responseText;
-                                                         console.log('Result: ' + result);
-
-
-                                                      }
-                                                    };
+                                                <a class="blue-text" id="adduniversity" style="cursor:pointer;" onclick="showuniversityinput()">Add university</a>
+                                                <script type="text/javascript">
+                                                var adduniversity=document.getElementById('adduniversity');
+                                                var adduniversityform=document.getElementById('adduniversityform');
+                                                  function showuniversityinput() {
+                                                    adduniversityform.style.display='block';
+                                                    adduniversity.style.display='none';
                                                   }
-                                                  </script>
-                                                 @endif
-                                                 @endforeach
-                                                 <div id="addnewsecondary">
-                                                 </div>
-                                                 <br>
-                                                 <form id="addsecondary-form" action="{{route('addsecondary')}}" method="post">
-                                                   {{csrf_field()}}
-                                                   <div class="input-field col s12">
-                                                     <input id="secondary" type="text" name="secondary">
-                                                     <label for="secondary">
-                                                       Enter your secondary school
-                                                     </label>
-                                                     <button type="submit" class="btn btn-floating right"id="addsecondarybtn" name="button"><i type="submit"class="material-icons">send</i></button>
-                                                   </div>
-                                                 </form>
-                                                 <script type="text/javascript">
-                                                   var addsecondarybtn=document.getElementById('addsecondarybtn');
-                                                   addsecondarybtn.addEventListener("click", function(event) {
-                                                   addsecondaryfunction();
-                                                   event.preventDefault();
-                                                   });
-
-                                                   function addsecondaryfunction() {
-                                                   var form=document.getElementById('addsecondary-form');
-                                                   var action = form.getAttribute("action");
-                                                   var form_data = new FormData(form);
-                                                   var xhr = new XMLHttpRequest();
-                                                   xhr.open('POST', action, true);
-                                                   xhr.send(form_data);
-                                                   xhr.onreadystatechange = function () {
-                                                     if(xhr.readyState == 4 && xhr.status == 200) {
-                                                        var result = xhr.responseText;
-                                                        console.log('Result: ' + result);
-                                                        var json = JSON.parse(result);
-                                                        document.getElementById("nosecondarysch").style.display="none";
-                                                        document.getElementById("addnewsecondary").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                        form.reset();
-                                                     }
-                                                   };
-                                                 }
-                                                 </script>
-                                                 <br><br>
-                                                 <b>college :</b><br>
-                                                 <span id="nocollege" class="blue-text">Add your college</span>
-                                                 @foreach ($portfolio as $edu)
-                                                 @if ($edu->category=='education' && $edu->nature=='college')
-                                                  <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                  <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                   {{ csrf_field() }}
-                                                   <input type="hidden" name="id" value="{{$edu->id}}">
-                                                  </form>
-                                                  <script type="text/javascript">
-                                                    document.getElementById("nocollege").style.display="none";
-                                                    var deletecollege=document.getElementById('{{$edu->data}}');
-                                                    deletecollege.addEventListener("click",deletecollegefunction)
-                                                    function deletecollegefunction() {
-                                                    var form=document.getElementById('{{$edu->id}}');
-                                                    var action = form.getAttribute("action");
-                                                    var form_data = new FormData(form);
-                                                    var xhr = new XMLHttpRequest();
-                                                    xhr.open('POST', action, true);
-                                                    xhr.send(form_data);
-                                                    xhr.onreadystatechange = function () {
-                                                      if(xhr.readyState == 4 && xhr.status == 200) {
-                                                         var result = xhr.responseText;
-                                                         console.log('Result: ' + result);
-
-
-                                                      }
-                                                    };
+                                                  function closeuniversityinput() {
+                                                    adduniversityform.style.display='none';
+                                                    adduniversity.style.display='block';
                                                   }
-                                                  </script>
-                                                 @endif
-                                                 @endforeach
-                                                 <div id="addnewcollege">
-                                                 </div>
-                                                 <br>
-                                                 <form id="addcollege-form" action="{{route('addcollege')}}" method="post">
-                                                   {{csrf_field()}}
-                                                   <div class="input-field col s12">
-                                                     <input id="college" type="text" name="college">
-                                                     <label for="college">
-                                                       Enter your college
-                                                     </label>
-                                                     <button type="submit" class="btn btn-floating right"id="addcollegebtn" name="button"><i type="submit"class="material-icons">send</i></button>
-                                                   </div>
-                                                 </form>
-                                                 <script type="text/javascript">
-                                                   var addcollegebtn=document.getElementById('addcollegebtn');
-                                                   addcollegebtn.addEventListener("click", function(event) {
-                                                   addcollegefunction();
-                                                   event.preventDefault();
-                                                   });
+                                                </script>
+                                                <br>
+                                                <div class="divider"></div>
+                                                <br>
+                                                <b>college :</b><br>
+                                                <ul class="collection">
+                                                  @foreach ($portfolio as $data)
+                                                    @if ($data->category=='education' && $data->nature=='college')
+                                                      <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                       {{ csrf_field() }}
+                                                       <input type="hidden" name="id" value="{{$data->id}}">
+                                                      </form>
+                                                      <script type="text/javascript">
+                                                      console.log('sdsdssdsdfrfrgfrg');
+                                                        var collegeitem=document.getElementById('{{$data->id}}item');
+                                                        var deletecollege=document.getElementById('{{$data->id}}');
+                                                        deletecollege.addEventListener("click",deletecollegefunction);
+                                                        function deletecollegefunction() {
+                                                          console.log('sdsds');
+                                                        var form=document.getElementById('{{$data->id}}frm');
+                                                        var action = form.getAttribute("action");
+                                                        var form_data = new FormData(form);
+                                                        var xhr = new XMLHttpRequest();
+                                                        xhr.open('POST', action, true);
+                                                        xhr.send(form_data);
+                                                        xhr.onreadystatechange = function () {
+                                                          if(xhr.readyState == 4 && xhr.status == 200) {
+                                                            console.log('fsdf');
+                                                             var result = xhr.responseText;
+                                                             collegeitem.style.display='none';
+                                                             console.log('Result: ' + result);
 
-                                                   function addcollegefunction() {
-                                                   var form=document.getElementById('addcollege-form');
-                                                   var action = form.getAttribute("action");
-                                                   var form_data = new FormData(form);
-                                                   var xhr = new XMLHttpRequest();
-                                                   xhr.open('POST', action, true);
-                                                   xhr.send(form_data);
-                                                   xhr.onreadystatechange = function () {
-                                                     if(xhr.readyState == 4 && xhr.status == 200) {
-                                                        var result = xhr.responseText;
-                                                        console.log('Result: ' + result);
-                                                        var json = JSON.parse(result);
-                                                        document.getElementById("nocollege").style.display="none";
-                                                        document.getElementById("addnewcollege").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                        form.reset();
-                                                     }
-                                                   };
-                                                 }
-                                                 </script>
-                                                 <br><br>
-                                                 <b>universities :</b><br>
-                                                 <span id="nouniversity" class="blue-text">Add your university</span>
-                                                 @foreach ($portfolio as $edu)
-                                                 @if ($edu->category=='education' && $edu->nature=='university')
-                                                  <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                  <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                   {{ csrf_field() }}
-                                                   <input type="hidden" name="id" value="{{$edu->id}}">
-                                                  </form>
-                                                  <script type="text/javascript">
-                                                    document.getElementById("nouniversity").style.display="none";
-                                                    var deleteuniversity=document.getElementById('{{$edu->data}}');
-                                                    deleteuniversity.addEventListener("click",deleteuniversityfunction)
-                                                    function deleteuniversityfunction() {
-                                                    var form=document.getElementById('{{$edu->id}}');
-                                                    var action = form.getAttribute("action");
-                                                    var form_data = new FormData(form);
-                                                    var xhr = new XMLHttpRequest();
-                                                    xhr.open('POST', action, true);
-                                                    xhr.send(form_data);
-                                                    xhr.onreadystatechange = function () {
-                                                      if(xhr.readyState == 4 && xhr.status == 200) {
-                                                         var result = xhr.responseText;
-                                                         console.log('Result: ' + result);
-
-
+                                                          }
+                                                        };
                                                       }
-                                                    };
-                                                  }
-                                                  </script>
-                                                 @endif
-                                                 @endforeach
-                                                 <div id="addnewuniversity">
-                                                 </div>
-                                                 <br>
-                                                 <form id="adduniversity-form" action="{{route('adduniversity')}}" method="post">
-                                                   {{csrf_field()}}
-                                                   <div class="input-field col s12">
-                                                     <input id="university" type="text" name="university">
-                                                     <label for="university">
-                                                       Enter your university
-                                                     </label>
-                                                     <button type="submit" class="btn btn-floating right"id="adduniversitybtn" name="button"><i type="submit"class="material-icons">send</i></button>
-                                                   </div>
-                                                 </form>
-                                                 <script type="text/javascript">
-                                                   var adduniversitybtn=document.getElementById('adduniversitybtn');
-                                                   adduniversitybtn.addEventListener("click", function(event) {
-                                                   adduniversityfunction();
-                                                   event.preventDefault();
-                                                   });
-
-                                                   function adduniversityfunction() {
-                                                   var form=document.getElementById('adduniversity-form');
-                                                   var action = form.getAttribute("action");
-                                                   var form_data = new FormData(form);
-                                                   var xhr = new XMLHttpRequest();
-                                                   xhr.open('POST', action, true);
-                                                   xhr.send(form_data);
-                                                   xhr.onreadystatechange = function () {
-                                                     if(xhr.readyState == 4 && xhr.status == 200) {
-                                                        var result = xhr.responseText;
-                                                        console.log('Result: ' + result);
-                                                        var json = JSON.parse(result);
-                                                        document.getElementById("nouniversity").style.display="none";
-                                                        document.getElementById("addnewuniversity").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                        form.reset();
-                                                     }
-                                                   };
+                                                      </script>
+                                                    @endif
+                                                  @endforeach
+                                                </ul>
+                                                <form id="addcollegeform" action="{{route('addcollege')}}" method="post" style="display:none;">
+                                                  {{csrf_field()}}
+                                                  <div class="row">
+                                                  <div class="input-field col s9">
+                                                    <input id="from" type="text" name="college">
+                                                  </div>
+                                                  <div class=" input-field col s3">
+                                                    <span class="blue-text" style="cursor:pointer;" id="addcollegebtn" onclick="addcollegeform.submit();"><i class="material-icons">done</i></span>
+                                                    <span class="blue-text" style="cursor:pointer;" onclick="closecollegeinput()"><i class="material-icons">close</i></span>
+                                                  </div>
+                                                </div>
+                                                </form>
+                                               <a class="blue-text" id="addcollege" style="cursor:pointer;" onclick="showcollegeinput()">Add college</a>
+                                               <script type="text/javascript">
+                                               var addcollege=document.getElementById('addcollege');
+                                               var addcollegeform=document.getElementById('addcollegeform');
+                                                 function showcollegeinput() {
+                                                   addcollegeform.style.display='block';
+                                                   addcollege.style.display='none';
                                                  }
-                                                 </script>
-                                                 <div class="card-content">
-                                                   &nbsp;
+                                                 function closecollegeinput() {
+                                                   addcollegeform.style.display='none';
+                                                   addcollege.style.display='block';
+                                                 }
+                                               </script>
+                                                <br>
+                                                <div class="divider"></div>
+                                                <br>
+                                                <b>secondary school :</b><br>
+                                                <ul class="collection">
+                                                  @foreach ($portfolio as $data)
+                                                    @if ($data->category=='education' && $data->nature=='secondarysch')
+                                                      <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                       {{ csrf_field() }}
+                                                       <input type="hidden" name="id" value="{{$data->id}}">
+                                                      </form>
+                                                      <script type="text/javascript">
+                                                      console.log('sdsdssdsdfrfrgfrg');
+                                                        var secondaryschitem=document.getElementById('{{$data->id}}item');
+                                                        var deletesecondarysch=document.getElementById('{{$data->id}}');
+                                                        deletesecondarysch.addEventListener("click",deletesecondaryschfunction);
+                                                        function deletesecondaryschfunction() {
+                                                          console.log('sdsds');
+                                                        var form=document.getElementById('{{$data->id}}frm');
+                                                        var action = form.getAttribute("action");
+                                                        var form_data = new FormData(form);
+                                                        var xhr = new XMLHttpRequest();
+                                                        xhr.open('POST', action, true);
+                                                        xhr.send(form_data);
+                                                        xhr.onreadystatechange = function () {
+                                                          if(xhr.readyState == 4 && xhr.status == 200) {
+                                                            console.log('fsdf');
+                                                             var result = xhr.responseText;
+                                                             secondaryschitem.style.display='none';
+                                                             console.log('Result: ' + result);
+
+                                                          }
+                                                        };
+                                                      }
+                                                      </script>
+                                                    @endif
+                                                  @endforeach
+                                                </ul>
+                                                <form id="addsecondaryschform" action="{{route('addsecondary')}}" method="post" style="display:none;">
+                                                  {{csrf_field()}}
+                                                  <div class="row">
+                                                  <div class="input-field col s9">
+                                                    <input id="from" type="text" name="secondary">
+                                                  </div>
+                                                  <div class=" input-field col s3">
+                                                    <span class="blue-text" style="cursor:pointer;" id="addsecondaryschbtn" onclick="addsecondaryschform.submit();"><i class="material-icons">done</i></span>
+                                                    <span class="blue-text" style="cursor:pointer;" onclick="closesecondaryschinput()"><i class="material-icons">close</i></span>
+                                                  </div>
+                                                </div>
+                                                </form>
+                                               <a class="blue-text" id="addsecondarysch" style="cursor:pointer;" onclick="showsecondaryschinput()">Add secondary school</a>
+                                               <script type="text/javascript">
+                                               var addsecondarysch=document.getElementById('addsecondarysch');
+                                               var addsecondaryschform=document.getElementById('addsecondaryschform');
+                                                 function showsecondaryschinput() {
+                                                   addsecondaryschform.style.display='block';
+                                                   addsecondarysch.style.display='none';
+                                                 }
+                                                 function closesecondaryschinput() {
+                                                   addsecondaryschform.style.display='none';
+                                                   addsecondarysch.style.display='block';
+                                                 }
+                                               </script>
+                                               <br>
+                                               <div class="divider"></div>
+                                               <br>
+                                               <b>primary school :</b><br>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='education' && $data->nature=='primarysch')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var primaryschitem=document.getElementById('{{$data->id}}item');
+                                                       var deleteprimarysch=document.getElementById('{{$data->id}}');
+                                                       deleteprimarysch.addEventListener("click",deleteprimaryschfunction);
+                                                       function deleteprimaryschfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            primaryschitem.style.display='none';
+                                                            console.log('Result: ' + result);
+
+                                                         }
+                                                       };
+                                                     }
+                                                     </script>
+                                                   @endif
+                                                 @endforeach
+                                               </ul>
+                                               <form id="addprimaryschform" action="{{route('addprimary')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="primary">
                                                  </div>
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="addprimaryschbtn" onclick="addprimaryschform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closeprimaryschinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="addprimarysch" style="cursor:pointer;" onclick="showprimaryschinput()">Add primary school</a>
+                                              <script type="text/javascript">
+                                              var addprimarysch=document.getElementById('addprimarysch');
+                                              var addprimaryschform=document.getElementById('addprimaryschform');
+                                                function showprimaryschinput() {
+                                                  addprimaryschform.style.display='block';
+                                                  addprimarysch.style.display='none';
+                                                }
+                                                function closeprimaryschinput() {
+                                                  addprimaryschform.style.display='none';
+                                                  addprimarysch.style.display='block';
+                                                }
+                                              </script>
+                                                {{-- contenten --}}
                                                </div>
                                             </div>
                                         </div>
                                         <div class="col s12 m6 l6">
                                             <div class="card">
                                                <div class="card-content ">
-                                                 <span class="card-title"><i class="material-icons">grade</i>&nbsp;achievements</span>
-                                                 <li class="divider"></li><br>
-                                                 <span id="noachievements" class="blue-text">Add your achievements</span>
-                                                 @foreach ($portfolio as $edu)
-                                                 @if ($edu->category=='achievements' && $edu->nature=='achievements')
-                                                  <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                  <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                   {{ csrf_field() }}
-                                                   <input type="hidden" name="id" value="{{$edu->id}}">
-                                                  </form>
-                                                  <script type="text/javascript">
-                                                    document.getElementById("noachievements").style.display="none";
-                                                    var deleteachievements=document.getElementById('{{$edu->data}}');
-                                                    deleteachievements.addEventListener("click",deleteachievementsfunction)
-                                                    function deleteachievementsfunction() {
-                                                    var form=document.getElementById('{{$edu->id}}');
-                                                    var action = form.getAttribute("action");
-                                                    var form_data = new FormData(form);
-                                                    var xhr = new XMLHttpRequest();
-                                                    xhr.open('POST', action, true);
-                                                    xhr.send(form_data);
-                                                    xhr.onreadystatechange = function () {
-                                                      if(xhr.readyState == 4 && xhr.status == 200) {
-                                                         var result = xhr.responseText;
-                                                         console.log('Result: ' + result);
+                                                 <span class="card-title"><i class="material-icons">grade</i>&nbsp;achievements</span><br>
+                                                 <ul class="collection">
+                                                   @foreach ($portfolio as $data)
+                                                     @if ($data->category=='achievements' && $data->nature=='achievements')
+                                                       <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                       <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="id" value="{{$data->id}}">
+                                                       </form>
+                                                       <script type="text/javascript">
+                                                       console.log('sdsdssdsdfrfrgfrg');
+                                                         var achievementsitem=document.getElementById('{{$data->id}}item');
+                                                         var deleteachievements=document.getElementById('{{$data->id}}');
+                                                         deleteachievements.addEventListener("click",deleteachievementsfunction);
+                                                         function deleteachievementsfunction() {
+                                                           console.log('sdsds');
+                                                         var form=document.getElementById('{{$data->id}}frm');
+                                                         var action = form.getAttribute("action");
+                                                         var form_data = new FormData(form);
+                                                         var xhr = new XMLHttpRequest();
+                                                         xhr.open('POST', action, true);
+                                                         xhr.send(form_data);
+                                                         xhr.onreadystatechange = function () {
+                                                           if(xhr.readyState == 4 && xhr.status == 200) {
+                                                             console.log('fsdf');
+                                                              var result = xhr.responseText;
+                                                              achievementsitem.style.display='none';
+                                                              console.log('Result: ' + result);
 
-
-                                                      }
-                                                    };
-                                                  }
-                                                  </script>
-                                                 @endif
-                                                 @endforeach
-                                                 <div id="addnewachievements">
-                                                 </div>
-                                                 <br>
-                                                 <form id="addachievements-form" action="{{route('addachievements')}}" method="post">
+                                                           }
+                                                         };
+                                                       }
+                                                       </script>
+                                                     @endif
+                                                   @endforeach
+                                                 </ul>
+                                                 <form id="addachievementsform" action="{{route('addachievements')}}" method="post" style="display:none;">
                                                    {{csrf_field()}}
-                                                   <div class="input-field col s12">
-                                                     <input id="achievements" type="text" name="achievements">
-                                                     <label for="achievements">
-                                                       Enter your achievements
-                                                     </label>
-                                                     <button type="submit" class="btn btn-floating right"id="addachievementsbtn" name="button"><i type="submit"class="material-icons">send</i></button>
+                                                   <div class="row">
+                                                   <div class="input-field col s9">
+                                                     <input id="from" type="text" name="achievements">
                                                    </div>
-                                                 </form>
-                                                 <script type="text/javascript">
-                                                   var addachievementsbtn=document.getElementById('addachievementsbtn');
-                                                   addachievementsbtn.addEventListener("click", function(event) {
-                                                   addachievementsfunction();
-                                                   event.preventDefault();
-                                                   });
-
-                                                   function addachievementsfunction() {
-                                                   var form=document.getElementById('addachievements-form');
-                                                   var action = form.getAttribute("action");
-                                                   var form_data = new FormData(form);
-                                                   var xhr = new XMLHttpRequest();
-                                                   xhr.open('POST', action, true);
-                                                   xhr.send(form_data);
-                                                   xhr.onreadystatechange = function () {
-                                                     if(xhr.readyState == 4 && xhr.status == 200) {
-                                                        var result = xhr.responseText;
-                                                        console.log('Result: ' + result);
-                                                        var json = JSON.parse(result);
-                                                        document.getElementById("noachievements").style.display="none";
-                                                        document.getElementById("addnewachievements").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                        form.reset();
-                                                     }
-                                                   };
-                                                 }
-                                                 </script>
-                                                 <div class="card-content">
-                                                   &nbsp;
+                                                   <div class=" input-field col s3">
+                                                     <span class="blue-text" style="cursor:pointer;" id="addachievementsbtn" onclick="addachievementsform.submit();"><i class="material-icons">done</i></span>
+                                                     <span class="blue-text" style="cursor:pointer;" onclick="closeachievementsinput()"><i class="material-icons">close</i></span>
+                                                   </div>
                                                  </div>
+                                                 </form>
+                                                <a class="blue-text" id="addachievements" style="cursor:pointer;" onclick="showachievementsinput()">Add achievements</a>
+                                                <script type="text/javascript">
+                                                var addachievements=document.getElementById('addachievements');
+                                                var addachievementsform=document.getElementById('addachievementsform');
+                                                  function showachievementsinput() {
+                                                    addachievementsform.style.display='block';
+                                                    addachievements.style.display='none';
+                                                  }
+                                                  function closeachievementsinput() {
+                                                    addachievementsform.style.display='none';
+                                                    addachievements.style.display='block';
+                                                  }
+                                                </script>
+                                                <br>
+                                                <div class="divider"></div>
+                                                <br>
                                                </div>
                                             </div>
                                         </div>
@@ -1291,80 +1354,69 @@
                                               <div class="card ">
                                                  <div class="card-content ">
                                                    <span class="card-title"><i class="material-icons">portrait</i>&nbsp;Professional Qualifications</span>
-                                                   <li class="divider"></li><br>
-                                                   <span id="noprofqual" class="blue-text">Add your professional qualifications</span>
-                                                   @foreach ($portfolio as $edu)
-                                                   @if ($edu->category=='profqual' && $edu->nature=='profqual')
-                                                    <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                    <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                     {{ csrf_field() }}
-                                                     <input type="hidden" name="id" value="{{$edu->id}}">
-                                                    </form>
-                                                    <script type="text/javascript">
-                                                      document.getElementById("noprofqual").style.display="none";
-                                                      var deleteprofqual=document.getElementById('{{$edu->data}}');
-                                                      deleteprofqual.addEventListener("click",deleteprofqualfunction)
-                                                      function deleteprofqualfunction() {
-                                                      var form=document.getElementById('{{$edu->id}}');
-                                                      var action = form.getAttribute("action");
-                                                      var form_data = new FormData(form);
-                                                      var xhr = new XMLHttpRequest();
-                                                      xhr.open('POST', action, true);
-                                                      xhr.send(form_data);
-                                                      xhr.onreadystatechange = function () {
-                                                        if(xhr.readyState == 4 && xhr.status == 200) {
-                                                           var result = xhr.responseText;
-                                                           console.log('Result: ' + result);
+                                                   <ul class="collection">
+                                                     @foreach ($portfolio as $data)
+                                                       @if ($data->category=='profqual' && $data->nature=='profqual')
+                                                         <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                         <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                          {{ csrf_field() }}
+                                                          <input type="hidden" name="id" value="{{$data->id}}">
+                                                         </form>
+                                                         <script type="text/javascript">
+                                                         console.log('sdsdssdsdfrfrgfrg');
+                                                           var profqualitem=document.getElementById('{{$data->id}}item');
+                                                           var deleteprofqual=document.getElementById('{{$data->id}}');
+                                                           deleteprofqual.addEventListener("click",deleteprofqualfunction);
+                                                           function deleteprofqualfunction() {
+                                                             console.log('sdsds');
+                                                           var form=document.getElementById('{{$data->id}}frm');
+                                                           var action = form.getAttribute("action");
+                                                           var form_data = new FormData(form);
+                                                           var xhr = new XMLHttpRequest();
+                                                           xhr.open('POST', action, true);
+                                                           xhr.send(form_data);
+                                                           xhr.onreadystatechange = function () {
+                                                             if(xhr.readyState == 4 && xhr.status == 200) {
+                                                               console.log('fsdf');
+                                                                var result = xhr.responseText;
+                                                                profqualitem.style.display='none';
+                                                                console.log('Result: ' + result);
 
-
-                                                        }
-                                                      };
-                                                    }
-                                                    </script>
-                                                   @endif
-                                                   @endforeach
-                                                   <div id="addnewprofqual">
-                                                   </div>
-                                                   <br>
-                                                   <form id="addprofqual-form" action="{{route('addprofqual')}}" method="post">
+                                                             }
+                                                           };
+                                                         }
+                                                         </script>
+                                                       @endif
+                                                     @endforeach
+                                                   </ul>
+                                                   <form id="addprofqualform" action="{{route('addprofqual')}}" method="post" style="display:none;">
                                                      {{csrf_field()}}
-                                                     <div class="input-field col s12">
-                                                       <input id="profqual" type="text" name="profqual">
-                                                       <label for="profqual">
-                                                         Enter your professional qualifications
-                                                       </label>
-                                                       <button type="submit" class="btn btn-floating right"id="addprofqualbtn" name="button"><i type="submit"class="material-icons">send</i></button>
+                                                     <div class="row">
+                                                     <div class="input-field col s9">
+                                                       <input id="from" type="text" name="profqual">
                                                      </div>
-                                                   </form>
-                                                   <script type="text/javascript">
-                                                     var addprofqualbtn=document.getElementById('addprofqualbtn');
-                                                     addprofqualbtn.addEventListener("click", function(event) {
-                                                     addprofqualfunction();
-                                                     event.preventDefault();
-                                                     });
-
-                                                     function addprofqualfunction() {
-                                                     var form=document.getElementById('addprofqual-form');
-                                                     var action = form.getAttribute("action");
-                                                     var form_data = new FormData(form);
-                                                     var xhr = new XMLHttpRequest();
-                                                     xhr.open('POST', action, true);
-                                                     xhr.send(form_data);
-                                                     xhr.onreadystatechange = function () {
-                                                       if(xhr.readyState == 4 && xhr.status == 200) {
-                                                          var result = xhr.responseText;
-                                                          console.log('Result: ' + result);
-                                                          var json = JSON.parse(result);
-                                                          document.getElementById("noprofqual").style.display="none";
-                                                          document.getElementById("addnewprofqual").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                          form.reset();
-                                                       }
-                                                     };
-                                                   }
-                                                   </script>
-                                                   <div class="card-content">
-                                                     &nbsp;
+                                                     <div class=" input-field col s3">
+                                                       <span class="blue-text" style="cursor:pointer;" id="addprofqualbtn" onclick="addprofqualform.submit();"><i class="material-icons">done</i></span>
+                                                       <span class="blue-text" style="cursor:pointer;" onclick="closeprofqualinput()"><i class="material-icons">close</i></span>
+                                                     </div>
                                                    </div>
+                                                   </form>
+                                                  <a class="blue-text" id="addprofqual" style="cursor:pointer;" onclick="showprofqualinput()">Add professional qualifications</a>
+                                                  <script type="text/javascript">
+                                                  var addprofqual=document.getElementById('addprofqual');
+                                                  var addprofqualform=document.getElementById('addprofqualform');
+                                                    function showprofqualinput() {
+                                                      addprofqualform.style.display='block';
+                                                      addprofqual.style.display='none';
+                                                    }
+                                                    function closeprofqualinput() {
+                                                      addprofqualform.style.display='none';
+                                                      addprofqual.style.display='block';
+                                                    }
+                                                  </script>
+                                                  <br>
+                                                  <div class="divider"></div>
+                                                  <br>
                                                  </div>
                                               </div>
                                           </div>
@@ -1372,80 +1424,69 @@
                                               <div class="card ">
                                                  <div class="card-content ">
                                                    <span class="card-title"><i class="material-icons">subject</i>&nbsp;Patents</span>
-                                                   <li class="divider"></li><br>
-                                                   <span id="nopatents" class="blue-text">Add your patents</span>
-                                                   @foreach ($portfolio as $edu)
-                                                   @if ($edu->category=='patents' && $edu->nature=='patents')
-                                                    <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                    <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                     {{ csrf_field() }}
-                                                     <input type="hidden" name="id" value="{{$edu->id}}">
-                                                    </form>
-                                                    <script type="text/javascript">
-                                                      document.getElementById("nopatents").style.display="none";
-                                                      var deletepatents=document.getElementById('{{$edu->data}}');
-                                                      deletepatents.addEventListener("click",deletepatentsfunction)
-                                                      function deletepatentsfunction() {
-                                                      var form=document.getElementById('{{$edu->id}}');
-                                                      var action = form.getAttribute("action");
-                                                      var form_data = new FormData(form);
-                                                      var xhr = new XMLHttpRequest();
-                                                      xhr.open('POST', action, true);
-                                                      xhr.send(form_data);
-                                                      xhr.onreadystatechange = function () {
-                                                        if(xhr.readyState == 4 && xhr.status == 200) {
-                                                           var result = xhr.responseText;
-                                                           console.log('Result: ' + result);
+                                                   <ul class="collection">
+                                                     @foreach ($portfolio as $data)
+                                                       @if ($data->category=='patents' && $data->nature=='patents')
+                                                         <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                         <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                          {{ csrf_field() }}
+                                                          <input type="hidden" name="id" value="{{$data->id}}">
+                                                         </form>
+                                                         <script type="text/javascript">
+                                                         console.log('sdsdssdsdfrfrgfrg');
+                                                           var patentsitem=document.getElementById('{{$data->id}}item');
+                                                           var deletepatents=document.getElementById('{{$data->id}}');
+                                                           deletepatents.addEventListener("click",deletepatentsfunction);
+                                                           function deletepatentsfunction() {
+                                                             console.log('sdsds');
+                                                           var form=document.getElementById('{{$data->id}}frm');
+                                                           var action = form.getAttribute("action");
+                                                           var form_data = new FormData(form);
+                                                           var xhr = new XMLHttpRequest();
+                                                           xhr.open('POST', action, true);
+                                                           xhr.send(form_data);
+                                                           xhr.onreadystatechange = function () {
+                                                             if(xhr.readyState == 4 && xhr.status == 200) {
+                                                               console.log('fsdf');
+                                                                var result = xhr.responseText;
+                                                                patentsitem.style.display='none';
+                                                                console.log('Result: ' + result);
 
-
-                                                        }
-                                                      };
-                                                    }
-                                                    </script>
-                                                   @endif
-                                                   @endforeach
-                                                   <div id="addnewpatents">
-                                                   </div>
-                                                   <br>
-                                                   <form id="addpatents-form" action="{{route('addpatents')}}" method="post">
+                                                             }
+                                                           };
+                                                         }
+                                                         </script>
+                                                       @endif
+                                                     @endforeach
+                                                   </ul>
+                                                   <form id="addpatentsform" action="{{route('addpatents')}}" method="post" style="display:none;">
                                                      {{csrf_field()}}
-                                                     <div class="input-field col s12">
-                                                       <input id="patents" type="text" name="patents">
-                                                       <label for="patents">
-                                                         Enter your patents
-                                                       </label>
-                                                       <button type="submit" class="btn btn-floating right"id="addpatentsbtn" name="button"><i type="submit"class="material-icons">send</i></button>
+                                                     <div class="row">
+                                                     <div class="input-field col s9">
+                                                       <input id="from" type="text" name="patents">
                                                      </div>
-                                                   </form>
-                                                   <script type="text/javascript">
-                                                     var addpatentsbtn=document.getElementById('addpatentsbtn');
-                                                     addpatentsbtn.addEventListener("click", function(event) {
-                                                     addpatentsfunction();
-                                                     event.preventDefault();
-                                                     });
-
-                                                     function addpatentsfunction() {
-                                                     var form=document.getElementById('addpatents-form');
-                                                     var action = form.getAttribute("action");
-                                                     var form_data = new FormData(form);
-                                                     var xhr = new XMLHttpRequest();
-                                                     xhr.open('POST', action, true);
-                                                     xhr.send(form_data);
-                                                     xhr.onreadystatechange = function () {
-                                                       if(xhr.readyState == 4 && xhr.status == 200) {
-                                                          var result = xhr.responseText;
-                                                          console.log('Result: ' + result);
-                                                          var json = JSON.parse(result);
-                                                          document.getElementById("nopatents").style.display="none";
-                                                          document.getElementById("addnewpatents").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                          form.reset();
-                                                       }
-                                                     };
-                                                   }
-                                                   </script>
-                                                   <div class="card-content">
-                                                     &nbsp;
+                                                     <div class=" input-field col s3">
+                                                       <span class="blue-text" style="cursor:pointer;" id="addpatentsbtn" onclick="addpatentsform.submit();"><i class="material-icons">done</i></span>
+                                                       <span class="blue-text" style="cursor:pointer;" onclick="closepatentsinput()"><i class="material-icons">close</i></span>
+                                                     </div>
                                                    </div>
+                                                   </form>
+                                                  <a class="blue-text" id="addpatents" style="cursor:pointer;" onclick="showpatentsinput()">Add patents</a>
+                                                  <script type="text/javascript">
+                                                  var addpatents=document.getElementById('addpatents');
+                                                  var addpatentsform=document.getElementById('addpatentsform');
+                                                    function showpatentsinput() {
+                                                      addpatentsform.style.display='block';
+                                                      addpatents.style.display='none';
+                                                    }
+                                                    function closepatentsinput() {
+                                                      addpatentsform.style.display='none';
+                                                      addpatents.style.display='block';
+                                                    }
+                                                  </script>
+                                                  <br>
+                                                  <div class="divider"></div>
+                                                  <br>
                                                  </div>
                                               </div>
                                           </div>
@@ -1456,239 +1497,144 @@
                                                 <div class="card ">
                                                    <div class="card-content ">
                                                      <span class="card-title"><i class="material-icons">insert_drive_file</i>&nbsp;Research Papers</span>
-                                                     <li class="divider"></li><br>
-                                                     <span id="noresearchpapers" class="blue-text">Add your research papers</span>
-                                                     @foreach ($portfolio as $edu)
-                                                     @if ($edu->category=='researchpapers' && $edu->nature=='researchpapers')
-                                                      <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                      <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                       {{ csrf_field() }}
-                                                       <input type="hidden" name="id" value="{{$edu->id}}">
-                                                      </form>
-                                                      <script type="text/javascript">
-                                                        document.getElementById("noresearchpapers").style.display="none";
-                                                        var deleteresearchpapers=document.getElementById('{{$edu->data}}');
-                                                        deleteresearchpapers.addEventListener("click",deleteresearchpapersfunction)
-                                                        function deleteresearchpapersfunction() {
-                                                        var form=document.getElementById('{{$edu->id}}');
-                                                        var action = form.getAttribute("action");
-                                                        var form_data = new FormData(form);
-                                                        var xhr = new XMLHttpRequest();
-                                                        xhr.open('POST', action, true);
-                                                        xhr.send(form_data);
-                                                        xhr.onreadystatechange = function () {
-                                                          if(xhr.readyState == 4 && xhr.status == 200) {
-                                                             var result = xhr.responseText;
-                                                             console.log('Result: ' + result);
+                                                     <ul class="collection">
+                                                       @foreach ($portfolio as $data)
+                                                         @if ($data->category=='researchpapers' && $data->nature=='researchpapers')
+                                                           <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                           <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="id" value="{{$data->id}}">
+                                                           </form>
+                                                           <script type="text/javascript">
+                                                           console.log('sdsdssdsdfrfrgfrg');
+                                                             var researchpapersitem=document.getElementById('{{$data->id}}item');
+                                                             var deleteresearchpapers=document.getElementById('{{$data->id}}');
+                                                             deleteresearchpapers.addEventListener("click",deleteresearchpapersfunction);
+                                                             function deleteresearchpapersfunction() {
+                                                               console.log('sdsds');
+                                                             var form=document.getElementById('{{$data->id}}frm');
+                                                             var action = form.getAttribute("action");
+                                                             var form_data = new FormData(form);
+                                                             var xhr = new XMLHttpRequest();
+                                                             xhr.open('POST', action, true);
+                                                             xhr.send(form_data);
+                                                             xhr.onreadystatechange = function () {
+                                                               if(xhr.readyState == 4 && xhr.status == 200) {
+                                                                 console.log('fsdf');
+                                                                  var result = xhr.responseText;
+                                                                  researchpapersitem.style.display='none';
+                                                                  console.log('Result: ' + result);
 
-
-                                                          }
-                                                        };
-                                                      }
-                                                      </script>
-                                                     @endif
-                                                     @endforeach
-                                                     <div id="addnewresearchpapers">
-                                                     </div>
-                                                     <br>
-                                                     <form id="addresearchpapers-form" action="{{route('addresearchpapers')}}" method="post">
+                                                               }
+                                                             };
+                                                           }
+                                                           </script>
+                                                         @endif
+                                                       @endforeach
+                                                     </ul>
+                                                     <form id="addresearchpapersform" action="{{route('addresearchpapers')}}" method="post" style="display:none;">
                                                        {{csrf_field()}}
-                                                       <div class="input-field col s12">
-                                                         <input id="researchpapers" type="text" name="researchpapers">
-                                                         <label for="researchpapers">
-                                                           Enter your research papers
-                                                         </label>
-                                                         <button type="submit" class="btn btn-floating right"id="addresearchpapersbtn" name="button"><i type="submit"class="material-icons">send</i></button>
+                                                       <div class="row">
+                                                       <div class="input-field col s9">
+                                                         <input id="from" type="text" name="researchpapers">
                                                        </div>
-                                                     </form>
-                                                     <script type="text/javascript">
-                                                       var addresearchpapersbtn=document.getElementById('addresearchpapersbtn');
-                                                       addresearchpapersbtn.addEventListener("click", function(event) {
-                                                       addresearchpapersfunction();
-                                                       event.preventDefault();
-                                                       });
-
-                                                       function addresearchpapersfunction() {
-                                                       var form=document.getElementById('addresearchpapers-form');
-                                                       var action = form.getAttribute("action");
-                                                       var form_data = new FormData(form);
-                                                       var xhr = new XMLHttpRequest();
-                                                       xhr.open('POST', action, true);
-                                                       xhr.send(form_data);
-                                                       xhr.onreadystatechange = function () {
-                                                         if(xhr.readyState == 4 && xhr.status == 200) {
-                                                            var result = xhr.responseText;
-                                                            console.log('Result: ' + result);
-                                                            var json = JSON.parse(result);
-                                                            document.getElementById("noresearchpapers").style.display="none";
-                                                            document.getElementById("addnewresearchpapers").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                            form.reset();
-                                                         }
-                                                       };
-                                                     }
-                                                     </script>
-                                                     <div class="card-content">
-                                                       &nbsp;
+                                                       <div class=" input-field col s3">
+                                                         <span class="blue-text" style="cursor:pointer;" id="addresearchpapersbtn" onclick="addresearchpapersform.submit();"><i class="material-icons">done</i></span>
+                                                         <span class="blue-text" style="cursor:pointer;" onclick="closeresearchpapersinput()"><i class="material-icons">close</i></span>
+                                                       </div>
                                                      </div>
+                                                     </form>
+                                                    <a class="blue-text" id="addresearchpapers" style="cursor:pointer;" onclick="showresearchpapersinput()">Add research papers</a>
+                                                    <script type="text/javascript">
+                                                    var addresearchpapers=document.getElementById('addresearchpapers');
+                                                    var addresearchpapersform=document.getElementById('addresearchpapersform');
+                                                      function showresearchpapersinput() {
+                                                        addresearchpapersform.style.display='block';
+                                                        addresearchpapers.style.display='none';
+                                                      }
+                                                      function closeresearchpapersinput() {
+                                                        addresearchpapersform.style.display='none';
+                                                        addresearchpapers.style.display='block';
+                                                      }
+                                                    </script>
+                                                    <br>
+                                                    <div class="divider"></div>
+                                                    <br>
                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col s12 m6 l6">
                                                 <div class="card ">
                                                    <div class="card-content ">
-                                                     <span class="card-title"><i class="material-icons">location_on</i>&nbsp;Places</span>
-                                                     <li class="divider"></li><br>
-                                                     <b>From :</b><br>
-                                                     <span id="nofrom" class="blue-text">Add where you're from</span>
-                                                     @foreach ($portfolio as $edu)
-                                                     @if ($edu->category=='location' && $edu->nature=='from')
-                                                      <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                      <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                       {{ csrf_field() }}
-                                                       <input type="hidden" name="id" value="{{$edu->id}}">
-                                                      </form>
-                                                      <script type="text/javascript">
-                                                        document.getElementById("nofrom").style.display="none";
-                                                        var deletefrom=document.getElementById('{{$edu->data}}');
-                                                        deletefrom.addEventListener("click",deletefromfunction)
-                                                        function deletefromfunction() {
-                                                        var form=document.getElementById('{{$edu->id}}');
-                                                        var action = form.getAttribute("action");
-                                                        var form_data = new FormData(form);
-                                                        var xhr = new XMLHttpRequest();
-                                                        xhr.open('POST', action, true);
-                                                        xhr.send(form_data);
-                                                        xhr.onreadystatechange = function () {
-                                                          if(xhr.readyState == 4 && xhr.status == 200) {
-                                                             var result = xhr.responseText;
-                                                             console.log('Result: ' + result);
+                                                     <span class="card-title"><i class="material-icons">recent_actors</i>&nbsp;Interests</span>
+                                                     <ul class="collection">
+                                                       @foreach ($portfolio as $data)
+                                                         @if ($data->category=='interests' && $data->nature=='interests')
+                                                           <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                           <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="id" value="{{$data->id}}">
+                                                           </form>
+                                                           <script type="text/javascript">
+                                                           console.log('sdsdssdsdfrfrgfrg');
+                                                             var interestsitem=document.getElementById('{{$data->id}}item');
+                                                             var deleteinterests=document.getElementById('{{$data->id}}');
+                                                             deleteinterests.addEventListener("click",deleteinterestsfunction);
+                                                             function deleteinterestsfunction() {
+                                                               console.log('sdsds');
+                                                             var form=document.getElementById('{{$data->id}}frm');
+                                                             var action = form.getAttribute("action");
+                                                             var form_data = new FormData(form);
+                                                             var xhr = new XMLHttpRequest();
+                                                             xhr.open('POST', action, true);
+                                                             xhr.send(form_data);
+                                                             xhr.onreadystatechange = function () {
+                                                               if(xhr.readyState == 4 && xhr.status == 200) {
+                                                                 console.log('fsdf');
+                                                                  var result = xhr.responseText;
+                                                                  interestsitem.style.display='none';
+                                                                  console.log('Result: ' + result);
 
-
-                                                          }
-                                                        };
-                                                      }
-                                                      </script>
-                                                     @endif
-                                                     @endforeach
-                                                     <div id="addnewfrom">
-                                                     </div>
-                                                     <br>
-                                                     <form id="addfrom-form" action="{{route('addfrom')}}" method="post">
+                                                               }
+                                                             };
+                                                           }
+                                                           </script>
+                                                         @endif
+                                                       @endforeach
+                                                     </ul>
+                                                     <form id="addinterestsform" action="{{route('addinterests')}}" method="post" style="display:none;">
                                                        {{csrf_field()}}
-                                                       <div class="input-field col s12">
-                                                         <input id="from" type="text" name="from">
-                                                         <label for="from">
-                                                           Enter where you're from
-                                                         </label>
-                                                         <button type="submit" class="btn btn-floating right"id="addfrombtn" name="button"><i type="submit"class="material-icons">send</i></button>
+                                                       <div class="row">
+                                                       <div class="input-field col s9">
+                                                         <input id="from" type="text" name="interests">
                                                        </div>
+                                                       <div class=" input-field col s3">
+                                                         <span class="blue-text" style="cursor:pointer;" id="addinterestsbtn" onclick="addinterestsform.submit();"><i class="material-icons">done</i></span>
+                                                         <span class="blue-text" style="cursor:pointer;" onclick="closeinterestsinput()"><i class="material-icons">close</i></span>
+                                                       </div>
+                                                     </div>
                                                      </form>
-                                                     <script type="text/javascript">
-                                                       var addfrombtn=document.getElementById('addfrombtn');
-                                                       addfrombtn.addEventListener("click", function(event) {
-                                                       addfromfunction();
-                                                       event.preventDefault();
-                                                       });
-
-                                                       function addfromfunction() {
-                                                       var form=document.getElementById('addfrom-form');
-                                                       var action = form.getAttribute("action");
-                                                       var form_data = new FormData(form);
-                                                       var xhr = new XMLHttpRequest();
-                                                       xhr.open('POST', action, true);
-                                                       xhr.send(form_data);
-                                                       xhr.onreadystatechange = function () {
-                                                         if(xhr.readyState == 4 && xhr.status == 200) {
-                                                            var result = xhr.responseText;
-                                                            console.log('Result: ' + result);
-                                                            var json = JSON.parse(result);
-                                                            document.getElementById("nofrom").style.display="none";
-                                                            document.getElementById("addnewfrom").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                            form.reset();
-                                                         }
-                                                       };
-                                                     }
-                                                     </script>
-                                                     <br><br>
-                                                     <b>living :</b><br>
-                                                     <span id="noliving" class="blue-text">Add where you're living</span>
-                                                     @foreach ($portfolio as $edu)
-                                                     @if ($edu->category=='location' && $edu->nature=='living')
-                                                      <span class="chip col s12">{{$edu->data}}<i id="{{$edu->data}}"class="close material-icons">close</i></span>
-                                                      <form id="{{$edu->id}}" action="{{route('deleteportfolio')}}" method="post">
-                                                       {{ csrf_field() }}
-                                                       <input type="hidden" name="id" value="{{$edu->id}}">
-                                                      </form>
-                                                      <script type="text/javascript">
-                                                        document.getElementById("noliving").style.display="none";
-                                                        var deleteliving=document.getElementById('{{$edu->data}}');
-                                                        deleteliving.addEventListener("click",deletelivingfunction)
-                                                        function deletelivingfunction() {
-                                                        var form=document.getElementById('{{$edu->id}}');
-                                                        var action = form.getAttribute("action");
-                                                        var form_data = new FormData(form);
-                                                        var xhr = new XMLHttpRequest();
-                                                        xhr.open('POST', action, true);
-                                                        xhr.send(form_data);
-                                                        xhr.onreadystatechange = function () {
-                                                          if(xhr.readyState == 4 && xhr.status == 200) {
-                                                             var result = xhr.responseText;
-                                                             console.log('Result: ' + result);
-
-
-                                                          }
-                                                        };
+                                                    <a class="blue-text" id="addinterests" style="cursor:pointer;" onclick="showinterestsinput()">Add interests</a>
+                                                    <script type="text/javascript">
+                                                    var addinterests=document.getElementById('addinterests');
+                                                    var addinterestsform=document.getElementById('addinterestsform');
+                                                      function showinterestsinput() {
+                                                        addinterestsform.style.display='block';
+                                                        addinterests.style.display='none';
                                                       }
-                                                      </script>
-                                                     @endif
-                                                     @endforeach
-                                                     <div id="addnewliving">
-                                                     </div>
-                                                     <br>
-                                                     <form id="addliving-form" action="{{route('addliving')}}" method="post">
-                                                       {{csrf_field()}}
-                                                       <div class="input-field col s12">
-                                                         <input id="living" type="text" name="living">
-                                                         <label for="living">
-                                                           Enter where you're living
-                                                         </label>
-                                                         <button type="submit" class="btn btn-floating right"id="addlivingbtn" name="button"><i type="submit"class="material-icons">send</i></button>
-                                                       </div>
-                                                     </form>
-                                                     <script type="text/javascript">
-                                                       var addlivingbtn=document.getElementById('addlivingbtn');
-                                                       addlivingbtn.addEventListener("click", function(event) {
-                                                       addlivingfunction();
-                                                       event.preventDefault();
-                                                       });
-
-                                                       function addlivingfunction() {
-                                                       var form=document.getElementById('addliving-form');
-                                                       var action = form.getAttribute("action");
-                                                       var form_data = new FormData(form);
-                                                       var xhr = new XMLHttpRequest();
-                                                       xhr.open('POST', action, true);
-                                                       xhr.send(form_data);
-                                                       xhr.onreadystatechange = function () {
-                                                         if(xhr.readyState == 4 && xhr.status == 200) {
-                                                            var result = xhr.responseText;
-                                                            console.log('Result: ' + result);
-                                                            var json = JSON.parse(result);
-                                                            document.getElementById("noliving").style.display="none";
-                                                            document.getElementById("addnewliving").innerHTML+='<span class="chip col s12">'+json+'</span>';
-                                                            form.reset();
-                                                         }
-                                                       };
-                                                     }
-                                                     </script>
-                                                     <div class="card-content">
-                                                       &nbsp;
-                                                     </div>
+                                                      function closeinterestsinput() {
+                                                        addinterestsform.style.display='none';
+                                                        addinterests.style.display='block';
+                                                      }
+                                                    </script>
+                                                    <br>
+                                                    <div class="divider"></div>
+                                                    <br>
                                                    </div>
                                                 </div>
                                             </div>
                                           </div>
-                                          <div class="divider"></div><br>
+                                          {{-- <div class="divider"></div><br>
                                           <div class="row" style="margin:10px;">
                                               <div class="col s12 m6 l6">
                                                   <div class="card ">
@@ -1770,7 +1716,7 @@
                                                        </div>
                                                      </div>
                                                   </div>
-                                              </div>
+                                              </div> --}}
                                               {{-- <div class="col s12 m6 l6">
                                                   <div class="card ">
                                                      <div class="card-content ">
@@ -2069,7 +2015,7 @@
                                                      </div>
                                                   </div>
                                               </div> --}}
-                                            </div>
+                                            {{-- </div> --}}
                               </div>
 
                             </div>
@@ -2357,6 +2303,6 @@
 </div>
 
 </div>
-
+</div>
 
 @endsection
