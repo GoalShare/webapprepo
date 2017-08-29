@@ -29,12 +29,20 @@
             if (authorizationResult && !authorizationResult.error) {
               $.getJSON("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                 function(result){
-                  
+                  var myObj, i, j, x = "";
                   //process the response here
                   console.log(JSON.stringify(result));
                  
-                  var x=JSON.stringify(result);
-                  console.log(x);
+                  var myObj=JSON.stringify(result);
+                  
+
+                  for (i in myObj.feed) {
+                        
+                            for (j in myObj.feed[i].gd$email) {
+                            x += myObj.cars[i].gd$email[j] + "<br>";
+                            console.log(x);
+                      }
+                  }
 
                 });
             }
