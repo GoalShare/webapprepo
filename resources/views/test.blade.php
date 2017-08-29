@@ -32,7 +32,7 @@
                   //process the response here
                   console.log(response);
                  
-                  echo json_encode(response);
+                  document.write(json_encode(response));
                 });
             }
           }
