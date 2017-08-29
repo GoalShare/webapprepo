@@ -33,9 +33,8 @@
                   //process the response here
                   console.log(JSON.stringify(result));
                  
-                  var obj = JSON.stringify(result);
                   
-                  console.log(gd$email.address[0]);
+                  console.log(JSON.stringify(result).gd$email.address[0]);
 
                 });
             }
