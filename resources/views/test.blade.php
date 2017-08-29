@@ -27,12 +27,12 @@
 
           function handleAuthorization(authorizationResult) {
             if (authorizationResult && !authorizationResult.error) {
-              $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
-                function(response){
+              $.getJSON("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
+                function(result){
                   //process the response here
-                  console.log(response);
+                  console.log(JSON.stringify(result));
                  
-                  document.write(json_encode(response));
+                  
                 });
             }
           }
