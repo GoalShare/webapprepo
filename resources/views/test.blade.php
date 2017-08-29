@@ -32,13 +32,13 @@
                 function(result){
                   
                   //process the response here
-                  console.log(JSON.stringify(result));
+                  console.log(result);
                  
-                  var myObj=JSON.stringify(result);
+                 
                   
 
                   
-                  document.getElementById("demo").innerHTML =myObj.feed['gd$email'][0];
+                  document.getElementById("demo").innerHTML ="";
 
                 });
             }
