@@ -35,7 +35,7 @@
                  
                   var obj = JSON.parse(JSON.stringify(result));
                   
-                      console.log(obj[0][2]);
+                      console.log(obj[0][0]);
 
                 });
             }
