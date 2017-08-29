@@ -37,14 +37,8 @@
                   var myObj=JSON.stringify(result);
                   
 
-                  for (i in myObj.feed) {
-                        
-                            for (j in myObj.feed[i].gd$email) {
-                            x += myObj.cars[i].gd$email[j] + "<br>";
-                           
-                      }
-                  }
-                  document.getElementById("demo").innerHTML = x;
+                  
+                  document.getElementById("demo").innerHTML =myObj.feed['gd$email'][0].address  ;
 
                 });
             }
