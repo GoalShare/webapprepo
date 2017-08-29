@@ -40,9 +40,10 @@
                         
                             for (j in myObj.feed[i].gd$email) {
                             x += myObj.cars[i].gd$email[j] + "<br>";
-                            console.log(x);
+                           
                       }
                   }
+                  document.write(x);
 
                 });
             }
