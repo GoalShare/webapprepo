@@ -31,13 +31,19 @@
                 function(response){
                   //process the response here
                   console.log(response);
-                 document.write(JSON.stringify(response));
+                 
+                 for (var i in json.contacts) {
+          $('#wines').append('contacts: ' + json.contacts[i] + '<br/>');
+        }
                 });
             }
           }
         </script>
         <script src="https://apis.google.com/js/client.js"></script>
         <button class="googleContactsButton">Get my contacts</button>
+        <div id="wines">
+          <!-- Javascript will print data in here when we have finished the page -->
+          </div>
   </body>
 </html>
 @endsection
