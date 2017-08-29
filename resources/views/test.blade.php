@@ -33,7 +33,7 @@
                   //process the response here
                   console.log(JSON.stringify(result));
                  
-                  var obj = JSON.parse(result);
+                  var obj = JSON.parse(JSON.stringify(result));
                   
                       console.log(obj[0][2]);
 
