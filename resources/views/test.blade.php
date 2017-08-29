@@ -32,8 +32,8 @@
                   
                   //process the response here
                   console.log(JSON.stringify(result));
-                  for ( var key in result ){
-                    document.write('<p> Email: ' + result[key].address + '</p>');
+                  for (int i=0;i<result.length;i++){
+                    document.write('<p> Email: ' + result[i].address + '</p>');
                   }
                   
                 });
