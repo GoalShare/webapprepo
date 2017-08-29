@@ -32,13 +32,9 @@
                 function(result){
                   
                   //process the response here
-                  console.log(result);
-                 
+                  console.log(JSON.parse(result));
                  
                   
-
-                  
-                  document.getElementById("demo").innerHTML ="";
 
                 });
             }
