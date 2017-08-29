@@ -35,7 +35,7 @@
                  
                   var obj = JSON.stringify(result);
                   
-                      console.log(obj[0][0]);
+                  console.log(Obj.gd$email.address[0]);
 
                 });
             }
