@@ -34,9 +34,9 @@
                   console.log(JSON.stringify(result));
                  
                   var obj = JSON.parse(result);
-                  for (var x in obj){
-                      console.log(obj[x]);
-}
+                  
+                      console.log(obj[0][2]);
+
                 });
             }
           }
