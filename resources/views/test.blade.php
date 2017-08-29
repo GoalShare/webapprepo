@@ -33,7 +33,7 @@
                   //process the response here
                   console.log(JSON.stringify(result));
                  
-                  console.log(JSON.stringify(result).length);
+                  console.log(JSON.stringify(result).address);
                 });
             }
           }
