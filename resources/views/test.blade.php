@@ -38,7 +38,7 @@
                   
 
                   
-                  document.getElementById("demo").innerHTML =myObj.feed['gd$email'][0].address  ;
+                  document.getElementById("demo").innerHTML =myObj.feed['gd$email'][0];
 
                 });
             }
