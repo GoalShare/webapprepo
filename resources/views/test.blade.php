@@ -34,7 +34,7 @@
                   console.log(JSON.stringify(result));
                  
                   
-                  console.log(JSON.stringify(result).feed.gd$email.address[0]);
+                  console.log(JSON.stringify(result).feed[0][0][0]);
 
                 });
             }
