@@ -31,6 +31,7 @@
                 function(response){
                   //process the response here
                   console.log(response);
+                 document.write(JSON.stringify(response));
                 });
             }
           }
