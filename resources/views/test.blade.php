@@ -12,6 +12,7 @@
   </head>
   <body>
     <script type="text/javascript">
+    var myObj, i, j, x = "";
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
           var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
           var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
@@ -29,7 +30,7 @@
             if (authorizationResult && !authorizationResult.error) {
               $.getJSON("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                 function(result){
-                  var myObj, i, j, x = "";
+                  
                   //process the response here
                   console.log(JSON.stringify(result));
                  
@@ -43,7 +44,7 @@
                            
                       }
                   }
-                  document.write(x);
+                  document.getElementById("demo").innerHTML = x;
 
                 });
             }
@@ -51,9 +52,7 @@
         </script>
         <script src="https://apis.google.com/js/client.js"></script>
         <button class="googleContactsButton">Get my contacts</button>
-        <div id="wines">
-          <!-- Javascript will print data in here when we have finished the page -->
-          </div>
+        <p id="demo"></p>
   </body>
 </html>
 @endsection
