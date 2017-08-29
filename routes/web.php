@@ -47,6 +47,7 @@ Route::get('/goal/{goalname}','GoalController@view');
 Route::post('comment','commentController@post')->name('comment');
 Route::get('/profile/{userid}','ProfileController@view');
 Route::get('/dashboard/{category}', 'HomeController@category');
+Route::get('/test','TestController@testget')->name('test');
 Route::get('/search',function(){
   if(Auth::check()){
     $id=Auth::id();
