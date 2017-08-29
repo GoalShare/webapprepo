@@ -32,9 +32,7 @@
                 function(result){
                   
                   //process the response here
-                  console.log(JSON.parse(result));
-                 
-                  
+                  console.log(JSON.stringify(result));
 
                 });
             }
