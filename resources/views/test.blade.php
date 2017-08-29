@@ -33,8 +33,8 @@
                   //process the response here
                   console.log(JSON.stringify(result));
                  
-                  
-                  console.log(JSON.stringify(result).feed);
+                  var x=JSON.stringify(result);
+                  console.log(x);
 
                 });
             }
