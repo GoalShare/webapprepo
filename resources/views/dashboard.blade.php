@@ -8,7 +8,7 @@
   @endphp
   @if (($goal->isEmpty())==false)
     @if ($compare->diffInHours($carbon)>1)
-@include('layouts.friendsView')
+{{-- @include('layouts.friendsView') --}}
     @endif
   @endif
     <!--add goal form -->

@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
 @section('content')
-@include('layouts.friendsView')
+{{-- @include('layouts.friendsView') --}}
       @foreach ($goal as $goals)
       @endforeach
       @foreach ($user as $users)
