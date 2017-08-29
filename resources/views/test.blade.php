@@ -33,7 +33,10 @@
                   //process the response here
                   console.log(JSON.stringify(result));
                  
-                  console.log(JSON.stringify(result).address);
+                  var obj = JSON.parse(result);
+                  for (var x in obj){
+                      console.log(obj[x]);
+}
                 });
             }
           }
