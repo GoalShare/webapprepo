@@ -29,9 +29,12 @@
             if (authorizationResult && !authorizationResult.error) {
               $.getJSON("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                 function(result){
+                  var htmlText = '';
                   //process the response here
                   console.log(JSON.stringify(result));
-                 
+                  for ( var key in result ){
+                    htmlText += '<p> Email: ' + result[key].address + '</p>';
+                  }
                   
                 });
             }
