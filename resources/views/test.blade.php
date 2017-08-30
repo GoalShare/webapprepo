@@ -61,9 +61,9 @@
                               // display all your data in console
 		            console.log(JSON.stringify(data));
                 console.log(data);
-                // document.write(data.feed.entry[0].link[0].href);
+                 document.getElementById("test1").innerHTML=(data.feed.entry[0].link[0].href);
                 for(var i=0;i<data.feed.entry.length;i++){
-                document.write(data.feed.entry[i].gd$email[0].address+'<br>');
+                document.getElementById("test2").innerHTML=(data.feed.entry[i].gd$email[0].address+'<br>');
               }
 
 
@@ -75,6 +75,8 @@
 
         </script>
          <button onclick="auth();">GET CONTACTS FEED</button>
+         <span id="test1"></span>
+         <span id="test2"></span>
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
 
 
