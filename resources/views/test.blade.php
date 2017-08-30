@@ -14,15 +14,7 @@
  
   </head>
   <body>
-  <h3>Get your contacts using People API</h3>
-    <p>
-        Press button to Authorize and Download your Contacts in JSON
-        <br />
-        <br />
-        <button onclick="authClick(event)">Load Contacts</button>
-    </p>
-    <div id="divauthresult"></div>
-    <div id="divtableresult"></div>
+  
     <script type="text/javascript">
     // var myObj, i, j, x = "";
     //       var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -86,7 +78,7 @@
 // Your Client ID is retrieved from your project 
 //in the Developer Console => https://console.developers.google.com
     var CLIENT_ID = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
-    var SCOPES = ["https://www.googleapis.com/auth/contacts.readonly"];
+    var SCOPES = "https://www.google.com/m8/feeds";
  
     gapi.auth.authorize(
         { client_id: CLIENT_ID, scope: SCOPES, immediate: false }, authResult);
@@ -117,9 +109,7 @@ function authResult(_Result)
 */
 function loadPeopleApi()
 {
-    gapi.client.load('https://people.googleapis.com/$discovery/rest', 
-        'v1', 
-        showContacts);
+    gapi.client.load('https://www.google.com/m8/feeds/contacts/default/full?access_token=','v3',showContacts);
 }
 
 /**
@@ -180,6 +170,15 @@ function showContacts()
         </script>
         <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
+        <h3>Get your contacts using People API</h3>
+    <p>
+        Press button to Authorize and Download your Contacts in JSON
+        <br />
+        <br />
+        <button onclick="authClick(event);">Load Contacts</button>
+    </p>
+    <div id="divauthresult"></div>
+    <div id="divtableresult"></div>
         
   </body>
 </html>
