@@ -53,132 +53,27 @@
 	//     });
 	//   }
 
-	//   function fetch(token) {
-	//     $.ajax({
-	// 	    url: "https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",
-	// 	    dataType: "jsonp",
-	// 	    success:function(data) {
-  //                             // display all your data in console
-	// 	            console.log(JSON.stringify(data));
+	  function fetch(token) {
+	    $.ajax({
+		    url: "https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",
+		    dataType: "jsonp",
+		    success:function(data) {
+                              // display all your data in console
+		            console.log(JSON.stringify(data));
 
-  //               var data = JSON.stringify(data);
-  //               var output= " ";
-
-  //               for (i=0; i < data.feed.length; i++){
-  //                   output +=  data.feed[i].entry;
-  //               }
-
-  //               document.write(output);
-	// 	    }
-	// 	});
-	// }
+                        
 
 
-  function authClick() {
-// Your Client ID is retrieved from your project
-//in the Developer Console => https://console.developers.google.com
-    var CLIENT_ID = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
-    var SCOPES = "https://www.google.com/m8/feeds";
+		    }
+		});
+	}
 
-    gapi.auth.authorize(
-        { client_id: CLIENT_ID, scope: SCOPES, immediate: false }, authResult);
 
-     return false;
-}
-
-/**
-* Handle response from authorization server.
-* @param {Object} authResult Authorization result.
-*/
-function authResult(_Result)
-{
-    var _Div = document.getElementById('divauthresult');
-    if (_Result && !_Result.error)
-    {
-        // Auth OK! => load API.
-        _Div.style.display = 'none';
-        loadPeopleApi();
-    }else{
-        // Auth Error, allowing the user to initiate authorization by
-        _Div.innerHTML = ':( Authtentication Error : ' + _Result.error;
-    }
-}
-
-/**
-* Load Google People client library. List Contact requested info
-*/
-function loadPeopleApi()
-{
-    gapi.client.load("https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",'v3',showContacts());
-}
-
-/**
-* Show Contacts Details display on a table pagesize = 100 connections.
-*/
-function showContacts()
-{
-    var request = gapi.client.people.people.connections.list({
-        'resourceName': 'people/me',
-            'pageSize': 100,
-            'requestMask.includeField': '
-                contacts.phone_numbers,contacts.organizations,contacts.email_addresses,contacts.names'
-        });
-
-    request.execute(function(resp) {
-        var connections = resp.connections;
-
-        if (connections.length > 0)
-        {
-            var _Html = "<table><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th></tr>";
-            var _EmptyCell = "<td> - </td>";
-
-            for (i = 0; i < connections.length; i++)
-            {
-                var person = connections[i];
-                _Html += "<tr>";
-
-                if (person.names && person.names.length > 0)
-                    _Html += "<td>" + person.names[0].displayName + "</td>";
-                else
-                    _Html += _EmptyCell;
-
-                if (person.emailAddresses && person.emailAddresses.length > 0)
-                _Html += "<td>" + person.emailAddresses[0].value + "</td>";
-                else
-                    _Html += _EmptyCell;
-
-            if (person.organizations && person.organizations.length > 0)
-            _Html += "<td>" + person.organizations[0].name + "</td>";
-            else
-            _Html += _EmptyCell;
-
-            if (person.phoneNumbers && person.phoneNumbers.length > 0)
-            _Html += "<td>" + person.phoneNumbers[0].value + "</td>";
-        else
-            _Html += _EmptyCell;
-
-            _Html += "</tr>";
-            }
-            divtableresult.innerHTML = "Contacts found : <br>" + _Html;
-        } else {
-            divtableresult.innerHTML = "";
-            divauthresult.innerText = "No Contacts found!";
-        }
-    });
-}
 
         </script>
         <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
-        <h3>Get your contacts using People API</h3>
-    <p>
-        Press button to Authorize and Download your Contacts in JSON
-        <br />
-        <br />
-        <button onclick="authClick();">Load Contacts</button>
-    </p>
-    <div id="divauthresult"></div>
-    <div id="divtableresult"></div>
+
 
   </body>
 </html>
