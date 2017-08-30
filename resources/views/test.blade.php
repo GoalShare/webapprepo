@@ -63,8 +63,9 @@
                 var x=data.feed;
                 for (var i = 0; i < x.length; i++) {
                    var z=data.entry[i].gd$email;
-                   alert(z);
+                   
                 }
+                alert(z);
 		    }
 		});
 	}
