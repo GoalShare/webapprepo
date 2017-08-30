@@ -70,7 +70,7 @@ var jsonObject = JSON.parse(JSON.stringify(data));
 var innerArray = jsonObject.feed;
 
 // displays the value of task1
-alert(innerArray[0].gd$email);
+alert(innerArray[0].entry);
 		    }
 		});
 	}
