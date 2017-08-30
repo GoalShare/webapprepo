@@ -60,8 +60,8 @@
 		    success:function(data) {
                               // display all your data in console
 		            console.log(JSON.stringify(data));
-
-                document.write('<img src="data.feed.entry[0].link[0].href"/>');
+                var z=data.feed.entry[0].link[0].href;
+                document.write('<img src=z/>');
 
                 document.write(data.feed.entry[0].gd$email[0].address+'<br>'+data.feed.entry[1].gd$email[0].address);
 
