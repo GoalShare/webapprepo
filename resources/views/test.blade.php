@@ -64,7 +64,7 @@
 
                 for(var i=0;i<data.feed.entry.length;i++){
                 document.write(data.feed.entry[i].gd$email[0].address+'<br>');
-                document.write('<img src="data.feed.entry[0].link[0].href;"/>');
+                document.write('<img src="data.feed.entry[i].link[0].href;"/>');
               }
 
 
