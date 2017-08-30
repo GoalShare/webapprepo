@@ -62,8 +62,9 @@
 		            console.log(JSON.stringify(data));
                 console.log(data.feed.entry[0].link[0].href);
                 document.write(data.feed.entry[0].link[0].href);
-
-                document.write(data.feed.entry[0].gd$email[0].address+'<br>'+data.feed.entry[1].gd$email[0].address);
+                for(var i=0;i<data.feed.entry.length;i++){
+                document.write(data.feed.entry[i].gd$email[0].address+'<br>');
+              }
 
 
 		    }
