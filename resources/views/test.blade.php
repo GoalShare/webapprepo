@@ -100,7 +100,7 @@ function authResult(_Result)
         loadPeopleApi();
     }else{
         // Auth Error, allowing the user to initiate authorization by
-        _Div.innerText = ':( Authtentication Error : ' + _Result.error;
+        _Div.innerHTML = ':( Authtentication Error : ' + _Result.error;
     }
 }
 
@@ -109,7 +109,7 @@ function authResult(_Result)
 */
 function loadPeopleApi()
 {
-    gapi.client.load('https://www.google.com/m8/feeds/contacts','v3',showContacts);
+    gapi.client.load("https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",'v3',showContacts());
 }
 
 /**
