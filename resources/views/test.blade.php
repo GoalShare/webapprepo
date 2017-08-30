@@ -62,7 +62,7 @@
                   
                   // Stringified JSON Object
 
-                  console.log(JSON.stringify(data).feed.entry[6].gd$email);
+                  console.log(JSON.stringify(data).feed.xmlns);
 		    }
 		});
 	}
