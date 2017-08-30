@@ -58,11 +58,11 @@
 		    dataType: "jsonp",
 		    success:function(data) {
                               // display all your data in console
-		              console.log(JSON.stringify(data));
+		            console.log(JSON.stringify(data));
                   
                 var x=data.feed;
                 for (var i = 0; i < x.length; i++) {
-                   var z=data.entry[i].gd$email;
+                   var z=data.entry[i];
                    
                 }
                 alert(z);
