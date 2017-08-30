@@ -55,17 +55,19 @@
 	  function fetch(token) {
 	    $.ajax({
 		    url: "https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",
-		    dataType: "jsonp",
+		    dataType: dataString,
 		    success:function(data) {
                               // display all your data in console
 		            console.log(JSON.stringify(data));
                   
-                var x=data.feed;
-                for (var i = 0; i < x.length; i++) {
-                   var z=data.entry[i];
-                   
+                var data = $.parseJSON("data");
+                var output= " ";
+                
+                for (i=0; i < data.feed.length; i++){
+                    output +=  data.feed[i].entry;
                 }
-                alert(z);
+                
+                document.write(output);
 		    }
 		});
 	}
