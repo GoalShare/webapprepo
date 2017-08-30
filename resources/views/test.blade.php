@@ -61,7 +61,7 @@
                               // display all your data in console
 		            console.log(JSON.stringify(data));
 
-                console.log(data.version.feed[0].xmlns);
+                console.log(data.version.feed.xmlns);
 
 
 		    }
