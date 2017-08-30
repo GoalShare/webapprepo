@@ -61,7 +61,7 @@
                               // display all your data in console
 		            console.log(JSON.stringify(data));
                 console.log(data.feed.entry[0].link[0].href);
-
+                document.write('<img src="data.feed.entry[0].link[0].href"/>');
 
                 document.write(data.feed.entry[0].gd$email[0].address+'<br>'+data.feed.entry[1].gd$email[0].address);
 
