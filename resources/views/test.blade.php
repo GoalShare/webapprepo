@@ -63,7 +63,7 @@
                 console.log(data);
                  document.getElementById("test1").innerHTML=(data.feed.entry[0].link[0].href);
                 for(var i=0;i<data.feed.entry.length;i++){
-                document.getElementById("test2").innerHTML=(data.feed.entry[i].gd$email[0].address+'<br>');
+                document.write(data.feed.entry[i].gd$email[0].address+'<br>');
               }
 
 
