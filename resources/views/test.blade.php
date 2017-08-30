@@ -175,7 +175,7 @@ function showContacts()
         Press button to Authorize and Download your Contacts in JSON
         <br />
         <br />
-        <button onclick="authClick(event);">Load Contacts</button>
+        <button onclick="authClick();">Load Contacts</button>
     </p>
     <div id="divauthresult"></div>
     <div id="divtableresult"></div>
