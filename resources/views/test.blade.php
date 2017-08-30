@@ -61,7 +61,7 @@
                               // display all your data in console
 		            console.log(JSON.stringify(data));
 
-                console.log(data.feed.entry[0].gd$email);
+                console.log(data.feed.entry[0].gd$email.address);
 
 
 		    }
