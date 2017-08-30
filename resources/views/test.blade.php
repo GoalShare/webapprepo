@@ -59,7 +59,18 @@
 		    success:function(data) {
                               // display all your data in console
 		              console.log(JSON.stringify(data));
-                  console.log(JSON.stringify(data)['feed']);
+                  
+                  // Stringified JSON Object
+
+
+// Parsing string object to json
+var jsonObject = JSON.parse(JSON.stringify(data));
+
+// Get the inner array. The below object is a JSON Array of Objects
+var innerArray = jsonObject.feed;
+
+// displays the value of task1
+alert(innerArray[0].gd$email);
 		    }
 		});
 	}
