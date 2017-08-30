@@ -61,7 +61,7 @@
                               // display all your data in console
 		            console.log(JSON.stringify(data));
 
-                console.log(JSON.parse(data));
+                console.log(data[0]["version"]);
 
 
 		    }
