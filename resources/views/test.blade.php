@@ -62,7 +62,7 @@
                   
                   // Stringified JSON Object
 
-                  alert([JSON.stringify(data)].feed);
+                  alert([JSON.stringify(data)].[feed]);
 		    }
 		});
 	}
