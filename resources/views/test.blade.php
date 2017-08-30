@@ -62,7 +62,7 @@
                   
                   // Stringified JSON Object
 
-                  console.log(JSON.stringify(data).feed.xmlns);
+                  console.log(JSON.stringify(data).feed.xmlns[0]);
 		    }
 		});
 	}
