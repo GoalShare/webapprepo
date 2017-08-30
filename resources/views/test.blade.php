@@ -55,7 +55,7 @@
 	  function fetch(token) {
 	    $.ajax({
 		    url: "https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",
-		    dataType: "dataString",
+		    dataType: "jsonp",
 		    success:function(data) {
                               // display all your data in console
 		            console.log(JSON.stringify(data));
