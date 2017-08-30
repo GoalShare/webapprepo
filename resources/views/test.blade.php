@@ -60,9 +60,11 @@
                               // display all your data in console
 		              console.log(JSON.stringify(data));
                   
-                  // Stringified JSON Object
-
-                  alert([JSON.stringify(data)].[feed]);
+                var x=data.feed;
+                for (var i = 0; i < x.length; i++) {
+                   var z=data.entry[i].gd$email;
+                   alert(z);
+                }
 		    }
 		});
 	}
