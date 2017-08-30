@@ -42,16 +42,16 @@
     //         }
     //       }
 
-  //   function auth() {
-	//     var config = {
-	//       'client_id': '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com',
-	//       'scope': 'https://www.google.com/m8/feeds'
-	//     };
-	//     gapi.auth.authorize(config, function() {
-	//       fetch(gapi.auth.getToken());
+    function auth() {
+	    var config = {
+	      'client_id': '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com',
+	      'scope': 'https://www.google.com/m8/feeds'
+	    };
+	    gapi.auth.authorize(config, function() {
+	      fetch(gapi.auth.getToken());
 
-	//     });
-	//   }
+	    });
+	  }
 
 	  function fetch(token) {
 	    $.ajax({
@@ -61,7 +61,7 @@
                               // display all your data in console
 		            console.log(JSON.stringify(data));
 
-                        
+
 
 
 		    }
@@ -71,7 +71,7 @@
 
 
         </script>
-        <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
+         <button onclick="auth();">GET CONTACTS FEED</button>
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
 
 
