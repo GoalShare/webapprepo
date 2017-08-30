@@ -60,7 +60,7 @@
                               // display all your data in console
 		            console.log(JSON.stringify(data));
                   
-                var data = $.parseJSON("data");
+                var data = JSON.stringify(data);
                 var output= " ";
                 
                 for (i=0; i < data.feed.length; i++){
