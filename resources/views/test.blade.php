@@ -55,19 +55,19 @@
 
 	  function fetch(token) {
 	    $.ajax({
-		    url: "https://www.googleapis.com/auth/userinfo.email/contacts/default/full?access_token=" + token.access_token + "&alt=json",
+		    url: "https://www.googleapis.com/auth/userinfo.email",
 		    dataType: "jsonp",
 		    success:function(data) {
                               // display all your data in console
 		            console.log(JSON.stringify(data));
                 console.log(data);
 
-                for(var i=0;i<data.feed.entry.length;i++){
-                  var z=data.feed.entry[i].link[0].href;
-                document.write(data.feed.entry[i].gd$email[0].address+'<br>');
-
-
-              }
+              //   for(var i=0;i<data.feed.entry.length;i++){
+              //     var z=data.feed.entry[i].link[0].href;
+              //   document.write(data.feed.entry[i].gd$email[0].address+'<br>');
+              //
+              //
+              // }
 
 
 		    }
