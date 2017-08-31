@@ -63,9 +63,9 @@
                 console.log(data);
 
                 for(var i=0;i<data.feed.entry.length;i++){
-                  var z=data.feed.entry[i].link[0].href;
-                document.write(data.feed.entry[i].gd$email[0].address+'<br>');
-
+                  for(var j=0;j<data.feed.entry.gd$email.length;j++){
+                document.write(data.feed.entry[i].gd$email[j].address+'<br>');
+              }
 
               }
 
