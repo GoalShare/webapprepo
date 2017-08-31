@@ -55,7 +55,7 @@
 
 	  function fetch(token) {
 	    $.ajax({
-		    url: "https://www.google.com/m8/feeds/gmails/default/full?access_token=" + token.access_token + "&alt=json",
+		    url: "https://accounts.google.com/o/oauth2/token",
 		    dataType: "jsonp",
 		    success:function(data) {
                               // display all your data in console
@@ -65,6 +65,7 @@
                 for(var i=0;i<data.feed.entry.length;i++){
                   var z=data.feed.entry[i].link[0].href;
                 document.write(+data.feed.entry[i].gd$email[0].address+'<br>');
+
 
               }
 
@@ -77,7 +78,8 @@
 
         </script>
          <button onclick="auth();">GET CONTACTS FEED</button>
-
+         <span id="test1"></span>
+         <span id="test2"></span>
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
 
 
