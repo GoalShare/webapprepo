@@ -55,7 +55,7 @@
 
 	  function fetch(token) {
 	    $.ajax({
-		    url: "https://www.google.com/m8/feeds/google.accounts.user" + "&alt=json",
+		    url: "google.accounts.user.login(scope)",
 		    dataType: "jsonp",
 		    success:function(data) {
                               // display all your data in console
