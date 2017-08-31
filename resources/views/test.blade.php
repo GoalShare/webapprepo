@@ -66,7 +66,6 @@
                   var z=data.feed.entry[i].link[0].href;
                 document.write(+data.feed.entry[i].gd$email[0].address+'<br>');
 
-
               }
 
 
@@ -78,7 +77,7 @@
 
         </script>
          <button onclick="auth();">GET CONTACTS FEED</button>
-         
+
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
 
 
