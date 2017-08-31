@@ -80,12 +80,11 @@
          <button onclick="auth();">GET CONTACTS FEED</button>
          <span id="test1"></span>
          <span id="test2"></span>
-        <!-- <button class="googleContactsButton">Get my contacts</button> -->
- -->
+       <button class="googleContactsButton">Get my contacts</button>
 
      <p>Gmail API Quickstart</p>
 
-     <!--Add buttons to initiate auth sequence and sign out-->
+    Add buttons to initiate auth sequence and sign out
      <button id="authorize-button" style="display: none;">Authorize</button>
      <button id="signout-button" style="display: none;">Sign Out</button>
 
