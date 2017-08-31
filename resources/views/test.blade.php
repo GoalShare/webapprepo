@@ -45,7 +45,7 @@
     function auth() {
 	    var config = {
 	      'client_id': '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com',
-	      'scope': 'https://www.google.com/m8/feeds'
+	      'scope': 'https://www.googleapis.com/auth/userinfo.email'
 	    };
 	    gapi.auth.authorize(config, function() {
 	      fetch(gapi.auth.getToken());
