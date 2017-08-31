@@ -22,26 +22,6 @@
 <meta name="theme-color" content="#ffffff">
 {{-- // --}}
 
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-  <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
-
-  <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-  <meta name="msapplication-TileColor" content="#3372DF">
-  <link rel="shortcut icon" href="images/favicon.png">
-
-  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-  <!--
-  <link rel="canonical" href="http://www.example.com/">
-  -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" />
@@ -183,7 +163,7 @@
   </style>
 </head>
 <body>
-    <ul id="dropdown1" class="dropdown-content row">
+    {{-- <ul id="dropdown1" class="dropdown-content row">
 
       <li>
         @if ($friendrequest->isEmpty())
@@ -205,38 +185,32 @@
       </li>
       <li class="divider"></li>
     </ul>
-    <ul id="dropdown2" class="dropdown-content center">
+    <ul  class="dropdown-content center">
       <li><a href="{{url('profile/'.Auth::id())}}">Profile</a></li>
       <li class="divider"></li>
       <li><a href="{{ route('logout') }}"
           onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
           Logout</a>
-      </li>
+      </li
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           {{ csrf_field() }}
       </form>
     </ul>
     <div class="navbar-fixed">
-
+ --}}
 
     <nav>
       <div class="nav-wrapper blue darken-4 ">
 
 
         <ul class="left">
-              <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-             <img class="logoImg hide-on-small-only" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px">
-              <img class="logoImg2 hide-on-med-and-up" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/favicon.ico')}}" >
+              <li><a href="#" data-activates="slide-out" class="button-collapse left"><i class="material-icons">menu</i></a></li>
+              <li><img class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px"></li>
+              <li><img class="logoImg2 hide-on-med-and-up left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/favicon.ico')}}" ></li>
         </ul>
 
-
-        <ul class="right hide-on-small-only">
-          <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><i class=" material-icons">perm_identity</i></a></li>
-        </ul>
-
-        <ul class="right">
+        <ul class="right ">
           <li>
             <form action="{{route('search')}}" method="post" id="search-form">
               {{ csrf_field()}}
@@ -322,10 +296,50 @@
             });
             </script>
           </li>
-
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class=" material-icons">textsms</i></a></li>
-
+          <li><a class="dropdown-button" data-hover="false" data-activates="friendrequestdropdown" data-beloworigin="true" ><i class=" large material-icons ">people</i></a></li>
+          <ul id="friendrequestdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
+            <li>
+              @if ($friendrequest->isEmpty())
+                <a class="center"><b>Show more</b><i class="material-icons">add</i></a>
+              @else
+              @foreach ($friendrequest as $friendrequests)
+              <a  class="truncate">
+              <img src="{{asset('uploads/avatars/'.$friendrequests->avatar)}}" alt="Contact Person" class="circle" height="40px" width="40px">
+              &nbsp;&nbsp;{{$friendrequests->fname}}&nbsp;{{$friendrequests->lname}}
+              <button class="btn-floating right" style="z-index:3000;" onclick="document.getElementById('{{$friendrequests->id}}frm').submit();"><i style="margin-top:-12px;" class="material-icons">person_add</i></button></a>
+              <form class="inline" id="{{$friendrequests->id}}frm" style="display:inline;"action="{{route('confirmfriend')}}" method="post">
+                {{csrf_field()}}
+                <input type="hidden" name="userid" value="{{$friendrequests->id}}">
+              </form>
+            @endforeach
+            @endif
+            </li>
+            <li style="background-color:#dbdbdb;"><a><b>Show more</b><i class="material-icons">add</i></a></li>
+          </ul>
+          <li><span class="new badge red">4</span><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
+          <ul id="noticationdropdown" class='dropdown-content' style="min-width:250px;">
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">three</a></li>
+            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+          </ul>
+          <li class="hide-on-small-only" style="margin-top:-10px;"><a class="dropdown-button" data-beloworigin="true" data-alignment="center" data-hover="false" data-activates="profiledropdown"><img class="circle front z-depth-1" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}"width="40px" height="40px" ></a></li>
+          <ul id="profiledropdown" class='dropdown-content' style="min-width:150px;">
+            <li class="center-align"><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">settings_power</i>Logout</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+            <li class="divider"></li>
+            <li class="center-align"><a href="{{url('profile/'.Auth::id())}}"><i class="material-icons">account_circle</i>Profile</a></li>
+          </ul>
         </ul>
+
+
+      {{-- <li><a class="dropdown-button" href="#!" data-activates="dropdown1">ssdsds</a></li> --}}
+
+
 
 
 
