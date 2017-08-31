@@ -48,6 +48,7 @@ Route::post('comment','commentController@post')->name('comment');
 Route::get('/profile/{userid}','ProfileController@view');
 Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/test','TestController@testget')->name('test');
+Route::get('/admin','AdminController@adminget')->name('admin');
 Route::get('/search',function(){
   if(Auth::check()){
     $id=Auth::id();
