@@ -81,126 +81,35 @@
          <span id="test1"></span>
          <span id="test2"></span>
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
- 
 
-     <p>Gmail API Quickstart</p>
 
-     <!--Add buttons to initiate auth sequence and sign out-->
-     <button id="authorize-button" style="display: none;">Authorize</button>
-     <button id="signout-button" style="display: none;">Sign Out</button>
+        <div class="container">
+        <h1>Gmail API demo</h1>
 
-     <pre id="content"></pre>
+        <button id="authorize-button" class="btn btn-primary hidden">Authorize</button>
 
-     <script type="text/javascript">
-       // Client ID and API key from the Developer Console
-       var CLIENT_ID = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
+        <table class="table table-striped table-inbox hidden">
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>Subject</th>
+              <th>Date/Time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
 
-       // Array of API discovery doc URLs for APIs used by the quickstart
-       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"];
+      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-       // Authorization scopes required by the API; multiple scopes can be
-       // included, separated by spaces.
-       var SCOPES = 'https://www.googleapis.com/auth/gmail.readonly';
+      <script type="text/javascript">
+        var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
+        var apiKey = 'AIzaSyCvWE2bE4Kq6xfN166Eaj0GceDBv6P-Qsw';
+        var scopes = 'https://www.googleapis.com/auth/gmail.readonly';
+      </script>
 
-       var authorizeButton = document.getElementById('authorize-button');
-       var signoutButton = document.getElementById('signout-button');
-
-       /**
-        *  On load, called to load the auth2 library and API client library.
-        */
-       function handleClientLoad() {
-         gapi.load('client:auth2', initClient);
-       }
-
-       /**
-        *  Initializes the API client library and sets up sign-in state
-        *  listeners.
-        */
-       function initClient() {
-         gapi.client.init({
-           discoveryDocs: DISCOVERY_DOCS,
-           clientId: CLIENT_ID,
-           scope: SCOPES
-         }).then(function () {
-           // Listen for sign-in state changes.
-           gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-           // Handle the initial sign-in state.
-           updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-           authorizeButton.onclick = handleAuthClick;
-           signoutButton.onclick = handleSignoutClick;
-         });
-       }
-
-       /**
-        *  Called when the signed in status changes, to update the UI
-        *  appropriately. After a sign-in, the API is called.
-        */
-       function updateSigninStatus(isSignedIn) {
-         if (isSignedIn) {
-           authorizeButton.style.display = 'none';
-           signoutButton.style.display = 'block';
-           listLabels();
-         } else {
-           authorizeButton.style.display = 'block';
-           signoutButton.style.display = 'none';
-         }
-       }
-
-       /**
-        *  Sign in the user upon button click.
-        */
-       function handleAuthClick(event) {
-         gapi.auth2.getAuthInstance().signIn();
-       }
-
-       /**
-        *  Sign out the user upon button click.
-        */
-       function handleSignoutClick(event) {
-         gapi.auth2.getAuthInstance().signOut();
-       }
-
-       /**
-        * Append a pre element to the body containing the given message
-        * as its text node. Used to display the results of the API call.
-        *
-        * @param {string} message Text to be placed in pre element.
-        */
-       function appendPre(message) {
-         var pre = document.getElementById('content');
-         var textContent = document.createTextNode(message + '\n');
-         pre.appendChild(textContent);
-       }
-
-       /**
-        * Print all Labels in the authorized user's inbox. If no labels
-        * are found an appropriate message is printed.
-        */
-       function listLabels() {
-         gapi.client.gmail.users.labels.list({
-           'userId': 'me'
-         }).then(function(response) {
-           var labels = response.result.labels;
-           appendPre('Labels:');
-
-           if (labels && labels.length > 0) {
-             for (i = 0; i < labels.length; i++) {
-               var label = labels[i];
-               appendPre(label.name)
-             }
-           } else {
-             appendPre('No Labels found.');
-           }
-         });
-       }
-
-     </script>
-
-     <script async defer src="https://apis.google.com/js/api.js"
-       onload="this.onload=function(){};handleClientLoad()"
-       onreadystatechange="if (this.readyState === 'complete') this.onload()">
-     </script>
+      <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
   </body>
 </html>
