@@ -56,7 +56,7 @@
 	  function fetch(token) {
 	    $.ajax({
 		    url: "https://www.googleapis.com/auth/userinfo.email",
-		    dataType: "jsonp",
+		    dataType: "string",
 		    success:function(data) {
                               // display all your data in console
 		            console.log(JSON.stringify(data));
