@@ -153,14 +153,14 @@
              gapi.client.load('gmail', 'v1', displayInbox);
            }
            function displayInbox() {
-             var request = gapi.client.gmail.users.messages.list({
+             var request = gapi.client.gmail.users.list({
                'userId': 'me',
                'labelIds': 'INBOX',
                'maxResults': 10
              });
              request.execute(function(response) {
                $.each(response.messages, function() {
-                 var messageRequest = gapi.client.gmail.users.messages.get({
+                 var messageRequest = gapi.client.gmail.users.get({
                    'userId': 'me',
                    'id': this.id
                  });
