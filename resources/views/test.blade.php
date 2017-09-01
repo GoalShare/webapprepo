@@ -20,7 +20,7 @@
     <div class="container">
           <h1>Gmail API demo</h1>
 
-          <button id="authorize-button" class="btn btn-primary hidden">Authorize</button>
+          <button id="authorize-button" class="btn btn-primary">Authorize</button>
 
           <table class="table table-striped table-inbox hidden">
             <thead>
@@ -123,7 +123,8 @@
   function handleAuthResult(authResult) {
     if(authResult && !authResult.error) {
       loadGmailApi();
-    
+      $('#authorize-button').remove();
+      $('.table-inbox').removeClass("hidden");
     } else {
       $('#authorize-button').removeClass("hidden");
       $('#authorize-button').on('click', function(){
