@@ -123,8 +123,7 @@
   function handleAuthResult(authResult) {
     if(authResult && !authResult.error) {
       loadGmailApi();
-      $('#authorize-button').remove();
-      $('.table-inbox').removeClass("hidden");
+    
     } else {
       $('#authorize-button').removeClass("hidden");
       $('#authorize-button').on('click', function(){
