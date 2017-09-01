@@ -149,7 +149,7 @@
          <span id="test2"></span> -->
         <!-- <button class="googleContactsButton">Get my contacts</button> -->
 
-<button id="authButton">Authorise</button>
+<button id="authButton" onclick="checkAuth();">Authorise</button>
 <button id="outputNotice">Notise</button>
   </body>
 </html>
