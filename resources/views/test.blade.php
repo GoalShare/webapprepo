@@ -11,16 +11,32 @@
     <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
     <script src="https://apis.google.com/js/client.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
   </head>
   <body>
-    <p>Gmail API Quickstart</p>
 
-     <!--Add buttons to initiate auth sequence and sign out-->
-     <button id="authorize-button" style="display: none;">Authorize</button>
-     <button id="signout-button" style="display: none;">Sign Out</button>
+    <div class="container">
+          <h1>Gmail API demo</h1>
 
-     <pre id="content"></pre>
+          <button id="authorize-button" class="btn btn-primary hidden">Authorize</button>
+
+          <table class="table table-striped table-inbox hidden">
+            <thead>
+              <tr>
+                <th>From</th>
+                <th>Subject</th>
+                <th>Date/Time</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+
+
+
     <script type="text/javascript">
     // var myObj, i, j, x = "";
     //       var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -79,119 +95,124 @@
 	// 	    }
 	// 	});
 	// }
+  var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
+  var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
+  var scopes = 'https://www.googleapis.com/auth/gmail.readonly';
+  function handleClientLoad() {
+    gapi.client.setApiKey(apiKey);
+    window.setTimeout(checkAuth, 1);
+  }
+
+  function checkAuth() {
+    gapi.auth.authorize({
+      client_id: clientId,
+      scope: scopes,
+      immediate: true
+    }, handleAuthResult);
+  }
+
+  function handleAuthClick() {
+    gapi.auth.authorize({
+      client_id: clientId,
+      scope: scopes,
+      immediate: false
+    }, handleAuthResult);
+    return false;
+  }
+
+  function handleAuthResult(authResult) {
+    if(authResult && !authResult.error) {
+      loadGmailApi();
+      $('#authorize-button').remove();
+      $('.table-inbox').removeClass("hidden");
+    } else {
+      $('#authorize-button').removeClass("hidden");
+      $('#authorize-button').on('click', function(){
+        handleAuthClick();
+      });
+    }
+  }
+
+  function loadGmailApi() {
+    gapi.client.load('gmail', 'v1', displayInbox);
+  }
+
+  function displayInbox() {
+  var request = gapi.client.gmail.users.messages.list({
+    'userId': 'me',
+    'labelIds': 'INBOX',
+    'maxResults': 10
+  });
+
+  request.execute(function(response) {
+    $.each(response.messages, function() {
+      var messageRequest = gapi.client.gmail.users.messages.get({
+        'userId': 'me',
+        'id': this.id
+      });
+
+      messageRequest.execute(appendMessageRow);
+    });
+  });
+}
+
+function appendMessageRow(message) {
+  $('.table-inbox tbody').append(
+    '<tr>\
+      <td>'+getHeader(message.payload.headers, 'From')+'</td>\
+      <td>'+getHeader(message.payload.headers, 'Subject')+'</td>\
+      <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
+    </tr>'
+  );
+}
+
+function appendMessageRow(message) {
+  $('.table-inbox tbody').append(
+    '<tr>\
+      <td>'+getHeader(message.payload.headers, 'From')+'</td>\
+      <td>\
+        <a href="#message-modal-' + message.id +
+          '" data-toggle="modal" id="message-link-' + message.id+'">' +
+          getHeader(message.payload.headers, 'Subject') +
+        '</a>\
+      </td>\
+      <td>'+getHeader(message.payload.headers, 'Date')+'</td>\
+    </tr>'
+  );
+}
+$('body').append(
+  '<div class="modal fade" id="message-modal-' + message.id +
+      '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+    <div class="modal-dialog modal-lg">\
+      <div class="modal-content">\
+        <div class="modal-header">\
+          <button type="button"\
+                  class="close"\
+                  data-dismiss="modal"\
+                  aria-label="Close">\
+            <span aria-hidden="true">&times;</span></button>\
+          <h4 class="modal-title" id="myModalLabel">' +
+            getHeader(message.payload.headers, 'Subject') +
+          '</h4>\
+        </div>\
+        <div class="modal-body">\
+          <iframe id="message-iframe-'+message.id+'" srcdoc="<p>Loading...</p>">\
+          </iframe>\
+        </div>\
+      </div>\
+    </div>\
+  </div>'
+);
+
+$('#message-link-'+message.id).on('click', function(){
+  var ifrm = $('#message-iframe-'+message.id)[0].contentWindow.document;
+  $('body', ifrm).html(getBody(message.payload));
+});
+
+// </script>
 
 
 
-
-     // Client ID and API key from the Developer Console
-     var CLIENT_ID = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
-
-     // Array of API discovery doc URLs for APIs used by the quickstart
-     var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"];
-
-     // Authorization scopes required by the API; multiple scopes can be
-     // included, separated by spaces.
-     var SCOPES = 'https://www.googleapis.com/auth/gmail.readonly';
-
-     var authorizeButton = document.getElementById('authorize-button');
-     var signoutButton = document.getElementById('signout-button');
-
-     /**
-      *  On load, called to load the auth2 library and API client library.
-      */
-     function handleClientLoad() {
-       gapi.load('client:auth2', initClient);
-     }
-
-     /**
-      *  Initializes the API client library and sets up sign-in state
-      *  listeners.
-      */
-     function initClient() {
-       gapi.client.init({
-         discoveryDocs: DISCOVERY_DOCS,
-         clientId: CLIENT_ID,
-         scope: SCOPES
-       }).then(function () {
-         // Listen for sign-in state changes.
-         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-         // Handle the initial sign-in state.
-         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-         authorizeButton.onclick = handleAuthClick;
-         signoutButton.onclick = handleSignoutClick;
-       });
-     }
-
-     /**
-      *  Called when the signed in status changes, to update the UI
-      *  appropriately. After a sign-in, the API is called.
-      */
-     function updateSigninStatus(isSignedIn) {
-       if (isSignedIn) {
-         authorizeButton.style.display = 'none';
-         signoutButton.style.display = 'block';
-         listLabels();
-       } else {
-         authorizeButton.style.display = 'block';
-         signoutButton.style.display = 'none';
-       }
-     }
-
-     /**
-      *  Sign in the user upon button click.
-      */
-     function handleAuthClick(event) {
-       gapi.auth2.getAuthInstance().signIn();
-     }
-
-     /**
-      *  Sign out the user upon button click.
-      */
-     function handleSignoutClick(event) {
-       gapi.auth2.getAuthInstance().signOut();
-     }
-
-     /**
-      * Append a pre element to the body containing the given message
-      * as its text node. Used to display the results of the API call.
-      *
-      * @param {string} message Text to be placed in pre element.
-      */
-     function appendPre(message) {
-       var pre = document.getElementById('content');
-       var textContent = document.createTextNode(message + '\n');
-       pre.appendChild(textContent);
-     }
-
-     /**
-      * Print all Labels in the authorized user's inbox. If no labels
-      * are found an appropriate message is printed.
-      */
-     function listLabels() {
-       gapi.client.gmail.users({
-         'userId': 'me'
-       }).then(function(response) {
-         var labels = response.result.users;
-         appendPre('Labels:');
-
-         if (labels && users.length > 0) {
-           for (i = 0; i < labels.users; i++) {
-             var label = labels[i];
-             appendPre(users.address)
-           }
-         } else {
-           appendPre('No Labels found.');
-         }
-       });
-     }
-
-   </script>
-
-   <script async defer src="https://apis.google.com/js/api.js"
-     onload="this.onload=function(){};handleClientLoad()"
-     onreadystatechange="if (this.readyState === 'complete') this.onload()">
-   </script>
   </body>
 </html>
 @endsection
