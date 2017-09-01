@@ -20,7 +20,7 @@
     <div class="container">
           <h1>Gmail API demo</h1>
 
-          <button id="authorize-button" class="btn btn-primary">Authorize</button>
+          <button id="authorize-button" class="btn btn-primary" onclick="handleClientLoad();">Authorize</button>
 
           <table class="table table-striped table-inbox hidden">
             <thead>
