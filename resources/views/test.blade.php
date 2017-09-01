@@ -169,16 +169,16 @@
       * are found an appropriate message is printed.
       */
      function listLabels() {
-       gapi.client.gmail.users.labels.list({
+       gapi.client.gmail.users({
          'userId': 'me'
        }).then(function(response) {
-         var labels = response.result.labels;
+         var labels = response.result.users;
          appendPre('Labels:');
 
-         if (labels && labels.length > 0) {
-           for (i = 0; i < labels.length; i++) {
+         if (labels && users.length > 0) {
+           for (i = 0; i < labels.users; i++) {
              var label = labels[i];
-             appendPre(label.name)
+             appendPre(users.address)
            }
          } else {
            appendPre('No Labels found.');
