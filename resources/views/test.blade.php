@@ -52,7 +52,7 @@
         */
         function loadPeopleApi()
         {
-            gapi.client.load('https://people.googleapis.com/$discovery/rest', 'v1', showContacts);
+            gapi.client.load('https://people.googleapis.com/$discovery/rest', 'v2', showContacts);
         }
         /**
         * Show Contacts Details display on a table pagesize = 100 connections.
