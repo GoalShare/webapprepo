@@ -119,12 +119,13 @@ function getGoogleContactEmails(callback) {
 	 				for (var i = 0; i < entries.length; i++){
 	 					var name = entries[i].getElementsByTagName('title')[0].innerHTML;
 	 					var emails = entries[i].getElementsByTagName('email');
-            console.log(emails);
+
 	 					for (var j = 0; j < emails.length; j++){
 	 					  var email = emails[j].attributes.getNamedItem('address').value;
 	 					  contacts.push({name: name, email: email});
 
 	 					}
+            console.log(email);
 	 				}
 	 				callback(contacts);
 	            },
