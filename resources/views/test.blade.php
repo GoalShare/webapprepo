@@ -5,8 +5,7 @@
 
 <!DOCTYPE html>
 <html>
-
-    <meta charset='utf-8' />
+  
     <!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
     <script src="https://apis.google.com/js/client.js"></script>
@@ -52,7 +51,7 @@
         */
         function loadPeopleApi()
         {
-            gapi.client.load('https://people.googleapis.com/$discovery/rest', 'v1', showContacts);
+            gapi.client.load('https://people.googleapis.com/$discovery/rest', 'v2', showContacts);
         }
         /**
         * Show Contacts Details display on a table pagesize = 100 connections.
@@ -105,6 +104,15 @@
   <body>
 
     <h3>Get your contacts using People API</h3>
+    <p>
+        Press button to Authorize and Download your Contacts in JSON
+        <br />
+        <br />
+        <button onclick="authClick(event)">Load Contacts</button>
+    </p>
+    <div id="divauthresult"></div>
+    <div id="divtableresult"></div>
+
 
 
 
