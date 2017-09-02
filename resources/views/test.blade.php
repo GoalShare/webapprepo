@@ -24,7 +24,7 @@
         function authClick() {
             // Your Client ID is retrieved from your project in the Developer Console => https://console.developers.google.com
             var CLIENT_ID = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
-            var SCOPES = ["https://www.googleapis.com/auth/contacts.readonly"];
+            var SCOPES = "https://www.googleapis.com/auth/contacts.readonly";
             gapi.auth.authorize(
                 { client_id: CLIENT_ID, scope: SCOPES, immediate: false }, authResult);
             return false;
@@ -41,7 +41,8 @@
                 // Auth OK! => load API.
                 Div.style.display = 'none';
                 loadPeopleApi();
-            }else{
+            }
+            else{
                 // Auth Error, allowing the user to initiate authorization by
                 Div.innerText = ':( Authtentication Error : ' + Result.error;
             }
@@ -65,7 +66,7 @@
             });
             request.execute(function(resp) {
                 var connections = resp.connections;
-                if (connections.length > 0)
+                if (connections)
                 {
                     var Html = "<table><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th></tr>";
                     var EmptyCell = "<td> - </td>";
