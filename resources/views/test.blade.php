@@ -123,9 +123,9 @@ function getGoogleContactEmails(callback) {
 	 					for (var j = 0; j < emails.length; j++){
 	 					  var email = emails[j].attributes.getNamedItem('address').value;
 	 					  contacts.push({name: name, email: email});
-
+                console.log(email);
 	 					}
-            console.log(email);
+
 	 				}
 	 				callback(contacts);
 	            },
