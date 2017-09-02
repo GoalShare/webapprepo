@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html>
-  
+
     <!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
     <script src="https://apis.google.com/js/client.js"></script>
@@ -17,102 +17,7 @@
 
 
 
-    <head>
-    <script src="https://apis.google.com/js/client.js"></script>
-    <script type="text/javascript">
-        function authClick() {
-            // Your Client ID is retrieved from your project in the Developer Console => https://console.developers.google.com
-            var CLIENT_ID = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
-            var SCOPES = "https://www.googleapis.com/auth/contacts.readonly";
-            gapi.auth.authorize(
-                { client_id: CLIENT_ID, scope: SCOPES, immediate: false }, authResult);
-            return false;
-        }
-        /**
-        * Handle response from authorization server.
-        * @param {Object} authResult Authorization result.
-        */
-        function authResult(Result)
-        {
-            var Div = document.getElementById('divauthresult');
-            if (Result && !Result.error)
-            {
-                // Auth OK! => load API.
-                Div.style.display = 'none';
-                loadPeopleApi();
-            }
-            else{
-                // Auth Error, allowing the user to initiate authorization by
-                Div.innerText = ':( Authtentication Error : ' + Result.error;
-            }
-        }
-        /**
-        * Load Google People client library. List Contact requested info
-        */
-        function loadPeopleApi()
-        {
-            gapi.client.load('https://people.googleapis.com/$discovery/rest', 'v2', showContacts);
-        }
-        /**
-        * Show Contacts Details display on a table pagesize = 100 connections.
-        */
-        function showContacts()
-        {
-            var request = gapi.client.people.people.connections.list({
-			    'resourceName': 'people/me',
-			    'pageSize': 100,
-			    'requestMask.includeField': 'person.phone_numbers,person.organizations,person.email_addresses,person.names'
-            });
-            request.execute(function(resp) {
-                var connections = resp.connections;
-                if (connections)
-                {
-                    var Html = "<table><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th></tr>";
-                    var EmptyCell = "<td> - </td>";
-                    for (i = 0; i < connections.length; i++)
-                    {
-                        var person = connections[i];
-                        Html += "<tr>";
-                        if (person.names && person.names.length > 0)
-                        Html += "<td>" + person.names[0].displayName + "</td>";
-                        else
-                       Html += EmptyCell;
-                        if (person.emailAddresses && person.emailAddresses.length > 0)
-					        Html += "<td>" + person.emailAddresses[0].value + "</td>";
-                        else
-                            Html += EmptyCell;
-				        if (person.organizations && person.organizations.length > 0)
-					        Html += "<td>" + person.organizations[0].name + "</td>";
-				        else
-				            Html += EmptyCell;
-				        if (person.phoneNumbers && person.phoneNumbers.length > 0)
-					        _Html += "<td>" + person.phoneNumbers[0].value + "</td>";
-				        else
-				            Html += EmptyCell;
-				        Html += "</tr>";
-                    }
-                    divtableresult.innerHTML = "Contacts found : <br>" + Html;
-                } else {
-                    divtableresult.innerHTML = "";
-                    divauthresult.innerText = "No Contacts found!";
-                }
-            });
-        }
-    </script>
-</head>
-  </head>
-  <body>
-
-    <h3>Get your contacts using People API</h3>
-    <p>
-        Press button to Authorize and Download your Contacts in JSON
-        <br />
-        <br />
-        <button onclick="authClick(event)">Load Contacts</button>
-    </p>
-    <div id="divauthresult"></div>
-    <div id="divtableresult"></div>
-
+    <body>
 
 
 
@@ -178,9 +83,61 @@
 
 
 
+<script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
 
+<script>
+function gapiLoad() {
+	gapi.client.setApiKey('R9ijmkXitCwlC-Zh7oY26ICw');	// app api-wide client api key
+	getGoogleContactEmails(function(result){
+		console.log(result);
+	});
+}
 
+function getGoogleContactEmails(callback) {
+  var oauth_clientKey = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com'; // replace with your oauth client api key
+	var firstTry = true;
+	function connect(immediate, callback){
+	    var config = {
+	        'client_id': oauth_clientKey,
+	        'scope': 'https://www.google.com/m8/feeds',
+	        'immediate': immediate,
+	    };
 
+	    gapi.auth.authorize(config, function () {
+			var authParams = gapi.auth.getToken();
+	        $.ajax({
+	            url: 'https://www.google.com/m8/feeds/contacts/default/full?max-results=10000',
+	            dataType: 'jsonp',
+	            type: "GET",
+	            data: authParams,
+	            success: function (data) {
+	                var parser = new DOMParser();
+	 				xmlDoc = parser.parseFromString(data,"text/xml");
+	 				var entries = xmlDoc.getElementsByTagName('feed')[0].getElementsByTagName('entry');
+	 				var contacts = [];
+	 				for (var i = 0; i < entries.length; i++){
+	 					var name = entries[i].getElementsByTagName('title')[0].innerHTML;
+	 					var emails = entries[i].getElementsByTagName('email');
+	 					for (var j = 0; j < emails.length; j++){
+	 					  var email = emails[j].attributes.getNamedItem('address').value;
+	 					  contacts.push({name: name, email: email});
+	 					}
+	 				}
+	 				callback(contacts);
+	            },
+	            error: function (data) {
+	            	if (firstTry)
+						connect(false, callback);
+					firstTry = false;
+	            }
+	        })
+	    });
+	}
+	connect(true, callback);
+}
+</script>
+
+<button onclick="gapiLoad();" value="get"></button>
   </body>
 </html>
 @endsection
