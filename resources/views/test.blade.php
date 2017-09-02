@@ -111,7 +111,7 @@ function getGoogleContactEmails(callback) {
 	            type: "GET",
 	            data: authParams,
 	            success: function (data) {
-                console.log(data);
+
 	                var parser = new DOMParser();
 	 				xmlDoc = parser.parseFromString(data,"text/xml");
 	 				var entries = xmlDoc.getElementsByTagName('feed')[0].getElementsByTagName('entry');
@@ -119,6 +119,7 @@ function getGoogleContactEmails(callback) {
 	 				for (var i = 0; i < entries.length; i++){
 	 					var name = entries[i].getElementsByTagName('title')[0].innerHTML;
 	 					var emails = entries[i].getElementsByTagName('email');
+            console.log(emails);
 	 					for (var j = 0; j < emails.length; j++){
 	 					  var email = emails[j].attributes.getNamedItem('address').value;
 	 					  contacts.push({name: name, email: email});
