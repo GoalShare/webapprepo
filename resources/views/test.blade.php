@@ -40,7 +40,7 @@
                   console.log(result);
                   for(var i=0;i<result.feed.entry.length;i++){
 
-                                document.write(i+result.feed.entry[i]+'<br>');
+                                document.write(i+result.feed.entry[i].gd$email[0]+'<br>');
 
 
                    }
