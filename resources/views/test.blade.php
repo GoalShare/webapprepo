@@ -43,7 +43,7 @@
 
 
 
-                  for(var i=0;i<result.feed.entry.length;i++){
+                  for(var i=0;i<result.feed.entry.length-1;i++){
 
                                document.write(result.feed.entry[i].gd$email[0].address+'<br>');
                                 document.write(i+'<br>');
