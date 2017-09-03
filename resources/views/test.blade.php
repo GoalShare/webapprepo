@@ -39,8 +39,8 @@
                   // console.log(JSON.stringify(result));
                   console.log(result);
                   for(var i=0;i<result.feed.entry.length;i++){
-                                  var z=result.feed.entry[i].link[0].href;
-                                document.write(result.feed.entry[i].gd$email[0].address+'<br>');
+                                
+                                document.write(result.feed.entry+'<br>');
 
 
                    }
