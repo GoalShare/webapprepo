@@ -36,10 +36,11 @@
                 function(result){
 
                   //process the response here
-                  console.log(JSON.stringify(result));
-                  for(var i=0;i<JSON.stringify(result).feed.entry.length;i++){
-
-                                document.write(JSON.stringify(result).feed.entry[i].gd$email[0].address+'<br>');
+                  // console.log(JSON.stringify(result));
+                  console.log(result);
+                  for(var i=0;i<result.feed.entry.length;i++){
+                                  var z=result.feed.entry[i].link[0].href;
+                                document.write(result.feed.entry[i].gd$email[0].address+'<br>');
 
 
                    }
@@ -83,7 +84,7 @@
 
 
         </script>
-         <button onclick="auth();">GET CONTACTS FEED</button>
+         <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
 
          <button class="googleContactsButton">Get my contacts</button>
 
