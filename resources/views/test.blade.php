@@ -42,7 +42,7 @@
                   document.write(result.feed.entry.length);
                   document.write(result.feed.entry[200].gd$email[0].address+'<br>');
                   resultttt = JSON.parse(result);
-                  document.write(resultttt.feed.entry.length);
+                  document.write(resultttt);
       // for($i in result.feed.entry.length){
       //      console.log(results.feed.entry[$i].gd$email[0].address);
       // }
