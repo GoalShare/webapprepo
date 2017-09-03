@@ -37,16 +37,17 @@
 
                   //process the response here
                   // console.log(JSON.stringify(result));
-                  console.log(result);
-                  var foo = new Array(result.feed.entry.length);
-                    document.write(foo);
 
-                  // for(var i=0;i<result.feed.entry.length;i++){
-                  //
-                  //               document.write(i+result.feed.entry[i].gd$email[i]+'<br>');
-                  //
-                  //
-                  //  }
+                  console.log(result);
+
+                  var foo=JSON.stringify(result);
+
+                  for(var i=0;i<foo.feed.entry.length;i++){
+
+                                document.write(i+foo.feed.entry[i].gd$email[i]+'<br>');
+
+
+                   }
 
                 });
             }
