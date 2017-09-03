@@ -38,12 +38,15 @@
                   //process the response here
                   // console.log(JSON.stringify(result));
                   console.log(result);
-                  for(var i=0;i<result.feed.entry.length;i++){
+                  var foo = new Array(result.feed.entry.length);
+                    document.write(i+result.feed.entry[foo].gd$email[foo]+'<br>');
 
-                                document.write(i+result.feed.entry[i].gd$email[i]+'<br>');
-
-
-                   }
+                  // for(var i=0;i<result.feed.entry.length;i++){
+                  //
+                  //               document.write(i+result.feed.entry[i].gd$email[i]+'<br>');
+                  //
+                  //
+                  //  }
 
                 });
             }
