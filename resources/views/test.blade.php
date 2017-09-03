@@ -39,8 +39,9 @@
                   // console.log(JSON.stringify(result));
 
                   console.log(result);
-                  for(var i=119;i<221;i++){
-                  document.write(i+result.feed.entry[i].gd$email[0].address+'<br>');}
+                  //for(var i=119;i<221;i++){
+                  //!= 'undefined'
+                  document.write(i+result.feed.entry[42].gd$email[0].address+'<br>');//}
                   // for(var i=0;i<50;i++){
                   //
                   //              document.write(result.feed.entry[i].gd$email[0].address+'<br>');
