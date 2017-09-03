@@ -44,7 +44,7 @@
 
                   for(var i=0;i<result.feed.entry.length;i++){
 
-                                document.write(i+result.feed.entry[0].gd$email[0]+'<br>');
+                                document.write(i+result.feed.entry[0].gd$email[0].address+'<br>');
 
 
                    }
