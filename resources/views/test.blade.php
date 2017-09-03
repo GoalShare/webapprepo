@@ -40,10 +40,10 @@
 
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
-                  var x=result.feed.entry[42].gd$email;
-                    if(x=='undefined'){
-                        console.log("sdmoskmvkosm");
-                    }
+                  console.log(result.feed.entry[42].gd$email);
+                    // if(x=='NaN'){
+                    //     console.log("sdmoskmvkosm");
+                    // }
                   //!= 'undefined'
                   //document.write(i+result.feed.entry[42].gd$email+'<br>');//}
                   // for(var i=0;i<50;i++){
