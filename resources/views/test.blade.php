@@ -42,8 +42,8 @@
                   //for(var i=0;i<result.feed.entry.length;i++){
                   console.log(result.feed.entry[42].gd$email);
                   var x=result.feed.entry[42].gd$email;
-                  console.log(x);
-                    if(x=='undefined'){
+                
+                    if(x=="undefined"){
                         console.log("sdmoskmvkosm");
                     }
                   //!= 'undefined'
