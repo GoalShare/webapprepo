@@ -41,11 +41,11 @@
                   console.log(result);
                   document.write(result.feed.entry.length);
                   document.write(result.feed.entry[200].gd$email[0].address+'<br>');
-                  result = JSON.parse(result);
-
-      for($i in result.genres){
-           console.log(results.feed.entry[$i].gd$email[0].address);
-      }
+                  resultttt = JSON.parse(result);
+                  document.write(resultttt.feed.entry.length);
+      // for($i in result.feed.entry.length){
+      //      console.log(results.feed.entry[$i].gd$email[0].address);
+      // }
                   // for(var i=0;i<50;i++){
                   //
                   //              document.write(result.feed.entry[i].gd$email[0].address+'<br>');
