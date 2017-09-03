@@ -39,15 +39,7 @@
                   // console.log(JSON.stringify(result));
 
                   console.log(result);
- document.write(result.feed.entry[221].gd$email[0].address+'<br>');
-  var points = new Array(result.feed.entry.length);
-  for (var i = 0; i < result.feed.entry.length; i++) {
-            points[i] =result.feed.entry[i].gd$email[0].address; //This populates the array.  +1 is necessary because arrays are 0 index based and you want to store 1-100 in it, NOT 0-99.
-        }
-        for (var i = 0; i < points.length; i++) {
-                  console.log(points[i]); //This prints the values that you stored in the array
-              }
-
+                  document.write(result.feed.entry[200].gd$email[0].address+'<br>');
                   // for(var i=0;i<50;i++){
                   //
                   //              document.write(result.feed.entry[i].gd$email[0].address+'<br>');
