@@ -39,8 +39,8 @@
                   // console.log(JSON.stringify(result));
                   console.log(result);
                   for(var i=0;i<result.feed.entry.length;i++){
-                                
-                                document.write(result.feed.entry+'<br>');
+
+                                document.write(result.feed.entry[i]+'<br>');
 
 
                    }
