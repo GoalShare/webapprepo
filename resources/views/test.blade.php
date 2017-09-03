@@ -40,9 +40,11 @@
 
                   console.log(result);
                   document.write(result.feed.entry.length);
-                  document.write(result.feed.entry[200].gd$email[0].address+'<br>');
-                  resultttt = JSON.stringify(result);
-                  document.write(resultttt.feed.length);
+                  var x=0;
+                  while(x<result.feed.entry.length){
+                  document.write(result.feed.entry[x].gd$email[0].address+'<br>');
+                  x++;
+}
       // for($i in result.feed.entry.length){
       //      console.log(results.feed.entry[$i].gd$email[0].address);
       // }
