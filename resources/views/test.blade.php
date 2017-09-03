@@ -42,37 +42,37 @@
             }
           }
 
-    function auth() {
-	    var config = {
-	      'client_id': '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com',
-	      'scope': 'https://www.google.com/m8/feeds'
-	    };
-	    gapi.auth.authorize(config, function() {
-	      fetch(gapi.auth.getToken());
-
-	    });
-	  }
-
-	  function fetch(token) {
-	    $.ajax({
-		    url: "https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",
-		    dataType: "jsonp",
-		    success:function(data) {
-                              // display all your data in console
-		            console.log(JSON.stringify(data));
-                console.log(data);
-
-                for(var i=0;i<data.feed.entry.length;i++){
-                  var z=data.feed.entry[i].link[0].href;
-                document.write(data.feed.entry[i].gd$email[0].address+'<br>');
-
-
-              }
-
-
-		    }
-		});
-	}
+  //   function auth() {
+	//     var config = {
+	//       'client_id': '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com',
+	//       'scope': 'https://www.google.com/m8/feeds'
+	//     };
+	//     gapi.auth.authorize(config, function() {
+	//       fetch(gapi.auth.getToken());
+  //
+	//     });
+	//   }
+  //
+	//   function fetch(token) {
+	//     $.ajax({
+	// 	    url: "https://www.google.com/m8/feeds/contacts/default/full?access_token=" + token.access_token + "&alt=json",
+	// 	    dataType: "jsonp",
+	// 	    success:function(data) {
+  //                             // display all your data in console
+	// 	            console.log(JSON.stringify(data));
+  //               console.log(data);
+  //
+  //               for(var i=0;i<data.feed.entry.length;i++){
+  //                 var z=data.feed.entry[i].link[0].href;
+  //               document.write(data.feed.entry[i].gd$email[0].address+'<br>');
+  //
+  //
+  //             }
+  //
+  //
+	// 	    }
+	// 	});
+	// }
 
 
 
