@@ -36,13 +36,13 @@
                 function(result){
 
                   //process the response here
-                  // console.log(JSON.stringify(result));
+                // console.log(JSON.stringify(result));
 
                   console.log(result);
                   document.write(result.feed.entry.length);
                   document.write(result.feed.entry[200].gd$email[0].address+'<br>');
-                  resultttt = JSON.parse(result);
-                  document.write(resultttt);
+                  resultttt = JSON.stringify(result);
+                  document.write(resultttt.length);
       // for($i in result.feed.entry.length){
       //      console.log(results.feed.entry[$i].gd$email[0].address);
       // }
