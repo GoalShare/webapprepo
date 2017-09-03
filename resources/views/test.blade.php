@@ -40,13 +40,8 @@
 
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
-                  console.log(result.feed.entry[42].gd$email);
-                    var x='';
-                   x=result.feed.entry[42].gd$email;
+                  console.log(result.feed.entry[42].gd$email[0]);
 
-                    if(x=='undefined'){
-                        console.log("sdmoskmvkosm");
-                    }
                   //!= 'undefined'
                   //document.write(i+result.feed.entry[42].gd$email+'<br>');//}
                   // for(var i=0;i<50;i++){
