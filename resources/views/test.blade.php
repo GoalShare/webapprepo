@@ -40,10 +40,10 @@
 
                   console.log(result);
                   document.write(result.feed.entry.length);
-                  var x=0;
-                  while(x<result.feed.entry.length){
-                  document.write(result.feed.entry[x].gd$email[0].address+'<br>');
-                  x++;
+
+
+                  document.write(result.feed.entry[42].gd$email[0].address+'<br>');
+
 }
       // for($i in result.feed.entry.length){
       //      console.log(results.feed.entry[$i].gd$email[0].address);
