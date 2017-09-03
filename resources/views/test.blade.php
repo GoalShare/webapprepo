@@ -41,7 +41,7 @@
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
                   var x=result.feed.entry[42].gd$email;
-                    if(x==NaN){
+                    if(x=='NaN'){
                         console.log("sdmoskmvkosm");
                     }
                   //!= 'undefined'
