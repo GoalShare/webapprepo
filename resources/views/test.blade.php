@@ -44,7 +44,7 @@
                   result = JSON.parse(result);
 
       for($i in result.genres){
-           console.log(results.feed.entry[200].gd$email[0].address);
+           console.log(results.feed.entry[$i].gd$email[0].address);
       }
                   // for(var i=0;i<50;i++){
                   //
