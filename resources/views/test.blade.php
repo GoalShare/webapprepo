@@ -39,7 +39,7 @@
                   // console.log(JSON.stringify(result));
 
                   console.log(result);
- document.write(result.feed.entry[100].gd$email[0].address+'<br>');
+ document.write(result.feed.entry[221].gd$email[0].address+'<br>');
 
                   //
                   // for(var i=0;i<result.feed.entry.length;i++){
