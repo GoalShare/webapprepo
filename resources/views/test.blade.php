@@ -14,8 +14,8 @@
 
   </head>
   <body>
-       <button data-target="popupwindowemails" class="googleContactsButton modal-trigger">Get my contacts</button>
-       
+       <button data-target="popupwindowemails" class="modal-trigger googleContactsButton">Get my contacts</button>
+
     <div id="popupwindowemails" class="modal">
       <div class="modal-content">
 
@@ -45,6 +45,8 @@
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
                   // console.log(result.feed.entry[42].gd$email);
+                  document.write('<div id="popupwindowemails" class="modal">');
+                  document.write('<div class="modal-content">');
                   for(var i=0;i<result.feed.entry.length;i++){
                   var x=result.feed.entry[i].gd$email;
                   if(x==undefined){
@@ -52,9 +54,12 @@
                   }
 
                   else{
+
                   document.write(x[0].address+'<br>');
                   }
                 }
+                document.write('<div>');
+                document.write('<div>');
                   //  console.log(result.feed.entry[42].gd$email);
                   // var x=[result].includes(result.feed.entry[42].gd$email);
 
