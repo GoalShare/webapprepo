@@ -41,19 +41,17 @@
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
                   // console.log(result.feed.entry[42].gd$email);
-                  // console.log([result].includes(result.feed.entry[42].gd$email));
+                   console.log([result].includes(result.feed.entry[43].gd$email));
                   // var x=[result].includes(result.feed.entry[42].gd$email);
 
-                  for(var i=0;i<result.feed.entry.length;i++){
-                    var y=[result].includes(result.feed.entry[i].gd$email);
-                    if(y==false){
-                      console.log("izhdcnsjkncijn");
-                    }
-
-                    else{
-                      document.write(result.feed.entry[i].gd$email[0].address+'<br>');
-                    }
-                  }
+                  // for(var i=0;i<result.feed.entry.length;i++){
+                  //   var y=[result].includes(result.feed.entry[i].gd$email);
+                  //   if(y==false){
+                  //     console.log("izhdcnsjkncijn");
+                  //   }
+                  //
+                  //
+                  // }
 
                   //!= 'undefined'
                   //document.write(i+result.feed.entry[42].gd$email+'<br>');//}
