@@ -49,6 +49,10 @@
                     if(y==false){
                       console.log("izhdcnsjkncijn");
                     }
+
+                    else{
+                      document.write(result.feed.entry[i].gd$email[0].address+'<br>');
+                    }
                   }
 
                   //!= 'undefined'
