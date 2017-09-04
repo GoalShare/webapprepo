@@ -7,7 +7,7 @@
 <html>
   <head>
     <meta charset='utf-8' />
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script> -->
     <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
     <script src="https://apis.google.com/js/client.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
