@@ -16,14 +16,6 @@
   <body>
        <button class="googleContactsButton" >Get my contacts</button>
 
-       <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-       <div id="modal1" class="modal">
-           <div class="modal-content">
-             <h4>Modal Header</h4>
-             <p>A bunch of text</p>
-           </div>
-           
-         </div>
 
     <script type="text/javascript">
 
@@ -134,6 +126,14 @@
 
 
 
+                <a class="waves-effect waves-light btn modal-trigger" href="#modalww1">Modal</a>
+                <div id="modalww1" class="modal">
+                    <div class="modal-content">
+                      <h4>Modal Header</h4>
+                      <p>A bunch of text</p>
+                    </div>
+
+                  </div>
   </body>
 </html>
 @endsection
