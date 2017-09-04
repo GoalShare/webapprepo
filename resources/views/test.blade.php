@@ -14,9 +14,11 @@
 
   </head>
   <body>
+    <div id="modal-trigger" class="modal">
+      <div class="modal-content">
 
     <script type="text/javascript">
-    var myObj, i, j, x = "";
+
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
           var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
           var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
@@ -111,9 +113,14 @@
 
 
         </script>
+
+
+        </div>
+      </div>
          <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
 
-         <button class="googleContactsButton">Get my contacts</button>
+         <button data-target="popupwindowemails" class="googleContactsButton modal-trigger">Get my contacts</button>
+
 
 
   </body>
