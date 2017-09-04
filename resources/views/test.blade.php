@@ -41,7 +41,8 @@
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
                   // console.log(result.feed.entry[42].gd$email);
-                   console.log([result].includes(result.feed.entry[43].gd$email[0].address));
+                  for(var x=0;x<122;x++){
+                   console.log([result.feed.entry[x].gd$email[0].address].includes(result.feed.entry[43].gd$email[0].address));}
                   // var x=[result].includes(result.feed.entry[42].gd$email);
 
                   // for(var i=0;i<result.feed.entry.length;i++){
