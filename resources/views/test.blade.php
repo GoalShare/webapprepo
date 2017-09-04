@@ -43,7 +43,8 @@
                   console.log(result.feed.entry[42].gd$email);
                   console.log([result].includes(result.feed.entry[42].gd$email));
                   var x=[result].includes(result.feed.entry[42].gd$email);
-                  if(x=="false"){
+                  console.log(x);
+                  if(x=='false'){
                     console.log("izhdcnsjkncijn");
                   }
                   //!= 'undefined'
