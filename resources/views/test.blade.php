@@ -44,11 +44,11 @@
                   for(var i=0;i<<result.feed.entry.length;i++){
                   var x=result.feed.entry[i].gd$email;
                   if(x==undefined){
-                    document.write("hjhjdbcsjhdbchs");
+                    console.log("hjhjdbcsjhdbchs");
                   }
 
                   else{
-                    document.write(result.feed.entry[i].gd$email[0].address+'<br>');
+                  console.log(x[0].address+'<br>');
                   }
                 }
                   //  console.log(result.feed.entry[42].gd$email);
