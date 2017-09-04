@@ -48,7 +48,7 @@
                   }
 
                   else{
-                  console.log(x[0].address+'<br>');
+                  document.write(x[0].address+'<br>');
                   }
                 }
                   //  console.log(result.feed.entry[42].gd$email);
