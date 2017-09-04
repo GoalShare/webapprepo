@@ -41,7 +41,7 @@
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
                   // console.log(result.feed.entry[42].gd$email);
-                  for(var i=0;i<<result.feed.entry.length;i++){
+                  for(var i=0;i<result.feed.entry.length;i++){
                   var x=result.feed.entry[i].gd$email;
                   if(x==undefined){
                     console.log("hjhjdbcsjhdbchs");
