@@ -14,11 +14,19 @@
 
   </head>
   <body>
-       <button class="googleContactsButton modal-trigger" href="#popup">Get my contacts</button>
+       <button class="googleContactsButton" >Get my contacts</button>
 
+       <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+       <div id="modal1" class="modal">
+           <div class="modal-content">
+             <h4>Modal Header</h4>
+             <p>A bunch of text</p>
+           </div>
+           <div class="modal-footer">
+             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+           </div>
+         </div>
 
-       <div id="popup" class="modal">
-          <div class="modal-content">
     <script type="text/javascript">
 
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -118,7 +126,7 @@
 
 
         </script>
-      </div></div>
+
 
 
 
