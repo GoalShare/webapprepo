@@ -40,7 +40,8 @@
 
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
-                  console.log(result.feed.entry[42].gd$email[0]);
+                  console.log(result.feed.entry[42].gd$email);
+                  console.log([result].includes(result.feed.entry[42].gd$email));   
 
                   //!= 'undefined'
                   //document.write(i+result.feed.entry[42].gd$email+'<br>');//}
