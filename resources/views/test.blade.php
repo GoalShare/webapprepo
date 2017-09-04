@@ -18,7 +18,7 @@
 
 
     <script type="text/javascript">
-          var myWindow = window.open("", "MsgWindow", "width=500,height=500");
+        
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
           var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
           var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
@@ -27,10 +27,10 @@
             gapi.client.setApiKey(apiKey);
             window.setTimeout(authorize);
           });
-myWindow.document.write(
+
           function authorize() {
             gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
-          });
+          }
 
           function handleAuthorization(authorizationResult) {
             if (authorizationResult && !authorizationResult.error) {
