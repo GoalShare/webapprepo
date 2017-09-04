@@ -44,7 +44,7 @@
                   console.log([result].includes(result.feed.entry[42].gd$email));
                   var x=[result].includes(result.feed.entry[42].gd$email);
                   console.log(x);
-                  if(x=='false'){
+                  if(x==false){
                     console.log("izhdcnsjkncijn");
                   }
                   //!= 'undefined'
