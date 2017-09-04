@@ -7,7 +7,7 @@
 <html>
   <head>
     <meta charset='utf-8' />
-    <!-- <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
     <script src="https://apis.google.com/js/client.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -36,11 +36,13 @@
             if (authorizationResult && !authorizationResult.error) {
               $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                 function(result){
-
+                  console.log(result);
+                  var myWindow = window.open("", "MsgWindow", "width=200,height=100");
+                  myWindow.document.write(
                   //process the response here
                   // console.log(JSON.stringify(result));
 
-                  console.log(result);
+
                   //for(var i=0;i<result.feed.entry.length;i++){
                   // console.log(result.feed.entry[42].gd$email);
 
@@ -54,7 +56,7 @@
 
                   document.write(x[0].address+'<br>');
                   }
-                }
+                });
 
                   //  console.log(result.feed.entry[42].gd$email);
                   // var x=[result].includes(result.feed.entry[42].gd$email);
@@ -122,23 +124,6 @@
 
          <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
 
-
-
-
-
-         <!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal bottom-sheet">
-<div class="modal-content">
-<h4>Modal Header</h4>
-<p>A bunch of text</p>
-</div>
-<div class="modal-footer">
-<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-</div>
-</div>
   </body>
 </html>
 @endsection
