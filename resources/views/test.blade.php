@@ -14,7 +14,9 @@
 
   </head>
   <body>
-    <div id="modal-trigger" class="modal">
+       <button data-target="popupwindowemails" class="googleContactsButton modal-trigger">Get my contacts</button>
+       
+    <div id="popupwindowemails" class="modal">
       <div class="modal-content">
 
     <script type="text/javascript">
@@ -119,7 +121,7 @@
       </div>
          <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
 
-         <button data-target="popupwindowemails" class="googleContactsButton modal-trigger">Get my contacts</button>
+
 
 
 
