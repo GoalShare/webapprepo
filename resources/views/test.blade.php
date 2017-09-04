@@ -14,11 +14,11 @@
 
   </head>
   <body>
-       <button data-target="popupwindowemails" class="modal-trigger googleContactsButton">Get my contacts</button>
+       <button class="googleContactsButton modal-trigger" href="#popup">Get my contacts</button>
 
-    <div id="popupwindowemails" class="modal">
-      <div class="modal-content">
 
+       <div id="popup" class="modal">
+          <div class="modal-content">
     <script type="text/javascript">
 
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -45,8 +45,7 @@
                   console.log(result);
                   //for(var i=0;i<result.feed.entry.length;i++){
                   // console.log(result.feed.entry[42].gd$email);
-                  document.write('<div id="popupwindowemails" class="modal">');
-                  document.write('<div class="modal-content">');
+
                   for(var i=0;i<result.feed.entry.length;i++){
                   var x=result.feed.entry[i].gd$email;
                   if(x==undefined){
@@ -58,8 +57,7 @@
                   document.write(x[0].address+'<br>');
                   }
                 }
-                document.write('<div>');
-                document.write('<div>');
+
                   //  console.log(result.feed.entry[42].gd$email);
                   // var x=[result].includes(result.feed.entry[42].gd$email);
 
@@ -120,10 +118,10 @@
 
 
         </script>
+      </div></div>
 
 
-        </div>
-      </div>
+
          <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
 
 
