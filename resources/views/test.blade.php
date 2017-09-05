@@ -14,8 +14,8 @@
 
   </head>
   <body>
-       <button class="googleContactsButton">Get my contacts</button>
-<p id="demo"></p>
+       <button class="googleContactsButton" id="myBtn">Get my contacts</button>
+
 
     <script type="text/javascript">
 
@@ -61,8 +61,7 @@ document.getElementById("demo").innerHTML = text;
         </script>
 
 
-  <!-- Trigger/Open The Modal -->
-  <button id="myBtn">Open Modal</button>
+
 
   <!-- The Modal -->
   <div id="myModal" class="modal">
@@ -70,7 +69,7 @@ document.getElementById("demo").innerHTML = text;
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
+      <p id="demo"></p>
     </div>
 
   </div>
