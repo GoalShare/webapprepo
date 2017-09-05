@@ -41,9 +41,9 @@
 </style>
   </head>
   <body>
-       <button class="googleContactsButton">Get my contacts</button>
+       <button class="googleContactsButton" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Get my contacts</button>
 
-
+<div id="light" class="white_content">This is the lightbox content.
     <script type="text/javascript">
 
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -85,10 +85,10 @@
 
 
         </script>
-
+</div>
         <p>This is the main content. To display a lightbox click <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">here</a>
       </p>
-      <div id="light" class="white_content">This is the lightbox content. <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+      <div id="light" class="white_content">This is the lightbox content.
       </div>
       <div id="fade" class="black_overlay"></div>
   </body>
