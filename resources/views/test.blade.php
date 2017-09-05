@@ -70,7 +70,7 @@
     <div class="modal-content">
       <span class="close right" style="cursor:pointer;">&times;</span>
       <p id="demo"></p>
-      <input type="checkbox" id="myCheck">
+  <a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
     </div>
 
   </div>
