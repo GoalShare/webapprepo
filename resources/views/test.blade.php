@@ -52,7 +52,7 @@
                   }
                 }
 
-document.getElementById("demo").innerHTML = text;
+document.getElementById("demo").innerHTML ='<input type="checkbox">'+text;
                 });
             }
           }
