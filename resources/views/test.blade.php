@@ -92,7 +92,7 @@
                   }
 
                   else{
-                    document.getElementById("pid").innerHTML=x[0].address;
+                    document.getElementById("xid").innerHTML=x[0].address;
                   // document.write(x[0].address+'<br>');
                   }
                 }
