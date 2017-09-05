@@ -157,7 +157,7 @@
 
 
         </script>
-  
+
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -165,7 +165,9 @@
           <!-- Modal content -->
           <div class="modal-content">
             <span class="close">&times;</span>
-            <p id="pdis"></p>
+            <script>
+            document.write('<p id="pdis"></p>');
+            </script>
           </div>
 
         </div>
