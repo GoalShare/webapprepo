@@ -47,7 +47,7 @@
 
                   else{
 
-                    text +='<input type="checkbox">'+x[0].address+'<br/>';
+                    text +=x[0].address+'<br/>';
 
                   }
                 }
@@ -68,7 +68,7 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close right">&times;</span>
       <p id="demo"></p>
     </div>
 
