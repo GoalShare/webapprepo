@@ -70,7 +70,7 @@
     <div class="modal-content">
       <span class="close right" style="cursor:pointer;">&times;</span>
       <p id="demo"></p>
-  <button class="btn btn-floating red btn-large "></button>
+  <button class="btn btn-floating btn-large right">Send Request</button>
     </div>
 
   </div>
