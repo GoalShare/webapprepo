@@ -13,15 +13,35 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
+
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   </head>
   <body>
-       <button class="googleContactsButton">Get my contacts</button>
+       <button class="googleContactsButton" id="opener">Get my contacts</button>
+       <script>
+ $( function() {
+   $( "#dialog" ).dialog({
+     autoOpen: false,
+     show: {
+       effect: "blind",
+       duration: 1000
+     },
+     hide: {
+       effect: "explode",
+       duration: 1000
+     }
+   });
+
+   $( "#opener" ).on( "click", function() {
+     $( "#dialog" ).dialog( "open" );
+   });
+ } );
+ </script>
 
 
+  <div id="dialog" title="Basic dialog">
     <script type="text/javascript">
 
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -62,32 +82,11 @@
           }
 
 
-        </script>
-        <script>
-  $( function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
+        </script>  </div>
 
-    $( "#opener" ).on( "click", function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-  } );
-  </script>
 
-  <div id="dialog" title="Basic dialog">
-    <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-  </div>
 
-  <button id="opener">Open Dialog</button>
+
   </body>
 </html>
 @endsection
