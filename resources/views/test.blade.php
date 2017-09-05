@@ -68,8 +68,9 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close right" style="cursor:pointer;">&times;</span><input type="checkbox" name="" value="">
+      <span class="close right" style="cursor:pointer;">&times;</span>
       <p id="demo"></p>
+      <input type="checkbox" id="myCheck">
     </div>
 
   </div>
