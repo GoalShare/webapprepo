@@ -41,7 +41,7 @@
 </style>
   </head>
   <body>
-       <button class="googleContactsButton" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Get my contacts</button>
+       <button class="googleContactsButton">Get my contacts</button>
 
 
     <script type="text/javascript">
@@ -64,7 +64,7 @@
               $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                 function(result){
                   console.log(result);
-
+                  document.getElementById('light').style.display='block';
                   document.write('<div id="light" class="white_content">');
                   for(var i=0;i<result.feed.entry.length;i++){
                   var x=result.feed.entry[i].gd$email;
@@ -89,7 +89,7 @@ document.write('</div>');
         </script>
 
 
-    
+
   </body>
 </html>
 @endsection
