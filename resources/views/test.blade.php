@@ -70,7 +70,7 @@
     <div class="modal-content">
       <span class="close right" style="cursor:pointer;">&times;</span>
       <p id="demo"></p>
-  <a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
+  <button class="btn btn-floating red btn-large "></button>
     </div>
 
   </div>
