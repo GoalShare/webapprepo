@@ -64,8 +64,8 @@
               $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                 function(result){
                   console.log(result);
-                  document.getElementById('light').style.display='inline';
-                  document.write('<div id="light" class="white_content">');
+
+                  var arr=[];
                   for(var i=0;i<result.feed.entry.length;i++){
                   var x=result.feed.entry[i].gd$email;
 
@@ -75,11 +75,14 @@
 
                   else{
 
-                   document.write(x[0].address+'<br>');
+                  //  document.write(x[0].address+'<br>');
+                   arr[i]=x[0].address;
                   }
                 }
-document.write('</div>');
 
+                for(var y=0;y<arr[].length;y++){
+                   document.write(arr[y]+'<br>');
+                }
 
                 });
             }
