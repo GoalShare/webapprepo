@@ -43,7 +43,7 @@
   <body>
        <button class="googleContactsButton" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">Get my contacts</button>
 
-<div id="light" class="white_content">This is the lightbox content.
+
     <script type="text/javascript">
 
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -65,8 +65,10 @@
                 function(result){
                   console.log(result);
 
+                  document.write('<div id="light" class="white_content">');
                   for(var i=0;i<result.feed.entry.length;i++){
                   var x=result.feed.entry[i].gd$email;
+
                   if(x==undefined){
                     console.log("hjhjdbcsjhdbchs");
                   }
@@ -76,7 +78,7 @@
                    document.write(x[0].address+'<br>');
                   }
                 }
-
+document.write('</div>');
 
 
                 });
@@ -85,7 +87,7 @@
 
 
         </script>
-</div>
+
         <p>This is the main content. To display a lightbox click <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">here</a>
       </p>
       <div id="light" class="white_content">This is the lightbox content.
