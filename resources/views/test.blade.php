@@ -53,7 +53,7 @@
 </style>
   </head>
   <body>
-       <button class="googleContactsButton" >Get my contacts</button>
+       <button class="googleContactsButton" id="myBtn">Get my contacts</button>
 
 
     <script type="text/javascript">
@@ -157,10 +157,7 @@
 
 
         </script>
-        <h2>Modal Example</h2>
-
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
+  
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
