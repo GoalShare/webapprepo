@@ -51,11 +51,17 @@
     cursor: pointer;
 }
 </style>
+
   </head>
   <body>
-       <button class="googleContactsButton" >Get my contacts</button>
+       <button class="googleContactsButton" id="myBtn">Get my contacts</button>
 
+       <!-- The Modal -->
+       <div id="myModal" class="modal">
 
+         <!-- Modal content -->
+         <div class="modal-content">
+           <span class="close">&times;</span>
     <script type="text/javascript">
 
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -157,18 +163,9 @@
 
 
         </script>
-        <h2>Modal Example</h2>
 
-        <!-- Trigger/Open The Modal -->
-        <button id="myBtn">Open Modal</button>
 
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
 
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
           </div>
 
         </div>
