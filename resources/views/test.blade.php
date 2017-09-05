@@ -68,7 +68,7 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close right" style="cursor:pointer;>&times;</span>
+      <span class="close right" style="cursor:pointer;">&times;</span>
       <p id="demo"></p>
     </div>
 
