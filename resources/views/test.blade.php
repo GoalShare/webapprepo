@@ -47,12 +47,12 @@
 
                   else{
 
-                    text +=x[0].address+'<br/>';
+                    text +=('<input type="checkbox" name="" value="">'+x[0].address+'<br/>');
 
                   }
                 }
 
-                document.getElementById("demo").innerHTML =text;
+                document.getElementById("demo").innerHTML=text;
                 });
             }
           }
