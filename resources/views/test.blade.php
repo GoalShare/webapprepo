@@ -18,7 +18,7 @@
 
 
     <script type="text/javascript">
-        
+
           var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
           var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
           var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
@@ -120,7 +120,19 @@
         </script>
 
 
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
 
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+          </div>
+
+        </div>
 
          <!-- <button onclick="auth();">GET CONTACTS FEED</button> -->
 
