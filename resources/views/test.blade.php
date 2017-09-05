@@ -92,7 +92,7 @@
                   }
 
                   else{
-                    document.getElementById("pdis").innerHTML=x[0].address;
+                    document.getElementById("pid").innerHTML=x[0].address;
                   // document.write(x[0].address+'<br>');
                   }
                 }
@@ -166,7 +166,8 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <script>
-            document.write('<p id="pdis"></p>');
+            for(var xid=0;xid<result.feed.entry.length;xid++){
+            document.write('<p id="xid"></p>');}
             </script>
           </div>
 
