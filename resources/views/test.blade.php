@@ -47,7 +47,7 @@
 
                   else{
 
-                    text +=x[0].address;
+                    text +=x[0].address+'<br/>';
 
                   }
                 }
