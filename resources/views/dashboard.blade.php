@@ -486,7 +486,7 @@
                   <p id="demo11"></p>
                 </div>
                 <div class="row">
-                   <div class="fixed-action-btn"
+                   <div class="fixed-action-btn">
                   <button class="btn btn left">Reset</button>
                   <button class="btn btn right">Send Invite</button>
                 </div>
