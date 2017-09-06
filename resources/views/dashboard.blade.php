@@ -505,7 +505,7 @@
                 </div>
                   <form>
 
-                  <div class="right" style="bottom:100px; position:fixed;">
+                  <div class="right" style="bottom:100px; right:50px; position:fixed;">
                     <button class="btn">Reset</button>
                     &nbsp&nbsp
                     <button class="btn">Send Invite</button>
