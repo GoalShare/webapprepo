@@ -462,7 +462,7 @@
 
                         else{
 
-                          text =text+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
+                          text =text+'<p><input type="checkbox" id="test5" /><label for="test5">Red</label></p>'+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
 
                         }
                       }
@@ -503,10 +503,7 @@
                   <form>
 
                   <div class="row">
-                    <p>
-      <input type="checkbox" id="test5" />
-      <label for="test5">Red</label>
-    </p>
+
                     <p id="demo11"></p>
                   </div>
                 <div class="row">
