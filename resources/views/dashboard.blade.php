@@ -501,12 +501,16 @@
                 <div class="modal-content">
                   <span class="close11 right" style="cursor:pointer;">&times;</span>
                   <form>
-                    <input type="checkbox">
+
                   <div class="row">
                     <p id="demo11"></p>
                   </div>
                 <div class="row">
                   <div class="fixed">
+                    <p>
+      <input type="checkbox" id="test5" />
+      <label for="test5">Red</label>
+    </p>
                     <button class="btn btn left">Reset</button>
                     <button class="btn btn right">Send Invite</button>
                   </div>
