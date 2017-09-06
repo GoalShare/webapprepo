@@ -646,10 +646,10 @@
        </tbody>
       </table>
       <!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+<a class="waves-effect waves-light btn modal-trigger" href="#modaltest1">Modal</a>
 
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<div id="modaltest1" class="modal">
 <div class="modal-content">
 <h4>Modal Header</h4>
 <p>A bunch of text</p>
