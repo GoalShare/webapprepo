@@ -505,12 +505,12 @@
                   <form>
 
                   <div class="row"><p id="demo11"></p></div>
-                  <div id="modal1" class="modal modal-fixed-footer">
-                    <div class="modal-footer">
+
+                    <div class="modal-fixed-footer">
                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
                       </div>
 
-                  </div>
+                
               </form>
 
                 </div>
