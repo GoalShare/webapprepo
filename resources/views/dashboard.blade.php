@@ -468,7 +468,7 @@
                           checkbox.id = "id";
 
 
-                          text =text+container.appendChild(checkbox)+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
+                          text.appendChild(checkbox) =text.appendChild(checkbox)+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
 
                         }
                       }
