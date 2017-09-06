@@ -507,7 +507,7 @@
                   <div class="row"><p id="demo11"></p></div>
 
 
-                  <div class="row">
+                  <div class="row right">
 
                       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " style="position:fixed;">Agree</a>
 
