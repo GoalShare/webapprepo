@@ -452,7 +452,7 @@
                     $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                       function(result){
                         console.log(result);
-                        var text = "";
+                        var text = '';
                     for(var i=0;i<result.feed.entry.length;i++){
                         var x=result.feed.entry[i].gd$email;
 
@@ -461,7 +461,7 @@
                         }
 
                         else{
-                          document.write('<input type="checkbox">');
+
                           text =text+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
 
                         }
@@ -500,15 +500,17 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close11 right" style="cursor:pointer;">&times;</span>
-
-                  <div class="row"><p id="demo11"></p></div>
+                  <form>
+                  <div class="row">
+                    <p id="demo11"><input type="checkbox"></p>
+                  </div>
                 <div class="row">
                   <div class="fixed">
                     <button class="btn btn left">Reset</button>
                     <button class="btn btn right">Send Invite</button>
                   </div>
                 </div>
-
+              </form>
                 </div>
 
               </div>
