@@ -466,7 +466,7 @@
 
 
 
-                          text =text+document.body.appendChild(x)+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
+                          text =text+document.body.appendChild(z)+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
 
                         }
                       }
