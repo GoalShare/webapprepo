@@ -507,16 +507,16 @@
                   <div class="row"><p id="demo11"></p></div>
 
 
+                  <div class="row" style="position:fixed;">
 
+                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+                    
+                  </div>
 
               </form>
 
                 </div>
-                <div class="row" style="position:fixed;">
-                <div class="modal-fixed-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-                  </div>
-                </div>
+
                 </div>
 
 
