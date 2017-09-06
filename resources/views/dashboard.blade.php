@@ -507,12 +507,12 @@
 
 
 
-                  <div class="row"><p id="demo11"></p></div>
-                  <div class="right" style="position:fixed;">
+                  <div class="row"><p id="demo11"></p><div class="right" style="position:fixed;">
                     <button class="btn">Reset</button>
                     &nbsp&nbsp
                     <button class="btn">Send Invite</button>
-                  </div>
+                  </div></div>
+
               </form>
 
                 </div>
