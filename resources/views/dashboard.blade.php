@@ -462,7 +462,7 @@
 
                         else{
 
-                          text =text+'<input type="checkbox"/><label></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'</hr>'+'<br/>';
+                          text =text+'<input type="checkbox" id='i'/><label for='i'></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'</hr>'+'<br/>';
 
                         }
                       }
