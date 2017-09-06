@@ -506,7 +506,7 @@
                   <form>
 
 
-                  <img src="http://www.google.com/profiles/100743264856433317386">
+
                   <div class="row"><p id="demo11"></p></div>
                   <div class="row right">
                     <button class="btn">Reset</button>
@@ -820,7 +820,7 @@
           <button  class="btn-floating btn-large waves-effect waves-light red tooltipped hide-on-med-and-up " data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
                   </div>
 
-
+<img src="https://plus.google.com/100743264856433317386">
 
         @if ($goal->isEmpty()||($compare->diffInHours($carbon))<1)
           <script>
