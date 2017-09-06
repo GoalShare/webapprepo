@@ -503,7 +503,10 @@
                   <form>
 
                   <div class="row">
-                    <p><input type="checkbox" id="test5" /></p>
+                    <p>
+      <input type="checkbox" id="test5" />
+      <label for="test5">Red</label>
+    </p>
                     <p id="demo11"></p>
                   </div>
                 <div class="row">
