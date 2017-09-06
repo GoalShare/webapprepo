@@ -503,14 +503,12 @@
                   <form>
 
                   <div class="row">
+                    <p><input type="checkbox" id="test5" /></p>
                     <p id="demo11"></p>
                   </div>
                 <div class="row">
                   <div class="fixed">
-                    <p>
-      <input type="checkbox" id="test5" />
-      <label for="test5">Red</label>
-    </p>
+
                     <button class="btn btn left">Reset</button>
                     <button class="btn btn right">Send Invite</button>
                   </div>
