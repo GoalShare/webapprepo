@@ -461,7 +461,7 @@
                         }
 
                         else{
-                          var z=document.write('<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico">');
+                          var z=document.write('<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">');
                           text =text+z+x[0].address+'<br/>';
 
                         }
