@@ -461,14 +461,12 @@
                         }
 
                         else{
-                          var checkbox = document.createElement('input');
-                          checkbox.type = "checkbox";
-                          checkbox.name = "name";
-                          checkbox.value = "value";
-                          checkbox.id = "id";
+                          var z = document.createElement("INPUT");
+                          z.setAttribute("type", "checkbox");
 
 
-                          text =text+checkbox+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
+
+                          text =text+document.body.appendChild(x)+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
 
                         }
                       }
