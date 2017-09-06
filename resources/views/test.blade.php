@@ -147,12 +147,13 @@
   $(document).ready(function(){
       // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
-    });
-    function test(){
-      console.log("badjnbajdc");
-         $('#modal1').modal('open');
+      function test(){
+        console.log("badjnbajdc");
+           $('#modal1').modal('open');
 
-       }
+         }
+    });
+
 
   </script>
   <!-- Modal Structure -->
