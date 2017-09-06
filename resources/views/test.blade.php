@@ -149,7 +149,10 @@
       $('.modal').modal();
     });
     function test(){
-         $('#modal1').modal('open');}
+      console.log("badjnbajdc");
+         $('#modal1').modal('open');
+
+       }
 
   </script>
   <!-- Modal Structure -->
