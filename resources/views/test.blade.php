@@ -142,10 +142,10 @@
   }
   </script>
   <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+  <a class="waves-effect waves-light btn modal-trigger" href="#modaltest">Modal</a>
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+  <div id="modaltest" class="modal">
     <div class="modal-content">
       <h4>Modal Header</h4>
       <p>A bunch of text</p>
