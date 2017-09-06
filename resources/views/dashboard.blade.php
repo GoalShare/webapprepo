@@ -461,8 +461,8 @@
                         }
 
                         else{
-
-                          text =text+'<input type="checkbox" id="test5" />'+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
+                          document.getElementById("demo11").innerHTML='<input type="checkbox">';
+                          text =text+'<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">'+x[0].address+'<br/>';
 
                         }
                       }
