@@ -499,21 +499,16 @@
 
                 <!-- Modal content -->
                 <div class="modal-content">
-                  <div class="row" style="position:fixed;">>
+                  <div class="row" style="position:fixed;">
                   <span class="close11 right" style="cursor:pointer;">&times;</span>
                 </div>
                   <form>
 
-                  <div class="row">
-
-                    <p id="demo11"></p>
-                  </div>
+                  <div class="row"><p id="demo11"></p></div>
                 <div class="row" style="position:fixed;">
-                  <div class="fixed">
-
                     <button class="btn btn left">Reset</button>
                     <button class="btn btn right">Send Invite</button>
-                  </div>
+                
                 </div>
               </form>
                 </div>
