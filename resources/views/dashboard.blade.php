@@ -505,16 +505,16 @@
                   <form>
 
                   <div class="row"><p id="demo11"></p></div>
-
+                  <div class="modal-footer modal-fixed-footer">
+                    <button class="btn btn left">Reset</button>
+                    <button class="btn btn right">Send Invite</button>
+                    </div>
               </form>
 
                 </div>
-                <div class="row" style="position:fixed;">
-                    <button class="btn btn left">Reset</button>
-                    <button class="btn btn right">Send Invite</button>
 
                 </div>
-              </div>
+
 
               <script>
               // Get the modal
