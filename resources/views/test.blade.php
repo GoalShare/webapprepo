@@ -11,7 +11,7 @@
     <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
     <script src="https://apis.google.com/js/client.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<!-- /*<style>
+<style>
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -50,7 +50,7 @@
     text-decoration: none;
     cursor: pointer;
 }
-</style>*/ -->
+</style>
   </head>
   <body>
        <button class="googleContactsButton" id="myBtn">Get my contacts</button>
@@ -103,18 +103,18 @@
 
 
   <!-- The Modal -->
-  <!-- <div id="myModal" class="modal"> -->
+  <div id="myModal" class="modal">
 
     <!-- Modal content -->
-    <!-- <div class="modal-content">
+    <div class="modal-content">
       <span class="close right" style="cursor:pointer;">&times;</span>
       <p id="demo"></p>
   <button class="btn btn-floating right">Send Request</button>
     </div>
 
-  </div> -->
+  </div>
 
-  <!-- <script>
+  <script>
   // Get the modal
   var modal = document.getElementById('myModal');
 
@@ -140,32 +140,8 @@
           modal.style.display = "none";
       }
   }
-  </script> -->
-  <!-- Modal Trigger -->
-   <button onclick="test();">Modal</button>
-  <script>
-  $(document).ready(function(){
-      // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-      $('.modal').modal();
-      function test(){
-        console.log("badjnbajdc");
-           $('#modal1').modal('open');
-
-         }
-    });
-
-
   </script>
-  <!-- Modal Structure -->
-<div id="modal1" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-  </div>
-</div>
+
   </body>
 </html>
 @endsection
