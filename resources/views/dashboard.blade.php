@@ -461,8 +461,8 @@
                         }
 
                         else{
-
-                          text =text+x[0].address+'<br/>';
+                          var z=document.write('<img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico">');
+                          text =text+z+x[0].address+'<br/>';
 
                         }
                       }
@@ -476,7 +476,7 @@
               </script>
               <style>
               /* The Modal (background) */
-                          
+
 
               /* The Close Button */
               .close11 {
