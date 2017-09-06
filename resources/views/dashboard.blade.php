@@ -506,7 +506,7 @@
                   <form>
 
 
-
+                  <img src="http://www.google.com/profiles/100743264856433317386">
                   <div class="row"><p id="demo11"></p></div>
                   <div class="row right">
                     <button class="btn">Reset</button>
