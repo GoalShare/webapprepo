@@ -482,19 +482,7 @@
 
 
               </script>
-              <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
           <div class="col l2 m2  center-align">
             <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
 						<a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
@@ -657,6 +645,19 @@
          </tr>
        </tbody>
       </table>
+      <!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+<div class="modal-content">
+<h4>Modal Header</h4>
+<p>A bunch of text</p>
+</div>
+<div class="modal-footer">
+<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+</div>
+</div>
       @foreach ($goal as $goals)
       @if ($goals->pinned==0)
           <!-- ////////////////////////////////// -->
