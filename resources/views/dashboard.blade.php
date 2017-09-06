@@ -481,14 +481,14 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close11 right" style="cursor:pointer;">&times;</span>
-                  <div class="row">
+
                     <div class="row">
                   <p id="demo11"></p>
                 </div>
                 <div class="row">
-                  <button class="btn btn-floating right" style="position:fixed;">Send Request</button>
+                  <button class="btn btn right" style="position:fixed;">Send Request</button>
                 </div>
-                  </div>
+
                 </div>
 
               </div>
