@@ -427,7 +427,7 @@
 					</div>
           <div class="col l2 m2  center-align">
             <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-						<a href="#" class="btn btn-floating blue lighten-1 btn-large googleContactsButton"><i class="material-icons">people</i></a>
+						<a href="#" class="btn btn-floating blue lighten-1 btn-large googleContactsButton" id="myBtn"><i class="material-icons">people</i></a>
 					</div>
           <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
           <script src="https://apis.google.com/js/client.js"></script>
