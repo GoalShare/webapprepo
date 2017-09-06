@@ -467,7 +467,7 @@
                         }
                       }
 
-                      document.getElementById("demo").innerHTML=text;
+                      document.getElementById("demo11").innerHTML=text;
                       });
                   }
                 }
@@ -480,7 +480,7 @@
 
                 <!-- Modal content -->
                 <div class="modal-content">
-                  <span class="close right" style="cursor:pointer;">&times;</span>
+                  <span class="close11 right" style="cursor:pointer;">&times;</span>
                   <p id="demo11"></p>
               <button class="btn btn-floating right">Send Request</button>
                 </div>
@@ -495,7 +495,7 @@
               var btn11 = document.getElementById("myBtn11");
 
               // Get the <span> element that closes the modal
-              var span11 = document.getElementsByClassName("close")[0];
+              var span11 = document.getElementsByClassName("close11")[0];
 
               // When the user clicks the button, open the modal
               btn11.onclick = function() {
