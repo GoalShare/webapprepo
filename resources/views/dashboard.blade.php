@@ -499,8 +499,8 @@
 
                 <!-- Modal content -->
                 <div class="modal-content">
-                  <div class="row" style="position:fixed;" >
-                  <span class="close11 right" style="cursor:pointer;">&times;</span>
+                  <div class="row right">
+                  <span class="close11" style="cursor:pointer;position:fixed;">&times;</span>
                 </div>
                   <form>
 
@@ -512,7 +512,7 @@
               </form>
 
                 </div>
-                <div class="modal-fixed-footer">
+                <div class="modal-fixed-footer" style="position:fixed;">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
                   </div>
                 </div>
