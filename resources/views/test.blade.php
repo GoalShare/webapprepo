@@ -11,7 +11,7 @@
     <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
     <script src="https://apis.google.com/js/client.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<style>
+<!-- /*<style>
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -50,7 +50,7 @@
     text-decoration: none;
     cursor: pointer;
 }
-</style>
+</style>*/ -->
   </head>
   <body>
        <button class="googleContactsButton" id="myBtn">Get my contacts</button>
@@ -103,18 +103,18 @@
 
 
   <!-- The Modal -->
-  <div id="myModal" class="modal">
+  <!-- <div id="myModal" class="modal"> -->
 
     <!-- Modal content -->
-    <div class="modal-content">
+    <!-- <div class="modal-content">
       <span class="close right" style="cursor:pointer;">&times;</span>
       <p id="demo"></p>
   <button class="btn btn-floating right">Send Request</button>
     </div>
 
-  </div>
+  </div> -->
 
-  <script>
+  <!-- <script>
   // Get the modal
   var modal = document.getElementById('myModal');
 
@@ -140,7 +140,7 @@
           modal.style.display = "none";
       }
   }
-  </script>
+  </script> -->
   <!-- Modal Trigger -->
   <a class="waves-effect waves-light btn modal-trigger" href="#modaltest">Modal</a>
 
