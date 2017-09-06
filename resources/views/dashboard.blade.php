@@ -486,7 +486,7 @@
                   <p id="demo11"></p>
                 </div>
                 <div class="row">
-                  <button class="btn btn right" style="position:fixed;">Send Request</button>
+                  <button class="btn btn right">Send Request</button>
                 </div>
 
                 </div>
