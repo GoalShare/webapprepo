@@ -495,7 +495,7 @@
               </style>
 
               <!-- The Modal -->
-              <div id="myModal11" class="modal"style="z-index:4000;">
+              <div id="myModal11" class="modal"style="z-index:4000;width:70%;">
 
                 <!-- Modal content -->
                 <div class="modal-content">
