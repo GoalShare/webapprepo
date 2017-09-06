@@ -501,17 +501,13 @@
                 <div class="modal-content">
                   <div class="row right">
                   <span class="close11" style="cursor:pointer;position:fixed;">&times;</span>
+
                 </div>
                   <form>
-
-                  <div class="row"><p id="demo11"></p></div>
-
-
-                  <div class="row right">
-
-                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " style="position:fixed;margin-top:10px;">Agree</a>
-
+                  <div class="bottom">
+                    <button style="position:fixed;">test</button>
                   </div>
+                  <div class="row"><p id="demo11"></p></div>
 
               </form>
 
