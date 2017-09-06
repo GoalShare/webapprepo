@@ -504,11 +504,12 @@
 
                 </div>
                   <form>
-                  <div class="bottom right" style="bottom:100px; position:fixed;">
+                    <div class="row right">
+                  <div class="bottom" style="bottom:100px; position:fixed;">
                     <button class="btn">Send Invite</button>
                     &nbsp&nbsp
                     <button class="btn">Reset</button>
-                  </div>
+                  </div></div>
                   <div class="row"><p id="demo11"></p></div>
 
               </form>
