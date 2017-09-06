@@ -1,6 +1,55 @@
   @extends('layouts.navbar')
 
 @section('content')
+<!DOCTYPE html>
+
+
+    <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+
+
 
   @php
    $carbon = new Carbon(Auth::User()->created_at);
@@ -432,8 +481,45 @@
             }
           }
         </script>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
 
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close right" style="cursor:pointer;">&times;</span>
+            <p id="demo"></p>
+        <button class="btn btn-floating right">Send Request</button>
+          </div>
 
+        </div>
+
+        <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        </script>
       <!--end of add goal -->
     <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
@@ -446,8 +532,50 @@
 					</div>
           <div class="col l2 m2  center-align">
             <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-						<a href="#" class="btn btn-floating blue lighten-1 btn-large googleContactsButton"><i class="material-icons">people</i></a>
+						<a href="#" id="myBtn" class="btn btn-floating blue lighten-1 btn-large googleContactsButton"><i class="material-icons">people</i></a>
 					</div>
+          <script type="text/javascript">
+
+                var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
+                var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
+                var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+
+                $(document).on("click",".googleContactsButton", function(){
+                  gapi.client.setApiKey(apiKey);
+                  window.setTimeout(authorize);
+                });
+
+                function authorize() {
+                  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
+                }
+
+                function handleAuthorization(authorizationResult) {
+                  if (authorizationResult && !authorizationResult.error) {
+                    $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
+                      function(result){
+                        console.log(result);
+                        var text = "";
+                    for(var i=0;i<result.feed.entry.length;i++){
+                        var x=result.feed.entry[i].gd$email;
+
+                        if(x==undefined){
+                          console.log("hjhjdbcsjhdbchs");
+                        }
+
+                        else{
+
+                          text =text+x[0].address+'<br/>';
+
+                        }
+                      }
+
+                      document.getElementById("demo").innerHTML=text;
+                      });
+                  }
+                }
+
+
+              </script>
           <div class="col l2 m2  center-align">
             <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
 						<a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
