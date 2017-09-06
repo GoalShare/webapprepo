@@ -467,7 +467,7 @@
                         }
                       }
 
-                      document.getElementById("demo11").innerHTML=text+'<input type="checkbox">';
+                      document.getElementById("demo11").innerHTML=text;
                       });
                   }
                 }
@@ -501,8 +501,9 @@
                 <div class="modal-content">
                   <span class="close11 right" style="cursor:pointer;">&times;</span>
                   <form>
+                    <input type="checkbox">
                   <div class="row">
-                    <p id="demo11"><input type="checkbox"></p>
+                    <p id="demo11"></p>
                   </div>
                 <div class="row">
                   <div class="fixed">
