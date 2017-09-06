@@ -455,13 +455,13 @@
                         var text = '';
                     for(var i=0;i<result.feed.entry.length;i++){
                         var x=result.feed.entry[i].gd$email;
-
+                        var y=result.feed.entry[i].title;
                         if(x==undefined){
                           console.log("hjhjdbcsjhdbchs");
                         }
 
                         else{
-
+                          console.log(y.$t);
                           text =text+'<input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">&nbsp&nbsp'+x[0].address+'<hr>'+'<br/>';
 
                         }
