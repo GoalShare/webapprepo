@@ -142,15 +142,26 @@
   }
   </script> -->
   <!-- Modal Trigger -->
-   <button data-target="modal1" class="btn modal-trigger">Modal</button>
+   <button onclick="test();">Modal</button>
   <script>
   $(document).ready(function(){
       // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
       $('.modal').modal();
     });
-         $('#modal1').modal('open');
-         $('#modal1').modal('close');
+    function test(){
+         $('#modal1').modal('open');}
+
   </script>
+  <!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+  </div>
+</div>
   </body>
 </html>
 @endsection
