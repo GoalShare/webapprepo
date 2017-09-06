@@ -482,14 +482,12 @@
                 <div class="modal-content">
                   <span class="close11 right" style="cursor:pointer;">&times;</span>
 
-                    <div class="row">
-                  <p id="demo11"></p>
-                </div>
+                  <div class="row"><p id="demo11"></p></div>
                 <div class="row">
-                  <div class="fixed" style="position: fixed;bottom: 0px;right: 0px;">
-                  <button class="btn btn left">Reset</button>
-                  <button class="btn btn right">Send Invite</button>
-                </div>
+                  <div class="fixed" style="position: fixed;">
+                    <button class="btn btn left">Reset</button>
+                    <button class="btn btn right">Send Invite</button>
+                  </div>
                 </div>
 
                 </div>
