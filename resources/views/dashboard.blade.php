@@ -505,10 +505,12 @@
                   <form>
 
                   <div class="row"><p id="demo11"></p></div>
-                  <div class="modal-footer modal-fixed-footer">
+                  <div id="modal1" class="modal modal-fixed-footer">
+                  <div class="modal-footer">
                     <button class="btn btn left">Reset</button>
                     <button class="btn btn right">Send Invite</button>
                     </div>
+                  </div>
               </form>
 
                 </div>
