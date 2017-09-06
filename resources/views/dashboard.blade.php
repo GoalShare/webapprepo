@@ -427,7 +427,7 @@
 					</div>
           <div class="col l2 m2  center-align">
             <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-						<a href="#" class="btn btn-floating blue lighten-1 btn-large googleContactsButton" id="myBtn11"><i class="material-icons">people</i></a>
+						<a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" id="myBtn11"><i class="material-icons">people</i></a>
 					</div>
           <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
           <script src="https://apis.google.com/js/client.js"></script>
@@ -481,8 +481,14 @@
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close11 right" style="cursor:pointer;">&times;</span>
+                  <div class="row">
+                    <div class="row">
                   <p id="demo11"></p>
-              <button class="btn btn-floating right">Send Request</button>
+                </div>
+                <div class="row">
+                  <button class="btn btn-floating right" style="position:fixed;">Send Request</button>
+                </div>
+                  </div>
                 </div>
 
               </div>
