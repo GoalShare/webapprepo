@@ -504,7 +504,7 @@
 
                 </div>
                   <form>
-                    <div class="row right">
+                    <div class="row">
                   <div class="bottom" style="bottom:100px; position:fixed;">
                     <button class="btn">Send Invite</button>
                     &nbsp&nbsp
