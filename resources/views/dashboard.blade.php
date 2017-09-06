@@ -506,10 +506,10 @@
 
                   <div class="row"><p id="demo11"></p></div>
                   <div id="modal1" class="modal modal-fixed-footer">
-                  <div class="modal-footer">
-                    <button class="btn btn left">Reset</button>
-                    <button class="btn btn right">Send Invite</button>
-                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+                      </div>
+
                   </div>
               </form>
 
