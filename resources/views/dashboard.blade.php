@@ -504,8 +504,8 @@
 
                 </div>
                   <form>
-                  <div class="bottom" style="bottom: -4px;">
-                    <button style="position:fixed;">test</button>
+                  <div class="bottom" style="bottom: -50px; position:fixed;">
+                    <button>test</button>
                   </div>
                   <div class="row"><p id="demo11"></p></div>
 
