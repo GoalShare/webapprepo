@@ -1,14 +1,6 @@
   @extends('layouts.navbar')
 
 @section('content')
-<!DOCTYPE html>
-
-
-    <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
-    <script src="https://apis.google.com/js/client.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-
 
 
 
@@ -250,9 +242,6 @@
           </li>
           <script type="text/javascript">
 
-
-
-
           function dateValid() {
             var taskstartdate=document.getElementById("goalstartdate");
 
@@ -440,6 +429,9 @@
             <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
 						<a href="#" class="btn btn-floating blue lighten-1 btn-large googleContactsButton"><i class="material-icons">people</i></a>
 					</div>
+          <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
+          <script src="https://apis.google.com/js/client.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script type="text/javascript">
 
                 var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -482,46 +474,7 @@
 
 
               </script>
-              <style>
-              /* The Modal (background) */
-              .modal {
-                  display: none; /* Hidden by default */
-                  position: fixed; /* Stay in place */
-                  z-index: 1; /* Sit on top */
-                  padding-top: 100px; /* Location of the box */
-                  left: 0;
-                  top: 0;
-                  width: 100%; /* Full width */
-                  height: 100%; /* Full height */
-                  overflow: auto; /* Enable scroll if needed */
-                  background-color: rgb(0,0,0); /* Fallback color */
-                  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-              }
 
-              /* Modal Content */
-              .modal-content {
-                  background-color: #fefefe;
-                  margin: auto;
-                  padding: 20px;
-                  border: 1px solid #888;
-                  width: 80%;
-              }
-
-              /* The Close Button */
-              .close {
-                  color: #aaaaaa;
-                  float: right;
-                  font-size: 28px;
-                  font-weight: bold;
-              }
-
-              .close:hover,
-              .close:focus {
-                  color: #000;
-                  text-decoration: none;
-                  cursor: pointer;
-              }
-              </style>
               <!-- The Modal -->
               <div id="myModal" class="modal">
 
