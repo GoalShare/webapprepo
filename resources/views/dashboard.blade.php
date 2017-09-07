@@ -504,6 +504,8 @@
 
                 </div>
                   <form>
+                    
+                    <input type="checkbox" onclick="checkAll(this)">
                     <div id="demo11" class="row"></div>
                       <div class="row right">
                     <button class="btn" type="reset">Reset</button>
