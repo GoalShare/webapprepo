@@ -481,7 +481,7 @@
                         console.log("idhsadcbshjdncs");
                         var inputs =document.getElementsByTagName("input");
                           for (var i = 0; i < inputs.length; i++) {
-                              console.log(inputs[i].id);
+                              console.log(inputs[i].id.value);
                               }
                       }
                       });
