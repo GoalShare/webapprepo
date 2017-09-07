@@ -468,7 +468,7 @@
                       }
 
                       document.getElementById("demo11").innerHTML=text;
-                      console.log(document.getElementById("id"+i+).id);
+                      // console.log(document.getElementById("id"+i+).id);
                       //
                       //
 
