@@ -504,9 +504,7 @@
 
                 </div>
                   <form>
-                    <div id="demo11"class="row">
-
-                    </div>
+                    <div id="demo11" class="row"></div>
                       <div class="row right">
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
