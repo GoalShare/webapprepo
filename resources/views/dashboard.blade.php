@@ -478,7 +478,7 @@
                       });
                       function Check(){
                         console.log("idhsadcbshjdncs");
-                        var inputs = document.getElementsByTagName("input").checked;
+                        var inputs = document.getElementsByTagName("id").value.checked;
                           for (var i = 0; i < inputs.length; i++) {
                               console.log(inputs[i].id);
                               }
