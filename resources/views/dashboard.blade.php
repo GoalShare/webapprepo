@@ -468,10 +468,12 @@
                       }
 
                       document.getElementById("demo11").innerHTML=text;
-                      var inputs = document.getElementsByTagName("input");
+                      function Check(){
+                      var inputs = document.getElementsByTagName("input").checked;
                         for (var i = 0; i < inputs.length; i++) {
                             console.log(inputs[i].id);
                             }
+                          }
                       });
                   }
                 }
