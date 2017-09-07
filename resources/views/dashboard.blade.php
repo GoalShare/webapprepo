@@ -463,7 +463,7 @@
                         else{
 
                           text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><input type="checkbox" value="'+x+'" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
-
+                            console.log(document.getElementsByTagName("input")[0].value);
 
                         }
                       }
@@ -523,9 +523,7 @@
 
                     <div id="demo11" class="row"></div>
                       <div class="row right">
-                        <script>
-                          console.log(document.getElementById(i).value);
-                        </script>
+
 
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
