@@ -468,7 +468,7 @@
                       }
 
                       document.getElementById("demo11").innerHTML=text;
-                      console.log(document.getElementsByTagName("input").id.value);
+                      console.log(document.getElementsByAttribute("id"));
                       //
                       //
 
