@@ -19,6 +19,7 @@ class calendarController extends Controller
       $email=DB::table('users')->where('id',$id)->value('email');
       $goal = DB::table('goals')->where('email',$email)->get();
       $task = DB::table('tasks')->where('email', $email)->get();
+      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
       $categorylist = DB::table('goals')
       ->select('goalcategory')
       ->where('email', $email)
@@ -39,7 +40,7 @@ class calendarController extends Controller
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      return view('calanderview',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
+      return view('calanderview',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
       else {
         return view('/');
       }

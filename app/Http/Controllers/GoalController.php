@@ -29,6 +29,7 @@ public function view($goalid){
                    ->select('users.*', 'friendships.*')
                    ->where([['friendships.status','friends'],['friendships.friend',$id]])
                    ->get();
+   $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
    $friendstwos=DB::table('friendships')
                   ->join('users', 'users.id', '=', 'friendships.friend')
                   ->select('users.*', 'friendships.*')
@@ -54,7 +55,7 @@ public function view($goalid){
 
     $comment = DB::table('comments')->join('users','users.id','=','comments.userid')->select ('users.*','comments.*')->where('comments.goalid',$goalid)->orderBy('Commenteddate', 'desc')->get();
 
-    return view('goal',['goal'=>$goal,'task'=>$task,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
+    return view('goal',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
     'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment]);
 }
   else {

@@ -294,13 +294,14 @@
               // use "input" (every key), not "change" (must lose focus)
               search.addEventListener("input", getSuggestions);
             });
+                
             </script>
           </li>
           <li><a class="dropdown-button" data-hover="false" data-activates="friendrequestdropdown" data-beloworigin="true" ><i class=" large material-icons ">people</i></a></li>
           <ul id="friendrequestdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
             <li>
               @if ($friendrequest->isEmpty())
-                <a class="center"><b>Show more</b><i class="material-icons">add</i></a>
+                <a class="center"><b>you don't have any friend requests</b></a>
               @else
               @foreach ($friendrequest as $friendrequests)
               <a  class="truncate">
@@ -314,16 +315,17 @@
             @endforeach
             @endif
             </li>
-            <li style="background-color:#dbdbdb;"><a><b>Show more</b><i class="material-icons">add</i></a></li>
+<!--            <li style="background-color:#dbdbdb;"><a><b>Show more</b><i class="material-icons">add</i></a></li>-->
           </ul>
           <li><span class="new badge red">4</span><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
-          <ul id="noticationdropdown" class='dropdown-content' style="min-width:250px;">
-            <li><a href="#!">one</a></li>
-            <li><a href="#!">two</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">three</a></li>
-            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+          <ul id="noticationdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
+              <li>
+            @foreach ($notification as $notifications)         
+              <a>
+                <b><span onclick="window.location.href='{{url('/search/'.$notifications->user_id)}}'">{{$notifications->user_fname}} {{$notifications->user_lname}}</span></b> {{$notifications->authorization}} the goal <b><span onclick="window.location.href='{{ url('/goal/'.$notifications->goalid) }}'">{{ $notifications->goalname }}</span></b> to you.
+              </a>
+            @endforeach
+              </li>
           </ul>
           <li class="hide-on-small-only" style="margin-top:-10px;"><a class="dropdown-button" data-beloworigin="true" data-alignment="center" data-hover="false" data-activates="profiledropdown"><img class="circle front z-depth-1" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}"width="40px" height="40px" ></a></li>
           <ul id="profiledropdown" class='dropdown-content' style="min-width:150px;">

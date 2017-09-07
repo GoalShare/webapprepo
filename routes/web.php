@@ -63,7 +63,8 @@ Route::get('/search',function(){
           ->select('users.*', 'friendships.*')
           ->where([['friendships.status','requested'],['friendships.friend',$id]])
           ->get();
-  return view('friendsView',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);}
+  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+  return view('friendsView',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'notification'=>$notification]);}
   else {
     return view('welcome');
   }
@@ -82,6 +83,7 @@ Route::get('/search/{userid}',function($userid){
   $userskill=DB::table('userskills')->where('email',$useremail)->get();
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
   $friendship=DB::table('friendships')->where([['user',$id],['friend',$userid]])->orWhere([['user',$userid],['friend',$id]])->value('status');
+  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
   $friendrequest=DB::table('friendships')
           ->join('users', 'users.id', '=', 'friendships.user')
           ->select('users.*', 'friendships.*')
@@ -98,7 +100,7 @@ Route::get('/search/{userid}',function($userid){
                         ->where([['friendships.status','friends'],['friendships.user',$userid]])
                         ->get();
                          $id=Auth::id();
-  return view('friendsProfileView',['user'=>$user,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
+  return view('friendsProfileView',['user'=>$user,'notification'=>$notification,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
 });
 Route::post('skill','SkillController@skill')->name('skill');
 Route::post('deleteportfolio','ProfileController@deleteportfolio')->name('deleteportfolio');
@@ -143,7 +145,8 @@ Route::get('/aboutus', function () {
           ->select('users.*', 'friendships.*')
           ->where([['friendships.status','requested'],['friendships.friend',$id]])
           ->get();
-    return view('aboutus',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest]);
+  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+    return view('aboutus',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'notification'=>$notification]);
 });
 Route::get('/policies', function () {
 

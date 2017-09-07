@@ -16,6 +16,7 @@ class filesController extends Controller
       $id = Auth::id();
       $email=Auth::User()->email;
       $files=DB::table('files')->where([['userid',$id],['delete_status',0]])->orderBy('created_date', 'desc')->get();
+      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
       $categorylist = DB::table('goals')
       ->select('goalcategory')
       ->where('email', $email)
@@ -38,7 +39,7 @@ class filesController extends Controller
               ->get();
 
 
-      return view('files',['files'=>$files,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
+      return view('files',['files'=>$files,'categorylist'=>$categorylist,'notification'=>$notification,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
       else {
         return view('/');
 

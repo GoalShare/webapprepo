@@ -35,6 +35,17 @@ class ShareController extends Controller
                   'color'=> '0'.rand(0,99),
                 ]
             );
+            DB::table('goal_registry')->insert(
+                    [
+                      'user_id'=> Auth::id(),
+                      'receiver_email'=>$request->email,
+                      'authorization'=>'shared',
+                      'user_fname'=>Auth::User()->fname,
+                      'user_lname'=>Auth::User()->lname,
+                      'goalname'=>$goals->goalname,
+                      'goalid'=>$goals->goalid,
+                    ]
+                );
                 DB::table('privacys')->insert(
                         [
                           'goalid'=> $request->goalid,
