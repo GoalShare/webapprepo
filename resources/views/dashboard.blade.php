@@ -463,25 +463,17 @@
                         else{
 
                           text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"> <input type="checkbox" id="id'+i+'"/><label for="id'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
-                          var chk = document.getElementById("id'+i+'").value;
-                          console.log(chk);
+
                         }
                       }
 
                       document.getElementById("demo11").innerHTML=text;
+
                       });
                   }
                 }
 
-                function Check() {
-                    var chk = document.getElementById("'+i+'").value;
-                    console.log(chk);
-                    // if (chk.checked) {
-                    //     console.log("CheckBox checked.");
-                    // } else {
-                    //     console.log("CheckBox not checked.");
-                    // }
-                }
+                
               </script>
               <style>
               /* The Modal (background) */
@@ -515,6 +507,12 @@
                   <form>
                     <div id="demo11" class="row"></div>
                       <div class="row right">
+                        <script>
+                        var inputs = document.getElementsByTagName("input");
+                          for (var i = 0; i < inputs.length; i++) {
+                              alert(inputs[i].id);
+                              }
+                        </script>
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
                     <button class="btn" onclick="Check()">Send Invite</button>
