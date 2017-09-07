@@ -462,7 +462,7 @@
 
                         else{
                           console.log(y.$t);
-                          text =text+'<input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">&nbsp&nbsp'+x[0].address+'<p style="font-size:10px;">'+y.$t+'<p>'+'<hr>'+'<br/>';
+                          text =text+'<div class="col l6"><div class="card" style="width:100%; maxheight:80%;"><div class="row"><div class="col l4"> <input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
 
                         }
                       }
@@ -495,7 +495,7 @@
               </style>
 
               <!-- The Modal -->
-              <div id="myModal11" class="modal"style="z-index:4000;width:40%;">
+              <div id="myModal11" class="modal"style="z-index:4000;width:50%;">
 
                 <!-- Modal content -->
                 <div class="modal-content">
@@ -504,14 +504,11 @@
 
                 </div>
                   <form>
-
-
-
-                  <div class="row"><p id="demo11"></p></div>
-                  <div class="row right">
-                    <button class="btn">Reset</button>
+                    <div id="demo11" class="row"></div>
+                      <div class="row right">
+                    <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
-                    <button class="btn">Send Invite</button>
+                    <button class="btn" type="submit">Send Invite</button>
                   </div>
               </form>
 
