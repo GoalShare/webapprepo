@@ -509,7 +509,7 @@
 
                   <div class="row"><p id="demo11"></p></div>
                   <div class="row right">
-                    <button class="btn">Reset</button>
+                    <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
                     <button class="btn">Send Invite</button>
                   </div>
@@ -710,7 +710,7 @@
          </tr>
        </tbody>
       </table>
-<img src="https://plus.google.com/100743264856433317386" width="50px" height="50px">
+
       @foreach ($goal as $goals)
       @if ($goals->pinned==0)
           <!-- ////////////////////////////////// -->
