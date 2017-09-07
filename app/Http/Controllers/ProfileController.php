@@ -19,6 +19,7 @@ class ProfileController extends Controller
    $goal = DB::table('goals')->where('email',$email)->get();
    $userskill=DB::table('userskills')->where('email',$email)->get();
    $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
+   $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
    $friendrequest=DB::table('friendships')
            ->join('users', 'users.id', '=', 'friendships.user')
            ->select('users.*', 'friendships.*')
@@ -36,7 +37,7 @@ class ProfileController extends Controller
                   ->where([['friendships.status','friends'],['friendships.user',$id]])
                   ->get();
    $portfolio=DB::table('portfolio')->where('userid',$id)->get();
-   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
+   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
  }
 
  public function post(request $request){

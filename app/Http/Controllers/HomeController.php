@@ -34,6 +34,7 @@ class HomeController extends Controller
       if(Auth::check()){
       $id = Auth::id();
       $email=DB::table('users')->where('id',$id)->value('email');
+      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
       $goal = DB::table('goals')->where('email',$email)->get();
       $task = DB::table('tasks')->where('email', $email)->get();
       $categorylist = DB::table('goals')
@@ -56,7 +57,7 @@ class HomeController extends Controller
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
+      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'notification'=>$notification]);}
       else {
         return view('/');
       }
