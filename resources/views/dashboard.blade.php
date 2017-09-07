@@ -505,26 +505,7 @@
                 </div>
                   <form>
 
-                    <input type="checkbox" onchange="checkAll(this)" name="chk[]" />
-                    <script>
-                    function checkAll(ele) {
-   var checkboxes = document.getElementsByTagName('input');
-   if (ele.checked) {
-       for (var i = 0; i < checkboxes.length; i++) {
-           if (checkboxes[i].type == 'checkbox') {
-               checkboxes[i].checked = true;
-           }
-       }
-   } else {
-       for (var i = 0; i < checkboxes.length; i++) {
-           console.log(i)
-           if (checkboxes[i].type == 'checkbox') {
-               checkboxes[i].checked = false;
-           }
-       }
-   }
-}
-                    </script>
+                    
                     <div id="demo11" class="row"></div>
                       <div class="row right">
                     <button class="btn" type="reset">Reset</button>
