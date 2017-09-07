@@ -468,7 +468,10 @@
                       }
 
                       document.getElementById("demo11").innerHTML=text;
-
+                      var inputs = document.getElementsByTagName("input");
+                        for (var i = 0; i < inputs.length; i++) {
+                            console.log(inputs[i].id);
+                            }
                       });
                   }
                 }
@@ -507,12 +510,9 @@
                   <form>
                     <div id="demo11" class="row"></div>
                       <div class="row right">
-                        <script>
-                        var inputs = document.getElementsByTagName("input");
-                          for (var i = 0; i < inputs.length; i++) {
-                              console.log(inputs[i].id);
-                              }
-                        </script>
+
+
+
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
                     <button class="btn" onclick="Check()">Send Invite</button>
