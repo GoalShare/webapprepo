@@ -462,7 +462,7 @@
 
                         else{
                           console.log(y.$t);
-                          text =text+'<div class="row"><div class="col l3"><input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">&nbsp&nbsp</div><div class="col l9">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div>'+'<hr>'+'<br/>';
+                          text =text+'<div class="col l6"><div class="col l3"><input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="50px" width="50px">&nbsp&nbsp</div><div class="col l3">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div>'+'<hr>'+'<br/>';
 
                         }
                       }
@@ -504,14 +504,13 @@
 
                 </div>
                   <form>
+                    <div id="demo11"class="row">
 
-
-
-                  <div class="row"><p id="demo11"></p></div>
-                  <div class="row right">
+                    </div>
+                      <div class="row right">
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
-                    <button class="btn">Send Invite</button>
+                    <button class="btn" type="submit">Send Invite</button>
                   </div>
               </form>
 
