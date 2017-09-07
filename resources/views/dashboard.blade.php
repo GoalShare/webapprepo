@@ -469,10 +469,7 @@
 
                       document.getElementById("demo11").innerHTML=text;
                       //
-                      // var inputs = document.getElementsByTagName("input").checked;
-                      //   for (var i = 0; i < inputs.length; i++) {
-                      //       console.log(inputs[i].id);
-                      //       }
+                      //
 
                       var invitebtn=document.getElementById('sendinv');
                        invitebtn.addEventListener("click",function(event){
@@ -481,6 +478,10 @@
                       });
                       function Check(){
                         console.log("idhsadcbshjdncs");
+                        var inputs = document.getElementsByTagName("input").checked;
+                          for (var i = 0; i < inputs.length; i++) {
+                              console.log(inputs[i].id);
+                              }
                       }
                       });
                   }
@@ -525,7 +526,7 @@
 
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
-                    <button class="btn"  id="sendinv">Send Invite</button>
+                    <button class="btn" id="sendinv">Send Invite</button>
                     <script>
 
                     </script>
