@@ -462,7 +462,7 @@
 
                         else{
                           console.log(y.$t);
-                          text =text+'<div class="col l6"><div class="card" width="50%" height="50%"><div class="row"><div class="col l4"> <input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="30px" width="30px"></div><div class="col l8">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
+                          text =text+'<div class="col l6"><div class="card" style="width:50%; height:50%;"><div class="row"><div class="col l4"> <input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="30px" width="30px"></div><div class="col l8">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
 
                         }
                       }
