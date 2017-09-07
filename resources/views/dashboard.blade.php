@@ -473,7 +473,7 @@
                   }
                 }
 
-                
+
               </script>
               <style>
               /* The Modal (background) */
@@ -510,7 +510,7 @@
                         <script>
                         var inputs = document.getElementsByTagName("input");
                           for (var i = 0; i < inputs.length; i++) {
-                              alert(inputs[i].id);
+                              console.log(inputs[i].id);
                               }
                         </script>
                     <button class="btn" type="reset">Reset</button>
