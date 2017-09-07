@@ -524,7 +524,7 @@
                     <div id="demo11" class="row"></div>
                       <div class="row right">
                         <script>
-                          console.log(document.getElementById(i).id);
+                          console.log(document.getElementById(i).value);
                         </script>
 
                     <button class="btn" type="reset">Reset</button>
