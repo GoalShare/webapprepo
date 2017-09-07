@@ -457,11 +457,11 @@
                         var x=result.feed.entry[i].gd$email;
                         var y=result.feed.entry[i].title;
                         if(x==undefined){
-                          console.log("hjhjdbcsjhdbchs");
+                          console.log("yy");
                         }
 
                         else{
-                          console.log(y.$t);
+
                           text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"> <input type="checkbox" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
 
                         }
@@ -472,7 +472,14 @@
                   }
                 }
 
-
+                function Check() {
+                    var chk = document.getElementById("'+i+'");
+                    if (chk.checked) {
+                        console.log("CheckBox checked.");
+                    } else {
+                        console.log("CheckBox not checked.");
+                    }
+                }
               </script>
               <style>
               /* The Modal (background) */
@@ -508,19 +515,12 @@
                       <div class="row right">
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
-                    <button class="btn" onclick="Check();" type="submit">Send Invite</button>
+                    <button class="btn" onclick="Check()">Send Invite</button>
                   </div>
               </form>
-              <script type="text/javascript">
-                      function Check() {
-                          var chk = document.getElementById("'+i+'");
-                          if (chk.checked) {
-                              alert("CheckBox checked.");
-                          } else {
-                              alert("CheckBox not checked.");
-                          }
-                      }
-                  </script>
+
+
+
                 </div>
 
                 </div>
