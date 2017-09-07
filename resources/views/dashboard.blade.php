@@ -473,6 +473,12 @@
                       //   for (var i = 0; i < inputs.length; i++) {
                       //       console.log(inputs[i].id);
                       //       }
+
+                      var invitebtn=document.getElementById('sendinv');
+                       invitebtn.addEventListener("click",function(event){
+                       event.preventDefault();
+                       Check();
+                      });
                       function Check(){
                         console.log("idhsadcbshjdncs");
                       }
@@ -519,7 +525,7 @@
 
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
-                    <button class="btn" onclick="Check()">Send Invite</button>
+                    <button class="btn"  id="sendinv">Send Invite</button>
                     <script>
 
                     </script>
