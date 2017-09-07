@@ -474,11 +474,12 @@
 
                 function Check() {
                     var chk = document.getElementById("'+i+'");
-                    if (chk.checked) {
-                        console.log("CheckBox checked.");
-                    } else {
-                        console.log("CheckBox not checked.");
-                    }
+                    console.log(chk);
+                    // if (chk.checked) {
+                    //     console.log("CheckBox checked.");
+                    // } else {
+                    //     console.log("CheckBox not checked.");
+                    // }
                 }
               </script>
               <style>
