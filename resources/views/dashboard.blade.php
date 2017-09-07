@@ -473,6 +473,9 @@
                       //   for (var i = 0; i < inputs.length; i++) {
                       //       console.log(inputs[i].id);
                       //       }
+                      function Check(){
+                        console.log("idhsadcbshjdncs");
+                      }
                       });
                   }
                 }
@@ -518,12 +521,10 @@
                     &nbsp&nbsp
                     <button class="btn" onclick="Check()">Send Invite</button>
                     <script>
-                    function Check(){
-                      console.log("idhsadcbshjdncs");
-                    }
+
                     </script>
                   </div>
-            
+
 
 
 
