@@ -468,8 +468,7 @@
                       }
 
                       document.getElementById("demo11").innerHTML=text;
-                      function Check(){
-                      console.log("bcjnbdcjnb");}
+
                       // var inputs = document.getElementsByTagName("input").checked;
                       //   for (var i = 0; i < inputs.length; i++) {
                       //       console.log(inputs[i].id);
@@ -519,6 +518,8 @@
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
                     <button class="btn" onclick="Check();">Send Invite</button>
+                    <script>function Check(){
+                    console.log("bcjnbdcjnb");}</script>
                   </div>
               </form>
 
