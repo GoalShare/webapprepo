@@ -467,7 +467,7 @@
                         }
                       }
 
-                      document.getElementById("demo11").innerHTML=text+'<hr>';
+                      document.getElementById("demo11").innerHTML=text;
                       });
                   }
                 }
