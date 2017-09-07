@@ -508,10 +508,19 @@
                       <div class="row right">
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
-                    <button class="btn" type="submit">Send Invite</button>
+                    <button class="btn" onclick="Check();" type="submit">Send Invite</button>
                   </div>
               </form>
-
+              <script type="text/javascript">
+                      function Check() {
+                          var chk = document.getElementById("'+i+'");
+                          if (chk.checked) {
+                              alert("CheckBox checked.");
+                          } else {
+                              alert("CheckBox not checked.");
+                          }
+                      }
+                  </script>
                 </div>
 
                 </div>
