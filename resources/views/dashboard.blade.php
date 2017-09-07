@@ -508,7 +508,7 @@
                   <span class="close11" style="cursor:pointer;position:fixed;">&times;</span>
 
                 </div>
-                  <form>
+
                     <div id="demo11" class="row"></div>
                       <div class="row right">
 
@@ -523,7 +523,7 @@
                     }
                     </script>
                   </div>
-              </form>
+            
 
 
 
