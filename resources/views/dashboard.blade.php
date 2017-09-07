@@ -478,7 +478,7 @@
                       });
                       function Check(){
                         console.log("idhsadcbshjdncs");
-                        var inputs = document.getElementsByTagName("id'+i+'");
+                        var inputs = document.getElementsById("id'+i+'");
                           for (var i = 0; i < inputs.length; i++) {
                               console.log(inputs[i].id);
                               }
