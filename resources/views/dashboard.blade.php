@@ -479,9 +479,9 @@
                       });
                       function Check(){
 
-                        console.log("idhsadcbshjdncs");
+
                         $(document).ready(function() {
-                        $(".checkboxlist").each(function(index){
+                        $(".checkboxlist").find("checkbox").each(function(){
                           // var test="";
                           if($(this).prop("checked") == true){
                               console.log("Checkbox is checked.");
