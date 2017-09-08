@@ -469,27 +469,23 @@
                       }
 
                       document.getElementById("demo11").innerHTML=text;
-                      $(document).ready(function() {
-                      $(".checkboxlist").each(function(index){
-                        var test="";
-                      test=$(this).find("input").attr("value");
-                      console.log(test);
-                              });
-                          });
+
                       //
                       //
 
-                      // var invitebtn=document.getElementById('sendinv');
-                      //  invitebtn.addEventListener("click",function(event)
-                      //  Check();
-                      // });
-                      // function Check(){
-                      //   console.log("idhsadcbshjdncs");
-                      //   var inputs =document.getElementsByTagName("input");
-                      //     for (var i = 0; i < inputs.length; i++) {
-                      //         console.log(inputs[i].value);
-                      //         }
-                      // }
+                      var invitebtn=document.getElementById('sendinv');
+                       invitebtn.addEventListener("click",function(event)
+                       Check();
+                      });
+                      function Check(){
+                        $(document).ready(function() {
+                        $(".checkboxlist").each(function(index){
+                          var test="";
+                        test=$(this).find("input").attr("value");
+                        console.log(test);
+                                });
+                            });
+                      }
                       });
                   }
                 }
