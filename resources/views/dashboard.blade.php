@@ -462,9 +462,11 @@
 
                         else{
 
-                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><input type="checkbox" value="'+x+'" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
-                            console.log(document.getElementsByTagName("input")[0].value);
-
+                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><div class="checkboxlist"><input type="checkbox" value="'+x+'" id="'+i+'"/><label for="'+i+'"></label></div><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
+                            // console.log(document.getElementsByTagName("input")[0].value);
+                            // $(document).ready(function() {
+                            // $(".product-menu li").each(function(index){
+                            // var id=$(this).find("input").attr("id");}}
                         }
                       }
 
