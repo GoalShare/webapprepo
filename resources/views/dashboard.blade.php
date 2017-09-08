@@ -474,10 +474,11 @@
                       //
 
                       var invitebtn=document.getElementById('sendinv');
-                       invitebtn.addEventListener("click",function(event)
-                       Check();
+                       invitebtn.addEventListener("click",function(event){
+                       Check();}
                       });
                       function Check(){
+                        console.log("idhsadcbshjdncs");
                         $(document).ready(function() {
                         $(".checkboxlist").each(function(index){
                           var test="";
