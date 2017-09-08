@@ -478,7 +478,7 @@
                        Check();
                       });
                       function Check(){
-                        if($('checkbox:checked')){
+                        if($('checkbox').prop("checked") == true){
                           console.log("idhsadcbshjdncs");
 
                         //    var test="";
