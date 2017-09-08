@@ -462,7 +462,7 @@
 
                         else{
 
-                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><div class="checkboxlist"><input type="checkbox" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></div><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
+                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><input type="checkbox" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
                             // console.log(document.getElementsByTagName("input")[0].value);
 
                         }
@@ -478,13 +478,13 @@
                        Check();
                       });
                       function Check(){
-                        if($('.checkboxlist:checkbox:checked')){
+                        if($('checkbox:checked')){
                           console.log("idhsadcbshjdncs");
 
-                           var test="";
-                         test=$(".checkboxlist").find("input").attr("value");
-                         console.log(test);
-                                
+                        //    var test="";
+                        //  test=$(".checkboxlist").find("input").attr("value");
+                        //  console.log(test);
+
                         }
 
                         // $(document).ready(function() {
