@@ -481,7 +481,7 @@
 
 
                         $(document).ready(function() {
-                        $(".checkboxlist").find("checkbox").each(function(){
+                        $("checkbox").each(function(){
                           // var test="";
                           if($(this).prop("checked") == true){
                               console.log("Checkbox is checked.");
