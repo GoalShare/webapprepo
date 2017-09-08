@@ -479,15 +479,12 @@
                       });
                       function Check(){
 
-
+                        console.log("idhsadcbshjdncs");
                         $(document).ready(function() {
-                        $("checkbox").each(function(){
-                          // var test="";
-                          if($(this).prop("checked") == true){
-                              console.log("Checkbox is checked.");
-                            }
-                        // test=$(this).find("input").attr("value");
-                        // console.log(test);
+                        $(".checkboxlist").each(function(index){
+                          var test="";
+                        test=$(this).find("input").attr("value");
+                        console.log(test);
                                 });
                             });
                       }
