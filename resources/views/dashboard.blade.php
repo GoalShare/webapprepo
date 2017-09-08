@@ -471,7 +471,7 @@
                       document.getElementById("demo11").innerHTML=text;
                       $(document).ready(function() {
                       $(".checkboxlist").each(function(index){
-                      var id=$(this).find("input").attr("id");
+                      var id=$(this).find("input").attr("value");
                       console.log(id);
                               });
                           });
