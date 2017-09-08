@@ -472,8 +472,8 @@
                       $(document).ready(function() {
                       $(".checkboxlist").each(function(index){
                         var test="";
-                      test=$(this).find("input").attr("value");
-                      console.log(JSON.stringify(test));
+                      test=$(this).find("input")[0].attr("value");
+                      console.log(test);
                               });
                           });
                       //
