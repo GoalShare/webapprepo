@@ -481,9 +481,9 @@
                         $('input[type="checkbox"]').click(function(){
                             if($(this).prop("checked") == true){
                                 alert("Checkbox is checked.");
-                              }}
-                        console.log("idhsadcbshjdncs");
-                        // $(document).ready(function() {
+                              }});
+                        // console.log("idhsadcbshjdncs");
+                        // // $(document).ready(function() {
                         // $(".checkboxlist").each(function(index){
                         //   var test="";
                         // test=$(this).find("input").attr("value");
