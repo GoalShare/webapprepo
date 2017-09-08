@@ -472,7 +472,7 @@
                       $(document).ready(function() {
                       $(".checkboxlist").each(function(index){
                         var test="";
-                      test=$(this).find("input").attr("id");
+                      test=$(this).find("input").attr("value");
                       console.log(test);
                               });
                           });
