@@ -470,7 +470,7 @@
                              Check();
                             });
                             function Check(){
-                              if($('checkbox').prop("checked") == true){
+                              if($('.checkboxlist').prop("checked") == true){
                                 console.log("idhsadcbshjdncs");
 
                                  var test="";
