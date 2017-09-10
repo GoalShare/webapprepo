@@ -468,23 +468,24 @@
 
                              }
 
-                             var invitebtn=document.getElementById('sendinv');
-                              invitebtn.addEventListener("click",function(event){
-                              Check();
-                             });
-                             function Check(){
 
-                                 console.log("idhsadcbshjdncs");
-
-                                  var test="";
-                                test=$(".checkboxlist").find("input").attr("value");
-                                  console.log(test);
-                                }
 
                         }
 
 
                       document.getElementById("demo11").innerHTML=text;
+                      var invitebtn=document.getElementById('sendinv');
+                       invitebtn.addEventListener("click",function(event){
+                       Check();
+                      });
+                      function Check(){
+
+                          console.log("idhsadcbshjdncs");
+
+                           var test="";
+                         test=$(".checkboxlist").find("input").attr("value");
+                           console.log(test);
+                         }
 
                       //
                       //
