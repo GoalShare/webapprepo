@@ -480,11 +480,13 @@
                       });
                       function Check(){
 
-                          console.log("idhsadcbshjdncs");
-
-                           var test="";
-                         test=$(".checkboxlist").find("input").attr("value");
-                           console.log(test);
+                        $(document).ready(function() {
+                        $(".checkboxlist").each(function(index){
+                          var test="";
+                        test=$(this).find("input").attr("value");
+                        console.log(test);
+                                });
+                            });
                          }
 
                       //
