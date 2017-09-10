@@ -469,7 +469,7 @@
                              Check();
                             });
                             function Check(){
-                              if($get(i).checked == true){
+                              if($get(#i).checked == true){
                                 console.log("jdcnjksndcjsdcnjksndcjsdcn");
                               }
                               // $(document).ready(function() {
