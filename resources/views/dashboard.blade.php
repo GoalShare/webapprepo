@@ -534,24 +534,7 @@
                     <div id="demo11" class="row"></div></div>
                       <div class="row right">
 
-                        <script>
-                        var invitebtn=document.getElementById('sendinv');
-                         invitebtn.addEventListener("click",function(event){
-                         Check();
-                        });
-                        function Check(){
-                          $(".wwww").find("checkbox").each(function(){
-                          if($(this).prop("checked") == true){
-                            console.log("idhsadcbshjdncs");
-
-                          //    var test="";
-                          //  test=$(".checkboxlist").find("input").attr("value");
-                          //  console.log(test);
-
-                        }
-                      });
-                    }
-                        </script>
+                      
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
                     <button class="btn" id="sendinv">Send Invite</button>
