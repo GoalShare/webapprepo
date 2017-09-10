@@ -489,6 +489,9 @@
                         // console.log(test);
                         //         });
                         //     });
+                        else{
+                          console.log("nothing selc");
+                        }
                          }
 
                       //
