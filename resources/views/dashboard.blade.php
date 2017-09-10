@@ -485,7 +485,7 @@
                         //  test=$(".checkboxlist").find("input").attr("value");
                         //  console.log(test);
 
-                        }
+
 
                         // $(document).ready(function() {
                         // $(".checkboxlist").each(function(index){
@@ -494,7 +494,8 @@
                         // console.log(test);
                         //         });
                         //     });
-                      }
+                              
+
                       });
                   }
                 }
@@ -534,7 +535,7 @@
                     <div id="demo11" class="row"></div></div>
                       <div class="row right">
 
-                      
+
                     <button class="btn" type="reset">Reset</button>
                     &nbsp&nbsp
                     <button class="btn" id="sendinv">Send Invite</button>
