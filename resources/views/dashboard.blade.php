@@ -479,14 +479,16 @@
                        Check();
                       });
                       function Check(){
-
-                        $(document).ready(function() {
-                        $(".checkboxlist").each(function(index){
-                          var test="";
-                        test=$(this).find("input").attr("value");
-                        console.log(test);
-                                });
-                            });
+                        if($('.checkboxlist:checkbox:checked')){
+                          console.log("jdcnjksndcjsdcnjksndcjsdcn");
+                        }
+                        // $(document).ready(function() {
+                        // $(".checkboxlist").each(function(index){
+                        //   var test="";
+                        // test=$(this).find("input").attr("value");
+                        // console.log(test);
+                        //         });
+                        //     });
                          }
 
                       //
