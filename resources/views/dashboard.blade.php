@@ -470,12 +470,12 @@
                              Check();
                             });
                             function Check(){
-                              if($('.checkboxlist').prop("checked") == true){
+
                                 console.log("idhsadcbshjdncs");
 
                                  var test="";
                                test=$(".checkboxlist").find("input").attr("value");
-                                 console.log(test);}
+                                 console.log(test);
                                }
                              }
 
