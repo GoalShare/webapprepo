@@ -468,31 +468,31 @@
 
                              }
 
-
+                             var invitebtn=document.getElementById('sendinv');
+                              invitebtn.addEventListener("click",function(event){
+                              Check();
+                             });
+                             function Check(){
+                               if($('.checkboxlist:checkbox:checked')){
+                                 console.log("jdcnjksndcjsdcnjksndcjsdcn");
+                               }
+                               // $(document).ready(function() {
+                               // $(".checkboxlist").each(function(index){
+                               //   var test="";
+                               // test=$(this).find("input").attr("value");
+                               // console.log(test);
+                               //         });
+                               //     });
+                               else{
+                                 console.log("nothing selc");
+                               }
+                                }
 
                         }
 
 
                       document.getElementById("demo11").innerHTML=text;
-                      var invitebtn=document.getElementById('sendinv');
-                       invitebtn.addEventListener("click",function(event){
-                       Check();
-                      });
-                      function Check(){
-                        if($('.checkboxlist:checkbox:checked')){
-                          console.log("jdcnjksndcjsdcnjksndcjsdcn");
-                        }
-                        // $(document).ready(function() {
-                        // $(".checkboxlist").each(function(index){
-                        //   var test="";
-                        // test=$(this).find("input").attr("value");
-                        // console.log(test);
-                        //         });
-                        //     });
-                        else{
-                          console.log("nothing selc");
-                        }
-                         }
+
 
                       //
                       //
