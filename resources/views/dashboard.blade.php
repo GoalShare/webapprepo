@@ -485,6 +485,14 @@
                       function Check(){
                               if($('[type="checkbox"]').is(":checked")){
                                  console.log("qwertyuiop");
+                                 $(document).ready(function() {
+                                    $(".checkboxlist").each(function(index){
+                                      var test="";
+                                       test=$(this).find("input").attr("value");
+                                         console.log(test);
+
+                                                 });
+                                       });
                               }
                               else{
                                 console.log("jdcnjsnkmkmkmookmokmok");
