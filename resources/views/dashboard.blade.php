@@ -483,15 +483,15 @@
                        Check();
                       });
                       function Check(){
+                              if($('[type="checkbox"]').is(":checked")){
+                                 console.log("qwertyuiop");
+                              }
+                              else{
+                                console.log("jdcnjsnkmkmkmookmokmok");
+                              }
 
-                        $(".checkboxlist").find("checkbox").each(function(){
-                          if ($(this).prop('checked')==true){
-                              console.log("cijndjcnsdj");
-                          }
-                          else{
-                            console.log("dcjnjicnidjcnzjdcnsijdcnisdcisdn");
-                          }
-                                });
+
+
 
                         //  $(document).ready(function() {
                         //    $(".checkboxlist").each(function(index){
