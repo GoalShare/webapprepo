@@ -462,7 +462,7 @@
 
                         else{
 
-                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" class = "chk" value="'+x[0].address+'" id="'+i+'" checked/><label for="'+i+'"></label></span><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
+                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" class = "chk" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
                             // console.log(document.getElementsByTagName("input")[0].value);
 
 
@@ -484,14 +484,23 @@
                       });
                       function Check(){
 
-                         $(document).ready(function() {
-                           $(".checkboxlist").each(function(index){
-                             var test="";
-                              test=$(this).find("input").attr("value");
-                                console.log(test);
+                        $(".checkboxlist").find("checkbox").each(function(){
+                          if ($(this).prop('checked')==true){
+                              console.log("cijndjcnsdj");
+                          }
+                          else{
+                            console.log("dcjnjicnidjcnzjdcnsijdcnisdcisdn");
+                          }
+                                });
 
-                                        });
-                              });
+                        //  $(document).ready(function() {
+                        //    $(".checkboxlist").each(function(index){
+                        //      var test="";
+                        //       test=$(this).find("input").attr("value");
+                        //         console.log(test);
+                         //
+                        //                 });
+                        //       });
 
                          }
 
