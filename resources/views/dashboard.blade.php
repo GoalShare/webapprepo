@@ -485,12 +485,9 @@
                       function Check(){
                               if($('[type="checkbox"]').is(":checked")){
                                  console.log("qwertyuiop");
+                                console.log($('[type="checkbox"]:checked').value);
 
-                                      var test="";
-                                       test=$(this).find("input").attr("value");
-                                         console.log(test);
 
-                                                 
                               }
                               else{
                                 console.log("jdcnjsnkmkmkmookmokmok");
