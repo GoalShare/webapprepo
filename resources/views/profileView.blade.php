@@ -180,7 +180,7 @@
 
                             console.log(checkArray);
                             $.ajax({
-                              url: 'chkdetails',
+                              url: '{{route('chkdetails')}}',
                               type: "POST",
                               data: {id:checkArray},
                               success: function(response){ // What to do if we succeed
