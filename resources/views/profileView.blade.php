@@ -164,21 +164,26 @@
                      Check();
                     });
                     function Check(){
-                      var imagesArray =new Array();
+                      jsonObj = [];
+                      // var imagesArray =new Array();
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
                                $('input[name="checkboxnames"]:checked').each(function() {
                                   console.log(this.value);
 
-                                  imagesArray.push(this.value);
+                                  // imagesArray.push(this.value);
+                                  item = {}
+                                  var email = this.value;
+                                   item [] = email;
+                                   jsonObj.push(item);
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
+                            console.log(jsonObj);
 
-
-                            console.log(imagesArray);
+                            // console.log(imagesArray);
 
                       //  $(document).ready(function() {
                       //    $(".checkboxlist").each(function(index){
