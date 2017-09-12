@@ -179,7 +179,12 @@
                             }
 
                             console.log(checkArray);
-                            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+                            $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('[name="_token"]').val()
+        }
+});
+
                             var token = "{{ csrf_token() }}";
 
                             $.ajax(
