@@ -348,9 +348,6 @@ public function modifyprofile(request $request)
   echo json_encode($user);
 }
 
-public function viewemails(request $request) {
-    $checkArraydata = $request->input('checkArray');
-    echo $checkArraydata;
-}
+
 
 }

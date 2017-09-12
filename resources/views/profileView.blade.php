@@ -179,7 +179,7 @@
 
                             console.log(checkArray);
 
-                            $.ajax("{{route('profile')}}", {type: 'POST', data: {checkArray:checkArray}});
+                            $.ajax("{{route('chkdetails')}}", {type: 'POST', data: {checkArray:checkArray}});
 
                       //  $(document).ready(function() {
                       //    $(".checkboxlist").each(function(index){

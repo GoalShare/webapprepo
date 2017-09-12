@@ -28,6 +28,7 @@ Route::get('/calendar',function(){
 });
 Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
+
 Route::post('uploadfile','filesController@uploadfile')->name('uploadfile');
 Route::post('updatefilename','filesController@updatefilename')->name('updatefilename');
 Route::post('deletefile','filesController@deletefile')->name('deletefile');
@@ -185,4 +186,4 @@ Route::post('checkemail','CoreController@checkmails')->name('checkemail');
 
 Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactController@importGoogleContact']);
 
-Route::post('chkdetails', 'emailController@viewemails');
+Route::post('chkdetails', 'emailController@viewemails')->name('chkdetails');
