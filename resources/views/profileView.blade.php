@@ -164,10 +164,13 @@
                      Check();
                     });
                     function Check(){
+                      var imagesArray =new Array();
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
                                $('input[name="checkboxnames"]:checked').each(function() {
                                   console.log(this.value);
+
+                                  imagesArray.push(this.value);
                                   });
                             }
                             else{
@@ -175,7 +178,7 @@
                             }
 
 
-
+                            console.log(imagesArray);
 
                       //  $(document).ready(function() {
                       //    $(".checkboxlist").each(function(index){
