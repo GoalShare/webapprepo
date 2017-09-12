@@ -179,19 +179,23 @@
                             }
 
                             console.log(checkArray);
-
-                            $.ajax("{{route('chkdetails')}}",
-                            {
-                              type: 'POST',
-                              data: {checkArray:checkArray}
-                            }
-
-
+                            $.ajaxSetup({
                               headers: {
-                                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        }
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                              },
 
-                                      );
+                              "{{route('chkdetails')}}",
+                                        {
+                                          type: 'POST',
+                                          data: {checkArray:checkArray}
+                                        }
+                                  });
+                            // $.ajax("{{route('chkdetails')}}",
+                            // {
+                            //   type: 'POST',
+                            //   data: {checkArray:checkArray}
+                            // }
+                            //           );
 
 
                       //  $(document).ready(function() {
