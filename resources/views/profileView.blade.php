@@ -180,12 +180,12 @@
 
 
 
-                             
+
 
                             $.ajax({
                               url: '{{route('chkdetails')}}',
                               type: "POST",
-                              data: {id:checkArray,_token: {{csrf_token()}}},
+                              data: {id:checkArray,_token: csrf_token()},
 
                                 });
 
