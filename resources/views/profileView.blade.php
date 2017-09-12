@@ -179,17 +179,12 @@
                             }
 
                             console.log(checkArray);
+                            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                             $.ajax({
                               url: '{{route('chkdetails')}}',
                               type: "POST",
-                              data: {id:checkArray},
-                              success: function(response){ // What to do if we succeed
-                                if(data == "success")
-                                  alert(response);
-                                  },
-                                  error: function(response){
-                                    alert('Error'+response);
-                                  }
+                              data: {id:checkArray,_token: CSRF_TOKEN},
+                              
                                 });
 
 
