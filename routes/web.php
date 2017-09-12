@@ -184,3 +184,8 @@ Route::post('checkemail','CoreController@checkmails')->name('checkemail');
 
 
 Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactController@importGoogleContact']);
+
+Route::post('foo/bar', function (Request $request) {
+    $checkArraydata = $request->input('checkArray');
+    console.log($checkArraydata);
+});

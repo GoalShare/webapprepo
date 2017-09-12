@@ -164,21 +164,22 @@
                      Check();
                     });
                     function Check(){
-                      var imagesArray =new Array();
+                      var checkArray =new Array();
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
                                $('input[name="checkboxnames"]:checked').each(function() {
                                   console.log(this.value);
 
-                                  imagesArray.push(this.value);
+                                  checkArray.push(this.value);
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
 
+                            console.log(checkArray);
 
-                            console.log(imagesArray);
+                            $.ajax("/foo/bar", {type: 'POST', data: {checkArray:checkArray}});
 
                       //  $(document).ready(function() {
                       //    $(".checkboxlist").each(function(index){
