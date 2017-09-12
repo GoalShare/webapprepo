@@ -1,7 +1,7 @@
 @extends('layouts.navbar')
 
 @section('content')
-
+<head><meta name="csrf-token" content="{{ csrf_token() }}"></head>
 {{-- @include('layouts.friendsView') --}}
 <div id="addgoal" class="modal modal-fixed-footer">
 <div class="modal-content" style="text-align:center;">
@@ -113,7 +113,7 @@
         <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
         <script src="https://apis.google.com/js/client.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <script type="text/javascript">
 
               var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -186,11 +186,11 @@
                               data: {checkArray:checkArray}
                             }
 
-                            $.ajaxSetup({
+
                               headers: {
-                                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content');
                                         }
-                                      });
+
                                       );
 
 
