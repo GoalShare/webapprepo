@@ -187,5 +187,5 @@ Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactCont
 
 Route::post('foo/bar', function (Request $request) {
     $checkArraydata = $request->input('checkArray');
-    console.log($checkArraydata);
+    echo $checkArraydata;
 });
