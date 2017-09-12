@@ -108,8 +108,191 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <a href="#" class="btn btn-floating blue lighten-1 btn-large "><i class="material-icons">people</i></a>
+          <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" id="myBtn11"><i class="material-icons">people</i></a>
         </div>
+        <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
+        <script src="https://apis.google.com/js/client.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript">
+
+              var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
+              var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
+              var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+
+              $(document).on("click",".googleContactsButton", function(){
+                gapi.client.setApiKey(apiKey);
+                window.setTimeout(authorize);
+              });
+
+              function authorize() {
+                gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
+              }
+
+              function handleAuthorization(authorizationResult) {
+                if (authorizationResult && !authorizationResult.error) {
+                  $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
+                    function(result){
+                      console.log(result);
+                      var text = '';
+                  for(var i=0;i<result.feed.entry.length;i++){
+                      var x=result.feed.entry[i].gd$email;
+                      var y=result.feed.entry[i].title;
+                      if(x==undefined){
+                        console.log("yy");
+                      }
+
+                      else{
+
+                        text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
+                          // console.log(document.getElementsByTagName("input")[0].value);
+
+
+                           }
+
+
+
+                      }
+
+
+                    document.getElementById("demo11").innerHTML=text;
+
+
+                    //
+                    //
+                    var invitebtn=document.getElementById('sendinv');
+                     invitebtn.addEventListener("click",function(event){
+                     Check();
+                    });
+                    function Check(){
+                            if($('[type="checkbox"]').is(":checked")){
+                               console.log("qwertyuiop");
+                               $('input[name="checkboxnames"]:checked').each(function() {
+                                  console.log(this.value);
+                                  });
+                            }
+                            else{
+                              console.log("jdcnjsnkmkmkmookmokmok");
+                            }
+
+
+
+
+                      //  $(document).ready(function() {
+                      //    $(".checkboxlist").each(function(index){
+                      //      var test="";
+                      //       test=$(this).find("input").attr("value");
+                      //         console.log(test);
+                       //
+                      //                 });
+                      //       });
+
+                       }
+
+                    // var invitebtn=document.getElementById('sendinv');
+                    //  invitebtn.addEventListener("click",function(event){
+                    //  Check();
+                    // });
+                    // function Check(){
+                    //   if($('checkbox').prop("checked") == true){
+                    //     console.log("idhsadcbshjdncs");
+
+                      //    var test="";
+                      //  test=$(".checkboxlist").find("input").attr("value");
+                      //  console.log(test);
+
+
+
+                      // $(document).ready(function() {
+                      // $(".checkboxlist").each(function(index){
+                      //   var test="";
+                      // test=$(this).find("input").attr("value");
+                      // console.log(test);
+                      //         });
+                      //     });
+
+                    });
+                }
+              }
+
+
+            </script>
+            <style>
+            /* The Modal (background) */
+
+
+            /* The Close Button */
+            .close11 {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close11:hover,
+            .close11:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            </style>
+
+            <!-- The Modal -->
+            <div id="myModal11" class="modal"style="z-index:4000;width:50%;">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="row right">
+                <span class="close11" style="cursor:pointer;position:fixed;">&times;</span>
+
+              </div>
+                  <div class="wwww">
+                  <div id="demo11" class="row"></div></div>
+                    <div class="row right">
+
+
+                  <button class="btn" type="reset">Reset</button>
+                  &nbsp&nbsp
+                  <button class="btn" id="sendinv">Send Invite</button>
+                  <script>
+
+                  </script>
+                </div>
+
+
+
+
+              </div>
+
+              </div>
+
+
+            <script>
+            // Get the modal
+            var modal11 = document.getElementById('myModal11');
+
+            // Get the button that opens the modal
+            var btn11 = document.getElementById("myBtn11");
+
+            // Get the <span> element that closes the modal
+            var span11 = document.getElementsByClassName("close11")[0];
+
+            // When the user clicks the button, open the modal
+            btn11.onclick = function() {
+                modal11.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span11.onclick = function() {
+                modal11.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal11.style.display = "none";
+                }
+            }
+            </script>
         <div class="col l2 m2  center-align">
           <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
           <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
