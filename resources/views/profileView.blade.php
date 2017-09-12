@@ -184,9 +184,16 @@
 
                             $.ajax("{{route('chkdetails')}}",
                             {
+                              beforeSend: function (xhr) {
+                                  var token = $('meta[name="csrf_token"]').attr('content');
+
+                                    if (token) {
+                                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                                            }
+                                            },
                               type: 'POST',
                               data: {checkArray:checkArray}
-                              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+
                             }
                                       );
 
