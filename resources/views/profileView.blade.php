@@ -179,16 +179,19 @@
                             }
 
                             console.log(checkArray);
-
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+                                    }
+                                        });
 
 
                             $.ajax("{{route('chkdetails')}}",
                             {
                               type: 'POST',
+                               '_token': $('input[name="_token"]').val(),
                               data: {checkArray:checkArray},
-                              headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                  }
+
                             }
                                       );
 
