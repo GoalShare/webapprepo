@@ -180,12 +180,12 @@
 
                             console.log(checkArray);
 
-                            
+
 
                             $.ajax("{{route('chkdetails')}}",
                             {
                               type: 'POST',
-                              data: {checkArray:checkArray}
+                              data: {checkArray:checkArray},
                               headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                   }
