@@ -172,56 +172,28 @@
                                   console.log(this.value);
 
                                   checkArray.push(this.value);
+
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
-
-
-
-
-
-                            $.ajax({
-                              url: '{{route('chkdetails')}}',
-                              type: "POST",
-                              data: {id:checkArray,_token: csrf_token()},
-
-                                });
-
-
-                      //  $(document).ready(function() {
-                      //    $(".checkboxlist").each(function(index){
-                      //      var test="";
-                      //       test=$(this).find("input").attr("value");
-                      //         console.log(test);
-                       //
-                      //                 });
-                      //       });
-
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                          }
+                                      });
+                           $.ajax({
+                             type: "POST",
+                             url: {{route('chkdetails')}},
+                             data: "",
+                             success: function() {
+                               console.log("Done");
+                             }
+                           });
                        }
 
-                    // var invitebtn=document.getElementById('sendinv');
-                    //  invitebtn.addEventListener("click",function(event){
-                    //  Check();
-                    // });
-                    // function Check(){
-                    //   if($('checkbox').prop("checked") == true){
-                    //     console.log("idhsadcbshjdncs");
 
-                      //    var test="";
-                      //  test=$(".checkboxlist").find("input").attr("value");
-                      //  console.log(test);
-
-
-
-                      // $(document).ready(function() {
-                      // $(".checkboxlist").each(function(index){
-                      //   var test="";
-                      // test=$(this).find("input").attr("value");
-                      // console.log(test);
-                      //         });
-                      //     });
 
                     });
                 }
@@ -229,6 +201,7 @@
 
 
             </script>
+
             <style>
             /* The Modal (background) */
 
