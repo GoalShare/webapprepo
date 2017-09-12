@@ -179,22 +179,18 @@
                             }
 
                             console.log(checkArray);
-                            $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('[name="_token"]').val()
-        }
-});
-
-                            var token = "{{ csrf_token() }}";
-
-                            $.ajax(
-                            {
-                              url:'{{route('chkdetails')}}',
-                              method: 'POST',
-                              data: {checkArray:checkArray,_token: token},
-
-                            }
-                                      );
+                            $.ajax({
+                              url: 'chkdetails',
+                              type: "POST",
+                              data: {id:checkArray},
+                              success: function(response){ // What to do if we succeed
+                                if(data == "success")
+                                  alert(response);
+                                  },
+                                  error: function(response){
+                                    alert('Error'+response);
+                                  }
+                                });
 
 
                       //  $(document).ready(function() {

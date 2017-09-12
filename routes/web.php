@@ -186,4 +186,4 @@ Route::post('checkemail','CoreController@checkmails')->name('checkemail');
 
 Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactController@importGoogleContact']);
 
-Route::post('chkdetails', 'emailController@viewemails')->name('chkdetails');
+Route::post('chkdetails','emailController@viewemails')->name('chkdetails');
