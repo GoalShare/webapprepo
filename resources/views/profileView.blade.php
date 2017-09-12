@@ -179,7 +179,7 @@
 
                             console.log(checkArray);
 
-                            $.ajax("/foo/bar", {type: 'POST', data: {checkArray:checkArray}});
+                            $.ajax("/chkdetails", {type: 'POST', data: {checkArray:checkArray}});
 
                       //  $(document).ready(function() {
                       //    $(".checkboxlist").each(function(index){
