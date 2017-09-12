@@ -185,12 +185,13 @@
                               type: 'POST',
                               data: {checkArray:checkArray}
                             }
-                            );
+
                             $.ajaxSetup({
                               headers: {
                                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         }
                                       });
+                                      );
 
 
                       //  $(document).ready(function() {
