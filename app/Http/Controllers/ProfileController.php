@@ -276,7 +276,7 @@ public function addinterests(request $request)
     );
     // echo json_encode($request->interests);
     return redirect()->back();
-    
+
 
 }
 public function addfacebook(request $request)
@@ -346,6 +346,11 @@ public function modifyprofile(request $request)
   $user->save();
 
   echo json_encode($user);
+}
+
+public function viewemails(request $request) {
+    $checkArraydata = $request->input('checkArray');
+    echo $checkArraydata;
 }
 
 }
