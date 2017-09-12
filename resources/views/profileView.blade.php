@@ -178,19 +178,14 @@
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
 
-                            console.log(checkArray);
-                             var CSRF_TOKEN = '{{csrf_token()}}';
 
-                             $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{csrf_token()}}'
-                }
-            });
+
+                             
 
                             $.ajax({
                               url: '{{route('chkdetails')}}',
                               type: "POST",
-                              data: {id:checkArray,_token: CSRF_TOKEN},
+                              data: {id:checkArray,_token: {{csrf_token()}}},
 
                                 });
 
