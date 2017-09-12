@@ -180,7 +180,7 @@
 
                             console.log(checkArray);
                             $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-
+                            var token = "{{ csrf_token() }}";
 
                             $.ajax(
                             {
