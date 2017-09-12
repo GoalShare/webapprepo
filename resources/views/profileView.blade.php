@@ -182,15 +182,28 @@
 
 
 
-                            $.ajax("{{route('chkdetails')}}",
-                            {
-                              type: 'POST',
-                              data: {checkArray:checkArray},
-                              headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                  }
-                            }
-                                      );
+                            // $.ajax("{{route('chkdetails')}}",
+                            // {
+                            //   type: 'POST',
+                            //   data: {checkArray:checkArray},
+                            //   headers: {
+                            //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            //       }
+                            // }
+                            //           );
+                            $.ajax({
+    data: JSON.stringify(checkArray),
+    dataType: 'application/json',
+    url: "{{route('chkdetails')}}",
+    type: 'POST',
+    contentType: 'application/json; charset=utf-8',
+    success: function (result) {
+        alert(result);
+    },
+    failure: function (errMsg) {
+        alert(errMsg);
+    }
+});
 
 
                       //  $(document).ready(function() {
