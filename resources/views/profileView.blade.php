@@ -217,9 +217,9 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
-              <div style="height:60px;">
-                <div id="found1" style="height:25px;background-color:#0d47a1;"></div><br>
-                <span id="found2" style="height:25px;"></span>
+              <div style="height:40px;">
+                <div id="found1" style="height:25px;background-color:#0d47a1;"></div>
+                <div id="found2" style="height:25px;"></div>
               </div>
               <!-- Modal content -->
               <div class="modal-content">
@@ -228,7 +228,7 @@
 
 
               </div>
-              <div class="modal-footer" style="height:30px;">
+              <div class="modal-footer" style="height:40px;">
                   <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv" style="height:20px;">Send Invite</button>
 
                   <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" style="height:20px;">Reset</button>
