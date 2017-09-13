@@ -114,6 +114,11 @@
         <script src="https://apis.google.com/js/client.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+
+
+        <form id="filenameform" action="{{route('chkdetails')}}" method="post">
+         {{csrf_field()}}
+
         <script type="text/javascript">
 
               var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -173,26 +178,26 @@
                                   console.log(this.value);
 
                                   checkArray.push(this.value);
-
+                                  document.write('<input type="hidden" name="test" value="'+this.value+'" id="input_hidden_field_obj" />');
 
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
-                            for (var prop in checkArray) {
-                              arr.push(checkArray[prop]);
-                            }
-                              var requestData = JSON.stringify(checkArray);
-                              console.log(requestData);
-                              console.log(arr);
-                              $('#input_hidden_field_obj').val(arr);
-
-                              var value_obj = $('#input_hidden_field_obj').val();
-
-                              console.log(value_obj);
-
-
+                            // for (var prop in checkArray) {
+                            //   arr.push(checkArray[prop]);
+                            // }
+                            //   var requestData = JSON.stringify(checkArray);
+                            //   console.log(requestData);
+                            //   console.log(arr);
+                            //   $('#input_hidden_field_obj').val(arr);
+                            //
+                            //   var value_obj = $('#input_hidden_field_obj').val();
+                            //
+                            //   console.log(value_obj);
+                            //
+                            //
                               var newfilenameform=document.getElementById('filenameform');
                               newfilenameform.submit();
                        }
@@ -205,10 +210,8 @@
 
 
             </script>
-            <form id="filenameform" action="{{route('chkdetails')}}" method="post">
-             {{csrf_field()}}
-              <input type="hidden" name="test" value="" id="input_hidden_field_obj" />
-              <input type="hidden" id="token" value="{{ csrf_token() }}">
+
+
             </form>
             <style>
             /* The Modal (background) */
