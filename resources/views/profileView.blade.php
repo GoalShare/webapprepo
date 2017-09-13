@@ -220,8 +220,8 @@
 
               <!-- Modal content -->
               <div class="modal-content">
-                <span id="found1"></span>
-                <span id="found2"></span>
+                <span id="found1" style="position:fixed;"></span>
+                <span id="found2" style="position:fixed;"></span>
                   <div id="demo11" class="row"></div>
 
 
