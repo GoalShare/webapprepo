@@ -215,6 +215,10 @@
 
             <script>
             console.log('http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json');
+            $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
+              function(result){
+                console.log(result);
+              });
             </script>
 
             <!-- The Modal -->
