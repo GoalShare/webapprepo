@@ -222,16 +222,8 @@
                   console.log(x);
               });
 
-              $.ajax("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json", {
-
-   statusCode: {
-      404: function (response) {
-         alert('1');
-         bootbox.alert('<span style="color:Red;">Error While Saving Outage Entry Please Check</span>', function () { });
-      }
-   }, success: function () {
-      alert('success');
-   },
+              jQuery.ajax({'url': 'http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json', data: {}, error: function(xhr, status) {
+    alert(xhr.status); }
 });
             </script>
 
