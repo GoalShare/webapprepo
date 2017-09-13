@@ -186,17 +186,13 @@
                               var requestData = JSON.stringify(checkArray);
                               console.log(requestData);
                               console.log(arr);
-                              $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
+
                               $.ajax({
                                 type: "POST",
                                 cache: false,
                                 encoding: "UTF-8",
                                 url: "{{ url('chkdetails') }}",
-                                data: {arr},
+                                data: {arr,'_token': token},
                                 success: function (data) {
                                 }
                                 });
