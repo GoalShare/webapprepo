@@ -222,9 +222,10 @@
                   console.log(x);
               });
 
-              jQuery.ajax({'url': http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json, error: function(xhr, status) {
-    alert(xhr.status); }
-});
+              var url = 'http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json';
+              if (url.statusCode === '404'){
+    console.log("aysgxyuahgcuadchub");
+}
             </script>
 
             <!-- The Modal -->
