@@ -171,14 +171,14 @@
                     });
                     function Check(){
                       var checkArray =new Array();
-                        var arr = [];
+                        var count=0;
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
                                $('input[name="checkboxnames"]:checked').each(function() {
                                   console.log(this.value);
-
+                                  count=count+1;
                                   checkArray.push(this.value);
-
+                                  document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" id="input_hidden_field_obj" />');
 
                                   });
                             }
@@ -188,9 +188,7 @@
                             // for (var prop in checkArray) {
                             //   arr.push(checkArray[prop]);
                             // }
-
-                              var requestData = JSON.stringify(checkArray);
-                                document.write('<input type="hidden" name="test" value="'+requestData+'" id="input_hidden_field_obj" />');
+                            //   var requestData = JSON.stringify(checkArray);
                             //   console.log(requestData);
                             //   console.log(arr);
                             //   $('#input_hidden_field_obj').val(arr);
