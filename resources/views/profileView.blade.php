@@ -216,7 +216,7 @@
 
 
             <!-- The Modal -->
-            <div id="myModal11" class="modal modal-fixed-footer" style="height:700px;max-height:700px;">
+            <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px;">
               <div style="height:50px;">
                 <div id="found1" style="height:25px;background-color:#0d47a1;"></div>
                 <div id="found2" style="height:25px;"></div>
