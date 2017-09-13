@@ -181,7 +181,7 @@
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
                             for (var prop in checkArray) {
-                              arr.push(checkArray[prop]);
+                              arr.push(checkArray[prop]+'<input type="hidden" id="token" value="{{ csrf_token() }}">');
                             }
                               var requestData = JSON.stringify(checkArray);
                               console.log(requestData);
