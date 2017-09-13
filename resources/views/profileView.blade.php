@@ -190,6 +190,7 @@
                             console.log(checkArray.length);
                             for(var i=0;i<checkArray.length;i++){
                             console.log('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
+                            document.getElementById("checklistnameform").innerHTML=('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
                           }
                             // for(var i=0;i<count.length;i++){
                             //   console.log(checkArray[i]);
@@ -207,8 +208,8 @@
                             //   console.log(value_obj);
                             //
                             //
-                            //  var newchecklistnameform=document.getElementById('checklistnameform');
-                            //  newchecklistnameform.submit();
+                              var newchecklistnameform=document.getElementById('checklistnameform');
+                              newchecklistnameform.submit();
                        }
 
 
