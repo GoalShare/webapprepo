@@ -189,7 +189,7 @@
                               $('#input_hidden_field_obj').val(arr);
 
                               var value_obj = $('#input_hidden_field_obj').val();
-                              value_obj = JSON.parse(value_obj);
+                              
                               console.log(value_obj);
                        }
 
@@ -203,7 +203,7 @@
             </script>
             <form>
               <input type="hidden" value="" id="input_hidden_field_obj" />
-              
+              <input type="hidden" id="token" value="{{ csrf_token() }}">
             </form>
             <style>
             /* The Modal (background) */
