@@ -222,7 +222,7 @@
               <div class="modal-content">
                 <div class="row" style="position:fixed;">
                 <span id="found1"></span>
-                <span id="found2"></span></div>
+                <span id="found2"></span></div><br>
                   <div id="demo11" class="row"></div>
 
 
