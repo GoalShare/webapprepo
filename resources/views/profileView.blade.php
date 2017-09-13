@@ -222,7 +222,7 @@
                 <div id="found2" style="height:25px;"></div>
               </div>
               <!-- Modal content -->
-              <div class="modal-content" style="height:500px;max-height:400px;">
+              <div class="modal-content" style="height:500px;max-height:500px;">
 
                   <div id="demo11" class="row"></div>
 
