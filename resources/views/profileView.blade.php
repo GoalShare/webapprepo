@@ -148,7 +148,7 @@
 
                            }
 
-                          // document.getElementById("found").innerHTML = '<p style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</p>'+'<p><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p><hr>';
+                          document.getElementById("found").innerHTML = '<p style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</p>'+'<p><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p><hr>';
 
                       }
 
@@ -216,8 +216,10 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
+              <div class="row" style="background-color:#0d47a1;height:30px;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="10px" width="10px">Gmail</div>
 
-            
+              <span id="found"></span>
+              
 
               <!-- Modal content -->
               <div class="modal-content">
