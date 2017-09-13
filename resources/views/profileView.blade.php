@@ -180,7 +180,7 @@
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
-                              var requestData = JSON.stringify(checkArray);
+                              var requestData = JSON.parse(checkArray);
                               console.log(requestData);
                        }
 
