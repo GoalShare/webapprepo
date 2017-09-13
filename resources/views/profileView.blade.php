@@ -220,16 +220,12 @@
                 console.log(data);
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
+                  if(statusCheck(x) == 404){
+                    console.log("dncjsndzcx");
+                  }
               });
 
-              var url = 'http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json';
-              urlExists(url, function(exists) {
-  if (exists) {
-    console.log("ncjksndckm");
-  } else {
-    console.log("dcjisndcijsdkcnskmdcskjdmc");
-  }
-});
+              
             </script>
 
             <!-- The Modal -->
