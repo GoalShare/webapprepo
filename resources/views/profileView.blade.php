@@ -165,24 +165,30 @@
                      Check();
                     });
                     function Check(){
-                      var ttt="";
                       var checkArray =new Array();
+                        var arr = [];
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
                                $('input[name="checkboxnames"]:checked').each(function() {
                                   console.log(this.value);
 
                                   checkArray.push(this.value);
+                                  var t=this.value;
+                                  for (var prop in t) {
+                                    arr.push(t[prop]);
+                                  }
 
-                                   ttt=ttt+this.value;
 
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
-                              var requestData = JSON.parse(ttt);
+                              var requestData = JSON.stringify(checkArray);
                               console.log(requestData);
+
+
+                              console.log(arr);
                        }
 
 
