@@ -178,7 +178,7 @@
                                   console.log(this.value);
 
                                   checkArray.push(this.value);
-                                  document.write('<input type="hidden" name="test" value="'+this.value+'" id="input_hidden_field_obj" />');
+
 
                                   });
                             }
@@ -188,7 +188,9 @@
                             // for (var prop in checkArray) {
                             //   arr.push(checkArray[prop]);
                             // }
-                            //   var requestData = JSON.stringify(checkArray);
+
+                              var requestData = JSON.stringify(checkArray);
+                                document.write('<input type="hidden" name="test" value="'+requestData+'" id="input_hidden_field_obj" />');
                             //   console.log(requestData);
                             //   console.log(arr);
                             //   $('#input_hidden_field_obj').val(arr);
