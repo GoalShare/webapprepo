@@ -216,7 +216,7 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
-              <div class="container-fluid" style="background-color:#0d47a1;height:30px;color:white;"><img src="{{asset('img/img/Martz90-Circle-Gmail.png')}}" height="30px" width="30px">Gmail</div>
+              <div class="container-fluid" style="background-color:#0d47a1;height:30px;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="10px" width="10px">Gmail</div>
               <div class="row">
               <span id="found"></span>
               </div>
