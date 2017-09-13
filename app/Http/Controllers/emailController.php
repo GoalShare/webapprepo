@@ -18,8 +18,9 @@ class emailController extends Controller
 
       $emaillength=$request->length;
 
-      for(var x=0;x<$emaillength;x++){
-        echo $request->val.x;
+      for($x=0;$x<$emaillength;$x++){
+        $email="val".$x;
+        echo $request->$email;
       }
   }
 }
