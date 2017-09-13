@@ -15,7 +15,11 @@ use Image;
 class emailController extends Controller
 {
   public function viewemails(request $request) {
-      echo $request->val0;
-      echo $request->length;
+
+      $emaillength=$request->length;
+
+      for(var x=0;x<$emaillength;x++){
+        echo $request->val.x;
+      }
   }
 }
