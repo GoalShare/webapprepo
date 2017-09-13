@@ -148,7 +148,7 @@
 
                            }
 
-                          document.getElementById("found").innerHTML='<span>ahdc</span><p>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p>';
+                          document.getElementById("found").innerHTML = '<p><span>ahdc</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p>';
 
                       }
 
