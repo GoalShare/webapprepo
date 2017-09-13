@@ -165,6 +165,7 @@
                      Check();
                     });
                     function Check(){
+                      var ttt="";
                       var checkArray =new Array();
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
@@ -173,14 +174,14 @@
 
                                   checkArray.push(this.value);
 
-
+                                   ttt=ttt+this.value;
 
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
-                              var requestData = JSON.parse(checkArray);
+                              var requestData = JSON.parse(ttt);
                               console.log(requestData);
                        }
 
