@@ -148,7 +148,7 @@
 
                            }
 
-                          document.getElementById("found").innerHTML = '<p style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</p>'+'<p><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p><hr>';
+                          document.getElementById("found").innerHTML = '<div class="card-panel teal blue darken-4">This is a card panel with a teal lighten-2 class</div>'+'<p style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</p>'+'<p><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p><hr>';
 
                       }
 
