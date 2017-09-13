@@ -8039,8 +8039,8 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .tap-target-wrapper {
-  width: 800px;
-  height: 800px;
+  width: 500px;
+  height: 500px;
   position: fixed;
   z-index: 1000;
   visibility: hidden;
