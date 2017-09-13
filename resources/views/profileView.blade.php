@@ -148,7 +148,7 @@
 
                            }
 
-                           document.getElementById("found1").innerHTML = '<p style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</p>';
+                           document.getElementById("found1").innerHTML = '<span style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</span>';
                            //document.getElementById("found2").innerHTML = '<p><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p><hr>';
 
                       }
