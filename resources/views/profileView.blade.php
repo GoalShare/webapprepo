@@ -216,7 +216,7 @@
 
 
             <!-- The Modal -->
-            <div id="myModal11" class="modal modal-fixed-footer" style="height:800px;">
+            <div id="myModal11" class="modal modal-fixed-footer">
               <div style="height:30px;"></div>
               <!-- Modal content -->
               <div class="modal-content">
@@ -225,7 +225,7 @@
 
 
               </div>
-              <div class="modal-footer" style="position:fixed;">
+              <div class="modal-footer" style="position:fixed;height:100px;">
                   <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv">Send Invite</button>
 
                   <button class="modal-action modal-close waves-effect waves-green btn left" type="reset">Reset</button>
