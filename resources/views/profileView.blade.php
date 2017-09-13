@@ -182,7 +182,7 @@
                                  checkArray.push(this.value);
                               //     // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
                                //
-                              //     });
+                                  });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
