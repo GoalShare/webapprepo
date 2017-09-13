@@ -220,16 +220,20 @@
                 console.log(data);
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
-                  var image = new Image();
-image.src = x;
 
-image.onload = function() {
-    alert('Image has loaded');
-};
+                  var pic_list = jQuery(data.entry.gphoto$thumbnail.$t);
 
-image.onerror = function() {
-    alert('Image did not load');
-};
+pic_list.load(function () {
+  var http = new XMLHttpRequest();
+  http.open('HEAD', pic_list, false);
+  http.send();
+  if (http.status == 404) {
+      console.log("404");
+  } else {
+      console.log("jahecnjknj");
+  }
+});
+
               });
 
 
