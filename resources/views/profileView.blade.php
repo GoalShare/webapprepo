@@ -220,18 +220,15 @@
               <div class="modal-content">
 
                   <div id="demo11" class="row"></div>
-                  <div class="row right" style="position: fixed;bottom: 0px;right: 0px; ">
-                  <button class="btn" type="reset">Reset</button>
-                  &nbsp&nbsp
-                  <button class="btn" id="sendinv">Send Invite</button>
-
-                </div>
-
-
 
 
               </div>
+              <div class="row right" style="position: fixed;">
+              <button class="btn" type="reset">Reset</button>
+              &nbsp&nbsp
+              <button class="btn" id="sendinv">Send Invite</button>
 
+            </div>
               </div>
 
 
