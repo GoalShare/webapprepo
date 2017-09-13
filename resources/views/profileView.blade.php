@@ -231,7 +231,7 @@
               <div class="modal-footer" style="height:50px;">
                   <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv" style="height:30px;">Send Invite</button>
 
-                  <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" style="height:30px;>Reset</button>
+                  <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" style="height:30px;">Reset</button>
 
 
               </div>
