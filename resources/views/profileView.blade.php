@@ -185,9 +185,16 @@
                             }
                               var requestData = JSON.stringify(checkArray);
                               console.log(requestData);
-
-
                               console.log(arr);
+                              $.ajax({
+                                type: "POST",
+                                cache: false,
+                                encoding: "UTF-8",
+                                url: "{{ url('chkdetails') }}",
+                                data: {arr},
+                                success: function (data) {
+                                }
+                                });
                        }
 
 
