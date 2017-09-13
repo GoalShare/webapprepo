@@ -185,7 +185,7 @@
                                       });
                            $.ajax({
                              type: "POST",
-                             url: "{{route('chkdetails')}}",
+                             url: "{{ URL::to('chkdetails'); }}",
                              data: "",
                              success: function() {
                                console.log("Done");
