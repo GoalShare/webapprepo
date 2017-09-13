@@ -220,12 +220,19 @@
                 console.log(data);
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
-                  if(statusCheck(x) == 404){
-                    console.log("dncjsndzcx");
-                  }
+                  var image = new Image();
+image.src = x;
+
+image.onload = function() {
+    alert('Image has loaded');
+};
+
+image.onerror = function() {
+    alert('Image did not load');
+};
               });
 
-              
+
             </script>
 
             <!-- The Modal -->
