@@ -148,8 +148,8 @@
 
                            }
 
-                           document.getElementById("found1").innerHTML = '<span style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</span>';
-                           document.getElementById("found2").innerHTML = '<span><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</span><hr>';
+                           document.getElementById("found1").innerHTML = '<span style="color:white;font-size:17px;"><span>&nbsp&nbsp&nbsp</span><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">Connect with people you know on Gmail.</span>';
+                           document.getElementById("found2").innerHTML = '<span><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</span>';
 
                       }
 
@@ -218,8 +218,8 @@
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
               <div style="height:50px;">
-                <span id="found1" style="height:25px"></span>
-                <span id="found2" style="height:25px"></span>
+                <span id="found1" style="height:25px;background-color:#0d47a1;"></span><br>
+                <span id="found2" style="height:25px;"></span>
               </div>
               <!-- Modal content -->
               <div class="modal-content">
