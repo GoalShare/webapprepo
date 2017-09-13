@@ -175,14 +175,18 @@
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
                                console.log($('input[name="checkboxnames"]:checked').length);
-                               $('input[name="checkboxnames"]:checked').each(function() {
-
-                                  console.log(this.value);
-                                  count=count+1;
-                                  checkArray.push(this.value);
-                                  // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
-
-                                  });
+                               var size=($('input[name="checkboxnames"]:checked').length);
+                               for(var i=0;i<size;i++){
+                                 console.log($('input[name="checkboxnames"]:checked').value);
+                               }
+                              //  $('input[name="checkboxnames"]:checked').each(function() {
+                               //
+                              //     console.log(this.value);
+                              //     count=count+1;
+                              //     checkArray.push(this.value);
+                              //     // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
+                               //
+                              //     });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
