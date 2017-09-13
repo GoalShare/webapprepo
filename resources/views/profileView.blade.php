@@ -131,14 +131,11 @@
                   $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                     function(result){
                       console.log(result);
-
                       var text = '';
                       var count=0;
                   for(var i=0;i<result.feed.entry.length;i++){
-                    $.get("http://picasaweb.google.com/data/entry/api/user/"+result.feed.entry[i].gd$email[0].address"?alt=json",function(data){var image=result.entry.gphoto$thumbnail.$t;console.log(image);});
                       var x=result.feed.entry[i].gd$email;
                       var y=result.feed.entry[i].title;
-
                       if(x==undefined){
                         console.log("yy");
                       }
@@ -146,7 +143,7 @@
                       else{
 
                         count=count+1;
-
+                        $.get("http://picasaweb.google.com/data/entry/api/user/"+x[0].address+"?alt=json",function(data){var image=result.entry.gphoto$thumbnail.$t;console.log(image);});
                         text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
                           // console.log(document.getElementsByTagName("input")[0].value);
 
