@@ -217,7 +217,7 @@
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
               <div class="row">
-                <span id="found"></span>
+                &nbsp&nbsp<span id="found"></span>
               </div>
               <hr>
               <!-- Modal content -->
