@@ -172,15 +172,16 @@
                                   console.log(this.value);
 
                                   checkArray.push(this.value);
-                                  var requestData = JSON.stringify(this.value);
 
-                                  console.log(requestData);
+
+
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
-                            
+                              var requestData = JSON.stringify(checkArray);
+                              console.log(requestData);
                        }
 
 
