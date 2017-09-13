@@ -174,15 +174,14 @@
 
                                   checkArray.push(this.value);
 
-                                  for (var prop in checkArray) {
-                                    arr.push(checkArray[prop]);
-                                  }
-
 
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
+                            }
+                            for (var prop in checkArray) {
+                              arr.push(checkArray[prop]);
                             }
                               var requestData = JSON.stringify(checkArray);
                               console.log(requestData);
