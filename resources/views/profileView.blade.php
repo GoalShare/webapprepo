@@ -185,22 +185,7 @@
                             document.getElementById("checklistnameform").innerHTML=document.getElementById("checklistnameform").innerHTML+('<input type="hidden" name="val'+i+'" value="'+checkArray[i]+'">');
                           }
                           $('#lengthsize').val(checkArray.length);
-                            // for(var i=0;i<count.length;i++){
-                            //   console.log(checkArray[i]);
-                            // }
-                            // for (var prop in checkArray) {
-                            //   arr.push(checkArray[prop]);
-                            // }
-                            //   var requestData = JSON.stringify(checkArray);
-                            //   console.log(requestData);
-                            //   console.log(arr);
-                            //   $('#input_hidden_field_obj').val(arr);
-                            //
-                            //   var value_obj = $('#input_hidden_field_obj').val();
-                            //
-                            //   console.log(value_obj);
-                            //
-                            //
+
                             submitForm();
 
                        }
@@ -213,6 +198,7 @@
 
 
             </script>
+
             <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
              {{csrf_field()}}
              <input type="hidden" name="length" id="lengthsize" value="">
@@ -234,9 +220,7 @@
               <div class="modal-content">
 
                   <div id="demo11" class="row"></div>
-                    <div class="row right" style="position:fixed;">
-
-
+                  <div class="row right" style="position: fixed;bottom: 0px;right: 0px; ">
                   <button class="btn" type="reset">Reset</button>
                   &nbsp&nbsp
                   <button class="btn" id="sendinv">Send Invite</button>
