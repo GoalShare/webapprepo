@@ -118,7 +118,8 @@
 
 
 
-
+        <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
+         {{csrf_field()}}
         <script type="text/javascript">
 
               var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -190,7 +191,7 @@
                             console.log(checkArray.length);
                             for(var i=0;i<checkArray.length;i++){
                             console.log('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
-                            document.getElementById("checklistnameform").innerHTML=('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
+                            document.write('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
                           }
                             // for(var i=0;i<count.length;i++){
                             //   console.log(checkArray[i]);
@@ -221,8 +222,7 @@
 
             </script>
 
-            <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
-             {{csrf_field()}}
+
 
             </form>
             <style>
