@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Controllers\Controller;
+
 use App\Models\News;
 use Request;
 use Response;
 use Input;
-
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Goal;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Image;
 
 class emailController extends Controller
 {
