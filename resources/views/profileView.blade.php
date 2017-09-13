@@ -233,17 +233,14 @@
               <!-- Modal content -->
               <div class="modal-content">
 
-                  <div class="wwww">
-                  <div id="demo11" class="row"></div></div>
+                  <div id="demo11" class="row"></div>
                     <div class="row right" style="position:fixed;">
 
 
                   <button class="btn" type="reset">Reset</button>
                   &nbsp&nbsp
-                  <button id="sendinv">Send Invite</button>
-                  <script>
+                  <button class="btn" id="sendinv">Send Invite</button>
 
-                  </script>
                 </div>
 
 
