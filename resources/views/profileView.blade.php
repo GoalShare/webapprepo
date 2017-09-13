@@ -223,12 +223,11 @@
 
 
               </div>
-              <div class="row right" style="position: fixed;">
-              <button class="btn" type="reset">Reset</button>
-              &nbsp&nbsp
-              <button class="btn" id="sendinv">Send Invite</button>
 
-            </div>
+              <button class="btn" type="reset" style="position: fixed;">Reset</button>
+              &nbsp&nbsp
+              <button class="btn" id="sendinv" style="position: fixed;">Send Invite</button>
+
               </div>
 
 
