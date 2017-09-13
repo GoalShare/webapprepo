@@ -1,19 +1,9 @@
   @extends('layouts.navbar')
-
 @section('content')
-
-
-
-
   @php
    $carbon = new Carbon(Auth::User()->created_at);
    $compare =Carbon::now();
   @endphp
-  @if (($goal->isEmpty())==false)
-    @if ($compare->diffInHours($carbon)>1)
-{{-- @include('layouts.friendsView') --}}
-    @endif
-  @endif
     <!--add goal form -->
       <div id="addgoal" class="modal modal-fixed-footer">
     <div class="modal-content" style="text-align:center;">
@@ -72,306 +62,20 @@
                 });
               </script>
           </li>
-          <form>
           <li class="collection-item">
-            <div class="mdl-textfield mdl-js-textfield">
+            <div class="input-field col s6">
               <label  style="color:#565656;font-size:12pt;"for="goalstartdate">Goal Start-Date</label>
-              <input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal start date" style="color:#565656;" type="date" id="goalstartdate" oninput="dateValid()" name="goalstartdate" required>
+              <input class="" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal start date" style="color:#565656;" type="date" id="goalstartdate" oninput="dateValid()" name="goalstartdate" required>
               <span id="goalstartdateerror"></span>
             </div>
           </li>
-
-
           <li class="collection-item">
-            <div class="mdl-textfield mdl-js-textfield">
+            <div class="input-field col s6">
               <label  style="color:#565656;font-size:12pt;"for="goalenddate">Goal End-Date</label>
-              <input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal end date" style="color:#565656;" type="date" oninput="dateValid()" id="goalenddate" name="goalenddate" required>
+              <input class="" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal end date" style="color:#565656;" type="date" oninput="dateValid()" id="goalenddate" name="goalenddate" required>
                 <span id="goalenddateerror"></span>
-
             </div>
           </li>
-
-          <script type="text/javascript">
-
-        //
-        //
-        //
-        //   function dateValid() {
-        //     var taskstartdate=document.getElementById("goalstartdate");
-        //
-        //     var goalstartdateerror=document.getElementById("goalstartdateerror");
-        //     var goalenddate=document.getElementById("goalenddate");
-        //
-        //     var goalenddateerror=document.getElementById("goalenddateerror");
-        //   //  var d=new Date(goalstartdate.value
-        //         var d = new Date(document.getElementById("goalstartdate").value);
-        //                   //  var startDate = "";
-        //     var convertedStartDate = new Date(d);
-        //     var month = convertedStartDate.getMonth() + 1
-        //     var day = convertedStartDate.getDay();
-        //     var year = convertedStartDate.getFullYear();
-        //     if(day<10) {
-        //         day = '0'+day
-        //     }
-        //
-        //     if(month<10) {
-        //         month = '0'+month
-        //     }
-        //     var shortStartDate = month + "/" + day + "/" + year;
-        //
-        //
-        //
-        //   var today = new Date();
-        //                                         var dd = today.getDate();
-        //                                         var mm = today.getMonth()+1;
-        //                                         var yyyy = today.getFullYear();
-        //
-        //                                         if(dd<10) {
-        //                                             dd = '0'+dd
-        //                                         }
-        //
-        //                                         if(mm<10) {
-        //                                             mm = '0'+mm
-        //                                         }
-        //
-        //                                       today = mm + '/' + dd + '/' + yyyy;
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //           var date1 = new Date(shortStartDate);
-        //             var date2 = new Date(today);
-        //
-        //
-        //       if (date1 > date2) {
-        //         //  console.log('valid date');
-        //       //  console.log('valid date');
-        //        goalstartdateerror.innerHTML='valid date';
-        //        goalstartdateerror.classList.remove('red-text');
-        //        goalstartdateerror.classList.add('green-text');
-        //        goalstartdate=1;
-        //        if(goalstartdate==1 && goalenddate==1){
-        //          document.getElementById("addgoalbtn").disabled=false;
-        //        }
-        //
-        //
-        //     }
-        //     else {
-        //
-        //         goalstartdateerror.innerHTML='goal start date is invalid';
-        //         goalstartdateerror.classList.remove('green-text');
-        //         goalstartdateerror.classList.add('red-text');
-        //         goalstartdate=0;
-        //         if(goalstartdate==1 || goalenddate==1){
-        //           document.getElementById("addgoalbtn").disabled=true;
-        //         }
-        //
-        //     }
-        //
-        //
-        //
-        //
-        //
-        //   // -----------------------------------------------------------------------------------------------------------------------------------------------------------
-        //
-        //
-        // //  function endateValid() {
-        //
-        //         var end = new Date(document.getElementById("goalenddate").value);
-        //
-        //     var convertedEndDate = new Date(end);
-        //     var enmonth = convertedEndDate.getMonth() + 1
-        //     var enday = convertedEndDate.getDay();
-        //     var enyear = convertedEndDate.getFullYear();
-        //     if(enday<10) {
-        //         enday = '0'+enday
-        //     }
-        //
-        //     if(enmonth<10) {
-        //         enmonth = '0'+enmonth
-        //     }
-        //     var shortEndDate = enmonth + "/" + enday + "/" + enyear;
-        //
-        //           var endate1 = new Date(shortEndDate);
-        //
-        //
-        //
-        //       if (endate1 > date1) {
-        //         //  console.log('valid date');
-        //       //  console.log('valid date');
-        //        goalenddateerror.innerHTML='valid date';
-        //        goalenddateerror.classList.remove('red-text');
-        //        goalenddateerror.classList.add('green-text');
-        //        goalenddate=1;
-        //        if(goalstartdate==1 && goalenddate==1){
-        //          document.getElementById("addgoalbtn").disabled=false;
-        //        }
-        //
-        //
-        //     }
-        //     else {
-        //
-        //         goalenddateerror.innerHTML='goal end date is invalid';
-        //         goalenddateerror.classList.remove('green-text');
-        //         goalenddateerror.classList.add('red-text');
-        //         goalenddate=0;
-        //         if(goalstartdate!==1 || goalenddate!==1){
-        //           document.getElementById("addgoalbtn").disabled=true;
-        //          }
-        //
-        //     }
-        //
-        //   }
-        </script>
-
-          <form>
-          {{-- <li class="collection-item">
-            <div class="mdl-textfield mdl-js-textfield">
-              <label  style="color:#565656;font-size:12pt;"for="goalstartdate">Goal Start-Date</label>
-              <input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal start date" style="color:#565656;" type="date" id="goalstartdate" name="goalstartdate" required>
-            </div>
-          </li>
-          <li class="collection-item">
-            <div class="mdl-textfield mdl-js-textfield">
-              <label  style="color:#565656;font-size:12pt;"for="goalenddate">Goal End-Date</label>
-              <input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal end date" style="color:#565656;" type="date" id="goalenddate" name="goalenddate" required>
-            </div>
-          </li>
-          <script type="text/javascript">
-
-          function dateValid() {
-            var taskstartdate=document.getElementById("goalstartdate");
-
-            var goalstartdateerror=document.getElementById("goalstartdateerror");
-            var goalenddate=document.getElementById("goalenddate");
-
-            var goalenddateerror=document.getElementById("goalenddateerror");
-          //  var d=new Date(goalstartdate.value
-                var d = new Date(document.getElementById("goalstartdate").value);
-                          //  var startDate = "";
-            var convertedStartDate = new Date(d);
-            var month = convertedStartDate.getMonth() + 1
-            var day = convertedStartDate.getDay();
-            var year = convertedStartDate.getFullYear();
-            if(day<10) {
-                day = '0'+day
-            }
-
-            if(month<10) {
-                month = '0'+month
-            }
-            var shortStartDate = month + "/" + day + "/" + year;
-
-
-
-          var today = new Date();
-                                                var dd = today.getDate();
-                                                var mm = today.getMonth()+1;
-                                                var yyyy = today.getFullYear();
-
-                                                if(dd<10) {
-                                                    dd = '0'+dd
-                                                }
-
-                                                if(mm<10) {
-                                                    mm = '0'+mm
-                                                }
-
-                                              today = mm + '/' + dd + '/' + yyyy;
-
-
-
-
-
-
-
-                  var date1 = new Date(shortStartDate);
-                    var date2 = new Date(today);
-
-
-              if (date1 > date2) {
-                //  console.log('valid date');
-              //  console.log('valid date');
-               goalstartdateerror.innerHTML='valid date';
-               goalstartdateerror.classList.remove('red-text');
-               goalstartdateerror.classList.add('green-text');
-               goalstartdate=1;
-               if(goalstartdate==1 && goalenddate==1){
-                 document.getElementById("addgoalbtn").disabled=false;
-               }
-
-
-            }
-            else {
-
-                goalstartdateerror.innerHTML='goal start date is invalid';
-                goalstartdateerror.classList.remove('green-text');
-                goalstartdateerror.classList.add('red-text');
-                goalstartdate=0;
-                if(goalstartdate==1 || goalenddate==1){
-                  document.getElementById("addgoalbtn").disabled=true;
-                }
-
-            }
-
-
-
-
-
-          // -----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-        //  function endateValid() {
-
-                var end = new Date(document.getElementById("goalenddate").value);
-
-            var convertedEndDate = new Date(end);
-            var enmonth = convertedEndDate.getMonth() + 1
-            var enday = convertedEndDate.getDay();
-            var enyear = convertedEndDate.getFullYear();
-            if(enday<10) {
-                enday = '0'+enday
-            }
-
-            if(enmonth<10) {
-                enmonth = '0'+enmonth
-            }
-            var shortEndDate = enmonth + "/" + enday + "/" + enyear;
-
-                  var endate1 = new Date(shortEndDate);
-
-
-
-              if (endate1 > date1) {
-                //  console.log('valid date');
-              //  console.log('valid date');
-               goalenddateerror.innerHTML='valid date';
-               goalenddateerror.classList.remove('red-text');
-               goalenddateerror.classList.add('green-text');
-               goalenddate=1;
-               if(goalstartdate==1 && goalenddate==1){
-                 document.getElementById("addgoalbtn").disabled=false;
-               }
-
-
-            }
-            else {
-
-                goalenddateerror.innerHTML='goal end date is invalid';
-                goalenddateerror.classList.remove('green-text');
-                goalenddateerror.classList.add('red-text');
-                goalenddate=0;
-                if(goalstartdate!==1 || goalenddate!==1){
-                  document.getElementById("addgoalbtn").disabled=true;
-                 }
-
-            }
-
-          }
-        </script> --}}
           <li class="collection-item">
             <div class="file-field input-field">
               <div class="btn">
@@ -392,29 +96,6 @@
     </form>
     </div>
   </div>
-  <script>
-
-
-  $(document).ready(function(){
-   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-   document.getElementById('view-source').addEventListener("click",function(event){
-     event.preventDefault();
-     $('.modal').modal();
-     $('#addgoal').modal('open');
-   });
-   document.getElementById('cancelmodalbtn').addEventListener("click",function(event){
-     event.preventDefault();
-     $('.modal').modal();
-     $('#addgoal').modal('close');
-   });
- });
-  </script>
-
-
-
-
-
-
       <!--end of add goal -->
     <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
@@ -427,11 +108,8 @@
 					</div>
           <div class="col l2 m2  center-align">
             <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-						<a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" id="myBtn11"><i class="material-icons">people</i></a>
+						<a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
 					</div>
-          <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
-          <script src="https://apis.google.com/js/client.js"></script>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script type="text/javascript">
 
                 var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -492,68 +170,13 @@
                               else{
                                 console.log("jdcnjsnkmkmkmookmokmok");
                               }
-
-
-
-
-                        //  $(document).ready(function() {
-                        //    $(".checkboxlist").each(function(index){
-                        //      var test="";
-                        //       test=$(this).find("input").attr("value");
-                        //         console.log(test);
-                         //
-                        //                 });
-                        //       });
-
                          }
-
-                      // var invitebtn=document.getElementById('sendinv');
-                      //  invitebtn.addEventListener("click",function(event){
-                      //  Check();
-                      // });
-                      // function Check(){
-                      //   if($('checkbox').prop("checked") == true){
-                      //     console.log("idhsadcbshjdncs");
-
-                        //    var test="";
-                        //  test=$(".checkboxlist").find("input").attr("value");
-                        //  console.log(test);
-
-
-
-                        // $(document).ready(function() {
-                        // $(".checkboxlist").each(function(index){
-                        //   var test="";
-                        // test=$(this).find("input").attr("value");
-                        // console.log(test);
-                        //         });
-                        //     });
-
                       });
                   }
                 }
 
 
               </script>
-              <style>
-              /* The Modal (background) */
-
-
-              /* The Close Button */
-              .close11 {
-                  color: #aaaaaa;
-                  float: right;
-                  font-size: 28px;
-                  font-weight: bold;
-              }
-
-              .close11:hover,
-              .close11:focus {
-                  color: #000;
-                  text-decoration: none;
-                  cursor: pointer;
-              }
-              </style>
 
               <!-- The Modal -->
               <div id="myModal11" class="modal"style="z-index:4000;width:50%;">
@@ -630,33 +253,16 @@
 						<a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i class="material-icons">people</i></a>
 					</div>
         </div>
-
-
-
-				<script type="text/javascript">
-				// var goaldisplay=document.getElementById('goaldisplay');
-				// var calendardisplay=document.getElementById('calendardisplay');
-				// function displaycalendar() {
-				// 	calendardisplay.style.display="block";
-				// 	goaldisplay.addClass="hide";
-				// }
-				//
-				// function displaydashboard() {
-				// 	calendardisplay.style.display="none";
-				// 	goaldisplay.style.display="block";
-				// }
-				</script>
-        <div class="mdl-grid portfolio-max-width" id="goaldisplay">
+        <div class="container" id="goaldisplay">
           @if($goal->isEmpty())
-
-      <style media="screen">
-        .colorOfCard{
-          background-color: #08e7d6;
-        }
-        .imageGif{
-          border: none;
-        }
-      </style>
+          <style media="screen">
+            .colorOfCard{
+              background-color: #08e7d6;
+            }
+            .imageGif{
+              border: none;
+            }
+          </style>
 
       <div class="container">
         <div class="col s12 m6">
@@ -667,205 +273,317 @@
             </div>
             <div class="card-content center">
                 <img src="https://media.giphy.com/media/26tP80DaorPjmqlC8/giphy.gif" height="200px" width="200px" class="imageGif">
-              <!-- <p class="flow-text "><h2 class="white-text">WELCOME</h2> -->
-                 <span class="card-title " style="text-align:center"><p class="grey-text flow-text z-depth-2"><h1>WELCOME</h1></p><p class="flow-text"><h1>{{ Auth::User()->fname}}</h1></p></br></span>
+                <span class="card-title " style="text-align:center"><p class="grey-text flow-text z-depth-2"><h1>WELCOME</h1></p><p class="flow-text"><h1>{{ Auth::User()->fname}}</h1></p></br></span>
             </div>
           </div>
         </div>
-
         </div>
-
           @else
           {{-- starrrrrrrrrrrrrrrrrrrtttttttttttttttttt --}}
-             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-              <tbody>
-                <tr>
-                 <td class="mdl-data-table__cell--non-numeric"><b>Pinned Goals</b></td>
-                </tr>
-              </tbody>
-             </table>
+          <br>
+          <ul class="collection">
+            <li class="collection-item"><b>Pinned Goals</b></li>
+          </ul>
             <!-- the main goal that will be repeated -->
+          <div class="row center">
             @foreach ($goal as $goals)
               @if($goals->pinned==1)
-            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-              <div class="containerholder">
+            <div class="col l4 m6 s12 card sticky-action responsive">
+           <div class="card-image waves-effect waves-block waves-light">
+             <img class="activator" src="{{asset('uploads/goals/'.$goals->goalpicturetwo)}}" alt="goal picture">
+           </div>
+           <div class="card-content">
+              <span class="card-title  grey-text text-darken-4">
+                <span class="col s2 tooltipped" style="cursor:pointer;" data-position="right" data-delay="50" data-tooltip="Pin this goal">
+                  <form method="post" action="{{ route('dashboard') }}" id="unpin" style="position:inline;">
+                      {{ csrf_field() }}
+                    <input type="hidden" name="pinned" value="0">
+                    <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                    <input type="hidden" name="email" value="{{$email}}">
+                    <input type="hidden" name="action" value="1">
+                    <button type="submit" style="border:none;background-color:#fff;" id="unpinbtn">
+                        <img class="icon icons8-Pin-Filled" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABfklEQVQ4T6WU0U0CQRCG/90EnimBDtQOsAKxAs+EnfAGVKBUIL6RXR7OCsQKwA6wAinBe12SHTMGyN5xF+5kkn2b+TIz/z+r8I8gomdmHgGYOOfSGKGa8gaDQU9rvTrUMfNjDG0ETJKk02q1vpVSnbiRGNoIaIxZKqXuKqa6t9YuawOJaAzgpWpFzPwD4LYUOBwOuyGEETNfA5C3BdAtjlqEC/QEaIxJpJNzxRWdTk+ARLQBcNVQ/SyE0F8sFusToCjZbrfXdaHM/LHb7ZI0TWWHKN1hTWgGIBFlaxn7HJSZN865m+JqKm1DRGkIIdVazyrGz6y1OYNXjiy3CuDp6C2l5F5zQjHzp3Oud7ZDIuoDeI8Sp977WVEoZn51zonZc5Eb2RgjJl5FHpxaa6VbFHaaee+7B2VLRdkfvsAEevRVnHyAMvOs+G0d8o4diggAHgB8aa378/lczq1x/AGjw3/z3o/LRqlLVtGHObHWikUuCmWM2TJzInd4EWlf/Avee7REp9E1bAAAAABJRU5ErkJggg==">
+                    </button>
+                  </form>
+                </span>
+                <span style="cursor:pointer;" class="col s8 truncate activator tooltipped" data-position="bottom" data-delay="50" data-tooltip="Goal name - {{ $goals->goalname }}">{{ $goals->goalname }}</span>
+                <span style="cursor:pointer;" class="col s2 activator tooltipped" data-position="bottom" data-delay="50" data-tooltip="View details"><i class="material-icons right">more_vert</i></span>
+              </span>
+              <br><br>
+              <div style="border-top:1px solid grey;"><br>
+              </div>
+              <div class="row" >
+                  <div class="col s12">
+                    Priority :
+                    {{$goals->goalpriority}}
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col s12">
+                    End date :
+                    {{$goals->goalenddate}}
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col s12">
+                    Start date :
+                    {{$goals->goalstartdate}}
+                  </div>
+              </div>
+              <div style="border-top:1px solid grey;">
+              </div>
+            </div>
+           <div class="card-action">
+             <div class="row">
+               <div class="col s3">
+                 <a class="waves-effect waves-light btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Go to goal" href="{{ url('/goal/'.$goals->goalid) }}"><i class="material-icons">exit_to_app</i></a>
+               </div>
+               <div class="col s3">
+                 <form  action="{{route('deletegoal')}}" method="post">
+                   {{csrf_field()}}
+                   <button type="submit" class="waves-effect waves-light btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete goal"><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
+                 </form>
+               </div>
+               <div class="col s3">
+                 @if ($goals->goalauthorization=="gift")
+                   <a class="waves-effect waves-light btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="this goal is shared to you">
+                     <i class="material-icons">share</i>
+                   </a>
+                 @else
+                   <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="this goal is not shared">
+                     <i class="material-icons">share</i>
+                   </a>
+                 @endif
+               </div>
+               <div class="col s3">
+                 @if ($goals->goalauthorization=="aligned")
+                   <a class="waves-effect waves-light btn btn-floating tooltipped"  data-position="bottom" data-delay="50" data-tooltip="this goal is aligned to you">
+                     <i class="material-icons">call_merge</i>
+                   </a>
+                 @else
+                   <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="this goal is not aligned">
+                     <i class="material-icons">call_merge</i>
+                   </a>
+                 @endif
+               </div>
+             </div>
+             <div class="row">
+               <div class="col s10 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="completed percentage">
+                 @if ($goals->goalcompletedpercentage<=30)
+                   <div class="progress red lighten-4">
+                      <div class="determinate red darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+                  </div>
+                @elseif ($goals->goalcompletedpercentage<=60)
+                  <div class="progress orange lighten-4">
+                     <div class="determinate orange darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+                 </div>
+               @elseif ($goals->goalcompletedpercentage<=80)
+                  <div class="progress yellow lighten-4">
+                     <div class="determinate yellow darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+                 </div>
+               @elseif ($goals->goalcompletedpercentage<100)
+                  <div class="progress green lighten-4">
+                     <div class="determinate green darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+                 </div>
+               @elseif ($goals->goalcompletedpercentage==100)
+                  <div class="progress  light-green accent-3">
+                     <div class="determinate  light-green accent-3" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+                 </div>
+                 @endif
+               </div>
+               <div class="col s2 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="{{ $goals->goalcompletedpercentage }}% completed">
+                 @if ($goals->goalcompletedpercentage<=30)
+                 <span class="red-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+                 @elseif ($goals->goalcompletedpercentage<=60)
+                   <span class="orange-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+                 @elseif ($goals->goalcompletedpercentage<=80)
+                   <span class="yellow-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+                 @elseif ($goals->goalcompletedpercentage<100)
+                   <span class="green-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+                 @elseif ($goals->goalcompletedpercentage==100)
+                   <!-- Christmas Star icon by Icons8 -->
+                  <img class="icon icons8-Christmas-Star" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACKUlEQVQ4T62UPW8TQRCG39m9u5Ao1tmyQGBcJMiRXCGMhGlQiERFCkSJkBD8BCpaXNHyF6AjDYIGWhtBkTS2qIysfFUWNLEgDrbvbgbtOef4C5+LXLc7s8+8887eEs75o3PmYS6gbOdL/s9gw37Q2IgTEAuU6koS3sJ+7yBwnXR7le41D2dB44Hb+RIIL3t7AdQSKnEqZwKlml+BJ1WAkgYIJeIkeJ3u7339n8rZwJ38GwBPzeEQCIAuYNd52MjNBMrna3cY+iYHuAtQSjwugGlBJ9WiSvRrRkC1TLAuUQ2gFghliLQAqsHGIRXqB2G27Kzd4GN8ky6WgjYA/6y+dVHBQEMPQ5g6C3qC4EQgXfFI8RNrc3dr0LKBAqoMkIsosSPgvwI7o+H/YtgZFa6lY0AAPOOBQCfkkYGFlgx7MQKNAizg3wIQwz8CwENHxmATwKh9o5Tb4vIfAZ8A9hUF/8go1OA2g4/N/qiyqP7UKXsfck3u0GWTpF1Ap3XooU4TtDvw8C0V68/Gpz0V2Hufa0mPXFiAk1WA6g8FSuBc1YAdHqtQsT7xK04FdrdyAiHYWQVyRq8NOYCd1eZutKj4IzWXwu67NdEpgk6dtify0W8Gtwc2nMaoWJ8QNLERfMo9Dzr0uq8CFRBKdKteNot+DCVjR189F6jYqA2rnAqkZf2CFulxBBpvy4DZwysrY22O50wA5cvqdVrf/x737oVXbEpu7PM1D3g45x/V0vYVEDEg7AAAAABJRU5ErkJggg==">
+                 @endif
+               </div>
+             </div>
+           </div>
+           <div class="card-reveal" style="opacity: 0.7;filter: alpha(opacity=70); /* For IE8 and earlier *">
+                 <span class="card-title grey-text text-darken-4">{{ $goals->goalname }}<i class="material-icons right">close</i></span>
+                 <ol class="collection">
+                   @foreach ($task as $tasks)
+                     @if($goals->goalid==$tasks->goalid)
+                   <li class="collection-item">
+                       {{$tasks->taskname}}&nbsp;&nbsp;<b>{{ $tasks->taskcompletedpercentage }}%</b>
+                   </li>
+                   @endif
+                   @endforeach
 
-              <div class="overlay">
-              <!-- what goes in the slide up -->
-              <div class="text">
-                <!-- repeatable List for tasks -->
-                <ul class="demo-list-item mdl-list">
-                  @foreach ($task as $tasks)
-                    @if($goals->goalid==$tasks->goalid)
-                  <li class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content" style="color:white;">
-                      {{$tasks->taskname}}
-                    </span>
-                  </li>
-                  @endif
-                  @endforeach
+                </ol>
+                <ul class="collection">
                   @if ($goals->gottasks==0)
-                      <li class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content" style="color:white;">
-                        No Tasks yet
-                    </span>
-                  </li>
+                      <li class="collection-item">
+                        No Tasks yet...
+                      </li>
                   @endif
                 </ul>
-
-              </div>
-
-              </div>
-            <!-- <div id="some-div"> -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{{asset('uploads/goals/'.$goals->goalpicturetwo)}}" border="0" alt="" >
-                </div>
-                <div class="mdl-card__title">
-                  <h2 class="mdl-card__title-text">{{$goals->goalname}}</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                  Priority:{{$goals->goalpriority}}<br>
-                  End date:{{$goals->goalenddate}}<br>
-                  Start date:{{$goals->goalstartdate}}<br>
-                  Authorization:{{$goals->goalauthorization}}<br>
-                </div>
-
-
-             <!-- <span id="some-element">
-               sdfsfsdfsdfsffdsfsfd
-             </span> -->
-               <!-- </div> -->
-             </div>
-             <div class="mdl-card__actions mdl-card--border">
-
-             <!--  Progress Bar -->
-             <div id="{{$goals->goalid}}" class="mdl-progress mdl-js-progress"></div><br>
-
-             <script>
-             // javascript for the progressbar needs to repeat for all goals
-                 document.querySelector('#{{$goals->goalid}}').addEventListener('mdl-componentupgraded', function() {
-                   this.MaterialProgress.setProgress({{$goals->goalcompletedpercentage}});
-                 });
-             </script>
-               <form method="post" action="{{ route('dashboard') }}" id="unpin" class="right">
-                 {{ csrf_field() }}
-               <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="{{ url('/goal/'.$goals->goalid) }}">Go to Goal</a>&nbsp   &nbsp &nbsp   &nbsp &nbsp   &nbsp
-               <input type="text" class="hidden" name="pinned" value="0">
-               <input type="text" class="hidden" name="goalid" value="{{$goals->goalid}}">
-               <input type="text" class="hidden" name="email" value="{{$email}}">
-               <input type="text" class="hidden" name="action" value="1">
-               <button type="submit"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="unpinbtn"><a style="color:blue" class="material-icons">pin_drop</a></button>
-             </form>
-
-             <form class="right" action="{{route('deletegoal')}}" method="post">
-               {{csrf_field()}}
-               <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" ><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
-             </form>
-             <script>
-
-             </script>
            </div>
           </div>
       @endif
     @endforeach
-      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-       <tbody>
-         <tr>
-          <td class="mdl-data-table__cell--non-numeric"><b>Other</b></td>
-         </tr>
-       </tbody>
-      </table>
-
+  </div>
+  <ul class="collection">
+    <li class="collection-item"><b>other</b></li>
+  </ul>
+  <div class="row center">
       @foreach ($goal as $goals)
       @if ($goals->pinned==0)
-          <!-- ////////////////////////////////// -->
-            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-              <div class="containerholder">
-
-              <div class="overlay">
-              <!-- what goes in the slide up -->
-              <div class="text">
-                <!-- repeatable List for tasks -->
-                <ul class="demo-list-item mdl-list">
-                  @foreach ($task as $tasks)
-                    @if($goals->goalid==$tasks->goalid)
-                  <li class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content" style="color:white;">
-                      {{$tasks->taskname}}
-                    </span>
-                  </li>
-                  @endif
-                  @endforeach
-                  @if ($goals->gottasks==0)
-                      <li class="mdl-list__item">
-                    <span class="mdl-list__item-primary-content" style="color:white;">
-                        No Tasks yet
-                    </span>
-                  </li>
-                  @endif
-                </ul>
+        <div class="col l4 m6 s12 card sticky-action responsive">
+       <div class="card-image waves-effect waves-block waves-light">
+         <img class="activator" src="{{asset('uploads/goals/'.$goals->goalpicturetwo)}}" alt="goal picture">
+       </div>
+       <div class="card-content">
+          <span class="card-title  grey-text text-darken-4">
+            <span class="col s2 tooltipped" style="cursor:pointer;" data-position="right" data-delay="50" data-tooltip="Pin this goal">
+              <form method="post" action="{{ route('dashboard') }}" id="unpin" style="position:inline;">
+                  {{ csrf_field() }}
+                <input type="hidden" name="pinned" value="1">
+                <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                <input type="hidden" name="email" value="{{$email}}">
+                <input type="hidden" name="action" value="1">
+                <button type="submit" style="border:none;background-color:#fff;" id="unpinbtn">
+                  <!-- Pin Filled icon by Icons8 -->
+                  <img class="icon icons8-Pin-Filled" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABf0lEQVQ4T6WUzXHCQAyFpREFUAIdBA+7d1JBSAVxKgipIKSCkA5IBSEVQM6WZ0kFoQR8944y8tiM8Q/Ywac9aD9L7z0twj++KIoWiPiEiM+TyWRVRmBfXhRFU0TcFPcQ8bEM7QV0zg29978AMDzpqgTtBWTmNQDctUx1b4xZdwbGcTwXkbczEh2I6LYR6JwbpWmqoo8BYCwie0QcVUdtgB9qwDiOw7yTE526mCcirzUgM+8A4KYLoFSTiMjMWrutAXMntz2gX0QUBkFw0B+0aajxuARNACBUZzsF+1KnIrKz1gZVaVpjw8wrEVkh4rJl/MQYUzOuEZjv6gsAZNny3uu+nhglIt/W2unFDpl5BgCfRaFGYTAYLBs0fTfGzM8CnXNj770ufjaKwqy1Cz1XNE2IaFQ422iKXkjTdJNvxzFX5eICqrpWn63j61Mc1AQAeACAHyKaBUGw7xnurDwzpbT4H0Q0bxqlKxyLBzN/fTUiV33IzHsRCXUPryLll/8ASP7A5nfoHrQAAAAASUVORK5CYII=">
+                </button>
+              </form>
+            </span>
+            <span style="cursor:pointer;" class="col s8 truncate activator tooltipped" data-position="bottom" data-delay="50" data-tooltip="Goal name - {{ $goals->goalname }}">{{ $goals->goalname }}</span>
+            <span style="cursor:pointer;" class="col s2 activator tooltipped" data-position="bottom" data-delay="50" data-tooltip="View details"><i class="material-icons right">more_vert</i></span>
+          </span>
+          <br><br>
+          <div style="border-top:1px solid grey;"><br>
+          </div>
+          <div class="row" >
+              <div class="col s12">
+                Priority :
+                {{$goals->goalpriority}}
               </div>
-
+          </div>
+          <div class="row">
+              <div class="col s12">
+                End date :
+                {{$goals->goalenddate}}
               </div>
-            <!-- <div id="some-div"> -->
-                <div class="mdl-card__media">
-                    <img class="article-image" src="{{asset('uploads/goals/'.$goals->goalpicturetwo)}}" border="0" alt="">
-                </div>
-                <div class="mdl-card__title">
-                  <h2 class="mdl-card__title-text">{{$goals->goalname}}</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                  Priority:{{$goals->goalpriority}}<br>
-                  End date:{{$goals->goalenddate}}<br>
-                  Start date:{{$goals->goalstartdate}}<br>
-                  Authorization:{{$goals->goalauthorization}}<br>
-                </div>
-
-             <!-- <span id="some-element">
-               sdfsfsdfsdfsffdsfsfd
-             </span> -->
-               <!-- </div> -->
-             </div>
-             <div class="mdl-card__actions mdl-card--border">
-
-             <!--  Progress Bar -->
-             <div id="{{$goals->goalid}}" class="mdl-progress mdl-js-progress"></div><br>
-
-             <script>
-             // javascript for the progressbar needs to repeat for all goals
-                 document.querySelector('#{{$goals->goalid}}').addEventListener('mdl-componentupgraded', function() {
-                   this.MaterialProgress.setProgress({{$goals->goalcompletedpercentage}});
-                 });
-             </script>
-             <form method="post" action="{{ route('dashboard') }}" id="pin" class="right">
-               {{ csrf_field() }}
-             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="{{ url('/goal/'.$goals->goalid) }}">Go to Goal</a>&nbsp   &nbsp &nbsp   &nbsp &nbsp   &nbsp
-             <input type="text" class="hidden" name="pinned" value="1">
-             <input type="text" class="hidden" name="goalid" value="{{$goals->goalid}}">
-             <input type="text" class="hidden" name="email" value="{{$email}}">
-             <input type="text" class="hidden" name="action" value="1">
-             <button type="submit"  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent"><i class="material-icons">pin_drop</i></button>
-           </form>
-            <form class="right" action="{{route('deletegoal')}}" method="post">
+          </div>
+          <div class="row">
+              <div class="col s12">
+                Start date :
+                {{$goals->goalstartdate}}
+              </div>
+          </div>
+          <div style="border-top:1px solid grey;">
+          </div>
+        </div>
+       <div class="card-action">
+         <div class="row">
+           <div class="col s3">
+             <a class="waves-effect waves-light btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Go to goal" href="{{ url('/goal/'.$goals->goalid) }}"><i class="material-icons">exit_to_app</i></a>
+           </div>
+           <div class="col s3">
+             <form  action="{{route('deletegoal')}}" method="post">
                {{csrf_field()}}
-               <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" ><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
+               <button type="submit" class="waves-effect waves-light btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete goal"><input type="hidden" name="goalid" value="{{$goals->goalid}}"><i class="material-icons  ">delete</i></button>
              </form>
            </div>
-          </div>
+           <div class="col s3">
+             @if ($goals->goalauthorization=="gift")
+               <a class="waves-effect waves-light btn btn-floating tooltipped" data-position="bottom" data-delay="50" data-tooltip="this goal is shared to you">
+                 <i class="material-icons">share</i>
+               </a>
+             @else
+               <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="this goal is not shared">
+                 <i class="material-icons">share</i>
+               </a>
+             @endif
+           </div>
+           <div class="col s3">
+             @if ($goals->goalauthorization=="aligned")
+               <a class="waves-effect waves-light btn btn-floating tooltipped"  data-position="bottom" data-delay="50" data-tooltip="this goal is aligned to you">
+                 <i class="material-icons">call_merge</i>
+               </a>
+             @else
+               <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="this goal is not aligned">
+                 <i class="material-icons">call_merge</i>
+               </a>
+             @endif
+           </div>
+         </div>
+         <div class="row">
+           <div class="col s10 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="completed percentage">
+             @if ($goals->goalcompletedpercentage<=30)
+               <div class="progress red lighten-4">
+                  <div class="determinate red darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+              </div>
+            @elseif ($goals->goalcompletedpercentage<=60)
+              <div class="progress orange lighten-4">
+                 <div class="determinate orange darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+             </div>
+           @elseif ($goals->goalcompletedpercentage<=80)
+              <div class="progress yellow lighten-4">
+                 <div class="determinate yellow darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+             </div>
+           @elseif ($goals->goalcompletedpercentage<100)
+              <div class="progress green lighten-4">
+                 <div class="determinate green darken-4" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+             </div>
+           @elseif ($goals->goalcompletedpercentage==100)
+              <div class="progress  light-green accent-3">
+                 <div class="determinate  light-green accent-3" style="width: {{ $goals->goalcompletedpercentage }}%"></div>
+             </div>
+             @endif
+           </div>
+           <div class="col s2 tooltipped"  data-position="bottom" data-delay="50" data-tooltip="{{ $goals->goalcompletedpercentage }}% completed">
+             @if ($goals->goalcompletedpercentage<=30)
+             <span class="red-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+             @elseif ($goals->goalcompletedpercentage<=60)
+               <span class="orange-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+             @elseif ($goals->goalcompletedpercentage<=80)
+               <span class="yellow-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+             @elseif ($goals->goalcompletedpercentage<100)
+               <span class="green-text text-darken-4"><b>{{ $goals->goalcompletedpercentage }}%</b></span>
+             @elseif ($goals->goalcompletedpercentage==100)
+               <!-- Christmas Star icon by Icons8 -->
+              <img class="icon icons8-Christmas-Star" width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACKUlEQVQ4T62UPW8TQRCG39m9u5Ao1tmyQGBcJMiRXCGMhGlQiERFCkSJkBD8BCpaXNHyF6AjDYIGWhtBkTS2qIysfFUWNLEgDrbvbgbtOef4C5+LXLc7s8+8887eEs75o3PmYS6gbOdL/s9gw37Q2IgTEAuU6koS3sJ+7yBwnXR7le41D2dB44Hb+RIIL3t7AdQSKnEqZwKlml+BJ1WAkgYIJeIkeJ3u7339n8rZwJ38GwBPzeEQCIAuYNd52MjNBMrna3cY+iYHuAtQSjwugGlBJ9WiSvRrRkC1TLAuUQ2gFghliLQAqsHGIRXqB2G27Kzd4GN8ky6WgjYA/6y+dVHBQEMPQ5g6C3qC4EQgXfFI8RNrc3dr0LKBAqoMkIsosSPgvwI7o+H/YtgZFa6lY0AAPOOBQCfkkYGFlgx7MQKNAizg3wIQwz8CwENHxmATwKh9o5Tb4vIfAZ8A9hUF/8go1OA2g4/N/qiyqP7UKXsfck3u0GWTpF1Ap3XooU4TtDvw8C0V68/Gpz0V2Hufa0mPXFiAk1WA6g8FSuBc1YAdHqtQsT7xK04FdrdyAiHYWQVyRq8NOYCd1eZutKj4IzWXwu67NdEpgk6dtify0W8Gtwc2nMaoWJ8QNLERfMo9Dzr0uq8CFRBKdKteNot+DCVjR189F6jYqA2rnAqkZf2CFulxBBpvy4DZwysrY22O50wA5cvqdVrf/x737oVXbEpu7PM1D3g45x/V0vYVEDEg7AAAAABJRU5ErkJggg==">
+             @endif
+           </div>
+         </div>
+       </div>
+       <div class="card-reveal" style="opacity: 0.7;filter: alpha(opacity=70); /* For IE8 and earlier *">
+             <span class="card-title grey-text text-darken-4">{{ $goals->goalname }}<i class="material-icons right">close</i></span>
+             <ol class="collection">
+               @foreach ($task as $tasks)
+                 @if($goals->goalid==$tasks->goalid)
+               <li class="collection-item">
+                   {{$tasks->taskname}}&nbsp;&nbsp;<b>{{ $tasks->taskcompletedpercentage }}%</b>
+               </li>
+               @endif
+               @endforeach
+
+            </ol>
+            <ul class="collection">
+              @if ($goals->gottasks==0)
+                  <li class="collection-item">
+                    No Tasks yet...
+                  </li>
+              @endif
+            </ul>
+       </div>
+      </div>
         @endif
         @endforeach
+      </div>
       @endif
        {{-- eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndddddddddddddddddddddd --}}
-            <div id="overlay2"></div>
-
-
-
         </div>
-
-
-
-
-
         <!-- Tap Target Structure -->
   <div class="fab" id="view-source" >
         <div  class="tap-target" data-activates="view-source">

@@ -15,17 +15,12 @@
     
     <title>Life With Goals</title>
 {{-- favicon --}}
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
 <link rel="manifest" href="{{asset('favicon/manifest.json')}}">
-{{-- <link rel="mask-icon" href="{{assest('favicon/safari-pinned-tab.svg" color="#5bbad5')}}"> --}}
-<meta name="theme-color" content="#ffffff">
-{{-- // --}}
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" />
   <link rel="stylesheet" href="{{ asset('css/styles_goalcards.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <script src="{{asset('js/init.js')}}"></script>
@@ -164,53 +159,13 @@
   </style>
 </head>
 <body>
-    {{-- <ul id="dropdown1" class="dropdown-content row">
-
-      <li>
-        @if ($friendrequest->isEmpty())
-          <a href="#" class="col s12 center-align">You dont have any requests</a>
-        @else
-        @foreach ($friendrequest as $friendrequests)
-        <div class="chip col s12">
-        <img src="{{asset('uploads/avatars/'.$friendrequests->avatar)}}" alt="Contact Person">
-        <form class="inline" action="{{route('confirmfriend')}}" method="post">
-          {{csrf_field()}}
-          <a href="{{url('/search/'.$friendrequests->id)}}">{{$friendrequests->fname}}&nbsp;{{$friendrequests->lname}}</a>
-          <input type="hidden" name="userid" value="{{$friendrequests->id}}">
-          <button type="submit" class="btn ">confirm</button>
-        </form>
-      </div><br>
-      @endforeach
-      @endif
-
-      </li>
-      <li class="divider"></li>
-    </ul>
-    <ul  class="dropdown-content center">
-      <li><a href="{{url('profile/'.Auth::id())}}">Profile</a></li>
-      <li class="divider"></li>
-      <li><a href="{{ route('logout') }}"
-          onclick="event.preventDefault();
-                   document.getElementById('logout-form').submit();">
-          Logout</a>
-      </li
-      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          {{ csrf_field() }}
-      </form>
-    </ul>
-    <div class="navbar-fixed">
- --}}
-
     <nav>
       <div class="nav-wrapper blue darken-4 ">
-
-
         <ul class="left">
               <li><a href="#" data-activates="slide-out" class="button-collapse left"><i class="material-icons">menu</i></a></li>
               <li><img class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px"></li>
               <li><img class="logoImg2 hide-on-med-and-up left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/favicon.ico')}}" ></li>
         </ul>
-
         <ul class="right ">
           <li>
             <form action="{{route('search')}}" method="post" id="search-form">
@@ -420,18 +375,9 @@
                <p class="white-text">
                  <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">About us</a>
                  <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">  Support</a>
-                 {{-- <a href="{!! url('/aboutus'); !!}" class="white-text footerCont"> Press</a> --}}
                  <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;"> Work with us</a>
                </p>
-
              </div>
-             <!-- <div class="col l4 offset-l2 s12">
-               <ul>
-                 <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                 <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                 <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-               </ul>
-             </div> -->
            </div>
          </div>
          <div class="footer-copyright">
@@ -468,21 +414,5 @@
     });
   });
   </script>
-      <script>
-    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
-      var link = el.querySelector('a');
-      if(!link) {
-        return;
-      }
-      var target = link.getAttribute('href');
-      if(!target) {
-        return;
-      }
-    });
-  </script>
-    <!--for goal-->
-   <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
 
-    {{-- <script src="{{asset('js/updategoal.js')}}"></script> --}}
-    <!-- -->
 </html>
