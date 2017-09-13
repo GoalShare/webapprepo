@@ -216,9 +216,9 @@
             <script>
 
             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
-              function(result){
-                console.log(result);
-                  var x=result.entry.gphoto$thumbnail.$t;
+              function(data){
+                console.log(data);
+                  var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
               });
 
