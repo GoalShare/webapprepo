@@ -118,6 +118,7 @@
 
         <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
          {{csrf_field()}}
+         <input type="hidden" id="token" value="{{ csrf_token() }}">
 
         <script type="text/javascript">
 
