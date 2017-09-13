@@ -15,6 +15,6 @@ use Image;
 class emailController extends Controller
 {
   public function viewemails(request $request) {
-      echo "nchndckjnkdcmnksjdmcnxxcjkshzdcjksndcjx";
+      echo $request->test;
   }
 }

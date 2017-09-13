@@ -193,7 +193,6 @@
                               console.log(value_obj);
 
 
-
                               var newfilenameform=document.getElementById('filenameform');
                               newfilenameform.submit();
                        }
@@ -208,7 +207,7 @@
             </script>
             <form id="filenameform" action="{{route('chkdetails')}}" method="post">
              {{csrf_field()}}
-              <input type="hidden" value="" id="input_hidden_field_obj" />
+              <input type="hidden" name="test" value="" id="input_hidden_field_obj" />
               <input type="hidden" id="token" value="{{ csrf_token() }}">
             </form>
             <style>
