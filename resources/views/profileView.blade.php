@@ -173,8 +173,8 @@
                                   console.log(this.value);
 
                                   checkArray.push(this.value);
-                                  var t=this.value;
-                                  for (var prop in t) {
+
+                                  for (var prop in checkArray) {
                                     arr.push(t[prop]);
                                   }
 
