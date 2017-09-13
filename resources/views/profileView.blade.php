@@ -179,7 +179,7 @@
 
                               //console.log(this.value);
 
-                                 checkArray.push('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
+                                 checkArray.push(this.value);
                               //     // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
                                //
                                   });
@@ -189,7 +189,7 @@
                             }
                             console.log(checkArray.length);
                             for(var i=0;i<checkArray.length;i++){
-                            console.log(checkArray[i]+'<br/>');
+                            console.log(checkArray[i]);
                           }
                             // for(var i=0;i<count.length;i++){
                             //   console.log(checkArray[i]);
