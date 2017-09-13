@@ -221,17 +221,8 @@
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
 
-                  var pic_list = data.entry.gphoto$thumbnail.$t;
+                  document.write('<img src="'+data.entry.gphoto$thumbnail.$t+'" onerror="this.src='{{asset('img/Martz90-Circle-Gmail.png')}}'" />');
 
-pic_list.load(function () {
-  var http = new XMLHttpRequest();
-  http.open('HEAD', pic_list, false);
-  http.send();
-  if (http.status == 404) {
-      console.log("404");
-  } else {
-      console.log("jahecnjknj");
-  }
 });
 
               });
