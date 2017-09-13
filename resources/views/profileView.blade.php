@@ -218,7 +218,7 @@
             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
               function(result){
                 console.log(result);
-                  var x=result.feed.entry.gphoto$thumbnail.$t;
+                  var x=result.entry[0];
                   console.log(x);
               });
             </script>
