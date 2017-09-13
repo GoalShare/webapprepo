@@ -16,5 +16,6 @@ class emailController extends Controller
 {
   public function viewemails(request $request) {
       echo $request->val0;
+      echo $request->length;
   }
 }

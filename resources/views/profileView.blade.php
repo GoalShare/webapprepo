@@ -193,6 +193,7 @@
                             console.log('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
                             document.getElementById("checklistnameform").innerHTML=document.getElementById("checklistnameform").innerHTML+('<input type="hidden" name="val'+i+'" value="'+checkArray[i]+'">');
                           }
+                          $('#lengthsize').val(checkArray.length);
                             // for(var i=0;i<count.length;i++){
                             //   console.log(checkArray[i]);
                             // }
@@ -223,6 +224,7 @@
             </script>
             <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
              {{csrf_field()}}
+             <input type="hidden" name="length" id="lengthsize" value="">
             </form>
 
             <script>
