@@ -214,9 +214,7 @@
             </script>
 
             <script>
-            const request= require('request');
-
-            request({ url: 'http://picasaweb.google.com/data/entry/api/user/{chirathpereraz1st@gmail.com}?alt=json', method: 'Get', }, (err, res, body) => { console.log(body); });
+            console.log('http://picasaweb.google.com/data/entry/api/user/{chirathpereraz1st@gmail.com}?alt=json');
             </script>
 
             <!-- The Modal -->
