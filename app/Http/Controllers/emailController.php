@@ -32,6 +32,6 @@ class emailController extends Controller
                 ]
             );
       }
-      return redirect('/profile');
+        return redirect()->back();
   }
 }
