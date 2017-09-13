@@ -148,7 +148,7 @@
 
                            }
 
-                          document.getElementById("found").innerHTML=+" "+'<p>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p>';
+                          document.getElementById("found").innerHTML='<span></span><p>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p>';
 
                       }
 
@@ -217,7 +217,7 @@
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
               <div class="row">
-                &nbsp&nbsp<span id="found"></span>
+              <span id="found"></span>
               </div>
               <hr>
               <!-- Modal content -->
