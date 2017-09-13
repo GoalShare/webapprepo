@@ -188,6 +188,7 @@
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
                             console.log(checkArray);
+                            console.log(checkArray[0]);
                             // for(var i=0;i<count.length;i++){
                             //   console.log(checkArray[i]);
                             // }
