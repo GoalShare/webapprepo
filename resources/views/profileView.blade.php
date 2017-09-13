@@ -216,7 +216,7 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
-              <div class="card-panel teal" style="color:#0d47a1;height:50px;">This is a card panel with a teal lighten-2 class</div>
+              <div class="card-panel teal" style="background-color:#A7A7A7;height:25px;"><span style="color:white;">Gmail</span></div>
               <div class="row">
               <span id="found"></span>
               </div>
