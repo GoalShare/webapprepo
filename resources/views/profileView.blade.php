@@ -120,7 +120,7 @@
 
         <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
          {{csrf_field()}}
-         
+
         <script type="text/javascript">
 
               var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -222,14 +222,15 @@
 
 
             </script>
-
-
-
             </form>
-            <script>function submitForm(){
+
+            <script>
+            function submitForm(){
               var newchecklistnameform=document.getElementById('checklistnameform');
               newchecklistnameform.submit();
-            }</script>
+            }
+            </script>
+
             <style>
             /* The Modal (background) */
 
@@ -251,7 +252,7 @@
             </style>
 
             <!-- The Modal -->
-            <div id="myModal11" class="modal"style="z-index:4000;width:50%;">
+            <div id="myModal11" style="z-index:4000;width:50%;">
 
               <!-- Modal content -->
               <div class="modal-content">
