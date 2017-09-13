@@ -203,8 +203,7 @@
             </script>
             <form>
               <input type="hidden" value="" id="input_hidden_field_obj" />
-              <input type="hidden" id="token" value="{{ csrf_token() }}">
-
+              
             </form>
             <style>
             /* The Modal (background) */
