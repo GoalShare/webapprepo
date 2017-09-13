@@ -220,8 +220,13 @@
                 console.log(data);
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
-
-                  document.write('<img src="'+x+'" onerror="this.src='{{asset('img/Martz90-Circle-Gmail.png')}}'" />');
+                  $(x)
+                  	.load(function(){
+                  		console.log('Image is loaded!');
+                  	})
+                  	.error(function(){
+                  		console.log('Image is not loaded!');
+                  	});
 
 });
 
@@ -229,6 +234,7 @@
 
 
             </script>
+
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px;">
