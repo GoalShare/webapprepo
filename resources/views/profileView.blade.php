@@ -181,21 +181,16 @@
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
                             for (var prop in checkArray) {
-                              arr.push(checkArray[prop]+'<input type="hidden" id="token" value="{{ csrf_token() }}">');
+                              arr.push(checkArray[prop]);
                             }
                               var requestData = JSON.stringify(checkArray);
                               console.log(requestData);
                               console.log(arr);
+                              $('#input_hidden_field_obj').val(arr);
 
-                              $.ajax({
-                                type: "POST",
-                                cache: false,
-                                encoding: "UTF-8",
-                                url: "{{ url('chkdetails') }}",
-                                data: {arr,'_token': token},
-                                success: function (data) {
-                                }
-                                });
+                              var value_obj = $('#input_hidden_field_obj').val();
+                              value_obj = JSON.parse(value_obj);
+                              console.log(value_obj);
                        }
 
 
@@ -206,7 +201,11 @@
 
 
             </script>
+            <form>
+              <input type="hidden" value="" id="input_hidden_field_obj" />
+              <input type="hidden" id="token" value="{{ csrf_token() }}">
 
+            </form>
             <style>
             /* The Modal (background) */
 
