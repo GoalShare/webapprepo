@@ -142,7 +142,7 @@
 
                       else{
                         count=count+1;
-                        text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img class="circle responsive-img" src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="20px" width="20px"></div><div class="col l8 truncate"><span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
+                        text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><div class="col l2"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span></div><div class="col l2"><img class="circle responsive-img" src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="20px" width="20px"></div></div><div class="col l8 truncate"><span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
                           // console.log(document.getElementsByTagName("input")[0].value);
 
 
