@@ -172,25 +172,15 @@
                                   console.log(this.value);
 
                                   checkArray.push(this.value);
+                                  var requestData = JSON.stringify(this.value);
 
+                                  console.log(requestData);
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
-                            $.ajaxSetup({
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                          }
-                                      });
-                           $.ajax({
-                             type: "POST",
-                             url: "{{ URL::to('chkdetails') }}",
-                             data: "",
-                             success: function() {
-                               console.log("Done");
-                             }
-                           });
+                            
                        }
 
 
