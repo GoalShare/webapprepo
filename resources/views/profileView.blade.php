@@ -214,7 +214,7 @@
 
 
             <!-- The Modal -->
-            <div id="myModal11" class="modal" style="z-index:4000;width:50%;">
+            <div id="myModal11" class="modal">
 
               <!-- Modal content -->
               <div class="modal-content">
@@ -224,9 +224,9 @@
 
               </div>
 
-              <button class="btn" type="reset" style="position: fixed;">Reset</button>
+              <button class="btn right" type="reset" style="position: fixed;">Reset</button>
               &nbsp&nbsp
-              <button class="btn" id="sendinv" style="position: fixed;">Send Invite</button>
+              <button class="btn right" id="sendinv" style="position: fixed;">Send Invite</button>
 
               </div>
 
