@@ -229,7 +229,7 @@
   } else {
     console.log("dcjisndcijsdkcnskmdcskjdmc");
   }
-}
+});
             </script>
 
             <!-- The Modal -->
