@@ -179,7 +179,7 @@
 
                               //console.log(this.value);
 
-                                 checkArray.push(this.value);
+                                 checkArray.push('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
                               //     // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
                                //
                                   });
