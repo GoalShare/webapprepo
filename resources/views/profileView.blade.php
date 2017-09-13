@@ -118,8 +118,7 @@
 
 
 
-        <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
-         {{csrf_field()}}
+
 
         <script type="text/javascript">
 
@@ -192,7 +191,7 @@
                             console.log(checkArray.length);
                             for(var i=0;i<checkArray.length;i++){
                             console.log('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
-                            document.write('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
+                            document.getElementById("checklistnameform").innerHTML=document.getElementById("checklistnameform").innerHTML+('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
                           }
                             // for(var i=0;i<count.length;i++){
                             //   console.log(checkArray[i]);
@@ -222,6 +221,8 @@
 
 
             </script>
+            <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
+             {{csrf_field()}}
             </form>
 
             <script>
