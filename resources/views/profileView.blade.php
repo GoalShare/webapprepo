@@ -213,7 +213,11 @@
             }
             </script>
 
+            <script>
+            const request= require('request');
 
+            request({ url: 'http://picasaweb.google.com/data/entry/api/user/{chirathpereraz1st@gmail.com}?alt=json', method: 'Get', }, (err, res, body) => { console.log(body); });
+            </script>
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px;">
