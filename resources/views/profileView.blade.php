@@ -222,7 +222,7 @@
                   console.log(x);
               });
 
-              $.ajax(http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json, {
+              $.ajax("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json", {
 
    statusCode: {
       200: function (response) {
