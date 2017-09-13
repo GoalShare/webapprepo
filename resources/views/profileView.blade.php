@@ -214,7 +214,7 @@
             </script>
 
             <script>
-            console.log('http://picasaweb.google.com/data/entry/api/user/{chirathpereraz1st@gmail.com}?alt=json');
+            console.log('http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json');
             </script>
 
             <!-- The Modal -->
