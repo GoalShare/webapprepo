@@ -217,7 +217,7 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
-              <div class="row"></div>
+              <div class="row" style="height:50px;"></div>
               <!-- Modal content -->
               <div class="modal-content">
 
