@@ -20,7 +20,18 @@ class emailController extends Controller
 
       for($x=0;$x<$emaillength;$x++){
         $email="val".$x;
-        echo $request->$email;
+
+
+        DB::table('notifications')->insert(
+                [
+                  'to'=> $request->$email,
+                  'subject' => 'Welcome',
+                  'message'=> 'We warmly welcome you to lifewithgoals family http://www.lifewithgoals.com',
+                  'template_name'=>'Invite',
+                  'message_type'=>1,
+                ]
+            );
       }
+      return redirect('/profile');
   }
 }
