@@ -148,7 +148,7 @@
 
                            }
 
-                          document.getElementById("found").innerHTML='<span></span><p>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p>';
+                          document.getElementById("found").innerHTML='&nbsp&nbsp<p>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p>';
 
                       }
 
@@ -229,7 +229,7 @@
               </div>
               <div class="modal-footer">
                   <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv">Send Invite</button>
-                  &nbsp&nbsp
+
                   <button class="modal-action modal-close waves-effect waves-green btn left" type="reset">Reset</button>
 
 
