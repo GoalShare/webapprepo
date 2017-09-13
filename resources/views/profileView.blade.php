@@ -218,14 +218,10 @@
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
 
-
-              <span id="found1"></span>
-              <span id="found2"></span>
-
-
               <!-- Modal content -->
               <div class="modal-content">
-
+                <span id="found1"></span>
+                <span id="found2"></span>
                   <div id="demo11" class="row"></div>
 
 
