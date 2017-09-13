@@ -235,12 +235,12 @@
 
                   <div class="wwww">
                   <div id="demo11" class="row"></div></div>
-                    <div class="row right">
+                    <div class="row right" style="position:fixed;">
 
 
-                  <button style="position:fixed;" class="btn" type="reset">Reset</button>
+                  <button class="btn" type="reset">Reset</button>
                   &nbsp&nbsp
-                  <button style="position:fixed;" id="sendinv">Send Invite</button>
+                  <button id="sendinv">Send Invite</button>
                   <script>
 
                   </script>
