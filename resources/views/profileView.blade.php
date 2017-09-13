@@ -149,7 +149,7 @@
                            }
 
                            document.getElementById("found1").innerHTML = '<span style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</span>';
-                           //document.getElementById("found2").innerHTML = '<p><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p><hr>';
+                           document.getElementById("found2").innerHTML = '<span><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</span><hr>';
 
                       }
 
@@ -219,7 +219,7 @@
             <div id="myModal11" class="modal modal-fixed-footer">
               <div style="height:50px;">
                 <span id="found1" style="height:25px"></span>
-
+                <span id="found2" style="height:25px"></span>
               </div>
               <!-- Modal content -->
               <div class="modal-content">
