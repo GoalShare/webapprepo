@@ -225,43 +225,22 @@
             }
             </script>
 
-            <style>
-            /* The Modal (background) */
 
-
-            /* The Close Button */
-            .close11 {
-                color: #aaaaaa;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-            .close11:hover,
-            .close11:focus {
-                color: #000;
-                text-decoration: none;
-                cursor: pointer;
-            }
-            </style>
 
             <!-- The Modal -->
             <div id="myModal11" class="modal" style="z-index:4000;width:50%;">
 
               <!-- Modal content -->
               <div class="modal-content">
-                <div class="row right">
-                <span class="close11" style="cursor:pointer;position:fixed;">&times;</span>
 
-              </div>
                   <div class="wwww">
                   <div id="demo11" class="row"></div></div>
                     <div class="row right">
 
 
-                  <button class="btn" type="reset">Reset</button>
+                  <button style="position:fixed;" class="btn" type="reset">Reset</button>
                   &nbsp&nbsp
-                  <button class="btn" id="sendinv">Send Invite</button>
+                  <button style="position:fixed;" id="sendinv">Send Invite</button>
                   <script>
 
                   </script>
