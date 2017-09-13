@@ -223,11 +223,15 @@
 
 
               </div>
-              <div class="row right" style="position: fixed;">
-              <button class="btn" type="reset">Reset</button>
-              &nbsp&nbsp
-              <button class="btn" id="sendinv">Send Invite</button>
-            </div>
+              <div class="modal-footer">
+                  
+                  <button class="modal-action modal-close waves-effect waves-green btn-flat" type="reset">Reset</button>
+                  &nbsp&nbsp
+                  <button class="modal-action modal-close waves-effect waves-green btn-flat" id="sendinv">Send Invite</button>
+              </div>
+
+
+
               </div>
 
 
