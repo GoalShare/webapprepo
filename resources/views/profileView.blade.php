@@ -141,6 +141,12 @@
                       }
 
                       else{
+                        $.get("http://picasaweb.google.com/data/entry/api/user/"+x[0].address"?alt=json",
+                          function(data){
+                            
+                              var image=result.entry.gphoto$thumbnail.$t;
+                              console.log(image);
+                          });
                         count=count+1;
                         text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
                           // console.log(document.getElementsByTagName("input")[0].value);
@@ -214,13 +220,8 @@
             </script>
 
             <script>
-            console.log('http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json');
-            $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
-              function(result){
-                console.log(result);
-                  var x=result.entry.gphoto$thumbnail.$t;
-                  console.log(x);
-              });
+
+
             </script>
 
             <!-- The Modal -->
