@@ -174,7 +174,7 @@
                         var count=0;
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
-                               console.log($('[type="checkbox"]').is(":checked").length);
+                               console.log(($('[type="checkbox"]').is(":checked")).length);
                                $('input[name="checkboxnames"]:checked').each(function() {
                                   console.log(this.value);
                                   count=count+1;
