@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 
 
 use App\Models\News;
-use Request;
-use Response;
-use Input;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Goal;
