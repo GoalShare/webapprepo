@@ -252,7 +252,7 @@
             </style>
 
             <!-- The Modal -->
-            <div id="myModal11" style="z-index:4000;width:50%;">
+            <div id="myModal11" class="modal"style="z-index:4000;width:50%;">
 
               <!-- Modal content -->
               <div class="modal-content">
