@@ -188,7 +188,9 @@
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
                             console.log(checkArray.length);
-                            console.log(checkArray[0]);
+                            for(var i=0;i<checkArray.length;i++){
+                            console.log(checkArray[i]+'<br/>');
+                          }
                             // for(var i=0;i<count.length;i++){
                             //   console.log(checkArray[i]);
                             // }
