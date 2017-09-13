@@ -217,13 +217,14 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px;">
-              <div style="height:80px;">
-                <div id="found1" style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">Gmail</div>
+              <div style="height:100px;">
+                <div id="found1" style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">&nbsp Gmail</div>
                 <div id="found2" style="height:25px;"></div>
                 <div id="found3" style="height:25px;"></div>
+                <div style="height:25px;background-color:#EEEEEE;"><input type="checkbox" onclick="toggle(this);" />Select all</div>
               </div>
               <!-- Modal content -->
-              <div class="modal-content" style="height:470px;max-height:470px;">
+              <div class="modal-content" style="height:450px;max-height:450px;">
 
                   <div id="demo11" class="row"></div>
 
