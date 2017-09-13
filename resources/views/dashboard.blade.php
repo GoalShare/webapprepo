@@ -5,7 +5,7 @@
    $compare =Carbon::now();
   @endphp
     <!--add goal form -->
-      <div id="addgoal" class="modal modal-fixed-footer">
+   <div id="addgoal" class="modal modal-fixed-footer">
     <div class="modal-content" style="text-align:center;">
       <h4>Add a Goal</h4>
       <form enctype="multipart/form-data" action="{{route('dashboard')}}" method="post" id="addgoalform">
@@ -88,7 +88,7 @@
             </div>
           </li>
         </ul>
-<input type="text" class="hidden" name="action" value="2">
+    <input type="hidden" style="display:none;" name="action" value="2">
     </div>
     <div class="modal-footer">
       <a href="#" id="cancelmodalbtn" style="margin-right:10px;margin-left:10px;"class="model-close waves-effectwaves-effect waves-light btn">Not Now</a>
@@ -97,163 +97,160 @@
     </div>
   </div>
       <!--end of add goal -->
-    <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
-      <main class="mdl-layout__content">
-        </br>
-        </br>
-				<div class="row mdl-grid portfolio-max-width hide-on-small-only">
-          <div class="col l2 m2  center-align">
-            <span class=" red-text "><b>New Goal</b></span><br>
-						<a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
-					</div>
-          <div class="col l2 m2  center-align">
-            <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-						<a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
-					</div>
-          <script type="text/javascript">
 
-                var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
-                var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
-                var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+        <div class="container" id="goaldisplay">
+          <div class="row hide-on-small-only"><br><br>
+            <div class="col l2 m2  center-align">
+              <span class=" red-text "><b>New Goal</b></span><br>
+              <a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
+            </div>
+            <div class="col l2 m2  center-align">
+              <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
+              <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
+            </div>
+            <script type="text/javascript">
 
-                $(document).on("click",".googleContactsButton", function(){
-                  gapi.client.setApiKey(apiKey);
-                  window.setTimeout(authorize);
-                });
+                  var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
+                  var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
+                  var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
 
-                function authorize() {
-                  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
-                }
+                  $(document).on("click",".googleContactsButton", function(){
+                    gapi.client.setApiKey(apiKey);
+                    window.setTimeout(authorize);
+                  });
 
-                function handleAuthorization(authorizationResult) {
-                  if (authorizationResult && !authorizationResult.error) {
-                    $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
-                      function(result){
-                        console.log(result);
-                        var text = '';
-                    for(var i=0;i<result.feed.entry.length;i++){
-                        var x=result.feed.entry[i].gd$email;
-                        var y=result.feed.entry[i].title;
-                        if(x==undefined){
-                          console.log("yy");
-                        }
-
-                        else{
-
-                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
-                            // console.log(document.getElementsByTagName("input")[0].value);
-
-
-                             }
-
-
-
-                        }
-
-
-                      document.getElementById("demo11").innerHTML=text;
-
-
-                      //
-                      //
-                      var invitebtn=document.getElementById('sendinv');
-                       invitebtn.addEventListener("click",function(event){
-                       Check();
-                      });
-                      function Check(){
-                              if($('[type="checkbox"]').is(":checked")){
-                                 console.log("qwertyuiop");
-                                 $('input[name="checkboxnames"]:checked').each(function() {
-                                    console.log(this.value);
-                                    });
-                              }
-                              else{
-                                console.log("jdcnjsnkmkmkmookmokmok");
-                              }
-                         }
-                      });
+                  function authorize() {
+                    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
                   }
-                }
+
+                  function handleAuthorization(authorizationResult) {
+                    if (authorizationResult && !authorizationResult.error) {
+                      $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
+                        function(result){
+                          console.log(result);
+                          var text = '';
+                      for(var i=0;i<result.feed.entry.length;i++){
+                          var x=result.feed.entry[i].gd$email;
+                          var y=result.feed.entry[i].title;
+                          if(x==undefined){
+                            console.log("yy");
+                          }
+
+                          else{
+
+                            text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="img/Cornmanthe3rd-Plex-Communication-gmail.ico" height="40px" width="40px"></div><div class="col l8 truncate">'+y.$t+'<br><span style="font-size:10px;">'+x[0].address+'</span></div></div></div></div>';
+                              // console.log(document.getElementsByTagName("input")[0].value);
 
 
-              </script>
-
-              <!-- The Modal -->
-              <div id="myModal11" class="modal"style="z-index:4000;width:50%;">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <div class="row right">
-                  <span class="close11" style="cursor:pointer;position:fixed;">&times;</span>
-
-                </div>
-                    <div class="wwww">
-                    <div id="demo11" class="row"></div></div>
-                      <div class="row right">
+                               }
 
 
-                    <button class="btn" type="reset">Reset</button>
-                    &nbsp&nbsp
-                    <button class="btn" id="sendinv">Send Invite</button>
-                    <script>
 
-                    </script>
+                          }
+
+
+                        document.getElementById("demo11").innerHTML=text;
+
+
+                        //
+                        //
+                        var invitebtn=document.getElementById('sendinv');
+                         invitebtn.addEventListener("click",function(event){
+                         Check();
+                        });
+                        function Check(){
+                                if($('[type="checkbox"]').is(":checked")){
+                                   console.log("qwertyuiop");
+                                   $('input[name="checkboxnames"]:checked').each(function() {
+                                      console.log(this.value);
+                                      });
+                                }
+                                else{
+                                  console.log("jdcnjsnkmkmkmookmokmok");
+                                }
+                           }
+                        });
+                    }
+                  }
+
+
+                </script>
+
+                <!-- The Modal -->
+                <div id="myModal11" class="modal"style="z-index:4000;width:50%;">
+
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <div class="row right">
+                    <span class="close11" style="cursor:pointer;position:fixed;">&times;</span>
+
+                  </div>
+                      <div class="wwww">
+                      <div id="demo11" class="row"></div></div>
+                        <div class="row right">
+
+
+                      <button class="btn" type="reset">Reset</button>
+                      &nbsp&nbsp
+                      <button class="btn" id="sendinv">Send Invite</button>
+                      <script>
+
+                      </script>
+                    </div>
+
+
+
+
+                  </div>
+
                   </div>
 
 
+                <script>
+                // Get the modal
+                var modal11 = document.getElementById('myModal11');
 
+                // Get the button that opens the modal
+                var btn11 = document.getElementById("myBtn11");
 
-                </div>
+                // Get the <span> element that closes the modal
+                var span11 = document.getElementsByClassName("close11")[0];
 
-                </div>
+                // When the user clicks the button, open the modal
+                btn11.onclick = function() {
+                    modal11.style.display = "block";
+                }
 
+                // When the user clicks on <span> (x), close the modal
+                span11.onclick = function() {
+                    modal11.style.display = "none";
+                }
 
-              <script>
-              // Get the modal
-              var modal11 = document.getElementById('myModal11');
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal11.style.display = "none";
+                    }
+                }
+                </script>
 
-              // Get the button that opens the modal
-              var btn11 = document.getElementById("myBtn11");
-
-              // Get the <span> element that closes the modal
-              var span11 = document.getElementsByClassName("close11")[0];
-
-              // When the user clicks the button, open the modal
-              btn11.onclick = function() {
-                  modal11.style.display = "block";
-              }
-
-              // When the user clicks on <span> (x), close the modal
-              span11.onclick = function() {
-                  modal11.style.display = "none";
-              }
-
-              // When the user clicks anywhere outside of the modal, close it
-              window.onclick = function(event) {
-                  if (event.target == modal) {
-                      modal11.style.display = "none";
-                  }
-              }
-              </script>
-
-          <div class="col l2 m2  center-align">
-            <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
-						<a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
-					</div>
-					<div class="col l2 m2 center-align">
-            <span class=" blue-text text-darken-4"><b>My Documents</b></span><br>
-						<a href="{{url('/files')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
-					</div>
-          <div class="col l2 m2 center-align">
-            <span class=" purple-text text-darken-3"><b>My Schedule</b></span><br>
-						<a href="{{url('/calendar')}}" class="btn btn-floating purple darken-3 btn-large "><i class="material-icons">date_range</i></a>
-          </div>
-          <div class="col l2 m2  center-align">
-            <span class=" green-text text-darken-4"><b>My Profile</b></span><br>
-						<a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i class="material-icons">people</i></a>
-					</div>
+            <div class="col l2 m2  center-align">
+              <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
+              <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
+            </div>
+            <div class="col l2 m2 center-align">
+              <span class=" blue-text text-darken-4"><b>My Documents</b></span><br>
+              <a href="{{url('/files')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
+            </div>
+            <div class="col l2 m2 center-align">
+              <span class=" purple-text text-darken-3"><b>My Schedule</b></span><br>
+              <a href="{{url('/calendar')}}" class="btn btn-floating purple darken-3 btn-large "><i class="material-icons">date_range</i></a>
+            </div>
+            <div class="col l2 m2  center-align">
+              <span class=" green-text text-darken-4"><b>My Profile</b></span><br>
+              <a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i class="material-icons">people</i></a>
+            </div>
         </div>
-        <div class="container" id="goaldisplay">
           @if($goal->isEmpty())
           <style media="screen">
             .colorOfCard{
@@ -263,8 +260,6 @@
               border: none;
             }
           </style>
-
-      <div class="container">
         <div class="col s12 m6">
           <div class="card colorOfCard z-depth-5 m6">
             <div class="card-image">
@@ -276,7 +271,6 @@
                 <span class="card-title " style="text-align:center"><p class="grey-text flow-text z-depth-2"><h1>WELCOME</h1></p><p class="flow-text"><h1>{{ Auth::User()->fname}}</h1></p></br></span>
             </div>
           </div>
-        </div>
         </div>
           @else
           {{-- starrrrrrrrrrrrrrrrrrrtttttttttttttttttt --}}
@@ -587,7 +581,7 @@
         <!-- Tap Target Structure -->
   <div class="fab" id="view-source" >
         <div  class="tap-target" data-activates="view-source">
-          <div class="tap-target-content white-text">
+          <div class="tap-target-content white-text"><br>
             <h5>Start Building Your Life Goals</h5>
             <p>
               Click on "+" and define your Goal
@@ -599,12 +593,9 @@
           </div>
         </div>
 
-          <button id="addgoalbtntwo" style="display:none;" class="btn-floating btn-large waves-effect waves-light red tooltipped hide-on-small-only" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
-          <button  class="btn-floating btn-large waves-effect waves-light red tooltipped hide-on-med-and-up " data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></button>
+          <a href="#addgoal" id="addgoalbtntwo" style="display:none;" class="btn-floating btn-large waves-effect waves-light red tooltipped hide-on-small-only pulse" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></a>
+          <a href="#addgoal"  class="btn-floating btn-large waves-effect waves-light red tooltipped hide-on-med-and-up pulse" data-position="top" data-delay="50" data-tooltip="ADD GOAL"><i class="material-icons">add</i></a>
                   </div>
-
-
-
         @if ($goal->isEmpty()||($compare->diffInHours($carbon))<1)
           <script>
           var addgoalbtntwo=document.getElementById("addgoalbtntwo");
@@ -612,14 +603,5 @@
           $('.tap-target').tapTarget('open');
           </script>
         @endif
-
-
-
-      </main>
       </div>
-
-
-  <!--  Scripts-->
-
-
 @endsection
