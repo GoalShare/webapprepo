@@ -116,7 +116,7 @@
 
 
 
-        <form id="filenameform" action="{{route('chkdetails')}}" method="post">
+        <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
          {{csrf_field()}}
 
         <script type="text/javascript">
@@ -178,8 +178,8 @@
                                   console.log(this.value);
                                   count=count+1;
                                   checkArray.push(this.value);
-                                  document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" id="input_hidden_field_obj" />');
-
+                                  // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
+                                  document.getElementById("checklistnameform").innerHTML=('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
                                   });
                             }
                             else{
@@ -198,8 +198,8 @@
                             //   console.log(value_obj);
                             //
                             //
-                              var newfilenameform=document.getElementById('filenameform');
-                              newfilenameform.submit();
+                             var newchecklistnameform=document.getElementById('checklistnameform');
+                             newchecklistnameform.submit();
                        }
 
 
