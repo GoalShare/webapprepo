@@ -217,12 +217,12 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px;">
-              <div style="height:100px;">
+              <div style="height:80px;">
                 <div id="found1" style="height:25px;background-color:#0d47a1;"></div>
                 <div id="found2" style="height:25px;"></div>
               </div>
               <!-- Modal content -->
-              <div class="modal-content" style="height:500px;max-height:500px;">
+              <div class="modal-content" style="height:470px;max-height:470px;">
 
                   <div id="demo11" class="row"></div>
 
