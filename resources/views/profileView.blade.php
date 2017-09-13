@@ -175,7 +175,7 @@
                                   checkArray.push(this.value);
 
                                   for (var prop in checkArray) {
-                                    arr.push(t[prop]);
+                                    arr.push(checkArray[prop]);
                                   }
 
 
