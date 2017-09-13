@@ -131,12 +131,14 @@
                   $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
                     function(result){
                       console.log(result);
+
                       var text = '';
                       var count=0;
                   for(var i=0;i<result.feed.entry.length;i++){
+                    $.get("http://picasaweb.google.com/data/entry/api/user/"+result.feed.entry[i].gd$email[0].address"?alt=json",function(data){var image=result.entry.gphoto$thumbnail.$t;console.log(image);});
                       var x=result.feed.entry[i].gd$email;
                       var y=result.feed.entry[i].title;
-                        $.get("http://picasaweb.google.com/data/entry/api/user/"+x[0].address"?alt=json",function(data){var image=result.entry.gphoto$thumbnail.$t;console.log(image);});
+
                       if(x==undefined){
                         console.log("yy");
                       }
