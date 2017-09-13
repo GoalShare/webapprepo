@@ -222,6 +222,15 @@
                 <div id="found2" style="height:25px;"></div>
                 <div id="found3" style="height:25px;"></div><br>
                 <div style="background-color:#EDEEEE;"><span><span>&nbsp&nbsp&nbsp&nbsp</span><input type="checkbox" id="chk" onclick="toggle(this);" /><label for="chk"></label>Select all</span></div>
+                <script>
+                function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+}
+</script>
               </div>
               <!-- Modal content -->
               <div class="modal-content" style="height:410px;max-height:410px;">
