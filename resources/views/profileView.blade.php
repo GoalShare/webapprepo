@@ -228,10 +228,10 @@
 
 
               </div>
-              <div class="modal-footer" style="height:40px;">
-                  <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv" style="height:20px;">Send Invite</button>
+              <div class="modal-footer" style="height:50px;">
+                  <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv" style="height:30px;">Send Invite</button>
 
-                  <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" style="height:20px;">Reset</button>
+                  <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" style="height:30px;">Reset</button>
 
 
               </div>
