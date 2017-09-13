@@ -223,8 +223,12 @@
               });
 
               var url = 'http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json';
-              if (url.statusCode === '404 Not Found'){
-    console.log("aysgxyuahgcuadchub");
+              urlExists(url, function(exists) {
+  if (exists) {
+    console.log("ncjksndckm");
+  } else {
+    console.log("dcjisndcijsdkcnskmdcskjdmc");
+  }
 }
             </script>
 
