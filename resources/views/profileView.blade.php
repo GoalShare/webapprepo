@@ -177,7 +177,7 @@
                                console.log($('input[name="checkboxnames"]:checked').length);
                                var size=($('input[name="checkboxnames"]:checked').length);
                                for(var i=0;i<size;i++){
-                                 console.log($('input[name="checkboxnames"]:checked').value);
+                                 console.log(this.value);
                                }
                               //  $('input[name="checkboxnames"]:checked').each(function() {
                                //
