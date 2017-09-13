@@ -276,7 +276,7 @@ public function addinterests(request $request)
     );
     // echo json_encode($request->interests);
     return redirect()->back();
-    
+
 
 }
 public function addfacebook(request $request)
@@ -347,5 +347,7 @@ public function modifyprofile(request $request)
 
   echo json_encode($user);
 }
+
+
 
 }

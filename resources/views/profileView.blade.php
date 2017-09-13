@@ -108,8 +108,166 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <a href="#" class="btn btn-floating blue lighten-1 btn-large "><i class="material-icons">people</i></a>
+          <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
         </div>
+
+        <script type="text/javascript">
+
+              var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
+              var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
+              var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
+
+              $(document).on("click",".googleContactsButton", function(){
+                gapi.client.setApiKey(apiKey);
+                window.setTimeout(authorize);
+              });
+
+              function authorize() {
+                gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthorization);
+              }
+
+              function handleAuthorization(authorizationResult) {
+                if (authorizationResult && !authorizationResult.error) {
+                  $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
+                    function(result){
+                      console.log(result);
+                      var text = '';
+                      var count=0;
+                  for(var i=0;i<result.feed.entry.length;i++){
+                      var x=result.feed.entry[i].gd$email;
+                      var y=result.feed.entry[i].title;
+                      if(x==undefined){
+                        console.log("yy");
+                      }
+
+                      else{
+                        count=count+1;
+                        text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img class="circle responsive-img" src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
+                          // console.log(document.getElementsByTagName("input")[0].value);
+
+
+                           }
+
+                          document.getElementById("found").innerHTML = '<p style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</p>'+'<p><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</p><hr>';
+
+                      }
+
+
+                    document.getElementById("demo11").innerHTML=text;
+
+
+                    //
+                    //
+                    var invitebtn=document.getElementById('sendinv');
+                     invitebtn.addEventListener("click",function(event){
+                     Check();
+                    });
+                    function Check(){
+                      var checkArray =new Array();
+                        var count=0;
+                            if($('[type="checkbox"]').is(":checked")){
+                               console.log("qwertyuiop");
+
+                                $('input[name="checkboxnames"]:checked').each(function() {
+
+                              //console.log(this.value);
+
+                                 checkArray.push(this.value);
+                              //     // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
+                               //
+                                  });
+                            }
+                            else{
+                              console.log("jdcnjsnkmkmkmookmokmok");
+                            }
+                            console.log(checkArray.length);
+                            for(var i=0;i<checkArray.length;i++){
+                            console.log('<input type="hidden" name="'+i+'" value="'+checkArray[i]+'">');
+                            document.getElementById("checklistnameform").innerHTML=document.getElementById("checklistnameform").innerHTML+('<input type="hidden" name="val'+i+'" value="'+checkArray[i]+'">');
+                          }
+                          $('#lengthsize').val(checkArray.length);
+
+                            submitForm();
+
+                       }
+
+
+
+                    });
+                }
+              }
+
+
+            </script>
+
+            <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
+             {{csrf_field()}}
+             <input type="hidden" name="length" id="lengthsize" value="">
+            </form>
+
+            <script>
+            function submitForm(){
+              var newchecklistnameform=document.getElementById('checklistnameform');
+              newchecklistnameform.submit();
+            }
+            </script>
+
+
+
+            <!-- The Modal -->
+            <div id="myModal11" class="modal modal-fixed-footer">
+              <div class="container-fluid" style="background-color:#0d47a1;height:30px;color:white;">Gmail</div>
+              <div class="row">
+              <span id="found"></span>
+              </div>
+
+              <!-- Modal content -->
+              <div class="modal-content">
+
+                  <div id="demo11" class="row"></div>
+
+
+              </div>
+              <div class="modal-footer">
+                  <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv">Send Invite</button>
+
+                  <button class="modal-action modal-close waves-effect waves-green btn left" type="reset">Reset</button>
+
+
+              </div>
+
+
+
+              </div>
+
+
+            <script>
+            // Get the modal
+            var modal11 = document.getElementById('myModal11');
+
+            // Get the button that opens the modal
+            var btn11 = document.getElementById("myBtn11");
+
+            // Get the <span> element that closes the modal
+            var span11 = document.getElementsByClassName("close11")[0];
+
+            // When the user clicks the button, open the modal
+            btn11.onclick = function() {
+                modal11.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span11.onclick = function() {
+                modal11.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal11.style.display = "none";
+                }
+            }
+            </script>
         <div class="col l2 m2  center-align">
           <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
           <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
