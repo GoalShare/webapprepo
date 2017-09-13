@@ -221,11 +221,11 @@
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
 
-                  document.write('<img src="'+data.entry.gphoto$thumbnail.$t+'" onerror="this.src='{{asset('img/Martz90-Circle-Gmail.png')}}'" />');
+                  document.write('<img src="'+x+'" onerror="this.src='{{asset('img/Martz90-Circle-Gmail.png')}}'" />');
 
 });
 
-      
+
 
 
             </script>
