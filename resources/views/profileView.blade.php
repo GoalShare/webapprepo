@@ -174,17 +174,21 @@
                         var count=0;
                             if($('[type="checkbox"]').is(":checked")){
                                console.log("qwertyuiop");
+                               console.log($('[type="checkbox"]').is(":checked").length);
                                $('input[name="checkboxnames"]:checked').each(function() {
                                   console.log(this.value);
                                   count=count+1;
                                   checkArray.push(this.value);
                                   // document.write('<input type="hidden" name="test'+count+'" value="'+this.value+'" />');
-                                  document.getElementById("checklistnameform").innerHTML='<input type="hidden" name="test'+count+'" value="'+this.value+'" />';
+
                                   });
                             }
                             else{
                               console.log("jdcnjsnkmkmkmookmokmok");
                             }
+                            // for(var i=0;i<count.length;i++){
+                            //   console.log(checkArray[i]);
+                            // }
                             // for (var prop in checkArray) {
                             //   arr.push(checkArray[prop]);
                             // }
@@ -198,8 +202,8 @@
                             //   console.log(value_obj);
                             //
                             //
-                             var newchecklistnameform=document.getElementById('checklistnameform');
-                             newchecklistnameform.submit();
+                            //  var newchecklistnameform=document.getElementById('checklistnameform');
+                            //  newchecklistnameform.submit();
                        }
 
 
@@ -213,7 +217,7 @@
 
             <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
              {{csrf_field()}}
-             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
             </form>
             <style>
             /* The Modal (background) */
