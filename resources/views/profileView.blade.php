@@ -221,7 +221,7 @@
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
 
-                  var pic_list = jQuery(data.entry.gphoto$thumbnail.$t);
+                  var pic_list = data.entry.gphoto$thumbnail.$t;
 
 pic_list.load(function () {
   var http = new XMLHttpRequest();
