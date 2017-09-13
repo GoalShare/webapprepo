@@ -216,7 +216,7 @@
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer">
-              <div class="card-panel" style="color:#A7A7A7;height:25px;"><span style="color:white;">Gmail</span></div>
+              <div class="container" style="background-color:#0d47a1;height:25px;"></div>
               <div class="row">
               <span id="found"></span>
               </div>
