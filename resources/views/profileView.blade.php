@@ -213,6 +213,7 @@
 
             <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
              {{csrf_field()}}
+             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
             <style>
             /* The Modal (background) */
