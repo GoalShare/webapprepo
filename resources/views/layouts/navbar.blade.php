@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Life With Goals</title>
 {{-- favicon --}}
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
@@ -294,7 +295,7 @@
               // use "input" (every key), not "change" (must lose focus)
               search.addEventListener("input", getSuggestions);
             });
-                
+
             </script>
           </li>
           <li><a class="dropdown-button" data-hover="false" data-activates="friendrequestdropdown" data-beloworigin="true" ><i class=" large material-icons ">people</i></a></li>
@@ -320,7 +321,7 @@
           <li><span class="new badge red">4</span><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
           <ul id="noticationdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
               <li>
-            @foreach ($notification as $notifications)         
+            @foreach ($notification as $notifications)
               <a>
                 <b><span onclick="window.location.href='{{url('/search/'.$notifications->user_id)}}'">{{$notifications->user_fname}} {{$notifications->user_lname}}</span></b> {{$notifications->authorization}} the goal <b><span onclick="window.location.href='{{ url('/goal/'.$notifications->goalid) }}'">{{ $notifications->goalname }}</span></b> to you.
               </a>
