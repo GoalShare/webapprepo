@@ -175,7 +175,7 @@
                           // console.log(v);
                           if(value==v){
                             console.log(v+i);
-                            console.log(document.getElementById("ch"+i).value);
+                            // console.log($('[type="checkbox"]').value);
                           }
                         @endforeach
                       }
