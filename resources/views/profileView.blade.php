@@ -150,7 +150,7 @@
                           // console.log(v);
                           if(x[0].address==v){
                             console.log(v+i);
-                            console.log(document.getElementById(i).value);
+                            console.log(document.getElementById(208).value);
                           }
                         @endforeach
                           // console.log(document.getElementsByTagName("input")[0].value);
