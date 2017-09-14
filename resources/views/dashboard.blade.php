@@ -216,10 +216,7 @@
                 // Get the <span> element that closes the modal
                 var span11 = document.getElementsByClassName("close11")[0];
 
-                // When the user clicks the button, open the modal
-                btn11.onclick = function() {
-                    modal11.style.display = "block";
-                }
+                // When the user clicks the button, open the mod
 
                 // When the user clicks on <span> (x), close the modal
                 span11.onclick = function() {
@@ -252,26 +249,55 @@
             </div>
         </div>
           @if($goal->isEmpty())
-          <style media="screen">
-            .colorOfCard{
-              background-color: #08e7d6;
-            }
-            .imageGif{
-              border: none;
-            }
-          </style>
-        <div class="col s12 m6">
-          <div class="card colorOfCard z-depth-5 m6">
-            <div class="card-image">
-
-              <span class="card-title ">Card Title</span>
+            <div class="row">
+              <div class="col s12 m4 l4">
+                <div class="card-panel teal">
+                  <span class="white-text">
+                  <h4>Hi {{ Auth::User()->fname }}&nbsp;{{ Auth::User()->lname }},</h4>
+                  we warmly welcome you to lifewithgoals.com. This is a platform to help you build, organize and monitor goals in your life, work and leisure and also much more.
+                  </span>
+                </div>
+                <div class="card-panel purple darken-3">
+                  <span class="white-text">
+                  <h4>Get your day planned</h4>
+                  Have a plan for every second. Access your schedule to know what you have planned. Let us know your progress on every step. We will let you know what you achieved.
+                  </span>
+                </div>
+              </div>
+              <div class="col s12 m4 l4">
+                <div class="card-panel red">
+                  <span class="white-text">
+                  <h4>You are just few clicks away...</h4>
+                  <ol>
+                    <li>Click on "+" button.</li>
+                    <li>Enter details of what you want to achieve</li>
+                    <li>Go to your Goal</li>
+                    <li>Achive it with our help</li>
+                  </ol>
+                  </span>
+                </div>
+                <div class="card-panel blue">
+                  <span class="white-text">
+                  <h4>Invite People</h4>
+                  Invite others to lifewithgoals.com to grow together. Help them achieve their goals like you have. Just click the send invite button and select who you want to invite
+                  </span>
+                </div>
+              </div>
+              <div class="col s12 m4 l4">
+                <div class="card-panel blue darken-4">
+                  <span class="white-text">
+                  <h4>Upload files</h4>
+                  Access your files anytime anywhere. We have them organized for you. We will keep them secured for you.
+                  </span>
+                </div>
+                <div class="card-panel blue-grey darken-3">
+                  <span class="white-text">
+                  <h4>Share and Align</h4>
+                  Now you can share your goals with others so others can achieve what you have achieved too. You can also align a goal with others to work together on the same goal. Achieve something greater than you. Remember to set the correct privacy 
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="card-content center">
-                <img src="https://media.giphy.com/media/26tP80DaorPjmqlC8/giphy.gif" height="200px" width="200px" class="imageGif">
-                <span class="card-title " style="text-align:center"><p class="grey-text flow-text z-depth-2"><h1>WELCOME</h1></p><p class="flow-text"><h1>{{ Auth::User()->fname}}</h1></p></br></span>
-            </div>
-          </div>
-        </div>
           @else
           {{-- starrrrrrrrrrrrrrrrrrrtttttttttttttttttt --}}
           <br>
@@ -582,7 +608,7 @@
   <div class="fab" id="view-source" >
         <div  class="tap-target" data-activates="view-source">
           <div class="tap-target-content white-text"><br>
-            <h5>Start Building Your Life Goals</h5>
+            &nbsp;&nbsp;&nbsp;&nbsp;<h5>Start Building Your Life Goals</h5>
             <p>
               Click on "+" and define your Goal
 
