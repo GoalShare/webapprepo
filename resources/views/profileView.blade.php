@@ -215,17 +215,17 @@
 
             <script>
 
-
-$.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com.com?alt=json")
-    .done(function(data) {
-
-
-          console.log(data);
-            var x=data.entry.gphoto$thumbnail.$t;
-            console.log(x);
+            $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
+              function(data){
+                console.log(data);
+                  var x=data.entry.gphoto$thumbnail.$t;
+                  console.log(x);
 
 
-
+});
+$.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json")
+    .done(function() {
+      console.log("dgvcjndcjkndc");
     }).fail(function() {
       console.log("wefdsdvcsdvcsdzcsd");
     });
