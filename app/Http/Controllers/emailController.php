@@ -34,4 +34,7 @@ class emailController extends Controller
       }
         return redirect()->back();
   }
+
+  
+
 }
