@@ -149,8 +149,8 @@
                           var v="{{$allemails}}";
                           // console.log(v);
                           if(x[0].address==v){
-                            console.log(v);
-                            
+                            console.log(v+i);
+
                           }
                         @endforeach
                           // console.log(document.getElementsByTagName("input")[0].value);
