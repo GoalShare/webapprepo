@@ -220,16 +220,15 @@
                 console.log(data);
                   var x=data.entry.gphoto$thumbnail.$t;
                   console.log(x);
-                  $(x)
-                  	.load(function(){
-                  		console.log('Image is loaded!');
-                  	});
-                  	.error(function(){
-                  		console.log('Image is not loaded!');
-                  	});
+
 
 });
-
+$.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json")
+    .done(function() {
+      console.log("dgvcjndcjkndc");
+    }).fail(function() {
+      console.log("wefdsdvcsdvcsdzcsd");
+    })
 
 
             </script>
