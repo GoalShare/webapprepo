@@ -175,7 +175,7 @@
                           // console.log(v);
                           if(value==v){
                             console.log(v+i);
-                            console.log($('[type="checkbox"]').attr("id"));
+                            $('[type="checkbox"]').attr("disabled", true);
                           }
                         @endforeach
                       }
