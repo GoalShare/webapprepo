@@ -150,7 +150,7 @@
                           // console.log(v);
                           if(x[0].address==v){
                             console.log(v);
-                            document.getElementById("'+i+'").disabled = true;
+                            
                           }
                         @endforeach
                           // console.log(document.getElementsByTagName("input")[0].value);
