@@ -150,7 +150,7 @@
                           // console.log(v);
                           if(x[0].address==v){
                             console.log(v+i);
-                            console.log(document.getElementByValue(v).id);
+                            console.log(document.getElementByName("checkboxnames")[i].tagname);
                           }
                         @endforeach
                           // console.log(document.getElementsByTagName("input")[0].value);
