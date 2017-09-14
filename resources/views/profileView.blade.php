@@ -144,12 +144,22 @@
                         count=count+1;
                         text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
                           // console.log(document.getElementsByTagName("input")[0].value);
+                          $.get("http://picasaweb.google.com/data/entry/api/user/"+x[0].address+"?alt=json")
+                              .done(function() {
+                                $.get("http://picasaweb.google.com/data/entry/api/user/"+x[0].address+"?alt=json",
+                                  function(data){
+                                    console.log(data);
+                                      var x=data.entry.gphoto$thumbnail.$t;
+                                      console.log('<img src="'+x+'">');});
+                              }).fail(function() {
+                                console.log("wefdsdvcsdvcsdzcsd");
+                              });
 
 
                            }
 
-                           document.getElementById("found1").innerHTML = '<span style="color:white;font-size:17px;"><span>&nbsp&nbsp&nbsp</span><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">Connect with people you know on Gmail.</span>';
-                           document.getElementById("found2").innerHTML = '<span><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</span>';
+                           document.getElementById("found2").innerHTML = '<span style="color:#0d47a1;font-size:17px;"><span>&nbsp&nbsp&nbsp</span>Connect with people you know on Gmail.</span>';
+                           document.getElementById("found3").innerHTML = '<span><span>&nbsp&nbsp&nbsp&nbsp</span>We found'+" "+ count+" "+'people from your address book. Select the people you would like to connect to.</span>';
 
                       }
 
@@ -213,22 +223,56 @@
             }
             </script>
 
+            <script>
+
+            $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
+              function(data){
+                console.log(data);
+                  var x=data.entry.gphoto$thumbnail.$t;
+                  console.log(x);
+
+
+ });
+$.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json")
+    .done(function() {
+      $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
+        function(data){
+          console.log(data);
+            var x=data.entry.gphoto$thumbnail.$t;
+            console.log('<img src="'+x+'">');});
+    }).fail(function() {
+      console.log("wefdsdvcsdvcsdzcsd");
+    });
+
+
+            </script>
 
 
             <!-- The Modal -->
             <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px;">
-              <div style="height:100px;">
-                <div id="found1" style="height:25px;background-color:#0d47a1;"></div>
+              <div style="height:140px;">
+                <div id="found1" style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">&nbsp Gmail</div>
                 <div id="found2" style="height:25px;"></div>
+                <div id="found3" style="height:25px;"></div><br>
+                <div style="background-color:#EDEEEE;"><span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><input type="checkbox" id="chk" onclick="toggle(this);" /><label for="chk"></label>Select all</span></div>
+                <script>
+                function toggle(source) {
+                  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i] != source)
+                          checkboxes[i].checked = source.checked;
+                        }
+                      }
+                </script>
               </div>
               <!-- Modal content -->
-              <div class="modal-content" style="height:400px;max-height:400px;">
+              <div class="modal-content" style="height:410px;max-height:410px;">
 
                   <div id="demo11" class="row"></div>
 
 
               </div>
-              <div class="modal-footer" style="height:100px;">
+              <div class="modal-footer" style="height:50px;">
                   <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv" >Send Invite</button>
 
                   <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" >Reset</button>
