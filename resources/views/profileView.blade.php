@@ -144,7 +144,10 @@
                         count=count+1;
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
-                          console.log(v);
+                          // console.log(v);
+                          if(x[0].address==v){
+                            console.log(v);
+                          }
                         @endforeach
                         text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="'+i+'"/><label for="'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
                           // console.log(document.getElementsByTagName("input")[0].value);
