@@ -230,7 +230,9 @@
 
 });
 
-
+$('http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json').error(function() {
+    $(this).text("error");
+});
 
 
             </script>
