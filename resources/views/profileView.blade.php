@@ -232,7 +232,7 @@
 
     var success = false;
 
-    $.getJSON("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json", function(json) {
+    $.getJSON("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json", function(json) {
         success = true;
         console.log("ssssss");
     });
