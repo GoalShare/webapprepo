@@ -14,6 +14,7 @@ class ProfileController extends Controller
 
 {
  public function view($userid){
+
    $id=Auth::id();
    $email=Auth::User()->email;
    $goal = DB::table('goals')->where('email',$email)->get();
@@ -38,7 +39,7 @@ class ProfileController extends Controller
                   ->get();
    $portfolio=DB::table('portfolio')->where('userid',$id)->get();
 
-   $allemail=DB::table('users')->value('email');
+   $allemail=DB::table('users')->pluck('email');
    return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail]);
  }
 
