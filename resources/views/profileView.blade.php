@@ -150,7 +150,7 @@
                                   function(data){
                                     console.log(data);
                                       var x=data.entry.gphoto$thumbnail.$t;
-                                      document.write('<img src="'+data.entry.gphoto$thumbnail.$t;+'"/>');
+                                      console.log('<img src="'+data.entry.gphoto$thumbnail.$t;+'"/>');
                                     });
                               }).fail(function() {
                                 console.log("wefdsdvcsdvcsdzcsd");
