@@ -232,12 +232,10 @@
 
     var success = false;
 
-    $.getJSON(http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json, function(json) {
+    $.getJSON("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json", function(json) {
         success = true;
         console.log("ssssss");
     });
-
-    // Set a 5-second (or however long you want) timeout to check for errors
     setTimeout(function() {
         if (!success)
         {
