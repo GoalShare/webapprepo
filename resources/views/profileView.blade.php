@@ -223,7 +223,7 @@
 
 
 });
-$.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json")
+$.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json")
     .done(function() {
       console.log("dgvcjndcjkndc");
     }).fail(function() {
