@@ -20,7 +20,7 @@ class emailController extends Controller
 
       for($x=0;$x<$emaillength;$x++){
         $email="val".$x;
-        echo $request->$email;
+    
 
 
         DB::table('notifications')->insert(
@@ -33,7 +33,7 @@ class emailController extends Controller
                 ]
             );
       }
-        // return redirect()->back();
+        return redirect()->back();
   }
 
 
