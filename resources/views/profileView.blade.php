@@ -181,7 +181,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            document.getElementById("demo11").innerHTML=($('#ch'+k)[0].disabled = "disabled");
+                            text=($('#ch'+k)[0].disabled = "disabled");
 
                           }
 
