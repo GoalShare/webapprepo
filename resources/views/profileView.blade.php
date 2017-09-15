@@ -110,7 +110,9 @@
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
           <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
         </div>
-
+        <script src="https://apis.google.com/js/client.js?onload=gapiLoad"></script>
+        <script src="https://apis.google.com/js/client.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script type="text/javascript">
 
               var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -332,7 +334,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
 
               </div>
               <div class="modal-footer" style="height:50px;">
-                  <button class="modal-action modal-close waves-effect waves-green btn right" id="sendinv" >Send Invite</button>
+                  <button class="modal-action waves-effect waves-green btn right" id="sendinv" >Send Invite</button>
 
                   <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" >Reset</button>
 
