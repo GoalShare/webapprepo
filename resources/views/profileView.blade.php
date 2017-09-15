@@ -188,7 +188,7 @@
 
 
 
-                         console.log($("input[type=checkbox]")[z].id);
+                         console.log($("input[type=checkbox]")[32].id);
 
 
 
