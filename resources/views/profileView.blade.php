@@ -175,13 +175,13 @@
                           // console.log(v);
                           if(value==v){
                             console.log(v+k);
-                            // test2(k);
+                             test2(k);
                           }
                         @endforeach
                       }
 
-                      // function test2(z){
-                      //   console.log($("input[type=checkbox]")[z]);}
+                       function test2(z){
+                       console.log($("input[type=checkbox]")[z]);}
 
 
                     //
