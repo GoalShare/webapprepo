@@ -198,7 +198,7 @@
 
 
 	                     function selectAll(source) {
-		                       checkboxes = document.getElementsByName('checkboxnames');
+		                       checkboxes = document.getElementsByName("checkboxnames");
 		                         for(var i in checkboxes)
 			                          checkboxes[i].checked = source.checked;
 	                             }
