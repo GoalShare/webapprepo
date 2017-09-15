@@ -181,7 +181,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            $('#ch'+k)[0].css("display","none");
+                            $('#ch'+k)[0].id.css("display","none");
                             console.log($('#ch'+k)[0]);
                           }
 
