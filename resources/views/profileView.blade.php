@@ -299,7 +299,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                 <div style="background-color:#EDEEEE;"><span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><input type="checkbox" id="chk" onclick="toggle(this);" /><label for="chk"></label>Select all</span></div>
                 <script>
                 function toggle(source) {
-                  var checkboxes = (document.querySelectorAll('input[type="checkbox"]').disabled=false);
+                  var checkboxes = (document.querySelectorAll('input[type="checkbox"]')!="disabled");
                   console.log(checkboxes);
                     for (var i = 0; i < checkboxes.length; i++) {
                         if (checkboxes[i] != source)
