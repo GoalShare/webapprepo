@@ -321,9 +321,17 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
 
                       function myFunction() {
                         console.log("dcisdjcnsjkdcnkdmn");
+                        var key = this.value;
                         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                        '<div class="tosearch">';
                         for (var i = 0; i < checkboxes.length; i++) {
                         console.log($('#ch'+i)[0]);}
+                        '</div>';
+
+                        $(".tosearch").each(function() {
+                          var $this = $(this);
+                          $this.toggle($(this).text().indexOf(key) >= 0);
+                        });
                       }
 </script>
               </div>
