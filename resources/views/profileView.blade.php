@@ -175,12 +175,14 @@
                           // console.log(v);
                           if(value==v){
                             console.log(v+k);
-                            console.log($("input[type=checkbox]")[k].disabled=true);
+                            getcheckid(k);
                           }
                         @endforeach
                       }
 
-
+                        function getcheckid(q){
+                        console.log($("input[type=checkbox]")[q].disabled=true);
+                      }
 
 
 
