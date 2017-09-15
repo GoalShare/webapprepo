@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            console.log($('#ch'+k)[0].id);
+                            console.log($('#ch'+k)[0].disabled=true);
                           }
 
                         @endforeach
@@ -187,9 +187,6 @@
                       }
 
 
-
-
-                         console.log(document.getElementById("ch"+32));
 
 
 
