@@ -167,18 +167,19 @@
                       }
 
 
-                    document.getElementById("demo11").innerHTML=text;
+
 
 
 
                       function test(value,k){
+                        document.getElementById("demo11").innerHTML=text;
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
                           // console.log(v);
                           if(value==v){
 
                             console.log(v+" "+k);
-                            console.log(document.getElementById($("input[type=checkbox]")[32].id).value);
+                            // console.log(document.getElementById($("input[type=checkbox]")[32].id));
                           }
 
                         @endforeach
