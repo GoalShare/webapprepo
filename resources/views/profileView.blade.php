@@ -180,8 +180,8 @@
                         @endforeach
                       }
 
-                       function test2(z){
-                       console.log($("input[type=checkbox]")[z]);}
+
+                       console.log($("input[type=checkbox]")[i]);
 
 
                     //
