@@ -196,10 +196,7 @@
 
 
 
-                      function myFunction() {
-                        console.log("dcisdjcnsjkdcnkdmn");
-                        console.log($('#ch'+0)[0]);
-                      }
+
 
 
 
@@ -322,7 +319,10 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                         }
                       }
 
-
+                      function myFunction() {
+                        console.log("dcisdjcnsjkdcnkdmn");
+                        console.log($('#ch'+0)[0]);
+                      }
 </script>
               </div>
               <!-- Modal content -->
