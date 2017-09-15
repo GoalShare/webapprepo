@@ -110,7 +110,7 @@
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
           <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
         </div>
-        
+
         <script type="text/javascript">
 
               var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
@@ -304,7 +304,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                     </div>
                     <div class="col l4"></div>
                     <div class="col l4">
-                      <input style="max-width:200px;max-height:20px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                      <input style="max-width:200px;max-height:20px;" type="text" id="search"  placeholder="Search for names..">
                     </div>
                   </div>
 
@@ -319,15 +319,19 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                         }
                       }
 
-                function myFunction() {
-                  console.log("dcisdjcnsjkdcnkdmn");
-                }
+                      $("#search").on("keyup", function() {
+                        var key = this.value;
+                        $(".tosearch").each(function() {
+                          var $this = $(this);
+                          $this.toggle($(this).text().indexOf(key) >= 0);
+                        });
+                      });
 </script>
               </div>
               <!-- Modal content -->
               <div class="modal-content" style="height:410px;max-height:410px;">
 
-                  <div id="demo11" class="row"></div>
+                  <div id="demo11" class="tosearch" class="row"></div>
 
 
               </div>
