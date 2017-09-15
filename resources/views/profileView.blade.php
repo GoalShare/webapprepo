@@ -177,7 +177,7 @@
                           // console.log(v);
                           if(value==v){
                              checkcount=checkcount+1;
-                            console.log(v+k);
+                            console.log(v+k+" "+ checkcount);
 
                           }
 
