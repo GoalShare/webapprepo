@@ -175,7 +175,7 @@
                           // console.log(v);
                           if(value==v){
                             console.log(v+k);
-                             test2(k);
+                            //  test2(k);
                           }
                         @endforeach
                       }
