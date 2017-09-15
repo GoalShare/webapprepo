@@ -183,7 +183,7 @@
                             console.log(v+" "+k);
                             if($('[type="checkbox"]'))
                             {
-                                document.log("dcjksndcijskndcjk");
+                                console.log("dcjksndcijskndcjk");
                               }
 
                             console.log($('#ch'+k)[0]);
