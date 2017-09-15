@@ -181,7 +181,7 @@
                       }
 
 
-                       console.log($("input[type=checkbox]")[31]);
+                       console.log($("input[type=checkbox]")[32]);
 
 
                     //
