@@ -180,9 +180,10 @@
                         @endforeach
                       }
 
-                        function getcheckid(q){
-                        console.log($("input[type=checkbox]")[q].disabled=true);
-                      }
+
+
+
+                        console.log($("input[type=checkbox]")[k].disabled=true);
 
 
 
