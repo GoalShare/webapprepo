@@ -168,7 +168,7 @@
 
 
                     document.getElementById("demo11").innerHTML=text;
-                    console.log($("input[type=checkbox]"));
+                    console.log($("input[type=checkbox]").attr("id"));
                       function test(value){
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
