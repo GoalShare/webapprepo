@@ -168,17 +168,20 @@
 
 
                     document.getElementById("demo11").innerHTML=text;
-
+                    function test2(w){
+                      console.log($("input[type=checkbox]")[w]);}
                       function test(value){
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
                           // console.log(v);
                           if(value==v){
                             console.log(v+i);
-                                 console.log($("input[type=checkbox]")[i]);
+                            test2(i);
                           }
                         @endforeach
                       }
+
+
                     //
                     //
                     var invitebtn=document.getElementById('sendinv');
