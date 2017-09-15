@@ -168,14 +168,14 @@
 
 
                     document.getElementById("demo11").innerHTML=text;
-
+                    console.log(document.getElementById("'+i+'").value);
                       function test(value){
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
                           // console.log(v);
                           if(value==v){
                             console.log(v+i);
-                            console.log($('[type="checkbox"]').$('input[name="checkboxnames"]').attr("id"));
+
                           }
                         @endforeach
                       }
