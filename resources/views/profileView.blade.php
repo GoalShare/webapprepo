@@ -331,7 +331,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
               <!-- Modal content -->
               <div class="modal-content" style="height:410px;max-height:410px;">
 
-                  <div id="demo11" class="tosearch" class="row"></div>
+                  <div id="demo11" class="row tosearch"></div>
 
 
               </div>
