@@ -182,8 +182,8 @@
 
 
 
-
-                        console.log($("input[type=checkbox]")[k].disabled=true);
+                        for(var z=32;z<33;z++){
+                        console.log($("input[type=checkbox]")[z].disabled=true);}
 
 
 
