@@ -189,7 +189,7 @@
 
 
 
-                         console.log($(document.getElementById("ch"+32));
+                         console.log(document.getElementById("ch"+32));
 
 
 
