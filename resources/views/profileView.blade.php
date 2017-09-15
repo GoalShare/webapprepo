@@ -197,11 +197,12 @@
 
 
                       $("#search").on("keyup", function() {
-                        var key = this.value;
-                        $('[type="checkbox"]').each(function() {
-                          var $this = $(this);
-                          $this.toggle($(this).text().indexOf(key) >= 0);
-                        });
+                        // var key = this.value;
+                        // $('input[name="checkboxnames"]').each(function() {
+                        //   var $this = $(this);
+                        //   $this.toggle($(this).text().indexOf(key) >= 0);
+                        // });
+                        console.log($('#ch'+0)[0]);
                       });
 
 
