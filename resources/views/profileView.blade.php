@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            $('[type="checkbox"]').attr("disabled", true);
+                            $('[id="ch"'+k+']').attr("disabled", true);
                           }
 
                         @endforeach
