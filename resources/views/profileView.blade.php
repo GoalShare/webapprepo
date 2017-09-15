@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            console.log($("input[type=checkbox]")[k]);
+                            console.log($('#ch'+k).get(k).id);
                           }
 
                         @endforeach
