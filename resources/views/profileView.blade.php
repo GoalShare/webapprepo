@@ -183,7 +183,7 @@
                             console.log(v+" "+k);
                             if($('[type="checkbox"]'))
                             {
-                                console.log("dcjksndcijskndcjk");
+                              $('#ch'+k)[0].disabled="disable";
                               }
 
                             console.log($('#ch'+k)[0]);
