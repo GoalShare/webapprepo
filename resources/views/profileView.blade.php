@@ -296,7 +296,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                 <div id="found1" style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">&nbsp Gmail</div>
                 <div id="found2" style="height:25px;"></div>
                 <div id="found3" style="height:25px;"></div><br>
-                <div class="row" style="background-color:#EDEEEE;height:30px;">
+                <div class="row" style="background-color:#EDEEEE;height:20px;">
 
                     <div class="col l4"><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
                       <input type="checkbox" id="chk" onclick="toggle(this);" />
