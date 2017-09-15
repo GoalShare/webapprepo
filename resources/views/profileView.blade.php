@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            console.log(document.getElementById("#"+k));
+                            console.log(document.getElementById("ch"+k));
                           }
 
                         @endforeach
