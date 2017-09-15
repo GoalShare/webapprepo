@@ -192,17 +192,13 @@
 
                       document.getElementById("demo11").innerHTML=text;
 
-                      document.getElementById("selectall").innerHTML='<input type="checkbox" id="chk" onclick="selectAll(source);"/><label for="chk"></label>Select all';
+                      document.getElementById("selectall").innerHTML='<input type="checkbox" id="chk" onclick="toggle(this);"/><label for="chk"></label>Select all';
 
 
 
-
-	                     function selectAll(source) {
-		                       checkboxes = document.getElementsByName("checkboxnames");
-		                         for(var i in checkboxes)
-			                          checkboxes[i].checked = source.checked;
-	                             }
-
+                      function toggle(source) {
+                        console.log(document.querySelectorAll('input[type="checkbox"]'));
+                            }
 
 
                     var invitebtn=document.getElementById('sendinv');
