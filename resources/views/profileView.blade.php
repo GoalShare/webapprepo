@@ -196,13 +196,19 @@
 
 
 
+                      $("#search").on("keyup", function() {
+                        var key = this.value;
+                        $('[type="checkbox"]').each(function() {
+                          var $this = $(this);
+                          $this.toggle($(this).text().indexOf(key) >= 0);
+                        });
+                      });
 
 
 
 
 
-                    //
-                    //
+
                     var invitebtn=document.getElementById('sendinv');
                      invitebtn.addEventListener("click",function(event){
                      Check();
@@ -319,13 +325,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                         }
                       }
 
-                      $("#search").on("keyup", function() {
-                        var key = this.value;
-                        $("#demo11").each(function() {
-                          var $this = $(this);
-                          $this.toggle($(this).text().indexOf(key) >= 0);
-                        });
-                      });
+
 </script>
               </div>
               <!-- Modal content -->
