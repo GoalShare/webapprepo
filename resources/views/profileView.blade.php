@@ -170,16 +170,17 @@
                     document.getElementById("demo11").innerHTML=text;
 
 
+                    var  checkcount=0;
                       function test(value,k){
-                        var checkcount=0;
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
                           // console.log(v);
                           if(value==v){
-                            checkcount=checkcount+1;
-                            console.log(v+k+checkcount);
+                             checkcount=checkcount+1;
+                            console.log(v+k);
 
                           }
+
                         @endforeach
                       }
 
