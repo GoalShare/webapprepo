@@ -168,8 +168,7 @@
 
 
                     document.getElementById("demo11").innerHTML=text;
-                    function test2(var w){
-                      console.log($("input[type=checkbox]")[w]);}
+
                       function test(value){
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
@@ -180,6 +179,9 @@
                           }
                         @endforeach
                       }
+
+                      function test2(i){
+                        console.log($("input[type=checkbox]")[i]);}
 
 
                     //
