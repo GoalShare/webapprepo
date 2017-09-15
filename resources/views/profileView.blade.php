@@ -196,20 +196,16 @@
 
 
 
-                      $("#search").on("keyup", function() {
-                        // var key = this.value;
-                        // $('input[name="checkboxnames"]').each(function() {
-                        //   var $this = $(this);
-                        //   $this.toggle($(this).text().indexOf(key) >= 0);
-                        // });
+                      function myFunction() {
+                        console.log("dcisdjcnsjkdcnkdmn");
                         console.log($('#ch'+0)[0]);
-                      });
+                      }
 
 
 
 
-
-
+                    //
+                    //
                     var invitebtn=document.getElementById('sendinv');
                      invitebtn.addEventListener("click",function(event){
                      Check();
@@ -311,7 +307,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                     </div>
                     <div class="col l4"></div>
                     <div class="col l4">
-                      <input style="max-width:200px;max-height:20px;" id="search"  placeholder="Search for names..">
+                      <input style="max-width:200px;max-height:20px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                     </div>
                   </div>
 
