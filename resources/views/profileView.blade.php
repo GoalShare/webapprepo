@@ -179,8 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            if($('[type="checkbox"]')){
-                              $('input[name="checkboxnames"]').attr("disabled", true);}
+                            $('[type="checkbox"]').attr("disabled", true);
                           }
 
                         @endforeach
