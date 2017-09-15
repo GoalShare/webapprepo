@@ -298,13 +298,13 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                 <div id="found3" style="height:25px;"></div><br>
                 <div class="row" style="background-color:#EDEEEE;">
 
-                    <div class="col l4"><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                    <div class="col l4"><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
                       <input type="checkbox" id="chk" onclick="toggle(this);" />
                       <label for="chk"></label>Select all
                     </div>
                     <div class="col l4"></div>
                     <div class="col l4">
-                      <input style="max-width:50px;max-height:20px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                      <input style="max-width:100px;max-height:20px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                     </div>
                   </div>
 
