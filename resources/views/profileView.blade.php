@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            console.log($('#ch'+k)[0].$('input[name="checkboxnames"]').attr("disabled", true));
+                            console.log($('#ch'+k)[0].input[name="checkboxnames"].attr("disabled", true));
                           }
 
                         @endforeach
