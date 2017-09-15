@@ -172,19 +172,24 @@
 
 
                       function test(value,k){
-
+                        document.getElementById("demo11").innerHTML=text;
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
                           // console.log(v);
                           if(value==v){
 
                             console.log(v+" "+k);
-                            document.getElementById("ch"+k).disabled=true;
+                            console.log($("input[type=checkbox]")[k]);
                           }
 
                         @endforeach
-                        document.getElementById("demo11").innerHTML=text;
+
                       }
+
+
+
+
+                         console.log($("input[type=checkbox]")[209]);
 
 
 
