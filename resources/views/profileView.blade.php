@@ -305,8 +305,8 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                       if(checkboxes[i]== disabled){
                         console.log("jndcjndms");
                       }
-                        // if (checkboxes[i] != source)
-                        //   checkboxes[i].checked = source.checked;
+                        if (checkboxes[i] != source)
+                          checkboxes[i].checked = source.checked;
                         }
                       }
                 </script>
