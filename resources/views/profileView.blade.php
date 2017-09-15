@@ -173,7 +173,22 @@
 
 
 
+                      function test(value,k){
+                        document.getElementById("demo11").innerHTML=text;
+                        @foreach($allemail as $allemails)
+                          var v="{{$allemails}}";
+                          // console.log(v);
+                          if(value==v){
 
+                            console.log(v+" "+k);
+                            console.log($('#ch'+k)[0]);
+                            $('#ch'+k).remove();
+
+                          }
+
+                        @endforeach
+
+                      }
 
 
                     //
@@ -183,21 +198,7 @@
                      Check();
                     });
                     function Check(){
-                      function test(value,k){
-                        document.getElementById("demo11").innerHTML=text;
-                        @foreach($allemail as $allemails)
-                          var v="{{$allemails}}";
-                          // console.log(v);
-                          if(value==v){
 
-                            console.log(v+" "+k);
-                            $('#ch'+k)[0].disabled=true;
-
-                          }
-
-                        @endforeach
-
-                      }
 
                       var checkArray =new Array();
                         var count=0;
