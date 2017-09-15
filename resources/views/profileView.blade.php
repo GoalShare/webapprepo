@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            console.log($('#ch'+k)[0].disabled=true);
+                            console.log($('#ch'+k)[0].id);
                           }
 
                         @endforeach
