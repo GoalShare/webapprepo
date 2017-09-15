@@ -192,20 +192,13 @@
 
                       document.getElementById("demo11").innerHTML=text;
 
-                      document.getElementById("selectall").innerHTML='<input type="checkbox" id="chk" onclick="toggle(this);"/><label for="chk"></label>Select all';
 
 
 
 
 
-                      function toggle(source) {
-                        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                          for (var i = 0; i < checkboxes.length; i++) {
-                              if (checkboxes[i] != source)
-                                checkboxes[i].checked = source.checked;
-                              }
-                            }
-                  
+
+
 
 
                     //
@@ -303,8 +296,16 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                 <div id="found1" style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">&nbsp Gmail</div>
                 <div id="found2" style="height:25px;"></div>
                 <div id="found3" style="height:25px;"></div><br>
-                <div style="background-color:#EDEEEE;"><span id="selectall"><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></span></div>
-
+                <div style="background-color:#EDEEEE;"><span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><input type="checkbox" id="chk" onclick="toggle(this);" /><label for="chk"></label>Select all</span></div>
+                <script>
+                function toggle(source) {
+                  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i] != source)
+                          checkboxes[i].checked = source.checked;
+                        }
+                      }
+                </script>
               </div>
               <!-- Modal content -->
               <div class="modal-content" style="height:410px;max-height:410px;">
