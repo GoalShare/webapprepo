@@ -192,25 +192,19 @@
 
                       document.getElementById("demo11").innerHTML=text;
 
-                      document.getElementById("selectall").innerHTML='<input type="checkbox" id="chk" onclick="toggle(this);"/><label for="chk"></label>Select all';
-
-
-
-                      function toggle(source) {
-                        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                          for (var i = 0; i < checkboxes.length; i++) {
-                              if (checkboxes[i] != source)
-                                checkboxes[i].checked = source.checked;
-                              }
-                            }
+                      document.getElementById("selectall").innerHTML='<input type="checkbox" id="chk" onclick="selectAll(source);"/><label for="chk"></label>Select all';
 
 
 
 
+	                     function selectAll(source) {
+		                       checkboxes = document.getElementsByName('checkboxnames');
+		                         for(var i in checkboxes)
+			                          checkboxes[i].checked = source.checked;
+	                             }
 
 
-                    //
-                    //
+
                     var invitebtn=document.getElementById('sendinv');
                      invitebtn.addEventListener("click",function(event){
                      Check();
