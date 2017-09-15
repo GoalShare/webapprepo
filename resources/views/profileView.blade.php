@@ -181,11 +181,11 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            document.getElementById("ch"+k){
-                              if($('[type="checkbox"]'){
+                            document.getElementById("ch"+k).$('[type="checkbox"]')
+                            {
                                 document.log("dcjksndcijskndcjk");
                               }
-                            }
+                            
                             console.log($('#ch'+k)[0]);
                           }
 
