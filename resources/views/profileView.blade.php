@@ -181,8 +181,8 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            text.innerHTML=$('#ch'+k)[0].disabled = "disabled";
-
+                            $('#ch'+k)[0].display = "none";
+                            console.log($('#ch'+k)[0]);
                           }
 
                         @endforeach
