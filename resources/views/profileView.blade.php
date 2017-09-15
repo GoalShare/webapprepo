@@ -189,7 +189,7 @@
 
 
 
-                         console.log($("input[type=checkbox]")[208].id);
+                         console.log($("input[type=checkbox]")[208]);
 
 
 
