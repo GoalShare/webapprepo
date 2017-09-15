@@ -175,13 +175,13 @@
                           // console.log(v);
                           if(value==v){
                             console.log(v+k);
-                            //  test2(k);
+                            console.log($("input[type=checkbox]")[k].disabled=true);
                           }
                         @endforeach
                       }
 
 
-                       console.log($("input[type=checkbox]")[32].disabled=true);
+
 
 
                     //
