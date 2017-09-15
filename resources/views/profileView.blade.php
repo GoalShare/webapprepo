@@ -234,7 +234,7 @@
                           }
                           $('#lengthsize').val(checkArray.length);
 
-                            // submitForm();
+                           submitForm();
 
                        }
 
