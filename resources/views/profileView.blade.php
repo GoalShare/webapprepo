@@ -175,7 +175,7 @@
                           // console.log(v);
                           if(value==v){
                             console.log(v+i);
-                            console.log(($('[type="checkbox"]')){$('input[name="checkboxnames"]').attr("id");});
+                            console.log($('[type="checkbox"]').$('input[name="checkboxnames"]').attr("id"));
                           }
                         @endforeach
                       }
