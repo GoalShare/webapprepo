@@ -172,7 +172,7 @@
 
 
                       function test(value,k){
-                        document.getElementById("demo11").innerHTML=text;
+
                         @foreach($allemail as $allemails)
                           var v="{{$allemails}}";
                           // console.log(v);
@@ -183,7 +183,7 @@
                           }
 
                         @endforeach
-
+                        document.getElementById("demo11").innerHTML=text;
                       }
 
 
