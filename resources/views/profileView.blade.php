@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            $('#ch'+k)[0].attr("disabled", true);
+                            $('#ch'+k)[0]="disabled";
 
                           }
 
