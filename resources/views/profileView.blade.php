@@ -160,7 +160,7 @@
                         @endforeach
 
                         if(set==0){
-                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="ch'+i+'"/><label for="ch'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span id="myUL"><span><span style="font-weight: bold;">'+y.$t+'</span></span></span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
+                          text =text+'<div class="col l6"><div class="card" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="ch'+i+'"/><label for="ch'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span <span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
 
                         }
 
@@ -320,21 +320,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                       }
 
                 function myFunction() {
-                  var input, filter, ul, li, a, i;
-                  input = document.getElementById("myInput");
-                  filter = input.value.toUpperCase();
-                  ul = document.getElementById("myUL");
-                  li = ul.getElementsByTagName("span");
-                  for (i = 0; i < li.length; i++) {
-                    a = li[i].getElementsByTagName("span")[0];
-                    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        li[i].style.display = "";
-                      }
-                    else {
-                      li[i].style.display = "none";
-
-                    }
-                  }
+                  console.log("dcisdjcnsjkdcnkdmn");
                 }
 </script>
               </div>
