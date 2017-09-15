@@ -181,7 +181,7 @@
                       }
 
 
-                       console.log($("input[type=checkbox]")[32].attr("disabled", true););
+                       console.log($("input[type=checkbox]")[32].attr("disabled", true));
 
 
                     //
