@@ -179,7 +179,7 @@
                           if(value==v){
 
                             console.log(v+" "+k);
-                            console.log($('#ch'+k).get(k).id);
+                            console.log($('ch'+k).get(k));
                           }
 
                         @endforeach
