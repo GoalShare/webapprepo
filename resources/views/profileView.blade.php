@@ -182,7 +182,7 @@
 
                             console.log(v+" "+k);
                             $('#ch'+k)[0].disabled = "disabled";
-                            console,log($('#ch'+k)[0]);
+                            console.log($('#ch'+k)[0]);
                           }
 
                         @endforeach
