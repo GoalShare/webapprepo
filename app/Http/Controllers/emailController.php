@@ -20,7 +20,7 @@ class emailController extends Controller
 
       for($x=0;$x<$emaillength;$x++){
         $email="val".$x;
-        echo $email;
+        echo $request->$email;
 
 
         DB::table('notifications')->insert(
