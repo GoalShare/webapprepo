@@ -180,7 +180,7 @@
 
                             console.log(v+" "+k);
                             $(('#ch'+k)[0]){
-                              $('input[name="checkboxnames"]').attr("disabled", true);
+                              $('[type="checkbox"]').attr("disabled", true)
                             });
                           }
 
