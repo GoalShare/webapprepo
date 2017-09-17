@@ -277,7 +277,7 @@
 //
 //
 //  });
-$.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com.com?alt=json")
+$.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json")
     .done(function() {
       $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
         function(data){
@@ -290,7 +290,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
 
 
     jQuery.ajax({
-      url: "http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
+      url: "http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json",
      data: {},
      error: function(xhr, status) {
     console.log(xhr.status); }
