@@ -290,7 +290,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
 
 
     xhr = new XMLHttpRequest();
-xhr.open("GET", "http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json", true);
+xhr.open("GET", http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json, true);
 
 xhr.onloadend = function() {
     if(xhr.status == 404)
