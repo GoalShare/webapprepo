@@ -267,7 +267,7 @@
 
 
 
-           <script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 
 //             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
 //               function(data){
@@ -290,9 +290,18 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
 
 
 
-if($.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com.com?alt=json")==404){
-  console.log("404");
-}
+   $(function() {
+      var url = "http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com.com?alt=json";
+      $.ajax(url,
+      {
+         statusCode: {
+         404: function() {
+            alert('page not found');
+         }
+      }
+   });
+});
+
 
             </script>
 
