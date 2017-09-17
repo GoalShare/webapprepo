@@ -299,7 +299,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                     </div>
                     <div class="col l4"></div>
                     <div class="col l4">
-                      Search: <input id='search'></input>
+                      Search: <input type="text" id='search'></input>
                     </div>
                   </div>
 
