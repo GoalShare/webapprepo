@@ -289,12 +289,12 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
     });
 
 
-    xhr = new XMLHttpRequest();
-xhr.open("GET", "http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com?alt=json", true);
+    xhttp=new XMLHttpRequest();
+xhttp.open("GET","http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",false);
+xhttp.send();
 
-xhr.onloadend = function() {
-    if(xhr.status == 404)
-        console.log("replied 404");
+if (xhttp.status === 404) {
+    console.log("correct");
 }
             </script>
 
