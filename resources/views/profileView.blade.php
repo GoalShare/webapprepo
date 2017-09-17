@@ -289,31 +289,9 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
     });
 
 
-    $.ajax("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json", {
-       type: OutageViewModel.Id() == 0 ? "POST" : "PUT",
-       data: dataToSave,
-       statusCode: {
-          200: function (response) {
-             alert('1');
-             AfterSavedAll();
-          },
-          201: function (response) {
-             alert('1');
-             AfterSavedAll();
-          },
-          400: function (response) {
-             alert('1');
-             bootbox.alert('<span style="color:Red;">Error While Saving Outage Entry Please Check</span>', function () { });
-          },
-          404: function (response) {
-             alert('1');
-             bootbox.alert('<span style="color:Red;">Error While Saving Outage Entry Please Check</span>', function () { });
-          }
-       }, success: function () {
-          alert('1');
-       },
-    });
-
+    jQuery.ajax({'url': 'http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json', data: {}, error: function(xhr, status) {
+    alert(xhr.status); }
+});
             </script>
 
 
