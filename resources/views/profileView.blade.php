@@ -321,12 +321,9 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
 
                       function myFunction() {
                         console.log("dcisdjcnsjkdcnkdmn");
-                        var key = this.value;
-                        $(".tosearch").each(function() {
-                          var $this = $(this);
-                          $this.toggle($(this).text().indexOf(key) >= 0);
-
-     });
+                        $('.tosearch').hide();
+                        var txt = $('#myInput').val();
+                        $('.tosearch:contains("'+txt+'")').show();
                       }
 </script>
               </div>
