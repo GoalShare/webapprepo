@@ -290,16 +290,9 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
 
 
 
-  var url = 'http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com.com?alt=json';
-  function UrlExists(url) {
-      var http = new XMLHttpRequest();
-      http.open('HEAD', url, false);
-      http.send();
-      if (http.status != 404)
-          console.log("dcisjndcjksnmdck");
-      else
-          console.log("done");
-  }
+if($.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com.com?alt=json")==404){
+  console.log("404");
+}
 
             </script>
 
