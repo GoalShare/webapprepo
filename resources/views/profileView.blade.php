@@ -294,7 +294,7 @@ xhr.open("GET", "http://picasaweb.google.com/data/entry/api/user/qeuniversityrea
 
 xhr.onloadend = function() {
     if(xhr.status == 404)
-        console.log(' replied 404');
+        console.log("replied 404");
 }
             </script>
 
