@@ -289,8 +289,11 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
     });
 
 
-    jQuery.ajax({'url': 'http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json', data: {}, error: function(xhr, status) {
-    alert(xhr.status); }
+    jQuery.ajax({
+      url: 'http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json',
+     data: {},
+     error: function(xhr, status) {
+    console.log(xhr.status); }
 });
             </script>
 
