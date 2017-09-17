@@ -326,7 +326,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
 
 
 
-                        if($('#myInput').val()==NULL){
+                        if($('#myInput').val() == " "){
                             $('.tosearch').show();
                             $('.disabledcard').hide();
                         }
