@@ -265,29 +265,43 @@
             }
             </script>
 
-            <!-- <script>
-
-            $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
-              function(data){
-                console.log(data);
-                  var x=data.entry.gphoto$thumbnail.$t;
-                  console.log(x);
 
 
- });
-$.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json")
-    .done(function() {
-      $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
-        function(data){
-          console.log(data);
-            var x=data.entry.gphoto$thumbnail.$t;
-            console.log('<img src="'+x+'">');});
-    }).fail(function() {
-      console.log("wefdsdvcsdvcsdzcsd");
-    });
+           <script>
+
+//             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
+//               function(data){
+//                 console.log(data);
+//                   var x=data.entry.gphoto$thumbnail.$t;
+//                   console.log(x);
+//
+//
+//  });
+// $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json")
+//     .done(function() {
+//       $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
+//         function(data){
+//           console.log(data);
+//             var x=data.entry.gphoto$thumbnail.$t;
+//             console.log('<img src="'+x+'">');});
+//     }).fail(function() {
+//       console.log("wefdsdvcsdvcsdzcsd");
+//     });
 
 
-            </script> -->
+
+  var url = 'http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson.com.com?alt=json';
+  function UrlExists(url) {
+      var http = new XMLHttpRequest();
+      http.open('HEAD', url, false);
+      http.send();
+      if (http.status != 404)
+          console.log("dcisjndcjksnmdck");
+      else
+          console.log("done");
+  }
+
+            </script>
 
 
             <!-- The Modal -->
