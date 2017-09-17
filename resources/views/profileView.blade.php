@@ -195,6 +195,7 @@
 
 
                       $("#search").on("keyup", function() {
+                        console.log("search");
                           var key = this.value.toUpperCase();
                            $(".tosearch").each(function() {
                               var $this = $(this);
