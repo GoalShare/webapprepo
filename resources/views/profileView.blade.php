@@ -324,10 +324,20 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                         $('.disabledcard').hide();
                         $('.tosearch').hide();
 
-                        var txt = $('#myInput').val();
-                        $('.tosearch:contains("'+txt+'")').show();
-                        $('.disabledcard').hide();
+
+
+                        if($('#myInput').val()==NULL){
+                            $('.tosearch').show();
+                            $('.disabledcard').hide();
+                        }
+
+                        else{
+                          var txt = $('#myInput').val();
+                          $('.tosearch:contains("'+txt+'")').show();
+                          $('.disabledcard').hide();
+                        }
                       }
+
 </script>
               </div>
               <!-- Modal content -->
