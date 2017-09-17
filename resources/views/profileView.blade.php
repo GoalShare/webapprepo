@@ -194,15 +194,7 @@
 
 
 
-                      $("#search").on("keyup", function() {
-                        console.log("search");
-                          var key = this.value.toUpperCase();
-                           $(".tosearch").each(function() {
-                              var $this = $(this);
-                              $this.toggle($(this).text().indexOf(key) >= 0);
 
-                           });
-                       });
 
                     //
                     //
@@ -321,7 +313,15 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                           checkboxes[i].checked = source.checked;
                         }
                       }
+                      $("#search").on("keyup", function() {
+                        console.log("search");
+                          var key = this.value.toUpperCase();
+                           $(".tosearch").each(function() {
+                              var $this = $(this);
+                              $this.toggle($(this).text().indexOf(key) >= 0);
 
+                           });
+                       });
 
 </script>
               </div>
