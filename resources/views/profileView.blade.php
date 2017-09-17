@@ -321,8 +321,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
 
                       function myFunction() {
                         console.log("dcisdjcnsjkdcnkdmn");
-                        $('.disabledcard').hide();
-                        $('.tosearch').hide();
+
 
 
 
@@ -332,6 +331,8 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                         }
 
                         else{
+                          $('.disabledcard').hide();
+                          $('.tosearch').hide();
                           var txt = $('#myInput').val();
                           $('.tosearch:contains("'+txt+'")').show();
                           $('.disabledcard').hide();
