@@ -289,7 +289,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/qeuniversityreach@pearson
     });
 
 
-    $.ajax(http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json, {
+    $.ajax("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json", {
        type: OutageViewModel.Id() == 0 ? "POST" : "PUT",
        data: dataToSave,
        statusCode: {
