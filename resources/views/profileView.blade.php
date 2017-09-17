@@ -299,7 +299,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
                     </div>
                     <div class="col l4"></div>
                     <div class="col l4">
-                      <input style="max-width:200px;max-height:20px;" id='search' placeholder="Search for names..">
+                      <input style="max-width:200px;max-height:20px;" id="search" placeholder="Search for names.."></input>
                     </div>
                   </div>
 
