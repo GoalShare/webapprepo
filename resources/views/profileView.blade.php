@@ -321,7 +321,7 @@ $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.c
 
                       function myFunction() {
                         console.log("dcisdjcnsjkdcnkdmn");
-                        var key = this.value.toUpperCase();
+                        
                         $(".tosearch").each(function() {
                           var $this = $(this);
                           $this.toggle($(this).text().indexOf(key) >= 0);
