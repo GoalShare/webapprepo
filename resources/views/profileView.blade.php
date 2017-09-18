@@ -108,7 +108,7 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <div class="action-btn horizontal">
+          <div class="fixed-action-btn horizontal">
           <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
           <ul>
             <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
@@ -380,7 +380,7 @@ if (xhttp.status === 404) {
               </div>
 
 
-            
+
         <div class="col l2 m2  center-align">
           <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
           <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
