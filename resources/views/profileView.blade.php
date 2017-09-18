@@ -109,7 +109,7 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <div class="fixed-action-btn horizontal click-to-toggle">
+          <div class="fixed-action-btn horizontal">
           <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
           <ul>
             <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
@@ -278,7 +278,7 @@
 
 
 
-<script>
+<!-- <script>
 
 //             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
 //               function(data){
@@ -307,7 +307,7 @@ xhttp.send();
 if (xhttp.status === 404) {
     console.log("correct");
 }
-            </script>
+            </script> -->
 
 
             <!-- The Modal -->
