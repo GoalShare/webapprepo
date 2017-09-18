@@ -35,7 +35,7 @@ FB.api(
 "/{user-id}/friendlists",
 function (response) {
 if (response && !response.error) {
-console.log(response);
+console.log("okkkm");
 }
 }
 );
