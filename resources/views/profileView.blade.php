@@ -317,7 +317,7 @@
 
 
 
-<script>
+<!-- <script>
 
 //             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
 //               function(data){
@@ -346,7 +346,7 @@ xhttp.send();
 if (xhttp.status === 404) {
     console.log("correct");
 }
-            </script>
+            </script> -->
 
 
             <!-- The Modal -->
