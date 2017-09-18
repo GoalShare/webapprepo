@@ -3,6 +3,7 @@
 @section('content')
 
 {{-- @include('layouts.friendsView') --}}
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 <div id="addgoal" class="modal modal-fixed-footer">
 <div class="modal-content" style="text-align:center;">
 <h4>Add a Goal</h4>
@@ -108,13 +109,13 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <div class="fixed-action-btn horizontal">
+          <div class="fixed-action-btn horizontal click-to-toggle">
           <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
           <ul>
             <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
-            <li><a class="btn-floating" style="background-color: Transparent;"><img src="{{asset('img/if_facebook_circle_color_107175.png')}}" style="margin-top:-5px;margin-left:-3px;"></a></li>
-            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            <li><a data-href="http://www.lifewithgoals.com/" class="btn-floating" style="background-color: Transparent;"><img src="{{asset('img/if_facebook_circle_color_107175.png')}}" style="margin-top:-5px;margin-left:-3px;"></a></li>
+            <li><a class="btn-floating" style="background-color: Transparent;"><img src="{{asset('img/if_linkedin_circle_color_107178.png')}}" style="margin-top:-5px;margin-left:-3px;"></a></li>
+
     </ul>
         </div>
 
@@ -378,6 +379,37 @@ if (xhttp.status === 404) {
 
 
               </div>
+              <script language="javascript" type="text/javascript">
+
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId            : '284837855364891',
+                    autoLogAppEvents : true,
+                    xfbml            : true,
+                    version          : 'v2.10'
+                  });
+                  FB.AppEvents.logPageView();
+                };
+
+                (function(d, s, id){
+                   var js, fjs = d.getElementsByTagName(s)[0];
+                   if (d.getElementById(id)) {return;}
+                   js = d.createElement(s); js.id = id;
+                   js.src = "//connect.facebook.net/en_US/sdk.js";
+                   fjs.parentNode.insertBefore(js, fjs);
+                 }(document, 'script', 'facebook-jssdk'));
+
+
+
+              </script>
+              <div id="fb-root"></div>
+              <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=284837855364891";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));</script>
 
 
 
