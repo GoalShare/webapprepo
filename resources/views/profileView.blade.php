@@ -152,7 +152,7 @@
           <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
           <ul>
             <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
-            <li><div class="fb-send" style="background-color: Transparent;" data-href="http://www.lifewithgoals.com/"><img src="{{asset('img/if_facebook_circle_color_107175.png')}}" style="margin-top:-5px;margin-left:-3px;"></div></li>
+            <li><div class="fb-send" style="background-color: Transparent;" data-href="http://www.lifewithgoals.com/"></div></li>
             <li><a class="btn-floating" style="background-color: Transparent;"><img src="{{asset('img/if_linkedin_circle_color_107178.png')}}" style="margin-top:-5px;margin-left:-3px;"></a></li>
 
     </ul>
