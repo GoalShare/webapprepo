@@ -10,7 +10,7 @@
   </head>
   <body>
 
-<div id="facebook_invite"></div>
+<button id="facebook_invite">invite</button>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script>
  FB.init({
