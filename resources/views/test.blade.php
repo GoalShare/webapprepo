@@ -14,7 +14,7 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script>
  FB.init({
-  appId:'130572204252840',
+  appId:'284837855364891',
   cookie:true,
   status:true,
   xfbml:true
