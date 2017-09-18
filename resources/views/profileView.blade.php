@@ -112,7 +112,7 @@
           <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
           <ul>
             <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
-            <li><a class="btn-floating" style="background-color: Transparent;"><img src="{{asset('img/if_facebook_circle_color_107175.png')}}"></a></li>
+            <li><a class="btn-floating" style="padding-top:-5px;background-color: Transparent;"><img src="{{asset('img/if_facebook_circle_color_107175.png')}}"></a></li>
             <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
             <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
     </ul>
