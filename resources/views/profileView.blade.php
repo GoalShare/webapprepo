@@ -108,8 +108,18 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
+          <div class="fixed-action-btn horizontal">
+          <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
+          <ul>
+            <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
+            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul>
         </div>
+
+        </div>
+
 
         <script type="text/javascript">
 

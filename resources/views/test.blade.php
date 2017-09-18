@@ -14,7 +14,7 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 
 
-<div class="fb-send" data-href="http://www.lifewithgoals.com"></div>
+<div class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
 
 <script language="javascript" type="text/javascript">
 
