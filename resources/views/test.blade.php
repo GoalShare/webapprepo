@@ -39,8 +39,14 @@ function ShowMyName() {
   FB.ui({
     method: 'send',
     link: 'http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html',
+    app_id:'284837855364891',
+    redirect_uri:'http://www.lifewithgoals.com/test',
+    display:'adadadcsdcsdc',
+    to:'',
+    
+
   });
-  
+
     }
 
 </script>
