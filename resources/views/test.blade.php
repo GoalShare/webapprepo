@@ -12,7 +12,7 @@
 
 <div id="facebook_invite"></div>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
-<a href="#" onclick="FBInvite()">Invite Facebook Friends</a>
+<a href="#" onclick="getFriends();">Invite Facebook Friends</a>
 <script>
  FB.init({
   appId:'284837855364891',
@@ -22,18 +22,17 @@
  });
 </script>
 <script>
- function FBInvite(){
-  FB.ui({
-   method: 'apprequests',
-   message: 'Invite your Facebook Friends'
-  },function(response) {
-   if (response) {
-    alert('Successfully Invited');
-   } else {
-    alert('Failed To Invite');
-   }
-  });
- }
+function getFriends() {
+   FB.api('/me/friends', function(response) {
+       if(response.data) {
+           $.each(response.data,function(index,friend) {
+               alert(friend.name + ' has id:' + friend.id);
+           });
+       } else {
+           alert("Error!");
+       }
+   });
+}
 </script>
   </body>
 </html>
