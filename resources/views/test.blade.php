@@ -10,8 +10,9 @@
   </head>
   <body>
 
-<button id="facebook_invite">invite</button>
+<div id="facebook_invite"></div>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
+<a href="#" onclick="FBInvite()">Invite Facebook Friends</a>
 <script>
  FB.init({
   appId:'284837855364891',
