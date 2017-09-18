@@ -21,7 +21,7 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 
 
-<div style="height:50px;" data-layout="button_count" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
+<div style="height:50px;" data-layout="button_count" class="fb-invite" data-href="http://www.lifewithgoals.com/"></div>
 <div id="fb-root"></div>
 <script language="javascript" type="text/javascript">
 
