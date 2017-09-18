@@ -38,12 +38,11 @@ function ShowMyName() {
 
   FB.ui({
     method: 'send',
-    link: 'www.google.com',
+    link: 'http://www.facebook.com/dialog/send?app_id=123456789&amp;link=http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html&amp;redirect_uri=https://www.domain.com/',
     app_id:'284837855364891',
     redirect_uri:'http://www.lifewithgoals.com/test',
     display:'popup',
     to:'',
-
 
   });
 
