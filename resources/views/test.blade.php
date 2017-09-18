@@ -22,10 +22,15 @@
         xfbml: true
     });
 </script>
-<button name="my_full_name" onclick="ShowMyName()" value="My Name" />
+<button name="my_full_name" onclick="ShowMyName();" value="My Name">test</button>
 <script language="javascript" type="text/javascript">
 function ShowMyName() {
-  /* make the API call */
+  FB.init({
+      appId: '284837855364891',
+      status: true,
+      cookie: true,
+      xfbml: true
+  });
 FB.api(
 "/{user-id}/friendlists",
 function (response) {
