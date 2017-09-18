@@ -108,7 +108,7 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <div class="action-btn horizontal" style="position:fixed;">
+          <div class="action-btn horizontal">
           <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
           <ul>
             <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
@@ -380,33 +380,7 @@ if (xhttp.status === 404) {
               </div>
 
 
-            <script>
-            // Get the modal
-            var modal11 = document.getElementById('myModal11');
-
-            // Get the button that opens the modal
-            var btn11 = document.getElementById("myBtn11");
-
-            // Get the <span> element that closes the modal
-            var span11 = document.getElementsByClassName("close11")[0];
-
-            // When the user clicks the button, open the modal
-            btn11.onclick = function() {
-                modal11.style.display = "block";
-            }
-
-            // When the user clicks on <span> (x), close the modal
-            span11.onclick = function() {
-                modal11.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal11.style.display = "none";
-                }
-            }
-            </script>
+            
         <div class="col l2 m2  center-align">
           <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
           <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
