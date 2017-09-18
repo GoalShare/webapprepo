@@ -3,46 +3,6 @@
 @section('content')
 
 {{-- @include('layouts.friendsView') --}}
-
-
-<script src="http://connect.facebook.net/en_US/all.js"></script>
-
-
-
-
-<script language="javascript" type="text/javascript">
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId            : '284837855364891',
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v2.10'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
-
-</script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=284837855364891";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
 <div id="addgoal" class="modal modal-fixed-footer">
 <div class="modal-content" style="text-align:center;">
 <h4>Add a Goal</h4>
@@ -148,18 +108,8 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <div class="fixed-action-btn horizontal click-to-toggle">
-          <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
-          <ul>
-            <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
-            <li><div class="fb-send btn-floating" style="background-color: Transparent;" data-href="http://www.lifewithgoals.com/"><i class="material-icons">email</i></div></li>
-            <li><a class="btn-floating" style="background-color: Transparent;"><img src="{{asset('img/if_linkedin_circle_color_107178.png')}}" style="margin-top:-5px;margin-left:-3px;"></a></li>
-
-    </ul>
+          <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
         </div>
-
-        </div>
-
 
         <script type="text/javascript">
 
@@ -317,7 +267,7 @@
 
 
 
-<!-- <script>
+<script>
 
 //             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
 //               function(data){
@@ -346,7 +296,7 @@ xhttp.send();
 if (xhttp.status === 404) {
     console.log("correct");
 }
-            </script> -->
+            </script>
 
 
             <!-- The Modal -->
@@ -420,7 +370,33 @@ if (xhttp.status === 404) {
               </div>
 
 
+            <script>
+            // Get the modal
+            var modal11 = document.getElementById('myModal11');
 
+            // Get the button that opens the modal
+            var btn11 = document.getElementById("myBtn11");
+
+            // Get the <span> element that closes the modal
+            var span11 = document.getElementsByClassName("close11")[0];
+
+            // When the user clicks the button, open the modal
+            btn11.onclick = function() {
+                modal11.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span11.onclick = function() {
+                modal11.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal11.style.display = "none";
+                }
+            }
+            </script>
         <div class="col l2 m2  center-align">
           <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
           <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
