@@ -11,9 +11,13 @@
   Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 <meta property="og:url"           content="http://www.lifewithgoals.com/test" />
 <meta property="og:type"          content="website" />
-<meta property="og:title"         content="Your Website Title" />
-<meta property="og:description"   content="Your description" />
-<meta property="og:image"         content="{{asset('favicon/android-chrome-256x256.png')}}" />
+<meta property="og:title"         content="Life With Goals" />
+<meta property="og:description"   content="A front-end template that helps you build fast, modern mobile web apps" />
+<meta property="og:image"         content="http://www.lifewithgoals.com/favicon/LOGO.png" />
+<meta property="og:image:type"    content="image/png" />
+<meta property="og:image:width"   content="50%" />
+<meta property="og:image:height"  content="50%" />
+
 </head>
   <body>
 
@@ -21,7 +25,7 @@
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 
 
-<div style="height:50px;" data-layout="button_count" class="fb-invite" data-href="http://www.lifewithgoals.com/"></div>
+<div style="height:50px;" data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
 <div id="fb-root"></div>
 <script language="javascript" type="text/javascript">
 
