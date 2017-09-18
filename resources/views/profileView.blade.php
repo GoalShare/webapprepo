@@ -108,7 +108,7 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <div class="btn horizontal">
+          <div class="action-btn horizontal">
           <a class="btn btn-floating blue lighten-1 btn-large"><i class="material-icons">people</i></a>
           <ul>
             <li><a class="btn-floating red googleContactsButton" href="#myModal11"><i class="material-icons">email</i></a></li>
