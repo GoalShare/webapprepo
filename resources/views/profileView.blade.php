@@ -319,7 +319,7 @@
 
                        }
 
-                       document.getElementById("myModal11").style.display="none";
+                       
 
                     });
                 }
