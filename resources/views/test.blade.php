@@ -30,7 +30,8 @@
   <body>
 
 
-<script type="in/Login">IN.User.authorize(callbackFunction, callbackScope);</script>
+<button><script type="in/Login"></script></button>
+<script>IN.User.authorize(callbackFunction, callbackScope);</script>
 
 
 <script src="http://connect.facebook.net/en_US/all.js"></script>
