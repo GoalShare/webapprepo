@@ -18,8 +18,17 @@
 <meta property="og:image:width"   content="50%" />
 <meta property="og:image:height"  content="50%" />
 
+<script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key:   81te096pbtgr0p
+    onLoad:    onLinkedInLoad
+    authorize: true
+    lang:      en_US
+</script>
 </head>
   <body>
+
+
+<button><script type="in/Login"></script></button>
 
 
 <script src="http://connect.facebook.net/en_US/all.js"></script>
@@ -49,6 +58,7 @@
 
 
 </script>
+
 
 
 
