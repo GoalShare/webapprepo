@@ -138,18 +138,19 @@
         <!-- Modal Structure -->
   <div id="sendinvitebtnmodal" class="modal">
     <div class="modal-content">
+      <center><h5>Connect with Social Network</h5></center>
       <div class="row">
         <div class="col l4">
-      <button style="height:25px;" class="btn blue lighten-1 btn-small googleContactsButton" href="#myModal11"><img class="left" src="{{asset('img/if_Gmail_1063082 (1).png')}}">&nbsp Gmail</button>
+      <button style="height:25px;background-color:#0D6E8A;border: none;width:100px;height:30px;" class="googleContactsButton" href="#myModal11"><span><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></span></button>
     </div>
 
     <div class="col l4">
       <div id="fb-root"></div>
-        <div  data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
+        <button style="background-color:#0085fd;border: none;width:100px;height:30px;" ><div data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div></button>
   </div>
 
 <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script></div>
+<button style="background-color:#0085fd;border: none;width:100px;height:30px;" ><script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script></div></button>
   </div>
 
   </div>
