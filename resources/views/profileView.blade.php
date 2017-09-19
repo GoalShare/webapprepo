@@ -191,7 +191,10 @@
   </script>
 
         <script type="text/javascript">
+              $(document).ready(function(){
 
+                $("#sendinvitebtnmodal").hide();
+              });
               var clientId = '735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com';
               var apiKey = 'R9ijmkXitCwlC-Zh7oY26ICw';
               var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
