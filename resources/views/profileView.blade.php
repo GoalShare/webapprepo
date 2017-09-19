@@ -3,6 +3,29 @@
 @section('content')
 
 {{-- @include('layouts.friendsView') --}}
+<head>
+<title>Your Website Title</title>
+  <!-- You can use open graph tags to customize link previews.
+  Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+<meta property="og:url"           content="http://www.lifewithgoals.com/test" />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Life With Goals" />
+<meta property="og:description"   content="A front-end template that helps you build fast, modern mobile web apps" />
+<meta property="og:image"         content="http://www.lifewithgoals.com/favicon/LOGO.png" />
+<meta property="og:image:type"    content="image/png" />
+<meta property="og:image:width"   content="50%" />
+<meta property="og:image:height"  content="50%" />
+
+<script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key:   81te096pbtgr0p
+    onLoad:    onLinkedInLoad
+    authorize: true
+    lang:      en_US
+
+
+</script>
+</head>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 <div id="addgoal" class="modal modal-fixed-footer">
 <div class="modal-content" style="text-align:center;">
 <h4>Add a Goal</h4>
@@ -108,8 +131,26 @@
         </div>
         <div class="col l2 m2  center-align">
           <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-          <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
+          <!-- <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a> -->
+          <a class="btn btn-floating blue lighten-1 btn-large" href="#sendinvitebtnmodal"><i class="material-icons">people</i></a>
         </div>
+
+        <!-- Modal Structure -->
+  <div id="sendinvitebtnmodal" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col l4">
+      <button style="height:25px;" class="btn blue lighten-1 btn-small googleContactsButton" href="#myModal11"><img class="left" src="{{asset('img/if_Gmail_1063082 (1).png')}}">&nbsp Gmail</button>
+    </div>
+    <div style="height:50px;" data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div><div id="fb-root"></div>
+    <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US IN.User.authorize(callbackFunction, callbackScope);</script>
+    <script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script></div>
+    </div>
+  </div>
+
+  </div>
+
+
 
         <script type="text/javascript">
 
@@ -248,11 +289,6 @@
             </script>
 
 
-            <script>
-
-            </script>
-
-
             <form id="checklistnameform" action="{{route('chkdetails')}}" method="post">
              {{csrf_field()}}
              <input type="hidden" name="length" id="lengthsize" value="">
@@ -266,7 +302,7 @@
             </script>
 
 
-
+<!--
 <script>
 
 //             $.get("http://picasaweb.google.com/data/entry/api/user/chirathpereraz1st@gmail.com?alt=json",
@@ -296,7 +332,7 @@ xhttp.send();
 if (xhttp.status === 404) {
     console.log("correct");
 }
-            </script>
+            </script> -->
 
 
             <!-- The Modal -->
@@ -369,34 +405,29 @@ if (xhttp.status === 404) {
 
               </div>
 
+              <script language="javascript" type="text/javascript">
 
-            <script>
-            // Get the modal
-            var modal11 = document.getElementById('myModal11');
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId            : '284837855364891',
+                    autoLogAppEvents : true,
+                    xfbml            : true,
+                    version          : 'v2.10'
+                  });
 
-            // Get the button that opens the modal
-            var btn11 = document.getElementById("myBtn11");
+                };
 
-            // Get the <span> element that closes the modal
-            var span11 = document.getElementsByClassName("close11")[0];
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+                    fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'facebook-jssdk'));
 
-            // When the user clicks the button, open the modal
-            btn11.onclick = function() {
-                modal11.style.display = "block";
-            }
 
-            // When the user clicks on <span> (x), close the modal
-            span11.onclick = function() {
-                modal11.style.display = "none";
-            }
+              </script>
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal11.style.display = "none";
-                }
-            }
-            </script>
         <div class="col l2 m2  center-align">
           <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
           <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>

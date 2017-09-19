@@ -31,7 +31,7 @@
 
     <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US IN.User.authorize(callbackFunction, callbackScope);</script>
     <script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script>
-</script>
+
 
 
 <script src="http://connect.facebook.net/en_US/all.js"></script>
