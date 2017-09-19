@@ -338,6 +338,7 @@
             function submitForm(){
               var newchecklistnameform=document.getElementById('checklistnameform');
               newchecklistnameform.submit();
+              document.getElementById("myModal11").style.display="none";
             }
             </script>
 
