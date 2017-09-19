@@ -25,7 +25,7 @@
 
 </script>
 </head>
-<script src="http://connect.facebook.net/en_US/all.js"></script>
+
 <div id="addgoal" class="modal modal-fixed-footer">
 <div class="modal-content" style="text-align:center;">
 <h4>Add a Goal</h4>
@@ -142,15 +142,44 @@
         <div class="col l4">
       <button style="height:25px;" class="btn blue lighten-1 btn-small googleContactsButton" href="#myModal11"><img class="left" src="{{asset('img/if_Gmail_1063082 (1).png')}}">&nbsp Gmail</button>
     </div>
-    <div style="height:50px;" data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div><div id="fb-root"></div>
-    <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US IN.User.authorize(callbackFunction, callbackScope);</script>
-    <script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script></div>
-    </div>
+
+
+
+<div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script></div>
   </div>
 
   </div>
 
 
+  <div class="col l4">
+      <div  data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
+      <div id="fb-root"></div>
+</div>
+</div>
+
+  <script language="javascript" type="text/javascript">
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '284837855364891',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v2.10'
+      });
+
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+
+  </script>
 
         <script type="text/javascript">
 
@@ -405,28 +434,7 @@ if (xhttp.status === 404) {
 
               </div>
 
-              <script language="javascript" type="text/javascript">
 
-                window.fbAsyncInit = function() {
-                  FB.init({
-                    appId            : '284837855364891',
-                    autoLogAppEvents : true,
-                    xfbml            : true,
-                    version          : 'v2.10'
-                  });
-
-                };
-
-                (function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-                    fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'facebook-jssdk'));
-
-
-              </script>
 
         <div class="col l2 m2  center-align">
           <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
@@ -2607,15 +2615,12 @@ if (xhttp.status === 404) {
                 </script>
 
           </div>
+
      </div>
      <!-- ///////////// -->
      <!-- forthpart -->
 
           </div>
-
-
-
-
 
    </div>
 </div>
