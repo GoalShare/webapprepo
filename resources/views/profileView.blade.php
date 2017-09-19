@@ -274,7 +274,7 @@
                       document.getElementById("demo11").innerHTML=text;
 
 
-
+                      document.getElementById("myModal11").style.display="inline";
 
 
 
@@ -325,7 +325,7 @@
                 }
               }
 
-              document.getElementById("myModal11").style.display="inline";
+
             </script>
 
 
