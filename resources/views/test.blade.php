@@ -30,11 +30,8 @@
   <body>
 
 
-<button><script type="in/Login"></script></button>
+<script type="in/Login"></script>
 <script>
-
-IN.API.Raw().url(url).method(methodType).body(bodyContent).result(resultCallback);
-
 
   // Setup an event listener to make an API call once auth is complete
     function onLinkedInLoad() {
