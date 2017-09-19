@@ -23,12 +23,14 @@
     onLoad:    onLinkedInLoad
     authorize: true
     lang:      en_US
+
+
 </script>
 </head>
   <body>
 
 
-<button><script type="in/Login"></script></button>
+<script type="in/Login">IN.User.authorize(callbackFunction, callbackScope);</script>
 
 
 <script src="http://connect.facebook.net/en_US/all.js"></script>
