@@ -181,7 +181,7 @@ Route::get('/email','HomeController@emailmain')->name('sendEmail');
 
 
 Route::get('/dashboard/{email}','HomeController@confirmuser');
-Route::post('checkemail','CoreController@checkmails')->name('checkemail');
+
 
 
 Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactController@importGoogleContact']);
