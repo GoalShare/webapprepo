@@ -136,13 +136,14 @@
         </div>
 
         <!-- Modal Structure -->
-  <div id="sendinvitebtnmodal" class="modal">
+  <div id="sendinvitebtnmodal" class="modal" style="height:600px;max-height:800px;">
     <div class="modal-content">
-      <center><h5>Connect with Social Network</h5></center>
+      <center><h5 style="color:#0d47a1;">Connect with Social Network</h5></center>
+      <div class="row" style="height:25px;"></div>
       <div class="row">
         <div class="col l4">
           <center>
-      <button style="height:25px;background-color:#0D6E8A;border: none;width:100px;height:30px;" class="googleContactsButton" href="#myModal11"><span><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></span></button>
+      <button style="height:25px;background-color:#DD5143;border: none;width:100px;height:30px;" class="googleContactsButton" href="#myModal11"><span><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></span></button>
     </center>
     </div>
 
