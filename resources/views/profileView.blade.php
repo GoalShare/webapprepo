@@ -395,7 +395,7 @@ if (xhttp.status === 404) {
 
                 <script>
                 function windowclose(){
-                  document.getElementById("myModal11").close();
+                  document.getElementById("myModal11").style.display="none";
                 }
                 function toggle(source) {
                   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
