@@ -143,7 +143,10 @@
       <button style="height:25px;" class="btn blue lighten-1 btn-small googleContactsButton" href="#myModal11"><img class="left" src="{{asset('img/if_Gmail_1063082 (1).png')}}">&nbsp Gmail</button>
     </div>
 
-
+    <div class="col l4">
+      <div id="fb-root"></div>
+        <div  data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
+  </div>
 
 <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script></div>
@@ -152,10 +155,7 @@
   </div>
 
 
-  <div class="col l4">
-      <div  data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
-      <div id="fb-root"></div>
-</div>
+
 </div>
 
   <script language="javascript" type="text/javascript">
