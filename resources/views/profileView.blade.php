@@ -157,7 +157,7 @@
 
 <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
   <center>
-<button style="background-color:#0077B5;border: none;width:100px;height:30px;"><script type="IN/Share" data-url="http://www.lifewithgoals.com/" data-counter="right"></script></div></button>
+<button style="background-color:#0077B5;border: none;width:100px;height:30px;"><script type="IN/Share" data-url="http://www.lifewithgoals.com/"></script></div></button>
 </center>
   </div>
 
