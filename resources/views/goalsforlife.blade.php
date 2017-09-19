@@ -351,8 +351,6 @@ window.onload = function what(){
           console.log(dob.value);
         }
             function setdatefunc() {
-              // console.log(monthdropdown.value);
-              // console.log(yeardropdown.value);
               if (monthdropdown.value==02) {
                   if(yeardropdown.value%4 == 0)
                   {
