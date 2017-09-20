@@ -159,7 +159,7 @@
 
 <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
   <center>
-<script type="IN/Share" data-width="1000" data-url="http://www.lifewithgoals.com/"></script>
+<script type="IN/Share" data-width="100%" data-url="http://www.lifewithgoals.com/"></script>
 </center>
   </div>
 </div>
