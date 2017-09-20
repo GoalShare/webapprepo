@@ -161,7 +161,7 @@
   <center>
 <script type="IN/Share" data-format="inline" data-width="400" data-url="http://www.lifewithgoals.com/"></script>
 </center>
-<a className="fa fa-linkedin share-base share-linked-in spacing-left-5" onclick="window.open('https://www.linkedin.com/cws/share?url=the_url')"></a>
+
   </div>
 </div>
 <div class="row" style="height:50px;"></div>
@@ -182,6 +182,10 @@
     <div class="col l3"><div class="right" style="background-color:#0077B5;width:100px;height:25px;"><center><img class="left" style="padding-top:5px;padding-left:5px;" src="{{asset('img/if_square-linkedin_317725.png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Share</span></center></div></div><div class="col l9">- &nbsp You can share a post in your linkedin profile throught this service</div>
 </div>
 </div>
+<a className="fa fa-linkedin share-base share-linked-in spacing-left-5" onclick="window.open('https://www.linkedin.com/cws/share?url=the_url')"></a>
+<style media="screen">
+  .share-linked-in { background:#0077B5; color:white; }
+</style>
   </div>
 
 
