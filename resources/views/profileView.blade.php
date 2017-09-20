@@ -136,56 +136,46 @@
         </div>
 
         <!-- Modal Structure -->
-  <div id="sendinvitebtnmodal" class="modal" style="height:600px;max-height:800px;">
+  <div id="sendinvitebtnmodal" class="modal" style="height:500px;max-height:500px;">
       <div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite by conneting to social networks</div>
     <div class="modal-content">
 
-      <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5>
-      <div class="row" style="height:25px;"></div>
+      <!-- <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5> -->
+      <div class="row" style="height25px;max-height:25px;"></div>
       <div class="row">
+        <div class="col l4"></div>
         <div class="col l4">
           <center>
-      <button style="background-color:#DD5143;border: none;width:100px;height:30px;" class="googleContactsButton" href="#myModal11"><span><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></span></button>
+            <div data-layout="button_count"  class="fb-send" data-href="http://www.lifewithgoals.com/" data-width="400"></div>
+
     </center>
     </div>
-
+    <div class="col l4"></div>
+  </div>
+<div class="row">
+  <div class="col l4"></div>
     <div class="col l4">
 
-      <div id="fb-root"></div>
+
       <center>
-        <div data-layout="button_count" data-size="large" colorscheme="dark" style="transform: scale(3,3);" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
+        <a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/Gmail_logo.png')}}" width="30%" height="30%"></a>
+
       </center>
   </div>
+<div class="col l4"></div></div>
 
-<div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-  <center>
-<script type="IN/Share" data-format="inline" data-width="400" data-url="http://www.lifewithgoals.com/"></script>
+<div class="row">
+  <div class="col l4"></div>
+<div class="col l4">
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<center>
+<a><img src="{{asset('img/linkedin-logo-transparent-png-25.png')}}" data-href="http://www.lifewithgoals.com/" style="padding-top:-50px;cursor:pointer" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px','height=600px');" width="30%" height="30%"></a>
 </center>
 
   </div>
+  <div class="col l4"></div>
 </div>
-<div class="row" style="height:50px;"></div>
-<div class="row">
-  <div class="col l12">
-    <div class="col l3"><div class="right" style="background-color:#DD5143;width:100px;height:25px;"><center><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></center></div></div><div class="col l9">- &nbsp You can send the Emails throught this service</div>
-</div>
-</div>
-<div class="row" style="height:25px;"></div>
-<div class="row">
-  <div class="col l12">
-    <div class="col l3"><div class="right" style="background-color:#0085fd;width:100px;height:25px;"><center><img class="left" style="padding-top:5px;padding-left:5px;" src="{{asset('img/1298720-16.png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Send</span></center></div></div><div class="col l9">- &nbsp You can send the facebook messages throught this service</div>
-</div>
-</div>
-<div class="row" style="height:25px;"></div>
-<div class="row">
-  <div class="col l12">
-    <div class="col l3"><div class="right" style="background-color:#0077B5;width:100px;height:25px;"><center><img class="left" style="padding-top:5px;padding-left:5px;" src="{{asset('img/if_square-linkedin_317725.png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Share</span></center></div></div><div class="col l9">- &nbsp You can share a post in your linkedin profile throught this service</div>
-</div>
-</div>
-<a className="fa fa-linkedin share-base share-linked-in spacing-left-5" onclick="window.open('https://www.linkedin.com/cws/share?url=the_url')">tttt</a>
-<style media="screen">
-  .share-linked-in { background:#0077B5; color:white; }
-</style>
+
   </div>
 
 
