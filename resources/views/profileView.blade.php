@@ -137,13 +137,15 @@
 
         <!-- Modal Structure -->
   <div id="sendinvitebtnmodal" class="modal" style="height:600px;max-height:800px;">
+      <div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite by conneting to social networks</div>
     <div class="modal-content">
-      <center><h5 style="color:#0d47a1;">Connect with Social Network</h5></center>
+
+      <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5>
       <div class="row" style="height:25px;"></div>
       <div class="row">
         <div class="col l4">
           <center>
-      <button style="height:25px;background-color:#DD5143;border: none;width:100px;height:30px;" class="googleContactsButton" href="#myModal11"><span><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></span></button>
+      <button style="background-color:#DD5143;border: none;width:100px;height:30px;" class="googleContactsButton" href="#myModal11"><span><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></span></button>
     </center>
     </div>
 
@@ -157,12 +159,29 @@
 
 <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
   <center>
-<button style="background-color:#0077B5;border: none;width:100px;height:30px;"><script type="IN/Share" data-url="http://www.lifewithgoals.com/"></script></div></button>
+<button style="background-color:#0077B5;border: none;width:100px;height:30px;"><script type="IN/Share" data-url="http://www.lifewithgoals.com/"></script></button>
 </center>
   </div>
-
+</div>
+<div class="row" style="height:50px;"></div>
+<div class="row">
+  <div class="col l12">
+    <div class="col l3"><div class="right" style="background-color:#DD5143;width:100px;height:25px;"><center><img class="left" src="{{asset('img/if_5303_-_Gmail_1313515 (1).png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Gmail</span></center></div></div><div class="col l9">- &nbsp You can send the Emails throught this service</div>
+</div>
+</div>
+<div class="row" style="height:25px;"></div>
+<div class="row">
+  <div class="col l12">
+    <div class="col l3"><div class="right" style="background-color:#0085fd;width:100px;height:25px;"><center><img class="left" style="padding-top:5px;padding-left:5px;" src="{{asset('img/1298720-16.png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Send</span></center></div></div><div class="col l9">- &nbsp You can send the facebook messages throught this service</div>
+</div>
+</div>
+<div class="row" style="height:25px;"></div>
+<div class="row">
+  <div class="col l12">
+    <div class="col l3"><div class="right" style="background-color:#0077B5;width:100px;height:25px;"><center><img class="left" style="padding-top:5px;padding-left:5px;" src="{{asset('img/if_square-linkedin_317725.png')}}"><span style="font-size:12px;color:white;font-weight: bold;">Share</span></center></div></div><div class="col l9">- &nbsp You can share a post in your linkedin profile throught this service</div>
+</div>
+</div>
   </div>
-
 
 
 </div>
@@ -338,7 +357,7 @@
             function submitForm(){
               var newchecklistnameform=document.getElementById('checklistnameform');
               newchecklistnameform.submit();
-              document.getElementById("myModal11").style.display="none";
+
             }
             </script>
 
