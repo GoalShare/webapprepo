@@ -165,7 +165,7 @@
          </div>
         <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
           <center>
-            <a><img src="{{asset('img/linkedin_circle_color-512.png')}}" data-href="http://www.lifewithgoals.com/" style="cursor:pointer" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px','height=600px');" width="80%" height="80%"></a>
+            <a><img src="{{asset('img/linkedin_circle_color-512.png')}}" data-href="http://www.lifewithgoals.com/" style="cursor:pointer;width:80%; height:80%;" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px,height=600px');" ></a>
           </center>
         </div>
   </div>
