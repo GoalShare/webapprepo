@@ -137,7 +137,7 @@
 
         <!-- Modal Structure -->
   <div id="sendinvitebtnmodal" class="modal" style="height:500px;max-height:500px;">
-      <div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite by conneting to social networks</div>
+      <div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite</div>
     <div class="modal-content">
 
       <!-- <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5> -->
