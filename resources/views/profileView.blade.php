@@ -161,6 +161,7 @@
   <center>
 <script type="IN/Share" data-format="inline" data-width="400" data-url="http://www.lifewithgoals.com/"></script>
 </center>
+<a className="fa fa-linkedin share-base share-linked-in spacing-left-5" onclick="window.open('https://www.linkedin.com/cws/share?url=the_url')"></a>
   </div>
 </div>
 <div class="row" style="height:50px;"></div>
