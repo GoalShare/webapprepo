@@ -141,59 +141,35 @@
     <div class="modal-content">
 
       <!-- <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5> -->
-      <div class="row" style="height25px;max-height:25px;"></div>
+      <div class="row" style="height:25px;"></div>
       <div class="row">
-        <div class="col l4"></div>
         <div class="col l4">
+          <center><a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" width="80%" height="80%"></a></center>
+        </div>
+
+        <div class="col l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
+          <script type="text/javascript">
+          function send_private_msg_to_fb_user(){
+            FB.login(function(response){
+              if (response.authResponse){
+          FB.ui({
+             method: 'send',
+             name: 'Send Private Message to Facebook User using Javascript Facebook API',
+             link: 'http://www.lifewithgoals.com',
+            description: 'In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial.',
+          });
+          }
+          });
+          }
+          </script>
+         </div>
+        <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
           <center>
-            <div onclick="test12()" data-layout="button_count" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
-
-
-    </center>
-    </div>
-    <div class="col l4"></div>
+            <a><img src="{{asset('img/linkedin_circle_color-512.png')}}" data-href="http://www.lifewithgoals.com/" style="cursor:pointer" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px','height=600px');" width="80%" height="80%"></a>
+          </center>
+        </div>
   </div>
-<div class="row">
-  <div class="col l4"></div>
-    <div class="col l4">
-
-
-      <center>
-        <a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/Gmail_logo.png')}}" width="30%" height="30%"></a>
-
-      </center>
   </div>
-<div class="col l4"></div></div>
-
-<div class="row">
-  <div class="col l4"></div>
-<div class="col l4">
-<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<center>
-<a><img src="{{asset('img/linkedin-logo-transparent-png-25.png')}}" data-href="http://www.lifewithgoals.com/" style="padding-top:-50px;cursor:pointer" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px','height=600px');" width="30%" height="30%"></a>
-</center>
-
-  </div>
-  <div class="col l4"></div>
-</div>
-<button onclick="send_private_msg_to_fb_user()">test</button>
-<script type="text/javascript">
-function send_private_msg_to_fb_user(){
-  FB.login(function(response){
-    if (response.authResponse){
-FB.ui({
-   method: 'send',
-   name: 'Send Private Message to Facebook User using Javascript Facebook API',
-   link: 'http://www.lifewithgoals.com',
-  description: 'In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial.',
-});
-}
-});
-}
-</script>
-  </div>
-
-
 </div>
 
   <script language="javascript" type="text/javascript">
