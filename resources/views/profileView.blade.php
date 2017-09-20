@@ -136,7 +136,7 @@
         </div>
 
         <!-- Modal Structure -->
-  <div id="sendinvitebtnmodal" class="modal" style="height:500px;max-height:500px;">
+  <div id="sendinvitebtnmodal" class="modal" style="height:300px;width:500px;">
       <div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite</div>
     <div class="modal-content">
 
@@ -146,7 +146,8 @@
         <div class="col l4"></div>
         <div class="col l4">
           <center>
-            <div data-layout="button_count"  class="fb-send" data-href="http://www.lifewithgoals.com/" data-width="400"></div>
+            <div onclick="test12()" data-layout="button_count" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
+
 
     </center>
     </div>
@@ -175,7 +176,21 @@
   </div>
   <div class="col l4"></div>
 </div>
-
+<button onclick="send_private_msg_to_fb_user()">test</button>
+<script type="text/javascript">
+function send_private_msg_to_fb_user(){
+  FB.login(function(response){
+    if (response.authResponse){
+FB.ui({
+   method: 'send',
+   name: 'Send Private Message to Facebook User using Javascript Facebook API',
+   link: 'http://www.lifewithgoals.com',
+  description: 'In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial.'
+});
+}
+});
+}
+</script>
   </div>
 
 
@@ -197,7 +212,7 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
