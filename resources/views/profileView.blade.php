@@ -153,13 +153,13 @@
 
       <div id="fb-root"></div>
       <center>
-        <button style="background-color:#0085fd;border: none;width:100px;height:30px;" ><div data-layout="button_count" data-size="large" colorscheme="dark" class="fb-send" data-href="http://www.lifewithgoals.com/"></div></button>
+        <div data-layout="button_count" data-size="large" colorscheme="dark" style="transform: scale(3,3);" class="fb-send" data-href="http://www.lifewithgoals.com/"></div>
       </center>
   </div>
 
 <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
   <center>
-<button style="background-color:#0077B5;border: none;width:100px;height:30px;"><script type="IN/Share" data-url="http://www.lifewithgoals.com/"></script></button>
+<script type="IN/Share" style="transform: scale(3,3);" data-url="http://www.lifewithgoals.com/"></script>
 </center>
   </div>
 </div>
