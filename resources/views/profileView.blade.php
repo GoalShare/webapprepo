@@ -126,6 +126,8 @@
           <center><a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" width="80%" height="80%"></a></center>
         </div>
 
+        <div class="col s4 m4 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
+
 
           <script type="text/javascript">
           function send_private_msg_to_fb_user(){
@@ -134,7 +136,7 @@
               if (response.status === 'connected'){
           FB.ui({
              "method": 'send',
-             "message" : 'Learning about Facebook Platform',
+             "message": 'Learning about Facebook Platform',
              "name": 'Send Private Message to Facebook User using Javascript Facebook API',
              "link": 'http://www.lifewithgoals.com',
              "picture": 'https://knowthecode.io/wp-content/uploads/2017/07/automate-asset-versioning-1200x630.png'
