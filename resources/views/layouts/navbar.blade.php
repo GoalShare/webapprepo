@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- You can use open graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="fb:app_id"          content="284837855364891" />
+    
 <meta property="og:type"            content="article" />
 <meta property="og:url"             content="http://www.lifewithgoals.com" />
 <meta property="og:title"           content="Introducing our New Site" />
