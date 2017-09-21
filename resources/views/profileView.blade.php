@@ -136,10 +136,10 @@
               if (response.status === 'connected'){
           FB.ui({
              method: 'send',
-             message: Learning about Facebook Platform,
-             name: Send Private Message to Facebook User using Javascript Facebook API,
-             link: http://www.lifewithgoals.com,
-             picture: https://knowthecode.io/wp-content/uploads/2017/07/automate-asset-versioning-1200x630.png
+             message: 'Learning about Facebook Platform',
+             name: 'Send Private Message to Facebook User using Javascript Facebook API',
+             link: 'http://www.lifewithgoals.com',
+             picture: 'https://knowthecode.io/wp-content/uploads/2017/07/automate-asset-versioning-1200x630.png'
           });
           }
           });
