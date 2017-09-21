@@ -123,7 +123,7 @@
       <div class="row" style="height:25px;"></div>
       <div class="row">
         <div class="col s4 m4 l4">
-          <center><a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/mail_logo_rgb_web.png')}}" width="80%" height="80%"></a></center>
+          <center><a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/mail_logo_rgb_web.png')}}" style="padding-top:-10px;" width="80%" height="80%"></a></center>
         </div>
 
         <div class="col s4 m4 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/facebook_logos_PNG19749.png')}}" width="80%" height="80%"></a></center>
