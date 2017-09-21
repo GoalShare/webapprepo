@@ -143,11 +143,11 @@
       <!-- <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5> -->
       <div class="row" style="height:25px;"></div>
       <div class="row">
-        <div class="col l4">
+        <div class="col s12 m12 l4">
           <center><a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" width="80%" height="80%"></a></center>
         </div>
 
-        <div class="col l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
+        <div class="col s12 m12 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
           <script type="text/javascript">
           function send_private_msg_to_fb_user(){
             FB.login(function(response){
@@ -163,7 +163,7 @@
           }
           </script>
          </div>
-        <div class="col l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+        <div class="col s12 m12 l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
           <center>
             <a><img src="{{asset('img/linkedin_circle_color-512.png')}}" data-href="http://www.lifewithgoals.com/" style="cursor:pointer;width:80%; height:80%;" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px,height=600px');" ></a>
           </center>
@@ -236,7 +236,7 @@
                             console.log(x[0].address+" "+i);
                             // console.log($('#ch'+k)[0]);
 
-                            text =text+'<div class="col l6"><div class="card disabledcard" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="ch'+i+'" disabled/><label for="ch'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span style="font-weight: bold;" >'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
+                            text =text+'<div class="col s12 m12 l6"><div class="card disabledcard" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="ch'+i+'" disabled/><label for="ch'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span style="font-weight: bold;" >'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
                             set=1;
 
                           }
@@ -246,7 +246,7 @@
                         @endforeach
 
                         if(set==0){
-                          text =text+'<div class="col l6"><div class="card tosearch" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="ch'+i+'"/><label for="ch'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span <span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
+                          text =text+'<div class="col s12 m12 l6"><div class="card tosearch" style="width:100%; height:100%;max-height:100%; background-color: #EEEEEE;"><div class="row"><div class="col l4"><span class="checkboxlist"><input type="checkbox" name="checkboxnames" value="'+x[0].address+'" id="ch'+i+'"/><label for="ch'+i+'"></label></span><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" height="40px" width="40px"></div><div class="col l8 truncate"><span <span style="font-weight: bold;">'+y.$t+'</span><br><span style="font-size:12px;color:#A7A7A7;">'+x[0].address+'</span></div></div></div></div>';
 
                         }
 
@@ -389,12 +389,12 @@ if (xhttp.status === 404) {
                 <div id="found3" style="height:25px;"></div><br>
                 <div class="row" style="background-color:#EDEEEE;height:25px;">
 
-                    <div class="col l4"><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                    <div class="col s4 m4 l4"><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
                       <input type="checkbox" id="chk" onclick="toggle(this);" />
                       <label for="chk"></label>Select all
                     </div>
-                    <div class="col l4"></div>
-                    <div class="col l4">
+                    <div class="col s4 m4 l4"></div>
+                    <div class="col s4 m4 l4">
                       <input style="max-width:200px;max-height:20px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
                     </div>
                   </div>
