@@ -130,22 +130,19 @@
 
 
           <script type="text/javascript">
-          function send_private_msg_to_fb_user(){
-            FB.getLoginStatus(function(response){
-
-              if (response.status === 'connected'){
-          FB.ui({
-             method: 'feed',
-             message: 'Learning about Facebook Platform',
-             name: 'Send Private Message to Facebook User using Javascript Facebook API',
-             link: 'http://www.lifewithgoals.com',
-
-          });
-          }
-          });
-          }
-
-          </script>
+     function send_private_msg_to_fb_user(){
+        FB.login(function(response){
+           if (response.authResponse){
+              FB.ui({
+                 method: 'send',
+                 name: 'Send Private Message to Facebook User using Javascript Facebook API',
+                 link: 'http://www.lifewithgoals.com',  
+                description: 'In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial.'
+     });
+    }
+   });
+  }
+  </script>
          </div>
         <div class="col s4 m4 l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
           <center>
