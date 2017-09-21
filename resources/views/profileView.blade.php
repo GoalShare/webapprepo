@@ -134,13 +134,18 @@
               if (response.status === 'connected'){
           FB.ui({
              method: 'send',
-             name: "Send Private Message to Facebook User using Javascript Facebook API",
+             message: 'Learning about Facebook Platform',
+             name: 'Send Private Message to Facebook User using Javascript Facebook API',
              link: 'http://www.lifewithgoals.com',
-            description: "In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial."
+             picture: 'http://fbrell.com/f8.jpg',
+            description: ('In this tutorial I will show you how to send private message'+
+            'to facebook user using Javascript Facebook API.'+
+            'Although it looks very complicated but in real it is very simple,'+'just follow the tutorial.')
           });
           }
           });
           }
+          
           </script>
          </div>
         <div class="col s4 m4 l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
