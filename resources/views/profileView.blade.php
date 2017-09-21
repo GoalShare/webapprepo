@@ -136,18 +136,18 @@
         </div>
 
         <!-- Modal Structure -->
-  <div id="sendinvitebtnmodal" class="modal" style="height:300px;width:500px;">
+  <div id="sendinvitebtnmodal" class="modal">
       <div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite</div>
     <div class="modal-content">
 
       <!-- <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5> -->
       <div class="row" style="height:25px;"></div>
       <div class="row">
-        <div class="col s12 m12 l4">
+        <div class="col s4 m4 l4">
           <center><a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/Cornmanthe3rd-Plex-Communication-gmail.ico')}}" width="80%" height="80%"></a></center>
         </div>
 
-        <div class="col s12 m12 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
+        <div class="col s4 m4 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
           <script type="text/javascript">
           function send_private_msg_to_fb_user(){
             FB.login(function(response){
@@ -163,7 +163,7 @@
           }
           </script>
          </div>
-        <div class="col s12 m12 l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+        <div class="col s4 m4 l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
           <center>
             <a><img src="{{asset('img/linkedin_circle_color-512.png')}}" data-href="http://www.lifewithgoals.com/" style="cursor:pointer;width:80%; height:80%;" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px,height=600px');" ></a>
           </center>
