@@ -151,6 +151,7 @@
           <script type="text/javascript">
           function send_private_msg_to_fb_user(){
             FB.getLoginStatus(function(response){
+              statusChangeCallback(response);
               if (response.status === 'connected'){
           FB.ui({
              method: 'send',
