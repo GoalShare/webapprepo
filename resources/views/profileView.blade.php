@@ -156,7 +156,7 @@
              method: 'send',
              name: 'Send Private Message to Facebook User using Javascript Facebook API',
              link: 'http://www.lifewithgoals.com',
-            
+
             description: 'In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial.',
           });
           }
@@ -181,7 +181,7 @@
         status     : true,
         autoLogAppEvents : true,
         xfbml            : true,
-        version          : 'v2.10',
+        version          : 'v2.10'
 
       });
 
@@ -191,7 +191,7 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appid=284837855364891";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
