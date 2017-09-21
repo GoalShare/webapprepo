@@ -16,10 +16,10 @@
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
     <meta property="fb:app_id"          content="284837855364891" />
 <meta property="og:type"            content="article" />
-<meta property="og:url"             content="http://newsblog.org/news/136756249803614" />
+<meta property="og:url"             content="http://www.lifewithgoals.com" />
 <meta property="og:title"           content="Introducing our New Site" />
-<meta property="og:image"           content="https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/t39.2178-6/851565_496755187057665_544240989_n.jpg" />
-<meta property="og:description"    content="http://samples.ogp.me/390580850990722" />
+<meta property="og:image"           content="" />
+<meta property="og:description"    content="" />
 
   <script type="text/javascript" src="//platform.linkedin.com/in.js">
       api_key:   81te096pbtgr0p
