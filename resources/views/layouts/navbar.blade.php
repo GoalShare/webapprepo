@@ -14,14 +14,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- You can use open graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property:"fb:app_id" content="284837855364891"/>
-  <meta property="og:url" content="http://www.lifewithgoals.com/" />
-  <meta property="og:title" content="Life With Goals" />
-  <meta property="og:description" content="A front-end template that helps you build fast, modern mobile web apps" />
-  <meta property="og:image" content="https://knowthecode.io/wp-content/uploads/2017/07/automate-asset-versioning-1200x630.png" />
+    <meta property="og:url" content="http://www.lifewithgoals.com/" />
+    <meta property="og:title" content="Life With Goals" />
+    <meta property="og:description" content="A front-end template that helps you build fast, modern mobile web apps" />
+    <meta property="og:image" content="https://knowthecode.io/wp-content/uploads/2017/07/automate-asset-versioning-1200x630.png" />
 
-  <meta property="og:image:width" content="50%" />
-  <meta property="og:image:height" content="50%" />
+    <meta property="og:image:width" content="50%" />
+    <meta property="og:image:height" content="50%" />
 
   <script type="text/javascript" src="//platform.linkedin.com/in.js">
       api_key:   81te096pbtgr0p
