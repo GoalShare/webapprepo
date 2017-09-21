@@ -150,8 +150,8 @@
         <div class="col s4 m4 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
           <script type="text/javascript">
           function send_private_msg_to_fb_user(){
-            FB.login(function(response){
-              if (response.authResponse){
+            FB.getLoginStatus(function(response){
+              if (response.status === 'connected'){
           FB.ui({
              method: 'send',
              name: 'Send Private Message to Facebook User using Javascript Facebook API',
