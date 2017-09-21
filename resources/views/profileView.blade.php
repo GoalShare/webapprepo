@@ -135,7 +135,7 @@
 
               if (response.status === 'connected'){
           FB.ui({
-             method: 'share',
+             method: 'send',
              message: 'Learning about Facebook Platform',
              name: 'Send Private Message to Facebook User using Javascript Facebook API',
              link: 'http://www.lifewithgoals.com',
