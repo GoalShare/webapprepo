@@ -18,7 +18,7 @@
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="Life With Goals" />
   <meta property="og:description"   content="A front-end template that helps you build fast, modern mobile web apps" />
-  <meta property="og:image"         content="{{asset('favicon/favicon-32x32.png')}}" />
+  <meta property="og:image"         content="{{asset('http://www.lifewithgoals.com/favicon/LOGO.png')}}" />
   <meta property="og:image:type"    content="image/png" />
   <meta property="og:image:width"   content="50%" />
   <meta property="og:image:height"  content="50%" />
