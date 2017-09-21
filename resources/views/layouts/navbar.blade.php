@@ -12,7 +12,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- You can use open graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url"           content="http://www.lifewithgoals.com/test" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Life With Goals" />
+  <meta property="og:description"   content="A front-end template that helps you build fast, modern mobile web apps" />
+  <meta property="og:image"         content="http://www.lifewithgoals.com/favicon/LOGO.png" />
+  <meta property="og:image:type"    content="image/png" />
+  <meta property="og:image:width"   content="50%" />
+  <meta property="og:image:height"  content="50%" />
 
+  <script type="text/javascript" src="//platform.linkedin.com/in.js">
+      api_key:   81te096pbtgr0p
+      onLoad:    onLinkedInLoad
+      authorize: true
+      lang:      en_US
+
+
+  </script>
     <title>Life With Goals</title>
 {{-- favicon --}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
