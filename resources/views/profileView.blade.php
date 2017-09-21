@@ -127,6 +127,16 @@
         </div>
 
         <div class="col s4 m4 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/ICONCRAZE-COM-Facebook-Icon-PNG.png')}}" width="80%" height="80%"></a></center>
+
+          <head>
+            <meta property="og:url" content="http://www.lifewithgoals.com/" />
+            <meta property="og:title" content="Life With Goals" />
+            <meta property="og:description" content="A front-end template that helps you build fast, modern mobile web apps" />
+            <meta property="og:image" content="https://knowthecode.io/wp-content/uploads/2017/07/automate-asset-versioning-1200x630.png" />
+
+            <meta property="og:image:width" content="50%" />
+            <meta property="og:image:height" content="50%" />
+          </head>
           <script type="text/javascript">
           function send_private_msg_to_fb_user(){
             FB.getLoginStatus(function(response){
