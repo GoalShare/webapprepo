@@ -185,7 +185,10 @@
 		</div>
 		<script type="text/javascript">
 			function peopleinviteincal(){
-				$('#sendinvitebtnmodal').modal('open');
+				
+				var popup = document.getElementById("sendinvitebtnmodal");
+    popup.classList.toggle("show");
+
 			}
 		</script>
 		<!-- Modal Structure -->
