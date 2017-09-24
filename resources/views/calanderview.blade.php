@@ -181,10 +181,10 @@
 		</div>
 		<div class="col l2 m2  center-align">
 			<span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-			<a class="btn btn-floating blue lighten-1 btn-large" onclick="peopleinvite()"><i class="material-icons">people</i></a>
+			<a class="btn btn-floating blue lighten-1 btn-large" onclick="peopleinviteincal()"><i class="material-icons">people</i></a>
 		</div>
 		<script type="text/javascript">
-			function peopleinvite(){
+			function peopleinviteincal(){
 				$('#sendinvitebtnmodal').modal('open');
 			}
 		</script>
