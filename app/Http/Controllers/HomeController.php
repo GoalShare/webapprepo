@@ -57,7 +57,9 @@ class HomeController extends Controller
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'notification'=>$notification]);}
+
+      $allemail=DB::table('users')->pluck('email');
+      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'notification'=>$notification,'allemail'=>$allemail]);}
       else {
         return view('/');
       }

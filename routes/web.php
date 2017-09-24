@@ -25,6 +25,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/calendar',function(){
   return view('calender');
+
 });
 Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
@@ -101,7 +102,8 @@ Route::get('/search/{userid}',function($userid){
                         ->where([['friendships.status','friends'],['friendships.user',$userid]])
                         ->get();
                          $id=Auth::id();
-  return view('friendsProfileView',['user'=>$user,'notification'=>$notification,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio]);
+        $allemail=DB::table('users')->pluck('email');
+  return view('friendsProfileView',['user'=>$user,'notification'=>$notification,'goal'=>$goal,'userskill'=>$userskill,'categorylist'=>$categorylist,'friendship'=>$friendship,'friendrequest'=>$friendrequest,'friends'=>$friends,'privacys'=>$privacys,'userskill'=>$userskill,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail]);
 });
 Route::post('skill','SkillController@skill')->name('skill');
 Route::post('deleteportfolio','ProfileController@deleteportfolio')->name('deleteportfolio');

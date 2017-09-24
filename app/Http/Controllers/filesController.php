@@ -38,8 +38,8 @@ class filesController extends Controller
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
 
-
-      return view('files',['files'=>$files,'categorylist'=>$categorylist,'notification'=>$notification,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
+      $allemail=DB::table('users')->pluck('email');
+      return view('files',['files'=>$files,'categorylist'=>$categorylist,'notification'=>$notification,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'allemail'=>$allemail]);}
       else {
         return view('/');
 

@@ -40,7 +40,9 @@ class calendarController extends Controller
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      return view('calanderview',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
+
+        $allemail=DB::table('users')->pluck('email');
+      return view('calanderview',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'allemail'=>$allemail]);}
       else {
         return view('/');
       }
