@@ -194,7 +194,7 @@
 			background-color: white;
 			border-radius:10px;
 		}
-		#loginScreen:target, #loginScreen:target + #cover{
+		#loginScreen:target{
 		    display:block;
 
 		}
@@ -223,7 +223,7 @@
 
 
 
-#myModal11:target{
+#myModal11,#found1,#found2,#found3,#demo11:target{
 		display:block;
 
 }
