@@ -231,6 +231,11 @@
 background-color: white;
 border-radius:10px;
 }
+
+#myModal11:target{
+		display:block;
+
+}
 		</style>
 		<div class="col l2 m2  center-align">
 			<span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
