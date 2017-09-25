@@ -179,21 +179,59 @@
 				}
 			</script>
 		</div>
+
+		<style type="text/css">
+
+
+		#loginScreen
+		{
+		    height:250;
+		    width:300;
+		    margin:0 auto;
+		    position:fixed;
+		    z-index:1000;
+		    display:none;
+			background-color: white;
+			border-radius:10px;
+		}
+		#loginScreen:target, #loginScreen:target + #cover{
+		    display:block;
+
+		}
+		.cancel
+		{
+		    display:block;
+		    position:absolute;
+		    top:3px;
+		    right:2px;
+		    background-color: transparent;
+		    color: #aaaaaa;
+		    height:30px;
+		    width:35px;
+		    font-size:30px;
+		    text-decoration:none;
+		    text-align:center;
+		    font-weight:bold;
+				padding-top: 0px;
+		}
+		.cancel:hover,
+		.cancel:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+		</style>
 		<div class="col l2 m2  center-align">
 			<span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
-			<a class="btn btn-floating blue lighten-1 btn-large" onclick="peopleinviteincal()"><i class="material-icons">people</i></a>
+			<a class="btn btn-floating blue lighten-1 btn-large" href="#loginScreen"><i class="material-icons">people</i></a>
 		</div>
-		<script type="text/javascript">
-			function peopleinviteincal(){
-				$('#sendinvitebtnmodal').modal('open');
 
-
-			}
-		</script>
 
 		<!-- Modal Structure -->
-<div id="sendinvitebtnmodal" class="modal">
-	<div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite</div>
+<div id="loginScreen" class="modal">
+
+	<div style="height:25px;background-color:#0d47a1;color:white;">&nbsp&nbsp<img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite<a style="margin-top:-10px;" href="#" class="cancel right">&times;</a></div>
+
 <div class="modal-content">
 
 	<!-- <h5 style="color:#0d47a1;">We are ready to connect with your friends.</h5> -->
@@ -534,5 +572,7 @@ console.log("correct");
   <div id='calendar'></div>
 </div>
 <br><br>
+
+
 
 @endsection
