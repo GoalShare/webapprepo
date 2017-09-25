@@ -96,7 +96,7 @@
               <div class="card-content">
                   <span class="card-title center">Web Developer and Web Designer</span>
                 <p class=" center">Chirath Perera is an undergraduate in Software Engineering at NSBM. He joined Lifewithgoals.com upon conviced by Sagi and is the main brain designing the user interface for the website.
-                  He is strive to create visually appealing for the site that feature user-friendly design and clear navigation. </p>
+                  He is in strive to create visually appealing for the site that feature user-friendly design and clear navigation. </p>
               </div>
             </div>
           </div>
