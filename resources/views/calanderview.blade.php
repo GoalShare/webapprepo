@@ -237,7 +237,7 @@
 		<!-- Modal Structure -->
 <div id="loginScreen" class="modal">
 
-	<div style="height:25px;background-color:#0d47a1;color:white;">&nbsp&nbsp<img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite<a style="margin-top:-10px;" href="#" class="cancel right">&times;</a></div>
+	<div style="height:25px;background-color:#0d47a1;color:white;">&nbsp&nbsp<img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite<a style="margin-top:-10px;" href="#" class="cancel right"><i class="material-icons">close</i></a></div>
 
 <div class="modal-content">
 
