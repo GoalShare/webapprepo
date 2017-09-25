@@ -221,16 +221,7 @@
     cursor: pointer;
 }
 
-#myModal11{
-	height:250;
-	width:300;
-	margin:0 auto;
-	position:fixed;
-	z-index:1000;
-	display:none;
-background-color: white;
-border-radius:10px;
-}
+
 
 #myModal11:target{
 		display:block;
