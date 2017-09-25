@@ -186,10 +186,11 @@
 		<script type="text/javascript">
 			function peopleinviteincal(){
 				$('#sendinvitebtnmodal').modal('open');
-				popup.classList.toggle("show");
+
 
 			}
 		</script>
+
 		<!-- Modal Structure -->
 <div id="sendinvitebtnmodal" class="modal">
 	<div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite</div>
@@ -533,4 +534,5 @@ console.log("correct");
   <div id='calendar'></div>
 </div>
 <br><br>
+
 @endsection

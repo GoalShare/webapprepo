@@ -36,60 +36,74 @@
 
         <p class="flow-text center"><b>Our Team</b></p><br>
 
-        <div class="container">
+        <div class="container-fluid">
 
-
+        <center>
         <div class="row">
-          <div class="col s12 m3">
+          <div class="col m1"></div>
+          <div class="col s12 m2">
             <div class="card">
               <div class="card-image " >
                 <img src="{{asset('avatars/1.png')}}" class="circle "  >
               </div>
               <div class="card-content">
-                  <span class="card-title center">CEO, Chief Solution Architect and Founder</span>
+                  <span class="card-title center">CEO and Founder</span>
                 <p class=" center">Ramil De Silva has been in the IT industry for almost 14 years and the founder of Lifewithgoals.com idea.
                   He looks after the operations overall Ramil is a specialist in the HCM/IDAM aspect of ERP implementations</p>
               </div>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m2">
             <div class="card">
               <div class="card-image " >
                 <img src="{{asset('avatars/2.png')}}" class="circle "  >
               </div>
               <div class="card-content">
-                  <span class="card-title center"> CTO </span>
+                  <span class="card-title center"> Consultant </span>
                 <p class="center"> Darshana Samanpura is a seasoned technical expert in the web technologies. Darshana joined to form Lifewithgoals.com with Ramil
                   and is an integral part of the team. Darshana leads all technical solutions related to Lifewithgoals.com  </p>
               </div>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m2">
             <div class="card">
               <div class="card-image " >
                 <img src="{{asset('avatars/3.png')}}" class="circle "  >
               </div>
               <div class="card-content">
-                  <span class="card-title center">Webmaster</span>
+                  <span class="card-title center">Web Developer and Web Designer</span>
                 <p class=" center">Sagi Lorenzo Amarasiri  speaks 3 languages fluently (Sinhalese, Italian and English) and is one of the main brains developing the server side scripts for Lifewithgoals.com. He also follows his digree in Software
                    Engineering at NSBM. He always thinks there is a functionality missing to make a this a fun full site for a user.</p>
               </div>
             </div>
           </div>
-          <div class="col s12 m3">
+          <div class="col s12 m2">
             <div class="card">
               <div class="card-image " >
-                <img src="{{asset('avatars/4.png')}}" class="circle "  >
+                <img src="{{asset('avatars/6.jpg')}}" class="circle "  >
               </div>
               <div class="card-content">
-                  <span class="card-title center">User Interaction Expert</span>
-                <p class=" center">Peshala Dayanatha is an undergraduate in Computer Security at NSBM. He joined Lifewithgoals.com upon conviced by Sagi and is the main brain designing the user interface for the website.
-                  Peshala is not happy with the UI and continuously strives to improve optics of this site. </p>
+                  <span class="card-title center">Web Designer</span>
+                <p class=" center">Chamaka Munasinghe is a graduate in Software Engineering at SLIIT. He joined Lifewithgoals.com upon conviced by Sagi.He involves uderstanding the look, layout, and features of the website.He works with development team for keeping the site up-to-date and prioritizing needs, among other tasks.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m2">
+            <div class="card">
+              <div class="card-image " >
+                <img src="{{asset('avatars/4.jpg')}}" class="circle "  >
+              </div>
+              <div class="card-content">
+                  <span class="card-title center">Web Developer and Web Designer</span>
+                <p class=" center">Chirath Perera is an undergraduate in Software Engineering at NSBM. He joined Lifewithgoals.com upon conviced by Sagi and is the main brain designing the user interface for the website.
+                  He is strive to create visually appealing for the site that feature user-friendly design and clear navigation. </p>
               </div>
             </div>
           </div>
 
+          <div class="col m1"></div>
           </div>
+        </center>
           </div>
 
 
