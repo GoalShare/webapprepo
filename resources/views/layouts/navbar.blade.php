@@ -319,10 +319,10 @@
 
       </div>
     </nav>
-    </div>
+
 
     <!-- Dropdown Structure -->
-    <ul id="slide-out" class="side-nav ">
+    <ul id="slide-out" class="side-nav">
       <li>
        <a href="{{url('profile/'.Auth::id())}}" ><i class="material-icons">person_pin</i><span class="black-text name"> {{Auth::User()->fname." ".Auth::User()->lname}}</span></a>
       </li>
@@ -435,7 +435,7 @@
           $.get("https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + authorizationResult.access_token + "&max-results=500&v=3.0",
             function(result){
 
-                document.getElementById("slide-out").style.display="none";
+
               document.getElementById("sendinvitebtnmodal").style.display="none";
               console.log(result);
               var text = '';
@@ -483,7 +483,7 @@
 
               document.getElementById("demo11").innerHTML=text;
 
-
+document.getElementById("slide-out").style.display="none";
               document.getElementById("myModal11").style.display="inline";
 
 
