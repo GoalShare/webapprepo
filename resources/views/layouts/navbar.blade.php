@@ -580,7 +580,7 @@
               document.getElementById("demo11").innerHTML=text;
 
               // $('#myModal11').modal('open');
-              // document.getElementById("myModal11").style.display="inline";
+              document.getElementById("myModal11").style.display="inline";
 
 
 
@@ -649,7 +649,7 @@
 
 
     <!-- The Modal -->
-    <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px; z-index:3000;">
+    <div id="myModal10" class="modal modal-fixed-footer" style="height:600px;max-height:600px; z-index:3000;">
       <div style="height:140px;">
         <div id="found1" style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">&nbsp Gmail<a class="right" style="cursor:pointer;" onclick="windowclose();"><i class="material-icons">close</i></a></div>
         <script>
