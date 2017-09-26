@@ -31,7 +31,10 @@
 				right: 'month,basicWeek,agendaDay,listMonth'
 			},
       nowIndicator:true,
-			defaultDate: Date(),
+			// @php
+			//
+			// @endphp
+			//  defaultDate: Date(),
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
 			disableDragging:true,
@@ -59,6 +62,8 @@
 					@endforeach
 				},
 				@endforeach
+
+
 			]
 		});
 		$('#addgoal').modal();
