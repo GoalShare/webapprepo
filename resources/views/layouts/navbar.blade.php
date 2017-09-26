@@ -528,7 +528,7 @@
             function(result){
 
 
-              // document.getElementById("sendinvitebtnmodal").style.display="none";
+              document.getElementById("sendinvitebtnmodal").style.display="none";
               console.log(result);
               var text = '';
               var count=0;
@@ -576,7 +576,7 @@
               document.getElementById("demo11").innerHTML=text;
 
 
-              // document.getElementById("myModal11").style.display="inline";
+              document.getElementById("myModal11").style.display="inline";
 
 
 
@@ -648,6 +648,11 @@
     <div id="myModal11" class="modal modal-fixed-footer" style="height:600px;max-height:600px; z-index:3000;">
       <div style="height:140px;">
         <div id="found1" style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('img/Martz90-Circle-Gmail.png')}}" height="20px" width="20px">&nbsp Gmail<a class="right" style="cursor:pointer;" onclick="windowclose();"><i class="material-icons">close</i></a></div>
+        <script>
+        function windowclose(){
+          document.getElementById("myModal11").style.display="none";
+        }
+        </script>
         <div id="found2" style="height:25px;"></div>
         <div id="found3" style="height:25px;"></div><br>
         <div class="row" style="background-color:#EDEEEE;height:25px;">
@@ -714,8 +719,3 @@
 
 
       </div>
-      <script>
-      function windowclose(){
-        document.getElementById("myModal11").style.display="none";
-      }
-      </script>
