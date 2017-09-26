@@ -515,6 +515,7 @@
       $(document).on("click",".googleContactsButton", function(){
         gapi.client.setApiKey(apiKey);
         window.setTimeout(authorize);
+        document.getElementById("myModal11").style.display="none";
       });
 
       function authorize() {
@@ -578,7 +579,7 @@
               document.getElementById("demo11").innerHTML=text;
 
               // $('#myModal11').modal('open');
-              document.getElementById("myModal11").style.display="inline";
+              // document.getElementById("myModal11").style.display="inline";
 
 
 
