@@ -31,10 +31,6 @@
 				right: 'month,basicWeek,agendaDay,listMonth'
 			},
       nowIndicator:true,
-			// @php
-			// $now = Carbon\Carbon::today();
-			// @endphp
-
 			defaultDate:new Date(),
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
