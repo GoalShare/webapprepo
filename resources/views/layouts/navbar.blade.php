@@ -351,6 +351,11 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="{{url('/files')}}">My Documents<i class="material-icons">attach_file</i></a></li>
        <li><a class="waves-effect" href="#sendinvitebtnmodal">Send Invite<i class="material-icons">people</i></a></li>
+       <script>
+       $(document).ready(function(){
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
+});</script>
        <!-- Modal Structure -->
  <div id="sendinvitebtnmodal" class="modal">
      <div style="height:25px;background-color:#0d47a1;color:white;"><img src="{{asset('favicon/favicon-16x16.png')}}" height="20px">Send Invite</div>
@@ -436,7 +441,7 @@
             function(result){
 
 
-              document.getElementById("sendinvitebtnmodal").style.display="none";
+              // document.getElementById("sendinvitebtnmodal").style.display="none";
               console.log(result);
               var text = '';
               var count=0;
@@ -483,8 +488,8 @@
 
               document.getElementById("demo11").innerHTML=text;
 
-document.getElementById("slide-out").style.display="none";
-              document.getElementById("myModal11").style.display="inline";
+
+              // document.getElementById("myModal11").style.display="inline";
 
 
 
