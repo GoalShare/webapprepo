@@ -32,9 +32,10 @@
 			},
       nowIndicator:true,
 			// @php
-			//
+			// $now = Carbon\Carbon::today();
 			// @endphp
-			//  defaultDate: Date(),
+
+			defaultDate:new Date(),
 			navLinks: true, // can click day/week names to navigate views
 			editable: false,
 			disableDragging:true,
