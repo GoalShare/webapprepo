@@ -528,7 +528,7 @@
             function(result){
 
 
-              document.getElementById("sendinvitebtnmodal").style.display="none";
+              // document.getElementById("sendinvitebtnmodal").style.display="none";
               console.log(result);
               var text = '';
               var count=0;
@@ -576,7 +576,7 @@
               document.getElementById("demo11").innerHTML=text;
 
 
-              document.getElementById("myModal11").style.display="inline";
+              // document.getElementById("myModal11").style.display="inline";
 
 
 
