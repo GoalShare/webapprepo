@@ -394,6 +394,93 @@
  </div>
  </div>
 </div>
+       <!-- subheaders -->
+       {{-- <li><a class="subheader">&nbsp Pinned Goals</a></li>
+       <li><a class="subheader">&nbsp  Goals</a></li> --}}
+       <!-- // -->
+       <li><div class="divider"></div></li>
+       <li><a class="waves-effect" href="#!">Categories<i class="material-icons">toc</i></a></li>
+       @foreach ($categorylist as $categorylists)
+         <li><a class="col s9 truncate" href="{{ url('/dashboard/'.$categorylists->goalcategory) }}">&nbsp;&nbsp;&nbsp {{$categorylists->goalcategory}}</a></li>
+       @endforeach
+       <br>
+       <li><div class="divider"></div></li>
+       <li><a class="waves-effect" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('signout-form').submit();">Sign out<i class="material-icons">settings_power</i></a></li>
+                <form id="signout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+       <div class="divider"></div>
+
+     </ul>
+
+    <!-- /head -->
+    <!-- end of navbar -->
+
+
+
+        @yield('content')
+
+   <!-- footer -->
+<footer class="page-footer blue darken-4"  >
+         <div class="container">
+           <div class="row">
+             <div class="col l6 s12">
+               <h5 class="white-text">Life With Goals</h5><br>
+
+               <p class="white-text">
+                 <a href="#" class="white-text footerCont" style=" font-size:x-small;">English(UK)</a>
+                 <a href="" class="white-text footerCont" style=" font-size:x-small;">Sinhalese</a>
+               </p>
+
+               <div class="divider"></div>
+               <p class="white-text">
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">About us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">  Support</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;"> Work with us</a>
+               </p>
+             </div>
+           </div>
+         </div>
+         <div class="footer-copyright">
+           <div class="container" style=" font-size:x-small;">
+           © 2017 Copyright Text
+           <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+           </div>
+         </div>
+       </footer>
+<!-- /footer -->
+
+
+</body>
+        <!-- Scripts -->
+      <script>
+      $('.dropdown-button').dropdown({
+          inDuration: 300,
+          outDuration: 225,
+          constrainWidth: false, // Does not change width of dropdown to that of the activator
+          hover: true, // Activate on hover
+          gutter: 0, // Spacing from edge
+          belowOrigin: false, // Displays dropdown below the button
+          alignment: 'left', // Displays dropdown with edge aligned to the left of button
+          stopPropagation: false // Stops event propagation
+        }
+      );
+  $(document).ready(function(){
+  $('.collapsible').collapsible();
+});
+  $(function(){
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
+  });
+  </script>
+
+</html>
+
+
+
 <script language="javascript" type="text/javascript">
 
   window.fbAsyncInit = function() {
@@ -632,87 +719,3 @@
         document.getElementById("myModal11").style.display="none";
       }
       </script>
-       <!-- subheaders -->
-       {{-- <li><a class="subheader">&nbsp Pinned Goals</a></li>
-       <li><a class="subheader">&nbsp  Goals</a></li> --}}
-       <!-- // -->
-       <li><div class="divider"></div></li>
-       <li><a class="waves-effect" href="#!">Categories<i class="material-icons">toc</i></a></li>
-       @foreach ($categorylist as $categorylists)
-         <li><a class="col s9 truncate" href="{{ url('/dashboard/'.$categorylists->goalcategory) }}">&nbsp;&nbsp;&nbsp {{$categorylists->goalcategory}}</a></li>
-       @endforeach
-       <br>
-       <li><div class="divider"></div></li>
-       <li><a class="waves-effect" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('signout-form').submit();">Sign out<i class="material-icons">settings_power</i></a></li>
-                <form id="signout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-       <div class="divider"></div>
-
-     </ul>
-
-    <!-- /head -->
-    <!-- end of navbar -->
-
-
-
-        @yield('content')
-
-   <!-- footer -->
-<footer class="page-footer blue darken-4"  >
-         <div class="container">
-           <div class="row">
-             <div class="col l6 s12">
-               <h5 class="white-text">Life With Goals</h5><br>
-
-               <p class="white-text">
-                 <a href="#" class="white-text footerCont" style=" font-size:x-small;">English(UK)</a>
-                 <a href="" class="white-text footerCont" style=" font-size:x-small;">Sinhalese</a>
-               </p>
-
-               <div class="divider"></div>
-               <p class="white-text">
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">About us</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">  Support</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;"> Work with us</a>
-               </p>
-             </div>
-           </div>
-         </div>
-         <div class="footer-copyright">
-           <div class="container" style=" font-size:x-small;">
-           © 2017 Copyright Text
-           <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
-           </div>
-         </div>
-       </footer>
-<!-- /footer -->
-
-
-</body>
-        <!-- Scripts -->
-      <script>
-      $('.dropdown-button').dropdown({
-          inDuration: 300,
-          outDuration: 225,
-          constrainWidth: false, // Does not change width of dropdown to that of the activator
-          hover: true, // Activate on hover
-          gutter: 0, // Spacing from edge
-          belowOrigin: false, // Displays dropdown below the button
-          alignment: 'left', // Displays dropdown with edge aligned to the left of button
-          stopPropagation: false // Stops event propagation
-        }
-      );
-  $(document).ready(function(){
-  $('.collapsible').collapsible();
-});
-  $(function(){
-    $(document).ready(function(){
-      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-      $('.modal').modal();
-    });
-  });
-  </script>
-
-</html>
