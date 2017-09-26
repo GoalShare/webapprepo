@@ -503,7 +503,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-document.getElementById("myModal11").style.display="none";
+
 </script>
 
 <script type="text/javascript">
@@ -580,7 +580,7 @@ document.getElementById("myModal11").style.display="none";
               document.getElementById("demo11").innerHTML=text;
 
               // $('#myModal11').modal('open');
-              document.getElementById("myModal11").style.display="inline";
+              // document.getElementById("myModal11").style.display="inline";
 
 
 
