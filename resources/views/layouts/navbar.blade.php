@@ -503,7 +503,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-
+document.getElementById("myModal11").style.display="none";
 </script>
 
 <script type="text/javascript">
@@ -513,7 +513,7 @@
       var scopes = 'https://www.googleapis.com/auth/contacts.readonly';
 
       $(document).on("click",".googleContactsButton", function(){
-        document.getElementById("myModal11").style.display="none";
+
         gapi.client.setApiKey(apiKey);
         window.setTimeout(authorize);
 
