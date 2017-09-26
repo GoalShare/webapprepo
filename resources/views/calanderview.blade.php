@@ -11,12 +11,7 @@
 
 
 </script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://apis.google.com/js/client.js"></script>
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel='stylesheet' />
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel='stylesheet' />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel='stylesheet' media='print' />
 <script src="{{asset('js/lib/moment.min.js')}}"></script>
 <script src="{{asset('js/lib/jquery.min.js')}}"></script>
@@ -76,100 +71,7 @@
 	}
 
 </style>
-<div id="addgoal" class="modal modal-fixed-footer">
-<div class="modal-content" style="text-align:center;">
-<h4>Add a Goal</h4>
-<form enctype="multipart/form-data" action="{{route('dashboard')}}" method="post" id="addgoalform">
-	{{ csrf_field() }}
-	<ul class="collection">
-		<li class="collection-item">
-			<div class="input-field col s6">
-				<input id="goalname" name="goalname" type="text" class="validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal Name " required>
-				<label for="goalname">Goal Name</label>
-			</div>
-		</li>
-		<li class="collection-item">
-			<div class="input-field col s6">
-				<input id="goalintent" name="goalintent" type="text" class="validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal intent " required>
-				<label for="goalintent">Goal Intent</label>
-			</div>
-		</li>
-		<li class="collection-item">
-					<p class="left-align">
-						<input class="with-gap" name="goalpriority" type="radio" value="high" id="HighPriority" checked="checked" />
-						<label for="HighPriority">High Priority</label>
-					</p>
-					<p class="left-align">
-						<input class="with-gap" name="goalpriority" type="radio" value="medium" id="MediumPriority" />
-						<label for="MediumPriority">Medium Priority</label>
-					</p>
-					<p class="left-align">
-						<input class="with-gap" name="goalpriority" type="radio" value="low" id="LowPriority"  />
-						<label for="LowPriority">Low Priority</label>
-					</p>
-		</li>
-		<li class="collection-item">
-			<div class="input-field col s12 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Select Goal category">
-					<select name="goalcategory" required>
-						 <option  value="non specified" disabled selected>select goal category</option>
-						 <option  value="business">business</option>
-						 <option  value="education">education</option>
-						 <option  value="Health and fitness">Health and fitness</option>
-						 <option  value="Get Educated and professional memberships">Get Educated and professional memberships</option>
-						 <option  value=" Financial stability and Gains"> Financial stability and Gains</option>
-						 <option  value="Construct my first house">Construct my first house</option>
-						 <option  value="Buy a car">Buy a car</option>
-						 <option  value=" Find a partner"> Find a partner</option>
-						 <option  value="Travel around and see the world">Travel around and see the world</option>
-						 <option  value="Skill up as a professional">Skill up as a professional</option>
-						 <option  value="Sports and Aquatics">Sports and Aquatics</option>
-						 <option  value="Ignite a concept">Ignite a concept</option>
-					</select>
-					<label>Goal Category</label>
-				</div>
-				<script type="text/javascript">
-				$(document).ready(function() {
-						$('select').material_select();
-					});
-				</script>
-		</li>
-		<form>
-		<li class="collection-item">
-			<div class="mdl-textfield mdl-js-textfield">
-				<label  style="color:#565656;font-size:12pt;"for="goalstartdate">Goal Start-Date</label>
-				<input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal start date" style="color:#565656;" type="date" id="goalstartdate" oninput="dateValid()" name="goalstartdate" required>
-				<span id="goalstartdateerror"></span>
-			</div>
-		</li>
-		<li class="collection-item">
-			<div class="mdl-textfield mdl-js-textfield">
-				<label  style="color:#565656;font-size:12pt;"for="goalenddate">Goal End-Date</label>
-				<input class="mdl-textfield__input tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal end date" style="color:#565656;" type="date" oninput="dateValid()" id="goalenddate" name="goalenddate" required>
-					<span id="goalenddateerror"></span>
 
-			</div>
-		</li>
-		<form>
-		<li class="collection-item">
-			<div class="file-field input-field">
-				<div class="btn">
-					<span>Upload a Goal Picture</span>
-					<input type="file" name="goalpicture">
-				</div>
-				<div class="file-path-wrapper">
-					<input class="file-path validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Your Goal Picture" type="text" name="goalpicturepath">
-				</div>
-			</div>
-		</li>
-	</ul>
-<input type="text" class="hidden" name="action" value="2">
-</div>
-<div class="modal-footer">
-<a href="#" id="cancelmodalbtn" style="margin-right:10px;margin-left:10px;"class="model-close waves-effectwaves-effect waves-light btn">Not Now</a>
-<button type="submit" id="addgoalbtn" style="margin-right:10px;margin-left:10px;"class="modal-action waves-effectwaves-effect waves-light btn">Add Goal</button>
-</form>
-</div>
-</div>
 <div class="container">
 	<div class="row hide-on-small-only">
 		<div class="col l2 m2  center-align">
@@ -182,6 +84,408 @@
 			</script>
 		</div>
 
+
+<script>
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
+		<!--add goal form -->
+		<div id="addgoal" class="modal modal-fixed-footer ">
+		<div class="modal-content" style="text-align:center;">
+			<h4>Add Your Goal</h4>
+			<form enctype="multipart/form-data" action="{{route('dashboard')}}" method="post" id="addgoalform">
+				{{ csrf_field() }}
+					<div class="row blue lighten-5">
+						<div class=" col l6 m6 s12 ">
+							<div class="card-panel">
+								<div class="input-field ">
+									<input id="goalname" name="goalname" type="text" class="validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal Name " required>
+									<label for="goalname">Goal Name</label>
+								</div>
+								<small>give a name to your Goal to easily access it</small>
+							</div>
+						</div>
+						<div class=" col l6 m6 s12">
+							<div class="card-panel">
+							<div class="input-field">
+								<input id="goalintent" name="goalintent" type="text" class="validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enter your Goal intent " required>
+								<label for="goalintent">Goal Intent</label>
+							</div>
+							<small>let us know what you want to achive with this goal</small>
+							</div>
+						</div>
+					</div>
+					<div class="row green lighten-5">
+						<div class=" col l6 m6 s12">
+							<div class="card-panel">
+								<p class="left-align">
+									<input class="with-gap" name="goalpriority" type="radio" value="high" id="HighPriority" checked="checked" />
+									<label for="HighPriority">High Priority</label>
+								</p>
+								<p class="left-align">
+									<input class="with-gap" name="goalpriority" type="radio" value="medium" id="MediumPriority" />
+									<label for="MediumPriority">Medium Priority</label>
+								</p>
+								<p class="left-align">
+									<input class="with-gap" name="goalpriority" type="radio" value="low" id="LowPriority"  />
+									<label for="LowPriority">Low Priority</label>
+								</p>
+							</div>
+						 </div>
+						 <div class=" col l6 m6 s12">
+							 <div class="card-panel">
+									<div class="input-field tooltipped" data-position="bottom" data-delay="50" data-tooltip="Select Goal category">
+											<select name="goalcategory" required>
+												 <option  value="non specified" disabled selected>select goal category</option>
+												 <option  value="business">business</option>
+												 <option  value="education">education</option>
+												 <option  value="Health and fitness">Health and fitness</option>
+												 <option  value="Get Educated and professional memberships">Get Educated and professional memberships</option>
+												 <option  value=" Financial stability and Gains"> Financial stability and Gains</option>
+												 <option  value="Construct my first house">Construct my first house</option>
+												 <option  value="Buy a car">Buy a car</option>
+												 <option  value=" Find a partner"> Find a partner</option>
+												 <option  value="Travel around and see the world">Travel around and see the world</option>
+												 <option  value="Skill up as a professional">Skill up as a professional</option>
+												 <option  value="Sports and Aquatics">Sports and Aquatics</option>
+												 <option  value="Ignite a concept">Ignite a concept</option>
+											</select>
+											<label>Goal Category</label>
+										</div>
+										<small>select the category in which your goal belongs from the given types of categories</small>
+									</div>
+								</div>
+							<script type="text/javascript">
+							$(document).ready(function() {
+									$('select').material_select();
+								});
+							</script>
+					</div>
+					<div class="row indigo lighten-5">
+					 <div class="col l6 m6 s12">
+						<div class="card-panel">
+							<div class="input-field row">
+								@php
+									$month=date("n");
+									$year=date("Y");
+									$day=date("d");
+								@endphp
+							 <select class="col s2" id="gsdatedropdown" onchange="gssetdob()">
+								 {{-- @if ($month==1||$month==3||$month==5||$month==7||$month==8||$month==10||$month==12)
+									 @for ($i=1; $i<32 ; $i++) --}}
+										 {{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									 {{-- @endfor
+								 @elseif ($month==4||$month==6||$month==9||$month==11)
+									 @for ($i=1; $i<31 ; $i++) --}}
+										 {{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									 {{-- @endfor
+								 @elseif ($month==2&&$year%4==0)
+									 @for ($i=1; $i<30 ; $i++) --}}
+										 {{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									 {{-- @endfor
+								 @elseif ($month==2&&$year%4!=0)
+									 @for ($i=1; $i<29 ; $i++) --}}
+										 {{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									 {{-- @endfor
+								 @endif --}}
+								 @for ($i=1; $i <=31 ; $i++)
+									 <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option>
+								 @endfor
+							 </select>
+							 <select class="col s6" id="gsmonthdropdown" onchange="gssetdatefunc()">
+								 <option data-month="JAN" value="01" {{ ($month==1)?"selected":"" }}>January</option>
+								 <option data-month="FEB" value="02" {{ ($month==2)?"selected":"" }}>February </option>
+								 <option data-month="MAR" value="03" {{ ($month==3)?"selected":"" }}>March </option>
+								 <option data-month="APR" value="04" {{ ($month==4)?"selected":"" }}>April</option>
+								 <option data-month="MAY" value="05" {{ ($month==5)?"selected":"" }}>May</option>
+								 <option data-month="JUN" value="06" {{ ($month==6)?"selected":"" }}>June </option>
+								 <option data-month="JUL" value="07" {{ ($month==7)?"selected":"" }}>July</option>
+								 <option data-month="AUG" value="08" {{ ($month==8)?"selected":"" }}>August</option>
+								 <option data-month="SEP" value="09" {{ ($month==9)?"selected":"" }}>September</option>
+								 <option data-month="OCT" value="10" {{ ($month==10)?"selected":"" }}>October</option>
+								 <option data-month="NOV" value="11" {{ ($month==11)?"selected":"" }}>November </option>
+								 <option data-month="DEC" value="12" {{ ($month==12)?"selected":"" }}>December </option>
+							 </select>
+							 <select class="col s4" id="gsyeardropdown" onchange="gsfebdates()">
+								 <option value="{{ $year }}" selected>{{ $year }}</option>
+								 @for ($i=($year+1); $i<($year+20) ; $i++)
+									 <option value="{{$i}}">{{ $i }}</option>
+								 @endfor
+							 </select>
+							 <label>Enter the starting date</label>
+						 </div>
+						 <small>Enter the date you are starting this Goal. Today's date will be automatically asigned</small>
+						</div>
+					</div>
+					<input type="hidden" id="goalstartdate" name="goalstartdate" value="{{ $year }}-{{ $month }}-{{ $day }}">
+					<script type="text/javascript">
+					var gsdatedropdown=document.getElementById('gsdatedropdown');
+					var gsmonthdropdown=document.getElementById('gsmonthdropdown');
+					var gsyeardropdown=document.getElementById('gsyeardropdown');
+					var goalstartdate=document.getElementById('goalstartdate');
+					var d=new Date();
+					function gsfebdates() {
+						if (gsmonthdropdown.value==02) {
+
+						if(gsyeardropdown.value%4 == 0)
+						{
+								if( gsyeardropdown.value%100 == 0)
+								{
+										// year is divisible by 400, hence the year is a leap year
+										if ( gsyeardropdown.value%400 == 0){
+												gsdatedropdown.innerHTML="";
+												for (var i = 1; i <= 29; i++) {
+													gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+												}
+										}
+										else{
+												gsdatedropdown.innerHTML="";
+												for (var i = 1; i <= 28; i++) {
+													gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+												}
+										}
+								}
+								else{
+									gsdatedropdown.innerHTML="";
+									for (var i = 1; i <= 29; i++) {
+										gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+									}
+								}
+
+					}
+
+				}
+					goalstartdate.value=gsyeardropdown.value+'-'+gsmonthdropdown.value+'-'+gsdatedropdown.value;
+					console.log(goalstartdate.value);
+				}
+
+				function gssetdob() {
+					goalstartdate.value=gsyeardropdown.value+'-'+gsmonthdropdown.value+'-'+gsdatedropdown.value;
+					console.log(goalstartdate.value);
+				}
+
+					function gssetdatefunc() {
+						if (gsmonthdropdown.value==02) {
+								if(gsyeardropdown.value%4 == 0)
+								{
+										if( gsyeardropdown.value%100 == 0)
+										{
+												// year is divisible by 400, hence the year is a leap year
+												if ( gsyeardropdown.value%400 == 0){
+														gsdatedropdown.innerHTML="";
+														for (var i = 1; i <= 29; i++) {
+															gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+														}
+												}
+												else{
+														gsdatedropdown.innerHTML="";
+														for (var i = 1; i <= 28; i++) {
+															gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+														}
+												}
+										}
+										else{
+											gsdatedropdown.innerHTML="";
+											for (var i = 1; i <= 29; i++) {
+												gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+											}
+										}
+
+								}
+								else{
+									gsdatedropdown.innerHTML="";
+									for (var i = 1; i <= 28; i++) {
+										gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+									}
+								}
+
+						}
+						else {
+							if (gsmonthdropdown.value==01||gsmonthdropdown.value==03||gsmonthdropdown.value==05||gsmonthdropdown.value==07||gsmonthdropdown.value==08||gsmonthdropdown.value==010||gsmonthdropdown.value==12) {
+								gsdatedropdown.innerHTML="";
+								for (var i = 1; i <= 31; i++) {
+									gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+								}
+							} else {
+								gsdatedropdown.innerHTML="";
+								for (var i = 1; i <= 30; i++) {
+									gsdatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+								}
+							}
+						}
+						goalstartdate.value=gsyeardropdown.value+'-'+gsmonthdropdown.value+'-'+gsdatedropdown.value;
+						console.log(goalstartdate.value);
+					}
+					</script>
+					<div class="col l6 m6 s12">
+					 <div class="card-panel">
+						 <div class="input-field row">
+							<select class="col s2" id="gedatedropdown" onchange="gesetdob()" style="height:50px;">
+								{{-- @if ($month==1||$month==3||$month==5||$month==7||$month==8||$month==10||$month==12)
+									@for ($i=1; $i<32 ; $i++) --}}
+										{{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									{{-- @endfor
+								@elseif ($month==4||$month==6||$month==9||$month==11)
+									@for ($i=1; $i<31 ; $i++) --}}
+										{{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									{{-- @endfor
+								@elseif ($month==2&&$year%4==0)
+									@for ($i=1; $i<30 ; $i++) --}}
+										{{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									{{-- @endfor
+								@elseif ($month==2&&$year%4!=0)
+									@for ($i=1; $i<29 ; $i++) --}}
+										{{-- <option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option> --}}
+									{{-- @endfor
+								@endif --}}
+								@for ($i=1; $i <=31 ; $i++)
+									<option value="{{ $i }}" {{ ($day==$i)?"selected":"" }}>{{ $i }}</option>
+								@endfor
+							</select>
+							<select class="col s6" id="gemonthdropdown" onchange="gesetdatefunc()">
+								<option data-month="JAN" value="01" {{ ($month==1)?"selected":"" }}>January</option>
+								<option data-month="FEB" value="02" {{ ($month==2)?"selected":"" }}>February </option>
+								<option data-month="MAR" value="03" {{ ($month==3)?"selected":"" }}>March </option>
+								<option data-month="APR" value="04" {{ ($month==4)?"selected":"" }}>April</option>
+								<option data-month="MAY" value="05" {{ ($month==5)?"selected":"" }}>May</option>
+								<option data-month="JUN" value="06" {{ ($month==6)?"selected":"" }}>June </option>
+								<option data-month="JUL" value="07" {{ ($month==7)?"selected":"" }}>July</option>
+								<option data-month="AUG" value="08" {{ ($month==8)?"selected":"" }}>August</option>
+								<option data-month="SEP" value="09" {{ ($month==9)?"selected":"" }}>September</option>
+								<option data-month="OCT" value="10" {{ ($month==10)?"selected":"" }}>October</option>
+								<option data-month="NOV" value="11" {{ ($month==11)?"selected":"" }}>November </option>
+								<option data-month="DEC" value="12" {{ ($month==12)?"selected":"" }}>December </option>
+							</select>
+							<select class="col s4" id="geyeardropdown" onchange="gefebdates()">
+								<option value="{{ $year }}" selected>{{ $year }}</option>
+								@for ($i=($year+1); $i<($year+20) ; $i++)
+									<option value="{{$i}}">{{ $i }}</option>
+								@endfor
+							</select>
+							<label>Enter the ending date</label>
+						</div>
+						<small>Enter the enddate of your goal.A date of two days from now will be automatically asigned</small>
+					 </div>
+				 </div>
+				 <input type="hidden" id="goalenddate" name="goalenddate" value="{{ $year }}-{{ $month }}-{{ $day+2 }}">
+				 <script type="text/javascript">
+				 var gedatedropdown=document.getElementById('gedatedropdown');
+				 var gemonthdropdown=document.getElementById('gemonthdropdown');
+				 var geyeardropdown=document.getElementById('geyeardropdown');
+				 var goalenddate=document.getElementById('goalenddate');
+				 function gefebdates() {
+					 if (gemonthdropdown.value==02) {
+
+					 if(geyeardropdown.value%4 == 0)
+					 {
+							 if( geyeardropdown.value%100 == 0)
+							 {
+									 // year is divisible by 400, hence the year is a leap year
+									 if ( geyeardropdown.value%400 == 0){
+											 gedatedropdown.innerHTML="";
+											 for (var i = 1; i <= 29; i++) {
+												 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+											 }
+									 }
+									 else{
+											 gedatedropdown.innerHTML="";
+											 for (var i = 1; i <= 28; i++) {
+												 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+											 }
+									 }
+							 }
+							 else{
+								 gedatedropdown.innerHTML="";
+								 for (var i = 1; i <= 29; i++) {
+									 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+								 }
+							 }
+
+				 }
+
+			 }
+				 goalstartdate.value=geyeardropdown.value+'-'+gemonthdropdown.value+'-'+gedatedropdown.value;
+				 console.log(goalenddate.value);
+			 }
+
+			 function gesetdob() {
+				 goalstartdate.value=geyeardropdown.value+'-'+gemonthdropdown.value+'-'+gedatedropdown.value;
+				 console.log(goalenddate.value);
+			 }
+
+				 function gesetdatefunc() {
+					 if (gemonthdropdown.value==02) {
+							 if(geyeardropdown.value%4 == 0)
+							 {
+									 if( geyeardropdown.value%100 == 0)
+									 {
+											 // year is divisible by 400, hence the year is a leap year
+											 if ( geyeardropdown.value%400 == 0){
+													 gedatedropdown.innerHTML="";
+													 for (var i = 1; i <= 29; i++) {
+														 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+													 }
+											 }
+											 else{
+													 gedatedropdown.innerHTML="";
+													 for (var i = 1; i <= 28; i++) {
+														 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+													 }
+											 }
+									 }
+									 else{
+										 gedatedropdown.innerHTML="";
+										 for (var i = 1; i <= 29; i++) {
+											 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+										 }
+									 }
+
+							 }
+							 else{
+								 gedatedropdown.innerHTML="";
+								 for (var i = 1; i <= 28; i++) {
+									 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+								 }
+							 }
+
+					 }
+					 else {
+						 if (gemonthdropdown.value==01||gemonthdropdown.value==03||gemonthdropdown.value==05||gemonthdropdown.value==07||gemonthdropdown.value==08||gemonthdropdown.value==010||gemonthdropdown.value==12) {
+							 gedatedropdown.innerHTML="";
+							 for (var i = 1; i <= 31; i++) {
+								 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+							 }
+						 } else {
+							 gedatedropdown.innerHTML="";
+							 for (var i = 1; i <= 30; i++) {
+								 gedatedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+							 }
+						 }
+					 }
+					 goalstartdate.value=geyeardropdown.value+'-'+gemonthdropdown.value+'-'+gedatedropdown.value;
+					 console.log(goalenddate.value);
+				 }
+				 </script>
+					</div>
+		<input type="hidden" style="display:none;" name="action" value="2">
+		</div>
+		<div class="modal-footer" style="height:18%;">
+						<button type="submit" id="addgoalbtn" style="margin-right:10px;margin-left:10px;"class="modal-action waves-effectwaves-effect waves-light btn center">Add Goal</button>
+						<a onclick="$('#addgoal').modal('close');"style="margin-right:10px;margin-left:10px;"class="model-close waves-effectwaves-effect waves-light btn center">cancel</a>
+						<div class="file-field input-field left">
+							<div class="btn btn-floating">
+								<span><i class="material-icons">photo</i></span>
+								<input type="file" name="goalpicture">
+							</div>
+							<div class="file-path-wrapper">
+								<input  style="display:none;"class="file-path validate tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Your Goal Picture" type="text" name="goalpicturepath">
+							</div>
+						</div>
+		</form>
+		</div>
+		</div>
 		<style type="text/css">
 
 
@@ -229,13 +533,7 @@
 		display:block;
 
 }
-#found2:target{
-	display:block;
-}
 
-#found3:target{
-	display:block;
-}
 
 
 		</style>
