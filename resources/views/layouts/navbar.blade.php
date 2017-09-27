@@ -298,7 +298,7 @@
                 </a>
             @endforeach
               </li>
-              <a style="color:black;" onclick="window.location.href='{{url('/notificationpag')}}'">View all notification</a>
+              <a style="color:black;" onclick="window.location.href='{{url('/notificationpage')}}'">View all notification</a>
           </ul>
 
 
