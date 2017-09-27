@@ -54,9 +54,9 @@ public function view($goalid){
     $shared=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','gift']])->get();
 
     $comment = DB::table('comments')->join('users','users.id','=','comments.userid')->select ('users.*','comments.*')->where('comments.goalid',$goalid)->orderBy('Commenteddate', 'desc')->get();
-
+      $allemail=DB::table('users')->pluck('email');
     return view('goal',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
-    'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment]);
+    'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment,'allemail'=>$allemail]);
 }
   else {
     return view('auth.login');

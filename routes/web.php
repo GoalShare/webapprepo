@@ -50,6 +50,7 @@ Route::post('comment','commentController@post')->name('comment');
 Route::get('/profile/{userid}','ProfileController@view');
 Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/test','TestController@testget')->name('test');
+Route::get('/notificationpage','NotificationpageController@getnavebar')->name('notificationpage');
 Route::get('/admin','AdminController@adminget')->name('admin');
 Route::get('/search',function(){
   if(Auth::check()){
@@ -86,7 +87,7 @@ Route::get('/search/{userid}',function($userid){
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
   $friendship=DB::table('friendships')->where([['user',$id],['friend',$userid]])->orWhere([['user',$userid],['friend',$id]])->value('status');
   $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
-  
+
   $friendrequest=DB::table('friendships')
           ->join('users', 'users.id', '=', 'friendships.user')
           ->select('users.*', 'friendships.*')

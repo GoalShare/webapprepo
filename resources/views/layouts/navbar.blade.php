@@ -289,6 +289,7 @@
 <!--            <li style="background-color:#dbdbdb;"><a><b>Show more</b><i class="material-icons">add</i></a></li>-->
           </ul>
           <li><span class="new badge red">4</span><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
+
           <ul id="noticationdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
               <li>
             @foreach ($notification as $notifications)
@@ -297,7 +298,10 @@
                 </a>
             @endforeach
               </li>
+              <a style="color:black;" href="#">View all notification</a>
           </ul>
+
+
           <li class="hide-on-small-only" style="margin-top:-10px;"><a class="dropdown-button" data-beloworigin="true" data-alignment="center" data-hover="false" data-activates="profiledropdown"><img class="circle front z-depth-1" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}"width="40px" height="40px" ></a></li>
           <ul id="profiledropdown" class='dropdown-content' style="min-width:150px;">
             <li class="center-align"><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">settings_power</i>Logout</a></li>
@@ -351,7 +355,7 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="{{url('/files')}}">My Documents<i class="material-icons">attach_file</i></a></li>
        <li><a class="waves-effect" href="#sendinvitebtnmodal">Send Invite<i class="material-icons">people</i></a></li>
-       
+
        <script>
 
        $(document).ready(function(){
