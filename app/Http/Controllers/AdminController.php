@@ -37,8 +37,8 @@ class AdminController extends Controller
             ->where([['friendships.status','requested'],['friendships.friend',$id]])
             ->get();
 
-
-    return view('admin',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos]);}
+$allemail=DB::table('users')->pluck('email');
+    return view('admin',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'allemail'=>$allemail]);}
     else {
       return view('/');
 
