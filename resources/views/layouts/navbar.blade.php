@@ -351,7 +351,9 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="{{url('/files')}}">My Documents<i class="material-icons">attach_file</i></a></li>
        <li><a class="waves-effect" href="#sendinvitebtnmodal">Send Invite<i class="material-icons">people</i></a></li>
+       
        <script>
+
        $(document).ready(function(){
   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
@@ -713,9 +715,9 @@
 
       </div>
       <div class="modal-footer" style="height:50px;">
-          <button class="modal-action waves-effect waves-green btn right" id="sendinv" >Send Invite</button>
+          <button class="modal-action waves-effect waves-green btn right" id="sendinv">Send Invite</button>
 
-          <button class="modal-action modal-close waves-effect waves-green btn left" type="reset" >Reset</button>
+          <button class="modal-action modal-close waves-effect waves-green btn left" type="reset">Reset</button>
 
 
       </div>

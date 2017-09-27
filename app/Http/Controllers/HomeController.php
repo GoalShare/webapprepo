@@ -76,7 +76,7 @@ class HomeController extends Controller
        $email=DB::table('users')->where('id',$id)->value('email');
        $goal = DB::table('goals')->where('email',$email)->get();
        $task = DB::table('tasks')->where('email', $email)->get();
-       return redirect('dashboard');
+      return redirect()->back();
         break;
         case 2:
           $email=Auth::user()->email;
@@ -115,7 +115,8 @@ class HomeController extends Controller
                               'created_at'=>Carbon::now(),
                             ]
                         );
-                    return redirect('/dashboard');
+                  return redirect()->back();
+
               }
               else {
 
@@ -179,7 +180,9 @@ class HomeController extends Controller
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      return view('catogorizedView',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'category'=>$category]);}
+      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+      $allemail=DB::table('users')->pluck('email');
+      return view('catogorizedView',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'category'=>$category,'notification'=>$notification,'allemail'=>$allemail]);}
       else {
         return view('/');
       }
