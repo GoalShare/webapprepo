@@ -84,4 +84,82 @@ class ShareController extends Controller
             return redirect('/goal/'.$request->goalid);
           }
           }
+
+
+          public function sharealignpost(request $request)
+          {
+
+         $email=$request->shareemail;
+         $goalid=$request->sharegoalid;
+            if ($email!=Auth::User()->email) {
+              $goal=DB::table('goals')->where([['goalid',$goalid],['email',Auth::User()->email]])->get();
+              $task=DB::table('tasks')->where([['goalid',$goalid],['email',Auth::User()->email]])->get();
+              foreach ($goal as $goals) {
+                DB::table('goals')->insert(
+                        [
+                          'goalid'=> $goalid,
+                          'email'=> $email,
+                          'goalname' => $goals->goalname,
+                          'goalintent' => $goals->goalintent,
+                          'goalpriority' => $goals->goalpriority,
+                          'goalcategory' => $goals->goalcategory,
+                          'goalstartdate' => $goals->goalstartdate,
+                          'goalenddate' => $goals->goalenddate,
+                          'goalauthorization' => 'gift',
+                          'goalpictureone'=>$goals->goalpictureone,
+                          'goalpicturetwo'=>$goals->goalpicturetwo,
+                          'pinned'=>1,
+                          'created_at'=>Carbon::now(),
+                          'color'=> '0'.rand(0,99),
+                        ]
+                    );
+                    DB::table('goal_registry')->insert(
+                            [
+                              'user_id'=> Auth::id(),
+                              'receiver_email'=>$email,
+                              'authorization'=>'shared',
+                              'user_fname'=>Auth::User()->fname,
+                              'user_lname'=>Auth::User()->lname,
+                              'goalname'=>$goals->goalname,
+                              'goalid'=>$goals->goalid,
+                            ]
+                        );
+                        DB::table('privacys')->insert(
+                                [
+                                  'goalid'=> $goalid,
+                                  'email'=> $email,
+                                  'goalauthorization'=>'gift',
+                                  'created_at'=>Carbon::now(),
+                                ]
+                            );
+              }
+               $user=DB::table('users')->where('email',$email)->get(['lname','fname','id','email','dob','phone','avatar']);
+               echo json_encode($user);
+               // echo "string";
+               }
+               else {
+                 echo json_encode("");
+               }
+               // echo $email;
+
+
+
+              }
+
+              public function sharealignsearch(request $request)
+               {
+                 $email=$request->shareemail;
+                 $result=DB::table('users')->where('email','like', "%".$email."%")->get(['lname','fname','id','email','dob','phone','avatar']);
+
+                 function is_ajax_request() {
+                     return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+                       $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+                   }
+
+                 if (!is_ajax_request()) {
+                   # code...
+                 }
+
+                 echo json_encode($result);
+               }
 }
