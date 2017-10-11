@@ -151,7 +151,8 @@ Route::get('/aboutus', function () {
           ->where([['friendships.status','requested'],['friendships.friend',$id]])
           ->get();
   $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
-    return view('aboutus',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'notification'=>$notification]);
+  $allemail=DB::table('users')->pluck('email');
+    return view('aboutus',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'notification'=>$notification,'allemail'=>$allemail]);
 });
 Route::get('/policies', function () {
 
@@ -191,3 +192,5 @@ Route::get('/dashboard/{email}','HomeController@confirmuser');
 Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactController@importGoogleContact']);
 
 Route::post('chkdetails','emailController@viewemails')->name('chkdetails');
+
+Route::get('/onestepclose','onestepcloseController@view')->name('onestepclose');
