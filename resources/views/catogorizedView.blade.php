@@ -37,12 +37,24 @@
           </a>
           <a href="#!" class="collection-item">
             <div class="input-field col s12">
-                <select name="goalcategory">
-                  <option value="non specified" disabled selected>select goal category</option>
-                  <option value="business">business</option>
-                  <option value="education">education</option>
-                  <option value="fitness">fitness</option>
-                </select>
+              <select name="goalcategory" required>
+                 <option  value="non specified" disabled selected>select goal category</option>
+                  <option  value="Be happy">Be happy</option>
+                  <option  value="Career and professional growth">Career and professional growth</option>
+                  <option  value="Community and recreation">Community and recreation</option>
+                  <option  value="Creativity and Designs">Creativity and Designs</option>
+                  <option  value="Drama, Entertainment and Music">Drama, Entertainment and Music</option>
+                  <option  value="Education and Learning">Education and Learning</option>
+                 <option  value="Travel and Adventure">Travel and Adventure</option>
+                 <option  value="Finance and stability">Finance and stability</option>
+                 <option  value="Friends">Friends</option>
+                 <option  value="Health, fitness and sports">Health, fitness and sports</option>
+                 <option  value="Hobbies">Hobbies</option>
+                 <option  value="Love, Marriage and Relationship">Love, Marriage and Relationship</option>
+                 <option  value="Personal, family and home">Personal, family and home</option>
+                 <option  value="Spiritual Life<">Spiritual Life</option>
+                 <option  value="Time of the Year">Time of the Year</option>
+              </select>
                 <label>Goal Category</label>
               </div>
               <script type="text/javascript">

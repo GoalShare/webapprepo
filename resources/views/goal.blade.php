@@ -39,21 +39,24 @@
               </li>
               <li class="collection-item">
                 <div class="input-field col s12 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Select Goal category">
-                    <select name="goalcategory" required>
-                       <option  value="non specified" disabled selected>select goal category</option>
-                       <option  value="business">business</option>
-                       <option  value="education">education</option>
-                       <option  value="Health and fitness">Health and fitness</option>
-                       <option  value="Get Educated and professional memberships">Get Educated and professional memberships</option>
-                       <option  value=" Financial stability and Gains"> Financial stability and Gains</option>
-                       <option  value="Construct my first house">Construct my first house</option>
-                       <option  value="Buy a car">Buy a car</option>
-                       <option  value=" Find a partner"> Find a partner</option>
-                       <option  value="Travel around and see the world">Travel around and see the world</option>
-                       <option  value="Skill up as a professional">Skill up as a professional</option>
-                       <option  value="Sports and Aquatics">Sports and Aquatics</option>
-                       <option  value="Ignite a concept">Ignite a concept</option>
-                    </select>
+                  <select name="goalcategory" required>
+                     <option  value="non specified" disabled selected>select goal category</option>
+                      <option  value="Be happy">Be happy</option>
+                      <option  value="Career and professional growth">Career and professional growth</option>
+                      <option  value="Community and recreation">Community and recreation</option>
+                      <option  value="Creativity and Designs">Creativity and Designs</option>
+                      <option  value="Drama, Entertainment and Music">Drama, Entertainment and Music</option>
+                      <option  value="Education and Learning">Education and Learning</option>
+                     <option  value="Travel and Adventure">Travel and Adventure</option>
+                     <option  value="Finance and stability">Finance and stability</option>
+                     <option  value="Friends">Friends</option>
+                     <option  value="Health, fitness and sports">Health, fitness and sports</option>
+                     <option  value="Hobbies">Hobbies</option>
+                     <option  value="Love, Marriage and Relationship">Love, Marriage and Relationship</option>
+                     <option  value="Personal, family and home">Personal, family and home</option>
+                     <option  value="Spiritual Life<">Spiritual Life</option>
+                     <option  value="Time of the Year">Time of the Year</option>
+                  </select>
                     <label>Goal Category</label>
                   </div>
                   <script type="text/javascript">
