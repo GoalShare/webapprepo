@@ -66,6 +66,6 @@ class SkillController extends Controller
                                 'created_at'=> Carbon::now(),
                              ]
                           );
-                  echo $request->goalskill;
+                  return redirect()->back();
                         }
 }

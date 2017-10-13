@@ -25,7 +25,7 @@ public function view($goalid){
     ->groupBy('goalcategory')
     ->get();
     $friends=DB::table('friendships')
-                   ->join('users', 'users.id', '=', 'friendships.user')
+                   ->join('users','users.id', '=', 'friendships.user')
                    ->select('users.*', 'friendships.*')
                    ->where([['friendships.status','friends'],['friendships.friend',$id]])
                    ->get();
@@ -50,13 +50,13 @@ public function view($goalid){
     $privacy=DB::table('privacys')->where([['goalid',$goalid],['email',$email]])->get();
     $goal = DB::table('goals')->where([['goalid',$goalid],['email',$email]])->get();
     $task = DB::table('tasks')->where([['goalid',$goalid],['taskauthorization','<>','gift']])->orderBy('id', 'asc')->get();
-    $aligned=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','aligned']])->get();
+    $aligned=DB::table('goalalignment')->join('users','users.email','=','goalalignment.email')->select('users.*')->where('goalalignment.goalid',$goalid)->get();
     $shared=DB::table('goals')->join('users','users.email','=','goals.email')->select('users.*')->where([['goals.goalid',$goalid],['goals.goalauthorization','gift']])->get();
-
+    $likesanddislikes=DB::table('likes')->where('goalid',$goalid)->get();
     $comment = DB::table('comments')->join('users','users.id','=','comments.userid')->select ('users.*','comments.*')->where('comments.goalid',$goalid)->orderBy('Commenteddate', 'desc')->get();
-      $allemail=DB::table('users')->pluck('email');
-    return view('goal',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
-    'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment,'allemail'=>$allemail]);
+    $allemail=DB::table('users')->pluck('email');
+    return view('test',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
+    'aligned'=>$aligned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment,'likesanddislikes'=>$likesanddislikes,'allemail'=>$allemail]);
 }
   else {
     return view('auth.login');
@@ -185,6 +185,20 @@ public function post(request $request){
       break;
       case 'updateprivacy':
         switch ($request->attribute) {
+          case 'hidegoalprivacy':
+            if ($request->hidegoalprivacy=='') {
+              DB::table('privacys')
+                        ->where([['goalid', $request->goalid],['email',$email]])
+                        ->update(['hidegoalprivacy' => 'public']);
+                        echo "$request->hidegoalprivacy";
+            }
+            if ($request->hidegoalprivacy=='private'){
+              DB::table('privacys')
+                        ->where([['goalid', $request->goalid],['email',$email]])
+                        ->update(['hidegoalprivacy' => 'private']);
+                        echo "$request->hidegoalprivacy";
+            }
+              break;
           case 'goalintentprivacy':
           if ($request->goalintentprivacy=='') {
             DB::table('privacys')
@@ -288,6 +302,34 @@ public function post(request $request){
                                   echo "$request->addtaskprivacy";
                       }
                         break;
+                        case 'overridetaskprivacy':
+                        if ($request->overridetaskprivacy=='') {
+                          DB::table('privacys')
+                                    ->where([['goalid', $request->goalid],['email',$email]])
+                                    ->update(['overridetaskprivacy' => 'public']);
+                                    echo "$request->overridetaskprivacy";
+                        }
+                        if ($request->overridetaskprivacy=='private'){
+                          DB::table('privacys')
+                                    ->where([['goalid', $request->goalid],['email',$email]])
+                                    ->update(['overridetaskprivacy' => 'private']);
+                                    echo "$request->overridetaskprivacy";
+                        }
+                          break;
+                          case 'allowcommitprivacy':
+                          if ($request->allowcommitprivacy=='') {
+                            DB::table('privacys')
+                                      ->where([['goalid', $request->goalid],['email',$email]])
+                                      ->update(['allowcommitprivacy' => 'public']);
+                                      echo "$request->allowcommitprivacy";
+                          }
+                          if ($request->allowcommitprivacy=='private'){
+                            DB::table('privacys')
+                                      ->where([['goalid', $request->goalid],['email',$email]])
+                                      ->update(['overridetaskprivacy' => 'private']);
+                                      echo "$request->allowcommitprivacy";
+                          }
+                            break;
                         case 'canshareprivacy':
                         if ($request->canshareprivacy=='') {
                           DB::table('privacys')
@@ -339,8 +381,8 @@ public function post(request $request){
 
 public function deletetask(request $request)
 {
-  DB::table('tasks')->where([['id',$request->taskid],['taskauthorization','<>','gift']])->delete();
-  return redirect('/goal/'.$request->goalid);
+  DB::table('tasks')->where([['id',$request->id],['taskauthorization','<>','gift']])->delete();
+  echo "done";
 }
 
 public function upateGoalPic(request $request){
@@ -378,12 +420,49 @@ public function upateGoalPic(request $request){
             ->update(['taskintent' => $request->taskintent,'taskpriority' => $request->taskpriority,'taskstartdate' => $request->taskstartdate,'taskenddate' => $request->taskenddate]);
 
             return redirect('/goal/'.$request->goalid);
-
-
-
-
   }
 
+public function increasepercentage(request $request)
+{
+  DB::table('tasks')
+            ->where('id', $request->id)
+            ->update(['taskcompletedpercentage' => $request->completedpercentage]);
+  echo $request->completedpercentage;
+}
+
+public function allcomplete(request $request)
+{
+  DB::table('tasks')
+            ->where('id', $request->id)
+            ->update(['taskcompletedpercentage' => 100]);
+  echo "done";
+}
+
+public function inputlike(request $request){
+        $goalid=$request->goalid;
+        $type=$request->type;
+        $email=Auth::User()->email;
+        DB::table('likes')->insert(
+                [ 'goalid' => $goalid,
+                  'email'=> $email,
+                  'type' => $type,
+                ]
+            );
+      DB::table('likes')->where([['goalid',$goalid],['type','d']])->delete();
+}
+//
+public function inputdislike(request $request){
+        $goalid=$request->goalid;
+        $type=$request->type;
+        $email=Auth::User()->email;
+        DB::table('likes')->insert(
+                [ 'goalid' => $goalid,
+                  'email'=> $email,
+                  'type' => $type,
+                ]
+            );
+      DB::table('likes')->where([['goalid',$goalid],['type','l']])->delete();
+}
 
 
 

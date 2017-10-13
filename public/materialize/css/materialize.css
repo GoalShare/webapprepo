@@ -9039,5 +9039,11 @@ color: #999;
 color: #999;
 }
 
-
+.tabheadfrgoal{
+  border:5px solid #0D47A1;
+  border-radius:50%;
+  height:70px;
+  width:70px;
+  padding:2px;
+}
 /*///////////////////////////*/

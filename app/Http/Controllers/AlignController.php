@@ -13,81 +13,26 @@ class AlignController extends Controller
 {
     public function align(request $request)
     {
-      $email=Auth::User()->email;
-      if($request->email!=$email){
-      $user=DB::table('users')->where('email',$request->email)->get();
-      $goal=DB::table('goals')->where([['goalid',$request->goalid],['email',$email]])->get();
-      $task=DB::table('tasks')->where([['goalid',$request->goalid],['email',$email]])->get();
-      foreach ($goal as $goals) {
-        DB::table('goals')->insert(
-                [
-                  'goalid'=> $request->goalid,
-                  'email'=> $request->email,
-                  'goalname' => $goals->goalname,
-                  'goalintent' => $goals->goalintent,
-                  'goalpriority' => $goals->goalpriority,
-                  'goalcategory' => $goals->goalcategory,
-                  'goalstartdate' => $goals->goalstartdate,
-                  'goalenddate' => $goals->goalenddate,
-                  'goalcompletedpercentage'=>$goals->goalcompletedpercentage,
-                  'goalauthorization' => 'aligned',
-                  'goalpictureone'=>$goals->goalpictureone,
-                  'goalpicturetwo'=>$goals->goalpicturetwo,
-                  'color'=> '0'.rand(0,99),
-                  'pinned'=>1,
-                  'created_at'=>Carbon::now(),
-                ]
-            );
-                DB::table('privacys')->insert(
-                        [
-                          'goalid'=> $request->goalid,
-                          'email'=> $request->email,
-                          'goalauthorization'=> 'aligned',
-                          'created_at'=>Carbon::now(),
-                        ]
-                    );
-                    DB::table('goal_registry')->insert(
-                            [
-                              'user_id'=> Auth::id(),
-                              'receiver_email'=>$request->email,
-                              'authorization'=>'aligned',
-                              'user_fname'=>Auth::User()->fname,
-                              'user_lname'=>Auth::User()->lname,
-                              'goalname'=>$goals->goalname,
-                              'goalid'=>$goals->goalid,
-                            ]
-                        );
-      }
-      foreach ($task as $tasks) {
-        DB::table('tasks')->insert(
-                [
-                  'goalid'=> $request->goalid,
-                  'email'=> $request->email,
-                  'taskname' => $tasks->taskname,
-                  'taskintent' => $tasks->taskintent,
-                  'taskpriority' => $tasks->taskpriority,
-                  'taskstartdate' => $tasks->taskstartdate,
-                  'taskenddate' => $tasks->taskenddate,
-                  'taskcompletedpercentage'=> $tasks->taskcompletedpercentage,
-                  'taskauthorization' => 'aligned',
-                  'created_at'=> Carbon::now(),
-                ]
-            );
-            // echo "done";
-            $goal=Goal::find($request->goalid);
-            $goal->gottasks=1;
-            $goal->save();
-
-      }
-            return redirect('/goal/'.$request->goalid);
-
-
-
+      $email=$request->email;
+      $goalid=$request->goalid;
+      if ($email!=Auth::User()->email) {
+        DB::table('goalalignment')->insert(
+          [
+            'goalid'=>$goalid,
+            'email'=>$email,
+          ]
+        );
+          $user=DB::table('users')->where('email',$email)->get(['lname','fname','id','email','dob','phone','avatar']);
+          echo json_encode($user);
+          // echo "string";
           }
           else {
-            return redirect('/goal/'.$request->goalid);
+            echo json_encode("");
           }
+
           }
+
+
 
           public function deletealigned(request $request)
           {
@@ -96,6 +41,25 @@ class AlignController extends Controller
             DB::table('goals')->where([['goalid',$goalid],['email',$useremail],['goalauthorization','aligned']])->delete();
             DB::table('tasks')->where([['goalid',$request->goalid],['email',$useremail],['taskauthorization','aligned']])->delete();
             DB::table('privacys')->where([['goalid',$request->goalid],['email',$useremail]])->delete();
+          }
+
+
+
+          public function alignsearch(request $request)
+          {
+            $email=$request->email;
+            $result=DB::table('users')->where('email','like', "%".$email."%")->get(['lname','fname','id','email','dob','phone','avatar']);
+
+            function is_ajax_request() {
+                return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+                  $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+              }
+
+            if (!is_ajax_request()) {
+              # code...
+            }
+
+            echo json_encode($result);
           }
 
 
