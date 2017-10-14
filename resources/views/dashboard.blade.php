@@ -426,7 +426,12 @@
               <center><a class="googleContactsButton" href="#myModal11"><img src="{{asset('img/mail_logo_rgb_web.png')}}" style="margin-top:-5%;" width="80%" height="80%"></a></center>
             </div>
 
-            <div class="col s4 m4 l4"><center><a onclick="send_private_msg_to_fb_user()"><img style="cursor:pointer" src="{{asset('img/facebook_logos_PNG19749.png')}}" width="80%" height="80%"></a></center>
+            <div class="col s4 m4 l4">
+              <center>
+                <a onclick="send_private_msg_to_fb_user()">
+                  <img style="cursor:pointer" src="{{asset('img/facebook_logos_PNG19749.png')}}" width="80%" height="80%">
+                </a>
+              </center>
 
 
               <script type="text/javascript">
@@ -443,7 +448,32 @@
        });
       }
       </script>
+      <script language="javascript" type="text/javascript">
+
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '284837855364891',
+            status           : true,
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v2.10'
+
+          });
+
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+
+
+      </script>
              </div>
+
             <div class="col s4 m4 l4"><script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
               <center>
                 <a><img src="{{asset('img/LinkedIn_Logo.svg.png')}}" data-href="http://www.lifewithgoals.com/" style="cursor:pointer;width:80%; height:80%;" onclick="window.open('https://www.linkedin.com/cws/share?url=http://www.lifewithgoals.com/','targetWindow','width=700px,height=600px');" ></a>
@@ -453,30 +483,7 @@
       </div>
     </div>
 
-    <script language="javascript" type="text/javascript">
 
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId            : '284837855364891',
-          status     : true,
-          autoLogAppEvents : true,
-          xfbml            : true,
-          version          : 'v2.10'
-
-        });
-
-      };
-
-      (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-
-    </script>
 
           <script type="text/javascript">
 
