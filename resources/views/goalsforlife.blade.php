@@ -136,24 +136,15 @@
                 }
               ]
             },
-            phone: {
-              identifier: 'phone',
-              rules: [
-                {
-                  type   : 'integer[9999999..99999999999]',
-                  prompt : 'Please enter a valid phone number'
-                }
-              ]
-            },
-            countrycode: {
-              identifier: 'docountrycodeb',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter the country code of the phone number'
-                }
-              ]
-            },
+            // phone: {
+            //   identifier: 'phone',
+            //   rules: [
+            //     {
+            //       type   : 'integer[9999999..99999999999]',
+            //       prompt : 'Please enter a valid phone number'
+            //     }
+            //   ]
+            // },
             terms: {
               identifier: 'terms',
               rules: [
