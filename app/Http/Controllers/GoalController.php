@@ -381,8 +381,19 @@ public function post(request $request){
 
 public function deletetask(request $request)
 {
+  $task = DB::table('tasks')->where([['goalid',$request->goalid],['taskauthorization','<>','gift']])->get();
+  $tcpt=0;
+  foreach ($task as $tasks) {
+    if ($tasks->id!=$request->id) {
+      $tcpt=$tcpt+$tasks->taskcompletedpercentage;
+    }
+  }
+  $gcp=(($tcpt+0)/(count($task)*100))*100;
+  DB::table('goals')
+            ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+            ->update(['goalcompletedpercentage' => round($gcp,2)]);
   DB::table('tasks')->where([['id',$request->id],['taskauthorization','<>','gift']])->delete();
-  echo "done";
+  echo round($gcp,2);
 }
 
 public function upateGoalPic(request $request){
@@ -424,18 +435,40 @@ public function upateGoalPic(request $request){
 
 public function increasepercentage(request $request)
 {
+  $task = DB::table('tasks')->where([['goalid',$request->goalid],['taskauthorization','<>','gift']])->get();
+  $tcpt=0;
+  foreach ($task as $tasks) {
+    if ($tasks->id!=$request->id) {
+      $tcpt=$tcpt+$tasks->taskcompletedpercentage;
+    }
+  }
+  $gcp=(($tcpt+$request->completedpercentage)/(count($task)*100))*100;
   DB::table('tasks')
             ->where('id', $request->id)
             ->update(['taskcompletedpercentage' => $request->completedpercentage]);
-  echo $request->completedpercentage;
+  DB::table('goals')
+            ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+            ->update(['goalcompletedpercentage' => round($gcp,2)]);
+  echo round($gcp,2);
 }
 
 public function allcomplete(request $request)
 {
+  $task = DB::table('tasks')->where([['goalid',$request->goalid],['taskauthorization','<>','gift']])->get();
+  $tcpt=0;
+  foreach ($task as $tasks) {
+    if ($tasks->id!=$request->id) {
+      $tcpt=$tcpt+$tasks->taskcompletedpercentage;
+    }
+  }
+  $gcp=(($tcpt+100)/(count($task)*100))*100;
   DB::table('tasks')
             ->where('id', $request->id)
             ->update(['taskcompletedpercentage' => 100]);
-  echo "done";
+  DB::table('goals')
+            ->where([['goalid', $request->goalid],['goalauthorization','<>','gift']])
+            ->update(['goalcompletedpercentage' => round($gcp,2)]);
+  echo round($gcp,2);
 }
 
 public function inputlike(request $request){

@@ -456,13 +456,13 @@
   {{-- central panel start --}}
 
 
-  <div class="col l8 m8 hide-on-small-only">
+  <div class="col l8 m8">
     <div class="card">
         <div class="card-image" style="height:350px;">
           <img src="{{ asset('uploads/goals/'.$goals->goalpictureone)}}" height="350px;">
             <span class="card-title">
-                <div class="c100 p{{$goals->goalcompletedpercentage}} big hide-on-med-and-down">
-                    <span class="blue-text">{{$goals->goalcompletedpercentage}}%</span>
+                <div id="piearea" class="c100 p{{$goals->goalcompletedpercentage}} big hide-on-med-and-down">
+                    <span class="blue-text" id="gcppie">{{$goals->goalcompletedpercentage}}%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
@@ -659,9 +659,10 @@ to_pickerpopup.on('set', function(event) {
                               {
                                 completedpercentage: this.value,
                                 _token: $('#token').val(),
+                                goalid: '{{ $goals->goalid }}',
                                 id: {{ $tasks->id }}
                               },
-                           function(data,status){console.log('Data: ' + data + 'Status: ' + status);});"
+                           function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});"
                           type="range" id="percentage{{ $tasks->id  }}" value="{{ $tasks->taskcompletedpercentage}}"min="0" max="100" {{($privacys->allowcommitprivacy=="private"&&$userstatus=="aligneduser" )?"disabled":""}} />
                           </p>
                         <div class="row">
@@ -685,16 +686,17 @@ to_pickerpopup.on('set', function(event) {
                         $.post('{{ route('allcomplete') }}',
                           {
                             _token: $('#token').val(),
+                            goalid: '{{ $goals->goalid }}',
                             id: {{ $tasks->id }}
                           },
-                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#percentage{{ $tasks->id  }}').val(100);$('#showpercentage{{ $tasks->id }}').html(100);});" class="btn btn-floating left"><i class="material-icons">done_all</i></button>
+                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#percentage{{ $tasks->id  }}').val(100);$('#showpercentage{{ $tasks->id }}').html(100);$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});" class="btn btn-floating left"><i class="material-icons">done_all</i></button>
                         <button  class="btn btn-floating right" onclick="
                         $.post('{{ route('deletetask') }}',
                           {
                             _token: $('#token').val(),
                             id: {{ $tasks->id }}
                           },
-                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#row{{ $tasks->id }}').hide()});"><i class="material-icons">delete</i></button>
+                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#row{{ $tasks->id }}').hide();$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});"><i class="material-icons">delete</i></button>
                         <a class=" activator " style="cursor:pointer;"><i class="material-icons" style="font-size:50px;">keyboard_arrow_up</i></a>
                       </div>
                       <div class="card-reveal">
