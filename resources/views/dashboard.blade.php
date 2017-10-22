@@ -1272,7 +1272,7 @@
                 color: #9a9a9a;
                 font: 100%/1.5em "Droid Sans", sans-serif;
                 margin: 0;
-                z-index: 10;
+
             }
 
             a {
@@ -1341,6 +1341,7 @@
                 right: 10px;
                 position: fixed;
                 width: 310px;
+                z-index: 10;
 
             }
 
