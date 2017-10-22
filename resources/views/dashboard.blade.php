@@ -1261,7 +1261,7 @@
 
         <!-- Chat Window  -->
         <style>
-
+            Z
             @charset "utf-8";
             /* CSS Document */
 
@@ -1272,6 +1272,7 @@
                 color: #9a9a9a;
                 font: 100%/1.5em "Droid Sans", sans-serif;
                 margin: 0;
+                z-index: 10;
             }
 
             a {
