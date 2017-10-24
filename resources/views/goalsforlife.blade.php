@@ -262,7 +262,7 @@ window.onload = function what(){
             </select>
           </div>
       <br><br>
-          <input type="hidden" id="dob" name="dob" value="">
+          <input type="hidden" id="dob" name="dob" value="2001-01-01">
           <div class="eight wide field">
             <label>Date of Birth</label>
           <div class="three fields">
