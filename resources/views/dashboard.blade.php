@@ -1452,19 +1452,12 @@
             var botMessageintro = "Hello ";
             var name = "{{ Auth::User()->fname }}";
 
+
+
+
             $(document).ready(function () {
                 $('.msg_wrap').hide();
                 $('.msg_head').click(function () {
-
-
-                    $('<div class="msg_b">' +
-                        '<div class="cmacro">' +
-                        '<div class="ctext ctext-r">' +
-                        '<p>' + botMessageintro + name + '<br>' + ddate + '<br>' + '</p>' +
-                        '</div>' +
-                        '<div class="avatar2" style="padding:0px 0px 0px 30px !important;"><img  style=" margin-top: 5px;border-radius: 50%; width: 40px;position: absolute;right: 10px " src="' + you.avatar + '"  /></div>' +
-                        '</div>' +
-                        '</div>+').insertBefore('.msg_push');
 
 
                     $('.msg_wrap').slideToggle('slow');
@@ -1576,6 +1569,17 @@
                         }
 
                     });
+
+                $('<div class="msg_b">' +
+                    '<div class="cmacro">' +
+                    '<div class="ctext ctext-r">' +
+                    '<p>' + botMessageintro + name + '<br>' + ddate + '<br>' + '</p>' +
+                    '</div>' +
+                    '<div class="avatar2" style="padding:0px 0px 0px 30px !important;"><img  style=" margin-top: 5px;border-radius: 50%; width: 40px;position: absolute;right: 10px " src="' + you.avatar + '"  /></div>' +
+                    '</div>' +
+                    '</div>+').insertBefore('.msg_push');
+
+
 
             });
         </script>
