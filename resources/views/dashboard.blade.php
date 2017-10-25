@@ -1303,8 +1303,6 @@
                 border-width: 0px 1px 0px 1px;
             }
 
-
-
             .msg_a {
                 position: relative;
                 background: #FDE4CE;
@@ -1326,8 +1324,6 @@
                 left: -20px;
                 top: 7px;
             }
-
-
 
             .msg_b {
                 background: #EEF2E7;
@@ -1351,23 +1347,22 @@
                 top: 7px;
             }
 
-            .msg_footer{
+            .msg_footer {
                 background: white;
                 height: 70px;
                 font-size: 12px;
-                padding: 0px 0px 7px 15px ;
+                padding: 0px 0px 7px 15px;
                 border-style: solid;
                 border-width: 0px 1px 0px 1px;
             }
-
 
             /* label focus color */
             .input-field input[type=text]:focus + label {
                 color: #000;
             }
+
             /* label underline focus color */
             .input-field input[type=text]:focus {
-
 
                 border: 1px;
                 border-radius: 10px;
@@ -1376,8 +1371,6 @@
 
                 box-sizing: content-box;
             }
-
-
 
             .ctext-l {
                 float: left;
@@ -1399,7 +1392,6 @@
                 padding: 0px 5px 5px 0px;
                 display: flex;
 
-
             }
 
         </style>
@@ -1407,7 +1399,7 @@
 
         <!-- Chat 1.0 Body Start ------------------------------------------------------->
         <div class="msg_box" style="">
-            <div class="msg_head">Leeza Bot
+            <div class="msg_head">LISA
 
             </div>
             <div class="msg_wrap">
@@ -1415,34 +1407,12 @@
                 <div class="msg_body">
                     <!-- Chat box Hide Content -->
                     <div style="  text-align: center;" id="myContent">
-                        <h2 style="font-size: 23px">I'm Your <br> Virtual Assistant <br>Leeza
+                        <h2 style="font-size: 23px">I'm Your <br> Virtual Assistant <br>LISA
                         </h2>
                     </div>
                     <!--  end of chat hide content -->
 
-                    <div class="msg_b">
-                        <div class="cmacro">
-                            <div class="ctext ctext-r">
-                                <p>
-                                    @php
-                                        $welcome = 'Hi';
-                                        if (date("H") < 12) {
-                                        $welcome = 'Good morning';
-                                        } else if (date('H') > 11 && date("H") < 18) {
-                                        $welcome = 'Good afternoon';
-                                        } else if(date('H') > 17) {
-                                        $welcome = 'Good evening';
-                                        }
-                                    @endphp
 
-                                  {{$welcome}}     {{ Auth::User()->fname }} <br>How Can I Help u </p>
-                            </div>
-                            <div class="avatar2" style="padding:0px 0px 0px 30px !important"><img
-                                        style="border-radius: 50%; width: 40px;position: absolute; right: 10px "
-                                        src="https://i.pinimg.com/originals/45/d9/8a/45d98aa922bef6b5213b488dc36a8764.png"/>
-                            </div>
-                        </div>
-                    </div>
                     <div class="msg_push"></div>
 
                 </div>
@@ -1450,15 +1420,15 @@
 
                 <div class="msg_footer">
 
-                <input  style="width: 250px;border: 2px; "
+                    <input style="width: 250px;border: 2px; "
 
-                       type="text" placeholder=" Message "
-                       class="msg_input" onclick="toggler('myContent');">
+                           type="text" placeholder=" Message "
+                           class="msg_input" onclick="toggler('myContent');">
 
 
                 </div>
             </div>
-            </div>
+        </div>
 
         <!-- Chat 1.0 Body End -------------------------------------------------------------------------->
         <!-- Chat 1.0 Script Start ---------------------------------------------------------------------->
@@ -1469,9 +1439,33 @@
 
         </script>
         <script>
+            var dt = new Date().getHours();
+            if (dt >= 0 && dt <= 11) {
+                ddate = "Good Morning! What Do You Need To Know";
+            } else if (dt >= 12 && dt <= 17) {
+                ddate = "Good Afternoon! What Do You Need To Know";
+            } else {
+                console.log('Good Evening! What Do You Need To Know')
+            }
+            var ddate;
+
+            var botMessageintro = "Hello ";
+            var name = "{{ Auth::User()->fname }}";
+
             $(document).ready(function () {
                 $('.msg_wrap').hide();
                 $('.msg_head').click(function () {
+
+
+                    $('<div class="msg_b">' +
+                        '<div class="cmacro">' +
+                        '<div class="ctext ctext-r">' +
+                        '<p>' + botMessageintro + name + '<br>' + ddate + '<br>' + '</p>' +
+                        '</div>' +
+                        '<div class="avatar2" style="padding:0px 0px 0px 30px !important;"><img  style=" margin-top: 5px;border-radius: 50%; width: 40px;position: absolute;right: 10px " src="' + you.avatar + '"  /></div>' +
+                        '</div>' +
+                        '</div>+').insertBefore('.msg_push');
+
 
                     $('.msg_wrap').slideToggle('slow');
                 });
@@ -1487,7 +1481,7 @@
                 me.avatar = "{{asset('uploads/avatars/'.Auth::User()->avatar)}}";
 
                 var you = {};
-                you.avatar = "https://i.pinimg.com/originals/45/d9/8a/45d98aa922bef6b5213b488dc36a8764.png";
+                you.avatar = "https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png";
 
 
                 var botMessage = "";
@@ -1521,9 +1515,8 @@
                                 var re10 = /picture/gi;
                                 var re12 = /change/gi;
 
-                                var re13 = /leeza/gi;
+                                var re13 = /LISA/gi;
                                 var re14 = /hello/gi;
-
 
 
                                 <!-- Sample Text End -->
@@ -1548,13 +1541,13 @@
 
                                     botMessage = "You can Upload New or Change Current Profile Picture Using My Profile Section ";
 
-                                } else if (text.search(re14 || re13 ) !== -1) {
+                                } else if (text.search(re14 || re13) !== -1) {
 
-                                    botMessage = "Hello! Im Leeza How Can i Help You ";
+                                    botMessage = "Hello! Im LISA ";
 
-                                 } else {
+                                } else {
 
-                                    botMessage = "i can't understand ";
+                                    botMessage = "I can't understand Please Tell Me Simply";
                                 }
 
 
@@ -1565,7 +1558,7 @@
                                 '<div class="avatar" style="padding:3px 46px 0px 10px !important"><img  class="img-circle" style="border-radius: 50%; width: 40px;position: absolute;"  src="' + me.avatar + '" /></div>' +
                                 '<div class="ctext ctext-l">' +
                                 '<p>' + text + '</p>' +
-                                '</div>'+
+                                '</div>' +
                                 '</div>' +
                                 '</div>+').insertBefore('.msg_push');
 
@@ -1574,7 +1567,7 @@
                                 '<div class="ctext ctext-r">' +
                                 '<p>' + botMessage + '</p>' +
                                 '</div>' +
-                                '<div class="avatar2" style="padding:0px 0px 0px 30px !important;"><img  style=" margin-top: 5px;border-radius: 50%; width: 40px;position: absolute;right: 10px " src="' +you.avatar + '"  /></div>' +
+                                '<div class="avatar2" style="padding:0px 0px 0px 30px !important;"><img  style=" margin-top: 5px;border-radius: 50%; width: 40px;position: absolute;right: 10px " src="' + you.avatar + '"  /></div>' +
                                 '</div>' +
                                 '</div>+').insertBefore('.msg_push');
 
