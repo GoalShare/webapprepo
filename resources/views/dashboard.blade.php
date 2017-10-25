@@ -1550,7 +1550,7 @@
 
                                 } else if (text.search(re14 || re13 ) !== -1) {
 
-                                    botMessage = "Hi IM Leeza How Can i Help You ";
+                                    botMessage = "Hello! Im Leeza How Can i Help You ";
 
                                  } else {
 
