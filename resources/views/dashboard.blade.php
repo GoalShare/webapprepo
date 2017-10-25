@@ -1445,7 +1445,8 @@
             } else if (dt >= 12 && dt <= 17) {
                 ddate = "Good Afternoon! What Do You Need To Know";
             } else {
-                console.log('Good Evening! What Do You Need To Know')
+
+                ddate = "Good Evening! What Do You Need To Know";
             }
             var ddate;
 
