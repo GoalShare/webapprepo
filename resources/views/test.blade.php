@@ -490,12 +490,10 @@
             <div class="card-content white-text">
               <span class="card-title">Tasks</span>
               <p>Here you have all tasks belongin to your Goal. You can asign people for individual tasks and also control the changes they can make.</p>
-              @if (!$task->isEmpty())
                 <a class="btn white blue-text text-darken-4 btn-large right" href="#addtaskmodal">Add Task</a>
-              @endif
               <div id="addtaskmodal" class="modal modal-fixed-footer">
                 <div class="modal-content">
-                  <h4 class="grey-text">Add New Task</h4>
+                  <h4 class="grey-text text-darken-4">Add New Task</h4>
                   <form class=""id="addtaskformpopup" action="{{route('goal')}}" method="post">
                     {{ csrf_field() }}
                   <input type="text" style="display:none;"class="hidden" value="{{$goals->goalid}}" name="goalid">
@@ -579,72 +577,6 @@ to_pickerpopup.on('set', function(event) {
 </script>
 
               </div>
-              @if($task->isEmpty())
-               <div class="row">
-                  <div class="col s12">
-                    <div class="card white">
-                      <div class="card-content grey-text text-darken-3">
-                        <span class="card-title">Add the first task</span>
-                        @if ($privacys->addtaskprivacy!="private"&&$userstatus!="aligneduser" )
-                          <form class=""id="addtaskform" action="{{route('goal')}}" method="post">
-                            {{ csrf_field() }}
-                          <input type="text" style="display:none;"class="hidden" value="{{$goals->goalid}}" name="goalid">
-                          <input type="text"style="display:none;" class="hidden" value="addtask" name="action">
-                          <input type="text" style="display:none;"class="hidden" value="{{$goals->goalauthorization}}" name="goalauthorization">
-                          <div class="row">
-                            <div class="input-field col l6 m6 s12">
-                              <input name="taskname" id="taskname" type="text" class="validate">
-                              <label for="taskname">Task Name</label>
-                            </div>
-                            <div class="input-field col l6 m6 s12">
-                              <input id="taskintent" name="taskintent" type="text" class="validate">
-                              <label for="taskintent">Task Intent</label>
-                            </div>
-                          </div>
-                          <div class="row indigo lighten-5">
-                           <div class="col l6 m6 s12">
-                            <div class="card-panel">
-                              <div class="input-field row">
-
-
-                               <input type="text" name="taskstartdate"  id="goalstartdatefield" class="datepicker">
-
-                               <label>Enter the starting date</label>
-                             </div>
-                            </div>
-                          </div>
-
-                          <div class="col l6 m6 s12">
-                           <div class="card-panel">
-                             <div class="input-field row">
-                                     <input type="text" name="taskenddate" id="goalenddatefield"  class="datepicker">
-                              <label>Enter the ending date</label>
-                            </div>
-                           </div>
-                         </div>
-
-                         <script>
-
-
-                         </script>
-
-
-
-                          </div>
-                        @else
-                          Sorry, You do not have permissions to add tasks into this goal. Don't panic you still have permissions to do other work.
-                        @endif
-                      </div>
-                      @if ($goals->goalauthorization=='creator'||$goals->goalauthorization=='gift')
-                      <div class="card-action">
-                        <button type="button" onclick="document.getElementById('addtaskform').submit();"name="button" class="btn"> Add task</button>
-                      </div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </form>
-              @endif
 
               @foreach ($task as $tasks)
                 <div class="row" id="row{{ $tasks->id }}">
@@ -667,17 +599,45 @@ to_pickerpopup.on('set', function(event) {
                           </p>
                         <div class="row">
                           <div class="col s12 l6 m6" >
-                            {{-- <div class="chip">
-                               <img src="images/yuna.jpg" alt="Contact Person">
-                               Jane Doe
-                            </div> --}}
+                            @if ($aligned->isEmpty())
+                              <div class="card-panel white">
+                                 <span class="grey-text text-darken-3">
+                                   There are no aligns yet align people to asign them to tasks.
+                                 </span>
+                              </div>
+                            @else
+                              <small>Click on person you want to asign this task</small><br>
+                              @foreach ($aligned as $asigns)
+                                <div class="col s2" style="cursor:pointer;" onclick="
+                                $.post('{{ route('asigntotask') }}',
+                                  {
+                                    id: {{ $asigns->id }},
+                                    fname:'{{ $asigns->fname }}',
+                                    lname:'{{ $asigns->lname }}',
+                                    avatar:'{{ $asigns->avatar }}',
+                                    email:'{{ $asigns->email }}',
+                                    taskid: {{ $tasks->id }},
+                                    _token: '{{ csrf_token() }}'
+                                  },
+                               function(data,status){var obj=JSON.parse(data);for(i=0;i < obj.length;i++){console.log('Data: ' + obj[i].id + 'Status: ' + status);};});">
+                                  <img src="{{asset('uploads/avatars/'.$asigns->avatar)}}" height="40px" width="40px" data-position="bottom" data-delay="50" data-tooltip="{{ $asigns->fname." ".$asigns->lname }}" class="circle tooltipped" >
+                                </div>
+                              @endforeach
+                            @endif
                           </div>
                           <div class="col s12 l6 m6 card-panel white">
-                            <div class="input-field">
-                              <input placeholder="Enter email" id="first_name2" type="text" class="validate">
-                              <label class="active" for="first_name2">Asign people to this task</label>
+                            <div class="card-title">
+                              People Asigned
                             </div>
-                            <small>Enter email of the person you want to asign this task to</small>
+                            <div class="asignedpeople">
+                              @foreach ($asigned as $asign)
+                                @if ($asign->taskid==$tasks->id)
+                                  <div class="col s2">
+                                    <img src="{{asset('uploads/avatars/'.$asign->avatar)}}" height="40px" width="40px" data-position="bottom" data-delay="50" data-tooltip="{{ $asign->fname." ".$asign->lname }}" class="circle tooltipped" >
+                                  </div>
+                                @endif
+                              @endforeach
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -715,20 +675,22 @@ to_pickerpopup.on('set', function(event) {
                               </span>
                             </div>
                           </div>
-                          <form class="col l6 m6 s12 card-panel">
+                          <form class="col l6 m6 s12 card-panel grey-text text-darken-3">
                             <div class="row">
-                              @if ($tasks->note=="")
                                 <div class="input-field col s12">
-                                  <textarea id="textarea1" class="materialize-textarea grey-text text-darken-3"></textarea>
+                                  <textarea  id="textarea1" class="materialize-textarea grey-text text-darken-3" oninput="
+                                    $.post('{{ route('addnote') }}',
+                                      {
+                                        note: this.value,
+                                        taskid: {{ $tasks->id }},
+                                        _token: '{{ csrf_token() }}'
+                                      },
+                                    function(data,status){console.log('Data: ' + data + 'Status: ' + status);});
+                                    ">{{ $tasks->note }}</textarea>
+                                    @if($tasks->note=="")
                                   <label for="textarea1">Add Note</label>
+                                        @endif
                                 </div>
-                              @else
-                                <div class="col s12">
-                                  <div class="card-panel white">
-                                    <span class="white-text">{{ $tasks->note }}</span>
-                                  </div>
-                                </div>
-                              @endif
                             </div>
                           </form>
                         </div>
@@ -765,7 +727,7 @@ to_pickerpopup.on('set', function(event) {
                            {{ csrf_field() }}
                            <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                            <div class="input-field grey lighten-4 grey-text text-darken-3">
-                             <input id="email" name="email" type="search" autocomplete="off" class="grey lighten-4">
+                             <input id="alignsearchemail" name="email" type="search" autocomplete="off" class="grey lighten-4">
                              <label for="email">email</label>
                            </div>
                          </form>
@@ -779,43 +741,48 @@ to_pickerpopup.on('set', function(event) {
                          <ul class="collection" id="alignpeopleresult" style="max-height:500px;">
                          </ul>
                          <script type="text/javascript">
+                           document.addEventListener('DOMContentLoaded',function(){
+                              var from_$input = $('#goalstartdatefield').pickadate({format: 'yyyy-mm-dd' });
+                              var from_picker = from_$input.pickadate('picker');
+
+                              var to_$input = $('#goalenddatefield').pickadate({format: 'yyyy-mm-dd' });
+                              var to_picker = to_$input.pickadate('picker');
+
+                              // Check if there’s a “from” or “to” date to start with.
+                              if ( from_picker.get('value') ) {
+                                to_picker.set('min', from_picker.get('select'));
+                              };
+                              if ( to_picker.get('value') ) {
+                                from_picker.set('max', to_picker.get('select'));
+                              };
+
+                              // When something is selected, update the “from” and “to” limits.
+                              from_picker.on('set', function(event) {
+                                if ( event.select ) {
+                                  to_picker.set('min', from_picker.get('select'));
+                                  console.log($('#goalstartdatefield').val());
+                                }
+                                else if ( 'clear' in event ) {
+                                  to_picker.set('min', false);
+                                  console.log($('#goalstartdatefield').val());
+                                };
+                              });
+                              to_picker.on('set', function(event) {
+                                if ( event.select ) {
+                                  from_picker.set('max', to_picker.get('select'));
+                                  console.log($('#goalenddatefield').val());
+                                }
+                                else if ( 'clear' in event ) {
+                                  from_picker.set('max', false);
+                                  console.log($('#goalenddatefield').val());
+
+                                };
+                              });
+                           });
+                         </script>
+                         <script type="text/javascript">
+
                          document.addEventListener('DOMContentLoaded', function() {
-                           var from_$input = $('#goalstartdatefield').pickadate({format: 'yyyy-mm-dd' });
-                           var from_picker = from_$input.pickadate('picker');
-
-                           var to_$input = $('#goalenddatefield').pickadate({format: 'yyyy-mm-dd' });
-                           var to_picker = to_$input.pickadate('picker');
-
-                           // Check if there’s a “from” or “to” date to start with.
-                           if ( from_picker.get('value') ) {
-                             to_picker.set('min', from_picker.get('select'));
-                           }
-                           if ( to_picker.get('value') ) {
-                             from_picker.set('max', to_picker.get('select'));
-                           }
-
-                           // When something is selected, update the “from” and “to” limits.
-                           from_picker.on('set', function(event) {
-                             if ( event.select ) {
-                               to_picker.set('min', from_picker.get('select'));
-                               console.log($('#goalstartdatefield').val());
-                             }
-                             else if ( 'clear' in event ) {
-                               to_picker.set('min', false);
-                               console.log($('#goalstartdatefield').val());
-                             }
-                           })
-                           to_picker.on('set', function(event) {
-                             if ( event.select ) {
-                               from_picker.set('max', to_picker.get('select'));
-                               console.log($('#goalenddatefield').val());
-                             }
-                             else if ( 'clear' in event ) {
-                               from_picker.set('max', false);
-                               console.log($('#goalenddatefield').val());
-
-                             }
-                           })
 
                            var alignbtn=document.getElementById('alignbtn');
                            var alignpeopleresult = document.getElementById("alignpeopleresult");
@@ -824,7 +791,7 @@ to_pickerpopup.on('set', function(event) {
                            var alignformaction=alignform.getAttribute("action");
                            var form = document.getElementById("alignform");
                            var action = form.getAttribute("action");
-                           var search = document.getElementById("email");
+                           var alignsearchemail = document.getElementById("alignsearchemail");
                            var alignedpeoplelist = document.getElementById('alignedpeoplelist');
 
                            function showAlignedpeople(json) {
@@ -837,7 +804,7 @@ to_pickerpopup.on('set', function(event) {
 
                                for(i=0; i < items.length; i++) {
                                  if((items[i].id)!={{Auth::id()}}){
-                                 output += '<a style="cursor:pointer;" onclick="console.log('+"'"+items[i].lname+"'"+');document.getElementById('+"'"+'email'+"'"+').value='+"'"+items[i].email+"'"+';" class="collection-item">';
+                                 output += '<a style="cursor:pointer;" onclick="console.log('+"'"+items[i].lname+"'"+');document.getElementById('+"'"+'alignsearchemail'+"'"+').value='+"'"+items[i].email+"'"+';" class="collection-item">';
                                  output+='<span class="title">';
                                  output += items[i].fname +' '+items[i].lname;
                                  output += '</span>';
@@ -850,7 +817,7 @@ to_pickerpopup.on('set', function(event) {
                              }
 
                            function alignthis() {
-                             alignthisemail.value=email.value;
+                             alignthisemail.value=alignsearchemail.value;
                              var form_data=new FormData(alignform);
                              var xhr = new XMLHttpRequest();
                              xhr.open('POST',alignformaction, true);
@@ -876,9 +843,10 @@ to_pickerpopup.on('set', function(event) {
                            }
 
                            function getAlignedpeople() {
-                             var q = email.value;
+                             var q = alignsearchemail.value;
                              var form_data=new FormData(form);
                              var xhr = new XMLHttpRequest();
+                             console.log("yfrdcuk");
                              xhr.open('POST',action, true);
                              xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
                              xhr.send(form_data);
@@ -893,7 +861,7 @@ to_pickerpopup.on('set', function(event) {
                              };
                            }
                            // use "input" (every key), not "change" (must lose focus)
-                           email.addEventListener("input", getAlignedpeople);
+                           alignsearchemail.addEventListener("input", getAlignedpeople);
                            alignbtn.addEventListener("click", alignthis);
 
 
@@ -1103,9 +1071,9 @@ to_pickerpopup.on('set', function(event) {
                  @if ($goals->goalauthorization!='aligned')
                  <div class="card-tabs">
                    <ul class="tabs tabs-fixed-width">
-                     <li class="tab"><a class="active blue-text text-darken-4" href="#goalprivacy">Goal privacy</a></li>
+                       <li class="tab"><a class="active blue-text text-darken-4" href="#other">Goal</a></li>
+                       <li class="tab"><a class=" blue-text text-darken-4" href="#goalprivacy">Goal privacy</a></li>
                      <li class="tab"><a class="blue-text text-darken-4" href="#alignprivacy">Align Privacy</a></li>
-                     <li class="tab"><a class="blue-text text-darken-4" href="#other">Other</a></li>
                    </ul>
                  </div>
                  <div class="card-content grey lighten-4">
@@ -1665,7 +1633,124 @@ to_pickerpopup.on('set', function(event) {
                      </ul>
                    </div>
                    <div id="other">
-                     We are working on ways to make this expierience epic.
+                       Change your goal into what you need
+                       <ul class="collection">
+                           <li class="collection-item row">
+                               <span class="col s4 input-field">Goal Name</span>
+                               <div class="input-field col s8">
+                                   <input id="goalnamefield" oninput="editgoalname();" value="{{ $goals->goalname }}" type="text" class="validate">
+                                   <small>Modify goal name</small>
+                               </div>
+                               <script type="text/javascript">
+                                 function editgoalname() {
+                                   $.post('{{route('updategoalname')}}',{
+                                     goalname:$('#goalnamefield').val(),
+                                     goalid:'{{$goals->goalid}}',
+                                     _token:'{{ csrf_token() }}'
+                                   },function(data,status){
+                                     console.log('Data: ' + data + 'Status: ' + status);
+                                   });
+                                 }
+                               </script>
+                           </li>
+                           <li class="collection-item">
+                               <span class="col s4 input-field">Goal Intent</span>
+                               <div class="input-field col s8">
+                                   <input id="goalintentfield" oninput="editgoalintent();"  value="{{ $goals->goalintent }}" type="text" class="validate">
+                                   <small>Modify goal intent</small>
+                               </div>
+                               <script type="text/javascript">
+                                 function editgoalintent() {
+                                   $.post('{{route('updategoalintent')}}',{
+                                     goalintent:$('#goalintentfield').val(),
+                                     goalid:'{{$goals->goalid}}',
+                                     _token:'{{ csrf_token() }}'
+                                   },function(data,status){
+                                     console.log('Data: ' + data + 'Status: ' + status);
+                                   });
+                                 }
+                               </script>
+                               <br><br><br><br><br>
+                           </li>
+                       </ul>
+                       <div class="row">
+                           <div class="col s12">
+                               <span>Goal priority</span>
+                               <div class="card-panel white input-field">
+                                   <select id="goalpriorityfield" onchange="editgoalpriority();">
+                                       <option value="" disabled selected>{{$goals->goalpriority}}</option>
+                                       <option value="high">high</option>
+                                       <option value="medium">medium</option>
+                                       <option value="low">low</option>
+                                   </select>
+                               </div>
+                               <script type="text/javascript">
+                                 function editgoalpriority() {
+                                   $.post('{{route('updategoalpriority')}}',{
+                                     goalpriority:$('#goalpriorityfield').val(),
+                                     goalid:'{{$goals->goalid}}',
+                                     _token:'{{ csrf_token() }}'
+                                   },function(data,status){
+                                     console.log('Data: ' + data + 'Status: ' + status);
+                                   });
+                                 }
+                               </script>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col s12">
+                               <span>Goal Category</span>
+                               <div class="card-panel white input-field">
+                                   <select id="goalcategoryfield" onchange="updategoalcategory();">
+                                       <option value="" disabled selected>{{$goals->goalcategory}}</option>
+                                       <option  value="Be happy">Be happy</option>
+                                       <option  value="Career and professional growth">Career and professional growth</option>
+                                       <option  value="Community and recreation">Community and recreation</option>
+                                       <option  value="Creativity and Designs">Creativity and Designs</option>
+                                       <option  value="Drama, Entertainment and Music">Drama, Entertainment and Music</option>
+                                       <option  value="Education and Learning">Education and Learning</option>
+                                       <option  value="Travel and Adventure">Travel and Adventure</option>
+                                       <option  value="Finance and stability">Finance and stability</option>
+                                       <option  value="Friends">Friends</option>
+                                       <option  value="Health, fitness and sports">Health, fitness and sports</option>
+                                       <option  value="Hobbies">Hobbies</option>
+                                       <option  value="Love, Marriage and Relationship">Love, Marriage and Relationship</option>
+                                       <option  value="Personal, family and home">Personal, family and home</option>
+                                       <option  value="Spiritual Life<">Spiritual Life</option>
+                                       <option  value="Time of the Year">Time of the Year</option>
+                                   </select>
+                                   <script type="text/javascript">
+                                     function updategoalcategory() {
+                                       $.post('{{route('updategoalcategory')}}',{
+                                         goalpriority:$('#goalcategoryfield').val(),
+                                         goalid:'{{$goals->goalid}}',
+                                         _token:'{{ csrf_token() }}'
+                                       },function(data,status){
+                                         console.log('Data: ' + data + 'Status: ' + status);
+                                       });
+                                     }
+                                   </script>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row ">
+                           <div class="col l6 m6 s12">
+                               <div class="card-panel">
+                                   <div class="input-field row grey-text">
+                                       <input type="text" name="taskstartdate"  id="goalstartdatefield" class="datepicker">
+                                       <label>Enter the starting date</label>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col l6 m6 s12">
+                               <div class="card-panel">
+                                   <div class="input-field row grey-text">
+                                       <input type="text" name="taskenddate" id="goalenddatefield"  class="datepicker">
+                                       <label>Enter the ending date</label>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                    </div>
                  </div>
                @endif
@@ -2131,6 +2216,9 @@ to_pickerpopup.on('set', function(event) {
    <li>
      <div class="collapsible-header"><i class="material-icons">call_merge</i>Align</div>
      <div class="collapsible-body">
+         @if($aligned->isEmpty())
+             No aligns yet
+             @endif
        @foreach ($aligned as $alignsshort)
              <a href="{{url('/search/'.$alignsshort->id)}}"><img src="{{ asset('uploads/avatars/'.$alignsshort->avatar) }}" height="50px" width="50px" class="circle responsive-img tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ $alignsshort->fname." ".$alignsshort->lname }}"></a>
        @endforeach
@@ -2139,6 +2227,9 @@ to_pickerpopup.on('set', function(event) {
    <li>
      <div class="collapsible-header"><i class="material-icons">share</i>Share</div>
      <div class="collapsible-body">
+         @if($shared->isEmpty())
+             No shares yet
+             @endif
        @foreach ($shared as $shares)
           <a href="{{url('/search/'.$shares->id)}}"><img src="{{ asset('uploads/avatars/'.$shares->avatar) }}" height="50px" width="50px" class="circle responsive-img tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ $shares->fname." ".$shares->lname }}"></a>
        @endforeach
