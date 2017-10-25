@@ -1643,16 +1643,22 @@ to_pickerpopup.on('set', function(event) {
                                <span class="col s4 input-field">Goal Name</span>
                                <div class="input-field col s8">
                                    <input id="goalnamefield" oninput="editgoalname();" value="{{ $goals->goalname }}" type="text" class="validate">
+                                   <br>
+                                   <div class="progress" id="goalnamepre" style="display:none;">
+                                       <div class="indeterminate"></div>
+                                   </div>
                                    <small>Modify goal name</small>
                                </div>
                                <script type="text/javascript">
                                  function editgoalname() {
+                                   $('#goalnamepre').show();
                                    $.post('{{route('updategoalname')}}',{
                                      goalname:$('#goalnamefield').val(),
                                      goalid:'{{$goals->goalid}}',
                                      _token:'{{ csrf_token() }}'
                                    },function(data,status){
                                      console.log('Data: ' + data + 'Status: ' + status);
+                                     $('#goalnamepre').hide();
                                    });
                                  }
                                </script>
@@ -1661,16 +1667,22 @@ to_pickerpopup.on('set', function(event) {
                                <span class="col s4 input-field">Goal Intent</span>
                                <div class="input-field col s8">
                                    <input id="goalintentfield" oninput="editgoalintent();"  value="{{ $goals->goalintent }}" type="text" class="validate">
+<br>
+                                   <div class="progress" id="goalintentpre" style="display:none;">
+                                       <div class="indeterminate"></div>
+                                   </div>
                                    <small>Modify goal intent</small>
                                </div>
                                <script type="text/javascript">
                                  function editgoalintent() {
+                                   $('#goalintentpre').show();
                                    $.post('{{route('updategoalintent')}}',{
                                      goalintent:$('#goalintentfield').val(),
                                      goalid:'{{$goals->goalid}}',
                                      _token:'{{ csrf_token() }}'
                                    },function(data,status){
                                      console.log('Data: ' + data + 'Status: ' + status);
+                                     $('#goalintentpre').hide();
                                    });
                                  }
                                </script>
@@ -1688,14 +1700,21 @@ to_pickerpopup.on('set', function(event) {
                                        <option value="low">low</option>
                                    </select>
                                </div>
+                               <br>
+                               <div class="progress" id="goalprioritytpre" style="display:none;">
+                                   <div class="indeterminate"></div>
+                               </div>
                                <script type="text/javascript">
                                  function editgoalpriority() {
+                                   $('#goalprioritytpre').show();
                                    $.post('{{route('updategoalpriority')}}',{
                                      goalpriority:$('#goalpriorityfield').val(),
                                      goalid:'{{$goals->goalid}}',
                                      _token:'{{ csrf_token() }}'
                                    },function(data,status){
                                      console.log('Data: ' + data + 'Status: ' + status);
+                                     $('#goalprioritytpre').hide();
+
                                    });
                                  }
                                </script>
@@ -1725,15 +1744,21 @@ to_pickerpopup.on('set', function(event) {
                                    </select>
                                    <script type="text/javascript">
                                      function updategoalcategory() {
+                                       $('#goalcategorypre').show();
                                        $.post('{{route('updategoalcategory')}}',{
                                          goalpriority:$('#goalcategoryfield').val(),
                                          goalid:'{{$goals->goalid}}',
                                          _token:'{{ csrf_token() }}'
                                        },function(data,status){
                                          console.log('Data: ' + data + 'Status: ' + status);
+                                          $('#goalcategorypre').hide();
                                        });
                                      }
                                    </script>
+                               </div>
+                               <br>
+                               <div class="progress" id="goalcategorypre" style="display:none;">
+                                   <div class="indeterminate"></div>
                                </div>
                            </div>
                        </div>

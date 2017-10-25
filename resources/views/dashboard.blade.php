@@ -797,7 +797,7 @@
                             class="material-icons">people</i></a>
             </div>
         </div>
-        @if($goal->isEmpty())
+        @if($goal->isEmpty() && $alignedgoal->isEmpty())
             <div class="row">
                 <div class="col s12 m4 l4">
                     <div class="card-panel teal">
@@ -1033,6 +1033,184 @@
                         </div>
                     @endif
                 @endforeach
+                @foreach ($alignedgoal as $alignedgoals)
+                    @if($alignedgoals->pinned==1)
+                        <div class="col l4 m6 s12 card sticky-action responsive">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{asset('uploads/goals/'.$alignedgoals->goalpicturetwo)}}"
+                                     alt="goal picture">
+                            </div>
+                            <div class="card-content">
+              <span class="card-title  grey-text text-darken-4">
+                <span class="col s2 tooltipped" style="cursor:pointer;" data-position="right" data-delay="50"
+                      data-tooltip="Pin this goal">
+                  <form method="post" action="{{ route('dashboard') }}" id="unpin" style="position:inline;">
+                      {{ csrf_field() }}
+                      <input type="hidden" name="pinned" value="0">
+                    <input type="hidden" name="goalid" value="{{$alignedgoals->goalid}}">
+                    <input type="hidden" name="email" value="{{$email}}">
+                    <input type="hidden" name="action" value="1">
+                    <button type="submit" style="border:none;background-color:#fff;" id="unpinbtn">
+                        <img class="icon icons8-Pin-Filled" width="20" height="20"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABfklEQVQ4T6WU0U0CQRCG/90EnimBDtQOsAKxAs+EnfAGVKBUIL6RXR7OCsQKwA6wAinBe12SHTMGyN5xF+5kkn2b+TIz/z+r8I8gomdmHgGYOOfSGKGa8gaDQU9rvTrUMfNjDG0ETJKk02q1vpVSnbiRGNoIaIxZKqXuKqa6t9YuawOJaAzgpWpFzPwD4LYUOBwOuyGEETNfA5C3BdAtjlqEC/QEaIxJpJNzxRWdTk+ARLQBcNVQ/SyE0F8sFusToCjZbrfXdaHM/LHb7ZI0TWWHKN1hTWgGIBFlaxn7HJSZN865m+JqKm1DRGkIIdVazyrGz6y1OYNXjiy3CuDp6C2l5F5zQjHzp3Oud7ZDIuoDeI8Sp977WVEoZn51zonZc5Eb2RgjJl5FHpxaa6VbFHaaee+7B2VLRdkfvsAEevRVnHyAMvOs+G0d8o4diggAHgB8aa378/lczq1x/AGjw3/z3o/LRqlLVtGHObHWikUuCmWM2TJzInd4EWlf/Avee7REp9E1bAAAAABJRU5ErkJggg==">
+                    </button>
+                  </form>
+                </span>
+                <span style="cursor:pointer;" class="col s8 truncate activator tooltipped" data-position="bottom"
+                      data-delay="50" data-tooltip="Goal name - {{ $alignedgoals->goalname }}">{{ $alignedgoals->goalname }}</span>
+                <span style="cursor:pointer;" class="col s2 activator tooltipped" data-position="bottom" data-delay="50"
+                      data-tooltip="View details"><i class="material-icons right">more_vert</i></span>
+              </span>
+                                <br><br>
+                                <div style="border-top:1px solid grey;"><br>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        Priority :
+                                        {{$alignedgoals->goalpriority}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        End date :
+                                        {{$alignedgoals->goalenddate}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        Start date :
+                                        {{$alignedgoals->goalstartdate}}
+                                    </div>
+                                </div>
+                                <div style="border-top:1px solid grey;">
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <div class="row">
+                                    <div class="col s3">
+                                        <a class="waves-effect waves-light btn btn-floating tooltipped"
+                                           data-position="bottom" data-delay="50" data-tooltip="Go to goal"
+                                           href="{{ url('/goal/'.$alignedgoals->goalid) }}"><i class="material-icons">exit_to_app</i></a>
+                                    </div>
+                                    <div class="col s3">
+                                        <form action="{{route('deletegoal')}}" method="post">
+                                            {{csrf_field()}}
+                                            <button type="submit"
+                                                    class="waves-effect waves-light btn btn-floating tooltipped"
+                                                    data-position="bottom" data-delay="50" data-tooltip="Delete goal">
+                                                <input type="hidden" name="goalid" value="{{$alignedgoals->goalid}}"><i
+                                                        class="material-icons  ">delete</i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col s3">
+                                        @if ($alignedgoals->goalauthorization=="gift")
+                                            <a class="waves-effect waves-light btn btn-floating tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is shared to you">
+                                                <i class="material-icons">share</i>
+                                            </a>
+                                        @else
+                                            <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is not shared">
+                                                <i class="material-icons">share</i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                    <div class="col s3">
+                                        @if ($alignedgoals->email!=Auth::User()->email)
+                                            <a class="waves-effect waves-light btn btn-floating tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is aligned to you">
+                                                <i class="material-icons">call_merge</i>
+                                            </a>
+                                        @else
+                                            <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is not aligned">
+                                                <i class="material-icons">call_merge</i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s10 tooltipped" data-position="bottom" data-delay="50"
+                                         data-tooltip="completed percentage">
+                                        @if ($alignedgoals->goalcompletedpercentage<=30)
+                                            <div class="progress red lighten-4">
+                                                <div class="determinate red darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=60)
+                                            <div class="progress orange lighten-4">
+                                                <div class="determinate orange darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=80)
+                                            <div class="progress yellow lighten-4">
+                                                <div class="determinate yellow darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<100)
+                                            <div class="progress green lighten-4">
+                                                <div class="determinate green darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage==100)
+                                            <div class="progress  light-green accent-3">
+                                                <div class="determinate  light-green accent-3"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="col s2 tooltipped" data-position="bottom" data-delay="50"
+                                         data-tooltip="{{ $alignedgoals->goalcompletedpercentage }}% completed">
+                                        @if ($alignedgoals->goalcompletedpercentage<=30)
+                                            <span class="red-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=60)
+                                            <span class="orange-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=80)
+                                            <span class="yellow-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<100)
+                                            <span class="green-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage==100)
+                                        <!-- Christmas Star icon by Icons8 -->
+                                            <img class="icon icons8-Christmas-Star" width="20" height="20"
+                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACKUlEQVQ4T62UPW8TQRCG39m9u5Ao1tmyQGBcJMiRXCGMhGlQiERFCkSJkBD8BCpaXNHyF6AjDYIGWhtBkTS2qIysfFUWNLEgDrbvbgbtOef4C5+LXLc7s8+8887eEs75o3PmYS6gbOdL/s9gw37Q2IgTEAuU6koS3sJ+7yBwnXR7le41D2dB44Hb+RIIL3t7AdQSKnEqZwKlml+BJ1WAkgYIJeIkeJ3u7339n8rZwJ38GwBPzeEQCIAuYNd52MjNBMrna3cY+iYHuAtQSjwugGlBJ9WiSvRrRkC1TLAuUQ2gFghliLQAqsHGIRXqB2G27Kzd4GN8ky6WgjYA/6y+dVHBQEMPQ5g6C3qC4EQgXfFI8RNrc3dr0LKBAqoMkIsosSPgvwI7o+H/YtgZFa6lY0AAPOOBQCfkkYGFlgx7MQKNAizg3wIQwz8CwENHxmATwKh9o5Tb4vIfAZ8A9hUF/8go1OA2g4/N/qiyqP7UKXsfck3u0GWTpF1Ap3XooU4TtDvw8C0V68/Gpz0V2Hufa0mPXFiAk1WA6g8FSuBc1YAdHqtQsT7xK04FdrdyAiHYWQVyRq8NOYCd1eZutKj4IzWXwu67NdEpgk6dtify0W8Gtwc2nMaoWJ8QNLERfMo9Dzr0uq8CFRBKdKteNot+DCVjR189F6jYqA2rnAqkZf2CFulxBBpvy4DZwysrY22O50wA5cvqdVrf/x737oVXbEpu7PM1D3g45x/V0vYVEDEg7AAAAABJRU5ErkJggg==">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-reveal"
+                                 style="opacity: 0.7;filter: alpha(opacity=70); /* For IE8 and earlier *">
+                                <span class="card-title grey-text text-darken-4">{{ $alignedgoals->goalname }}<i
+                                            class="material-icons right">close</i></span>
+                                <ol class="collection">
+                                    @foreach ($task as $tasks)
+                                        @if($alignedgoals->goalid==$tasks->goalid)
+                                            <li class="collection-item">
+                                                {{$tasks->taskname}}&nbsp;&nbsp;<b>{{ $tasks->taskcompletedpercentage }}
+                                                    %</b>
+                                            </li>
+                                        @endif
+                                    @endforeach
+
+                                </ol>
+                                <ul class="collection">
+                                    @if ($alignedgoals->gottasks==0)
+                                        <li class="collection-item">
+                                            No Tasks yet...
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                      @endif
+                    @endforeach
             </div>
             <ul class="collection">
                 <li class="collection-item"><b>other</b></li>
@@ -1217,6 +1395,184 @@
                         </div>
                     @endif
                 @endforeach
+                @foreach ($alignedgoal as $alignedgoals)
+                    @if($alignedgoals->pinned==0)
+                        <div class="col l4 m6 s12 card sticky-action responsive">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{asset('uploads/goals/'.$alignedgoals->goalpicturetwo)}}"
+                                     alt="goal picture">
+                            </div>
+                            <div class="card-content">
+              <span class="card-title  grey-text text-darken-4">
+                <span class="col s2 tooltipped" style="cursor:pointer;" data-position="right" data-delay="50"
+                      data-tooltip="Pin this goal">
+                  <form method="post" action="{{ route('dashboard') }}" id="unpin" style="position:inline;">
+                      {{ csrf_field() }}
+                      <input type="hidden" name="pinned" value="0">
+                    <input type="hidden" name="goalid" value="{{$alignedgoals->goalid}}">
+                    <input type="hidden" name="email" value="{{$email}}">
+                    <input type="hidden" name="action" value="1">
+                    <button type="submit" style="border:none;background-color:#fff;" id="unpinbtn">
+                        <img class="icon icons8-Pin-Filled" width="20" height="20"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABfklEQVQ4T6WU0U0CQRCG/90EnimBDtQOsAKxAs+EnfAGVKBUIL6RXR7OCsQKwA6wAinBe12SHTMGyN5xF+5kkn2b+TIz/z+r8I8gomdmHgGYOOfSGKGa8gaDQU9rvTrUMfNjDG0ETJKk02q1vpVSnbiRGNoIaIxZKqXuKqa6t9YuawOJaAzgpWpFzPwD4LYUOBwOuyGEETNfA5C3BdAtjlqEC/QEaIxJpJNzxRWdTk+ARLQBcNVQ/SyE0F8sFusToCjZbrfXdaHM/LHb7ZI0TWWHKN1hTWgGIBFlaxn7HJSZN865m+JqKm1DRGkIIdVazyrGz6y1OYNXjiy3CuDp6C2l5F5zQjHzp3Oud7ZDIuoDeI8Sp977WVEoZn51zonZc5Eb2RgjJl5FHpxaa6VbFHaaee+7B2VLRdkfvsAEevRVnHyAMvOs+G0d8o4diggAHgB8aa378/lczq1x/AGjw3/z3o/LRqlLVtGHObHWikUuCmWM2TJzInd4EWlf/Avee7REp9E1bAAAAABJRU5ErkJggg==">
+                    </button>
+                  </form>
+                </span>
+                <span style="cursor:pointer;" class="col s8 truncate activator tooltipped" data-position="bottom"
+                      data-delay="50" data-tooltip="Goal name - {{ $alignedgoals->goalname }}">{{ $alignedgoals->goalname }}</span>
+                <span style="cursor:pointer;" class="col s2 activator tooltipped" data-position="bottom" data-delay="50"
+                      data-tooltip="View details"><i class="material-icons right">more_vert</i></span>
+              </span>
+                                <br><br>
+                                <div style="border-top:1px solid grey;"><br>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        Priority :
+                                        {{$alignedgoals->goalpriority}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        End date :
+                                        {{$alignedgoals->goalenddate}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        Start date :
+                                        {{$alignedgoals->goalstartdate}}
+                                    </div>
+                                </div>
+                                <div style="border-top:1px solid grey;">
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <div class="row">
+                                    <div class="col s3">
+                                        <a class="waves-effect waves-light btn btn-floating tooltipped"
+                                           data-position="bottom" data-delay="50" data-tooltip="Go to goal"
+                                           href="{{ url('/goal/'.$alignedgoals->goalid) }}"><i class="material-icons">exit_to_app</i></a>
+                                    </div>
+                                    <div class="col s3">
+                                        <form action="{{route('deletegoal')}}" method="post">
+                                            {{csrf_field()}}
+                                            <button type="submit"
+                                                    class="waves-effect waves-light btn btn-floating tooltipped"
+                                                    data-position="bottom" data-delay="50" data-tooltip="Delete goal">
+                                                <input type="hidden" name="goalid" value="{{$alignedgoals->goalid}}"><i
+                                                        class="material-icons  ">delete</i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col s3">
+                                        @if ($alignedgoals->goalauthorization=="gift")
+                                            <a class="waves-effect waves-light btn btn-floating tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is shared to you">
+                                                <i class="material-icons">share</i>
+                                            </a>
+                                        @else
+                                            <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is not shared">
+                                                <i class="material-icons">share</i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                    <div class="col s3">
+                                        @if ($alignedgoals->email!=Auth::User()->email)
+                                            <a class="waves-effect waves-light btn btn-floating tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is aligned to you">
+                                                <i class="material-icons">call_merge</i>
+                                            </a>
+                                        @else
+                                            <a class="waves-effect waves-light btn btn-floating blue lighten-3 tooltipped"
+                                               data-position="bottom" data-delay="50"
+                                               data-tooltip="this goal is not aligned">
+                                                <i class="material-icons">call_merge</i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s10 tooltipped" data-position="bottom" data-delay="50"
+                                         data-tooltip="completed percentage">
+                                        @if ($alignedgoals->goalcompletedpercentage<=30)
+                                            <div class="progress red lighten-4">
+                                                <div class="determinate red darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=60)
+                                            <div class="progress orange lighten-4">
+                                                <div class="determinate orange darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=80)
+                                            <div class="progress yellow lighten-4">
+                                                <div class="determinate yellow darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<100)
+                                            <div class="progress green lighten-4">
+                                                <div class="determinate green darken-4"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @elseif ($alignedgoals->goalcompletedpercentage==100)
+                                            <div class="progress  light-green accent-3">
+                                                <div class="determinate  light-green accent-3"
+                                                     style="width: {{ $alignedgoals->goalcompletedpercentage }}%"></div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="col s2 tooltipped" data-position="bottom" data-delay="50"
+                                         data-tooltip="{{ $alignedgoals->goalcompletedpercentage }}% completed">
+                                        @if ($alignedgoals->goalcompletedpercentage<=30)
+                                            <span class="red-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=60)
+                                            <span class="orange-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<=80)
+                                            <span class="yellow-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage<100)
+                                            <span class="green-text text-darken-4"><b>{{ $alignedgoals->goalcompletedpercentage }}
+                                                    %</b></span>
+                                        @elseif ($alignedgoals->goalcompletedpercentage==100)
+                                        <!-- Christmas Star icon by Icons8 -->
+                                            <img class="icon icons8-Christmas-Star" width="20" height="20"
+                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACKUlEQVQ4T62UPW8TQRCG39m9u5Ao1tmyQGBcJMiRXCGMhGlQiERFCkSJkBD8BCpaXNHyF6AjDYIGWhtBkTS2qIysfFUWNLEgDrbvbgbtOef4C5+LXLc7s8+8887eEs75o3PmYS6gbOdL/s9gw37Q2IgTEAuU6koS3sJ+7yBwnXR7le41D2dB44Hb+RIIL3t7AdQSKnEqZwKlml+BJ1WAkgYIJeIkeJ3u7339n8rZwJ38GwBPzeEQCIAuYNd52MjNBMrna3cY+iYHuAtQSjwugGlBJ9WiSvRrRkC1TLAuUQ2gFghliLQAqsHGIRXqB2G27Kzd4GN8ky6WgjYA/6y+dVHBQEMPQ5g6C3qC4EQgXfFI8RNrc3dr0LKBAqoMkIsosSPgvwI7o+H/YtgZFa6lY0AAPOOBQCfkkYGFlgx7MQKNAizg3wIQwz8CwENHxmATwKh9o5Tb4vIfAZ8A9hUF/8go1OA2g4/N/qiyqP7UKXsfck3u0GWTpF1Ap3XooU4TtDvw8C0V68/Gpz0V2Hufa0mPXFiAk1WA6g8FSuBc1YAdHqtQsT7xK04FdrdyAiHYWQVyRq8NOYCd1eZutKj4IzWXwu67NdEpgk6dtify0W8Gtwc2nMaoWJ8QNLERfMo9Dzr0uq8CFRBKdKteNot+DCVjR189F6jYqA2rnAqkZf2CFulxBBpvy4DZwysrY22O50wA5cvqdVrf/x737oVXbEpu7PM1D3g45x/V0vYVEDEg7AAAAABJRU5ErkJggg==">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-reveal"
+                                 style="opacity: 0.7;filter: alpha(opacity=70); /* For IE8 and earlier *">
+                                <span class="card-title grey-text text-darken-4">{{ $alignedgoals->goalname }}<i
+                                            class="material-icons right">close</i></span>
+                                <ol class="collection">
+                                    @foreach ($task as $tasks)
+                                        @if($alignedgoals->goalid==$tasks->goalid)
+                                            <li class="collection-item">
+                                                {{$tasks->taskname}}&nbsp;&nbsp;<b>{{ $tasks->taskcompletedpercentage }}
+                                                    %</b>
+                                            </li>
+                                        @endif
+                                    @endforeach
+
+                                </ol>
+                                <ul class="collection">
+                                    @if ($alignedgoals->gottasks==0)
+                                        <li class="collection-item">
+                                            No Tasks yet...
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                      @endif
+                    @endforeach
             </div>
         @endif
         {{-- eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnndddddddddddddddddddddd --}}

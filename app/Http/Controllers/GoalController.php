@@ -14,14 +14,21 @@ class GoalController extends Controller{
 
 public function view($goalid){
   if(Auth::check()){
+    $email='';
     $id = Auth::id();
-    $user=DB::table('users')->where('id',$id)->get();
-    foreach ($user as $users) {
-      $email=$users->email;
+    $emails=DB::table('goals')->where('goalid',$goalid)->pluck('email');
+    $alignmentemail=DB::table('goalalignment')->where([['email',Auth::User()->email],['goalid',$goalid]])->value('useremail');
+    foreach ($emails as $emaillist) {
+      if ($emaillist==Auth::User()->email) {
+        $email=$emaillist;
+      }
+      else {
+        $email=$alignmentemail;
+      }
     }
     $categorylist = DB::table('goals')
     ->select('goalcategory')
-    ->where('email', $email)
+    ->where('email', Auth::User()->email)
     ->groupBy('goalcategory')
     ->get();
     $friends=DB::table('friendships')
@@ -29,7 +36,7 @@ public function view($goalid){
                    ->select('users.*', 'friendships.*')
                    ->where([['friendships.status','friends'],['friendships.friend',$id]])
                    ->get();
-   $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+   $notification=DB::table('goal_registry')->where('receiver_email',Auth::User()->email)->get();
    $friendstwos=DB::table('friendships')
                   ->join('users', 'users.id', '=', 'friendships.friend')
                   ->select('users.*', 'friendships.*')
@@ -40,7 +47,7 @@ public function view($goalid){
             ->select('users.*', 'friendships.*')
             ->where([['friendships.status','requested'],['friendships.friend',$id]])
             ->get();
-    $userskill=DB::table('userskills')->where('email',$email)->get();
+    $userskill=DB::table('userskills')->where('email',Auth::User()->email)->get();
     $goalskill=DB::table('goalskills')->where('goalid',$goalid)->get();
     $creator=DB::table('goals')
             ->join('users', 'users.email', '=', 'goals.email')
@@ -60,7 +67,7 @@ public function view($goalid){
             ->select('taskasign.*')
             ->where('tasks.goalid',$goalid)
             ->get();
-    return view('test',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'user'=>$user,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
+    return view('test',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
     'aligned'=>$aligned,'asigned'=>$asigned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment,'likesanddislikes'=>$likesanddislikes,'allemail'=>$allemail]);
 }
   else {
