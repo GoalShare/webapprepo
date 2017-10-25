@@ -36,6 +36,11 @@ class HomeController extends Controller
       $email=DB::table('users')->where('id',$id)->value('email');
       $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
       $goal = DB::table('goals')->where('email',$email)->get();
+      $alignedgoal=DB::table('goalalignment')
+                  ->join('goals','goals.goalid','=','goalalignment.goalid')
+                  ->select('goals.*','goalalignment.*')
+                  ->where('goalalignment.email',$email)
+                  ->get();
       $task = DB::table('tasks')->where('email', $email)->get();
       $categorylist = DB::table('goals')
       ->select('goalcategory')

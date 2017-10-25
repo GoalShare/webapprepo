@@ -490,7 +490,11 @@
             <div class="card-content white-text">
               <span class="card-title">Tasks</span>
               <p>Here you have all tasks belongin to your Goal. You can asign people for individual tasks and also control the changes they can make.</p>
+              @if ($userstatus=="aligneduser"&&$privacys=="private")
+                <a href="#" class="btn white blue-text text-darken-4 btn-large right disabled ">Add Task</a>
+              @else
                 <a class="btn white blue-text text-darken-4 btn-large right" href="#addtaskmodal">Add Task</a>
+              @endif
               <div id="addtaskmodal" class="modal modal-fixed-footer">
                 <div class="modal-content">
                   <h4 class="grey-text text-darken-4">Add New Task</h4>
