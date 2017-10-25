@@ -1254,575 +1254,340 @@
         </div>
 
 
-        <!-- Chat 1.0 Start --------------------------------------------------------- -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-
-
-
-        <!-- Chat Window  -->
+        <!-- Chat 1.0 Start ------------------------------------------------------------>
+        <!-- Chat 1.0 Style Sheet Start ------------------------------------------------>
         <style>
-            Z
-            @charset "utf-8";
-            /* CSS Document */
-
-            /* ---------- GENERAL ---------- */
 
             body {
 
-                color: #9a9a9a;
-                font: 100%/1.5em "Droid Sans", sans-serif;
-                margin: 0;
-
+                font-family: sans-serif;
             }
 
-            a {
-                text-decoration: none;
-            }
-
-            fieldset {
-                border: 0;
-                margin: 0;
-                padding: 0;
-                padding-left: 5%;
-                padding-bottom: 5%;
-            }
-
-            h4, h5 {
-                line-height: 1.5em;
-                margin: 0;
-
-            }
-
-            h4t {
-                font-size: 13px;
-
-            }
-
-            hr {
-                background: #e9e9e9;
-                border: 0;
-                -moz-box-sizing: content-box;
-                box-sizing: content-box;
-                height: 1px;
-                margin: 0;
-                min-height: 1px;
-            }
-
-            img {
-                border: 0;
-                display: block;
-                height: auto;
-                max-width: 100%;
-            }
-
-            p {
-                margin: 0;
-            }
-
-            .clearfix {
-                *zoom: 1;
-            }
-
-            /* For IE 6/7 */
-            .clearfix:before, .clearfix:after {
-                content: "";
-                display: table;
-            }
-
-            .clearfix:after {
-                clear: both;
-            }
-
-            /* ---------- LIVE-CHAT ---------- */
-
-            #live-chat {
-                bottom: 0;
-                font-size: 12px;
-                right: 10px;
-                position: fixed;
-                width: 310px;
-                z-index: 10;
-
-            }
-
-            #live-chat header {
-                background: #283593;
-                border-radius: 0px 0px 0 0;
-                color: #fff;
+            .msg_head {
+                background: #f39c12;
+                color: white;
+                padding: 12px;
+                font-weight: bold;
                 cursor: pointer;
-                padding: 10px 20px;
-            }
-
-            #live-chat h4:before {
-                background: #1a8a34;
-                border-radius: 50%;
-                content: "";
-                display: inline-block;
-                height: 8px;
-                margin: 0 8px 0 0;
-                width: 8px;
-            }
-
-            #live-chat h4 {
-                font-size: 14px;
-            }
-
-            #live-chat h5 {
-                font-size: 10px;
-            }
-
-            #live-chat form {
-                padding: 10px;
 
             }
 
-            #live-chat input[type="text"] {
-                border: 1px solid #ccc;
-                border-radius: 30px;
-                padding: 8px;
-                outline: none;
-                width: 234px;
-
+            .msg_box {
+                position: fixed;
+                bottom: -5px;
+                width: 300px;
+                background: white;
+                z-index: 10;
+                right: 8px
             }
 
-            .chat {
-                background: #ede7f6;
+            .msg_head {
+                background: #3498db;
             }
 
-            .
-            .chat-message img {
-                border-radius: 50%;
-                float: left;
-            }
-
-        </style>
-        <!-- Msg Send -->
-        <style>
-
-            * {
-                box-sizing: border-box;
-            }
-
-            .chat-container {
-                height: 320px;
-                direction: rtl;
-                -webkit-transform: rotate(180deg);
-                transform: rotate(180deg);
+            .msg_body {
+                background: white;
+                height: 300px;
+                font-size: 12px;
+                padding: 15px;
                 overflow-y: scroll;
                 overflow-x: hidden;
-                background-color: white;
+                border-style: solid;
+                border-width: 0px 1px 0px 1px;
+            }
+
+            .msg_input {
+                width: 100%;
+
+                border-style: solid;
+                border-width: 0px 1px 0px 1px;
+            }
+
+
+
+            .msg_a {
+                position: relative;
+                background: #FDE4CE;
+                padding: 2px;
+                min-height: 10px;
+                margin-bottom: 5px;
+                margin-right: 10px;
+                border-radius: 5px;
 
             }
 
-            .chat-container .message {
-
-                padding: 1px;
-                -webkit-transform: rotate(180deg);
-                transform: rotate(180deg);
-                direction: ltr;
-
+            .msg_a:before {
+                content: "";
+                position: absolute;
+                width: 0px;
+                height: 0px;
+                border: 10px solid;
+                border-color: transparent #FDE4CE transparent transparent;
+                left: -20px;
+                top: 7px;
             }
 
-            .chat-container .message .avatar {
-                float: left;
 
+
+            .msg_b {
+                background: #EEF2E7;
+                padding: 3px 2px 2px 2px;
+                min-height: 15px;
+                margin-bottom: 5px;
+                position: relative;
+                margin-left: 10px;
+                border-radius: 5px;
+                word-wrap: break-word;
             }
 
-            .chat-container .message .datetime {
-                float: right;
-                color: #999;
-
+            .msg_b:after {
+                content: "";
+                position: absolute;
+                width: 0px;
+                height: 0px;
+                border: 10px solid;
+                border-color: transparent transparent transparent #EEF2E7;
+                right: -20px;
+                top: 7px;
             }
 
-            .send-message-form input {
-                width: 95%;
-                border: none;
-                font-size: 14px;
+            .msg_footer{
                 background: white;
+                height: 70px;
+                font-size: 12px;
+                padding: 0px 0px 7px 15px ;
+                border-style: solid;
+                border-width: 0px 1px 0px 1px;
             }
 
-            .send-message-form button {
-                display: none;
 
+            /* label focus color */
+            .input-field input[type=text]:focus + label {
+                color: #000;
             }
+            /* label underline focus color */
+            .input-field input[type=text]:focus {
 
-        </style>
-        <!-- ui chat  -->
-        <style>
 
-            .cmytext {
-
-                width: 100%;
                 border: 1px;
-                padding: 10px;
+                border-radius: 10px;
+                outline: none;
+                box-shadow: none;
 
+                box-sizing: content-box;
             }
 
-            .ctext {
-                width: 75%;
-                display: flex;
-                flex-direction: column;
-            }
 
-            .ctext > p:first-of-type {
-                width: 100%;
-                margin-top: 0;
-                margin-bottom: auto;
-                line-height: 13px;
-                font-size: 13px;
-
-            }
-
-            .ctext > p:last-of-type {
-                width: 100%;
-                text-align: right;
-                color: white;
-
-                margin-top: auto;
-            }
 
             .ctext-l {
                 float: left;
-
-                padding-right: 10px;
+                padding-left: 10px;
+                text-align: left;
             }
 
             .ctext-r {
                 float: right;
                 padding-left: 0px;
-            }
-
-            .cavatar {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 25%;
-                float: left;
-
+                text-align: right;
+                width: 390px;
             }
 
             .cmacro {
-                margin-top: 5px;
+                margin-top: 1px;
                 width: 85%;
                 border-radius: 5px;
-                padding: 5px;
+                padding: 0px 5px 5px 0px;
                 display: flex;
 
-            }
 
-            .cmsj-rta {
-                float: right;
-                background: #283593;
-
-            }
-
-            .cmsj {
-                float: left;
-                background: #2e7d32;
-
-            }
-
-            .cframe > div:last-of-type {
-                position: absolute;
-                bottom: 5px;
-                width: 100%;
-                display: flex;
-                background-color: white;
-            }
-
-            cul {
-                width: 100%;
-                list-style-type: none;
-                padding: 18px;
-                position: static;
-                bottom: 32px;
-                display: flex;
-                flex-direction: column;
-
-            }
-
-            .cmsj:before {
-                width: 0;
-                height: 0;
-                content: "";
-                top: -5px;
-                left: -14px;
-                position: relative;
-                border-style: solid;
-                border-width: 0 13px 13px 0;
-                border-color: transparent #2e7d32 transparent transparent;
-
-            }
-
-            .cmsj-rta:after {
-                width: 0;
-                height: 0;
-                content: "";
-                top: -5px;
-                left: 14px;
-                position: relative;
-                border-style: solid;
-                border-width: 13px 13px 0 0;
-                border-color: #283593 transparent transparent transparent;
-
-            }
-
-            input:focus {
-                outline: none;
-            }
-
-            ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-                color: #d4d4d4;
-            }
-
-            ::-moz-placeholder { /* Firefox 19+ */
-                color: #d4d4d4;
-            }
-
-            :-ms-input-placeholder { /* IE 10+ */
-                color: #d4d4d4;
-            }
-
-            :-moz-placeholder { /* Firefox 18- */
-                color: #d4d4d4;
             }
 
         </style>
+        <!-- Chat 1.0 Style Sheet End -------------------------------------------------->
 
-        <div id="live-chat">
-            <header class="clearfix">
-                <h4>Chat Bot</h4>
-            </header>
-            <div style="border-style: solid;
-    border-width: 1px; " class="chat">
-                <div class="chat-history">
-                    <div class="chat-message clearfix">
-                        <div class="chat-container">
-                            <div class="message">
-                                <!-- Chat box Hide Content -->
-                                <div style="  text-align: center;" id="myContent">
-                                    <h2 style="font-size: 23px">I'm Your <br> Virtual Assistant <br>How Can I Help You
-                                    </h2>
-                                </div>
-                                <!--  end of chat hide content -->
+        <!-- Chat 1.0 Body Start ------------------------------------------------------->
+        <div class="msg_box" style="">
+            <div class="msg_head">Leeza Bot
 
-                                <cul></cul>
+            </div>
+            <div class="msg_wrap">
 
+                <div class="msg_body">
+                    <!-- Chat box Hide Content -->
+                    <div style="  text-align: center;" id="myContent">
+                        <h2 style="font-size: 23px">I'm Your <br> Virtual Assistant <br>Leeza
+                        </h2>
+                    </div>
+                    <!--  end of chat hide content -->
+
+                    <div class="msg_b">
+                        <div class="cmacro">
+                            <div class="ctext ctext-r">
+                                <p>
+                                    @php
+                                        $welcome = 'Hi';
+                                        if (date("H") < 12) {
+                                        $welcome = 'Good morning';
+                                        } else if (date('H') > 11 && date("H") < 18) {
+                                        $welcome = 'Good afternoon';
+                                        } else if(date('H') > 17) {
+                                        $welcome = 'Good evening';
+                                        }
+                                    @endphp
+
+                                  {{$welcome}}     {{ Auth::User()->fname }} <br>How Can I Help u </p>
+                            </div>
+                            <div class="avatar2" style="padding:0px 0px 0px 30px !important"><img
+                                        style="border-radius: 50%; width: 40px;position: absolute; right: 10px "
+                                        src="https://i.pinimg.com/originals/45/d9/8a/45d98aa922bef6b5213b488dc36a8764.png"/>
                             </div>
                         </div>
-                    </div> <!-- end chat-message -->
+                    </div>
+                    <div class="msg_push"></div>
 
-                </div> <!-- end chat-history -->
-
-                <form style="background-color: white; padding-bottom: 0px" class="send-message-form">
-
-                    <input style="padding-left: 26px;padding-top: 0px;padding-bottom: 0px;font-size: 14px;height: 33px; width: 250px;
-.input-field input[type=text]:focus + label {
-     color: #000;
-   }
-   /* label underline focus color */
-   .input-field input[type=text]:focus {
-     border-bottom: 1px solid #000;
-     box-shadow: 0 1px 0 0 #000;
-   }
-
-" type="text" placeholder="Message" class="cmytext" onclick="toggler('myContent');">
+                </div>
 
 
-                    <button type="submit">Send</button>
-                </form>
-            </div> <!-- end chat -->
+                <div class="msg_footer">
 
-        </div> <!-- end live-chat -->
+                <input  style="width: 250px;border: 2px; "
+
+                       type="text" placeholder=" Message "
+                       class="msg_input" onclick="toggler('myContent');">
+
+
+                </div>
+            </div>
+            </div>
+
+        <!-- Chat 1.0 Body End -------------------------------------------------------------------------->
+        <!-- Chat 1.0 Script Start ---------------------------------------------------------------------->
         <script>
             function toggler(divId) {
-
                 $("#" + divId).fadeOut('slow');
-
             }
+
         </script>
-
-        <!-- Post Msg  -->
         <script>
-            var me = {};
-            me.avatar = "{{asset('uploads/avatars/'.Auth::User()->avatar)}}";
+            $(document).ready(function () {
+                $('.msg_wrap').hide();
+                $('.msg_head').click(function () {
 
-            var you = {};
-            you.avatar = "https://i.pinimg.com/originals/45/d9/8a/45d98aa922bef6b5213b488dc36a8764.png";
-
-
-            function formatAMPM(date) {
-                var hours = date.getHours();
-                var minutes = date.getMinutes();
-                var ampm = hours >= 12 ? 'PM' : 'AM';
-                hours = hours % 12;
-                hours = hours ? hours : 12; // the hour '0' should be '12'
-                minutes = minutes < 10 ? '0' + minutes : minutes;
-                var strTime = hours + ':' + minutes + ' ' + ampm;
-                return strTime;
-
-            }
-
-            //-- No use time. It is a javaScript effect.
-            function insertChat(who, text, time = 0) {
-                var control = "";
-                var date = formatAMPM(new Date());
-
-                if (who == "me") {
-
-                    control = '<li style="width:100%">' +
-                        '<div class="cmsj cmacro">' +
-                        '<div class="cavatar" style="padding:0px 0px 0px 10px !important"><img  class="img-circle" style="width:100%; border-radius: 50%;" src="' + me.avatar + '" /></div>' +
-                        '<div class="ctext ctext-l">' +
-                        '<p>' + text + '</p>' +
-
-                        '</div>' +
-                        '</div>' +
-                        '</li>';
-                } else {
-                    control = '<li style="width:100%;">' +
-                        '<div class="cmsj-rta cmacro">' +
-                        '<div class="ctext ctext-r">' +
-                        '<p>' + text + '</p>' +
-                        '</div>' +
-                        '<div class="cavatar" style="padding:0px 0px 0px 10px !important"><img class="img-circle" style="width:100%;" src="' + you.avatar + '" /></div>' +
-                        '</li>';
-                }
-                setTimeout(
-                    function () {
-                        $("cul").append(control);
-
-                    }, time);
-
-            }
-
-
-            var botMessage = "";
-            var botName = 'Life BOT';
-
-
-            $(".cmytext").on("keyup", function (e) {
-
-                if (e.which == 13) {
-
-                    var text = $(this).val();
-
-                    if (text !== "") {
-                        $(this).val('');
-
-                        <!-- Sample Text Start -->
-
-                        var re01 = /goal/gi;
-                        var re011 = /goals/gi;
-                        var re02 = /define/gi;
-                        var re03 = /create/gi;
-
-                        var re1 = /files/gi;
-                        var re11 = /file/gi;
-
-                        var re2 = /upload/gi;
-                        var re3 = /store/gi;
-
-                        var re4 = /send/gi;
-                        var re5 = /invite/gi;
-
-                        var re6 = /Schedule/gi;
-                        var re7 = /what/gi;
-
-                        var re8 = /add/gi;
-                        var re9 = /profile/gi;
-                        var re10 = /picture/gi;
-                        var re12 = /change/gi;
-
-
-                        <!-- Sample Text End -->
-
-                        if (text.search((re02 || re03) && re01 || re011) !== -1) {
-
-                            botMessage = "Go to Dashboard and Click New Goal and Submit The Form";
-                        }
-                        else if (text.search((re1 || re11) &&  (re2 || re3)) !== -1) {
-
-                            botMessage = "You can Upload Files to My Documents Area";
-                        }
-                        else if (text.search(re4 && re5) !== -1) {
-
-                            botMessage = "If you Want to Invite Some one to This web Site You can Use Send Invite";
-                        }
-                        else if (text.search(re6 && re7) !== -1) {
-
-                            botMessage = "You can See Your Event Dates and Dead lines";
-
-                        } else if (text.search((re8 || re12) &&  (re10 || re9)) !== -1) {
-
-                            botMessage = "You can Upload New or Change Current Profile Picture Using My Profile Section ";
-                        }
-
-                        else {
-
-                            botMessage = "i can't understand ";
-                        }
-
-
-                        insertChat("me", '' + text, 0);
-                        insertChat("you", '' + botMessage, 1000);
-
-
-                    }
-                }
-            });
-
-            var dt = new Date().getHours();
-            if (dt >= 0 && dt <= 11) {
-                ddate = "Good Morning!";
-            } else if (dt >= 12 && dt <= 17) {
-                ddate = "Good Afternoon!";
-            } else {
-                console.log('Good Evening!')
-            }
-            var ddate;
-
-            var username1 = '{{ Auth::User()->fname }}';
-            insertChat("you", 'hello' + '<br>' + ddate + '&nbsp' + username1 + '<br>', 200);
-
-
-            function resetChat() {
-                $("cul").empty();
-            }
-
-
-            //-- Clear Chat
-            resetChat();
-
-            //-- Print Messages
-
-            $(function () {
-                $('form').on('submit', function (event) {
-                    event.preventDefault();
+                    $('.msg_wrap').slideToggle('slow');
                 });
-            });
-        </script>
 
-        <!-- bar bar toggle up down -->
-        <script>
+                $('.user').click(function () {
 
-            (function () {
-                $('.chat').hide();
-
-                $('#live-chat header').on('click', function () {
-
-                    $('.chat').slideToggle(300, 'swing');
-                    $('.chat-message-counter').fadeToggle(300, 'swing');
-
+                    $('.msg_wrap').show();
+                    $('.msg_box').show();
                 });
 
 
-            })();
+                var me = {};
+                me.avatar = "{{asset('uploads/avatars/'.Auth::User()->avatar)}}";
+
+                var you = {};
+                you.avatar = "https://i.pinimg.com/originals/45/d9/8a/45d98aa922bef6b5213b488dc36a8764.png";
+
+
+                var botMessage = "";
+
+                $('input').keypress(
+                    function (e) {
+                        if (e.keyCode == 13) {
+                            var text = $(this).val();
+                            if (text !== "") {
+                                $(this).val('');
+                                <!-- Sample Text Start -->
+                                var re01 = /goal/gi;
+                                var re011 = /goals/gi;
+                                var re02 = /define/gi;
+                                var re03 = /create/gi;
+
+                                var re1 = /files/gi;
+                                var re11 = /file/gi;
+
+                                var re2 = /upload/gi;
+                                var re3 = /store/gi;
+
+                                var re4 = /send/gi;
+                                var re5 = /invite/gi;
+
+                                var re6 = /Schedule/gi;
+                                var re7 = /what/gi;
+
+                                var re8 = /add/gi;
+                                var re9 = /profile/gi;
+                                var re10 = /picture/gi;
+                                var re12 = /change/gi;
+
+                                var re13 = /leeza/gi;
+                                var re14 = /hello/gi;
+
+
+
+                                <!-- Sample Text End -->
+
+                                if (text.search((re02 || re03) && re01 || re011) !== -1) {
+
+                                    botMessage = "Go to Dashboard and Click New Goal and Submit The Form";
+                                }
+                                else if (text.search((re1 || re11) && (re2 || re3)) !== -1) {
+
+                                    botMessage = "You can Upload Files to My Documents Area";
+                                }
+                                else if (text.search(re4 && re5) !== -1) {
+
+                                    botMessage = "If you Want to Invite Some one to This web Site You can Use Send Invite";
+                                }
+                                else if (text.search(re6 && re7) !== -1) {
+
+                                    botMessage = "You can See Your Event Dates and Dead lines";
+
+                                } else if (text.search((re8 || re12) && (re10 || re9)) !== -1) {
+
+                                    botMessage = "You can Upload New or Change Current Profile Picture Using My Profile Section ";
+
+                                } else if (text.search(re14 || re13 ) !== -1) {
+
+                                    botMessage = "Hi IM Leeza How Can i Help You ";
+
+                                 } else {
+
+                                    botMessage = "i can't understand ";
+                                }
+
+
+                            }
+
+                            $('<div class="msg_a">' +
+                                '<div class="cmacro">' +
+                                '<div class="avatar" style="padding:3px 46px 0px 10px !important"><img  class="img-circle" style="border-radius: 50%; width: 40px;position: absolute;"  src="' + me.avatar + '" /></div>' +
+                                '<div class="ctext ctext-l">' +
+                                '<p>' + text + '</p>' +
+                                '</div>'+
+                                '</div>' +
+                                '</div>+').insertBefore('.msg_push');
+
+                            $('<div class="msg_b">' +
+                                '<div class="cmacro">' +
+                                '<div class="ctext ctext-r">' +
+                                '<p>' + botMessage + '</p>' +
+                                '</div>' +
+                                '<div class="avatar2" style="padding:0px 0px 0px 30px !important;"><img  style=" margin-top: 5px;border-radius: 50%; width: 40px;position: absolute;right: 10px " src="' +you.avatar + '"  /></div>' +
+                                '</div>' +
+                                '</div>+').insertBefore('.msg_push');
+
+
+                            $('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
+                        }
+
+                    });
+
+            });
         </script>
+        <!-- Chat 1.0 Script End ------------------------------------------------------------------------>
+        <!--Chat 1.0 END -------------------------------------------------------------------------------->
 
-
-
-
-        <!--Chat 1.0 END ------------------------------------------------------------------------------ -->
 
 @endsection
