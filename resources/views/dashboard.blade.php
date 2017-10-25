@@ -1441,12 +1441,12 @@
         <script>
             var dt = new Date().getHours();
             if (dt >= 0 && dt <= 11) {
-                ddate = "Good Morning! What Do You Need To Know";
+                ddate = "Good Morning! How can I help you ?";
             } else if (dt >= 12 && dt <= 17) {
-                ddate = "Good Afternoon! What Do You Need To Know";
+                ddate = "Good Afternoon! How can I help you ?";
             } else {
 
-                ddate = "Good Evening! What Do You Need To Know";
+                ddate = "Good Evening! How can I help you ?";
             }
             var ddate;
 
