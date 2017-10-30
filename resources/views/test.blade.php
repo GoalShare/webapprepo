@@ -490,10 +490,13 @@
             <div class="card-content white-text">
               <span class="card-title">Tasks</span>
               <p>Here you have all tasks belongin to your Goal. You can asign people for individual tasks and also control the changes they can make.</p>
-              @if ($userstatus=="aligneduser"&&$privacys=="private")
+              @if ($email!=Auth::User()->email && $privacys->addtaskprivacy=="public")
                 <a href="#" class="btn white blue-text text-darken-4 btn-large right disabled ">Add Task</a>
+                <br><br>
+                Ask Goal creator to grant adding tasks
               @else
                 <a class="btn white blue-text text-darken-4 btn-large right" href="#addtaskmodal">Add Task</a>
+                <br><br>
               @endif
               <div id="addtaskmodal" class="modal modal-fixed-footer">
                 <div class="modal-content">
@@ -503,6 +506,7 @@
                   <input type="text" style="display:none;"class="hidden" value="{{$goals->goalid}}" name="goalid">
                   <input type="text"style="display:none;" class="hidden" value="addtask" name="action">
                   <input type="text" style="display:none;"class="hidden" value="{{$goals->goalauthorization}}" name="goalauthorization">
+                  <input type="hidden" name="email" value="{{$email}}">
                   <div class="row">
                     <div class="input-field col l6 m6 s12 grey-text">
                       <input name="taskname" id="tasknamepopup" type="text" class="validate">
@@ -588,6 +592,7 @@ to_pickerpopup.on('set', function(event) {
                     <div class="card  sticky-action {{ ($tasks->taskcompletedpercentage<30)?"deep-orange lighten-4":($tasks->taskcompletedpercentage<75)?"yellow lighten-4":"green lighten-4" }} ">
                       <div class="card-content grey-text text-darken-3">
                         <span class="card-title">{{ $tasks->taskname }} &nbsp;&nbsp;&nbsp;&nbsp;<span id="showpercentage{{ $tasks->id }}">{{ $tasks->taskcompletedpercentage }}</span>%</span>
+                        <span>{{$privacys->allowcommitprivacy}}</span>
                           <p class="range-field">
                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             <input name="completedpercentage" oninput="$('#showpercentage{{ $tasks->id }}').html(this.value);
@@ -599,7 +604,7 @@ to_pickerpopup.on('set', function(event) {
                                 id: {{ $tasks->id }}
                               },
                            function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});"
-                          type="range" id="percentage{{ $tasks->id  }}" value="{{ $tasks->taskcompletedpercentage}}"min="0" max="100" {{($privacys->allowcommitprivacy=="private"&&$userstatus=="aligneduser" )?"disabled":""}} />
+                          type="range" id="percentage{{ $tasks->id  }}" value="{{ $tasks->taskcompletedpercentage}}"min="0" max="100" {{(Auth::User()->email!=$email&&$privacys->allowcommitprivacy!="private" )?"disabled":""}} />
                           </p>
                         <div class="row">
                           <div class="col s12 l6 m6" >
@@ -731,7 +736,7 @@ to_pickerpopup.on('set', function(event) {
                            {{ csrf_field() }}
                            <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                            <div class="input-field grey lighten-4 grey-text text-darken-3">
-                             <input id="alignsearchemail" name="email" type="search" autocomplete="off" class="grey lighten-4">
+                             <input id="alignsearchemail" name="email" type="search" autocomplete="off" class="grey lighten-4" {{($email!=Auth::User()->email)?"disabled":""}}>
                              <label for="email">email</label>
                            </div>
                          </form>
@@ -923,7 +928,7 @@ to_pickerpopup.on('set', function(event) {
                                      {{ csrf_field() }}
                                      <input type="hidden" name="sharegoalid" value="{{$goals->goalid}}">
                                      <div class="input-field grey lighten-4 grey-text text-darken-3">
-                                       <input id="shareemail" name="shareemail" type="search" autocomplete="off" class="grey lighten-4">
+                                       <input id="shareemail" name="shareemail" type="search" autocomplete="off" class="grey lighten-4" {{($email!=Auth::User()->email&&$privacys->canshareprivacy=="public")?"disabled":""}}>
                                        <label for="shareemail">email</label>
                                      </div>
                                    </form>
@@ -1094,7 +1099,7 @@ to_pickerpopup.on('set', function(event) {
                            {{ csrf_field() }}
                          <div class="switch col s3">
                           <label>
-                              <input id="hidegoalprivacy" {{($privacys->hidegoalprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="hidegoalprivacy">
+                              <input id="hidegoalprivacy" {{($privacys->hidegoalprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="hidegoalprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                             <span class="lever"></span>
                           </label>
                         </div>
@@ -1152,7 +1157,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy">
+                             <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1201,7 +1206,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy">
+                             <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1250,7 +1255,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy" >
+                             <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1299,7 +1304,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy">
+                             <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1348,7 +1353,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy" >
+                             <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1397,7 +1402,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy" >
+                             <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1452,7 +1457,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="canshareprivacy" {{($privacys->canshareprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="canshareprivacy" >
+                                <input id="canshareprivacy" {{($privacys->canshareprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="canshareprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1501,7 +1506,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="addtaskprivacy" {{($privacys->addtaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="addtaskprivacy" >
+                                <input id="addtaskprivacy" {{($privacys->addtaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="addtaskprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1549,7 +1554,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="overridetaskprivacy" {{($privacys->overridetaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="overridetaskprivacy" >
+                                <input id="overridetaskprivacy" {{($privacys->overridetaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="overridetaskprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1597,7 +1602,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="allowcommitprivacy" {{($privacys->allowcommitprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="allowcommitprivacy" >
+                                <input id="allowcommitprivacy" {{($privacys->allowcommitprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="allowcommitprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1642,7 +1647,7 @@ to_pickerpopup.on('set', function(event) {
                            <li class="collection-item row">
                                <span class="col s4 input-field">Goal Name</span>
                                <div class="input-field col s8">
-                                   <input id="goalnamefield" oninput="editgoalname();" value="{{ $goals->goalname }}" type="text" class="validate">
+                                   <input id="goalnamefield" oninput="editgoalname();" value="{{ $goals->goalname }}" type="text" class="validate" {{($email!=Auth::User()->email)?"disabled":""}}>
                                    <br>
                                    <div class="progress" id="goalnamepre" style="display:none;">
                                        <div class="indeterminate"></div>
@@ -1666,7 +1671,7 @@ to_pickerpopup.on('set', function(event) {
                            <li class="collection-item">
                                <span class="col s4 input-field">Goal Intent</span>
                                <div class="input-field col s8">
-                                   <input id="goalintentfield" oninput="editgoalintent();"  value="{{ $goals->goalintent }}" type="text" class="validate">
+                                   <input id="goalintentfield" oninput="editgoalintent();"  value="{{ $goals->goalintent }}" type="text" class="validate" {{($email!=Auth::User()->email)?"disabled":""}}>
 <br>
                                    <div class="progress" id="goalintentpre" style="display:none;">
                                        <div class="indeterminate"></div>
@@ -1693,7 +1698,7 @@ to_pickerpopup.on('set', function(event) {
                            <div class="col s12">
                                <span>Goal priority</span>
                                <div class="card-panel white input-field">
-                                   <select id="goalpriorityfield" onchange="editgoalpriority();">
+                                   <select id="goalpriorityfield" onchange="editgoalpriority();" {{($email!=Auth::User()->email)?"disabled":""}}>
                                        <option value="" disabled selected>{{$goals->goalpriority}}</option>
                                        <option value="high">high</option>
                                        <option value="medium">medium</option>
@@ -1724,7 +1729,7 @@ to_pickerpopup.on('set', function(event) {
                            <div class="col s12">
                                <span>Goal Category</span>
                                <div class="card-panel white input-field">
-                                   <select id="goalcategoryfield" onchange="updategoalcategory();">
+                                   <select id="goalcategoryfield" onchange="updategoalcategory();" {{($email!=Auth::User()->email)?"disabled":""}}>
                                        <option value="" disabled selected>{{$goals->goalcategory}}</option>
                                        <option  value="Be happy">Be happy</option>
                                        <option  value="Career and professional growth">Career and professional growth</option>
@@ -1766,7 +1771,7 @@ to_pickerpopup.on('set', function(event) {
                            <div class="col l6 m6 s12">
                                <div class="card-panel">
                                    <div class="input-field row grey-text">
-                                       <input type="text" name="taskstartdate"  id="goalstartdatefield" class="datepicker">
+                                       <input type="text" name="taskstartdate"  id="goalstartdatefield" class="datepicker" {{($email!=Auth::User()->email)?"disabled":""}}>
                                        <label>Enter the starting date</label>
                                    </div>
                                </div>
@@ -1774,7 +1779,7 @@ to_pickerpopup.on('set', function(event) {
                            <div class="col l6 m6 s12">
                                <div class="card-panel">
                                    <div class="input-field row grey-text">
-                                       <input type="text" name="taskenddate" id="goalenddatefield"  class="datepicker">
+                                       <input type="text" name="taskenddate" id="goalenddatefield"  class="datepicker" {{($email!=Auth::User()->email)?"disabled":""}}>
                                        <label>Enter the ending date</label>
                                    </div>
                                </div>

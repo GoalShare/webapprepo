@@ -68,7 +68,7 @@ public function view($goalid){
             ->where('tasks.goalid',$goalid)
             ->get();
     return view('test',['goal'=>$goal,'task'=>$task,'notification'=>$notification,'privacy'=>$privacy,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'shared'=>$shared,'creator'=>$creator,
-    'aligned'=>$aligned,'asigned'=>$asigned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment,'likesanddislikes'=>$likesanddislikes,'allemail'=>$allemail]);
+    'aligned'=>$aligned,'email'=>$email,'asigned'=>$asigned,'userskill'=>$userskill,'goalskill'=>$goalskill,'friends'=>$friends,'friendstwos'=>$friendstwos,'comment'=>$comment,'likesanddislikes'=>$likesanddislikes,'allemail'=>$allemail]);
 }
   else {
     return view('auth.login');
@@ -153,7 +153,7 @@ public function post(request $request){
           DB::table('tasks')->insert(
                   [
                     'goalid'=> $request->goalid,
-                    'email'=> $email,
+                    'email'=> $request->email,
                     'taskname' => $request->taskname,
                     'taskintent' => $request->taskintent,
                     'taskpriority' => $request->taskpriority,
@@ -164,9 +164,9 @@ public function post(request $request){
                   ]
               );
               // echo "done";
-              $goal=Goal::find($request->goalid);
-              $goal->gottasks=1;
-              $goal->save();
+              DB::table('goals')
+                        ->where([['goalid', $request->goalid],['email',$request->email]])
+                        ->update(['gottasks' => 1]);
               return redirect('/goal/'.$request->goalid);
 
 
@@ -175,7 +175,7 @@ public function post(request $request){
         DB::table('tasks')->insert(
                 [
                   'goalid'=> $request->goalid,
-                  'email'=> $email,
+                  'email'=> $request->email,
                   'taskname' => $request->taskname,
                   'taskintent' => $request->taskintent,
                   'taskpriority' => $request->taskpriority,
@@ -185,9 +185,9 @@ public function post(request $request){
                   'created_at'=> Carbon::now(),
                 ]
             );
-            $goal=App\Goal::find($request->goalid);
-            $goal->gottasks=1;
-            $goal->save();
+            DB::table('goals')
+                      ->where([['goalid', $request->goalid],['email',$request->email]])
+                      ->update(['gottasks' => 1]);
         echo "done";
       }
       else {
@@ -333,13 +333,13 @@ public function post(request $request){
                             DB::table('privacys')
                                       ->where([['goalid', $request->goalid],['email',$email]])
                                       ->update(['allowcommitprivacy' => 'public']);
-                                      echo "$request->allowcommitprivacy";
+                                      echo "nice";
                           }
                           if ($request->allowcommitprivacy=='private'){
                             DB::table('privacys')
                                       ->where([['goalid', $request->goalid],['email',$email]])
-                                      ->update(['overridetaskprivacy' => 'private']);
-                                      echo "$request->allowcommitprivacy";
+                                      ->update(['allowcommitprivacy' => 'private']);
+                                      echo $request->allowcommitprivacy;
                           }
                             break;
                         case 'canshareprivacy':
