@@ -469,7 +469,17 @@
                     </div>
                 </div>
             </span>
-          <a class="btn-floating halfway-fab waves-effect waves-light white"><i class="material-icons grey-text">photo_size_select_actual</i></a>
+          <form style=""enctype="multipart/form-data" action="{{route('goalPicUpload')}}" method="post" id="goalPicUpload">
+            {{ csrf_field() }}
+            <a class="btn-floating halfway-fab waves-effect waves-light white">
+              <i class="material-icons tooltipped grey-text" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >photo_size_select_actual</i>
+              <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
+              <input type="file" name="goalpicture"  onchange="javascript:this.form.submit();">
+            </a>
+          </form>
+            {{-- <i class="material-icons grey-text">photo_size_select_actual</i> --}}
+            {{-- <a href="#" class="btn-floating halfway-fab waves-effect waves-light white"><i class="material-icons grey-text">thumb_up</i></a>
+            <a href="#" class="btn-floating halfway-fab waves-effect waves-light white"><i class="material-icons grey-text">thumb_down</i></a> --}}
         </div>
       </div>
       <br>
@@ -479,7 +489,7 @@
         <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="sharestabbtncover"><a id="sharestabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showshare()"><i class="material-icons">share</i></a></div></div>
         <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="settingstabbtncover"><a id="settingstabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showsetting()"><i class="material-icons">settings</i></a></div></div>
         <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="skillstabbtncover"><a id="skillstabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showskill()"><i class="material-icons">star</i></a></div></div>
-        <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="likestabbtncover"><a id="likestabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showlike()"><i class="material-icons">thumbs_up_down</i></a></div></div>
+        <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="likestabbtncover"><a id="likestabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showlike()"><i class="material-icons">whatshot</i></a></div></div>
       </div>
       <div class="row">
         <div class="col s12">
@@ -592,7 +602,6 @@ to_pickerpopup.on('set', function(event) {
                     <div class="card  sticky-action {{ ($tasks->taskcompletedpercentage<30)?"deep-orange lighten-4":($tasks->taskcompletedpercentage<75)?"yellow lighten-4":"green lighten-4" }} ">
                       <div class="card-content grey-text text-darken-3">
                         <span class="card-title">{{ $tasks->taskname }} &nbsp;&nbsp;&nbsp;&nbsp;<span id="showpercentage{{ $tasks->id }}">{{ $tasks->taskcompletedpercentage }}</span>%</span>
-                        <span>{{$privacys->allowcommitprivacy}}</span>
                           <p class="range-field">
                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                             <input name="completedpercentage" oninput="$('#showpercentage{{ $tasks->id }}').html(this.value);
@@ -659,13 +668,31 @@ to_pickerpopup.on('set', function(event) {
                             id: {{ $tasks->id }}
                           },
                        function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#percentage{{ $tasks->id  }}').val(100);$('#showpercentage{{ $tasks->id }}').html(100);$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});" class="btn btn-floating left"><i class="material-icons">done_all</i></button>
-                        <button  class="btn btn-floating right" onclick="
+                       <div class="right">
+                        <button  class="btn btn-floating" onclick="
                         $.post('{{ route('deletetask') }}',
                           {
                             _token: $('#token').val(),
                             id: {{ $tasks->id }}
                           },
                        function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#row{{ $tasks->id }}').hide();$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});"><i class="material-icons">delete</i></button>
+                       @if ($email==Auth::User()->email)
+                         &nbsp;&nbsp;
+                         <button class="btn btn-floating pulse bragbutton" onclick="this.disabled='true';
+                         $.post('{{ route('taskbrag') }}',
+                             {
+                               goalid: '{{$goals->goalid}}',
+                               taskname: '{{$tasks->taskname}}',
+                               taskcompletedpercentage:{{$tasks->taskcompletedpercentage}},
+                               _token: $('#token').val(),
+                               id: {{ $tasks->id }}
+                             },
+                          function(data,status){console.log('Data: ' + data + 'Status: ' + status);Materialize.toast('You have bragged about {{$tasks->taskname}}', 4000); $('.bragbutton').prop('disabled',false);});
+                         ">
+                           <i class="material-icons">whatshot</i>
+                         </button>
+                       @endif
+                     </div>
                         <a class=" activator " style="cursor:pointer;"><i class="material-icons" style="font-size:50px;">keyboard_arrow_up</i></a>
                       </div>
                       <div class="card-reveal">
@@ -1900,98 +1927,16 @@ to_pickerpopup.on('set', function(event) {
 
           <div class="card blue darken-4" id="likestabcontent" style="display:none;">
             <div class="card-content white-text">
-              <span class="card-title">Thumbs up</span>
+              <span class="card-title">Brag</span>
               <div class="row">
-                <div class="col l6">
-                  <div class="card">
-                    <div class="row"></div>
-                    <div class="row">
-                      <center>
-                        <button style="height:100px;width:100px;" id="likebtn" class="btn btn-floating"><i class="material-icons" style="font-size:60px;">thumb_up</i></button>
-                        <div><span class="count" id="likes" style="color:#0d47a1;font-size:25px;">@php echo $countlikes; @endphp</span></div>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-                <form id="likeform" action="{{route('likes')}}" method="post">
-                 {{ csrf_field() }}
-                 <input type="hidden" name="goalid" value="{{$goals->goalid}}">
-                 <input type="hidden" name="type" value="l">
-                </form>
-
-                <script type="text/javascript">
-                  var likebtn=document.getElementById("likebtn");
-                  likebtn.addEventListener("click",likedfunction)
-                  function likedfunction() {
-                  var form=document.getElementById("likeform");
-                  var action = form.getAttribute("action");
-                  var form_data = new FormData(form);
-                  var xhr = new XMLHttpRequest();
-                  xhr.open('POST', action, true);
-                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                  xhr.send(form_data);
-                  xhr.onreadystatechange = function () {
-                    if(xhr.readyState == 4 && xhr.status == 200) {
-                       var result = xhr.responseText;
-                       console.log('Result: ' + result);
-                       var newlike=document.getElementById("likes").innerHTML;
-                       var newdislike=document.getElementById("dislikes").innerHTML;
-                       document.getElementById("likes").innerHTML=parseInt(newlike,10) + 1;
-                       document.getElementById("likebtn").disabled=true;
-                       document.getElementById("dislikebtn").disabled=false;
-                       document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) - 1;
-
-
-                    }
-                  };
-                }
-                </script>
-
-                <div class="col l6">
-                  <div class="card">
-                    <div class="row"></div>
-                    <div class="row">
-                      <center>
-                        <button style="height:100px;width:100px;" id="dislikebtn" class="btn btn-floating"><i class="material-icons" style="font-size:60px;">thumb_down</i></button>
-                        <div><span class="countdislike" id="dislikes" style="color:#0d47a1;font-size:25px;">@php echo $countdislikes; @endphp</span></div>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-                <form id="dislikeform" action="{{route('dislikes')}}" method="post">
-                 {{ csrf_field() }}
-                 <input type="hidden" name="goalid" value="{{$goals->goalid}}">
-                 <input type="hidden" name="type" value="d">
-                </form>
-
-                <script type="text/javascript">
-                  var dislikebtn=document.getElementById("dislikebtn");
-                  dislikebtn.addEventListener("click",dislikedfunction)
-                  function dislikedfunction() {
-                  var form=document.getElementById("dislikeform");
-                  var action = form.getAttribute("action");
-                  var form_data = new FormData(form);
-                  var xhr = new XMLHttpRequest();
-                  xhr.open('POST', action, true);
-                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                  xhr.send(form_data);
-                  xhr.onreadystatechange = function () {
-                    if(xhr.readyState == 4 && xhr.status == 200) {
-                       var result = xhr.responseText;
-                       console.log('Result: ' + result);
-                       var newdislike=document.getElementById("dislikes").innerHTML;
-                       var newlike=document.getElementById("likes").innerHTML;
-                       document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) + 1;
-                       document.getElementById("dislikebtn").disabled=true;
-                       document.getElementById("likebtn").disabled=false;
-                       document.getElementById("likes").innerHTML=parseInt(newlike,10) - 1;
-
-                    }
-                  };
-                }
-                </script>
-
-              </div>
+               <div class="col s12">
+                 <div class="card-panel">
+                   <span class="grey-text text-darken-3">I am a very simple card. I am good at containing small bits of information.
+                   I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+                   </span>
+                 </div>
+               </div>
+             </div>
             </div>
           </div>
 

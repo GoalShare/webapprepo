@@ -55,6 +55,7 @@ public function view($goalid){
             ->where([['goals.goalid',$goalid],['goals.goalauthorization','creator']])
             ->get();
     $privacy=DB::table('privacys')->where([['goalid',$goalid],['email',$email]])->get();
+    $brag=DB::table('brag')->where([['goalid',$goalid],['email',$email]])->get();
     $goal = DB::table('goals')->where([['goalid',$goalid],['email',$email]])->get();
     $task = DB::table('tasks')->where('goalid',$goalid)->orderBy('id', 'asc')->get();
     $aligned=DB::table('goalalignment')->join('users','users.email','=','goalalignment.email')->select('users.*')->where('goalalignment.goalid',$goalid)->get();
@@ -572,6 +573,19 @@ public function updategoalstartdate(request $request)
 public function updategoalenddate(request $request)
 {
   # code...
+}
+
+public function taskbrag(request $request)
+{
+  //$brag=Auth::User()->fname.' '.Auth::User()->lname.' completed '.$request->taskcompletedpercentage.' of '.$request->taskname;
+  DB::table('brag')->insert(
+          [ 'goalid' => $request->goalid,
+            'email'=> Auth::User()->email,
+            'type'=> 'task',
+            'brag'=> Auth::User()->fname.' '.Auth::User()->lname.' completed '.$request->taskcompletedpercentage.' of '.$request->taskname,
+          ]
+      );
+  echo "fghghfghfghfgh";
 }
 
 }

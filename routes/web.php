@@ -47,11 +47,13 @@ Route::get('/files','filesController@view');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/goal/{goalname}','GoalController@view');
 Route::post('comment','commentController@post')->name('comment');
+Route::post('taskbrag','GoalController@taskbrag')->name('taskbrag');
 Route::get('/profile/{userid}','ProfileController@view');
 Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/test','TestController@testget')->name('test');
 Route::get('/notificationpage','NotificationpageController@getnavebar')->name('notificationpage');
 Route::get('/admin','AdminController@adminget')->name('admin');
+Route::get('/brag','bragController@view')->name('brag');
 Route::get('/search',function(){
   if(Auth::check()){
     $id=Auth::id();
