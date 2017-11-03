@@ -25,10 +25,7 @@
   max-width: 350px;
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.5em;
-}
+
 
 .post-sign-in {
   display: none;
