@@ -52,6 +52,7 @@ Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/test','TestController@testget')->name('test');
 Route::get('/notificationpage','NotificationpageController@getnavebar')->name('notificationpage');
 Route::get('/admin','AdminController@adminget')->name('admin');
+
 Route::get('/search',function(){
   if(Auth::check()){
     $id=Auth::id();
@@ -194,4 +195,36 @@ Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactCont
 
 Route::post('chkdetails','emailController@viewemails')->name('chkdetails');
 
-Route::get('/onestepclose','onestepcloseController@view')->name('onestepclose');
+Route::get('/mainlearningboard','mainlearningboardController@view')->name('mainlearningboard');
+
+Route::get('/subtopic','subtopicController@view')->name('subtopic');
+
+Route::post('subtopicformrout','subtopicController@subtopic')->name('subtopicformrout');
+
+Route::get('/learningboard','learningboardController@view')->name('learningboard');
+
+Route::post('selectedlearningboard','learningboardController@getlearningboards')->name('selectedlearningboard');
+
+Route::get('/learningboardupload','learningboarduploadController@view')->name('learningboardupload');
+
+Route::post('/formct','learningboarduploadController@viewct')->name('formct');
+
+Route::post('getSelecteditem','learningboarduploadController@getselecteditem')->name('getSelecteditem');
+
+Route::post('getcategorycontent','learningboarduploadController@getcategorycontent')->name('getcategorycontent');
+
+Route::post('learningboarduploadfile','learningboarduploadController@learningboarduploadfile')->name('learningboarduploadfile');
+
+Route::post('inputlearningboard','learningboarduploadController@inputlearningboard')->name('inputlearningboard');
+
+Route::get('/existingboard','existingboardController@view')->name('existingboard');
+
+Route::post('exsitingsubtopicformrout','existingboardController@exsitingsubtopicformrout')->name('exsitingsubtopicformrout');
+
+Route::post('getselectedexsistingboard','getexistingboardController@getlearningboards')->name('getselectedexsistingboard');
+
+Route::get('/exsistingsubpage','getexistingboardController@view')->name('exsistingsubpage');
+
+Route::post('existingboarduploadfile','getexistingboardController@existingboarduploadfile')->name('existingboarduploadfile');
+
+Route::get('/youtube','youtubeController@youtube')->name('youtube');

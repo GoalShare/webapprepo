@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Image;
 
-class onestepcloseController extends Controller
+class mainlearningboardController extends Controller
 {
 
     public function view(){
@@ -39,7 +39,10 @@ class onestepcloseController extends Controller
       $portfolio=DB::table('portfolio')->where('userid',$id)->get();
 
       $allemail=DB::table('users')->pluck('email');
-      return view('onestepclose',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail]);
+      $acodamictopics=DB::table('Category_Contain')->orderBy('Category_Contain_Name', 'asc')->get();
+      $acodamicsubtopics=DB::table('Sub_Contain')->get();
+      return view('mainlearningboard',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail,'acodamictopics'=>$acodamictopics,'acodamicsubtopics'=>$acodamicsubtopics]);
 
     }
+
 }

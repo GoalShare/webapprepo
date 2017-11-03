@@ -1467,6 +1467,7 @@ if(allrd==5){
   <input type="hidden" name="filename" value="" id="filenameinput">
   <input type="hidden" name="filesize" value="" id="filesizeinput">
 </form>
+
  <script type="text/javascript">
     AWS.config.update({
             accessKeyId : 'AKIAIZ53HQQ6SFH3XHDQ',
