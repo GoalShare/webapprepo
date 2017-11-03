@@ -53,7 +53,6 @@ Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/test','TestController@testget')->name('test');
 Route::get('/notificationpage','NotificationpageController@getnavebar')->name('notificationpage');
 Route::get('/admin','AdminController@adminget')->name('admin');
-<<<<<<< HEAD
 
 =======
 Route::get('/brag','bragController@view')->name('brag');
