@@ -107,51 +107,25 @@ textarea {
       </div>
 
       <div class="post-upload">
-        <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
+        <p>Uploaded video with id <span id="video-id"></span></p>
         <ul id="post-upload-status"></ul>
         <div id="player"></div>
       </div>
-      <p id="disclaimer">By uploading a video, you certify that you own all rights to the content or that you are authorized by the owner to make the content publicly available on YouTube, and that it otherwise complies with the YouTube Terms of Service located at <a href="http://www.youtube.com/t/terms" target="_blank">http://www.youtube.com/t/terms</a></p>
+
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//apis.google.com/js/client:plusone.js"></script>
     <script>
-    /*
-    Copyright 2015 Google Inc. All Rights Reserved.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-    */
 
     var DRIVE_UPLOAD_URL = 'https://www.googleapis.com/upload/drive/v2/files/';
 
-
-    /**
-     * Helper for implementing retries with backoff. Initial retry
-     * delay is 1 second, increasing by 2x (+jitter) for subsequent retries
-     *
-     * @constructor
-     */
     var RetryHandler = function() {
       this.interval = 1000; // Start at one second
       this.maxInterval = 60 * 1000; // Don't wait longer than a minute
     };
 
-    /**
-     * Invoke the function after waiting
-     *
-     * @param {function} fn Function to invoke
-     */
+
     RetryHandler.prototype.retry = function(fn) {
       setTimeout(fn, this.interval);
       this.interval = this.nextInterval_();
@@ -187,32 +161,6 @@ textarea {
     };
 
 
-    /**
-     * Helper class for resumable uploads using XHR/CORS. Can upload any Blob-like item, whether
-     * files or in-memory constructs.
-     *
-     * @example
-     * var content = new Blob(["Hello world"], {"type": "text/plain"});
-     * var uploader = new MediaUploader({
-     *   file: content,
-     *   token: accessToken,
-     *   onComplete: function(data) { ... }
-     *   onError: function(data) { ... }
-     * });
-     * uploader.upload();
-     *
-     * @constructor
-     * @param {object} options Hash of options
-     * @param {string} options.token Access token
-     * @param {blob} options.file Blob-like item to upload
-     * @param {string} [options.fileId] ID of file if replacing
-     * @param {object} [options.params] Additional query parameters
-     * @param {string} [options.contentType] Content-type, if overriding the type of the blob.
-     * @param {object} [options.metadata] File metadata
-     * @param {function} [options.onComplete] Callback for when upload is complete
-     * @param {function} [options.onProgress] Callback for status for the in-progress upload
-     * @param {function} [options.onError] Callback if upload fails
-     */
     var MediaUploader = function(options) {
       var noop = function() {};
       this.file = options.file;
@@ -324,14 +272,7 @@ textarea {
       }
     };
 
-    /**
-     * Handle successful responses for uploads. Depending on the context,
-     * may continue with uploading the next chunk of the file or, if complete,
-     * invokes the caller's callback.
-     *
-     * @private
-     * @param {object} e XHR event
-     */
+
     MediaUploader.prototype.onContentUploadSuccess_ = function(e) {
       if (e.target.status == 200 || e.target.status == 201) {
         this.onComplete(e.target.response);
@@ -342,13 +283,7 @@ textarea {
       }
     };
 
-    /**
-     * Handles errors for uploads. Either retries or aborts depending
-     * on the error.
-     *
-     * @private
-     * @param {object} e XHR event
-     */
+
     MediaUploader.prototype.onContentUploadError_ = function(e) {
       if (e.target.status && e.target.status < 500) {
         this.onError(e.target.response);
@@ -357,23 +292,12 @@ textarea {
       }
     };
 
-    /**
-     * Handles errors for the initial request.
-     *
-     * @private
-     * @param {object} e XHR event
-     */
+
     MediaUploader.prototype.onUploadError_ = function(e) {
       this.onError(e.target.response); // TODO - Retries for initial upload
     };
 
-    /**
-     * Construct a query string from a hash/object
-     *
-     * @private
-     * @param {object} [params] Key/value pairs for query string
-     * @return {string} query string
-     */
+
     MediaUploader.prototype.buildQuery_ = function(params) {
       params = params || {};
       return Object.keys(params).map(function(key) {
@@ -381,14 +305,7 @@ textarea {
       }).join('&');
     };
 
-    /**
-     * Build the drive upload URL
-     *
-     * @private
-     * @param {string} [id] File ID if replacing
-     * @param {object} [params] Query parameters
-     * @return {string} URL
-     */
+
     MediaUploader.prototype.buildUrl_ = function(id, params, baseUrl) {
       var url = baseUrl || DRIVE_UPLOAD_URL;
       if (id) {
@@ -404,21 +321,7 @@ textarea {
 
     </script>
     <script>
-    /*
-    Copyright 2015 Google Inc. All Rights Reserved.
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-    */
 
     var signinCallback = function (result){
       if(result.access_token) {
