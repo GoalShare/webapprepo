@@ -7,6 +7,36 @@
       <title>YouTube API Uploads via CORS</title>
 
       <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
+      <style>
+      #channel-image {
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+}
+
+#channel-name {
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+#disclaimer {
+  font-size: 0.75em;
+  color: #aeaeae;
+  max-width: 350px;
+}
+
+
+.post-sign-in {
+  display: none;
+}
+
+.during-upload {
+  display: none;
+}
+
+.post-upload {
+  display: none;
+}
 
 
       </style>
