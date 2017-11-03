@@ -69,7 +69,7 @@ textarea {
       <span
         class="g-signin"
         data-callback="signinCallback"
-        data-clientid="1034451067661-h7v9fipq91k83log7c47f49l1o257rl4.apps.googleusercontent.com"
+        data-clientid="735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com"
         data-cookiepolicy="single_host_origin"
         data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
       </span>
