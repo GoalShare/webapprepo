@@ -64,15 +64,15 @@
 </div>
       <div>
         <label for="title">Title:</label>
-        <input id="title" type="text" value="Default Title">
+        <input class="col s6" id="title" type="text" placeholder="Enter a title for your video">
       </div>
       <div>
         <label for="description">Description:</label>
-        <textarea id="description">Default description</textarea>
+        <textarea id="description" class="col s6" placeholder="Enter a discription for your video"></textarea>
       </div>
       <div>
         <label for="privacy-status">Privacy Status:</label>
-        <select id="privacy-status" class="browser-default">
+        <select class="col s6" id="privacy-status" class="browser-default">
           <option value="" disabled selected>Choose your option</option>
           <option>public</option>
           <option>unlisted</option>
