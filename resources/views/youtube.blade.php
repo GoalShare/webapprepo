@@ -25,6 +25,10 @@
   max-width: 350px;
 }
 
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.5em;
+}
 
 .post-sign-in {
   display: none;
@@ -38,6 +42,21 @@
   display: none;
 }
 
+label {
+  display: block;
+}
+
+input[type="text"], textarea, progress {
+  font-size: 0.75em;
+  width: 15em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  font-family: "Open Sans", sans-serif;
+}
+
+textarea {
+  height: 7em;
+}
 
       </style>
     </head>
