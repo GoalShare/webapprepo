@@ -29,7 +29,7 @@
           <div>
             <input id="file" type="file">
           </div>
-          <input id="submit" onclick="test()" value="Upload">
+          <button id="submit" onclick="test()"></button>
         </form>
 
         <div class="during-upload">
