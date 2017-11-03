@@ -63,21 +63,21 @@
       </div>
 </div>
 
-<div class="row">
+
       <div class="col s6">
         <label for="title">Title:</label>
         <input id="title" type="text" placeholder="Enter a title for your video">
       </div>
-    </div>
 
-    <div class="row">
+
+
           <div class="col s6">
         <label for="description">Description:</label>
         <textarea id="description" class="col s6" placeholder="Enter a discription for your video"></textarea>
       </div>
-    </div>
 
-    <div class="row">
+
+
           <div class="col s6">
         <label for="privacy-status">Privacy Status:</label>
         <select class="col s6" id="privacy-status" class="browser-default">
@@ -87,7 +87,7 @@
           <option>private</option>
         </select>
       </div>
-    </div>
+
 
       <div>
         <input input type="file" id="file" class="button" accept="video/*">
