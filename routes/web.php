@@ -54,9 +54,9 @@ Route::get('/test','TestController@testget')->name('test');
 Route::get('/notificationpage','NotificationpageController@getnavebar')->name('notificationpage');
 Route::get('/admin','AdminController@adminget')->name('admin');
 
-=======
+
 Route::get('/brag','bragController@view')->name('brag');
->>>>>>> f98a4479bfe2e99a5ec640af9983d0b3488d725d
+
 Route::get('/search',function(){
   if(Auth::check()){
     $id=Auth::id();
