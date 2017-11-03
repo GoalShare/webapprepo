@@ -1,44 +1,6 @@
 @extends('layouts.navbar')
 @section('content')
-  <style>
-  body {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.5em;
-  }
 
-  .post-sign-in {
-    display: none;
-  }
-
-  .during-upload {
-    display: none;
-  }
-
-  .post-upload {
-    display: none;
-  }
-
-  #channel-name {
-    font-size: 60px;
-    margin-left: 10px;
-  }
-
-  label {
-    display: block;
-  }
-
-  input[type="text"], textarea, progress {
-    font-size: 0.75em;
-    width: 15em;
-    margin-bottom: 1em;
-    padding: 0.5em;
-    font-family: "Open Sans", sans-serif;
-  }
-
-  textarea {
-    height: 7em;
-  }
-  </style>
   <span id="signinButton" class="pre-sign-in">
         <span
             class="g-signin"
@@ -88,7 +50,7 @@
 (function() {
   var GOOGLE_PLUS_SCRIPT_URL = 'https://apis.google.com/js/client:plusone.js';
   var CHANNELS_SERVICE_URL = 'https://www.googleapis.com/youtube/v3/channels';
-  var VIDEOS_UPLOAD_SERVICE_URL = 'https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet';
+  var VIDEOS_UPLOAD_SERVICE_URL = 'https://www.googleapis.com/auth/youtube.upload';
   var VIDEOS_SERVICE_URL = 'https://www.googleapis.com/youtube/v3/videos';
   var INITIAL_STATUS_POLLING_INTERVAL_MS = 15 * 1000;
 
