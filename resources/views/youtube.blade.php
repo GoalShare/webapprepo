@@ -43,7 +43,7 @@
         <span
             class="g-signin"
             data-callback="oauth2Callback"
-            data-clientid="471583333151.apps.googleusercontent.com"
+            data-clientid="735097041023-sohugeckr0u9ltkmni4hd05pmmkc4a7p.apps.googleusercontent.com"
             data-cookiepolicy="single_host_origin"
             data-scope="https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload">
         </span>
@@ -95,8 +95,8 @@
   var accessToken;
 
   window.oauth2Callback = function(authResult) {
-    if (authResult['access_token']) {
-      accessToken = authResult['access_token'];
+    if (authResult['R9ijmkXitCwlC-Zh7oY26ICw']) {
+      accessToken = authResult['R9ijmkXitCwlC-Zh7oY26ICw'];
 
       $.ajax({
         url: CHANNELS_SERVICE_URL,
