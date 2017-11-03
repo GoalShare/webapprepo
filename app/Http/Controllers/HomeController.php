@@ -36,6 +36,11 @@ class HomeController extends Controller
       $email=DB::table('users')->where('id',$id)->value('email');
       $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
       $goal = DB::table('goals')->where('email',$email)->get();
+      $alignedgoal=DB::table('goalalignment')
+                  ->join('goals','goals.goalid','=','goalalignment.goalid')
+                  ->select('goals.*')
+                  ->where('goalalignment.email',$email)
+                  ->get();
       $task = DB::table('tasks')->where('email', $email)->get();
       $categorylist = DB::table('goals')
       ->select('goalcategory')
@@ -59,7 +64,7 @@ class HomeController extends Controller
               ->get();
 
       $allemail=DB::table('users')->pluck('email');
-      return view('dashboard',['goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'notification'=>$notification,'allemail'=>$allemail]);}
+      return view('dashboard',['alignedgoal'=>$alignedgoal,'goal'=>$goal,'task'=>$task,'email'=>$email,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'notification'=>$notification,'allemail'=>$allemail]);}
       else {
         return view('/');
       }

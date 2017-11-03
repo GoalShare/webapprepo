@@ -136,24 +136,15 @@
                 }
               ]
             },
-            phone: {
-              identifier: 'phone',
-              rules: [
-                {
-                  type   : 'integer[9999999..99999999999]',
-                  prompt : 'Please enter a valid phone number'
-                }
-              ]
-            },
-            countrycode: {
-              identifier: 'docountrycodeb',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter the country code of the phone number'
-                }
-              ]
-            },
+            // phone: {
+            //   identifier: 'phone',
+            //   rules: [
+            //     {
+            //       type   : 'integer[9999999..99999999999]',
+            //       prompt : 'Please enter a valid phone number'
+            //     }
+            //   ]
+            // },
             terms: {
               identifier: 'terms',
               rules: [
@@ -271,7 +262,7 @@ window.onload = function what(){
             </select>
           </div>
       <br><br>
-          <input type="hidden" id="dob" name="dob" value="">
+          <input type="hidden" id="dob" name="dob" value="2001-01-01">
           <div class="eight wide field">
             <label>Date of Birth</label>
           <div class="three fields">

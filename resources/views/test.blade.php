@@ -456,20 +456,30 @@
   {{-- central panel start --}}
 
 
-  <div class="col l8 m8 hide-on-small-only">
+  <div class="col l8 m8">
     <div class="card">
         <div class="card-image" style="height:350px;">
           <img src="{{ asset('uploads/goals/'.$goals->goalpictureone)}}" height="350px;">
             <span class="card-title">
-                <div class="c100 p{{$goals->goalcompletedpercentage}} big hide-on-med-and-down">
-                    <span class="blue-text">{{$goals->goalcompletedpercentage}}%</span>
+                <div id="piearea" class="c100 p{{$goals->goalcompletedpercentage}} big hide-on-med-and-down">
+                    <span class="blue-text" id="gcppie">{{$goals->goalcompletedpercentage}}%</span>
                     <div class="slice">
                         <div class="bar"></div>
                         <div class="fill"></div>
                     </div>
                 </div>
             </span>
-          <a class="btn-floating halfway-fab waves-effect waves-light white"><i class="material-icons grey-text">photo_size_select_actual</i></a>
+          <form style=""enctype="multipart/form-data" action="{{route('goalPicUpload')}}" method="post" id="goalPicUpload">
+            {{ csrf_field() }}
+            <a class="btn-floating halfway-fab waves-effect waves-light white">
+              <i class="material-icons tooltipped grey-text" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >photo_size_select_actual</i>
+              <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
+              <input type="file" name="goalpicture"  onchange="javascript:this.form.submit();">
+            </a>
+          </form>
+            {{-- <i class="material-icons grey-text">photo_size_select_actual</i> --}}
+            {{-- <a href="#" class="btn-floating halfway-fab waves-effect waves-light white"><i class="material-icons grey-text">thumb_up</i></a>
+            <a href="#" class="btn-floating halfway-fab waves-effect waves-light white"><i class="material-icons grey-text">thumb_down</i></a> --}}
         </div>
       </div>
       <br>
@@ -479,7 +489,7 @@
         <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="sharestabbtncover"><a id="sharestabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showshare()"><i class="material-icons">share</i></a></div></div>
         <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="settingstabbtncover"><a id="settingstabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showsetting()"><i class="material-icons">settings</i></a></div></div>
         <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="skillstabbtncover"><a id="skillstabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showskill()"><i class="material-icons">star</i></a></div></div>
-        <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="likestabbtncover"><a id="likestabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showlike()"><i class="material-icons">thumbs_up_down</i></a></div></div>
+        <div class="col l2 m2 center" style="min-height:75px;"><div class="left" id="likestabbtncover"><a id="likestabbtn" class="btn btn-large btn-floating waves-effect waves-light blue darken-2" onclick="showlike()"><i class="material-icons">whatshot</i></a></div></div>
       </div>
       <div class="row">
         <div class="col s12">
@@ -490,17 +500,23 @@
             <div class="card-content white-text">
               <span class="card-title">Tasks</span>
               <p>Here you have all tasks belongin to your Goal. You can asign people for individual tasks and also control the changes they can make.</p>
-              @if (!$task->isEmpty())
+              @if ($email!=Auth::User()->email && $privacys->addtaskprivacy=="public")
+                <a href="#" class="btn white blue-text text-darken-4 btn-large right disabled ">Add Task</a>
+                <br><br>
+                Ask Goal creator to grant adding tasks
+              @else
                 <a class="btn white blue-text text-darken-4 btn-large right" href="#addtaskmodal">Add Task</a>
+                <br><br>
               @endif
               <div id="addtaskmodal" class="modal modal-fixed-footer">
                 <div class="modal-content">
-                  <h4 class="grey-text">Add New Task</h4>
+                  <h4 class="grey-text text-darken-4">Add New Task</h4>
                   <form class=""id="addtaskformpopup" action="{{route('goal')}}" method="post">
                     {{ csrf_field() }}
                   <input type="text" style="display:none;"class="hidden" value="{{$goals->goalid}}" name="goalid">
                   <input type="text"style="display:none;" class="hidden" value="addtask" name="action">
                   <input type="text" style="display:none;"class="hidden" value="{{$goals->goalauthorization}}" name="goalauthorization">
+                  <input type="hidden" name="email" value="{{$email}}">
                   <div class="row">
                     <div class="input-field col l6 m6 s12 grey-text">
                       <input name="taskname" id="tasknamepopup" type="text" class="validate">
@@ -579,72 +595,6 @@ to_pickerpopup.on('set', function(event) {
 </script>
 
               </div>
-              @if($task->isEmpty())
-               <div class="row">
-                  <div class="col s12">
-                    <div class="card white">
-                      <div class="card-content grey-text text-darken-3">
-                        <span class="card-title">Add the first task</span>
-                        @if ($privacys->addtaskprivacy!="private"&&$userstatus!="aligneduser" )
-                          <form class=""id="addtaskform" action="{{route('goal')}}" method="post">
-                            {{ csrf_field() }}
-                          <input type="text" style="display:none;"class="hidden" value="{{$goals->goalid}}" name="goalid">
-                          <input type="text"style="display:none;" class="hidden" value="addtask" name="action">
-                          <input type="text" style="display:none;"class="hidden" value="{{$goals->goalauthorization}}" name="goalauthorization">
-                          <div class="row">
-                            <div class="input-field col l6 m6 s12">
-                              <input name="taskname" id="taskname" type="text" class="validate">
-                              <label for="taskname">Task Name</label>
-                            </div>
-                            <div class="input-field col l6 m6 s12">
-                              <input id="taskintent" name="taskintent" type="text" class="validate">
-                              <label for="taskintent">Task Intent</label>
-                            </div>
-                          </div>
-                          <div class="row indigo lighten-5">
-                           <div class="col l6 m6 s12">
-                            <div class="card-panel">
-                              <div class="input-field row">
-
-
-                               <input type="text" name="taskstartdate"  id="goalstartdatefield" class="datepicker">
-
-                               <label>Enter the starting date</label>
-                             </div>
-                            </div>
-                          </div>
-
-                          <div class="col l6 m6 s12">
-                           <div class="card-panel">
-                             <div class="input-field row">
-                                     <input type="text" name="taskenddate" id="goalenddatefield"  class="datepicker">
-                              <label>Enter the ending date</label>
-                            </div>
-                           </div>
-                         </div>
-
-                         <script>
-
-
-                         </script>
-
-
-
-                          </div>
-                        @else
-                          Sorry, You do not have permissions to add tasks into this goal. Don't panic you still have permissions to do other work.
-                        @endif
-                      </div>
-                      @if ($goals->goalauthorization=='creator'||$goals->goalauthorization=='gift')
-                      <div class="card-action">
-                        <button type="button" onclick="document.getElementById('addtaskform').submit();"name="button" class="btn"> Add task</button>
-                      </div>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </form>
-              @endif
 
               @foreach ($task as $tasks)
                 <div class="row" id="row{{ $tasks->id }}">
@@ -659,24 +609,53 @@ to_pickerpopup.on('set', function(event) {
                               {
                                 completedpercentage: this.value,
                                 _token: $('#token').val(),
+                                goalid: '{{ $goals->goalid }}',
                                 id: {{ $tasks->id }}
                               },
-                           function(data,status){console.log('Data: ' + data + 'Status: ' + status);});"
-                          type="range" id="percentage{{ $tasks->id  }}" value="{{ $tasks->taskcompletedpercentage}}"min="0" max="100" {{($privacys->allowcommitprivacy=="private"&&$userstatus=="aligneduser" )?"disabled":""}} />
+                           function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});"
+                          type="range" id="percentage{{ $tasks->id  }}" value="{{ $tasks->taskcompletedpercentage}}"min="0" max="100" {{(Auth::User()->email!=$email&&$privacys->allowcommitprivacy!="private" )?"disabled":""}} />
                           </p>
                         <div class="row">
                           <div class="col s12 l6 m6" >
-                            {{-- <div class="chip">
-                               <img src="images/yuna.jpg" alt="Contact Person">
-                               Jane Doe
-                            </div> --}}
+                            @if ($aligned->isEmpty())
+                              <div class="card-panel white">
+                                 <span class="grey-text text-darken-3">
+                                   There are no aligns yet align people to asign them to tasks.
+                                 </span>
+                              </div>
+                            @else
+                              <small>Click on person you want to asign this task</small><br>
+                              @foreach ($aligned as $asigns)
+                                <div class="col s2" style="cursor:pointer;" onclick="
+                                $.post('{{ route('asigntotask') }}',
+                                  {
+                                    id: {{ $asigns->id }},
+                                    fname:'{{ $asigns->fname }}',
+                                    lname:'{{ $asigns->lname }}',
+                                    avatar:'{{ $asigns->avatar }}',
+                                    email:'{{ $asigns->email }}',
+                                    taskid: {{ $tasks->id }},
+                                    _token: '{{ csrf_token() }}'
+                                  },
+                               function(data,status){var obj=JSON.parse(data);for(i=0;i < obj.length;i++){console.log('Data: ' + obj[i].id + 'Status: ' + status);};});">
+                                  <img src="{{asset('uploads/avatars/'.$asigns->avatar)}}" height="40px" width="40px" data-position="bottom" data-delay="50" data-tooltip="{{ $asigns->fname." ".$asigns->lname }}" class="circle tooltipped" >
+                                </div>
+                              @endforeach
+                            @endif
                           </div>
                           <div class="col s12 l6 m6 card-panel white">
-                            <div class="input-field">
-                              <input placeholder="Enter email" id="first_name2" type="text" class="validate">
-                              <label class="active" for="first_name2">Asign people to this task</label>
+                            <div class="card-title">
+                              People Asigned
                             </div>
-                            <small>Enter email of the person you want to asign this task to</small>
+                            <div class="asignedpeople">
+                              @foreach ($asigned as $asign)
+                                @if ($asign->taskid==$tasks->id)
+                                  <div class="col s2">
+                                    <img src="{{asset('uploads/avatars/'.$asign->avatar)}}" height="40px" width="40px" data-position="bottom" data-delay="50" data-tooltip="{{ $asign->fname." ".$asign->lname }}" class="circle tooltipped" >
+                                  </div>
+                                @endif
+                              @endforeach
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -685,16 +664,35 @@ to_pickerpopup.on('set', function(event) {
                         $.post('{{ route('allcomplete') }}',
                           {
                             _token: $('#token').val(),
+                            goalid: '{{ $goals->goalid }}',
                             id: {{ $tasks->id }}
                           },
-                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#percentage{{ $tasks->id  }}').val(100);$('#showpercentage{{ $tasks->id }}').html(100);});" class="btn btn-floating left"><i class="material-icons">done_all</i></button>
-                        <button  class="btn btn-floating right" onclick="
+                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#percentage{{ $tasks->id  }}').val(100);$('#showpercentage{{ $tasks->id }}').html(100);$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});" class="btn btn-floating left"><i class="material-icons">done_all</i></button>
+                       <div class="right">
+                        <button  class="btn btn-floating" onclick="
                         $.post('{{ route('deletetask') }}',
                           {
                             _token: $('#token').val(),
                             id: {{ $tasks->id }}
                           },
-                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#row{{ $tasks->id }}').hide()});"><i class="material-icons">delete</i></button>
+                       function(data,status){console.log('Data: ' + data + 'Status: ' + status);$('#row{{ $tasks->id }}').hide();$('#gcppie').html(data+'%');$('#piearea').removeClass('p{{$goals->goalcompletedpercentage}}');$('#piearea').addClass('p'+data);});"><i class="material-icons">delete</i></button>
+                       @if ($email==Auth::User()->email)
+                         &nbsp;&nbsp;
+                         <button class="btn btn-floating pulse bragbutton" onclick="this.disabled='true';
+                         $.post('{{ route('taskbrag') }}',
+                             {
+                               goalid: '{{$goals->goalid}}',
+                               taskname: '{{$tasks->taskname}}',
+                               taskcompletedpercentage:{{$tasks->taskcompletedpercentage}},
+                               _token: $('#token').val(),
+                               id: {{ $tasks->id }}
+                             },
+                          function(data,status){console.log('Data: ' + data + 'Status: ' + status);Materialize.toast('You have bragged about {{$tasks->taskname}}', 4000); $('.bragbutton').prop('disabled',false);});
+                         ">
+                           <i class="material-icons">whatshot</i>
+                         </button>
+                       @endif
+                     </div>
                         <a class=" activator " style="cursor:pointer;"><i class="material-icons" style="font-size:50px;">keyboard_arrow_up</i></a>
                       </div>
                       <div class="card-reveal">
@@ -713,20 +711,22 @@ to_pickerpopup.on('set', function(event) {
                               </span>
                             </div>
                           </div>
-                          <form class="col l6 m6 s12 card-panel">
+                          <form class="col l6 m6 s12 card-panel grey-text text-darken-3">
                             <div class="row">
-                              @if ($tasks->note=="")
                                 <div class="input-field col s12">
-                                  <textarea id="textarea1" class="materialize-textarea grey-text text-darken-3"></textarea>
+                                  <textarea  id="textarea1" class="materialize-textarea grey-text text-darken-3" oninput="
+                                    $.post('{{ route('addnote') }}',
+                                      {
+                                        note: this.value,
+                                        taskid: {{ $tasks->id }},
+                                        _token: '{{ csrf_token() }}'
+                                      },
+                                    function(data,status){console.log('Data: ' + data + 'Status: ' + status);});
+                                    ">{{ $tasks->note }}</textarea>
+                                    @if($tasks->note=="")
                                   <label for="textarea1">Add Note</label>
+                                        @endif
                                 </div>
-                              @else
-                                <div class="col s12">
-                                  <div class="card-panel white">
-                                    <span class="white-text">{{ $tasks->note }}</span>
-                                  </div>
-                                </div>
-                              @endif
                             </div>
                           </form>
                         </div>
@@ -763,7 +763,7 @@ to_pickerpopup.on('set', function(event) {
                            {{ csrf_field() }}
                            <input type="hidden" name="goalid" value="{{$goals->goalid}}">
                            <div class="input-field grey lighten-4 grey-text text-darken-3">
-                             <input id="email" name="email" type="search" autocomplete="off" class="grey lighten-4">
+                             <input id="alignsearchemail" name="email" type="search" autocomplete="off" class="grey lighten-4" {{($email!=Auth::User()->email)?"disabled":""}}>
                              <label for="email">email</label>
                            </div>
                          </form>
@@ -777,43 +777,48 @@ to_pickerpopup.on('set', function(event) {
                          <ul class="collection" id="alignpeopleresult" style="max-height:500px;">
                          </ul>
                          <script type="text/javascript">
+                           document.addEventListener('DOMContentLoaded',function(){
+                              var from_$input = $('#goalstartdatefield').pickadate({format: 'yyyy-mm-dd' });
+                              var from_picker = from_$input.pickadate('picker');
+
+                              var to_$input = $('#goalenddatefield').pickadate({format: 'yyyy-mm-dd' });
+                              var to_picker = to_$input.pickadate('picker');
+
+                              // Check if there’s a “from” or “to” date to start with.
+                              if ( from_picker.get('value') ) {
+                                to_picker.set('min', from_picker.get('select'));
+                              };
+                              if ( to_picker.get('value') ) {
+                                from_picker.set('max', to_picker.get('select'));
+                              };
+
+                              // When something is selected, update the “from” and “to” limits.
+                              from_picker.on('set', function(event) {
+                                if ( event.select ) {
+                                  to_picker.set('min', from_picker.get('select'));
+                                  console.log($('#goalstartdatefield').val());
+                                }
+                                else if ( 'clear' in event ) {
+                                  to_picker.set('min', false);
+                                  console.log($('#goalstartdatefield').val());
+                                };
+                              });
+                              to_picker.on('set', function(event) {
+                                if ( event.select ) {
+                                  from_picker.set('max', to_picker.get('select'));
+                                  console.log($('#goalenddatefield').val());
+                                }
+                                else if ( 'clear' in event ) {
+                                  from_picker.set('max', false);
+                                  console.log($('#goalenddatefield').val());
+
+                                };
+                              });
+                           });
+                         </script>
+                         <script type="text/javascript">
+
                          document.addEventListener('DOMContentLoaded', function() {
-                           var from_$input = $('#goalstartdatefield').pickadate({format: 'yyyy-mm-dd' });
-                           var from_picker = from_$input.pickadate('picker');
-
-                           var to_$input = $('#goalenddatefield').pickadate({format: 'yyyy-mm-dd' });
-                           var to_picker = to_$input.pickadate('picker');
-
-                           // Check if there’s a “from” or “to” date to start with.
-                           if ( from_picker.get('value') ) {
-                             to_picker.set('min', from_picker.get('select'));
-                           }
-                           if ( to_picker.get('value') ) {
-                             from_picker.set('max', to_picker.get('select'));
-                           }
-
-                           // When something is selected, update the “from” and “to” limits.
-                           from_picker.on('set', function(event) {
-                             if ( event.select ) {
-                               to_picker.set('min', from_picker.get('select'));
-                               console.log($('#goalstartdatefield').val());
-                             }
-                             else if ( 'clear' in event ) {
-                               to_picker.set('min', false);
-                               console.log($('#goalstartdatefield').val());
-                             }
-                           })
-                           to_picker.on('set', function(event) {
-                             if ( event.select ) {
-                               from_picker.set('max', to_picker.get('select'));
-                               console.log($('#goalenddatefield').val());
-                             }
-                             else if ( 'clear' in event ) {
-                               from_picker.set('max', false);
-                               console.log($('#goalenddatefield').val());
-
-                             }
-                           })
 
                            var alignbtn=document.getElementById('alignbtn');
                            var alignpeopleresult = document.getElementById("alignpeopleresult");
@@ -822,7 +827,7 @@ to_pickerpopup.on('set', function(event) {
                            var alignformaction=alignform.getAttribute("action");
                            var form = document.getElementById("alignform");
                            var action = form.getAttribute("action");
-                           var search = document.getElementById("email");
+                           var alignsearchemail = document.getElementById("alignsearchemail");
                            var alignedpeoplelist = document.getElementById('alignedpeoplelist');
 
                            function showAlignedpeople(json) {
@@ -835,7 +840,7 @@ to_pickerpopup.on('set', function(event) {
 
                                for(i=0; i < items.length; i++) {
                                  if((items[i].id)!={{Auth::id()}}){
-                                 output += '<a style="cursor:pointer;" onclick="console.log('+"'"+items[i].lname+"'"+');document.getElementById('+"'"+'email'+"'"+').value='+"'"+items[i].email+"'"+';" class="collection-item">';
+                                 output += '<a style="cursor:pointer;" onclick="console.log('+"'"+items[i].lname+"'"+');document.getElementById('+"'"+'alignsearchemail'+"'"+').value='+"'"+items[i].email+"'"+';" class="collection-item">';
                                  output+='<span class="title">';
                                  output += items[i].fname +' '+items[i].lname;
                                  output += '</span>';
@@ -848,7 +853,7 @@ to_pickerpopup.on('set', function(event) {
                              }
 
                            function alignthis() {
-                             alignthisemail.value=email.value;
+                             alignthisemail.value=alignsearchemail.value;
                              var form_data=new FormData(alignform);
                              var xhr = new XMLHttpRequest();
                              xhr.open('POST',alignformaction, true);
@@ -874,9 +879,10 @@ to_pickerpopup.on('set', function(event) {
                            }
 
                            function getAlignedpeople() {
-                             var q = email.value;
+                             var q = alignsearchemail.value;
                              var form_data=new FormData(form);
                              var xhr = new XMLHttpRequest();
+                             console.log("yfrdcuk");
                              xhr.open('POST',action, true);
                              xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
                              xhr.send(form_data);
@@ -891,7 +897,7 @@ to_pickerpopup.on('set', function(event) {
                              };
                            }
                            // use "input" (every key), not "change" (must lose focus)
-                           email.addEventListener("input", getAlignedpeople);
+                           alignsearchemail.addEventListener("input", getAlignedpeople);
                            alignbtn.addEventListener("click", alignthis);
 
 
@@ -949,7 +955,7 @@ to_pickerpopup.on('set', function(event) {
                                      {{ csrf_field() }}
                                      <input type="hidden" name="sharegoalid" value="{{$goals->goalid}}">
                                      <div class="input-field grey lighten-4 grey-text text-darken-3">
-                                       <input id="shareemail" name="shareemail" type="search" autocomplete="off" class="grey lighten-4">
+                                       <input id="shareemail" name="shareemail" type="search" autocomplete="off" class="grey lighten-4" {{($email!=Auth::User()->email&&$privacys->canshareprivacy=="public")?"disabled":""}}>
                                        <label for="shareemail">email</label>
                                      </div>
                                    </form>
@@ -1101,9 +1107,9 @@ to_pickerpopup.on('set', function(event) {
                  @if ($goals->goalauthorization!='aligned')
                  <div class="card-tabs">
                    <ul class="tabs tabs-fixed-width">
-                     <li class="tab"><a class="active blue-text text-darken-4" href="#goalprivacy">Goal privacy</a></li>
+                       <li class="tab"><a class="active blue-text text-darken-4" href="#other">Goal</a></li>
+                       <li class="tab"><a class=" blue-text text-darken-4" href="#goalprivacy">Goal privacy</a></li>
                      <li class="tab"><a class="blue-text text-darken-4" href="#alignprivacy">Align Privacy</a></li>
-                     <li class="tab"><a class="blue-text text-darken-4" href="#other">Other</a></li>
                    </ul>
                  </div>
                  <div class="card-content grey lighten-4">
@@ -1120,7 +1126,7 @@ to_pickerpopup.on('set', function(event) {
                            {{ csrf_field() }}
                          <div class="switch col s3">
                           <label>
-                              <input id="hidegoalprivacy" {{($privacys->hidegoalprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="hidegoalprivacy">
+                              <input id="hidegoalprivacy" {{($privacys->hidegoalprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="hidegoalprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                             <span class="lever"></span>
                           </label>
                         </div>
@@ -1178,7 +1184,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy">
+                             <input id="goalintentprivacy" {{($privacys->goalintentprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalintentprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1227,7 +1233,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy">
+                             <input id="goalcategoryprivacy" {{($privacys->goalcategoryprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcategoryprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1276,7 +1282,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy" >
+                             <input id="goalpriorityprivacy" {{($privacys->goalpriorityprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalpriorityprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1325,7 +1331,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy">
+                             <input id="goalstartdateprivacy" {{($privacys->goalstartdateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalstartdateprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1374,7 +1380,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy" >
+                             <input id="goalenddateprivacy" {{($privacys->goalenddateprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalenddateprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1423,7 +1429,7 @@ to_pickerpopup.on('set', function(event) {
                           {{ csrf_field() }}
                         <div class="switch col s3">
                          <label>
-                             <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy" >
+                             <input id="goalcompletedpercentageprivacy" {{($privacys->goalcompletedpercentageprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="goalcompletedpercentageprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                            <span class="lever"></span>
                          </label>
                        </div>
@@ -1478,7 +1484,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="canshareprivacy" {{($privacys->canshareprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="canshareprivacy" >
+                                <input id="canshareprivacy" {{($privacys->canshareprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="canshareprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1527,7 +1533,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="addtaskprivacy" {{($privacys->addtaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="addtaskprivacy" >
+                                <input id="addtaskprivacy" {{($privacys->addtaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="addtaskprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1575,7 +1581,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="overridetaskprivacy" {{($privacys->overridetaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="overridetaskprivacy" >
+                                <input id="overridetaskprivacy" {{($privacys->overridetaskprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="overridetaskprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1623,7 +1629,7 @@ to_pickerpopup.on('set', function(event) {
                              {{ csrf_field() }}
                            <div class="switch col s3">
                             <label>
-                                <input id="allowcommitprivacy" {{($privacys->allowcommitprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="allowcommitprivacy" >
+                                <input id="allowcommitprivacy" {{($privacys->allowcommitprivacy!='public')?'checked':''}}  value="private" type="checkbox" name="allowcommitprivacy" {{($email!=Auth::User()->email)?"disabled":""}}>
                               <span class="lever"></span>
                             </label>
                           </div>
@@ -1663,7 +1669,149 @@ to_pickerpopup.on('set', function(event) {
                      </ul>
                    </div>
                    <div id="other">
-                     We are working on ways to make this expierience epic.
+                       Change your goal into what you need
+                       <ul class="collection">
+                           <li class="collection-item row">
+                               <span class="col s4 input-field">Goal Name</span>
+                               <div class="input-field col s8">
+                                   <input id="goalnamefield" oninput="editgoalname();" value="{{ $goals->goalname }}" type="text" class="validate" {{($email!=Auth::User()->email)?"disabled":""}}>
+                                   <br>
+                                   <div class="progress" id="goalnamepre" style="display:none;">
+                                       <div class="indeterminate"></div>
+                                   </div>
+                                   <small>Modify goal name</small>
+                               </div>
+                               <script type="text/javascript">
+                                 function editgoalname() {
+                                   $('#goalnamepre').show();
+                                   $.post('{{route('updategoalname')}}',{
+                                     goalname:$('#goalnamefield').val(),
+                                     goalid:'{{$goals->goalid}}',
+                                     _token:'{{ csrf_token() }}'
+                                   },function(data,status){
+                                     console.log('Data: ' + data + 'Status: ' + status);
+                                     $('#goalnamepre').hide();
+                                   });
+                                 }
+                               </script>
+                           </li>
+                           <li class="collection-item">
+                               <span class="col s4 input-field">Goal Intent</span>
+                               <div class="input-field col s8">
+                                   <input id="goalintentfield" oninput="editgoalintent();"  value="{{ $goals->goalintent }}" type="text" class="validate" {{($email!=Auth::User()->email)?"disabled":""}}>
+<br>
+                                   <div class="progress" id="goalintentpre" style="display:none;">
+                                       <div class="indeterminate"></div>
+                                   </div>
+                                   <small>Modify goal intent</small>
+                               </div>
+                               <script type="text/javascript">
+                                 function editgoalintent() {
+                                   $('#goalintentpre').show();
+                                   $.post('{{route('updategoalintent')}}',{
+                                     goalintent:$('#goalintentfield').val(),
+                                     goalid:'{{$goals->goalid}}',
+                                     _token:'{{ csrf_token() }}'
+                                   },function(data,status){
+                                     console.log('Data: ' + data + 'Status: ' + status);
+                                     $('#goalintentpre').hide();
+                                   });
+                                 }
+                               </script>
+                               <br><br><br><br><br>
+                           </li>
+                       </ul>
+                       <div class="row">
+                           <div class="col s12">
+                               <span>Goal priority</span>
+                               <div class="card-panel white input-field">
+                                   <select id="goalpriorityfield" onchange="editgoalpriority();" {{($email!=Auth::User()->email)?"disabled":""}}>
+                                       <option value="" disabled selected>{{$goals->goalpriority}}</option>
+                                       <option value="high">high</option>
+                                       <option value="medium">medium</option>
+                                       <option value="low">low</option>
+                                   </select>
+                               </div>
+                               <br>
+                               <div class="progress" id="goalprioritytpre" style="display:none;">
+                                   <div class="indeterminate"></div>
+                               </div>
+                               <script type="text/javascript">
+                                 function editgoalpriority() {
+                                   $('#goalprioritytpre').show();
+                                   $.post('{{route('updategoalpriority')}}',{
+                                     goalpriority:$('#goalpriorityfield').val(),
+                                     goalid:'{{$goals->goalid}}',
+                                     _token:'{{ csrf_token() }}'
+                                   },function(data,status){
+                                     console.log('Data: ' + data + 'Status: ' + status);
+                                     $('#goalprioritytpre').hide();
+
+                                   });
+                                 }
+                               </script>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col s12">
+                               <span>Goal Category</span>
+                               <div class="card-panel white input-field">
+                                   <select id="goalcategoryfield" onchange="updategoalcategory();" {{($email!=Auth::User()->email)?"disabled":""}}>
+                                       <option value="" disabled selected>{{$goals->goalcategory}}</option>
+                                       <option  value="Be happy">Be happy</option>
+                                       <option  value="Career and professional growth">Career and professional growth</option>
+                                       <option  value="Community and recreation">Community and recreation</option>
+                                       <option  value="Creativity and Designs">Creativity and Designs</option>
+                                       <option  value="Drama, Entertainment and Music">Drama, Entertainment and Music</option>
+                                       <option  value="Education and Learning">Education and Learning</option>
+                                       <option  value="Travel and Adventure">Travel and Adventure</option>
+                                       <option  value="Finance and stability">Finance and stability</option>
+                                       <option  value="Friends">Friends</option>
+                                       <option  value="Health, fitness and sports">Health, fitness and sports</option>
+                                       <option  value="Hobbies">Hobbies</option>
+                                       <option  value="Love, Marriage and Relationship">Love, Marriage and Relationship</option>
+                                       <option  value="Personal, family and home">Personal, family and home</option>
+                                       <option  value="Spiritual Life<">Spiritual Life</option>
+                                       <option  value="Time of the Year">Time of the Year</option>
+                                   </select>
+                                   <script type="text/javascript">
+                                     function updategoalcategory() {
+                                       $('#goalcategorypre').show();
+                                       $.post('{{route('updategoalcategory')}}',{
+                                         goalpriority:$('#goalcategoryfield').val(),
+                                         goalid:'{{$goals->goalid}}',
+                                         _token:'{{ csrf_token() }}'
+                                       },function(data,status){
+                                         console.log('Data: ' + data + 'Status: ' + status);
+                                          $('#goalcategorypre').hide();
+                                       });
+                                     }
+                                   </script>
+                               </div>
+                               <br>
+                               <div class="progress" id="goalcategorypre" style="display:none;">
+                                   <div class="indeterminate"></div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row ">
+                           <div class="col l6 m6 s12">
+                               <div class="card-panel">
+                                   <div class="input-field row grey-text">
+                                       <input type="text" name="taskstartdate"  id="goalstartdatefield" class="datepicker" {{($email!=Auth::User()->email)?"disabled":""}}>
+                                       <label>Enter the starting date</label>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col l6 m6 s12">
+                               <div class="card-panel">
+                                   <div class="input-field row grey-text">
+                                       <input type="text" name="taskenddate" id="goalenddatefield"  class="datepicker" {{($email!=Auth::User()->email)?"disabled":""}}>
+                                       <label>Enter the ending date</label>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                    </div>
                  </div>
                @endif
@@ -1779,98 +1927,16 @@ to_pickerpopup.on('set', function(event) {
 
           <div class="card blue darken-4" id="likestabcontent" style="display:none;">
             <div class="card-content white-text">
-              <span class="card-title">Thumbs up</span>
+              <span class="card-title">Brag</span>
               <div class="row">
-                <div class="col l6">
-                  <div class="card">
-                    <div class="row"></div>
-                    <div class="row">
-                      <center>
-                        <button style="height:100px;width:100px;" id="likebtn" class="btn btn-floating"><i class="material-icons" style="font-size:60px;">thumb_up</i></button>
-                        <div><span class="count" id="likes" style="color:#0d47a1;font-size:25px;">@php echo $countlikes; @endphp</span></div>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-                <form id="likeform" action="{{route('likes')}}" method="post">
-                 {{ csrf_field() }}
-                 <input type="hidden" name="goalid" value="{{$goals->goalid}}">
-                 <input type="hidden" name="type" value="l">
-                </form>
-
-                <script type="text/javascript">
-                  var likebtn=document.getElementById("likebtn");
-                  likebtn.addEventListener("click",likedfunction)
-                  function likedfunction() {
-                  var form=document.getElementById("likeform");
-                  var action = form.getAttribute("action");
-                  var form_data = new FormData(form);
-                  var xhr = new XMLHttpRequest();
-                  xhr.open('POST', action, true);
-                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                  xhr.send(form_data);
-                  xhr.onreadystatechange = function () {
-                    if(xhr.readyState == 4 && xhr.status == 200) {
-                       var result = xhr.responseText;
-                       console.log('Result: ' + result);
-                       var newlike=document.getElementById("likes").innerHTML;
-                       var newdislike=document.getElementById("dislikes").innerHTML;
-                       document.getElementById("likes").innerHTML=parseInt(newlike,10) + 1;
-                       document.getElementById("likebtn").disabled=true;
-                       document.getElementById("dislikebtn").disabled=false;
-                       document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) - 1;
-
-
-                    }
-                  };
-                }
-                </script>
-
-                <div class="col l6">
-                  <div class="card">
-                    <div class="row"></div>
-                    <div class="row">
-                      <center>
-                        <button style="height:100px;width:100px;" id="dislikebtn" class="btn btn-floating"><i class="material-icons" style="font-size:60px;">thumb_down</i></button>
-                        <div><span class="countdislike" id="dislikes" style="color:#0d47a1;font-size:25px;">@php echo $countdislikes; @endphp</span></div>
-                      </center>
-                    </div>
-                  </div>
-                </div>
-                <form id="dislikeform" action="{{route('dislikes')}}" method="post">
-                 {{ csrf_field() }}
-                 <input type="hidden" name="goalid" value="{{$goals->goalid}}">
-                 <input type="hidden" name="type" value="d">
-                </form>
-
-                <script type="text/javascript">
-                  var dislikebtn=document.getElementById("dislikebtn");
-                  dislikebtn.addEventListener("click",dislikedfunction)
-                  function dislikedfunction() {
-                  var form=document.getElementById("dislikeform");
-                  var action = form.getAttribute("action");
-                  var form_data = new FormData(form);
-                  var xhr = new XMLHttpRequest();
-                  xhr.open('POST', action, true);
-                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                  xhr.send(form_data);
-                  xhr.onreadystatechange = function () {
-                    if(xhr.readyState == 4 && xhr.status == 200) {
-                       var result = xhr.responseText;
-                       console.log('Result: ' + result);
-                       var newdislike=document.getElementById("dislikes").innerHTML;
-                       var newlike=document.getElementById("likes").innerHTML;
-                       document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) + 1;
-                       document.getElementById("dislikebtn").disabled=true;
-                       document.getElementById("likebtn").disabled=false;
-                       document.getElementById("likes").innerHTML=parseInt(newlike,10) - 1;
-
-                    }
-                  };
-                }
-                </script>
-
-              </div>
+               <div class="col s12">
+                 <div class="card-panel">
+                   <span class="grey-text text-darken-3">I am a very simple card. I am good at containing small bits of information.
+                   I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+                   </span>
+                 </div>
+               </div>
+             </div>
             </div>
           </div>
 
@@ -2129,6 +2195,9 @@ to_pickerpopup.on('set', function(event) {
    <li>
      <div class="collapsible-header"><i class="material-icons">call_merge</i>Align</div>
      <div class="collapsible-body">
+         @if($aligned->isEmpty())
+             No aligns yet
+             @endif
        @foreach ($aligned as $alignsshort)
              <a href="{{url('/search/'.$alignsshort->id)}}"><img src="{{ asset('uploads/avatars/'.$alignsshort->avatar) }}" height="50px" width="50px" class="circle responsive-img tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ $alignsshort->fname." ".$alignsshort->lname }}"></a>
        @endforeach
@@ -2137,6 +2206,9 @@ to_pickerpopup.on('set', function(event) {
    <li>
      <div class="collapsible-header"><i class="material-icons">share</i>Share</div>
      <div class="collapsible-body">
+         @if($shared->isEmpty())
+             No shares yet
+             @endif
        @foreach ($shared as $shares)
           <a href="{{url('/search/'.$shares->id)}}"><img src="{{ asset('uploads/avatars/'.$shares->avatar) }}" height="50px" width="50px" class="circle responsive-img tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ $shares->fname." ".$shares->lname }}"></a>
        @endforeach

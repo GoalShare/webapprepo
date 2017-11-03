@@ -20,6 +20,7 @@ class AlignController extends Controller
           [
             'goalid'=>$goalid,
             'email'=>$email,
+            'useremail'=>Auth::User()->email,
           ]
         );
           $user=DB::table('users')->where('email',$email)->get(['lname','fname','id','email','dob','phone','avatar']);
@@ -34,14 +35,14 @@ class AlignController extends Controller
 
 
 
-          public function deletealigned(request $request)
-          {
-            $useremail=$request->email;
-            $goalid=$request->goalid;
-            DB::table('goals')->where([['goalid',$goalid],['email',$useremail],['goalauthorization','aligned']])->delete();
-            DB::table('tasks')->where([['goalid',$request->goalid],['email',$useremail],['taskauthorization','aligned']])->delete();
-            DB::table('privacys')->where([['goalid',$request->goalid],['email',$useremail]])->delete();
-          }
+          // public function deletealigned(request $request)
+          // {
+          //   $useremail=$request->email;
+          //   $goalid=$request->goalid;
+          //   DB::table('goals')->where([['goalid',$goalid],['email',$useremail],['goalauthorization','aligned']])->delete();
+          //   DB::table('tasks')->where([['goalid',$request->goalid],['email',$useremail],['taskauthorization','aligned']])->delete();
+          //   DB::table('privacys')->where([['goalid',$request->goalid],['email',$useremail]])->delete();
+          // }
 
 
 
@@ -60,6 +61,7 @@ class AlignController extends Controller
             }
 
             echo json_encode($result);
+
           }
 
 

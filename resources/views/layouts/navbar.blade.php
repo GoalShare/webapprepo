@@ -288,7 +288,7 @@
             </li>
 <!--            <li style="background-color:#dbdbdb;"><a><b>Show more</b><i class="material-icons">add</i></a></li>-->
           </ul>
-          <li><span class="new badge red">4</span><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
+          <li><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
 
           <ul id="noticationdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
               <li>

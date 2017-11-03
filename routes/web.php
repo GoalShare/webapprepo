@@ -47,12 +47,17 @@ Route::get('/files','filesController@view');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/goal/{goalname}','GoalController@view');
 Route::post('comment','commentController@post')->name('comment');
+Route::post('taskbrag','GoalController@taskbrag')->name('taskbrag');
 Route::get('/profile/{userid}','ProfileController@view');
 Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/test','TestController@testget')->name('test');
 Route::get('/notificationpage','NotificationpageController@getnavebar')->name('notificationpage');
 Route::get('/admin','AdminController@adminget')->name('admin');
+<<<<<<< HEAD
 
+=======
+Route::get('/brag','bragController@view')->name('brag');
+>>>>>>> f98a4479bfe2e99a5ec640af9983d0b3488d725d
 Route::get('/search',function(){
   if(Auth::check()){
     $id=Auth::id();
@@ -142,6 +147,14 @@ Route::post('allcomplete','GoalController@allcomplete')->name('allcomplete');
 Route::post('reset','passwordReset@reset')->name('reset');
 Route::get('/resetPass/{userid}','passwordReset@confirmResetGET');
 Route::post('resetPass','passwordReset@confirmResetPOST')->name('resetPass');
+Route::post('asigntotask','GoalController@asigntotask')->name('asigntotask');
+Route::post('addnote','GoalController@addnote')->name('addnote');
+Route::post('updategoalname','GoalController@updategoalname')->name('updategoalname');
+Route::post('updategoalintent','GoalController@updategoalintent')->name('updategoalintent');
+Route::post('updategoalpriority','GoalController@updategoalpriority')->name('updategoalpriority');
+Route::post('updategoalcategory','GoalController@updategoalcategory')->name('updategoalcategory');
+Route::post('updategoalstartdate','GoalController@updategoalstartdate')->name('updategoalstartdate');
+Route::post('updategoalenddate','GoalController@updategoalenddate')->name('updategoalenddate');
 
 Route::get('/aboutus', function () {
   $id=Auth::id();
