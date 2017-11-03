@@ -80,7 +80,7 @@
 
           <div class="col l6">
         <label for="privacy-status">Privacy Status:</label>
-        <select class="col s6" id="privacy-status" class="browser-default">
+        <select id="privacy-status" class="browser-default">
           <option value="" disabled selected>Choose your option</option>
           <option>public</option>
           <option>unlisted</option>
