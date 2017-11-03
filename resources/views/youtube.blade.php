@@ -29,7 +29,7 @@
           <div>
             <input id="file" type="file">
           </div>
-          <input id="submit" type="submit" value="Upload">
+          <input id="submit" onclick="test()" value="Upload">
         </form>
 
         <div class="during-upload">
@@ -47,7 +47,7 @@
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <script>
 
-(function() {
+function test() {
   var GOOGLE_PLUS_SCRIPT_URL = 'https://apis.google.com/js/client:plusone.js';
   var CHANNELS_SERVICE_URL = 'https://www.googleapis.com/youtube/v3/channels';
   var VIDEOS_UPLOAD_SERVICE_URL = 'https://www.googleapis.com/auth/youtube.upload';
@@ -210,6 +210,6 @@
 
     $('#upload-form').submit(initiateUpload);
   });
-})();
+}
       </script>
   @endsection
