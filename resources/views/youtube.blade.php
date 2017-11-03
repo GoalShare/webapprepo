@@ -42,22 +42,6 @@ body {
   display: none;
 }
 
-label {
-  display: block;
-}
-
-input[type="text"], textarea, progress {
-  font-size: 0.75em;
-  width: 15em;
-  margin-bottom: 1em;
-  padding: 0.5em;
-  font-family: "Open Sans", sans-serif;
-}
-
-textarea {
-  height: 7em;
-}
-
       </style>
     </head>
 
@@ -80,7 +64,7 @@ textarea {
         <img id="channel-thumbnail">
         <span id="channel-name"></span>
       </div>
-
+</div>
       <div>
         <label for="title">Title:</label>
         <input id="title" type="text" value="Default Title">
@@ -91,7 +75,8 @@ textarea {
       </div>
       <div>
         <label for="privacy-status">Privacy Status:</label>
-        <select id="privacy-status">
+        <select id="privacy-status" class="browser-default">
+          <option value="" disabled selected>Choose your option</option>
           <option>public</option>
           <option>unlisted</option>
           <option>private</option>
@@ -506,6 +491,13 @@ textarea {
         }.bind(this)
       });
     };
+
+    </script>
+    <script>
+
+  $(document).ready(function() {
+    $('select').material_select();
+  });
 
     </script>
   </body>
