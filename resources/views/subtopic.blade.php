@@ -70,7 +70,7 @@ var count=0;
                           @if(($acodamictopicID->ID==$learningboards->CC_ID)&&($acodamicsubtopicIDs->ID==$learningboards->SC_ID))
                             @if($learningboards->ID)
                               <div class="row">
-                              <div class="col l4">
+                              <div class="col s4">
                                 <p>
                               <a style="cursor:pointer;" onclick="learningboardfunc{{$learningboards->ID}}()">
                               <script>
@@ -98,16 +98,64 @@ var count=0;
                             </a>
                           </p>
                         </div>
-                        <div class="col l4">
-                          <a style="font-size: 30px"><i class="material-icons">thumb_up</i></a>&nbsp&nbsp&nbsp
-                          <a style="font-size: 30px" ><i class="material-icons">share</i></a>&nbsp&nbsp&nbsp
-                          <a  style="font-size: 30px" ><i class="material-icons">rss_feed</i></a>
+                        @php
+           $countlikes=0;$share=0;$follow=0;
+          foreach ($likesanddislikes as $likesdislikes){
+             if(($likesdislikes->type=="l") && ($likesdislikes->learningboardtopicid==$learningboards->ID)){
+               $countlikes=$countlikes+1;
+
+             }
+
+           // else
+           //  $countdislikes=$countdislikes+1;
+          }
+
+          @endphp
+                        <div class="col s1">
+
+                          <a style="font-size: 30px;cursor:pointer;"><i class="material-icons" id="likebtn{{$learningboards->ID}}">thumb_up</i><span class="count" id="likes{{$learningboards->ID}}" style="color:#9e9e9e;font-size:15px;">@php echo $countlikes; @endphp</span></a>
                         </div>
-                        <div class="col l4"></div>
+                          <div class="col s1">
+                          <a style="font-size: 30px;cursor:pointer;" ><i class="material-icons">share</i><span class="count" id="likes" style="color:#9e9e9e;font-size:15px;">@php echo $share; @endphp</span></a>
+                        </div>
+                          <div class="col s1">
+                          <a  style="font-size: 30px;cursor:pointer;" ><i class="material-icons">rss_feed</i><span class="count" id="likes" style="color:#9e9e9e;font-size:15px;">@php echo $share; @endphp</span></a>
+                        </div>
+                        <div class="col s4"></div>
                         </div>
 
+                        <form id="likeform{{$learningboards->ID}}" action="{{route('lsubtopilikes')}}" method="post">
+                          {{ csrf_field() }}
+                          <input type="hidden" name="learningbordsid" value="{{$learningboards->ID}}">
+                          <input type="hidden" name="type" value="l">
+                        </form>
+                <script type="text/javascript">
+                  var likebtn=document.getElementById("likebtn{{$learningboards->ID}}");
+                  likebtn.addEventListener("click",likedfunction)
+                  function likedfunction() {
+                  var form=document.getElementById("likeform{{$learningboards->ID}}");
+                  var action = form.getAttribute("action");
+                  var form_data = new FormData(form);
+                  var xhr = new XMLHttpRequest();
+                  xhr.open('POST', action, true);
+                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                  xhr.send(form_data);
+                  xhr.onreadystatechange = function () {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                       var result = xhr.responseText;
+                       console.log('Result: ' + result);
+                       var newlike=document.getElementById("likes{{$learningboards->ID}}").innerHTML;
+                       // var newdislike=document.getElementById("dislikes").innerHTML;
+                       document.getElementById("likes{{$learningboards->ID}}").innerHTML=parseInt(newlike,10) + 1;
+                       document.getElementById("likebtn{{$learningboards->ID}}").disabled=true;
+                       // document.getElementById("dislikebtn").disabled=false;
+                       // document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) - 1;
 
 
+                    }
+                  };
+                }
+                </script>
 
 
 

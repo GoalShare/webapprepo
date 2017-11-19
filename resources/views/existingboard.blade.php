@@ -121,58 +121,125 @@
 
             <div class="col s4 m6 l3">
               <div data-target="{{$acodamictopic->ID}}" class="modal-trigger">
-              <div class="card tosearch" id="" style="height:100px;">
-                <div style="height:40px;cursor:pointer;"></div>
-                <center><b>{{$acodamictopic->Category_Contain_Name}}</b></center>
+              <div class="card tosearch" style="height:100px;cursor:pointer;">
+                <div style="height:40px;"></div>
+                <center><b id="">{{$acodamictopic->Category_Contain_Name}}</b></center>
               </div>
             </div>
             </div>
 
             <!-- Modal Structure -->
           <div id="{{$acodamictopic->ID}}" class="modal">
-            <div class="modal-content">
-              <h4>Modal Header</h4>
-              <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+            <center><h4>{{$acodamictopic->Category_Contain_Name}}</h4></center>
+            @foreach($acodamicsubtopics as $acodamicsubtopic)
+              @if($acodamictopic->ID==$acodamicsubtopic->CC_ID)
+
+
+                <div class="col s4 m6 l3">
+
+                  <div class="card" id="testcolorind{{$acodamicsubtopic->ID}}" onclick="testfuncind{{$acodamicsubtopic->ID}}()" style="cursor:pointer;height:150px;width:150px;border-radius: 50%;">
+                    <div style="height:50px;"></div>
+
+                    <center><b id="{{$acodamicsubtopic->ID}}">{{$acodamicsubtopic->Sub_Contain_Name}}</b></center>
+                  </div>
+                </div>
+
+                <script>
+                  document.getElementById("testcolorind{{$acodamicsubtopic->ID}}").style.backgroundColor="#{{$acodamicsubtopic->Sub_Contain_Color}}";
+                </script>
+
+
+
+              @endif
+
+              <script>
+                function testfuncind{{$acodamicsubtopic->ID}}(){
+                  var x=document.getElementById("{{$acodamicsubtopic->ID}}").id;
+
+                  document.getElementById("topicfilenameinput").value="Industrial";
+                  document.getElementById("subtopicfilenameinput").value=x;
+
+                  var form=document.getElementById("subtopicfilenameform");
+                  form.submit();
+
+                }
+              </script>
+
+
+            @endforeach
+
           </div>
-
-
 
       @endif
 
       @endforeach
+
+
+
+      {{-- <form class="" id="subtopicfilenameform" action="{{route('exsitingsubtopicformrout')}}" method="post">
+       {{csrf_field()}}
+       <input type="hidden" name="topicfilename" value="" id="topicfilenameinput">
+       <input type="hidden" name="subtopicfilename" value="" id="subtopicfilenameinput">
+
+      </form> --}}
     </div>
 
 
     <div class="row" id="Spaorttab" style="display:none;">
+
       @foreach($acodamictopics as $acodamictopic)
           @if($acodamictopic->CT_ID == 3)
 
             <div class="col s4 m6 l3">
               <div data-target="{{$acodamictopic->ID}}" class="modal-trigger">
-              <div class="card tosearch" id="" style="height:100px;">
-                <div style="height:40px;cursor:pointer;"></div>
-                <center><b>{{$acodamictopic->Category_Contain_Name}}</b></center>
+              <div class="card tosearch" style="height:100px;cursor:pointer;">
+                <div style="height:40px;"></div>
+                <center><b id="">{{$acodamictopic->Category_Contain_Name}}</b></center>
               </div>
             </div>
             </div>
 
-
             <!-- Modal Structure -->
           <div id="{{$acodamictopic->ID}}" class="modal">
-            <div class="modal-content">
-              <h4>Modal Header</h4>
-              <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+            <center><h4>{{$acodamictopic->Category_Contain_Name}}</h4></center>
+            @foreach($acodamicsubtopics as $acodamicsubtopic)
+              @if($acodamictopic->ID==$acodamicsubtopic->CC_ID)
+
+
+                <div class="col s4 m6 l3">
+
+                  <div class="card" id="testcolorspo{{$acodamicsubtopic->ID}}" onclick="testfuncspo{{$acodamicsubtopic->ID}}()" style="cursor:pointer;height:150px;width:150px;border-radius: 50%;">
+                    <div style="height:50px;"></div>
+
+                    <center><b id="{{$acodamicsubtopic->ID}}">{{$acodamicsubtopic->Sub_Contain_Name}}</b></center>
+                  </div>
+                </div>
+
+                <script>
+                  document.getElementById("testcolorspo{{$acodamicsubtopic->ID}}").style.backgroundColor="#{{$acodamicsubtopic->Sub_Contain_Color}}";
+                </script>
+
+
+
+              @endif
+
+              <script>
+                function testfuncspo{{$acodamicsubtopic->ID}}(){
+                  var x=document.getElementById("{{$acodamicsubtopic->ID}}").id;
+
+                  document.getElementById("topicfilenameinput").value="Sports";
+                  document.getElementById("subtopicfilenameinput").value=x;
+
+                  var form=document.getElementById("subtopicfilenameform");
+                  form.submit();
+
+                }
+              </script>
+
+
+            @endforeach
+
           </div>
-
-
 
       @endif
 

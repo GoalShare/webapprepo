@@ -23,11 +23,29 @@
 
 <script>
 var count=0;
+
+
 </script>
 
              @foreach ($learningboardfilestable as $learningboardfilesdata)
                @if(($learningboardfilesdata->L_ID==$lbid)&&($learningboardfilesdata->CC_ID==$ccid)&&($learningboardfilesdata->SC_ID==$scid))
+                 <script>
+                 var countlikes=0;var countdislikes=0;var countshares=0;var countfollows=0;
+                  @foreach ($likesanddislikes as $likesdislikes)
+                     @if(($likesdislikes->type=="l") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                          countlikes=countlikes+1;
 
+                     @elseif(($likesdislikes->type=="d") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                         countdislikes=countdislikes+1;
+
+                      @elseif(($likesdislikes->type=="s") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                          countshares=countshares+1;
+
+                      @elseif(($likesdislikes->type=="f") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                          countfollows=countfollows+1;
+                     @endif
+                  @endforeach
+                 </script>
                  <script>
                  var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$learningboardfilesdata->filename}}';
                  var extension = fileName.split('.').pop();
@@ -41,10 +59,20 @@ var count=0;
                          document.write('<div class="row');
                          console.log(count);
                                document.write('<span class="">'+count+'.'+'{{$learningboardfilesdata->title}}'+'</span>'+'<div style="width:5px;"></div>');
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">thumb_up</i></a>');
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">thumb_down</i></a>');
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">share</i></a>');
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">rss_feed</i></a>');
+                               
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="likebtn{{$learningboardfilesdata->L_ID}}">thumb_up</i>');
+                               document.write('<span class="count" id="likes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countlikes+'</span></a>');
+
+
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">thumb_down</i>');
+                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countdislikes+'</span></a>');
+
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">share</i>');
+                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
+
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">rss_feed</i>');
+                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
+
                                document.write('</div>');
                                document.write('<div class="row">');
                                document.write('<div class="col s12">');
@@ -82,10 +110,18 @@ var count=0;
                           //
                               document.write('<span class="">'+count+'.'+'{{$learningboardfilesdata->title}}'+'</span>'+'<div style="width:5px;"></div>');
 
-                                 document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">thumb_up</i></a>');
-                                 document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">thumb_down</i></a>');
-                                 document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">share</i></a>');
-                                 document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">rss_feed</i></a>');
+                              document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="likebtn{{$learningboardfilesdata->L_ID}}">thumb_up</i>');
+                              document.write('<span class="count" id="likes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countlikes+'</span></a>');
+
+
+                              document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">thumb_down</i>');
+                              document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countdislikes+'</span></a>');
+
+                              document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">share</i>');
+                              document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
+
+                              document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">rss_feed</i>');
+                              document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
 
                                document.write('</div>');
 
@@ -113,6 +149,9 @@ var count=0;
 
 
                  </script>
+
+
+
                  <script>
                  var fileName = 'https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$learningboardfilesdata->filename}}';
                  var extension = fileName.split('.').pop();
@@ -128,19 +167,27 @@ var count=0;
                         //
                             document.write('<span class="">'+count+'.'+'{{$learningboardfilesdata->title}}'+'</span>'+'<div style="width:5px;"></div>');
 
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">thumb_up</i></a>');
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">thumb_down</i></a>');
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">share</i></a>');
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons">rss_feed</i></a>');
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="likebtn{{$learningboardfilesdata->L_ID}}">thumb_up</i>');
+                               document.write('<span class="count" id="likes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countlikes+'</span></a>');
+
+
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">thumb_down</i>');
+                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countdislikes+'</span></a>');
+
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">share</i>');
+                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
+
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">rss_feed</i>');
+                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
 
                              document.write('</div>');
 
                              document.write('<div class="row">');
-                               document.write('<div class="col s12">');
-                         document.write('<img width="585" height="320" src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$learningboardfilesdata->filename}}"/>');
-                         document.write('</div>');
-                           document.write('</div>');
-                           document.write('<div class="row">');
+                             document.write('<div class="col s12">');
+                             document.write('<img width="525" height="320" src="https://s3-ap-southeast-1.amazonaws.com/lifewithgoals/{{$learningboardfilesdata->filename}}"/>');
+                             document.write('</div>');
+                             document.write('</div>');
+                             document.write('<div class="row">');
                              document.write('<div class="col s12">');
                              @foreach ($users as $user)
                                @if($user->id==$learningboardfilesdata->user_ID)
@@ -158,6 +205,39 @@ var count=0;
 
 
 
+               </script>
+
+               <form id="likeform{{$learningboardfilesdata->L_ID}}" action="{{route('subconlikes')}}" method="post">
+                 {{ csrf_field() }}
+                 <input type="hidden" name="subconid" value="{{$learningboardfilesdata->L_ID}}">
+                 <input type="hidden" name="type" value="l">
+               </form>
+               <script type="text/javascript">
+                 var likebtn=document.getElementById("likebtn{{$learningboardfilesdata->L_ID}}");
+                 likebtn.addEventListener("click",likedfunction)
+                 function likedfunction() {
+                 var form=document.getElementById("likeform{{$learningboardfilesdata->L_ID}}");
+                 var action = form.getAttribute("action");
+                 var form_data = new FormData(form);
+                 var xhr = new XMLHttpRequest();
+                 xhr.open('POST', action, true);
+                 xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                 xhr.send(form_data);
+                 xhr.onreadystatechange = function () {
+                   if(xhr.readyState == 4 && xhr.status == 200) {
+                      var result = xhr.responseText;
+                      console.log('Result: ' + result);
+                      var newlike=document.getElementById("likes{{$learningboardfilesdata->L_ID}}").innerHTML;
+                      // var newdislike=document.getElementById("dislikes").innerHTML;
+                      document.getElementById("likes{{$learningboardfilesdata->L_ID}}").innerHTML=parseInt(newlike,10) + 1;
+                      document.getElementById("likebtn{{$learningboardfilesdata->L_ID}}").disabled=true;
+                      // document.getElementById("dislikebtn").disabled=false;
+                      // document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) - 1;
+
+
+                   }
+                 };
+               }
                </script>
                @endif
              @endforeach

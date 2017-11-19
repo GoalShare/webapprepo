@@ -40,6 +40,8 @@ class subtopicController extends Controller
 
     $allemail=DB::table('users')->pluck('email');
 
+    $likesanddislikes=DB::table('likes')->where('goalid',$goalid)->get();
+
     return view('subtopic',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail]);
 
   }
@@ -78,8 +80,24 @@ class subtopicController extends Controller
     $acodamictopicsID=DB::table('Category_Contain')->get();
     $learningboard=DB::table('learningboards')->get();
 
-    return view('subtopic',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail,'x'=>$x,'acodamicsubtopicID'=>$acodamicsubtopicID,'acodamictopicsID'=>$acodamictopicsID,'topic'=>$topic,'learningboard'=>$learningboard]);
+    $likesanddislikes=DB::table('learningboardsubtopiclikes')->get();
+
+    return view('subtopic',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail,'x'=>$x,'acodamicsubtopicID'=>$acodamicsubtopicID,'acodamictopicsID'=>$acodamictopicsID,'topic'=>$topic,'learningboard'=>$learningboard,'likesanddislikes'=>$likesanddislikes]);
 
     // echo $x;
   }
+
+  public function lsubtopilikes(request $request){
+        $learningbordsid=$request->learningbordsid;
+        $type=$request->type;
+        $userid=Auth::id();
+       DB::table('learningboardsubtopiclikes')->insert(
+               [ 'learningboardtopicid' => $learningbordsid,
+                 'userid'=> $userid,
+                 'type' => $type,
+               ]
+           );
+       // DB::table('likes')->where([['goalid',$goalid],['type','d']])->delete();
+  }
+
 }

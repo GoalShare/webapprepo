@@ -39,7 +39,8 @@ class learningboardController extends Controller
 
   $allemail=DB::table('users')->pluck('email');
 
-  return view('learningboard',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail]);
+  $likesanddislikes=DB::table('learninboardcontentlikes')->get();
+  return view('learningboard',['likesanddislikes'=>$likesanddislikes,'goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail]);
 }
 
 public function getlearningboards(request $request){
@@ -74,7 +75,22 @@ public function getlearningboards(request $request){
   $learningboardfilestable=DB::table('learningboardfile')->orderBy('ID', 'desc')->get();
   $learningboardtable=DB::table('learningboards')->orderBy('ID', 'desc')->get();
   $users=DB::table('users')->get();
-  return view('learningboard',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail,'ccid'=>$ccid,'scid'=>$scid,'lbid'=>$lbid,'learningboardfilestable'=>$learningboardfilestable,'learningboardtable'=>$learningboardtable,'users'=>$users]);
+  $likesanddislikes=DB::table('learninboardcontentlikes')->get();
+  return view('learningboard',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail,'ccid'=>$ccid,'scid'=>$scid,'lbid'=>$lbid,'learningboardfilestable'=>$learningboardfilestable,'learningboardtable'=>$learningboardtable,'users'=>$users,'likesanddislikes'=>$likesanddislikes]);
 
 }
+
+public function subconlikes(request $request){
+  $lbsubconid=$request->subconid;
+  $type=$request->type;
+  $userid=Auth::id();
+ DB::table('learninboardcontentlikes')->insert(
+         [ 'contectid' => $lbsubconid,
+           'userid'=> $userid,
+           'type' => $type,
+         ]
+     );
+ // DB::table('likes')->where([['goalid',$goalid],['type','d']])->delete();
+}
+
 }

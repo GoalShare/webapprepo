@@ -744,7 +744,7 @@
         </div>
         <div class="col l2 m2 center-align">
           <span class=" blue-text text-darken-4"><b>My Documents</b></span><br>
-          <a href="{{url('/files')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
+          <a href="{{url('/mainlearningboard')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
         </div>
         <div class="col l2 m2 center-align">
           <span class=" purple-text text-darken-3"><b>My Schedule</b></span><br>

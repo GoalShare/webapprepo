@@ -217,6 +217,10 @@ Route::get('/learningboard','learningboardController@view')->name('learningboard
 
 Route::post('selectedlearningboard','learningboardController@getlearningboards')->name('selectedlearningboard');
 
+Route::post('lsubtopilikes','subtopicController@lsubtopilikes')->name('lsubtopilikes');
+
+Route::post('subconlikes','learningboardController@subconlikes')->name('subconlikes');
+
 Route::get('/learningboardupload','learningboarduploadController@view')->name('learningboardupload');
 
 Route::post('/formct','learningboarduploadController@viewct')->name('formct');
