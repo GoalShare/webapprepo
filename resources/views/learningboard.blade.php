@@ -59,7 +59,7 @@ var count=0;
                          document.write('<div class="row');
                          console.log(count);
                                document.write('<span class="">'+count+'.'+'{{$learningboardfilesdata->title}}'+'</span>'+'<div style="width:5px;"></div>');
-                               
+
                                document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="likebtn{{$learningboardfilesdata->L_ID}}">thumb_up</i>');
                                document.write('<span class="count" id="likes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countlikes+'</span></a>');
 
@@ -68,10 +68,10 @@ var count=0;
                                document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countdislikes+'</span></a>');
 
                                document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">share</i>');
-                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
+                               document.write('<span class="count" id="shares{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
 
                                document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">rss_feed</i>');
-                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
+                               document.write('<span class="count" id="folows{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
 
                                document.write('</div>');
                                document.write('<div class="row">');
@@ -118,10 +118,10 @@ var count=0;
                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countdislikes+'</span></a>');
 
                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">share</i>');
-                              document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
+                              document.write('<span class="count" id="shares{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
 
                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">rss_feed</i>');
-                              document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
+                              document.write('<span class="count" id="folows{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
 
                                document.write('</div>');
 
@@ -175,10 +175,10 @@ var count=0;
                                document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countdislikes+'</span></a>');
 
                                document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">share</i>');
-                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
+                               document.write('<span class="count" id="share{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countshares+'</span></a>');
 
                                document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">rss_feed</i>');
-                               document.write('<span class="count" id="dislikes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
+                               document.write('<span class="count" id="follows{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countfollows+'</span></a>');
 
                              document.write('</div>');
 
