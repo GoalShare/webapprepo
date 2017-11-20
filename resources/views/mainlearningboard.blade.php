@@ -4,7 +4,9 @@
 <div class="container">
 
   <div class="row" style="height:25px;"></div>
-
+<div class="row">
+<a class="btn right" href="{{url('learningboardupload')}}">Upload a New Learning Board</a>
+</div>
   <div class="row">
     <div class="col l4">
     <input style="max-width:200px;max-height:20px;" type="text" id="myInput" onkeyup="courseFunction()" placeholder="SEARCH A COURSE">
@@ -122,7 +124,7 @@
 
   </div>
 
-  <div class="row" id="Industrialtab" style="display:none;">
+  <div class="row" id="Industrialtab">
 
 
 
@@ -195,7 +197,7 @@
 
   </div>
 
-<div class="row" id="Sportstab" style="display:none;">
+<div class="row" id="Sportstab">
   @foreach($acodamictopics as $acodamictopic)
       @if($acodamictopic->CT_ID == 3)
 

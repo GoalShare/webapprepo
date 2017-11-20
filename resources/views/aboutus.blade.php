@@ -47,9 +47,10 @@
                 <img src="{{asset('avatars/1.png')}}" class="circle "  >
               </div>
               <div class="card-content">
-                  <span class="card-title center">CEO and Founder</span>
-                <p class=" center">Ramil De Silva has been in the IT industry for almost 14 years and the founder of Lifewithgoals.com idea.
-                  He looks after the operations overall Ramil is a specialist in the HCM/IDAM aspect of ERP implementations</p>
+                  <span class="card-title center">Ramil De Silva (CEO and Founder) </span>
+                <p class=" center">Ramil (@Ramil) is the CEO and founder of lifewithgoals. He is responsible for the final decisions on all the design outcomes made by the company, overall vision, strategy and day to day operations.
+Ramil believes in simplicity and user experience coupled with the most advanced technology will allow people spend their time qualitatively. His focus is to couple good engineering with beauty to create consumables.
+Prior to founding lifewithgoals, Ramil was engaged in multiple large scale national and international HR IT implementations and change management strategy for 14 years. This lead Ramil to think out of the box and enable goal setting to be social and fun loving process.</p>
               </div>
             </div>
           </div>
@@ -59,9 +60,9 @@
                 <img src="{{asset('avatars/2.png')}}" class="circle "  >
               </div>
               <div class="card-content">
-                  <span class="card-title center"> Consultant </span>
-                <p class="center"> Darshana Samanpura is a seasoned technical expert in the web technologies. Darshana joined to form Lifewithgoals.com with Ramil
-                  and is an integral part of the team. Darshana leads all technical solutions related to Lifewithgoals.com  </p>
+                  <span class="card-title center">Darshan Samanpura (Technology Consultant)</span>
+                <p class="center">Darshana (@darshana) is the escalation point  of any technical issues related to lifewithgoals. Darshana has been a pivotal part of success in life with goals engineering team. Darshana picked up the best software engineers with intelligence and aptitude and formulated the core engineering team
+Prior to founding lifewithgoals, Darshana has been heading the technology in few successful start ups. He enjoys helping companies come through the obstacles limited by technology and offering working solutions.  </p>
               </div>
             </div>
           </div>
@@ -80,11 +81,12 @@
           <div class="col s12 m2">
             <div class="card">
               <div class="card-image " >
-                <img src="{{asset('avatars/6.jpg')}}" class="circle "  >
+                <img src="{{asset('avatars/sanka.png')}}" class="circle "  >
               </div>
               <div class="card-content">
-                  <span class="card-title center">Web Designer</span>
-                <p class=" center">Chamaka Munasinghe is a graduate in Software Engineering at SLIIT. He joined Lifewithgoals.com upon conviced by Sagi.He involves uderstanding the look, layout, and features of the website.He works with development team for keeping the site up-to-date and prioritizing needs, among other tasks.</p>
+                  <span class="card-title center">Web Developer and Web Designer</span>
+                <p class=" center">Sanka Rajapaksha is an undergraduate in Software Engineering at NSBM. He joined Lifewithgoals.com upon conviced by Sagi and is the main brain designing the user interface for the website.
+                  He is in strive to create visually appealing for the site that feature user-friendly design and clear navigation.</p>
               </div>
             </div>
           </div>
@@ -108,6 +110,7 @@
 
 
       </div>
+
       <div id="support"><p class="flow-text center">If you want to send us notices or service of process, please contact us via <br>
  <a href="mailto:contactus@Lifewithgoals.com">contactus@Lifewithgoals.com</a></p></div>
       {{-- <div id="press">Test 3</div> --}}
