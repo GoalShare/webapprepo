@@ -431,20 +431,40 @@
 <footer class="page-footer blue darken-4"  >
          <div class="container">
            <div class="row">
-             <div class="col l6 s12">
-               <h5 class="white-text">Life With Goals</h5><br>
-
+             <div class="col s12">
                <p class="white-text">
                  <a href="#" class="white-text footerCont" style=" font-size:x-small;">English(UK)</a>
                  <a href="" class="white-text footerCont" style=" font-size:x-small;">Sinhalese</a>
                </p>
+             </div>
 
-               <div class="divider"></div>
+               <div class="col s12">
+                 <div class="col s6">
                <p class="white-text">
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">About us</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">  Support</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;"> Work with us</a>
-               </p>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">About us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">  Support</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;"> Work with us</a>
+
+                 </p>
+               </div>
+               <div class="col s6">
+                 <div class="right">
+          <a target="_blank" title="find us on Facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="//login.create.net/images/icons/user/facebook_30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+          <a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+          <a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+          <a target="_blank" title="follow me on twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="//login.create.net/images/icons/user/twitter_30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+          <a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+        </div>
+</div>
+</div>
+<div class="col s12">
+
+               {{-- <center><h1 class="white-text">Life With Goals</h1></center><br> --}}
+
+
+
+               {{-- <div class="divider"></div> --}}
+
              </div>
            </div>
          </div>

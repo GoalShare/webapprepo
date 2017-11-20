@@ -48,8 +48,7 @@
               </div>
               <div class="card-content">
                   <span class="card-title center">Ramil De Silva (CEO and Founder) </span>
-                <p class=" center">Ramil (@Ramil) is the CEO and founder of lifewithgoals. He is responsible for the final decisions on all the design outcomes made by the company, overall vision, strategy and day to day operations.
-Ramil believes in simplicity and user experience coupled with the most advanced technology will allow people spend their time qualitatively. His focus is to couple good engineering with beauty to create consumables.
+                <p class=" center">Ramil (@Ramil) is the CEO and founder of lifewithgoals. He is responsible for the final decisions on all the design outcomes made by the company, overall vision, strategy and day to day operations.Ramil believes in simplicity and user experience coupled with the most advanced technology will allow people spend their time qualitatively. His focus is to couple good engineering with beauty to create consumables.
 Prior to founding lifewithgoals, Ramil was engaged in multiple large scale national and international HR IT implementations and change management strategy for 14 years. This lead Ramil to think out of the box and enable goal setting to be social and fun loving process.</p>
               </div>
             </div>
