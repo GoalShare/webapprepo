@@ -1059,17 +1059,39 @@ console.log('sdsdsds');
             <div class="ui  container">
               <div class="ui  stackable  divided equal height stackable grid">
                 <div class="thirteen wide column">
-                  <h4 class="ui bluemain header"><h1>Life With Goals</h1></h4>
+                  <a href="#" style="color:white;" class="item">English(UK)</a>&nbsp&nbsp&nbsp
+                  <a href="#" style="color:white;" class="item">Sinhalese</a><br>
 
-                    <a href="#" style="color:white;" class="item">English(UK)</a>&nbsp&nbsp&nbsp
-                    <a href="#" style="color:white;" class="item">Sinhalese</a><br>
-                    <div style="color:white;" class="ui divider"></div>
+
+                  <div class="row">
+                    <div class="col s6">
+                  <h4 class="ui bluemain header"><h1>Life With Goals</h1></h4>
+                </div>
+                <div class="col s6">
+
+           <a target="_blank" title="find us on Facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="//login.create.net/images/icons/user/facebook_30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+           <a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+           <a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+           <a target="_blank" title="follow me on twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="//login.create.net/images/icons/user/twitter_30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+           <a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+      
+                </div>
+              </div>
+
+
                     <a href="#" style="color:white;" class="item">About us </a>&nbsp&nbsp&nbsp
                     <a href="#" style="color:white;" class="item">Support </a>&nbsp&nbsp&nbsp
                     <a href="#" style="color:white;" class="item">Work with us </a>
 
-                </div>
 
+                    <br><br>
+
+                    <div class="footer-copyright">
+                      <div class="container" style=" font-size:x-small;">
+                      © 2017 Copyright Text
+                      <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+                      </div>
+                    </div>
 
               </div>
             </div>
@@ -1084,40 +1106,6 @@ console.log('sdsdsds');
   </div>
 </div>
 
-<div class="  foot ">
-  <div class="ui grid">
-    <div class=" column tablet mobile only only row">
-      <div class="column">
-        <div class="">
 
-            <div class="ui inverted footer segment " style="background-color:#0d47a1; ">
-              <div class="ui  container">
-                <div class="ui  stackable  divided equal height stackable grid">
-                  <div class="thirteen wide column">
-                    <h4 class="ui bluemain header"><h1>Life With Goals</h1></h4>
-
-                      <a href="#" style="color:white;" class="item">English(UK)</a>&nbsp&nbsp&nbsp
-                      <a href="#" style="color:white;" class="item">Sinhalese</a><br>
-                      <div style="color:white;" class="ui divider"></div>
-                      <a href="#" style="color:white;" class="item">About us </a>&nbsp&nbsp&nbsp
-                      <a href="#" style="color:white;" class="item">Support </a>&nbsp&nbsp&nbsp
-                      <a href="#" style="color:white;" class="item">Work with us </a>
-
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-
-    </div>
-
-
-  </div>
-
-
-</div>
   </body>
 </html>

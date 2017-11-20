@@ -440,12 +440,7 @@
 
                <div class="col s12">
                  <div class="col s6">
-               <p class="white-text">
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">About us</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">  Support</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;"> Work with us</a>
-
-                 </p>
+                  <h3 class="white-text">Life With Goals</h3>
                </div>
                <div class="col s6">
                  <div class="right">
@@ -461,9 +456,12 @@
 
                {{-- <center><h1 class="white-text">Life With Goals</h1></center><br> --}}
 
+               <p class="white-text">
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">About us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">  Support</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;"> Work with us</a>
 
-
-               {{-- <div class="divider"></div> --}}
+                 </p>
 
              </div>
            </div>
