@@ -2,26 +2,52 @@
 
 @section('content')
 <div class="container">
-
+  <div class="row hide-on-small-only"><br><br>
+    <div class="col l2 m2  center-align">
+      <span class=" red-text "><b>New Goal</b></span><br>
+      <a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
+    </div>
+    <div class="col l2 m2  center-align">
+      <span class=" blue-text text-lighten-1"><b>Send Invite</b></span><br>
+      <a class="btn btn-floating blue lighten-1 btn-large googleContactsButton" href="#myModal11"><i class="material-icons">people</i></a>
+    </div>
+    <div class="col l2 m2  center-align">
+      <span class=" grey-text text-darken-3"><b>Dashboard</b></span><br>
+      <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i class="material-icons">dashboard</i></a>
+    </div>
+    <div class="col l2 m2 center-align">
+      <span class=" blue-text text-darken-4"><b>Knowledge Hub</b></span><br>
+      <a href="{{url('/mainlearningboard')}}" class="btn btn-floating btn-large "><i class="material-icons">attach_file</i></a>
+    </div>
+    <div class="col l2 m2 center-align">
+      <span class=" purple-text text-darken-3"><b>My Schedule</b></span><br>
+      <a href="{{url('/calendar')}}" class="btn btn-floating purple darken-3 btn-large "><i class="material-icons">date_range</i></a>
+    </div>
+    <div class="col l2 m2  center-align">
+      <span class=" green-text text-darken-4"><b>My Profile</b></span><br>
+      <a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i class="material-icons">people</i></a>
+    </div>
+  </div>
   <div class="row" style="height:25px;"></div>
 <div class="row">
-<a class="btn right" href="{{url('learningboardupload')}}">Upload a New Learning Board</a>
+<a class="btn right" href="{{url('learningboardupload')}}">Upload a New Files to Knowledge Hub</a>
 </div>
   <div class="row">
-    <div class="col l4">
+    <div class="col s4">
     <input style="max-width:200px;max-height:20px;" type="text" id="myInput" onkeyup="courseFunction()" placeholder="SEARCH A COURSE">
   </div>
-  <div class="col l4">
+
+  <div class="col s4">
       <div class="card-tabs">
         <ul class="tabs tabs-fixed-width">
           <li class="tab"><a class="active blue-text text-darken-4" href="#Acadomictab">Acadomic</a></li>
           <li class="tab"><a class="blue-text text-darken-4" href="#Industrialtab">Industrial</a></li>
-          <li class="tab"><a class="blue-text text-darken-4" href="#Sportstab">Sports</a></li>
+          <li class="tab"><a class="blue-text text-darken-4" href="#Sportstab">Sport</a></li>
         </ul>
       </div>
   </div>
 
-  <div class="col l4">
+  <div class="col s4">
       <div class="right">
         <div class="btn-floating" id="gridviewbtn"><i class="material-icons">view_comfy</i></div>
         <div class="btn-floating" id="listviewbtn"><i class="material-icons">list</i></div>
