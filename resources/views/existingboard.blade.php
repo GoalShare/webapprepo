@@ -35,7 +35,7 @@
 <div class="col l4"></div>
     <div class="col l4">
         <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width">
+          <ul class="tabs" style="overflow:hidden;">
             <li class="tab"><a class="active blue-text text-darken-4" href="#Acadomictab">Acadomic</a></li>
             <li class="tab"><a class="blue-text text-darken-4" href="#Industrialtab">Industrial</a></li>
             <li class="tab"><a class="blue-text text-darken-4" href="#Spaorttab">Sport</a></li>

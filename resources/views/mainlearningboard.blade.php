@@ -39,7 +39,7 @@
 
   <div class="col s4">
       <div class="card-tabs">
-        <ul class="tabs tabs-fixed-width">
+        <ul class="tabs" style="overflow:hidden;">
           <li class="tab"><a class="active blue-text text-darken-4" href="#Acadomictab">Acadomic</a></li>
           <li class="tab"><a class="blue-text text-darken-4" href="#Industrialtab">Industrial</a></li>
           <li class="tab"><a class="blue-text text-darken-4" href="#Sportstab">Sport</a></li>
@@ -150,7 +150,7 @@
 
   </div>
 
-  <div class="row" id="Industrialtab">
+  <div class="row" id="Industrialtab" style="display:none;">
 
 
 
@@ -223,7 +223,7 @@
 
   </div>
 
-<div class="row" id="Sportstab">
+<div class="row" id="Sportstab" style="display:none;">
   @foreach($acodamictopics as $acodamictopic)
       @if($acodamictopic->CT_ID == 3)
 
