@@ -32,8 +32,8 @@
     <div class="row" style="height:25px;"></div>
 
     <div class="row">
-<div class="col l4"></div>
-    <div class="col l4">
+<div class="col s4"></div>
+    <div class="col s6">
         <div class="card-tabs">
           <ul class="tabs" style="overflow:hidden;">
             <li class="tab"><a class="active blue-text text-darken-4" href="#Acadomictab">Acadomic</a></li>
@@ -42,7 +42,7 @@
           </ul>
         </div>
     </div>
-<div class="col l4"></div>
+<div class="col s2"></div>
     </div>
     <script type="text/javascript">
 

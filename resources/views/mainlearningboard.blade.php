@@ -37,7 +37,7 @@
     <input style="max-width:200px;max-height:20px;" type="text" id="myInput" onkeyup="courseFunction()" placeholder="SEARCH A COURSE">
   </div>
 
-  <div class="col s4">
+  <div class="col s6">
       <div class="card-tabs">
         <ul class="tabs" style="overflow:hidden;">
           <li class="tab"><a class="active blue-text text-darken-4" href="#Acadomictab">Acadomic</a></li>
@@ -47,7 +47,7 @@
       </div>
   </div>
 
-  <div class="col s4">
+  <div class="col s2">
       <div class="right">
         <div class="btn-floating" id="gridviewbtn"><i class="material-icons">view_comfy</i></div>
         <div class="btn-floating" id="listviewbtn"><i class="material-icons">list</i></div>
