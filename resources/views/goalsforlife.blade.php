@@ -1069,12 +1069,12 @@ console.log('sdsdsds');
                 </div>
                 <div class="col s6">
 
-           <a target="_blank" title="find us on Facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="//login.create.net/images/icons/user/facebook_30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
-           <a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
-           <a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+           <a target="_blank" title="find us on Facebook" href="https://www.facebook.com/LifeWithGoals/"><img alt="follow me on facebook" src="//login.create.net/images/icons/user/facebook_30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+           <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/channel/UCP2DuuEb-pU1C1ASw0ZJYRA?view_as=subscriber"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
+           <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/lifewithgoals_1/"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
            <a target="_blank" title="follow me on twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="//login.create.net/images/icons/user/twitter_30x30.png" border=0></a>&nbsp&nbsp&nbsp&nbsp
            <a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
-      
+
                 </div>
               </div>
 

@@ -58,16 +58,16 @@ var count=0;
                  <script>
                  var countlikes=0;var countdislikes=0;var countshares=0;var countfollows=0;
                   @foreach ($likesanddislikes as $likesdislikes)
-                     @if(($likesdislikes->type=="l") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                     @if(($likesdislikes->type=="l") && ($likesdislikes->contectid==$learningboardfilesdata->ID))
                           countlikes=countlikes+1;
 
-                     @elseif(($likesdislikes->type=="d") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                     @elseif(($likesdislikes->type=="d") && ($likesdislikes->contectid==$learningboardfilesdata->ID))
                          countdislikes=countdislikes+1;
 
-                      @elseif(($likesdislikes->type=="s") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                      @elseif(($likesdislikes->type=="s") && ($likesdislikes->contectid==$learningboardfilesdata->ID))
                           countshares=countshares+1;
 
-                      @elseif(($likesdislikes->type=="f") && ($likesdislikes->contectid==$learningboardfilesdata->L_ID))
+                      @elseif(($likesdislikes->type=="f") && ($likesdislikes->contectid==$learningboardfilesdata->ID))
                           countfollows=countfollows+1;
                      @endif
                   @endforeach
@@ -168,10 +168,10 @@ var count=0;
                          document.write('<div class="row');
                          console.log(count);
                         //
-                            document.write('<span class="">'+count+'.'+'{{$learningboardfilesdata->title}}'+'</span>'+'<div style="width:5px;"></div>');
+                            document.write('<span class="">'+count+'.'+'{{$learningboardfilesdata->title}}'+'{{$learningboardfilesdata->ID}}'+'</span>'+'<div style="width:5px;"></div>');
 
-                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="likebtn{{$learningboardfilesdata->L_ID}}">thumb_up</i>');
-                               document.write('<span class="count" id="likes{{$learningboardfilesdata->L_ID}}" style="color:#9e9e9e;font-size:15px;">'+countlikes+'</span></a>');
+                               document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="likebtn{{$learningboardfilesdata->ID}}">thumb_up</i>');
+                               document.write('<span class="count" id="likes{{$learningboardfilesdata->ID}}" style="color:#9e9e9e;font-size:15px;">'+countlikes+'</span></a>');
 
 
                                // document.write('<a class="center col s3" style="font-size: 30px"><i class="material-icons" id="dislikebtn{{$learningboardfilesdata->L_ID}}">thumb_down</i>');
@@ -210,16 +210,16 @@ var count=0;
 
                </script>
 
-               <form id="likeform{{$learningboardfilesdata->L_ID}}" action="{{route('subconlikes')}}" method="post">
+               <form id="likeform{{$learningboardfilesdata->ID}}" action="{{route('subconlikes')}}" method="post">
                  {{ csrf_field() }}
-                 <input type="hidden" name="subconid" value="{{$learningboardfilesdata->L_ID}}">
+                 <input type="hidden" name="subconid" value="{{$learningboardfilesdata->ID}}">
                  <input type="hidden" name="type" value="l">
                </form>
                <script type="text/javascript">
-                 var likebtn=document.getElementById("likebtn{{$learningboardfilesdata->L_ID}}");
+                 var likebtn=document.getElementById("likebtn{{$learningboardfilesdata->ID}}");
                  likebtn.addEventListener("click",likedfunction)
                  function likedfunction() {
-                 var form=document.getElementById("likeform{{$learningboardfilesdata->L_ID}}");
+                 var form=document.getElementById("likeform{{$learningboardfilesdata->ID}}");
                  var action = form.getAttribute("action");
                  var form_data = new FormData(form);
                  var xhr = new XMLHttpRequest();
@@ -230,10 +230,10 @@ var count=0;
                    if(xhr.readyState == 4 && xhr.status == 200) {
                       var result = xhr.responseText;
                       console.log('Result: ' + result);
-                      var newlike=document.getElementById("likes{{$learningboardfilesdata->L_ID}}").innerHTML;
+                      var newlike=document.getElementById("likes{{$learningboardfilesdata->ID}}").innerHTML;
                       // var newdislike=document.getElementById("dislikes").innerHTML;
-                      document.getElementById("likes{{$learningboardfilesdata->L_ID}}").innerHTML=parseInt(newlike,10) + 1;
-                      document.getElementById("likebtn{{$learningboardfilesdata->L_ID}}").disabled=true;
+                      document.getElementById("likes{{$learningboardfilesdata->ID}}").innerHTML=parseInt(newlike,10) + 1;
+                      document.getElementById("likebtn{{$learningboardfilesdata->ID}}").disabled=true;
                       // document.getElementById("dislikebtn").disabled=false;
                       // document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) - 1;
 
