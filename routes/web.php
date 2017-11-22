@@ -154,7 +154,9 @@ Route::post('updategoalpriority','GoalController@updategoalpriority')->name('upd
 Route::post('updategoalcategory','GoalController@updategoalcategory')->name('updategoalcategory');
 Route::post('updategoalstartdate','GoalController@updategoalstartdate')->name('updategoalstartdate');
 Route::post('updategoalenddate','GoalController@updategoalenddate')->name('updategoalenddate');
-
+Route::get('/loginaboutus',function(){
+  return view('loginaboutus');
+});
 Route::get('/aboutus', function () {
   $id=Auth::id();
   $email=Auth::User()->email;

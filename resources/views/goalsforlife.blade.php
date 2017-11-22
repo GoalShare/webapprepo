@@ -1079,7 +1079,7 @@ console.log('sdsdsds');
               </div>
 
 
-                    <a href="#" style="color:white;" class="item">About us </a>&nbsp&nbsp&nbsp
+                    <a href="{{url('/loginaboutus')}}" style="color:white;" class="item">About us </a>&nbsp&nbsp&nbsp
                     <a href="#" style="color:white;" class="item">Support </a>&nbsp&nbsp&nbsp
                     <a href="#" style="color:white;" class="item">Work with us </a>
 
