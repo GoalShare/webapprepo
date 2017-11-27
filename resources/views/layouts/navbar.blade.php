@@ -458,8 +458,9 @@
 
                <p class="white-text">
                  <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">About us</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">  Support</a>
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;"> Work with us</a>
+                   <a href="{!! url('/blog'); !!}" class="white-text footerCont" style="font-size:small;">Blog</a>
+                 <a href="{!! url('/'); !!}" class="white-text footerCont" style="font-size:small;">  Support</a>
+                 <a href="{!! url('/'); !!}" class="white-text footerCont" style="font-size:small;"> Work with us</a>
 
                  </p>
 

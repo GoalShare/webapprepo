@@ -1080,6 +1080,7 @@ console.log('sdsdsds');
 
 
                     <a href="{{url('/loginaboutus')}}" style="color:white;" class="item">About us </a>&nbsp&nbsp&nbsp
+                  <a href="{{url('/blog')}}" style="color:white;" class="item">Blog </a>&nbsp&nbsp&nbsp
                     <a href="#" style="color:white;" class="item">Support </a>&nbsp&nbsp&nbsp
                     <a href="#" style="color:white;" class="item">Work with us </a>
 
