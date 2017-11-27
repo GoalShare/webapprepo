@@ -75,6 +75,7 @@ class RegisterController extends Controller
                 'message_type'=>1,
               ]
           );
+      $role='author';
         return User::create([
             'email' => $data['email'],
             'avatar'=> 'avatar.jpg',
@@ -85,6 +86,7 @@ class RegisterController extends Controller
             'countrycode'=>$data['countrycode'],
             'gender'=>$data['gender'],
             'password' => bcrypt($data['regpassword']),
+            'role'=>$role,
             'created_at'=> Carbon::now(),
         ]);
 

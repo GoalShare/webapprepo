@@ -44,7 +44,7 @@
 
     <div class="right menu">
       <div class="ui">
-    
+
       </div>
 </div>
 </div>
@@ -59,7 +59,7 @@
   @yield('content')
 
 
-  
+
   <div class="foot2">
   <div class="ui grid">
 
