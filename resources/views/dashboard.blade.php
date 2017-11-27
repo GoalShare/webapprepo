@@ -782,8 +782,8 @@
                             class="material-icons">dashboard</i></a>
             </div>
             <div class="col l2 m2 center-align">
-                <span class=" blue-text text-darken-4"><b>My Documents</b></span><br>
-                <a href="{{url('/files')}}" class="btn btn-floating btn-large "><i
+                <span class=" blue-text text-darken-4"><b>Knowledge Hub</b></span><br>
+                <a href="{{url('/mainlearningboard')}}" class="btn btn-floating btn-large "><i
                             class="material-icons">attach_file</i></a>
             </div>
             <div class="col l2 m2 center-align">

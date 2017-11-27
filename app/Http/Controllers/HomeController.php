@@ -219,4 +219,10 @@ public function confirmuser()
 
   }
 
+  public function logingaboutus(){
+
+    return view('loginaboutus');
+
+  }
+
     }

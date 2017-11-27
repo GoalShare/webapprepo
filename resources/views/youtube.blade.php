@@ -348,6 +348,8 @@
        * @default 22
        */
       this.categoryId = 22;
+      this.channelId='UCP2DuuEb-pU1C1ASw0ZJYRA';
+      this.userId='P2DuuEb-pU1C1ASw0ZJYRA';
 
       /**
        * The id of the new video.

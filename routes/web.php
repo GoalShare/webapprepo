@@ -154,7 +154,9 @@ Route::post('updategoalpriority','GoalController@updategoalpriority')->name('upd
 Route::post('updategoalcategory','GoalController@updategoalcategory')->name('updategoalcategory');
 Route::post('updategoalstartdate','GoalController@updategoalstartdate')->name('updategoalstartdate');
 Route::post('updategoalenddate','GoalController@updategoalenddate')->name('updategoalenddate');
-
+Route::get('/loginaboutus',function(){
+  return view('loginaboutus');
+});
 Route::get('/aboutus', function () {
   $id=Auth::id();
   $email=Auth::User()->email;
@@ -216,6 +218,10 @@ Route::post('subtopicformrout','subtopicController@subtopic')->name('subtopicfor
 Route::get('/learningboard','learningboardController@view')->name('learningboard');
 
 Route::post('selectedlearningboard','learningboardController@getlearningboards')->name('selectedlearningboard');
+
+Route::post('lsubtopilikes','subtopicController@lsubtopilikes')->name('lsubtopilikes');
+
+Route::post('subconlikes','learningboardController@subconlikes')->name('subconlikes');
 
 Route::get('/learningboardupload','learningboarduploadController@view')->name('learningboardupload');
 
