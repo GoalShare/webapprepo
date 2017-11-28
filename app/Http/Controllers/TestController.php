@@ -34,7 +34,7 @@ class TestController extends Controller
               ->select('users.*', 'friendships.*')
               ->where([['friendships.status','requested'],['friendships.friend',$id]])
               ->get();
-      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+      $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
       $allemail=DB::table('users')->pluck('email');
 
       return view('test',['categorylist'=>$categorylist,'notification'=>$notification,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'allemail'=>$allemail]);}

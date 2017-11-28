@@ -13,7 +13,7 @@ class bragController extends Controller
       $id=Auth::id();
       $email=Auth::User()->email;
       $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
-      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+      $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
       $friendrequest=DB::table('friendships')
               ->join('users', 'users.id', '=', 'friendships.user')
               ->select('users.*', 'friendships.*')

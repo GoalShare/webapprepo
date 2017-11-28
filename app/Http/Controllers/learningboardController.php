@@ -18,7 +18,7 @@ class learningboardController extends Controller
   $goal = DB::table('goals')->where('email',$email)->get();
   $userskill=DB::table('userskills')->where('email',$email)->get();
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
-  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+  $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
   $friendrequest=DB::table('friendships')
           ->join('users', 'users.id', '=', 'friendships.user')
           ->select('users.*', 'friendships.*')
@@ -92,22 +92,5 @@ public function subconlikes(request $request){
      );
  // DB::table('likes')->where([['goalid',$goalid],['type','d']])->delete();
 }
-
-public function sharealignsearch(request $request)
- {
-   $email=$request->shareemail;
-   $result=DB::table('users')->where('email','like', "%".$email."%")->get(['lname','fname','id','email','dob','phone','avatar']);
-
-   function is_ajax_request() {
-       return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-         $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
-     }
-
-   if (!is_ajax_request()) {
-     # code...
-   }
-
-   echo json_encode($result);
- }
 
 }

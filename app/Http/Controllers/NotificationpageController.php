@@ -36,13 +36,49 @@ class NotificationpageController extends Controller
             ->select('users.*', 'friendships.*')
             ->where([['friendships.status','requested'],['friendships.friend',$id]])
             ->get();
-    $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+            $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
+
+            $message=DB::table('goal_registry')
+            ->join('users','users.id','=','goal_registry.user_id')
+            ->select('users.avatar','goal_registry.*')
+            ->where('receiver_email',$email)
+            ->orderBy('added_date', 'desc')
+            ->get();
 
     $allemail=DB::table('users')->pluck('email');
-    return view('notificationpage',['categorylist'=>$categorylist,'notification'=>$notification,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'allemail'=>$allemail]);}
+    return view('notificationpage',['message'=>$message,'categorylist'=>$categorylist,'notification'=>$notification,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'allemail'=>$allemail]);}
     else {
       return view('/');
 
     }
 }
+
+
+
+public function makeseen(request $request)
+{
+  DB::table('goal_registry')
+       ->where('id',$request->id)
+       ->update(['status' => 'seen']);
+  echo "done";
+}
+public function acceptgoal(request $request)
+{
+  if ($request->action=="reject") {
+    if ($request->authorization=="aligned") {
+      DB::table('goalalignment')->where([['goalid',$request->goalid],['email',$request->user]])->delete();
+      DB::table('goal_registry')
+           ->where('id',$request->id)
+           ->update(['accept' => 'no']);
+    }
+    else {
+      DB::table('goals')->where([['goalid',$request->goalid],['email',$request->user],['goalauthorization','gift']])->delete();
+      DB::table('goal_registry')
+           ->where('id',$request->id)
+           ->update(['accept' => 'no']);
+    }
+  }
+  echo "dfsdfdsfsdf";
+}
+
 }

@@ -44,6 +44,7 @@ class ShareController extends Controller
                       'user_lname'=>Auth::User()->lname,
                       'goalname'=>$goals->goalname,
                       'goalid'=>$goals->goalid,
+                      'status'=>'notseen',
                     ]
                 );
                 DB::table('privacys')->insert(
@@ -122,8 +123,18 @@ class ShareController extends Controller
                               'user_lname'=>Auth::User()->lname,
                               'goalname'=>$goals->goalname,
                               'goalid'=>$goals->goalid,
+                              'status'=>'notseen',
                             ]
                         );
+                        DB::table('notifications')->insert(
+                                [
+                                  'to'=> $email,
+                                  'subject' => 'Share',
+                                  'message'=> Auth::User()->fname.' '.Auth::User()->lname.' has shared the goal"'.$request->goalname.'" with you',
+                                  'template_name'=>'shares',
+                                  'message_type'=>1,
+                                ]
+                            );
                         DB::table('privacys')->insert(
                                 [
                                   'goalid'=> $goalid,

@@ -34,7 +34,7 @@ class HomeController extends Controller
       if(Auth::check()){
       $id = Auth::id();
       $email=DB::table('users')->where('id',$id)->value('email');
-      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+      $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
       $goal = DB::table('goals')->where('email',$email)->get();
       $alignedgoal=DB::table('goalalignment')
                   ->join('goals','goals.goalid','=','goalalignment.goalid')
@@ -216,12 +216,6 @@ public function confirmuser()
 
 
   return redirect('/dashboard');
-
-  }
-
-  public function logingaboutus(){
-
-    return view('loginaboutus');
 
   }
 
