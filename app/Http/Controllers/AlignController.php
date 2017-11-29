@@ -23,6 +23,30 @@ class AlignController extends Controller
             'useremail'=>Auth::User()->email,
           ]
         );
+
+        DB::table('goal_registry')->insert(
+          [
+            'user_id'=>Auth::id(),
+            'receiver_email'=>$email,
+            'authorization'=>'aligned',
+            'goalid'=>$goalid,
+            'goalname'=>$request->goalname,
+            'user_fname'=>Auth::User()->fname,
+            'user_lname'=>Auth::User()->lname,
+            'status'=>'notseen',
+          ]
+        );
+
+        DB::table('notifications')->insert(
+                [
+                  'to'=> $email,
+                  'subject' => 'Align',
+                  'message'=> Auth::User()->fname.' '.Auth::User()->lname.' has aligned the goal"'.$request->goalname.'" with you',
+                  'template_name'=>'aligns',
+                  'message_type'=>1,
+                ]
+            );
+
           $user=DB::table('users')->where('email',$email)->get(['lname','fname','id','email','dob','phone','avatar']);
           echo json_encode($user);
           // echo "string";

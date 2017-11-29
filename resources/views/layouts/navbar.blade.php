@@ -288,17 +288,28 @@
             </li>
 <!--            <li style="background-color:#dbdbdb;"><a><b>Show more</b><i class="material-icons">add</i></a></li>-->
           </ul>
-          <li><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
-
+          @php
+            $notificationcount=0;
+            foreach ($notification as $notifications) {
+              $notificationcount++;
+            }
+          @endphp
+          <li><span class="new badge red">{{$notificationcount}}</span><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
+          <input type="hidden" name="_token" id="notificationtoken" value="{{ csrf_token() }}">
           <ul id="noticationdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
               <li>
             @foreach ($notification as $notifications)
-                <a>
-                  <b><span onclick="window.location.href='{{url('/search/'.$notifications->user_id)}}'">{{$notifications->user_fname}} {{$notifications->user_lname}}</span></b> {{$notifications->authorization}} the goal <b><span onclick="window.location.href='{{ url('/goal/'.$notifications->goalid) }}'">{{ $notifications->goalname }}</span></b> to you.
+                <a onclick="
+                $.post('{{ route('makeseen') }}',
+                  {
+                    _token: $('#notificationtoken').val(),
+                    id: {{ $notifications->id }}
+                  },function(data,status){console.log('Data: ' + data + 'Status: ' + status);window.location.href='{{ url('/goal/'.$notifications->goalid) }}';});">
+                  <b><span>{{$notifications->user_fname}} {{$notifications->user_lname}}</span></b> {{$notifications->authorization}} the goal <b><span>{{ $notifications->goalname }}</span></b> to you.
                 </a>
             @endforeach
               </li>
-              <a style="color:black;" onclick="window.location.href='{{url('/notificationpage')}}'">View all notification</a>
+              <li><a class="blue-text text-darken-4 grey lighten-1"  onclick="window.location.href='{{url('/notificationpage')}}'"><b>View all notifications</b></a></li>
           </ul>
 
 

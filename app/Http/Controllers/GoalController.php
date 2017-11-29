@@ -36,7 +36,8 @@ public function view($goalid){
                    ->select('users.*', 'friendships.*')
                    ->where([['friendships.status','friends'],['friendships.friend',$id]])
                    ->get();
-   $notification=DB::table('goal_registry')->where('receiver_email',Auth::User()->email)->get();
+
+     $notification=DB::table('goal_registry')->where([['receiver_email',Auth::User()->email],['status','notseen']])->orderBy('added_date', 'desc')->get();
    $friendstwos=DB::table('friendships')
                   ->join('users', 'users.id', '=', 'friendships.friend')
                   ->select('users.*', 'friendships.*')

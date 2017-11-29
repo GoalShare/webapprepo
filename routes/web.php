@@ -71,7 +71,8 @@ Route::get('/search',function(){
           ->select('users.*', 'friendships.*')
           ->where([['friendships.status','requested'],['friendships.friend',$id]])
           ->get();
-  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+          $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
+
   return view('friendsView',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'notification'=>$notification]);}
   else {
     return view('welcome');
@@ -91,7 +92,7 @@ Route::get('/search/{userid}',function($userid){
   $userskill=DB::table('userskills')->where('email',$useremail)->get();
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
   $friendship=DB::table('friendships')->where([['user',$id],['friend',$userid]])->orWhere([['user',$userid],['friend',$id]])->value('status');
-  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+  $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
 
   $friendrequest=DB::table('friendships')
           ->join('users', 'users.id', '=', 'friendships.user')
@@ -166,7 +167,7 @@ Route::get('/aboutus', function () {
           ->select('users.*', 'friendships.*')
           ->where([['friendships.status','requested'],['friendships.friend',$id]])
           ->get();
-  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+          $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
   $allemail=DB::table('users')->pluck('email');
     return view('aboutus',['categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'notification'=>$notification,'allemail'=>$allemail]);
 });
@@ -208,7 +209,7 @@ Route::get('/dashboard/{email}','HomeController@confirmuser');
 Route::get('contact/import/google', ['as'=>'google.import', 'uses'=>'ContactController@importGoogleContact']);
 
 Route::post('chkdetails','emailController@viewemails')->name('chkdetails');
-
+Route::post('makeseen','NotificationpageController@makeseen')->name('makeseen');
 Route::get('/mainlearningboard','mainlearningboardController@view')->name('mainlearningboard');
 
 Route::get('/subtopic','subtopicController@view')->name('subtopic');
@@ -222,6 +223,10 @@ Route::post('selectedlearningboard','learningboardController@getlearningboards')
 Route::post('lsubtopilikes','subtopicController@lsubtopilikes')->name('lsubtopilikes');
 
 Route::post('subconlikes','learningboardController@subconlikes')->name('subconlikes');
+
+Route::post('subconlikes','learningboardController@subconlikes')->name('subconlikes');
+Route::post('acceptgoal','NotificationpageController@acceptgoal')->name('acceptgoal');
+
 
 Route::get('/learningboardupload','learningboarduploadController@view')->name('learningboardupload');
 

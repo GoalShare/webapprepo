@@ -19,7 +19,7 @@ class calendarController extends Controller
       $email=DB::table('users')->where('id',$id)->value('email');
       $goal = DB::table('goals')->where('email',$email)->get();
       $task = DB::table('tasks')->where('email', $email)->get();
-      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+      $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
       $categorylist = DB::table('goals')
       ->select('goalcategory')
       ->where('email', $email)

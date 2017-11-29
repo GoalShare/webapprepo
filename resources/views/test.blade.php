@@ -1927,16 +1927,98 @@ to_pickerpopup.on('set', function(event) {
 
           <div class="card blue darken-4" id="likestabcontent" style="display:none;">
             <div class="card-content white-text">
-              <span class="card-title">Brag</span>
+              <span class="card-title">Thumbs up</span>
               <div class="row">
-               <div class="col s12">
-                 <div class="card-panel">
-                   <span class="grey-text text-darken-3">I am a very simple card. I am good at containing small bits of information.
-                   I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                   </span>
-                 </div>
-               </div>
-             </div>
+                <div class="col l6">
+                  <div class="card">
+                    <div class="row"></div>
+                    <div class="row">
+                      <center>
+                        <button style="height:100px;width:100px;" id="likebtn" class="btn btn-floating"><i class="material-icons" style="font-size:60px;">thumb_up</i></button>
+                        <div><span class="count" id="likes" style="color:#0d47a1;font-size:25px;">@php echo $countlikes; @endphp</span></div>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+                <form id="likeform" action="{{route('likes')}}" method="post">
+                 {{ csrf_field() }}
+                 <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                 <input type="hidden" name="type" value="l">
+                </form>
+
+                <script type="text/javascript">
+                  var likebtn=document.getElementById("likebtn");
+                  likebtn.addEventListener("click",likedfunction)
+                  function likedfunction() {
+                  var form=document.getElementById("likeform");
+                  var action = form.getAttribute("action");
+                  var form_data = new FormData(form);
+                  var xhr = new XMLHttpRequest();
+                  xhr.open('POST', action, true);
+                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                  xhr.send(form_data);
+                  xhr.onreadystatechange = function () {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                       var result = xhr.responseText;
+                       console.log('Result: ' + result);
+                       var newlike=document.getElementById("likes").innerHTML;
+                       var newdislike=document.getElementById("dislikes").innerHTML;
+                       document.getElementById("likes").innerHTML=parseInt(newlike,10) + 1;
+                       document.getElementById("likebtn").disabled=true;
+                       document.getElementById("dislikebtn").disabled=false;
+                       document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) - 1;
+
+
+                    }
+                  };
+                }
+                </script>
+
+                <div class="col l6">
+                  <div class="card">
+                    <div class="row"></div>
+                    <div class="row">
+                      <center>
+                        <button style="height:100px;width:100px;" id="dislikebtn" class="btn btn-floating"><i class="material-icons" style="font-size:60px;">thumb_down</i></button>
+                        <div><span class="countdislike" id="dislikes" style="color:#0d47a1;font-size:25px;">@php echo $countdislikes; @endphp</span></div>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+                <form id="dislikeform" action="{{route('dislikes')}}" method="post">
+                 {{ csrf_field() }}
+                 <input type="hidden" name="goalid" value="{{$goals->goalid}}">
+                 <input type="hidden" name="type" value="d">
+                </form>
+
+                <script type="text/javascript">
+                  var dislikebtn=document.getElementById("dislikebtn");
+                  dislikebtn.addEventListener("click",dislikedfunction)
+                  function dislikedfunction() {
+                  var form=document.getElementById("dislikeform");
+                  var action = form.getAttribute("action");
+                  var form_data = new FormData(form);
+                  var xhr = new XMLHttpRequest();
+                  xhr.open('POST', action, true);
+                  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                  xhr.send(form_data);
+                  xhr.onreadystatechange = function () {
+                    if(xhr.readyState == 4 && xhr.status == 200) {
+                       var result = xhr.responseText;
+                       console.log('Result: ' + result);
+                       var newdislike=document.getElementById("dislikes").innerHTML;
+                       var newlike=document.getElementById("likes").innerHTML;
+                       document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) + 1;
+                       document.getElementById("dislikebtn").disabled=true;
+                       document.getElementById("likebtn").disabled=false;
+                       document.getElementById("likes").innerHTML=parseInt(newlike,10) - 1;
+
+                    }
+                  };
+                }
+                </script>
+
+              </div>
             </div>
           </div>
 

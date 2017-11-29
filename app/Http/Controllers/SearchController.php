@@ -24,7 +24,7 @@ class SearchController extends Controller{
             ->select('users.*', 'friendships.*')
             ->where([['friendships.status','requested'],['friendships.friend',$id]])
             ->get();
-    $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+    $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
     $userkey= DB::table('users')->where('email','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
     $userfname= DB::table('users')->where('fname','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);
   //  $userphone= DB::table('users')->where('phone','like', "%".$searchkey."%")->get(['lname','fname','id','email','dob','phone','avatar']);

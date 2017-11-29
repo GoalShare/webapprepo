@@ -18,7 +18,7 @@ class getexistingboardController extends Controller
   $goal = DB::table('goals')->where('email',$email)->get();
   $userskill=DB::table('userskills')->where('email',$email)->get();
   $categorylist = DB::table('goals')->select('goalcategory')->where('email', $email)->groupBy('goalcategory')->get();
-  $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
+  $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
   $friendrequest=DB::table('friendships')
           ->join('users', 'users.id', '=', 'friendships.user')
           ->select('users.*', 'friendships.*')
