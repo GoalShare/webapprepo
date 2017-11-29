@@ -253,7 +253,9 @@
 
         {{ $post->title }}
         @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
-            <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
+
+
+            <a href="{{ url('edit/'.$post->slug)}}"><button  style="float: right" class="btn">Edit Post</button></a>
 
         @endif
     @else

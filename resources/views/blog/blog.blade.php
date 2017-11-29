@@ -21,11 +21,13 @@
 
                                 @if($post->active == '1')
 
-                                    <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit
-                                            Post</a></button>
+                                <a href="{{ url('edit/'.$post->slug)}}"><button  style="float: right" class="btn">Edit
+                                            Post</button></a>
                                 @else
-                                    <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit
-                                            Draft</a></button>
+
+
+                                    <a href="{{ url('edit/'.$post->slug)}}"><button  style="float: right" class="btn">Edit
+                                            Draft</button></a>
                                 @endif
                             @endif
 

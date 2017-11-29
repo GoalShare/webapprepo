@@ -33,13 +33,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a style="color: #ffffff;" class="navbar-brand" href="/">Blog | Life With Goals</a>
+                @if (Auth::guest())
+                    <img style="margin-top: 3%" class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="39px" width="200px">
+
+            @else
+                    <img style="margin-top: 8%; margin-left: 37%" class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="39px" width="200px">
+
+            @endif
+              <!--   <a style="color: #ffffff;" class="navbar-brand" href="/">Blog | Life With Goals</a> -->
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+
+
+
+
                     <li>
-                        <a style="color: #ffffff;" href="{{ url('/blog') }}">Home</a>
+                        <a style="color: #ffffff;margin-top: 13%; margin-left: 82%" href="{{ url('/blog') }}">Home</a>
                     </li>
                 </ul>
 

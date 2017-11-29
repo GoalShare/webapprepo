@@ -269,6 +269,8 @@ Route::group(['middleware' => ['auth']], function()
 	// save new post
 	Route::post('new-post','PostController@store');
 
+	 
+
 	// edit post form
 	Route::get('edit/{slug}','PostController@edit');
 
