@@ -20,7 +20,7 @@ class UserController extends Controller {
 	{
 		//
 		$posts = Posts::where('author_id',$id)->where('active','1')->orderBy('created_at','desc')->paginate(5);
-		$title = User::find($id)->name;
+		$title = User::find($id)->fname;
 		return view('blog.blog')->withPosts($posts)->withTitle($title);
 	}
 

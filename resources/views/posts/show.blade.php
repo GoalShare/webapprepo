@@ -393,7 +393,7 @@
     </div>
   <br>
 @if( $post->cover==0)
-@else<img class="card-img-top" src="images/{{ $post->cover }}" alt="" style="width:100%;padding: 0px;">
+@else<img class="card-img-top" src="/images/{{ $post->cover }}" alt="" style="width:100%;padding: 0px;">
 @endif
 
 @endsection

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+
     <style>
         .btn-file {
             position: relative;

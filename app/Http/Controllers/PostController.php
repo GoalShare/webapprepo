@@ -65,7 +65,7 @@ class PostController extends Controller
             $file = $request->file('coverimg');
             if ($file->getClientOriginalExtension() == 'jpg' || $file->getClientOriginalExtension() == 'jpeg') {
                 $filename = time() . '1.' . $file->getClientOriginalExtension();
-              //  Image::make($file)->resize(851, 240)->save(public_path('images/' . $filename));
+              Image::make($file)->resize(851, 240)->save(public_path('images/' . $filename));
 
                 $post->cover = $filename;
             } else {
@@ -153,6 +153,24 @@ class PostController extends Controller
                     $post->slug = $slug;
                 }
             }
+
+            if ($request->hasfile('coverimg')) {
+                $file = $request->file('coverimg');
+                if ($file->getClientOriginalExtension() == 'jpg' || $file->getClientOriginalExtension() == 'jpeg') {
+                    $filename = time() . '1.' . $file->getClientOriginalExtension();
+                    Image::make($file)->resize(851, 240)->save(public_path('images/' . $filename));
+
+                    $post->cover = $filename;
+                } else {
+                    $filename = 0;
+                    $post->cover = $filename;
+                }
+
+            } else {
+                $filename = 0;
+                $post->cover = $filename;
+            }
+
 
             $post->title = $title;
             $post->body = $request->input('body');
