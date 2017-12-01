@@ -1,4 +1,4 @@
-@extends('blog.app')
+@extends('blog.guestapp')
 
 @section('title')
     <h4>  {{$title}} </h4>
@@ -15,7 +15,7 @@
                     <img class="card-img-top" src="images/{{ $post->cover }}" alt="" style="width:100%;padding: 0px;">
                     <div class="list-group-item">
 
-                        <h3><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a>
+                        <h2><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a>
 
                             @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
 
@@ -31,7 +31,7 @@
                                 @endif
                             @endif
 
-                        </h3>
+                        </h2>
 
                         <p style="color: darkgray; text-decoration: none"><span><i
                                         class="glyphicon glyphicon-calendar"></i> {{ $post->created_at->format('M d,Y \a\t h:i a') }} </span>&nbsp<span><i

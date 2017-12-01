@@ -1,4 +1,4 @@
-@extends('blog.app')
+@extends('blog.guestapp')
 
 <style>
 
