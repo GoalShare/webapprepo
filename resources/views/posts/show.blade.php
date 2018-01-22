@@ -249,7 +249,7 @@
 <meta property="og:type" content="{{ $post->title }}" />
 <meta property="og:image" content="http://www.lifewithgoals.com/images/{{ $post->cover }}" />
 <meta property="og:site_name" content="{{ $post->title }}" />
-<meta name="description" content="{!! str_limit($post->body, $limit = 20 ) !!}" />
+
 <meta property="og:url" content="http://www.lifewithgoals.com/{{ $post->slug }}" />
 
 <meta property="og:site_name" content="LifeWithGOals Blog" />
@@ -258,6 +258,16 @@
 <meta property="og:image:width" content="730" />
 <meta property="og:image:height" content="485" />
 
+@php
+    // Variable to check
+    $str = $post->body;
+
+    // Remove HTML tags from string
+    $newstr = filter_var($str, FILTER_SANITIZE_STRING);
+     
+@endphp
+
+<meta name="description" content="{!! str_limit($newstr, $limit = 50, $end = ' ') !!}" />
 
 @section('title')
 
