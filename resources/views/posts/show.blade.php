@@ -241,13 +241,13 @@
         }
     }
 </style>
+
 <title>{{ $post->title }}</title>
 <meta property="og:type" content="{{ $post->title }}" />
-<meta property="og:image" content="/public/images/{{ $post->cover }} " />
+<meta property="og:image" content="/public/images/{{ $post->cover }}" />
 <meta property="og:site_name" content="{{ $post->title }}" />
 <meta name="theme-color" content="#b73a78" />
-<meta name="description" content=" {!! str_limit($post->body, $limit = 100, $end = '') !!}" />
-
+<meta name="description" content="{!!str_limit($post->body,$limit=100)!!}" />
 <meta property="og:title" content="{{ $post->title }}" />
 
 @section('title')
