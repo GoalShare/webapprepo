@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog | Life With Goals</title>
+    <meta property="og:type" content="{{ $post->title }}" />
+    <meta property="og:image" content="/public/images/{{ $post->cover }} " />
+    <meta property="og:site_name" content="{{ $post->title }}" />
+    <meta name="theme-color" content="#b73a78" />
+    <meta name="description" content="Easy tips for life" />
+    <title>{{ $post->title }}</title>
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
