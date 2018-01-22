@@ -246,7 +246,9 @@
 <meta property="og:image" content="/public/images/{{ $post->cover }} " />
 <meta property="og:site_name" content="{{ $post->title }}" />
 <meta name="theme-color" content="#b73a78" />
-<meta name="description" content="Easy tips for life" />
+<meta name="description" content=" {!! str_limit($post->body, $limit = 100, $end = '') !!}" />
+
+<meta property="og:title" content="{{ $post->title }}" />
 
 @section('title')
 
