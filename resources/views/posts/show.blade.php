@@ -243,13 +243,23 @@
 </style>
 
 <title>{{ $post->title }}</title>
-
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
 <meta property="og:title" content="{{ $post->title }}" />
 <meta property="og:type" content="{{ $post->title }}" />
-<meta property="og:image" content="/public/images/{{ $post->cover }}" />
+<meta property="og:image" content="http://www.lifewithgoals.com/images/{{ $post->cover }}" />
 <meta property="og:site_name" content="{{ $post->title }}" />
- 
 <meta name="description" content="Read Stories of Success" />
+/>
+<meta property="og:description" content="text og discription" />
+<meta property="og:url" content="http://www.lifewithgoals.com/images/{{ $post->slug }}" />
+<meta property="og:site_name" content="LifeWithGOals Blog" />
+<meta property="article:publisher" content="https://facebook.com/LifeWithGoals" />
+
+<meta property="og:image" content="http://www.lifewithgoals.com/images/{{ $post->cover }}" />
+<meta property="og:image:secure_url" content="http://www.lifewithgoals.com/images/{{ $post->cover }}" />
+<meta property="og:image:width" content="730" />
+<meta property="og:image:height" content="485" />
 
 
 @section('title')
