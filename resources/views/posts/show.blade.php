@@ -242,10 +242,10 @@
     }
 </style>
 <meta property="og:type" content="{{ $post->title }}" />
-<meta property="og:image" content="images/{{ $post->cover }} " />
-<meta property="og:site_name" content="Lifi With Goals | Blog" />
+<meta property="og:image" content="/public/images/{{ $post->cover }} " />
+<meta property="og:site_name" content="{{ $post->title }}" />
 <meta name="theme-color" content="#b73a78" />
-<meta name="description" content="Vist To Our Blog " />
+<meta name="description" content="{!! $post->body !!}" />
 
 @section('title')
 
