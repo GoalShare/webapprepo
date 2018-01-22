@@ -264,10 +264,10 @@
 
     // Remove HTML tags from string
     $newstr = filter_var($str, FILTER_SANITIZE_STRING);
-     
+
 @endphp
 
-<meta name="description" content="{!! str_limit($newstr, $limit = 50, $end = ' ') !!}" />
+<meta name="description" content="{!! str_limit($newstr, $limit = 200, $end = ' ') !!}...." />
 
 @section('title')
 
