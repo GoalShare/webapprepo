@@ -29,7 +29,8 @@
         }
 
         #img-upload {
-            width: 100%;
+            max-width: 100%;
+            height: auto;
         }
     </style>
     <script type="text/javascript" src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
