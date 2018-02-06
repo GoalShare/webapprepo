@@ -162,13 +162,11 @@ class PostController extends Controller
 
                     $post->cover = $filename;
                 } else {
-                    $filename = 0;
-                    $post->cover = $filename;
+
                 }
 
             } else {
-                $filename = 0;
-                $post->cover = $filename;
+
             }
 
 
