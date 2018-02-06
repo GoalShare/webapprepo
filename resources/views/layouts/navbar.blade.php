@@ -480,7 +480,7 @@
          </div>
          <div class="footer-copyright">
            <div class="container" style=" font-size:x-small;">
-           © 2017 Copyright Text
+           © 2018 Copyright Text
            <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
            </div>
          </div>
