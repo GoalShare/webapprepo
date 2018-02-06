@@ -175,7 +175,7 @@
 </head>
 <body>
     <nav>
-      <div class="nav-wrapper blue darken-4 ">
+      <div class="nav-wrapper black">
         <ul class="left">
               <li><a href="#" data-activates="slide-out" class="button-collapse left"><i class="material-icons">menu</i></a></li>
               <li><img class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px"></li>
