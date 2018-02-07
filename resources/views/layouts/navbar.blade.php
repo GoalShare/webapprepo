@@ -175,7 +175,7 @@
 </head>
 <body>
     <nav>
-      <div class="nav-wrapper black">
+      <div class="nav-wrapper blue darken-4 ">
         <ul class="left">
               <li><a href="#" data-activates="slide-out" class="button-collapse left"><i class="material-icons">menu</i></a></li>
               <li><img class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="40px" width="200px"></li>
@@ -288,28 +288,17 @@
             </li>
 <!--            <li style="background-color:#dbdbdb;"><a><b>Show more</b><i class="material-icons">add</i></a></li>-->
           </ul>
-          @php
-            $notificationcount=0;
-            foreach ($notification as $notifications) {
-              $notificationcount++;
-            }
-          @endphp
-          <li><span class="new badge red">{{$notificationcount}}</span><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
-          <input type="hidden" name="_token" id="notificationtoken" value="{{ csrf_token() }}">
+          <li><a class="dropdown-button" data-hover="false" data-activates="noticationdropdown" data-beloworigin="true" ><i class="large material-icons ">notifications</i></a></li>
+
           <ul id="noticationdropdown" class='dropdown-content' style="min-width:300px;max-height:200px;">
               <li>
             @foreach ($notification as $notifications)
-                <a onclick="
-                $.post('{{ route('makeseen') }}',
-                  {
-                    _token: $('#notificationtoken').val(),
-                    id: {{ $notifications->id }}
-                  },function(data,status){console.log('Data: ' + data + 'Status: ' + status);window.location.href='{{ url('/goal/'.$notifications->goalid) }}';});">
-                  <b><span>{{$notifications->user_fname}} {{$notifications->user_lname}}</span></b> {{$notifications->authorization}} the goal <b><span>{{ $notifications->goalname }}</span></b> to you.
+                <a>
+                  <b><span onclick="window.location.href='{{url('/search/'.$notifications->user_id)}}'">{{$notifications->user_fname}} {{$notifications->user_lname}}</span></b> {{$notifications->authorization}} the goal <b><span onclick="window.location.href='{{ url('/goal/'.$notifications->goalid) }}'">{{ $notifications->goalname }}</span></b> to you.
                 </a>
             @endforeach
               </li>
-              <li><a class="blue-text text-darken-4 grey lighten-1"  onclick="window.location.href='{{url('/notificationpage')}}'"><b>View all notifications</b></a></li>
+              <a style="color:black;" onclick="window.location.href='{{url('/notificationpage')}}'">View all notification</a>
           </ul>
 
 
@@ -364,7 +353,7 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="{{url('/calendar')}}">My Schedule<i class="material-icons">date_range</i></a></li>
        <li><div class="divider"></div></li>
-       <li><a class="waves-effect" href="{{url('/mainlearningboard')}}">Knowledge Hub<i class="material-icons">attach_file</i></a></li>
+       <li><a class="waves-effect" href="{{url('/files')}}">My Documents<i class="material-icons">attach_file</i></a></li>
        <li><a class="waves-effect" href="#sendinvitebtnmodal">Send Invite<i class="material-icons">people</i></a></li>
 
        <script>
@@ -439,48 +428,29 @@
         @yield('content')
 
    <!-- footer -->
-<footer class="page-footer black"  >
+<footer class="page-footer blue darken-4"  >
          <div class="container">
            <div class="row">
-             <div class="col s12">
+             <div class="col l6 s12">
+               <h5 class="white-text">Life With Goals</h5><br>
+
                <p class="white-text">
                  <a href="#" class="white-text footerCont" style=" font-size:x-small;">English(UK)</a>
                  <a href="" class="white-text footerCont" style=" font-size:x-small;">Sinhalese</a>
                </p>
-             </div>
 
-               <div class="col s12">
-                 <div class="col s6">
-                  <h3 class="white-text">Life With Goals</h3>
-               </div>
-               <div class="col s6">
-                 <div class="right">
-                   <a target="_blank" title="find us on Facebook" href="https://www.facebook.com/LifeWithGoals/"><img alt="follow me on facebook" src="{{asset('img/313485-32.png')}}" border=0></a>&nbsp&nbsp&nbsp&nbsp
-                   <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/channel/UCP2DuuEb-pU1C1ASw0ZJYRA?view_as=subscriber"><img alt="follow me on youtube" src="{{asset('img/1218148-32.png')}}" border=0></a>&nbsp&nbsp&nbsp&nbsp
-                   <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/lifewithgoals_1/"><img alt="follow me on instagram" src="{{asset('img/281827-32.png')}}" border=0></a>&nbsp&nbsp&nbsp&nbsp
-                   <a target="_blank" title="follow me on twitter" href="http://www.twitter.com"><img alt="follow me on twitter" src="{{asset('img/313466-32.png')}}" border=0></a>&nbsp&nbsp&nbsp&nbsp
-                   <a target="_blank" title="follow me on google plus" href="https://plus.google.com"><img alt="follow me on google plus" src="{{asset('img/313479-32.png')}}" border=0></a>
-                 </div>
-</div>
-</div>
-<div class="col s12">
-
-               {{-- <center><h1 class="white-text">Life With Goals</h1></center><br> --}}
-
+               <div class="divider"></div>
                <p class="white-text">
-                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style="font-size:small;">About us</a>
-                   <a href="{!! url('/blog'); !!}" class="white-text footerCont" style="font-size:small;">Blog</a>
-                 <a href="{!! url('/'); !!}" class="white-text footerCont" style="font-size:small;">  Support</a>
-                 <a href="{!! url('/'); !!}" class="white-text footerCont" style="font-size:small;"> Work with us</a>
-
-                 </p>
-
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">About us</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;">  Support</a>
+                 <a href="{!! url('/aboutus'); !!}" class="white-text footerCont" style=" font-size:x-small;"> Work with us</a>
+               </p>
              </div>
            </div>
          </div>
          <div class="footer-copyright">
            <div class="container" style=" font-size:x-small;">
-           © 2018 Copyright Text
+           © 2017 Copyright Text
            <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
            </div>
          </div>
