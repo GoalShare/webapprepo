@@ -1115,11 +1115,23 @@ to_pickerpopup.on('set', function(event) {
                  @if ($goals->goalauthorization!='aligned')
                  <div class="card-tabs">
                    <ul class="tabs tabs-fixed-width">
-                       <li class="tab"><a class="active blue-text text-darken-4" href="#other">Goal</a></li>
-                       <li class="tab"><a class=" blue-text text-darken-4" href="#goalprivacy">Goal privacy</a></li>
+                       <li class="tab active"><a class="active blue-text text-darken-4" href="#other">Goal</a></li>
+                       <li class="tab"><a class="blue-text text-darken-4" href="#goalprivacy">Goal privacy</a></li>
                      <li class="tab"><a class="blue-text text-darken-4" href="#alignprivacy">Align Privacy</a></li>
                    </ul>
-                 </div>
+                  </div>
+
+                 <script>
+                 $(document).ready(function(){
+                   $('ul.tabs').tabs();
+                    });
+
+                 $(document).ready(function(){
+                   $('ul.tabs').tabs('select_tab', 'tab_id');
+                    });
+                 </script>
+
+
                  <div class="card-content grey lighten-4">
                    <div id="goalprivacy">
                      <p>Change who can see and what is can be seen of this goal in your profile</p>
@@ -1920,7 +1932,7 @@ to_pickerpopup.on('set', function(event) {
            $countlikes=0;$countdislikes=0;
           foreach ($likesanddislikes as $likesdislikes){
              if($likesdislikes->type=="l"){
-               $countlikes=$countlikes+1;
+                  $countlikes=$countlikes+1;
 
              }
 
@@ -1973,9 +1985,12 @@ to_pickerpopup.on('set', function(event) {
                        var newdislike=document.getElementById("dislikes").innerHTML;
                        document.getElementById("likes").innerHTML=parseInt(newlike,10) + 1;
                        document.getElementById("likebtn").disabled=true;
+
+                       if({{$countdislikes}}>0){
+
                        document.getElementById("dislikebtn").disabled=false;
                        document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) - 1;
-
+                      }
 
                     }
                   };
