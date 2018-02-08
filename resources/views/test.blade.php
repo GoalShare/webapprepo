@@ -507,6 +507,8 @@
               <span class="card-title">Tasks</span>
               <p>Here you have all tasks belongin to your Goal. You can asign people for individual tasks and also control the changes they can make.</p>
               @if ($email!=Auth::User()->email && $privacys->addtaskprivacy=="public")
+
+
                 <a href="#" class="btn white blue-text text-darken-4 btn-large right disabled ">Add Task</a>
                 <br><br>
                 Ask Goal creator to grant adding tasks
@@ -2303,21 +2305,42 @@ to_pickerpopup.on('set', function(event) {
      </div>
    </li>
  </ul>
-  </div>
-</div>
-</div>
-      <form class="" action="{{ route('comment') }}" method="post" id="comment-form">
-          {{ csrf_field() }}
-        <div class="input-field col m6 s12 l6">
-          <input id="comment" type="text" name="comment" class="validate" >
-          <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
-          <label for="comment">
-            Comment
-          </label>
-         <button type="submit" class="waves-effect waves-light btn btn-floating  blue darken-4" id="cmtbtn"><i class="material-icons">send</i></button>
-        </div>
 
-     </form>
+
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+<div class="container">
+  <div class="row">
+  <div class="col l1 m1 s1"></div>
+  <div class="col l10 m10 s10">
+    <form class="" action="{{ route('comment') }}" method="post" id="comment-form">
+      {{ csrf_field() }}
+    <div class="input-field">
+      <input id="comment" type="text" name="comment" class="validate" >
+      <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
+      <label for="comment">
+        Comment
+      </label>
+     <button type="submit" class="waves-effect waves-light btn btn-floating  blue darken-4" id="cmtbtn"><i class="material-icons">send</i></button>
+    </div>
+
+  </form>
+</div>
+<div class="col l1 m1 s1"></div>
+</div>
+</div>
+
+
+
      <script type="text/javascript">
      // note: IE8 doesn't support DOMContentLoaded
      document.addEventListener('DOMContentLoaded', function() {
