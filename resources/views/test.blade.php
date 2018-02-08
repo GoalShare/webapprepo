@@ -469,13 +469,19 @@
                     </div>
                 </div>
             </span>
-          <form style=""enctype="multipart/form-data" action="{{route('goalPicUpload')}}" method="post" id="goalPicUpload">
+          <form style=""enctype="multipart/form-data" action="{{route('goalPicUpload')}}" method="post" id="goalPicUpload{{$goals->goalid}}">
             {{ csrf_field() }}
+            <div class="file-field input-field">
             <a class="btn-floating halfway-fab waves-effect waves-light white">
+
+              {{-- <div class="file-field input-field btn-floating halfway-fab waves-effect waves-light white"> --}}
               <i class="material-icons tooltipped grey-text" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >photo_size_select_actual</i>
               <input type="hidden" name="goalid" value="{{ $goals->goalid}}">
-              <input type="file" name="goalpicture"  onchange="javascript:this.form.submit();">
+              <input type="file" name="goalpicture" onchange="javascript:this.form.submit();">
+            {{-- </div> --}}
+
             </a>
+          </div>
           </form>
             {{-- <i class="material-icons grey-text">photo_size_select_actual</i> --}}
             {{-- <a href="#" class="btn-floating halfway-fab waves-effect waves-light white"><i class="material-icons grey-text">thumb_up</i></a>
