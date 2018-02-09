@@ -1932,6 +1932,9 @@ to_pickerpopup.on('set', function(event) {
            $countlikes=0;$countdislikes=0;
           foreach ($likesanddislikes as $likesdislikes){
              if($likesdislikes->type=="l"){
+
+
+
                   $countlikes=$countlikes+1;
 
              }
@@ -1996,6 +1999,12 @@ to_pickerpopup.on('set', function(event) {
                   };
                 }
                 </script>
+                <script>
+                      if({{$countlikes}} > 0){
+                        document.getElementById("likebtn").disabled=true;
+
+                      }
+                </script>
 
                 <div class="col l6">
                   <div class="card">
@@ -2033,12 +2042,21 @@ to_pickerpopup.on('set', function(event) {
                        var newlike=document.getElementById("likes").innerHTML;
                        document.getElementById("dislikes").innerHTML=parseInt(newdislike,10) + 1;
                        document.getElementById("dislikebtn").disabled=true;
+
+                       if({{$countlikes}} > 0){
+
                        document.getElementById("likebtn").disabled=false;
                        document.getElementById("likes").innerHTML=parseInt(newlike,10) - 1;
-
+                     }
                     }
                   };
                 }
+                </script>
+                <script>
+                      if({{$countdislikes}} > 0){
+                        document.getElementById("dislikebtn").disabled=true;
+
+                      }
                 </script>
 
               </div>
