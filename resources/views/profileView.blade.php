@@ -780,8 +780,14 @@ if (xhttp.status === 404) {
 
           <br>
           <div class="row">
-          <div class="col s12 m6 l6 center-align" id="profilepic">
-                      <div class="cambtn hide-on-med-and-down" id="imgoverlayfade">
+
+
+          <div class="col s12 m12 l12 center-align" id="profilepic">
+            <div class="card">
+
+
+
+              <div class="cambtn hide-on-med-and-down" id="imgoverlayfade">
                       <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
                         {{ csrf_field() }}
                           <p class="white-text">
@@ -804,9 +810,10 @@ if (xhttp.status === 404) {
                         </form>
                     </div>
                       <div id="imageWrapper" style="z-index:1;">
-                         <img   src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
+                         <img   src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="150px" height="150px" class="circle" style="border: 5px solid white;box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);">
                       </div>
-                  </div>
+{{-- </div> --}}
+
           <script type="text/javascript">
             document.getElementById("imgoverlayfade").style.display='none';
             var imageWrapper = document.getElementById('imageWrapper');
@@ -851,24 +858,28 @@ if (xhttp.status === 404) {
               document.getElementById("imgoverlayfade").style.display='none';
             }
           </script>
-          <div class="col s12 m6 l6">
-            <br>
+          {{-- <div class="col s12 m6 l6"> --}}
+            {{-- <br> --}}
               <form id="infoform" action="{{route('modifyprofile')}}" method="post" >
             {{-- <button id="editprofileinfobtn" class="btn btn-floating pulse right"><i class="material-icons">border_color</i></button><br> --}}
-            <h4 id="names" onclick="displaynameedit()" class="flow-text"> <b>{{Auth::User()->fname}}  {{Auth::User()->lname}}</b></h4>
-            <div class="row" id="namefields"style="display:none;">
+            <div class="row" id="namefields" style="display:none;">
+
             <div class="input-field col s12 l5 m5">
               <input type="text"  id="fname" name="fname" value="{{Auth::User()->fname}}" placeholder="{{Auth::User()->fname}}" required></input>
             </div>
+
             <div class="input-field col s10 l5 m5">
-             <input type="text" id="lname"  name="lname" value="{{Auth::User()->lname}}" placeholder="{{Auth::User()->lname}}" required></input>
+              <input type="text" id="lname"  name="lname" value="{{Auth::User()->lname}}" placeholder="{{Auth::User()->lname}}" required></input>
             </div>
+
             <div class="input-field col s2 l2 m2" style="padding-top:3px;">
                  <a style="cursor:pointer;" class="blue-text text-darken-4"  id="modifyname"><i class="material-icons">done</i></a>
             </div>
-            </div>
-                <span class="flow-text" id="existdetails"><span id="useremail">{{Auth::User()->email}}</span> </span><br>
-                    <span class="flow-text" id="userphone" onclick="displayphoneedit()">+{{Auth::User()->countrycode}}-{{Auth::User()->phone}}</span><br>
+          </div>
+
+            <span id="names" onclick="displaynameedit()" class="flow-text" style="font-weight:normal;">{{Auth::User()->fname}}  {{Auth::User()->lname}}</span><br>
+                <span class="flow-text" id="existdetails"><span id="useremail" style="font-size:20px;">{{Auth::User()->email}}</span></span><br>
+                  <span class="flow-text" id="userphone" onclick="displayphoneedit()" style="font-size:20px;">+{{Auth::User()->countrycode}}-{{Auth::User()->phone}}</span><br>
                     <div class="row" id="phonerow" style="display:none;">
                       <div class="input-field col l3 m3 s3">
                         <select name="countrycode" id="countryCode" >
@@ -1147,7 +1158,8 @@ if (xhttp.status === 404) {
                       }
                     </script> --}}
                     </div>
-                    <span class="flow-text" id="userdob" onclick="displaydobedit()">{{Auth::User()->dob}}</span>
+                    <span class="flow-text" id="userdob" onclick="displaydobedit()" style="font-size:20px;">{{Auth::User()->dob}}</span>
+
                       {{csrf_field()}}
                       <input type="hidden" id="dob" name="dob" value="{{Auth::User()->dob}}">
                      <div class="row" id="dobrow"style="display:none;">
@@ -1287,6 +1299,8 @@ if (xhttp.status === 404) {
                        </script>
                      </div>
                     </div>
+                  </div>
+
                      {{-- <div class="row">
                        <div class="col s12">
                          <div class="right">
