@@ -785,8 +785,8 @@ if (xhttp.status === 404) {
           <div class="col s12 m12 l12 center-align" id="profilepic">
             <div class="card">
 
-
-
+              <div style="font-weight:normal;font-size:30px;">About Myself</div>
+              <br/>
               <div class="cambtn hide-on-med-and-down" id="imgoverlayfade">
                       <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
                         {{ csrf_field() }}
