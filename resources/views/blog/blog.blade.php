@@ -69,10 +69,8 @@
                                     display: none;
                                 }
                             </style>
-                          <span> <a href="{{ url('/'.$post->slug) }}"><h3 style="font-weight: 500;" class="title"> {{ $post->title }}  </h3></a></span>
+                            <a href="{{ url('/'.$post->slug) }}"><h3 class="title"><b>{{ $post->title }}</b> </h3></a>
 
-                            <br/>
-                            <a href="google.com">dfdafdf </a>
                             <h6 class="binfo" style="color: darkgray; text-decoration: none";><span><i
                                             class="glyphicon glyphicon-calendar">
 
