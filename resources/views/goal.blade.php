@@ -557,6 +557,7 @@
                 </div>
 
                  <div class="cambtn" id="imgoverlayfade">
+
                       <form style=""enctype="multipart/form-data" action="{{route('goalPicUpload')}}" method="post" id="goalPicUpload">
                         {{ csrf_field() }}
                           <p class="white-text">
@@ -2157,10 +2158,12 @@
                 </div>
               </div>
             </div>
-                <div class="container">
 
 
-<div class="row">
+
+
+<div class="container">
+  <div class="row">
 
   <form class="" action="{{ route('comment') }}" method="post" id="comment-form">
       {{ csrf_field() }}

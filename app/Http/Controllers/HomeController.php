@@ -34,7 +34,7 @@ class HomeController extends Controller
       if(Auth::check()){
       $id = Auth::id();
       $email=DB::table('users')->where('id',$id)->value('email');
-      $notification=DB::table('goal_registry')->where([['receiver_email',$email],['status','notseen']])->orderBy('added_date', 'desc')->get();
+      $notification=DB::table('goal_registry')->where('receiver_email',$email)->get();
       $goal = DB::table('goals')->where('email',$email)->get();
       $alignedgoal=DB::table('goalalignment')
                   ->join('goals','goals.goalid','=','goalalignment.goalid')
@@ -87,6 +87,7 @@ class HomeController extends Controller
           $email=Auth::user()->email;
           $id=Auth::id();
           $goalid=$id.Carbon::now();
+
           if($request->hasfile('goalpicture')){
               $file = $request->file('goalpicture');
               if($file->getClientOriginalExtension()=='jpg' ||$file->getClientOriginalExtension()=='jpeg' ){
@@ -130,6 +131,10 @@ class HomeController extends Controller
 
           }
           else {
+
+            $getgoalcategory=$request->goalcategory;
+
+            if($getgoalcategory=="Be happy"){
             DB::table('goals')->insert(
                     [
                       'goalid'=> $goalid,
@@ -142,12 +147,314 @@ class HomeController extends Controller
                       'goalenddate' => $request->goalenddate,
                       'goalauthorization' => 'creator',
                       'goalpictureone'=>'defaultbig.jpg',
-                      'goalpicturetwo'=>'default.jpg',
+                      'goalpicturetwo'=>'park.png',
                       'pinned'=>1,
                       'created_at'=>Carbon::now(),
                       'color'=> '0'.rand(0,99),
                     ]
                 );
+}
+
+else if($getgoalcategory=="Career and professional growth"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'gradu.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Community and recreation"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'2men.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Creativity and Designs"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'sdv-1.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Drama, Entertainment and Music"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'music.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Education and Learning"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'book.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Travel and Adventure"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'dd.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Finance and stability"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'gra.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+
+else if($getgoalcategory=="Friends"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'walk.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+
+
+else if($getgoalcategory=="Health, fitness and sports"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'run.png',
+          'goalpicturetwo'=>'Untitled-1.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Hobbies"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'face.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Love, Marriage and Relationship"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'love.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+
+else if($getgoalcategory=="Personal, family and home"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'house.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+else if($getgoalcategory=="Spiritual Life"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'Untitled-1.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
+
+
+else if($getgoalcategory=="Time of the Year"){
+DB::table('goals')->insert(
+        [
+          'goalid'=> $goalid,
+          'email'=> $email,
+          'goalname' => $request->goalname,
+          'goalintent' => $request->goalintent,
+          'goalpriority' => $request->goalpriority,
+          'goalcategory' => $request->goalcategory,
+          'goalstartdate' => $request->goalstartdate,
+          'goalenddate' => $request->goalenddate,
+          'goalauthorization' => 'creator',
+          'goalpictureone'=>'defaultbig.jpg',
+          'goalpicturetwo'=>'calandar.png',
+          'pinned'=>1,
+          'created_at'=>Carbon::now(),
+          'color'=> '0'.rand(0,99),
+        ]
+    );
+}
+
                 DB::table('privacys')->insert(
                         [
                           'goalid'=> $goalid,
@@ -216,6 +523,12 @@ public function confirmuser()
 
 
   return redirect('/dashboard');
+
+  }
+
+  public function logingaboutus(){
+
+    return view('loginaboutus');
 
   }
 

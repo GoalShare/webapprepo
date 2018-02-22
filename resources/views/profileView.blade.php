@@ -779,9 +779,17 @@ if (xhttp.status === 404) {
 </style>
 
           <br>
+          <div class="card" style="background:url({{asset('uploads/goals/Untitled-4.jpg')}});">
           <div class="row">
-          <div class="col s12 m6 l6 center-align" id="profilepic">
-                      <div class="cambtn hide-on-med-and-down" id="imgoverlayfade">
+
+
+          <div class="center-align" id="profilepic">
+
+              <div class="col s6 m6 l6">
+
+              <br/>
+
+              <div class="cambtn hide-on-med-and-down" id="imgoverlayfade">
                       <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
                         {{ csrf_field() }}
                           <p class="white-text">
@@ -804,9 +812,10 @@ if (xhttp.status === 404) {
                         </form>
                     </div>
                       <div id="imageWrapper" style="z-index:1;">
-                         <img   src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="200px" height="200px" class="circle">
+                         <img   src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="150px" height="150px" class="circle" style="border: 5px solid white;box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);">
                       </div>
-                  </div>
+{{-- </div> --}}
+
           <script type="text/javascript">
             document.getElementById("imgoverlayfade").style.display='none';
             var imageWrapper = document.getElementById('imageWrapper');
@@ -851,24 +860,28 @@ if (xhttp.status === 404) {
               document.getElementById("imgoverlayfade").style.display='none';
             }
           </script>
-          <div class="col s12 m6 l6">
-            <br>
+          {{-- <div class="col s12 m6 l6"> --}}
+            {{-- <br> --}}
               <form id="infoform" action="{{route('modifyprofile')}}" method="post" >
             {{-- <button id="editprofileinfobtn" class="btn btn-floating pulse right"><i class="material-icons">border_color</i></button><br> --}}
-            <h4 id="names" onclick="displaynameedit()" class="flow-text"> <b>{{Auth::User()->fname}}  {{Auth::User()->lname}}</b></h4>
-            <div class="row" id="namefields"style="display:none;">
+            <div class="row" id="namefields" style="display:none;">
+
             <div class="input-field col s12 l5 m5">
               <input type="text"  id="fname" name="fname" value="{{Auth::User()->fname}}" placeholder="{{Auth::User()->fname}}" required></input>
             </div>
+
             <div class="input-field col s10 l5 m5">
-             <input type="text" id="lname"  name="lname" value="{{Auth::User()->lname}}" placeholder="{{Auth::User()->lname}}" required></input>
+              <input type="text" id="lname"  name="lname" value="{{Auth::User()->lname}}" placeholder="{{Auth::User()->lname}}" required></input>
             </div>
+
             <div class="input-field col s2 l2 m2" style="padding-top:3px;">
                  <a style="cursor:pointer;" class="blue-text text-darken-4"  id="modifyname"><i class="material-icons">done</i></a>
             </div>
-            </div>
-                <span class="flow-text" id="existdetails"><span id="useremail">{{Auth::User()->email}}</span> </span><br>
-                    <span class="flow-text" id="userphone" onclick="displayphoneedit()">+{{Auth::User()->countrycode}}-{{Auth::User()->phone}}</span><br>
+          </div>
+
+            <span id="names" onclick="displaynameedit()" class="flow-text" style="font-weight:normal;">{{Auth::User()->fname}}  {{Auth::User()->lname}}</span><br>
+                <span class="flow-text" id="existdetails"><span id="useremail" style="font-size:20px;">{{Auth::User()->email}}</span></span><br>
+                  <span class="flow-text" id="userphone" onclick="displayphoneedit()" style="font-size:20px;">+{{Auth::User()->countrycode}}-{{Auth::User()->phone}}</span><br>
                     <div class="row" id="phonerow" style="display:none;">
                       <div class="input-field col l3 m3 s3">
                         <select name="countrycode" id="countryCode" >
@@ -1147,7 +1160,8 @@ if (xhttp.status === 404) {
                       }
                     </script> --}}
                     </div>
-                    <span class="flow-text" id="userdob" onclick="displaydobedit()">{{Auth::User()->dob}}</span>
+                    <span class="flow-text" id="userdob" onclick="displaydobedit()" style="font-size:20px;">{{Auth::User()->dob}}</span>
+
                       {{csrf_field()}}
                       <input type="hidden" id="dob" name="dob" value="{{Auth::User()->dob}}">
                      <div class="row" id="dobrow"style="display:none;">
@@ -1286,7 +1300,13 @@ if (xhttp.status === 404) {
 
                        </script>
                      </div>
+                   </div>
+                   <div class="col s6 m6 l6">
+                         {{-- <div style="font-weight:normal;font-size:30px;color:white;">About Myself</div> --}}
+                   </div>
                     </div>
+                  </div>
+
                      {{-- <div class="row">
                        <div class="col s12">
                          <div class="right">
@@ -1412,19 +1432,22 @@ if (xhttp.status === 404) {
              });
           </script>
         </div>
+
         <div class="container">
-                              <div class="col s12 m12 l12">
-                                <div class="card">
-                                  <div class="card-action">
-                                     <h5><b>Portfolio</b></h5>
-                                  </div>
-                                  <div class="row"style="margin:10px;">
-                                      <div class="col s12 m6 l6">
-                                          <div class="card ">
-                                             <div class="card-content ">
-                                               <span class="card-title"><i class="material-icons">account_box</i>&nbsp;Aspiration
-                                                 <i style="display:none;cursor:pointer;" id="closebiobtn"onclick="closeaddbio()" class="material-icons right">close</i>
-                                               </span>
+            <div class="col s12 m12 l12">
+                <div class="card">
+                    <div class="card-action">
+                        <h5><b>Portfolio</b></h5>
+                    </div>
+
+
+                    <div class="row"style="margin:10px;">
+                          <div class="col s12 m6 l6">
+                            <div class="card ">
+                                <div class="card-content ">
+                                      <span class="card-title"><i class="material-icons">account_box</i>&nbsp;Aspiration
+                                      <i style="display:none;cursor:pointer;" id="closebiobtn"onclick="closeaddbio()" class="material-icons right">close</i>
+                                      </span>
                                                <li class="divider"></li><br>
                                                @if (Auth::User()->bio=="")
                                                  <p id="inibio" onclick="addbiodata()" class="blue-text">Please Enter your aspiration</p>
@@ -1509,7 +1532,407 @@ if (xhttp.status === 404) {
                                                </script>
                                              </div>
                                           </div>
+                                          <div class="card ">
+                                            {{-- contentstart --}}
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">school</i>&nbsp;Education</span>
+                                               <div class="divider"></div><br>
+                                               <b>University:</b><br>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='education' && $data->nature=='university')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var universityitem=document.getElementById('{{$data->id}}item');
+                                                       var deleteuniversity=document.getElementById('{{$data->id}}');
+                                                       deleteuniversity.addEventListener("click",deleteuniversityfunction);
+                                                       function deleteuniversityfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            universityitem.style.display='none';
+                                                            console.log('Result: ' + result);
+
+                                                         }
+                                                       };
+                                                     }
+                                                     </script>
+                                                   @endif
+                                                 @endforeach
+                                               </ul>
+                                               <form id="adduniversityform" action="{{route('adduniversity')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="university">
+                                                 </div>
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="adduniversitybtn" onclick="adduniversityform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closeuniversityinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="adduniversity" style="cursor:pointer;" onclick="showuniversityinput()">Add university</a>
+                                              <script type="text/javascript">
+                                              var adduniversity=document.getElementById('adduniversity');
+                                              var adduniversityform=document.getElementById('adduniversityform');
+                                                function showuniversityinput() {
+                                                  adduniversityform.style.display='block';
+                                                  adduniversity.style.display='none';
+                                                }
+                                                function closeuniversityinput() {
+                                                  adduniversityform.style.display='none';
+                                                  adduniversity.style.display='block';
+                                                }
+                                              </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                              <b>college :</b><br>
+                                              <ul class="collection">
+                                                @foreach ($portfolio as $data)
+                                                  @if ($data->category=='education' && $data->nature=='college')
+                                                    <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                    <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                     {{ csrf_field() }}
+                                                     <input type="hidden" name="id" value="{{$data->id}}">
+                                                    </form>
+                                                    <script type="text/javascript">
+                                                    console.log('sdsdssdsdfrfrgfrg');
+                                                      var collegeitem=document.getElementById('{{$data->id}}item');
+                                                      var deletecollege=document.getElementById('{{$data->id}}');
+                                                      deletecollege.addEventListener("click",deletecollegefunction);
+                                                      function deletecollegefunction() {
+                                                        console.log('sdsds');
+                                                      var form=document.getElementById('{{$data->id}}frm');
+                                                      var action = form.getAttribute("action");
+                                                      var form_data = new FormData(form);
+                                                      var xhr = new XMLHttpRequest();
+                                                      xhr.open('POST', action, true);
+                                                      xhr.send(form_data);
+                                                      xhr.onreadystatechange = function () {
+                                                        if(xhr.readyState == 4 && xhr.status == 200) {
+                                                          console.log('fsdf');
+                                                           var result = xhr.responseText;
+                                                           collegeitem.style.display='none';
+                                                           console.log('Result: ' + result);
+
+                                                        }
+                                                      };
+                                                    }
+                                                    </script>
+                                                  @endif
+                                                @endforeach
+                                              </ul>
+                                              <form id="addcollegeform" action="{{route('addcollege')}}" method="post" style="display:none;">
+                                                {{csrf_field()}}
+                                                <div class="row">
+                                                <div class="input-field col s9">
+                                                  <input id="from" type="text" name="college">
+                                                </div>
+                                                <div class=" input-field col s3">
+                                                  <span class="blue-text" style="cursor:pointer;" id="addcollegebtn" onclick="addcollegeform.submit();"><i class="material-icons">done</i></span>
+                                                  <span class="blue-text" style="cursor:pointer;" onclick="closecollegeinput()"><i class="material-icons">close</i></span>
+                                                </div>
+                                              </div>
+                                              </form>
+                                             <a class="blue-text" id="addcollege" style="cursor:pointer;" onclick="showcollegeinput()">Add college</a>
+                                             <script type="text/javascript">
+                                             var addcollege=document.getElementById('addcollege');
+                                             var addcollegeform=document.getElementById('addcollegeform');
+                                               function showcollegeinput() {
+                                                 addcollegeform.style.display='block';
+                                                 addcollege.style.display='none';
+                                               }
+                                               function closecollegeinput() {
+                                                 addcollegeform.style.display='none';
+                                                 addcollege.style.display='block';
+                                               }
+                                             </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                              <b>secondary school :</b><br>
+                                              <ul class="collection">
+                                                @foreach ($portfolio as $data)
+                                                  @if ($data->category=='education' && $data->nature=='secondarysch')
+                                                    <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                    <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                     {{ csrf_field() }}
+                                                     <input type="hidden" name="id" value="{{$data->id}}">
+                                                    </form>
+                                                    <script type="text/javascript">
+                                                    console.log('sdsdssdsdfrfrgfrg');
+                                                      var secondaryschitem=document.getElementById('{{$data->id}}item');
+                                                      var deletesecondarysch=document.getElementById('{{$data->id}}');
+                                                      deletesecondarysch.addEventListener("click",deletesecondaryschfunction);
+                                                      function deletesecondaryschfunction() {
+                                                        console.log('sdsds');
+                                                      var form=document.getElementById('{{$data->id}}frm');
+                                                      var action = form.getAttribute("action");
+                                                      var form_data = new FormData(form);
+                                                      var xhr = new XMLHttpRequest();
+                                                      xhr.open('POST', action, true);
+                                                      xhr.send(form_data);
+                                                      xhr.onreadystatechange = function () {
+                                                        if(xhr.readyState == 4 && xhr.status == 200) {
+                                                          console.log('fsdf');
+                                                           var result = xhr.responseText;
+                                                           secondaryschitem.style.display='none';
+                                                           console.log('Result: ' + result);
+
+                                                        }
+                                                      };
+                                                    }
+                                                    </script>
+                                                  @endif
+                                                @endforeach
+                                              </ul>
+                                              <form id="addsecondaryschform" action="{{route('addsecondary')}}" method="post" style="display:none;">
+                                                {{csrf_field()}}
+                                                <div class="row">
+                                                <div class="input-field col s9">
+                                                  <input id="from" type="text" name="secondary">
+                                                </div>
+                                                <div class=" input-field col s3">
+                                                  <span class="blue-text" style="cursor:pointer;" id="addsecondaryschbtn" onclick="addsecondaryschform.submit();"><i class="material-icons">done</i></span>
+                                                  <span class="blue-text" style="cursor:pointer;" onclick="closesecondaryschinput()"><i class="material-icons">close</i></span>
+                                                </div>
+                                              </div>
+                                              </form>
+                                             <a class="blue-text" id="addsecondarysch" style="cursor:pointer;" onclick="showsecondaryschinput()">Add secondary school</a>
+                                             <script type="text/javascript">
+                                             var addsecondarysch=document.getElementById('addsecondarysch');
+                                             var addsecondaryschform=document.getElementById('addsecondaryschform');
+                                               function showsecondaryschinput() {
+                                                 addsecondaryschform.style.display='block';
+                                                 addsecondarysch.style.display='none';
+                                               }
+                                               function closesecondaryschinput() {
+                                                 addsecondaryschform.style.display='none';
+                                                 addsecondarysch.style.display='block';
+                                               }
+                                             </script>
+                                             <br>
+                                             <div class="divider"></div>
+                                             <br>
+                                             <b>primary school :</b><br>
+                                             <ul class="collection">
+                                               @foreach ($portfolio as $data)
+                                                 @if ($data->category=='education' && $data->nature=='primarysch')
+                                                   <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                   <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="id" value="{{$data->id}}">
+                                                   </form>
+                                                   <script type="text/javascript">
+                                                   console.log('sdsdssdsdfrfrgfrg');
+                                                     var primaryschitem=document.getElementById('{{$data->id}}item');
+                                                     var deleteprimarysch=document.getElementById('{{$data->id}}');
+                                                     deleteprimarysch.addEventListener("click",deleteprimaryschfunction);
+                                                     function deleteprimaryschfunction() {
+                                                       console.log('sdsds');
+                                                     var form=document.getElementById('{{$data->id}}frm');
+                                                     var action = form.getAttribute("action");
+                                                     var form_data = new FormData(form);
+                                                     var xhr = new XMLHttpRequest();
+                                                     xhr.open('POST', action, true);
+                                                     xhr.send(form_data);
+                                                     xhr.onreadystatechange = function () {
+                                                       if(xhr.readyState == 4 && xhr.status == 200) {
+                                                         console.log('fsdf');
+                                                          var result = xhr.responseText;
+                                                          primaryschitem.style.display='none';
+                                                          console.log('Result: ' + result);
+
+                                                       }
+                                                     };
+                                                   }
+                                                   </script>
+                                                 @endif
+                                               @endforeach
+                                             </ul>
+                                             <form id="addprimaryschform" action="{{route('addprimary')}}" method="post" style="display:none;">
+                                               {{csrf_field()}}
+                                               <div class="row">
+                                               <div class="input-field col s9">
+                                                 <input id="from" type="text" name="primary">
+                                               </div>
+                                               <div class=" input-field col s3">
+                                                 <span class="blue-text" style="cursor:pointer;" id="addprimaryschbtn" onclick="addprimaryschform.submit();"><i class="material-icons">done</i></span>
+                                                 <span class="blue-text" style="cursor:pointer;" onclick="closeprimaryschinput()"><i class="material-icons">close</i></span>
+                                               </div>
+                                             </div>
+                                             </form>
+                                            <a class="blue-text" id="addprimarysch" style="cursor:pointer;" onclick="showprimaryschinput()">Add primary school</a>
+                                            <script type="text/javascript">
+                                            var addprimarysch=document.getElementById('addprimarysch');
+                                            var addprimaryschform=document.getElementById('addprimaryschform');
+                                              function showprimaryschinput() {
+                                                addprimaryschform.style.display='block';
+                                                addprimarysch.style.display='none';
+                                              }
+                                              function closeprimaryschinput() {
+                                                addprimaryschform.style.display='none';
+                                                addprimarysch.style.display='block';
+                                              }
+                                            </script>
+                                              {{-- contenten --}}
+                                             </div>
+                                          </div>
+
+                                          <div class="card ">
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">portrait</i>&nbsp;Professional Qualifications</span>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='profqual' && $data->nature=='profqual')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var profqualitem=document.getElementById('{{$data->id}}item');
+                                                       var deleteprofqual=document.getElementById('{{$data->id}}');
+                                                       deleteprofqual.addEventListener("click",deleteprofqualfunction);
+                                                       function deleteprofqualfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            profqualitem.style.display='none';
+                                                            console.log('Result: ' + result);
+
+                                                         }
+                                                       };
+                                                     }
+                                                     </script>
+                                                   @endif
+                                                 @endforeach
+                                               </ul>
+                                               <form id="addprofqualform" action="{{route('addprofqual')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="profqual">
+                                                 </div>
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="addprofqualbtn" onclick="addprofqualform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closeprofqualinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="addprofqual" style="cursor:pointer;" onclick="showprofqualinput()">Add professional qualifications</a>
+                                              <script type="text/javascript">
+                                              var addprofqual=document.getElementById('addprofqual');
+                                              var addprofqualform=document.getElementById('addprofqualform');
+                                                function showprofqualinput() {
+                                                  addprofqualform.style.display='block';
+                                                  addprofqual.style.display='none';
+                                                }
+                                                function closeprofqualinput() {
+                                                  addprofqualform.style.display='none';
+                                                  addprofqual.style.display='block';
+                                                }
+                                              </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                             </div>
+                                          </div>
+
+                                          <div class="card ">
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">insert_drive_file</i>&nbsp;Research Papers</span>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='researchpapers' && $data->nature=='researchpapers')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var researchpapersitem=document.getElementById('{{$data->id}}item');
+                                                       var deleteresearchpapers=document.getElementById('{{$data->id}}');
+                                                       deleteresearchpapers.addEventListener("click",deleteresearchpapersfunction);
+                                                       function deleteresearchpapersfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            researchpapersitem.style.display='none';
+                                                            console.log('Result: ' + result);
+
+                                                         }
+                                                       };
+                                                     }
+                                                     </script>
+                                                   @endif
+                                                 @endforeach
+                                               </ul>
+                                               <form id="addresearchpapersform" action="{{route('addresearchpapers')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="researchpapers">
+                                                 </div>
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="addresearchpapersbtn" onclick="addresearchpapersform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closeresearchpapersinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="addresearchpapers" style="cursor:pointer;" onclick="showresearchpapersinput()">Add research papers</a>
+                                              <script type="text/javascript">
+                                              var addresearchpapers=document.getElementById('addresearchpapers');
+                                              var addresearchpapersform=document.getElementById('addresearchpapersform');
+                                                function showresearchpapersinput() {
+                                                  addresearchpapersform.style.display='block';
+                                                  addresearchpapers.style.display='none';
+                                                }
+                                                function closeresearchpapersinput() {
+                                                  addresearchpapersform.style.display='none';
+                                                  addresearchpapers.style.display='block';
+                                                }
+                                              </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                             </div>
+                                          </div>
                                       </div>
+
                                       <div class="col s12 m6 l6">
                                           <div class="card ">
                                              <div class="card-content">
@@ -1642,14 +2065,220 @@ if (xhttp.status === 404) {
                                              </script>
                                              </div>
                                           </div>
+                                          <div class="card">
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">grade</i>&nbsp;Achievements</span><br>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='achievements' && $data->nature=='achievements')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var achievementsitem=document.getElementById('{{$data->id}}item');
+                                                       var deleteachievements=document.getElementById('{{$data->id}}');
+                                                       deleteachievements.addEventListener("click",deleteachievementsfunction);
+                                                       function deleteachievementsfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            achievementsitem.style.display='none';
+                                                            console.log('Result: ' + result);
+
+                                                         }
+                                                       };
+                                                     }
+                                                     </script>
+                                                   @endif
+                                                 @endforeach
+                                               </ul>
+                                               <form id="addachievementsform" action="{{route('addachievements')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="achievements">
+                                                 </div>
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="addachievementsbtn" onclick="addachievementsform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closeachievementsinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="addachievements" style="cursor:pointer;" onclick="showachievementsinput()">Add achievements</a>
+                                              <script type="text/javascript">
+                                              var addachievements=document.getElementById('addachievements');
+                                              var addachievementsform=document.getElementById('addachievementsform');
+                                                function showachievementsinput() {
+                                                  addachievementsform.style.display='block';
+                                                  addachievements.style.display='none';
+                                                }
+                                                function closeachievementsinput() {
+                                                  addachievementsform.style.display='none';
+                                                  addachievements.style.display='block';
+                                                }
+                                              </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                             </div>
+                                          </div>
+
+                                          <div class="card ">
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">subject</i>&nbsp;Patents</span>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='patents' && $data->nature=='patents')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var patentsitem=document.getElementById('{{$data->id}}item');
+                                                       var deletepatents=document.getElementById('{{$data->id}}');
+                                                       deletepatents.addEventListener("click",deletepatentsfunction);
+                                                       function deletepatentsfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            patentsitem.style.display='none';
+                                                            console.log('Result: ' + result);
+
+                                                         }
+                                                       };
+                                                     }
+                                                     </script>
+                                                   @endif
+                                                 @endforeach
+                                               </ul>
+                                               <form id="addpatentsform" action="{{route('addpatents')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="patents">
+                                                 </div>
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="addpatentsbtn" onclick="addpatentsform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closepatentsinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="addpatents" style="cursor:pointer;" onclick="showpatentsinput()">Add patents</a>
+                                              <script type="text/javascript">
+                                              var addpatents=document.getElementById('addpatents');
+                                              var addpatentsform=document.getElementById('addpatentsform');
+                                                function showpatentsinput() {
+                                                  addpatentsform.style.display='block';
+                                                  addpatents.style.display='none';
+                                                }
+                                                function closepatentsinput() {
+                                                  addpatentsform.style.display='none';
+                                                  addpatents.style.display='block';
+                                                }
+                                              </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                             </div>
+                                          </div>
+
+                                          <div class="card ">
+                                             <div class="card-content ">
+                                               <span class="card-title"><i class="material-icons">recent_actors</i>&nbsp;Interests</span>
+                                               <ul class="collection">
+                                                 @foreach ($portfolio as $data)
+                                                   @if ($data->category=='interests' && $data->nature=='interests')
+                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
+                                                      {{ csrf_field() }}
+                                                      <input type="hidden" name="id" value="{{$data->id}}">
+                                                     </form>
+                                                     <script type="text/javascript">
+                                                     console.log('sdsdssdsdfrfrgfrg');
+                                                       var interestsitem=document.getElementById('{{$data->id}}item');
+                                                       var deleteinterests=document.getElementById('{{$data->id}}');
+                                                       deleteinterests.addEventListener("click",deleteinterestsfunction);
+                                                       function deleteinterestsfunction() {
+                                                         console.log('sdsds');
+                                                       var form=document.getElementById('{{$data->id}}frm');
+                                                       var action = form.getAttribute("action");
+                                                       var form_data = new FormData(form);
+                                                       var xhr = new XMLHttpRequest();
+                                                       xhr.open('POST', action, true);
+                                                       xhr.send(form_data);
+                                                       xhr.onreadystatechange = function () {
+                                                         if(xhr.readyState == 4 && xhr.status == 200) {
+                                                           console.log('fsdf');
+                                                            var result = xhr.responseText;
+                                                            interestsitem.style.display='none';
+                                                            console.log('Result: ' + result);
+
+                                                         }
+                                                       };
+                                                     }
+                                                     </script>
+                                                   @endif
+                                                 @endforeach
+                                               </ul>
+                                               <form id="addinterestsform" action="{{route('addinterests')}}" method="post" style="display:none;">
+                                                 {{csrf_field()}}
+                                                 <div class="row">
+                                                 <div class="input-field col s9">
+                                                   <input id="from" type="text" name="interests">
+                                                 </div>
+                                                 <div class=" input-field col s3">
+                                                   <span class="blue-text" style="cursor:pointer;" id="addinterestsbtn" onclick="addinterestsform.submit();"><i class="material-icons">done</i></span>
+                                                   <span class="blue-text" style="cursor:pointer;" onclick="closeinterestsinput()"><i class="material-icons">close</i></span>
+                                                 </div>
+                                               </div>
+                                               </form>
+                                              <a class="blue-text" id="addinterests" style="cursor:pointer;" onclick="showinterestsinput()">Add interests</a>
+                                              <script type="text/javascript">
+                                              var addinterests=document.getElementById('addinterests');
+                                              var addinterestsform=document.getElementById('addinterestsform');
+                                                function showinterestsinput() {
+                                                  addinterestsform.style.display='block';
+                                                  addinterests.style.display='none';
+                                                }
+                                                function closeinterestsinput() {
+                                                  addinterestsform.style.display='none';
+                                                  addinterests.style.display='block';
+                                                }
+                                              </script>
+                                              <br>
+                                              <div class="divider"></div>
+                                              <br>
+                                             </div>
+                                          </div>
                                       </div>
                                     </div>
-                                    <div class="divider"></div><br>
-                                    <div class="row" style="margin:10px;">
-                                        <div class="col s12 m6 l6">
-                                            <div class="card ">
+                                    {{-- <div class="divider"></div><br> --}}
+                                    {{-- <div class="row"> --}}
+                                        {{-- <div class="col s12 m6 l6">
+                                            <div class="card "> --}}
                                               {{-- contentstart --}}
-                                               <div class="card-content ">
+                                               {{-- <div class="card-content ">
                                                  <span class="card-title"><i class="material-icons">school</i>&nbsp;Education</span>
                                                  <div class="divider"></div><br>
                                                  <b>University:</b><br>
@@ -1717,8 +2346,8 @@ if (xhttp.status === 404) {
                                                 <div class="divider"></div>
                                                 <br>
                                                 <b>college :</b><br>
-                                                <ul class="collection">
-                                                  @foreach ($portfolio as $data)
+                                                <ul class="collection"> --}}
+                                                  {{-- @foreach ($portfolio as $data)
                                                     @if ($data->category=='education' && $data->nature=='college')
                                                       <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                       <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
@@ -1750,9 +2379,9 @@ if (xhttp.status === 404) {
                                                       }
                                                       </script>
                                                     @endif
-                                                  @endforeach
-                                                </ul>
-                                                <form id="addcollegeform" action="{{route('addcollege')}}" method="post" style="display:none;">
+                                                  @endforeach --}}
+                                                {{-- </ul> --}}
+                                                {{-- <form id="addcollegeform" action="{{route('addcollege')}}" method="post" style="display:none;">
                                                   {{csrf_field()}}
                                                   <div class="row">
                                                   <div class="input-field col s9">
@@ -1764,8 +2393,8 @@ if (xhttp.status === 404) {
                                                   </div>
                                                 </div>
                                                 </form>
-                                               <a class="blue-text" id="addcollege" style="cursor:pointer;" onclick="showcollegeinput()">Add college</a>
-                                               <script type="text/javascript">
+                                               <a class="blue-text" id="addcollege" style="cursor:pointer;" onclick="showcollegeinput()">Add college</a> --}}
+                                               {{-- <script type="text/javascript">
                                                var addcollege=document.getElementById('addcollege');
                                                var addcollegeform=document.getElementById('addcollegeform');
                                                  function showcollegeinput() {
@@ -1776,13 +2405,13 @@ if (xhttp.status === 404) {
                                                    addcollegeform.style.display='none';
                                                    addcollege.style.display='block';
                                                  }
-                                               </script>
-                                                <br>
+                                               </script> --}}
+                                                {{-- <br>
                                                 <div class="divider"></div>
                                                 <br>
                                                 <b>secondary school :</b><br>
-                                                <ul class="collection">
-                                                  @foreach ($portfolio as $data)
+                                                <ul class="collection"> --}}
+                                                  {{-- @foreach ($portfolio as $data)
                                                     @if ($data->category=='education' && $data->nature=='secondarysch')
                                                       <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                       <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
@@ -1814,8 +2443,8 @@ if (xhttp.status === 404) {
                                                       }
                                                       </script>
                                                     @endif
-                                                  @endforeach
-                                                </ul>
+                                                  @endforeach --}}
+                                                {{-- </ul>
                                                 <form id="addsecondaryschform" action="{{route('addsecondary')}}" method="post" style="display:none;">
                                                   {{csrf_field()}}
                                                   <div class="row">
@@ -1828,8 +2457,8 @@ if (xhttp.status === 404) {
                                                   </div>
                                                 </div>
                                                 </form>
-                                               <a class="blue-text" id="addsecondarysch" style="cursor:pointer;" onclick="showsecondaryschinput()">Add secondary school</a>
-                                               <script type="text/javascript">
+                                               <a class="blue-text" id="addsecondarysch" style="cursor:pointer;" onclick="showsecondaryschinput()">Add secondary school</a> --}}
+                                               {{-- <script type="text/javascript">
                                                var addsecondarysch=document.getElementById('addsecondarysch');
                                                var addsecondaryschform=document.getElementById('addsecondaryschform');
                                                  function showsecondaryschinput() {
@@ -1840,13 +2469,13 @@ if (xhttp.status === 404) {
                                                    addsecondaryschform.style.display='none';
                                                    addsecondarysch.style.display='block';
                                                  }
-                                               </script>
-                                               <br>
+                                               </script> --}}
+                                               {{-- <br>
                                                <div class="divider"></div>
                                                <br>
                                                <b>primary school :</b><br>
-                                               <ul class="collection">
-                                                 @foreach ($portfolio as $data)
+                                               <ul class="collection"> --}}
+                                                 {{-- @foreach ($portfolio as $data)
                                                    @if ($data->category=='education' && $data->nature=='primarysch')
                                                      <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
@@ -1878,8 +2507,8 @@ if (xhttp.status === 404) {
                                                      }
                                                      </script>
                                                    @endif
-                                                 @endforeach
-                                               </ul>
+                                                 @endforeach --}}
+                                               {{-- </ul>
                                                <form id="addprimaryschform" action="{{route('addprimary')}}" method="post" style="display:none;">
                                                  {{csrf_field()}}
                                                  <div class="row">
@@ -1892,8 +2521,8 @@ if (xhttp.status === 404) {
                                                  </div>
                                                </div>
                                                </form>
-                                              <a class="blue-text" id="addprimarysch" style="cursor:pointer;" onclick="showprimaryschinput()">Add primary school</a>
-                                              <script type="text/javascript">
+                                              <a class="blue-text" id="addprimarysch" style="cursor:pointer;" onclick="showprimaryschinput()">Add primary school</a> --}}
+                                              {{-- <script type="text/javascript">
                                               var addprimarysch=document.getElementById('addprimarysch');
                                               var addprimaryschform=document.getElementById('addprimaryschform');
                                                 function showprimaryschinput() {
@@ -1904,12 +2533,12 @@ if (xhttp.status === 404) {
                                                   addprimaryschform.style.display='none';
                                                   addprimarysch.style.display='block';
                                                 }
-                                              </script>
+                                              </script> --}}
                                                 {{-- contenten --}}
-                                               </div>
+                                               {{-- </div>
                                             </div>
-                                        </div>
-                                        <div class="col s12 m6 l6">
+                                        </div> --}}
+                                        {{-- <div class="col s12 m6 l6">
                                             <div class="card">
                                                <div class="card-content ">
                                                  <span class="card-title"><i class="material-icons">grade</i>&nbsp;achievements</span><br>
@@ -1978,11 +2607,12 @@ if (xhttp.status === 404) {
                                                 <br>
                                                </div>
                                             </div>
-                                        </div>
-                                      </div>
-                                      <div class="divider"></div><br>
-                                      <div class="row" style="margin:10px;">
-                                          <div class="col s12 m6 l6">
+                                        </div> --}}
+
+                                      {{-- </div> --}}
+                                      {{-- <div class="divider"></div><br> --}}
+                                      {{-- <div class="row" style="margin:10px;"> --}}
+                                          {{-- <div class="col s12 m6 l6">
                                               <div class="card ">
                                                  <div class="card-content ">
                                                    <span class="card-title"><i class="material-icons">portrait</i>&nbsp;Professional Qualifications</span>
@@ -2051,8 +2681,8 @@ if (xhttp.status === 404) {
                                                   <br>
                                                  </div>
                                               </div>
-                                          </div>
-                                          <div class="col s12 m6 l6">
+                                          </div> --}}
+                                          {{-- <div class="col s12 m6 l6">
                                               <div class="card ">
                                                  <div class="card-content ">
                                                    <span class="card-title"><i class="material-icons">subject</i>&nbsp;Patents</span>
@@ -2122,10 +2752,10 @@ if (xhttp.status === 404) {
                                                  </div>
                                               </div>
                                           </div>
-                                        </div>
-                                        <div class="divider"></div><br>
-                                        <div class="row" style="margin:10px;">
-                                            <div class="col s12 m6 l6">
+                                        </div> --}}
+                                        {{-- <div class="divider"></div><br> --}}
+                                        {{-- <div class="row" style="margin:10px;"> --}}
+                                            {{-- <div class="col s12 m6 l6">
                                                 <div class="card ">
                                                    <div class="card-content ">
                                                      <span class="card-title"><i class="material-icons">insert_drive_file</i>&nbsp;Research Papers</span>
@@ -2194,8 +2824,8 @@ if (xhttp.status === 404) {
                                                     <br>
                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col s12 m6 l6">
+                                            </div> --}}
+                                            {{-- <div class="col s12 m6 l6">
                                                 <div class="card ">
                                                    <div class="card-content ">
                                                      <span class="card-title"><i class="material-icons">recent_actors</i>&nbsp;Interests</span>
@@ -2264,8 +2894,8 @@ if (xhttp.status === 404) {
                                                     <br>
                                                    </div>
                                                 </div>
-                                            </div>
-                                          </div>
+                                            </div> --}}
+                                          {{-- </div> --}}
                                           {{-- <div class="divider"></div><br>
                                           <div class="row" style="margin:10px;">
                                               <div class="col s12 m6 l6">
