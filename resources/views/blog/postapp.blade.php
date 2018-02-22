@@ -18,11 +18,11 @@
     <link href="{{ asset('/recblog/css/ionicons.css') }}" rel="stylesheet">
 
 
-    <link href="{{ asset('/recblog/homecss/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('/recblog/post/postresponsive.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('/recblog/sidebar/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('/recblog/post/poststyles.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('/recblog/homecss/styles.css') }}" rel="stylesheet"><style>
+    <style>
         .insets {
             float: right;
             width: 40px;
@@ -44,28 +44,33 @@
             position: relative;
             z-index: 998;
 
+
         }
     </style>
+
 </head>
 
 <body>
 <header>
+
+
     <div class="container-fluid position-relative no-side-padding">
 
 
 
 
     @if (Auth::guest())
-            <a href="#" class="logo"><img  src="{{asset('favicon/LOGO.png')}}" alt=""  ></a>
+            <a href="#" class="logo"><img src="{{asset('favicon/LOGO.png')}}" alt="Logo Image"></a>
 
             <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i>  </div>
+
 
 
 
         @else
 
 
-            <a href="#" class="logo"><img src="{{asset('favicon/LOGO.png')}}" alt=""  ></a>
+            <a href="#" class="logo"><img src="{{asset('favicon/LOGO.png')}}" alt="Logo Image"></a>
 
             <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i>  </div>
 
@@ -81,41 +86,49 @@
                 </li>
 
             </ul>
+
         @endif
 
     </div><!-- conatiner -->
+
 </header>
 
-
-
-<section class="blog-area section">
+<section class="post-area section">
     <div class="container">
-
-
 
         <div class="row">
 
-            <div class="col-lg-9 col-md-12">
-                <div class="row">
-                    @yield('content')
+            <div class="col-lg-8 col-md-12 no-right-padding">
 
-
-                </div><!-- row -->
-
-
-
+                <div class="main-post">
+                    @yield('postbody')
+                </div><!-- main-post -->
             </div><!-- col-lg-8 col-md-12 -->
 
-            <div class="col-lg-3 col-md-12 ">
-                @yield('sidebar')
+            <div class="col-lg-4 col-md-12 no-left-padding">
 
+                @yield('sidebar')
 
             </div><!-- col-lg-4 col-md-12 -->
 
         </div><!-- row -->
+        <section class="comment-section">
+            <div class="container">
+                <h4><b>Leave a Comment</b></h4>
+                <div class="row">
 
+                    <div class="col-lg-8 col-md-12">
+                        @yield('comments')
+
+                    </div><!-- col-lg-8 col-md-12 -->
+
+                </div><!-- row -->
+
+            </div><!-- container -->
+        </section>
     </div><!-- container -->
-</section><!-- section -->
+
+</section><!-- post-area -->
 <style>
     body{
         font-family: 'Roboto';
@@ -384,11 +397,7 @@
 
 
 
-<script src="{{ asset('/recblog/js/jquery-3.1.1.min.js') }}"></script>
-<script src="{{ asset('/recblog/js/tether.min.js') }}"></script>
-<script src="{{ asset('/recblog/js/bootstrap.js') }}"></script>
-<script src="{{ asset('/recblog/js/swiper.js') }}"></script>
-<script src="{{ asset('/recblog/js/scripts.js') }}"></script>
+
 
 <footer>
 
@@ -400,8 +409,14 @@
         </div><!-- row -->
     </div><!-- container -->
 </footer>
+
 </body>
 
 
+<script src="{{ asset('/recblog/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('/recblog/js/tether.min.js') }}"></script>
+<script src="{{ asset('/recblog/js/bootstrap.js') }}"></script>
+<script src="{{ asset('/recblog/js/swiper.js') }}"></script>
+<script src="{{ asset('/recblog/js/scripts.js') }}"></script>
 
 </html>

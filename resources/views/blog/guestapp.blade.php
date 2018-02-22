@@ -25,7 +25,9 @@
     <style>
         body {
             font-family: 'Assistant';font-size: 18px;
+
         }
+
     </style>
     @if (Auth::guest())
         <nav style=" background-color: #0d47a1;color: #ffffff; border-radius:0% "
@@ -386,11 +388,11 @@
 
 <div style=" background-color: #0d47a1;color: #ffffff; border-radius:0% " id="footer" class="container-fluid">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1"><br><br>
-            <center>
-                <p>Copyright &copy; 2017 | <a href="/">Life With Goals | Blog</a></p></center>
-            <br><br>
-        </div>
+            <div class="col-md-10 col-md-offset-1"><br><br>
+                <center>
+                    <p>Copyright &copy; 2017 | <a href="/">Life With Goals | Blog</a></p></center>
+                <br><br>
+            </div>
     </div>
 </div>
 <script>

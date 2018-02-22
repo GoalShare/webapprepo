@@ -252,6 +252,8 @@ Route::post('existingboarduploadfile','getexistingboardController@existingboardu
 
 Route::get('/youtube','youtubeController@youtube')->name('youtube');
 
+//Routes for blog
+
 Route::get('/blognew', function () {
 
     return view('blog.mblog');
@@ -268,35 +270,35 @@ Route::get('/blog',['as' => 'blog', 'uses' => 'PostController@index']);
 
 Route::group(['middleware' => ['auth']], function()
 {
-	// show new post form
-	Route::get('new-post','PostController@create');
+    // show new post form
+    Route::get('new-post','PostController@create');
 
-	// save new post
-	Route::post('new-post','PostController@store');
-
-	 
-
-	// edit post form
-	Route::get('edit/{slug}','PostController@edit');
-
-	// update post
-	Route::post('update','PostController@update');
-
-	// delete post
-	Route::get('delete/{id}','PostController@destroy');
-
-	// display user's all posts
-	Route::get('my-all-posts','UserController@user_posts_all');
-
-	// display user's drafts
-	Route::get('my-drafts','UserController@user_posts_draft');
+    // save new post
+    Route::post('new-post','PostController@store');
 
 
-	// add comment
-	Route::post('comment/add','CommentsController@store');
 
-	// delete comment
-	Route::post('comment/delete/{id}','CommentsController@distroy');
+    // edit post form
+    Route::get('edit/{slug}','PostController@edit');
+
+    // update post
+    Route::post('update','PostController@update');
+
+    // delete post
+    Route::get('delete/{id}','PostController@destroy');
+
+    // display user's all posts
+    Route::get('my-all-posts','UserController@user_posts_all');
+
+    // display user's drafts
+    Route::get('my-drafts','UserController@user_posts_draft');
+
+
+    // add comment
+    Route::post('comment/add','CommentsController@store');
+
+    // delete comment
+    Route::post('comment/delete/{id}','CommentsController@distroy');
 
 });
 
