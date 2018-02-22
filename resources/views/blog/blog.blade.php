@@ -48,9 +48,6 @@
                             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
                             <style>
-
-
-
                                 .profile-pic {
                                     position: relative;
                                     display: inline-block;
@@ -69,10 +66,12 @@
                                     display: none;
                                 }
                             </style>
-                            <a href="{{ url('/'.$post->slug) }}"><h3 class="title"><b>{{ $post->title }}</b> </h3></a>
-
+                            <h3 class="title"><a href="{{ url('/'.$post->slug) }}"><b>{{ $post->title }}</b></a></h3>
+                            <!--
+                            <a href="{{ url('/'.$post->slug) }}"><h3><b>{{ $post->title }}</b> </h3></a>
+-->
                             <h6 class="binfo" style="color: darkgray; text-decoration: none";>
-                                
+
                                 <span><i
                                             class="glyphicon glyphicon-calendar">
 
