@@ -72,13 +72,13 @@
                             <a href="{{ url('/'.$post->slug) }}"><h3 class="title"><b>{{ $post->title }}</b> </h3></a>
 
                             <h6 class="binfo" style="color: darkgray; text-decoration: none";>
-                                <!--
+                                
                                 <span><i
                                             class="glyphicon glyphicon-calendar">
 
                                     </i> {{ $post->created_at->format('M d,Y \a\t h:i a') }} </span>&nbsp<span><i
                                             class="glyphicon glyphicon-user"></i>  <a style=" text-decoration: none"
-                                                                                      href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->fname }} {{ $post->author->lname }}</a></span> -->
+                                                                                      href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->fname }} {{ $post->author->lname }}</a></span>
                             </h6>
                             <p>
 
