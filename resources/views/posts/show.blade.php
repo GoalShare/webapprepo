@@ -258,6 +258,9 @@
 <meta property="og:image:width" content="730"/>
 <meta property="og:image:height" content="485"/>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 @php
     // Variable to check
     $str = $post->body;
@@ -269,6 +272,7 @@
 
 <meta name="description" content="{!! str_limit($newstr, $limit = 200, $end = ' ') !!}...."/>
 @section('postbody')
+
     <div class="blog-post-inner">
 
         <div class="post-info">
@@ -330,11 +334,16 @@
         </ul>
     </div><!-- blog-post-inner -->
 
-    <div class="post-icons-area">
+    <div data-postid="{{$post->id}}"  class="post-icons-area">
         <ul class="post-icons">
-            <li><a href="#"><i class="ion-heart"></i>57</a></li>
-            <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-            <li><a href="#"><i class="ion-eye"></i>138</a></li>
+
+
+            <a style="font-size: 12px" href="#" class="btn btn-xs btn-warning like"><span class="glyphicon glyphicon-thumbs-up"> </span> {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a>
+            <a style="font-size: 12px" href="#" class="btn btn-xs btn-danger like"><span class="glyphicon glyphicon-thumbs-down"> </span> {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You dont like this post' : 'Dislike' : 'Dislike'  }}</a>
+<!--
+            <li><a href="#"><i class="ion-heart"></i></a></li>
+            <li><a href="#"><i class="ion-chatbubble"></i></a></li>
+            <li><a href="#"><i class="ion-eye"></i></a></li> -->
         </ul>
 
         <ul class="icons">
@@ -344,7 +353,10 @@
             <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
         </ul>
     </div>
-
+    <script>
+        var token = '{{ Session::token() }}';
+        var urlLike = '{{ route('like') }}';
+    </script>
 @endsection
 @section('title-meta')
     <style>
@@ -994,3 +1006,10 @@
 
     @endif
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="{{ asset('/src/like.js') }}"></script>

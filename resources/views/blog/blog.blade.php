@@ -87,9 +87,9 @@
 
                                 ') !!}</p><br>
                             <ul class="post-footer">
-                                <li><a href="#"><i class="ion-heart"></i>57</a></li>
-                                <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-                                <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                                <li><a href="#"><i class="ion-heart"></i>0</a></li>
+                                <li><a href="#"><i class="ion-chatbubble"></i>0</a></li>
+                                <li><a href="#"><i class="ion-eye"></i>0</a></li>
                             </ul>
 
                         </div><!-- blog-info -->
