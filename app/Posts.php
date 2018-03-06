@@ -4,8 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Posts extends Model {
 
-	//posts table in database
-	protected $guarded = [];
+    protected $table = 'posts';
+
+
 	public function comments()
 	{
 		return $this->hasMany('App\Comments','on_post');
@@ -16,4 +17,12 @@ class Posts extends Model {
 		return $this->belongsTo('App\User','author_id');
 	}
 
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function likes(){
+        return $this->belongsTo('App\Like');
+    }
 }

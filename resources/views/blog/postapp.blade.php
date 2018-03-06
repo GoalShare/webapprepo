@@ -4,118 +4,6 @@
     <title>Life WIth Goals|Blog</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-    <title>Blog | Life With Goals</title>
-
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-
-    <!-- Fonts -->
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <nav style=" background-color: #0d47a1;color: #ffffff; border-radius:0% "
-         class="navbar navbar-default navbar-static-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @if (Auth::guest())
-                    <img style="margin-top: 3%" class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="39px" width="200px">
-
-            @else
-                    <img style="margin-top: 8%; margin-left: 37%" class="logoImg hide-on-small-only left" onclick="javascript:location.href='{{url('/dashboard')}}'"  src="{{asset('favicon/LOGO.png')}}" alt="" height="39px" width="200px">
-
-            @endif
-              <!--   <a style="color: #ffffff;" class="navbar-brand" href="/">Blog | Life With Goals</a> -->
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-
-
-
-
-                    <li>
-                        <a style="color: #ffffff;margin-top: 13%; margin-left: 82%" href="{{ url('/blog') }}">Home</a>
-                    </li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    @if (Auth::guest())
-                        <li>
-                            <a style="color: #ffffff;" href="{{url('/')}}">Login</a>
-                        </li>
-                        <li>
-                            <a style="color: #ffffff;" href="{{url('/')}}">Register</a>
-                        </li>
-                    @else
-                        <li class="dropdown">   <!--
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">{{ Auth::user()->fname }}  {{ Auth::user()->lname }} <span
-                                        class="caret"></span></a>
-
-                                                              <li class="dropdown" ><a class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                                                       aria-expanded="false"><img    style="margin-top:-5px;" class="img-circle" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}"width="40px" height="40px" ></a></li>
-
-
-                            <ul class="dropdown-menu" role="menu">
-                                @if (Auth::user()->can_post())
-                                    <li>
-                                        <a href="{{ url('/new-post') }}">Add new post</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('/user/'.Auth::id().'/posts') }}">My Posts</a>
-                                    </li>
-                                @endif
-                                <li>
-                                    <a href="{{ url('/user/'.Auth::id()) }}">My Profile</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/auth/logout') }}">Logout</a>
-                                </li>
-                            </ul>-->
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img    style="margin-top:-5px;" class="img-circle" src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}"width="40px" height="40px" ></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ url('/new-post') }}">New Post <span class="	glyphicon glyphicon-comment pull-right"></span></a></li>
-                                <li class="divider"></li>
-                                <li><a href="{{ url('/user/'.Auth::id().'/posts') }}">My Posts <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-
-                                <li><a href="{{ url('/user/'.Auth::id()) }}">Profile <span class="	glyphicon glyphicon-user pull-right">  </span></a></li>
-                                <li class="divider"></li>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                                <li><a href="{{ route('logout') }}"> <a href="{{ route('logout') }}"
-                                                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a> <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-=======
     <meta charset="UTF-8">
 
     <!-- Font -->
@@ -130,12 +18,11 @@
     <link href="{{ asset('/recblog/css/ionicons.css') }}" rel="stylesheet">
 
 
-    <link href="{{ asset('/recblog/homecss/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('/recblog/post/postresponsive.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('/recblog/sidebar/styles.css') }}" rel="stylesheet">
->>>>>>> 66cd549acd71936755219fae3771a7d92d869596
+    <link href="{{ asset('/recblog/post/poststyles.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('/recblog/homecss/styles.css') }}" rel="stylesheet"><style>
+    <style>
         .insets {
             float: right;
             width: 40px;
@@ -157,28 +44,33 @@
             position: relative;
             z-index: 998;
 
+
         }
     </style>
+
 </head>
 
 <body>
 <header>
+
+
     <div class="container-fluid position-relative no-side-padding">
 
 
 
 
     @if (Auth::guest())
-            <a href="#" class="logo"><img  src="{{asset('favicon/LOGO.png')}}" alt=""  ></a>
+            <a href="#" class="logo"><img src="{{asset('favicon/LOGO.png')}}" alt="Logo Image"></a>
 
             <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i>  </div>
+
 
 
 
         @else
 
 
-            <a href="#" class="logo"><img src="{{asset('favicon/LOGO.png')}}" alt=""  ></a>
+            <a href="#" class="logo"><img src="{{asset('favicon/LOGO.png')}}" alt="Logo Image"></a>
 
             <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i>  </div>
 
@@ -194,41 +86,49 @@
                 </li>
 
             </ul>
+
         @endif
 
     </div><!-- conatiner -->
+
 </header>
 
-
-
-<section class="blog-area section">
+<section class="post-area section">
     <div class="container">
-
-
 
         <div class="row">
 
-            <div class="col-lg-9 col-md-12">
-                <div class="row">
-                    @yield('content')
+            <div class="col-lg-8 col-md-12 no-right-padding">
 
-
-                </div><!-- row -->
-
-
-
+                <div class="main-post">
+                    @yield('postbody')
+                </div><!-- main-post -->
             </div><!-- col-lg-8 col-md-12 -->
 
-            <div class="col-lg-3 col-md-12 ">
-                @yield('sidebar')
+            <div class="col-lg-4 col-md-12 no-left-padding">
 
+                @yield('sidebar')
 
             </div><!-- col-lg-4 col-md-12 -->
 
         </div><!-- row -->
+        <section class="comment-section">
+            <div class="container">
+                <h4><b>Leave a Comment</b></h4>
+                <div class="row">
 
+                    <div class="col-lg-8 col-md-12">
+                        @yield('comments')
+
+                    </div><!-- col-lg-8 col-md-12 -->
+
+                </div><!-- row -->
+
+            </div><!-- container -->
+        </section>
     </div><!-- container -->
-</section><!-- section -->
+
+</section><!-- post-area -->
 <style>
     body{
         font-family: 'Roboto';
@@ -497,11 +397,7 @@
 
 
 
-<script src="{{ asset('/recblog/js/jquery-3.1.1.min.js') }}"></script>
-<script src="{{ asset('/recblog/js/tether.min.js') }}"></script>
-<script src="{{ asset('/recblog/js/bootstrap.js') }}"></script>
-<script src="{{ asset('/recblog/js/swiper.js') }}"></script>
-<script src="{{ asset('/recblog/js/scripts.js') }}"></script>
+
 
 <footer>
 
@@ -513,8 +409,14 @@
         </div><!-- row -->
     </div><!-- container -->
 </footer>
+
 </body>
 
 
+<script src="{{ asset('/recblog/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('/recblog/js/tether.min.js') }}"></script>
+<script src="{{ asset('/recblog/js/bootstrap.js') }}"></script>
+<script src="{{ asset('/recblog/js/swiper.js') }}"></script>
+<script src="{{ asset('/recblog/js/scripts.js') }}"></script>
 
 </html>

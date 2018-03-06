@@ -798,7 +798,7 @@ if (xhttp.status === 404) {
   .card .covercambtnnew{
     position:absolute;
     z-index: 4;
-    margin-left: 930px;
+    margin-left: 10px;
     margin-top: -10px;
   }
 

@@ -256,6 +256,8 @@ Route::post('existingboarduploadfile','getexistingboardController@existingboardu
 
 Route::get('/youtube','youtubeController@youtube')->name('youtube');
 
+//Routes for blog
+
 Route::get('/blognew', function () {
 
     return view('blog.mblog');
@@ -272,35 +274,39 @@ Route::get('/blog',['as' => 'blog', 'uses' => 'PostController@index']);
 
 Route::group(['middleware' => ['auth']], function()
 {
-	// show new post form
-	Route::get('new-post','PostController@create');
+    // show new post form
+    Route::get('new-post','PostController@create');
 
-	// save new post
-	Route::post('new-post','PostController@store');
-
-
-
-	// edit post form
-	Route::get('edit/{slug}','PostController@edit');
-
-	// update post
-	Route::post('update','PostController@update');
-
-	// delete post
-	Route::get('delete/{id}','PostController@destroy');
-
-	// display user's all posts
-	Route::get('my-all-posts','UserController@user_posts_all');
-
-	// display user's drafts
-	Route::get('my-drafts','UserController@user_posts_draft');
+    // save new post
+    Route::post('new-post','PostController@store');
 
 
-	// add comment
-	Route::post('comment/add','CommentsController@store');
+<<<<<<< HEAD
 
-	// delete comment
-	Route::post('comment/delete/{id}','CommentsController@distroy');
+=======
+>>>>>>> 66cd549acd71936755219fae3771a7d92d869596
+
+    // edit post form
+    Route::get('edit/{slug}','PostController@edit');
+
+    // update post
+    Route::post('update','PostController@update');
+
+    // delete post
+    Route::get('delete/{id}','PostController@destroy');
+
+    // display user's all posts
+    Route::get('my-all-posts','UserController@user_posts_all');
+
+    // display user's drafts
+    Route::get('my-drafts','UserController@user_posts_draft');
+
+
+    // add comment
+    Route::post('comment/add','CommentsController@store');
+
+    // delete comment
+    Route::post('comment/delete/{id}','CommentsController@distroy');
 
 });
 
@@ -312,3 +318,5 @@ Route::get('user/{id}/posts','UserController@user_posts')->where('id', '[0-9]+')
 
 // display single post
 Route::get('/{slug}',['as' => 'post', 'uses' => 'PostController@show'])->where('slug', '[A-Za-z0-9-_]+');
+
+Route::post('/like','PostController@postLikePost')->name('like');
