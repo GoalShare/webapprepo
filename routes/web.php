@@ -27,15 +27,17 @@ Route::get('/calendar',function(){
   return view('calender');
 
 });
+
 Route::post('deletealigned','AlignController@deletealigned')->name('deletealigned');
 Route::post('profile','ProfileController@post')->name('profile');
-
+Route::post('profilecover','ProfileController@postcover')->name('profilecover');
 Route::post('uploadfile','filesController@uploadfile')->name('uploadfile');
 Route::post('updatefilename','filesController@updatefilename')->name('updatefilename');
 Route::post('deletefile','filesController@deletefile')->name('deletefile');
 Route::post('goalPicUpload','GoalController@upateGoalPic')->name('goalPicUpload');
 Route::post('checkemail','CoreController@checkmails')->name('checkemail');
 Route::post('test','CoreController@test')->name('test');
+Route::post('aboutme','ProfileController@aboutme')->name('aboutme');
 Route::post('goal','GoalController@post')->name('goal');
 Route::post('updatetask','GoalController@updatetask')->name('updatetask');
 Route::post('addbio','ProfileController@addbio')->name('addbio');
@@ -53,6 +55,7 @@ Route::get('/dashboard/{category}', 'HomeController@category');
 Route::get('/test','TestController@testget')->name('test');
 Route::get('/notificationpage','NotificationpageController@getnavebar')->name('notificationpage');
 Route::get('/admin','AdminController@adminget')->name('admin');
+Route::get('newview','newviewController@view')->name('newview');
 
 
 Route::get('/brag','bragController@view')->name('brag');
@@ -82,6 +85,7 @@ Route::get('/search/{userid}',function($userid){
   $portfolio=DB::table('portfolio')->where('userid',$userid)->get();
   $email=Auth::User()->email;
   $id=Auth::id();
+
   $user= DB::table('users')->where('id',$userid)->get();
   foreach ($user as $users) {
   }
@@ -274,7 +278,7 @@ Route::group(['middleware' => ['auth']], function()
 	// save new post
 	Route::post('new-post','PostController@store');
 
-	 
+
 
 	// edit post form
 	Route::get('edit/{slug}','PostController@edit');

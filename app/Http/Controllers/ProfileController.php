@@ -40,17 +40,41 @@ class ProfileController extends Controller
    $portfolio=DB::table('portfolio')->where('userid',$id)->get();
 
    $allemail=DB::table('users')->pluck('email');
-   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail]);
+
+   $aboutmetexts=DB::table('users')->select('aboutmetext')->where('id',$id)->get();
+   return view('profileView',['goal'=>$goal,'userskill'=>$userskill,'notification'=>$notification,'categorylist'=>$categorylist,'friendrequest'=>$friendrequest,'friends'=>$friends,'friendstwos'=>$friendstwos,'portfolio'=>$portfolio,'allemail'=>$allemail,'aboutmetexts'=>$aboutmetexts]);
  }
 
  public function post(request $request){
    if($request->hasfile('profilepic')){
        $file = $request->file('profilepic');
-       if($file->getClientOriginalExtension()=='jpg' ||$file->getClientOriginalExtension()=='jpeg' ){
+       if($file->getClientOriginalExtension()=='jpg' ||$file->getClientOriginalExtension()=='jpeg' || $file->getClientOriginalExtension()=='JPG'  || $file->getClientOriginalExtension()=='png'  ){
          $filename=time().'1.'.$file->getClientOriginalExtension();
          Image::make($file)->resize(200,200)->save(public_path('uploads/avatars/'. $filename ));
          $user=User::find(Auth::id());
          $user->avatar=$filename;
+         $user->save();
+         return redirect('profile/'.Auth::id());
+       }
+       else {
+         echo "errorss";
+       }
+
+       }
+   else {
+     return redirect('profile/'.Auth::id());
+   }
+   echo "yoiuuu";
+ }
+
+ public function postcover(request $request){
+   if($request->hasfile('coverpic')){
+       $file = $request->file('coverpic');
+       if($file->getClientOriginalExtension()=='jpg' ||$file->getClientOriginalExtension()=='jpeg' || $file->getClientOriginalExtension()=='JPG'  || $file->getClientOriginalExtension()=='png'  ){
+         $filename=time().'1.'.$file->getClientOriginalExtension();
+         Image::make($file)->resize(1142,400)->save(public_path('uploads/cover/'. $filename ));
+         $user=User::find(Auth::id());
+         $user->usercover=$filename;
          $user->save();
          return redirect('profile/'.Auth::id());
        }
@@ -351,6 +375,17 @@ public function modifyprofile(request $request)
   echo json_encode($user);
 }
 
+public function aboutme(Request $request){
 
+$email=Auth::User()->email;
+
+  DB::table('users')
+       ->where([["id",Auth::id()],["email",$email]])
+       ->update(['aboutmetext'=> $request->aboutme]);
+
+      
+        return redirect('profile/'.Auth::id());
+
+}
 
 }
