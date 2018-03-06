@@ -353,7 +353,7 @@
                         $post_id = $post->id;
                         $likes=    DB::table('blikes')
                                 ->leftJoin('posts', 'blikes.post_id', '=', 'posts.id')
-                                ->where('blikes.post_id', '=', $post_id)
+                                ->where('blikes.post_id', '=',  $post_id)
                                 ->count();
                         echo $likes;
 
