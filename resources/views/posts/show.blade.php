@@ -342,8 +342,26 @@
             <a style="font-size: 12px" href="#" class="btn btn-xs btn-danger like"><span class="glyphicon glyphicon-thumbs-down"> </span> {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You dont like this post' : 'Dislike' : 'Dislike'  }}</a>
 <!--
             <li><a href="#"><i class="ion-heart"></i></a></li>
-            <li><a href="#"><i class="ion-chatbubble"></i></a></li>
-            <li><a href="#"><i class="ion-eye"></i></a></li> -->
+            <li><a href="#"><i class="ion-chatbubble"></i></a></li>-->
+            <li></li>
+            <li></li>
+
+
+
+
+            <li><a href="#"><i class="ion-heart"></i> @php
+                        $post_id = $post->id;
+                        $likes=    DB::table('blikes')
+                                ->leftJoin('posts', 'blikes.post_id', '=', 'posts.id')
+                                ->where('blikes.post_id', '=',  $post_id)
+                                ->count();
+                        echo $likes;
+
+                    @endphp</a></li>
+
+
+            <li><a href="#"><i class="ion-chatbubble"></i>{{$totcomments}}</a></li>
+
         </ul>
 
         <ul class="icons">

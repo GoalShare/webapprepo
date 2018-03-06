@@ -25,4 +25,6 @@ class Posts extends Model {
     public function likes(){
         return $this->belongsTo('App\Like');
     }
+
+
 }

@@ -18,11 +18,9 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+
+
+
     public function index()
     {
         $posts = Posts::where('active', '1')->orderBy('created_at', 'desc')->paginate(5);
@@ -96,12 +94,7 @@ class PostController extends Controller
         return redirect('edit/' . $post->slug)->withMessage($message);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
+
     public function show($slug)
     {
         $post = Posts::where('slug', $slug)->first();
@@ -110,18 +103,16 @@ class PostController extends Controller
             if ($post->active == false)
                 return redirect('/')->withErrors('requested page not found');
             $comments = $post->comments;
+            $totcomments = $post->comments->count();
+
         } else {
             return redirect('/')->withErrors('requested page not found');
         }
-        return view('posts.show')->withPost($post)->withComments($comments);
+        return view('posts.show')->withPost($post)->withComments($comments)->withtotcomments($totcomments);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
+
+
     public function edit(Request $request, $slug)
     {
         $post = Posts::where('slug', $slug)->first();
@@ -132,12 +123,7 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
+
     public function update(Request $request)
     {
         //
@@ -190,12 +176,7 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
+
     public function destroy(Request $request, $id)
     {
         //
@@ -245,4 +226,9 @@ class PostController extends Controller
         }
         return null;
     }
+
+
+
+
+
 }
