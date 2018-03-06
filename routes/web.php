@@ -281,11 +281,6 @@ Route::group(['middleware' => ['auth']], function()
     Route::post('new-post','PostController@store');
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 66cd549acd71936755219fae3771a7d92d869596
-
     // edit post form
     Route::get('edit/{slug}','PostController@edit');
 
