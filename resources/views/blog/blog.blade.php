@@ -87,9 +87,25 @@
 
                                 ') !!}</p><br>
                             <ul class="post-footer">
-                                <li><a href="#"><i class="ion-heart"></i>0</a></li>
-                                <li><a href="#"><i class="ion-chatbubble"></i>0</a></li>
-                                <li><a href="#"><i class="ion-eye"></i>0</a></li>
+                                <li><a href="#"><i class="ion-heart"></i> @php
+                                            $post_id = $post->id;
+                                            $likes=    DB::table('blikes')
+                                                    ->leftJoin('posts', 'blikes.post_id', '=', 'posts.id')
+                                                    ->where('blikes.post_id', '=', $post_id)
+                                                    ->count();
+                                            echo $likes;
+
+                                        @endphp</a></li>
+                                <li><a href="#"><i class="icon ion-chatboxes"></i>@php
+                                            $post_id = $post->id;
+                                            $comment=    DB::table('bcomments')
+                                                    ->leftJoin('posts', 'bcomments.on_post', '=', 'posts.id')
+                                                    ->where('bcomments.on_post', '=', $post_id)
+                                                    ->count();
+                                            echo $comment;
+
+                                        @endphp</a></li>
+                                <li><a href="#"><i class="icon ion-chatbox"></i>0</a></li>
                             </ul>
 
                         </div><!-- blog-info -->
