@@ -49,13 +49,15 @@
             <input required="required" value="{{ old('title') }}" placeholder="Enter title here" type="text"
                    name="title" class="form-control"/>
         </div>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 
         <div class="form-group">
             <label>Upload Cover Image</label>
             <div class="input-group">
             <span class="input-group-btn">
-                <span class="btn btn-default btn-file">
+                <span  class="btn btn-default btn-file">
+
                     Browse… <input value="{{ old('coverimg') }}" name="coverimg" type="file" id="imgInp">
                 </span>
             </span>

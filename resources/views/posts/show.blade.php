@@ -1,5 +1,11 @@
 @extends('blog.postapp')
+<link rel="stylesheet" type="text/css" href="src/css/style.css" />
+<!-- Css for reaction system -->
+<link rel="stylesheet" type="text/css" href="src/css/reaction.css" />
 
+<script type="text/javascript" src="src/js/jquery.min.js"></script>
+<!-- jQuery for Reaction system -->
+<script type="text/javascript" src="scr/js/reaction.js"></script>
 <style>
 
     * {
@@ -338,8 +344,8 @@
         <ul class="post-icons">
 
 
-            <a style="font-size: 12px" href="#" class="btn btn-xs btn-warning like"><span class="glyphicon glyphicon-thumbs-up"> </span> {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a>
-            <a style="font-size: 12px" href="#" class="btn btn-xs btn-danger like"><span class="glyphicon glyphicon-thumbs-down"> </span> {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You dont like this post' : 'Dislike' : 'Dislike'  }}</a>
+            <a style="font-size: 12px" href="#" class="btn btn-xs btn-warning like"> {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'  }}</a>
+            <a style="font-size: 12px" href="#" class="btn btn-xs btn-danger like"> {{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You dont like this post' : 'Dislike' : 'Dislike'  }}</a>
 <!--
             <li><a href="#"><i class="ion-heart"></i></a></li>
             <li><a href="#"><i class="ion-chatbubble"></i></a></li>-->
@@ -362,6 +368,26 @@
 
             <li><a href="#"><i class="ion-chatbubble"></i>{{$totcomments}}</a></li>
 
+            <li> 	<div class="facebook-reaction"><!-- container div for reaction system -->
+                    <span class="like-btn"> <!-- Default like button -->
+						<span class="like-btn-emo like-btn-default"></span> <!-- Default like button emotion-->
+						<span class="like-btn-text">Like</span> <!-- Default like button text,(Like, wow, sad..) default:Like  -->
+						  <ul class="reactions-box"> <!-- Reaction buttons container-->
+								<li class="reaction reaction-like" data-reaction="Like"></li>
+								<li class="reaction reaction-love" data-reaction="Love"></li>
+								<li class="reaction reaction-haha" data-reaction="HaHa"></li>
+								<li class="reaction reaction-wow" data-reaction="Wow"></li>
+								<li class="reaction reaction-sad" data-reaction="Sad"></li>
+								<li class="reaction reaction-angry" data-reaction="Angry"></li>
+						  </ul>
+					</span>
+                    <div class="like-stat"> <!-- Like statistic container-->
+                        <span class="like-emo"> <!-- like emotions container -->
+							<span class="like-btn-like"></span> <!-- given emotions like, wow, sad (default:Like) -->
+						</span>
+                        <span class="like-details">Sanka Rajapaksha and 1k others</span>
+                    </div>
+                </div></li>
         </ul>
 
         <ul class="icons">

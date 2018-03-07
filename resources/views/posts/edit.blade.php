@@ -93,7 +93,7 @@ Edit Post
 	<div class="form-group">
 		<input required="required" placeholder="Enter title here" type="text" name = "title" class="form-control" value="@if(!old('title')){{$post->title}}@endif{{ old('title') }}"/>
 	</div>
-
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<div class="form-group">
 		<label>Upload Cover Image</label>
 		<div class="input-group">
