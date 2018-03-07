@@ -380,12 +380,21 @@ public function aboutme(Request $request){
 
 $email=Auth::User()->email;
 
-  DB::table('users')
-       ->where([["id",Auth::id()],["email",$email]])
-       ->update(['aboutmetext'=> $request->aboutme]);
+$id=Auth::id();
+$user=User::find($id);
 
-      
-        return redirect('profile/'.Auth::id());
+  // DB::table('users')
+  //      ->where([["id",Auth::id()],["email",$email]])
+  //      ->update(['aboutmetext'=> $request->aboutme]);
+
+
+        // return redirect('profile/'.Auth::id());
+
+        $user->aboutmetext=$request->aboutme;
+        $user->save();
+
+        echo json_encode($user);
+        // echo "dcksdbcns";
 
 }
 

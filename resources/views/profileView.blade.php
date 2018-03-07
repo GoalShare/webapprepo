@@ -798,7 +798,7 @@ if (xhttp.status === 404) {
   .card .covercambtnnew{
     position:absolute;
     z-index: 4;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-top: -10px;
   }
 
@@ -822,7 +822,7 @@ if (xhttp.status === 404) {
           <!-- profile-page-header -->
 
 
-          <div class="col l12 m12">
+          <div class="col l12 m12 s12">
             <div id="profile-page-header" class="card">
               <div class="covercambtnnew hide-on-med-and-down" id="imgoverlayfade">
                       <form style=""enctype="multipart/form-data" action="{{route('profilecover')}}" method="post" id="addprofilepicfrm">
@@ -1394,28 +1394,84 @@ console.log(dob.value);
                 <br><br><br><br>
                   <div id="profile-page-sidebar" class="col l6 m6">
 
-                    <form class="" action="{{ route('aboutme') }}" method="post" id="aboutme-form">
-                        {{ csrf_field() }}
+
                     <!-- Profile About  -->
-                    <div class="card light-blue">
+                    <div class="card light-blue" onclick="displayaboutmeedit()">
                       <div class="card-content white-text">
                         <span class="card-title">About Me!</span>
                         <p>
                             <!-- <div class="input-field col m6 s12 l6"> -->
-                              <input id="aboutme" type="text" name="aboutme" id="abtmebtn" class="col l12 m12 s12" style="border:0px;">
-                              <input type="hidden" name="userid" value="">
-                              <!-- <label for="aboutme">
-                                 &nbsp&nbsp Type something about you
-                              </label> -->
-                              @foreach ($aboutmetexts as $aboutmetext)
-                              {{$aboutmetext->aboutmetext}}
-                               @endforeach
-                                <!-- </div> -->
+                              <!-- <input id="aboutme" type="text" name="aboutme" id="abtmebtn" class="col l12 m12 s12" style="border:0px;">
+                              <input type="hidden" name="userid" value=""> -->
+
+                               <span id="aboutnames" onclick="displayaboutmeedit()">{{Auth::User()->aboutmetext}}</span>
+
+
+
+                               <div class="row" id="aboutmefields" style="display:none;">
+
+
+
+                               <div class="input-field col s11 l11 m11">
+                                 <form class="" action="{{ route('aboutme') }}" method="post" id="aboutme-form">
+                         {{ csrf_field() }}
+
+                                 <input type="text"  id="aboutme" name="aboutme" value="{{Auth::User()->aboutmetext}}" placeholder="{{Auth::User()->aboutmetext}}" required></input>
+                                   </form>
+
+                               </div>
+
+                               <div class="input-field col s1 l1 m1" style="padding-top:3px;">
+                                    <a style="cursor:pointer;" class="blue-text text-darken-4"  id="modifyaboutme"><i class="material-icons">done</i></a>
+                               </div>
+
+
+                             </div>
+
 
                         </p>
+                        <script>
+                        var aboutmeform=document.getElementById('aboutme-form');
+                        var aboutmefields=document.getElementById('aboutmefields');
+                        var aboutnames=document.getElementById('aboutnames');
+                        var modifyaboutme=document.getElementById('modifyaboutme');
+
+                        function displayaboutmeedit() {
+
+                          aboutmefields.style.display='block';
+                          aboutnames.style.display='none';
+
+                        }
+
+                        modifyaboutme.addEventListener("click",function(event){
+                          event.preventDefault();
+
+                          var action= aboutmeform.getAttribute("action");
+
+                          var form_data=new FormData(aboutmeform);
+                          var xhr = new XMLHttpRequest();
+                          xhr.open('POST',action, true);
+                          xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                          xhr.send(form_data);
+                          xhr.onreadystatechange = function () {
+                            if(xhr.readyState == 4 && xhr.status == 200) {
+                              var result = xhr.responseText;
+                              // biosubmit.disabled=false;
+                              console.log('Result: ' + result);
+                              var json = JSON.parse(result);
+                              aboutmefields.style.display='none';
+                              aboutnames.style.display='block';
+                              aboutnames.innerHTML="<b>"+json.aboutmetext+"</b>";
+                              console.log('ds');
+                            }
+                          };
+
+                        });
+
+                        </script>
                       </div>
                     </div>
-                    </form>
+
                     <!-- Profile About  -->
                   </div>
 
