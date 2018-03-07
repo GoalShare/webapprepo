@@ -1396,7 +1396,7 @@ console.log(dob.value);
 
 
                     <!-- Profile About  -->
-                    <div class="card light-blue">
+                    <div class="card light-blue" onclick="displayaboutmeedit()">
                       <div class="card-content white-text">
                         <span class="card-title">About Me!</span>
                         <p>
@@ -1447,7 +1447,7 @@ console.log(dob.value);
                           event.preventDefault();
 
                           var action= aboutmeform.getAttribute("action");
-                          
+
                           var form_data=new FormData(aboutmeform);
                           var xhr = new XMLHttpRequest();
                           xhr.open('POST',action, true);
