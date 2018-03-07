@@ -1,9 +1,9 @@
 <!-- Start Page Loading -->
-<div id="loader-wrapper">
+<!-- <div id="loader-wrapper">
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-</div>
+</div> -->
 <!-- End Page Loading -->
 
 @extends('layouts.navbar')
@@ -2206,7 +2206,7 @@ console.log(dob.value);
                                                @if (Auth::User()->bio=="")
                                                  <p id="inibio" onclick="addbiodata()" class="blue-text">Please Enter your aspiration</p>
                                                @else
-                                                 <u><p id="setbio" onclick="addbiodata()">{{Auth::User()->bio}}</p></u>
+                                                 <p id="setbio" onclick="addbiodata()">{{Auth::User()->bio}}</p>
                                                @endif
                                                <form action="{{route('addbio')}}" method="post" id="addbio-form" style="display:none;">
                                                  <div class="row">
@@ -2295,7 +2295,7 @@ console.log(dob.value);
                                                <ul class="collection">
                                                  @foreach ($portfolio as $data)
                                                    @if ($data->category=='education' && $data->nature=='university')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -2359,7 +2359,7 @@ console.log(dob.value);
                                               <ul class="collection">
                                                 @foreach ($portfolio as $data)
                                                   @if ($data->category=='education' && $data->nature=='college')
-                                                    <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                    <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                      {{ csrf_field() }}
                                                      <input type="hidden" name="id" value="{{$data->id}}">
@@ -2423,7 +2423,7 @@ console.log(dob.value);
                                               <ul class="collection">
                                                 @foreach ($portfolio as $data)
                                                   @if ($data->category=='education' && $data->nature=='secondarysch')
-                                                    <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                    <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                      {{ csrf_field() }}
                                                      <input type="hidden" name="id" value="{{$data->id}}">
@@ -2487,7 +2487,7 @@ console.log(dob.value);
                                              <ul class="collection">
                                                @foreach ($portfolio as $data)
                                                  @if ($data->category=='education' && $data->nature=='primarysch')
-                                                   <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                   <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                    <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id" value="{{$data->id}}">
@@ -2554,7 +2554,7 @@ console.log(dob.value);
                                                <ul class="collection">
                                                  @foreach ($portfolio as $data)
                                                    @if ($data->category=='profqual' && $data->nature=='profqual')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -2623,7 +2623,7 @@ console.log(dob.value);
                                                <ul class="collection">
                                                  @foreach ($portfolio as $data)
                                                    @if ($data->category=='researchpapers' && $data->nature=='researchpapers')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -2696,7 +2696,7 @@ console.log(dob.value);
                                                <ul class="collection">
                                                  @foreach ($portfolio as $data)
                                                    @if ($data->category=='work' && $data->nature=='current')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -2760,7 +2760,7 @@ console.log(dob.value);
                                               <ul class="collection">
                                                 @foreach ($portfolio as $data)
                                                   @if ($data->category=='work' && $data->nature=='previous')
-                                                    <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                    <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                     <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                      {{ csrf_field() }}
                                                      <input type="hidden" name="id" value="{{$data->id}}">
@@ -2825,7 +2825,7 @@ console.log(dob.value);
                                                <ul class="collection">
                                                  @foreach ($portfolio as $data)
                                                    @if ($data->category=='achievements' && $data->nature=='achievements')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -2894,7 +2894,7 @@ console.log(dob.value);
                                                <ul class="collection">
                                                  @foreach ($portfolio as $data)
                                                    @if ($data->category=='patents' && $data->nature=='patents')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -2963,7 +2963,7 @@ console.log(dob.value);
                                                <ul class="collection">
                                                  @foreach ($portfolio as $data)
                                                    @if ($data->category=='interests' && $data->nature=='interests')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -3039,7 +3039,7 @@ console.log(dob.value);
                                                  <ul class="collection">
                                                    @foreach ($portfolio as $data)
                                                      @if ($data->category=='education' && $data->nature=='university')
-                                                       <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                       <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                        <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="id" value="{{$data->id}}">
@@ -3103,7 +3103,7 @@ console.log(dob.value);
                                                 <ul class="collection"> --}}
                                                   {{-- @foreach ($portfolio as $data)
                                                     @if ($data->category=='education' && $data->nature=='college')
-                                                      <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                      <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                       <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                        {{ csrf_field() }}
                                                        <input type="hidden" name="id" value="{{$data->id}}">
@@ -3167,7 +3167,7 @@ console.log(dob.value);
                                                 <ul class="collection"> --}}
                                                   {{-- @foreach ($portfolio as $data)
                                                     @if ($data->category=='education' && $data->nature=='secondarysch')
-                                                      <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                      <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                       <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                        {{ csrf_field() }}
                                                        <input type="hidden" name="id" value="{{$data->id}}">
@@ -3231,7 +3231,7 @@ console.log(dob.value);
                                                <ul class="collection"> --}}
                                                  {{-- @foreach ($portfolio as $data)
                                                    @if ($data->category=='education' && $data->nature=='primarysch')
-                                                     <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                     <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                      <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                       {{ csrf_field() }}
                                                       <input type="hidden" name="id" value="{{$data->id}}">
@@ -3299,7 +3299,7 @@ console.log(dob.value);
                                                  <ul class="collection">
                                                    @foreach ($portfolio as $data)
                                                      @if ($data->category=='achievements' && $data->nature=='achievements')
-                                                       <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                       <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                        <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="id" value="{{$data->id}}">
@@ -3373,7 +3373,7 @@ console.log(dob.value);
                                                    <ul class="collection">
                                                      @foreach ($portfolio as $data)
                                                        @if ($data->category=='profqual' && $data->nature=='profqual')
-                                                         <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                         <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                          <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                           {{ csrf_field() }}
                                                           <input type="hidden" name="id" value="{{$data->id}}">
@@ -3443,7 +3443,7 @@ console.log(dob.value);
                                                    <ul class="collection">
                                                      @foreach ($portfolio as $data)
                                                        @if ($data->category=='patents' && $data->nature=='patents')
-                                                         <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                         <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                          <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                           {{ csrf_field() }}
                                                           <input type="hidden" name="id" value="{{$data->id}}">
@@ -3516,7 +3516,7 @@ console.log(dob.value);
                                                      <ul class="collection">
                                                        @foreach ($portfolio as $data)
                                                          @if ($data->category=='researchpapers' && $data->nature=='researchpapers')
-                                                           <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                           <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                            <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="id" value="{{$data->id}}">
@@ -3586,7 +3586,7 @@ console.log(dob.value);
                                                      <ul class="collection">
                                                        @foreach ($portfolio as $data)
                                                          @if ($data->category=='interests' && $data->nature=='interests')
-                                                           <li class="collection-item flow-text" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
+                                                           <li class="collection-item" id="{{$data->id}}item">{{$data->data}}<i id="{{$data->id}}" style="cursor:pointer;" class="close material-icons right">close</i></li>
                                                            <form id="{{$data->id}}frm" action="{{route('deleteportfolio')}}" method="post">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="id" value="{{$data->id}}">
