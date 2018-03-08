@@ -1377,8 +1377,8 @@ console.log(dob.value);
 
 
                     <!-- Profile About  -->
-                    <div class="card light-blue" onclick="displayaboutmeedit()">
-                      <div class="card-content white-text">
+                    <div class="card" onclick="displayaboutmeedit()">
+                      <div class="card-content black-text">
                         <span class="card-title">About Me!</span>
                         <p>
 
@@ -3959,7 +3959,51 @@ console.log(dob.value);
                             </div>
 
 </div>
+<div class="row">
+  <div class="col s12 m12 l12">
+    <div class="card">
+      <div class="card-action">
+         <h5><b>Goals</b></h5>
+      </div>
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><b>Accomplished Goals</b></div>
+          @foreach ($goal as $goals)
+            @if ($goals->goalcompletedpercentage==100)
+              <div class="collapsible-body">
+                {{$goals->goalname}}
+                <div class="progress">
+                    <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                </div>
+                {{$goals->goalcompletedpercentage}}%
+              </div>
+            @endif
+          @endforeach
+        </li>
 
+        <li>
+          <div class="collapsible-header"><b>Goals in progress</b></div>
+          @foreach ($goal as $goals)
+            @if ($goals->goalcompletedpercentage<100)
+              <div class="collapsible-body">
+                {{$goals->goalname}}
+                <div class="progress">
+                    <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
+                </div>
+                {{$goals->goalcompletedpercentage}}%
+              </div>
+            @endif
+          @endforeach
+        </li>
+
+      </ul>
+      <br>
+      <br><br>
+
+  </div>
+</div>
+</div>
+<!-- ///////////////// -->
 <div class="row">
 
           <div class="col s12 m12 l12">
@@ -4149,51 +4193,7 @@ console.log(dob.value);
 
    <!-- //////////////// -->
    <!-- third part -->
-   <div class="row">
-     <div class="col s12 m12 l12">
-       <div class="card">
-         <div class="card-action">
-            <h5><b>Goals</b></h5>
-         </div>
-         <ul class="collapsible popout" data-collapsible="accordion">
-           <li>
-             <div class="collapsible-header"><b>Accomplished Goals</b></div>
-             @foreach ($goal as $goals)
-               @if ($goals->goalcompletedpercentage==100)
-                 <div class="collapsible-body">
-                   {{$goals->goalname}}
-                   <div class="progress">
-                       <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
-                   </div>
-                   {{$goals->goalcompletedpercentage}}%
-                 </div>
-               @endif
-             @endforeach
-           </li>
 
-           <li>
-             <div class="collapsible-header"><b>Goals in progress</b></div>
-             @foreach ($goal as $goals)
-               @if ($goals->goalcompletedpercentage<100)
-                 <div class="collapsible-body">
-                   {{$goals->goalname}}
-                   <div class="progress">
-                       <div class="determinate" style="width: {{$goals->goalcompletedpercentage}}%"> </div>
-                   </div>
-                   {{$goals->goalcompletedpercentage}}%
-                 </div>
-               @endif
-             @endforeach
-           </li>
-
-         </ul>
-         <br>
-         <br><br>
-
-     </div>
-   </div>
- </div>
-<!-- ///////////////// -->
 
 
 <!-- forthpart -->
