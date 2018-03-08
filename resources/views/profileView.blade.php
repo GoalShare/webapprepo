@@ -1904,8 +1904,8 @@ console.log(dob.value);
 
 
                     <!-- Profile About  -->
-                    <div class="card light-blue" onclick="displayaboutmeedit()">
-                      <div class="card-content white-text">
+                    <div class="card" onclick="displayaboutmeedit()">
+                      <div class="card-content black-text">
                         <span class="card-title">About Me!</span>
                         <p>
 
