@@ -836,7 +836,7 @@ if (xhttp.status === 404) {
                         </div>
                           </p>
                         </form>
-                    </div>
+                  </div>
 
 
                   <div class="covercambtnnew hide-on-med-and-down" id="imgoverlayfade">
@@ -852,37 +852,53 @@ if (xhttp.status === 404) {
                 </p>
                 </form>
                 </div>
+
+
+
                 <div class="card-image waves-effect waves-block waves-light">
                     <!-- <img class="activator" src="imagesnewview/user-profile-bg.jpg" alt="user background"> -->
                      <img class="activator" src="{{asset('uploads/cover/'.Auth::User()->usercover)}}" alt="user background" class="img-cover responsive-img">
                 </div>
 
-                <div class="cambtnnew hide-on-med-and-down" id="imgoverlayfade">
-                    <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
-                        {{ csrf_field() }}
-                          <p class="white-text">
-                              <div class="file-field input-field"  >
-                                    <div class="btn btn-floating">
-                                  <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >camera_alt</i>
-                                  <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
-                                </div>
-                              </div>
-                                </p>
-                              </form>
-                          </div>
-                          <div class=" btn btn-floating hide-on-med-and-up">
+
+                          <div class=" btn btn-floating hide-on-med-and-up" style="margin-top:-375px;margin-left:35%;z-index:5;">
                             <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
                               {{ csrf_field() }}
-                                  <div class="file-field"  >
+                                  <div class="file-field">
                                 <i class="material-icons">camera_alt</i>
                                   <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
                               </div>
                               </form>
                           </div>
-              <figure id="imageWrapper" class="card-profile-image">
+
+                          <div class="cambtnnew hide-on-med-and-down" id="imgoverlayfade">
+                              <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
+                                  {{ csrf_field() }}
+                                    <p class="white-text">
+                                        <div class="file-field input-field"  >
+                                              <div class="btn btn-floating">
+                                            <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >camera_alt</i>
+                                            <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
+                                          </div>
+                                        </div>
+                                    </p>
+                                </form>
+                            </div>
+
+              <figure id="imageWrapper" class="card-profile-image hide-on-med-and-down">
                   <!-- <img src="imagesnewview/avatar.jpg" alt="profile image" class="circle z-depth-2 responsive-img activator"> -->
                    <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="profile image" class="circle z-depth-2 responsive-img activator img-thumbnail img-profile" style="border: 5px solid white;box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);">
               </figure>
+
+<div class="row hide-on-med-and-up">
+  <div class="col l12 s12 m12">
+
+    <figure id="imageWrapper" class="card-profile-image" style="margin-top:-125px;margin-left:25%;">
+        <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="profile image" class="circle z-depth-2 responsive-img activator img-thumbnail img-profile" style="border: 5px solid white;box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);">
+    </figure>
+
+  </div>
+</div>
 
               <script type="text/javascript">
                 document.getElementById("imgoverlayfade").style.display='none';
@@ -907,45 +923,10 @@ if (xhttp.status === 404) {
               </script>
 
               <div class="card-content">
-                <div class="row">
-                  <div class="col l6 m6">
+                <div class="row hide-on-small-only">
+                  <div class="col l6 m6 s12">
                   <form id="infoform" action="{{route('modifyprofile')}}" method="post" >
-                  <div class="col s3 offset-s2">
 
-                    <!-- <div class="row" id="namefields" style="display:none;">
-
-                    <div class="input-field col s12 l5 m5">
-                      <input type="text"  id="fname" name="fname" value="{{Auth::User()->fname}}" placeholder="{{Auth::User()->fname}}" required></input>
-                    </div>
-
-                    <div class="input-field col s10 l5 m5">
-                      <input type="text" id="lname"  name="lname" value="{{Auth::User()->lname}}" placeholder="{{Auth::User()->lname}}" required></input>
-                    </div>
-
-                    <div class="input-field col s2 l2 m2" style="padding-top:3px;">
-                         <a style="cursor:pointer;" class="blue-text text-darken-4"  id="modifyname"><i class="material-icons">done</i></a>
-                    </div>
-                  </div> -->
-                      <!-- <h4 class="card-title grey-text text-darken-4"><span id="names" onclick="displaynameedit()">{{Auth::User()->fname}}  {{Auth::User()->lname}}</span></h4> -->
-                      <!-- <p class="medium-small grey-text">Project Manager</p> -->
-                  </div>
-                  <div class="col s2 center-align">
-                      <!-- <h4 class="card-title grey-text text-darken-4">10+</h4>
-                      <p class="medium-small grey-text">Work Experience</p> -->
-                  </div>
-                  <div class="col s2 center-align">
-                      <!-- <h4 class="card-title grey-text text-darken-4">6</h4>
-                      <p class="medium-small grey-text">Completed Projects</p> -->
-                  </div>
-                  <div class="col s2 center-align">
-                      <!-- <h4 class="card-title grey-text text-darken-4">$ 1,253,000</h4>
-                      <p class="medium-small grey-text">Busness Profit</p> -->
-                  </div>
-                  <div class="col s1 right-align">
-                    <!-- <a class="btn-floating activator waves-effect waves-light darken-2 right">
-                        <i class="material-icons white-text text-darken-2">perm_identity</i>
-                    </a> -->
-                  </div>
 
                   <br><br>
                     <h4 class="card-title grey-text text-darken-4"><span id="names" onclick="displaynameedit()">{{Auth::User()->fname}}  {{Auth::User()->lname}}</span></h4>
@@ -1249,7 +1230,7 @@ if (xhttp.status === 404) {
 
 
 <span class="flow-text" id="userdob" onclick="displaydobedit()" style="font-size:20px;">{{Auth::User()->dob}}</span>
-
+<br><br><br>
 {{csrf_field()}}
 <input type="hidden" id="dob" name="dob" value="{{Auth::User()->dob}}">
 <div class="row" id="dobrow"style="display:none;">
@@ -1392,7 +1373,7 @@ console.log(dob.value);
                   </form>
                 </div>
                 <br><br><br><br>
-                  <div id="profile-page-sidebar" class="col l6 m6">
+                  <div id="profile-page-sidebar" class="col l6 m6 s12">
 
 
                     <!-- Profile About  -->
@@ -1400,24 +1381,15 @@ console.log(dob.value);
                       <div class="card-content white-text">
                         <span class="card-title">About Me!</span>
                         <p>
-                            <!-- <div class="input-field col m6 s12 l6"> -->
-                              <!-- <input id="aboutme" type="text" name="aboutme" id="abtmebtn" class="col l12 m12 s12" style="border:0px;">
-                              <input type="hidden" name="userid" value=""> -->
 
-                               <span id="aboutnames" onclick="displayaboutmeedit()">{{Auth::User()->aboutmetext}}</span>
+                          <span id="aboutnames" onclick="displayaboutmeedit()">{{Auth::User()->aboutmetext}}</span>
 
-
-
-                               <div class="row" id="aboutmefields" style="display:none;">
-
-
-
-                               <div class="input-field col s11 l11 m11">
-                                 <form class="" action="{{ route('aboutme') }}" method="post" id="aboutme-form">
-                         {{ csrf_field() }}
-
-                                 <input type="text"  id="aboutme" name="aboutme" value="{{Auth::User()->aboutmetext}}" placeholder="{{Auth::User()->aboutmetext}}" required></input>
-                                   </form>
+                          <div class="row" id="aboutmefields" style="display:none;">
+                          <div class="input-field col s11 l11 m11">
+                          <form class="" action="{{ route('aboutme') }}" method="post" id="aboutme-form">
+                            {{ csrf_field() }}
+                            <input type="text"  id="aboutme" name="aboutme" value="{{Auth::User()->aboutmetext}}" placeholder="{{Auth::User()->aboutmetext}}" required></input>
+                          </form>
 
                                </div>
 
@@ -1461,7 +1433,7 @@ console.log(dob.value);
                               var json = JSON.parse(result);
                               aboutmefields.style.display='none';
                               aboutnames.style.display='block';
-                              aboutnames.innerHTML="<b>"+json.aboutmetext+"</b>";
+                              aboutnames.innerHTML=json.aboutmetext;
                               console.log('ds');
                             }
                           };
@@ -1476,158 +1448,34 @@ console.log(dob.value);
                   </div>
 
                 </div>
-              </div>
-              <!-- <div class="card-reveal" style="z-index:20;">
-                  <p>
-                    <span class="card-title grey-text text-darken-4">Roger Waters <i class="material-icons right">clear</i></span>
-                    <span><i class="material-icons cyan-text text-darken-2">perm_identity</i>Project Manager</span>
-                  </p>
-
-                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-
-                  <p><i class="material-icons cyan-text text-darken-2">perm_phone_msg</i> +1 (612) 222 8989</p>
-                  <p><i class="material-icons cyan-text text-darken-2">email</i> mail@domain.com</p>
-                  <p><i class="material-icons cyan-text text-darken-2">cake</i> 18th June 1990</p>
-                  <p><i class="material-icons cyan-text text-darken-2">airplanemode_active</i> BAR - AUS</p>
-              </div> -->
-          </div>
-        </div>
 
 
-      </div>
-          <!--/ profile-page-header -->
-
-          <!-- profile-page-content -->
-          <div id="profile-page-content" class="row">
-            <div class="col l2 m2"></div>
-            <!-- profile-page-sidebar-->
-            <div class="col s12 m4">
-              <!-- Profile About  -->
-              <!-- <div class="card light-blue">
-                <div class="card-content white-text">
-                  <span class="card-title">About Me!</span>
-                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                </div>
-              </div> -->
-              <!-- Profile About  -->
-            </div>
-            <!-- profile-page-sidebar-->
-
-            <!-- profile-page-wall -->
-            <div id="profile-page-wall" class="col s12 m4">
-              </div>
-            <!--/ profile-page-wall -->
-            <div class="col l2 m2"></div>
-          </div>
-        </div>
+                <div class="row hide-on-med-and-up">
+                  <div class="col l6 m6 s12 center-align" style="margin-top:-150px;">
+                  <form id="infoform" action="{{route('modifyprofile')}}" method="post" >
 
 
-      <!--end container-->
-    </section> <!-- END CONTENT -->
-          <!-- <br> -->
-          <!-- <div class="card" style="background:url({{asset('uploads/goals/Untitled-4.jpg')}});">
-          <div class="row"> -->
+                  <br><br>
+                    <h4 class="card-title grey-text text-darken-4"><span id="names" onclick="displaynameedit()">{{Auth::User()->fname}}  {{Auth::User()->lname}}</span></h4>
+                    <div class="row" id="namefields" style="display:none;">
 
-
-          <!-- <div class="center-align" id="profilepic"> -->
-
-              <!-- <div class="col s6 m6 l6">
-
-              <br/>
-
-              <div class="cambtn hide-on-med-and-down" id="imgoverlayfade">
-                      <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
-                        {{ csrf_field() }}
-                          <p class="white-text">
-                            <div class="file-field input-field"  >
-                              <div class="btn btn-floating">
-                            <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Upload Profile Picture" >camera_alt</i>
-                            <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
-                          </div>
-                        </div>
-                          </p>
-                        </form>
+                    <div class="input-field col s12 l5 m5">
+                      <input type="text"  id="fname" name="fname" value="{{Auth::User()->fname}}" placeholder="{{Auth::User()->fname}}" required></input>
                     </div>
-                    <div class=" btn btn-floating hide-on-med-and-up">
-                      <form style=""enctype="multipart/form-data" action="{{route('profile')}}" method="post" id="addprofilepicfrm">
-                        {{ csrf_field() }}
-                            <div class="file-field"  >
-                          <i class="material-icons">camera_alt</i>
-                            <input type="file" name="profilepic"  onchange="javascript:this.form.submit();">
-                        </div>
-                        </form>
+
+                    <div class="input-field col s10 l5 m5">
+                      <input type="text" id="lname"  name="lname" value="{{Auth::User()->lname}}" placeholder="{{Auth::User()->lname}}" required></input>
                     </div>
-                      <div id="imageWrapper" style="z-index:1;">
-                         <img src="{{asset('uploads/avatars/'.Auth::User()->avatar)}}" alt="" width="150px" height="150px" class="circle" style="border: 5px solid white;box-shadow: 0 0 3px 3px rgba(0,0,0,0.6);">
-                      </div>
-</div>  -->
 
-          <!-- <script type="text/javascript">
-            document.getElementById("imgoverlayfade").style.display='none';
-            var imageWrapper = document.getElementById('imageWrapper');
-            var imageprof = document.getElementById('imageprof');
-            var profilepic=document.getElementById("profilepic");
-            profilepic.addEventListener("mouseover",mouseOver);
-            profilepic.addEventListener("mouseout",mouseOut);
-            imageWrapper.addEventListener("mouseover",wrapperShow);
-            imageWrapper.addEventListener("mouseout",WrapperDis);
-            imageprof.addEventListener("mouseover",WrapperDis1);
-            imageprof.addEventListener("mouseout",WrapperDis1);
-            //
-            // $("#imageWrapper").hover(function() {
-            //   $("#imgoverlayfade").removeClass('hidden');
-            // }, function() {
-            //   $("#imgoverlayfade").addClass('hidden');
-            // });
+                    <div class="input-field col s2 l2 m2" style="padding-top:3px;">
+                         <a style="cursor:pointer;" class="blue-text text-darken-4"  id="modifyname"><i class="material-icons">done</i></a>
+                    </div>
+                  </div>
+                  <span class="flow-text" id="existdetails"><span id="useremail" style="font-size:20px;">{{Auth::User()->email}}</span></span><br>
+                    <span class="flow-text" id="userphone" onclick="displayphoneedit()" style="font-size:20px;">+{{Auth::User()->countrycode}}-{{Auth::User()->phone}}</span><br>
 
-            //
-            // function WrapperDis1(){
-            //     $("#imgoverlayfade").removeClass('hidden');
-            // }
-            //
-            // function WrapperDis1(){
-            //     $("#imgoverlayfade").addClass('hidden');
-            // }
-            //
-            // function wrapperShow(){
-            //     $("#imgoverlayfade").removeClass('hidden');
-            // }
-            //
-            // function WrapperDis(){
-            //     $("#imgoverlayfade").addClass('hidden');
-            // }
-            //
-            var dob=0;
-            var phone=0;
-            function mouseOver(){
-              document.getElementById("imgoverlayfade").style.display='inline';
-            }
-            function mouseOut(){
-              document.getElementById("imgoverlayfade").style.display='none';
-            }
-          </script> -->
-         <!-- <div class="col s12 m6 l6">
-          <br>
-              <form id="infoform" action="{{route('modifyprofile')}}" method="post" >
-             <button id="editprofileinfobtn" class="btn btn-floating pulse right"><i class="material-icons">border_color</i></button><br>
-            <div class="row" id="namefields" style="display:none;">
 
-            <div class="input-field col s12 l5 m5">
-              <input type="text"  id="fname" name="fname" value="{{Auth::User()->fname}}" placeholder="{{Auth::User()->fname}}" required></input>
-            </div>
 
-            <div class="input-field col s10 l5 m5">
-              <input type="text" id="lname"  name="lname" value="{{Auth::User()->lname}}" placeholder="{{Auth::User()->lname}}" required></input>
-            </div>
-
-            <div class="input-field col s2 l2 m2" style="padding-top:3px;">
-                 <a style="cursor:pointer;" class="blue-text text-darken-4"  id="modifyname"><i class="material-icons">done</i></a>
-            </div>
-          </div>
-
-            <span id="names" onclick="displaynameedit()" class="flow-text" style="font-weight:normal;">{{Auth::User()->fname}}  {{Auth::User()->lname}}</span><br>
-                <span class="flow-text" id="existdetails"><span id="useremail" style="font-size:20px;">{{Auth::User()->email}}</span></span><br>
-                  <span class="flow-text" id="userphone" onclick="displayphoneedit()" style="font-size:20px;">+{{Auth::User()->countrycode}}-{{Auth::User()->phone}}</span><br>
                     <div class="row" id="phonerow" style="display:none;">
                       <div class="input-field col l3 m3 s3">
                         <select name="countrycode" id="countryCode" >
@@ -1892,7 +1740,7 @@ console.log(dob.value);
                       </div>
 
 
-                 <script type="text/javascript">
+                     <script type="text/javascript">
                       var useragreement=document.getElementById("useragreement");
                       useragreement.addEventListener("change",accept);
                       function accept() {
@@ -1906,167 +1754,241 @@ console.log(dob.value);
                       }
                     </script>
                     </div>
-                    <span class="flow-text" id="userdob" onclick="displaydobedit()" style="font-size:20px;">{{Auth::User()->dob}}</span>
 
-                      {{csrf_field()}}
-                      <input type="hidden" id="dob" name="dob" value="{{Auth::User()->dob}}">
-                     <div class="row" id="dobrow"style="display:none;">
-                     <div class="input-field col s3" >
-                           <select id="datedropdown" oninput="setdob()"  name="">
-                             @for ($i=1; $i <=31 ; $i++)
-                               <option data-date="{{$i}}" value="{{$i}}">{{$i}}</option>
-                             @endfor
-                           </select>
-                     </div>
-                     <div class="input-field col s4">
-                           <select name="month" id="monthdropdown" oninput="setdatefunc()">
-                               <option data-month="JAN" value="01" selected>January</option>
-                               <option data-month="FEB" value="02">February </option>
-                               <option data-month="MAR" value="03">March </option>
-                               <option data-month="APR" value="04">April</option>
-                               <option data-month="MAY" value="05">May</option>
-                               <option data-month="JUN" value="06">June </option>
-                               <option data-month="JUL" value="07">July</option>
-                               <option data-month="AUG" value="08">August</option>
-                               <option data-month="SEP" value="09">September</option>
-                               <option data-month="OCT" value="10">October</option>
-                               <option data-month="NOV" value="11">November </option>
-                               <option data-month="DEC" value="12">December </option>
-                             </select>
-                     </div>
-                     <div class="input-field col s3">
-                           <select id="yeardropdown" oninput="febdates()" name="">
-                             @for ($i=2001; $i >=1920 ; $i--)
-                               <option data-year="{{$i}}" value="{{$i}}">{{$i}}</option>
-                             @endfor
-                           </select>
+
+                <span class="flow-text" id="userdob" onclick="displaydobedit()" style="font-size:20px;">{{Auth::User()->dob}}</span>
+                <br><br><br>
+                {{csrf_field()}}
+                <input type="hidden" id="dob" name="dob" value="{{Auth::User()->dob}}">
+                <div class="row" id="dobrow"style="display:none;">
+                <div class="input-field col s3" >
+                <select id="datedropdown" oninput="setdob()"  name="">
+                @for ($i=1; $i <=31 ; $i++)
+                <option data-date="{{$i}}" value="{{$i}}">{{$i}}</option>
+                @endfor
+                </select>
+                </div>
+                <div class="input-field col s4">
+                <select name="month" id="monthdropdown" oninput="setdatefunc()">
+                <option data-month="JAN" value="01" selected>January</option>
+                <option data-month="FEB" value="02">February </option>
+                <option data-month="MAR" value="03">March </option>
+                <option data-month="APR" value="04">April</option>
+                <option data-month="MAY" value="05">May</option>
+                <option data-month="JUN" value="06">June </option>
+                <option data-month="JUL" value="07">July</option>
+                <option data-month="AUG" value="08">August</option>
+                <option data-month="SEP" value="09">September</option>
+                <option data-month="OCT" value="10">October</option>
+                <option data-month="NOV" value="11">November </option>
+                <option data-month="DEC" value="12">December </option>
+                </select>
+                </div>
+                <div class="input-field col s3">
+                <select id="yeardropdown" oninput="febdates()" name="">
+                @for ($i=2001; $i >=1920 ; $i--)
+                <option data-year="{{$i}}" value="{{$i}}">{{$i}}</option>
+                @endfor
+                </select>
+                </div>
+                <div class="input-field col s2 l2 m2" style="padding-top:3px;">
+                <a type="submit" style="cursor:pointer;" class="blue-text text-darken-4"  id="modifydob"><i class="material-icons">done</i></a>
+                </div>
+                <script type="text/javascript">
+                var datedropdown=document.getElementById('datedropdown');
+                var monthdropdown=document.getElementById('monthdropdown');
+                var yeardropdown=document.getElementById('yeardropdown');
+                var dob=document.getElementById('dob');
+
+                function setdob() {
+                dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+                console.log(dob.value);
+                }
+
+                function febdates() {
+                if (monthdropdown.value==02) {
+
+                if(yeardropdown.value%4 == 0)
+                {
+                if( yeardropdown.value%100 == 0)
+                {
+                // year is divisible by 400, hence the year is a leap year
+                if ( yeardropdown.value%400 == 0){
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 29; i++) {
+                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+                else{
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 28; i++) {
+                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+                }
+                else{
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 29; i++) {
+                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+
+                }
+
+                }
+                dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+                console.log(dob.value);
+                }
+                function setdatefunc() {
+                // console.log(monthdropdown.value);
+                // console.log(yeardropdown.value);
+                if (monthdropdown.value==02) {
+                if(yeardropdown.value%4 == 0)
+                {
+                if( yeardropdown.value%100 == 0)
+                {
+                // year is divisible by 400, hence the year is a leap year
+                if ( yeardropdown.value%400 == 0){
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 29; i++) {
+                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+                else{
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 28; i++) {
+                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+                }
+                else{
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 29; i++) {
+                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+
+                }
+                else{
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 28; i++) {
+                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+
+                }
+                else {
+                if (monthdropdown.value==01||monthdropdown.value==03||monthdropdown.value==05||monthdropdown.value==07||monthdropdown.value==08||monthdropdown.value==010||monthdropdown.value==12) {
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 31; i++) {
+                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                } else {
+                datedropdown.innerHTML='';
+                for (var i = 1; i <= 30; i++) {
+                datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
+                }
+                }
+                }
+                dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
+                console.log(dob.value);
+                }
+
+                </script>
+                </div>
+
+                  </form>
+                </div>
+                <br><br><br><br>
+                  <div id="profile-page-sidebar" class="col l6 m6 s12">
+
+
+                    <!-- Profile About  -->
+                    <div class="card light-blue" onclick="displayaboutmeedit()">
+                      <div class="card-content white-text">
+                        <span class="card-title">About Me!</span>
+                        <p>
+
+                          <span id="aboutnames" onclick="displayaboutmeedit()">{{Auth::User()->aboutmetext}}</span>
+
+                          <div class="row" id="aboutmefields" style="display:none;">
+                          <div class="input-field col s11 l11 m11">
+                          <form class="" action="{{ route('aboutme') }}" method="post" id="aboutme-form">
+                            {{ csrf_field() }}
+                            <input type="text"  id="aboutme" name="aboutme" value="{{Auth::User()->aboutmetext}}" placeholder="{{Auth::User()->aboutmetext}}" required></input>
+                          </form>
+
+                               </div>
+
+                               <div class="input-field col s1 l1 m1" style="padding-top:3px;">
+                                    <a style="cursor:pointer;" class="blue-text text-darken-4"  id="modifyaboutme"><i class="material-icons">done</i></a>
+                               </div>
+
+
+                             </div>
+
+
+                        </p>
+                        <script>
+                        var aboutmeform=document.getElementById('aboutme-form');
+                        var aboutmefields=document.getElementById('aboutmefields');
+                        var aboutnames=document.getElementById('aboutnames');
+                        var modifyaboutme=document.getElementById('modifyaboutme');
+
+                        function displayaboutmeedit() {
+
+                          aboutmefields.style.display='block';
+                          aboutnames.style.display='none';
+
+                        }
+
+                        modifyaboutme.addEventListener("click",function(event){
+                          event.preventDefault();
+
+                          var action= aboutmeform.getAttribute("action");
+
+                          var form_data=new FormData(aboutmeform);
+                          var xhr = new XMLHttpRequest();
+                          xhr.open('POST',action, true);
+                          xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                          xhr.send(form_data);
+                          xhr.onreadystatechange = function () {
+                            if(xhr.readyState == 4 && xhr.status == 200) {
+                              var result = xhr.responseText;
+                              // biosubmit.disabled=false;
+                              console.log('Result: ' + result);
+                              var json = JSON.parse(result);
+                              aboutmefields.style.display='none';
+                              aboutnames.style.display='block';
+                              aboutnames.innerHTML=json.aboutmetext;
+                              console.log('ds');
+                            }
+                          };
+
+                        });
+
+                        </script>
                       </div>
-                      <div class="input-field col s2 l2 m2" style="padding-top:3px;">
-                           <a type="submit" style="cursor:pointer;" class="blue-text text-darken-4"  id="modifydob"><i class="material-icons">done</i></a>
-                      </div>
-                       <script type="text/javascript">
-                       var datedropdown=document.getElementById('datedropdown');
-                       var monthdropdown=document.getElementById('monthdropdown');
-                       var yeardropdown=document.getElementById('yeardropdown');
-                       var dob=document.getElementById('dob');
+                    </div>
 
-                       function setdob() {
-                         dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
-                         console.log(dob.value);
-                       }
-
-                       function febdates() {
-                         if (monthdropdown.value==02) {
-
-                         if(yeardropdown.value%4 == 0)
-                         {
-                             if( yeardropdown.value%100 == 0)
-                             {
-                                 // year is divisible by 400, hence the year is a leap year
-                                 if ( yeardropdown.value%400 == 0){
-                                     datedropdown.innerHTML='';
-                                     for (var i = 1; i <= 29; i++) {
-                                       datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                                     }
-                                 }
-                                 else{
-                                     datedropdown.innerHTML='';
-                                     for (var i = 1; i <= 28; i++) {
-                                       datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                                     }
-                                 }
-                             }
-                             else{
-                               datedropdown.innerHTML='';
-                               for (var i = 1; i <= 29; i++) {
-                                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                               }
-                             }
-
-                       }
-
-                     }
-                       dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
-                       console.log(dob.value);
-                     }
-                         function setdatefunc() {
-                           // console.log(monthdropdown.value);
-                           // console.log(yeardropdown.value);
-                           if (monthdropdown.value==02) {
-                               if(yeardropdown.value%4 == 0)
-                               {
-                                   if( yeardropdown.value%100 == 0)
-                                   {
-                                       // year is divisible by 400, hence the year is a leap year
-                                       if ( yeardropdown.value%400 == 0){
-                                           datedropdown.innerHTML='';
-                                           for (var i = 1; i <= 29; i++) {
-                                             datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                                           }
-                                       }
-                                       else{
-                                           datedropdown.innerHTML='';
-                                           for (var i = 1; i <= 28; i++) {
-                                             datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                                           }
-                                       }
-                                   }
-                                   else{
-                                     datedropdown.innerHTML='';
-                                     for (var i = 1; i <= 29; i++) {
-                                       datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                                     }
-                                   }
-
-                               }
-                               else{
-                                 datedropdown.innerHTML='';
-                                 for (var i = 1; i <= 28; i++) {
-                                   datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                                 }
-                               }
-
-                           }
-                           else {
-                             if (monthdropdown.value==01||monthdropdown.value==03||monthdropdown.value==05||monthdropdown.value==07||monthdropdown.value==08||monthdropdown.value==010||monthdropdown.value==12) {
-                               datedropdown.innerHTML='';
-                               for (var i = 1; i <= 31; i++) {
-                                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                               }
-                             } else {
-                               datedropdown.innerHTML='';
-                               for (var i = 1; i <= 30; i++) {
-                                 datedropdown.innerHTML+='<option value="'+i+'">'+i+'</option>';
-                               }
-                             }
-                           }
-                           dob.value=yeardropdown.value+'-'+monthdropdown.value+'-'+datedropdown.value;
-                           console.log(dob.value);
-                         }
-
-                       </script>
-                     </div>
-                   </div> -->
-                   <!-- <div class="col s6 m6 l6">
-                        <div style="font-weight:normal;font-size:30px;color:white;">About Myself</div>
-                   </div> -->
-                    <!-- </div>
+                    <!-- Profile About  -->
                   </div>
 
-                     <div class="row">
-                       <div class="col s12">
-                         <div class="right">
-                           <button type="submit" class="btn btn-floating "  id="modifyprofile"><i class="material-icons">done</i></button>
-                           <button type="button" class="btn btn-floating " onclick="closeinfoform()"><i class="material-icons">close</i></button>
-                         </div>
-                       </div>
-                     </div>
+                </div>
+              </div>
 
-                    </form>
-
-          </div> -->
+          </div>
+        </div>
 
 
+      </div>
+          <!--/ profile-page-header -->
+
+        </div>
+
+
+      <!--end container-->
+    </section> <!-- END CONTENT -->
 
           <script type="text/javascript">
           var infoform=document.getElementById('infoform');
