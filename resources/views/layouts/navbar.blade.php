@@ -364,7 +364,7 @@
        <li><div class="divider"></div></li>
        <li><a class="waves-effect" href="{{url('/calendar')}}">My Schedule<i class="material-icons">date_range</i></a></li>
        <li><div class="divider"></div></li>
-       <li><a class="waves-effect" href="{{url('/mainlearningboard')}}">Knowledge Hub<i class="material-icons">attach_file</i></a></li>
+       <!-- <li><a class="waves-effect" href="{{url('/mainlearningboard')}}">Knowledge Hub<i class="material-icons">attach_file</i></a></li> -->
        <li><a class="waves-effect" href="#sendinvitebtnmodal">Send Invite<i class="material-icons">people</i></a></li>
 
        <script>
