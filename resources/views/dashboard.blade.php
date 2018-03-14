@@ -431,6 +431,7 @@
 
     <div class="container" id="goaldisplay">
         <div class="row hide-on-small-only"><br><br>
+          <div class="col l1 m1  center-align"></div>
             <div class="col l2 m2  center-align">
                 <span class=" red-text "><b>New Goal</b></span><br>
                 <a href="#addgoal" class="btn btn-floating red btn-large "><i class="material-icons">add</i></a>
@@ -781,11 +782,12 @@
                 <a href="{{url('/dashboard')}}" class="btn btn-floating grey darken-3 btn-large "><i
                             class="material-icons">dashboard</i></a>
             </div>
-            <div class="col l2 m2 center-align">
+            <!-- <div class="col l2 m2 center-align">
                 <span class=" blue-text text-darken-4"><b>My Documents</b></span><br>
                 <a href="{{url('/files')}}" class="btn btn-floating btn-large "><i
                             class="material-icons">attach_file</i></a>
-            </div>
+            </div> -->
+
             <div class="col l2 m2 center-align">
                 <span class=" purple-text text-darken-3"><b>My Schedule</b></span><br>
                 <a href="{{url('/calendar')}}" class="btn btn-floating purple darken-3 btn-large "><i
@@ -796,6 +798,7 @@
                 <a href="{{url('profile/'.Auth::id())}}" class="btn btn-floating green darken-4 btn-large "><i
                             class="material-icons">people</i></a>
             </div>
+            <div class="col l1 m1  center-align"></div>
         </div>
         @if($goal->isEmpty() && $alignedgoal->isEmpty())
             <div class="row">
