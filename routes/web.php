@@ -315,3 +315,5 @@ Route::get('user/{id}/posts','UserController@user_posts')->where('id', '[0-9]+')
 Route::get('/{slug}',['as' => 'post', 'uses' => 'PostController@show'])->where('slug', '[A-Za-z0-9-_]+');
 
 Route::post('/like','PostController@postLikePost')->name('like');
+
+Route::post('/emo','PostController@postLikePostemo')->name('emo');

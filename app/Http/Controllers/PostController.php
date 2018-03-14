@@ -227,6 +227,40 @@ class PostController extends Controller
         return null;
     }
 
+    public function postLikePostemo(Request $request)
+    {
+        $post_id = $request['postId'];
+        $data_reaction = $request['data_reaction'];
+        $update = false;
+        $post = Posts::find($post_id);
+        if (!$post) {
+            return null;
+        }
+
+        $user = Auth::user();
+        $like = $user->likes()->where('post_id', $post_id)->first();
+
+        if ($like) {
+            $already_like = $like->like;
+            $update = true;
+            if ($already_like == $data_reaction) {
+                $like->delete();
+                return null;
+            }
+        } else {
+            $like = new Like();
+        }
+        $like->like = $data_reaction;
+        $like->user_id = $user->id;
+        $like->post_id = $post->id;
+        if ($update) {
+            $like->update();
+        } else {
+            $like->save();
+        }
+        return null;
+    }
+
 
 
 

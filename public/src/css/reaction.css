@@ -1,6 +1,6 @@
 .facebook-reaction{
   max-width:100%;
-  margin:150px auto;
+
   padding:0 60px;
   position: relative;
 }
@@ -41,6 +41,9 @@
   box-shadow: 1px 1px 2px #cccccc, -1px 0px 2px #eeeeee;
   border-radius: 44px 44px;
   display: none;
+  background: white;
+
+
 }
 
 .reaction {
@@ -57,6 +60,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center
+
 }
 
 .like-btn:hover .reactions-box {
@@ -220,6 +224,7 @@
   background-repeat: no-repeat;
   background-size: auto;
   background-position: 0 -168px;
+
 }
 
 .like-btn-haha{
@@ -278,3 +283,4 @@
   color:#9197a3;
   font-size:12px;
 }
+
