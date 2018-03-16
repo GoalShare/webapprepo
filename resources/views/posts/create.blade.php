@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
     <style>
         .btn-file {
             position: relative;
@@ -67,6 +68,12 @@
         </div>
 
         <div class="form-group">
+            <label>Tags</label>
+            <div class="input-group">
+                <input style="width: 40%; font-size: larger" type="text" id="skills" name="skills" data-role="tagsinput" />
+            </div>
+        </div>
+
             <textarea name='body' class="form-control">{{ old('body') }}</textarea>
         </div>
         <input type="submit" name='publish' class="btn btn-success" value="Publish"/>

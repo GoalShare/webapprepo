@@ -335,10 +335,27 @@
 
 
         <ul class="tags">
-            <li><a href="#">Mnual</a></li>
-            <li><a href="#">Liberty</a></li>
-            <li><a href="#">Recommendation</a></li>
-            <li><a href="#">Inspiration</a></li>
+
+            @php
+
+                $post_id = $post->id;
+                $results= DB::table('posts')
+                        ->select('tags')
+                        ->where('id', '=',  $post_id)
+                          ->first();
+
+                $tags = $results->tags;
+                $tagsArray =  explode(',', $tags);
+
+
+
+            @endphp
+            @foreach($tagsArray as $ta)
+
+                <li><a href="#"> {{ $ta }} </a></li>
+            @endforeach
+
+
         </ul>
     </div><!-- blog-post-inner -->
 
@@ -358,13 +375,16 @@
 
                         @endphp
                         <span class="like-btn"> <!-- Default like button -->
-						<span class="like-btn-emo like-btn-{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}"></span> <!-- Default like button emotion-->
+						<span class="like-btn-emo like-btn-{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}"></span>
+                            <!-- Default like button emotion-->
 
-						<span data-reaction="{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}} " id="{{$post->id}}" class="like-btn-text-{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}">{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}</span>
+						<span data-reaction="{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}} "
+                              id="{{$post->id}}"
+                              class="like-btn-text-{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}">{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}</span>
 
 
                             <!-- Default like button text,(Like, wow, sad..) default:Like  -->
-						  <ul class="reactions-box" style="z-index: 9999999 !important; "  > <!-- Reaction buttons container-->
+						  <ul class="reactions-box" style="z-index: 9999999 !important; "> <!-- Reaction buttons container-->
 								<li id="{{$post->id}}" class="reaction reaction-like" data-reaction="Like"></li>
 								<li id="{{$post->id}}" class="reaction reaction-love" data-reaction="Love"></li>
 								<li id="{{$post->id}}" class="reaction reaction-haha" data-reaction="HaHa"></li>
@@ -376,22 +396,29 @@
                         <div class="like-stat"> <!-- Like statistic container-->
                             <span class="like-emo"> <!-- like emotions container -->
 							<span class="like-btn-like"></span>
-                                <span class="like-btn-{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}" ></span>
-
+                                <span class="like-btn-{{DB::table('blikes')->where('blikes.post_id', $post_id)->Where('blikes.user_id', $userid)->value('like')}}"></span>
 
 
                                 <!-- given emotions like, wow, sad (default:Like) -->
 						</span>
-                            <span class="like-details">Sanka Rajapaksha and 1k others</span>
+                            <span class="like-details">You and @php
+                                    $post_id = $post->id;
+                                    $likes= DB::table('blikes')
+                                            ->leftJoin('posts', 'blikes.post_id', '=', 'posts.id')
+                                            ->where('blikes.post_id', '=',  $post_id)
+                                            ->count();
+                                    echo $likes;
+
+                                @endphp others</span>
                         </div>
                     </div>
                 </li>
- <!--
-                            <li><a href="#"><i class="ion-heart"></i></a></li>
-                            <li><a href="#"><i class="ion-chatbubble"></i></a></li>-->
+                <!--
+                                           <li><a href="#"><i class="ion-heart"></i></a></li>
+                                           <li><a href="#"><i class="ion-chatbubble"></i></a></li>-->
 
 
-                <li><a href="#"><i class="ion-heart"></i> @php
+              <!--  <li><a href="#"><i class="ion-heart"></i> @php
                             $post_id = $post->id;
                             $likes= DB::table('blikes')
                                     ->leftJoin('posts', 'blikes.post_id', '=', 'posts.id')
@@ -400,10 +427,10 @@
                             echo $likes;
 
                         @endphp</a></li>
-
+-->
 
                 <li><a href="#"><i class="ion-chatbubble"></i>{{$totcomments}}</a></li>
-                <a href="#" class="btn btn-inverse "><i class="glyphicon glyphicon-share-alt"></i></a>
+
 
             </ul>
         @endif
@@ -411,24 +438,19 @@
 
         <ul class="icons" style="padding-top: 50px">
             <li>SHARE :</li>
-            <li><a href="https://www.facebook.com/sharer.php?u={{Request::fullUrl()}}"
-                   title="Facebook share"><i class="ion-social-facebook"></i></a></li>
-            <li><a href="https://plus.google.com/share?url={{Request::fullUrl()}}"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{Request::fullUrl()}}"><i class="ion-social-pinterest"></i></a></li>
+            <li><a class="facebook customer share" href="https://www.facebook.com/sharer.php?u={{Request::fullUrl()}}"
+                   title="Facebook share" target="_blank"><i class="ion-social-facebook" ></i></a></li>
+            <li><a class="google_plus customer share" href="https://plus.google.com/share?url={{Request::fullUrl()}}" target="_blank"><i class="fa fa-google-plus"></i></a>
+            </li>
+            <li><a class="twitter customer share" href="#" target="_blank"><i class="ion-social-twitter"></i></a></li>
+            <li><a class="linkedin customer share" href="https://www.linkedin.com/shareArticle?mini=true&url={{Request::fullUrl()}}" target="_blank"><i
+                            class="ion-social-pinterest"></i></a></li>
 
 
         </ul>
+
+
     </div>
-    <script>
-        var token = '{{ Session::token() }}';
-      //  var urlLike = '{{ route('like') }}';
-        var emolLike = '{{ route('emo') }}';
-    </script>
-@endsection
-@section('title-meta')
-
-
     <script> ;(function ($) {
 
             $.fn.customerPopup = function (e, intWidth, intHeight, blnResize) {
@@ -456,15 +478,13 @@
             });
 
         }(jQuery));</script>
-
-
-
-
-
-
-
-
+    <script>
+        var token = '{{ Session::token() }}';
+        //  var urlLike = '{{ route('like') }}';
+        var emolLike = '{{ route('emo') }}';
+    </script>
 @endsection
+
 @section('sidebar')
     <div class="single-post info-area">
         <div class="tag-area">
@@ -502,11 +522,6 @@
         </div><!--- subscribe-area --->
 
         <div class="sidebar-area subscribe-area">
-
-
-
-
-
 
 
         </div>
@@ -551,7 +566,7 @@
 
     </div><!-- comment-form -->
 
-    <h4><b>COMMENTS(1)</b></h4>
+
 
 
 

@@ -21,10 +21,7 @@ $(document).ready(function(){
 
 	else
 	  $(".like-emo").html('<span class="like-btn-like"></span><span class="like-btn-'+data_reaction.toLowerCase()+'"></span>');
-
-
-
-      $(".like-details").html("You, Sanka Rajapaksha and 1k others");
+      $(".like-details").html("You, Sanka Rajapaksha and 2 others");
       $(".like-btn-emo").removeClass().addClass('like-btn-emo').addClass('like-btn-'+data_reaction.toLowerCase());
       $(".like-btn-text").text(data_reaction).removeClass().addClass('like-btn-text').addClass('like-btn-text-'+data_reaction.toLowerCase()).addClass("active");;
 
